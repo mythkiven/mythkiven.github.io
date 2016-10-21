@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Oct 2016 18:28:13 +0800</pubDate>
-    <lastBuildDate>Thu, 20 Oct 2016 18:28:13 +0800</lastBuildDate>
+    <pubDate>Fri, 21 Oct 2016 10:40:36 +0800</pubDate>
+    <lastBuildDate>Fri, 21 Oct 2016 10:40:36 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -44,7 +44,7 @@
 
 &lt;p&gt;这里记录我创建github的博客的经过，方便以后查阅和供有需要的朋友们参考&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://hackxiaoyi.com/content/templates/bowen/images/skin/skinA02.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;github--jekyll&quot;&gt;核心：免费的主机：github + 静态博客系统：jekyll&lt;/h3&gt;
 

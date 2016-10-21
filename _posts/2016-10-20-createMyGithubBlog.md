@@ -11,7 +11,7 @@ author: MythKiven
 
 这里记录我创建github的博客的经过，方便以后查阅和供有需要的朋友们参考
 
-![](http://hackxiaoyi.com/content/templates/bowen/images/skin/skinA02.jpg) 
+![](https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg) 
 
 ### 核心：免费的主机：github + 静态博客系统：jekyll
 
