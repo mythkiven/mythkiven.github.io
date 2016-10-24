@@ -7,6 +7,82 @@ icon: bookmark
 
 * content
 {:toc}
+## IOS APP 如何更加安全
+
+### 1、hack必备：只有懂攻击，才能更给力的防御
+##### 1.1常用的命令和工具:终端</br>
+[原文](http://blog.csdn.net/jiang314/article/details/52883433)<br/>
+
+##### 1.2 使用终端手动编译Hello world
+[参考]( http://www.cocoachina.com/industry/20140211/7800.html)
+
+##### 1.3、GDB
+--命令行调试器。虽说xcode比较强大，但是gdb可以让你更精确的调试。而且这在很多操作系统里都是可以通用的命令。
+
+
+### 2、IOS APP 安全系列文章《：：》分析+动态修改APP
+##### 2.1、IOS 安全系列 1 介绍如何在越狱的设备上搭建用来测试iOS安全的环境
+ [P1](http://resources.infosecinstitute.com/ios-application-security-part-1-setting-up-a-mobile-pentesting-platform/)
+
+##### 2.2、IOS 安全系列2介绍如何利用class-dump-z 和 Clutch 来dump类信息，利用这些信息，可以理解代码的设计和代码内部是如何工作的。
+[P2](http://resources.infosecinstitute.com/ios-application-security-part-2-getting-class-information-of-ios-apps/ )
+
+例如有一个方法 -(BOOL)isFacebookSessionValid ，在某种情况下返回 NO，可以在运行时修改 instance variable变量的值，操纵它让它返回YES<br/>
+
+##### 2.3、Understanding the Objective-C Runtime 
+
+IOS 安全系列3 提到Method Swizzling
+[P3](http://resources.infosecinstitute.com/ios-application-security-part-3-understanding-the-objective-c-runtime/)
+##### 2.4、Runtime Analysis Using Cycript (Yahoo Weather App)
+Part4介绍了用Cycript动态分析和修改app的方法。文章拿Yahoo Weather app做的例子。其中一处改动是给加上了badge number。
+[P4](http://resources.infosecinstitute.com/ios-application-security-part-4-runtime-analysis-using-cycript-yahoo-weather-app/)
+![](http://farm3.staticflickr.com/2823/9241398663_b80335cd23.jpg)
+
+##### 2.5、Part5 分享了一些高级分析技术。分析了如何获得特定类的信息（方法名，实例变量名称），并且如何在运行时修改。
+[P5](http://resources.infosecinstitute.com/ios-application-security-part-5-advanced-runtime-analysis-and-manipulation-using-cycript-yahoo-weather-app/)
+##### 2.6、New Security Features in IOS 7
+[P6](http://resources.infosecinstitute.com/ios-application-security-part-6-new-security-features-in-ios-7/)
+##### 2.7、 Installing and Running Custom Applications on Device without a registered developer account 
+[P7](http://resources.infosecinstitute.com/ios-application-security-part-7-installing-and-running-custom-applications-on-device-without-a-registered-developer-account/)
+
+
+
+
+
+
+
+[IOS开发之GDB命令行调试](http://blog.sina.com.cn/s/blog_71715bf801016d49.html)
+
+
+* [ ]( )
+* [把第三方 iOS 应用转成动态库 ](http://blog.imjun.net/2016/10/08/%E9%BB%91%E7%A7%91%E6%8A%80%EF%BC%9A%E6%8A%8A%E7%AC%AC%E4%B8%89%E6%96%B9-iOS-%E5%BA%94%E7%94%A8%E8%BD%AC%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93/)
+* [iOS符号表恢复&逆向支付宝 ]( http://blog.imjun.net/2016/08/25/iOS%E7%AC%A6%E5%8F%B7%E8%A1%A8%E6%81%A2%E5%A4%8D-%E9%80%86%E5%90%91%E6%94%AF%E4%BB%98%E5%AE%9D/)
+* [ ]( )
+* [ ]( )
+* [ ]( )
+* [IOS 安全博客 ](http://blog.csdn.net/yiyaaixuexi/article/list/1 )
+
+
+		你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
+ 		郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。	今天总结一下为hack而做的准备工作。
+
+
+* [IOS层次 based on MVCS and KVO.](https://github.com/southpeak/Minya)
+
+* [【应用号】IDE + 破解 + Demo](https://github.com/gavinkwoe/weapp-ide-crack)
+* [ ]( )
+* [ ]( )
+* [ ]( )
+* 
+### 代码
+ * [高仿Bilibili客户端](https://github.com/MichaelHuyp/Bilibili_Wuxianda)
+
+
+
+杨君，中山大学计算机系研究生，iOS 开发者，擅长领域 iOS 安全和逆向工程，个人博客：http://blog.imjun.net 。
+
+
+
 
 ## 前端工具
 

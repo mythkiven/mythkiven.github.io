@@ -5,9 +5,282 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Oct 2016 10:40:36 +0800</pubDate>
-    <lastBuildDate>Fri, 21 Oct 2016 10:40:36 +0800</lastBuildDate>
+    <pubDate>Fri, 21 Oct 2016 16:18:59 +0800</pubDate>
+    <lastBuildDate>Fri, 21 Oct 2016 16:18:59 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>创建我的GitHub博客</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#ios-app-&quot; id=&quot;markdown-toc-ios-app-&quot;&gt;IOS APP 安全&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gitgithub&quot; id=&quot;markdown-toc-gitgithub&quot;&gt;1、git\github&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#git&quot; id=&quot;markdown-toc-git&quot;&gt;1.1 注册下载Git客户端&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#githubhttpspagesgithubcom&quot; id=&quot;markdown-toc-githubhttpspagesgithubcom&quot;&gt;1.2 在github上创建博客主页：&lt;a href=&quot;https://pages.github.com/&quot;&gt;参考官方页面提示&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;2、Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;3、本地环境搭建&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;环境搭建&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;3.1 安装Ruby：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rubygems&quot; id=&quot;markdown-toc-rubygems&quot;&gt;3.2 安装RubyGems：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-1&quot; id=&quot;markdown-toc-jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-2&quot; id=&quot;markdown-toc-jekyll-2&quot;&gt;3.4 使用Jekyll的使用：博客的本地运行&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;3.5 博客主题&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3.6 博客编辑工具&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;3.7 上传GitHub&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-3&quot; id=&quot;markdown-toc-jekyll-3&quot;&gt;番外：jekyll的使用&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#rubygems-&quot; id=&quot;markdown-toc-rubygems-&quot;&gt;1、RubyGems 镜像&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-paginate-&quot; id=&quot;markdown-toc-jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;3、其他可能需要安装的：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;4、更换端口：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-4&quot; id=&quot;markdown-toc-jekyll-4&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-server-jekyllpaginate&quot; id=&quot;markdown-toc-jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;在我创建博客过程中，曾经浏览如下的文章，在此感谢！&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ios-app-&quot;&gt;IOS APP 安全&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cocoachina.com/ios/20140620/8892.html&quot;&gt;iOS安全攻防：static和被裁的符号表,Objective-C代码混淆,敏感逻辑的保护方案&lt;/a&gt;
+&lt;a href=&quot;http://blog.fir.im/fir-im-weekly160902/&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;http://limboy.me/tech/2016/07/06/starting-an-app.html&quot;&gt;做一个 App 前需要考虑的几件事&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gitgithub&quot;&gt;1、git\github&lt;/h2&gt;
+
+&lt;h4 id=&quot;git&quot;&gt;1.1 注册下载Git客户端&lt;/h4&gt;
+&lt;p&gt;注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree&lt;/p&gt;
+&lt;h4 id=&quot;githubhttpspagesgithubcom&quot;&gt;1.2 在github上创建博客主页：&lt;a href=&quot;https://pages.github.com/&quot;&gt;参考官方页面提示&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;2、Jekyll&lt;/h2&gt;
+&lt;p&gt;本博客使用Jekyll搭建，好处：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;不需要使用额外的数据库&lt;/li&gt;
+  &lt;li&gt;支持markdown，liquid，以及原始的html、css&lt;/li&gt;
+  &lt;li&gt;可以定义模板，并在模板上进行代码复用&lt;/li&gt;
+  &lt;li&gt;github对其支持，可以直接在github上搭建，可以继承github上的各种好处（版本控制，免费，无流量限制）&lt;/li&gt;
+  &lt;li&gt;有很多扩展插件（但是在github上用不了，github不允许用户使用扩展插件，大概是出于安全性考虑）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;当然缺点也有很多：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;生成的是静态网页，无法动态加载，若需要外部服务如评论，只能使用类似于disquz，多说这样的外部插件了&lt;/li&gt;
+  &lt;li&gt;仅仅适合小型网站，不适合大中型网站&lt;/li&gt;
+  &lt;li&gt;没有数据库及服务端的逻辑&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;3、本地环境搭建&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;环境搭建&lt;/h3&gt;
+
+&lt;p&gt;使用Jekyll，需要以下环境:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+  &lt;li&gt;RubyGems&lt;/li&gt;
+  &lt;li&gt;Linux, Unix, or Mac OS X（这里使用Mac OS X进行搭建）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h3&gt;
+&lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 Homebrew&lt;a href=&quot;http://brew.sh/&quot;&gt;&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install ruby
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装完成之后运行查看版本号，过低需要更新，我的是 2.0.0。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ruby -v  
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rubygems&quot;&gt;3.2 安装RubyGems：&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;下载 RubyGems 安装包，2.0.6 版本：&lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.tgz&quot; target=&quot;_blank&quot;&gt;tgz&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.zip&quot; target=&quot;_blank&quot;&gt;zip&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-update-2.0.6.gem&quot; target=&quot;_blank&quot;&gt;gem&lt;/a&gt; - &lt;a href=&quot;http://github.com/rubygems/rubygems&quot; target=&quot;_blank&quot;&gt;git&lt;/a&gt;。安装到本地之后，在终端检查更新：&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 可能需要根权限
+$ gem update --system
+## 检查当前版本 我的是：2.6.4
+$ gem -v
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;可以参考&lt;a href=&quot;https://rubygems.org/pages/download&quot; target=&quot;_blank&quot;&gt;官网安装教程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;gem update –system。这一步需要翻墙，否则会出现404错误。&lt;a href=&quot;https://ruby.taobao.org/&quot; target=&quot;_blank&quot;&gt;解决办法参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/h3&gt;
+&lt;p&gt;最好的安装方法应该是通过 RubyGems 来安装，在终端输入：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;##可能需要根权限
+$ gem install jekyll
+##安装完了之后，查看版本号，我这打印出来的是 jekyll 3.3.0
+$ jekyll -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;至此，你已经成功在本地电脑上安装好了 Jekyll。&lt;/p&gt;
+
+&lt;p&gt;安装过程中可能会遇到的问题：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;问题1：cannot load such file -- bundler (LoadError)::::
+解决方案：
+$ gem install bundler
+$ bundle install
+$ bundle exec jekyll serve
+问题2：服务无法开启：
+$ gem install json 
+或者：
+$ jekyll serve --config _config.yml,_config-dev.yml 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;jekyll-2&quot;&gt;3.4 使用Jekyll的使用：博客的本地运行&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#创建你的博客
+$ jekyll new blog  
+#进入blog目录,记得一定要进入创建的目录，否则服务无法开启
+$ cd blog    
+#启动你的http服务 	 
+$ jekyll serve 	 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;3.5 博客主题&lt;/h3&gt;
+&lt;p&gt;参考如下：
+&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;jekllthemes&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 从上网站下载主题，在终端中使用命令cd到该主题根目录下；
+## 博客生成，默认生成再_site目录下，当然也可以在配置文件中自定义
+$ jekyll build
+## 开启jekyll本地预览
+$ jekyll server 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;在浏览器中输入 http://localhost:4000 即可访问博客站点
+不能访问请检查_config.yml配置文件是否需要修改&lt;/p&gt;
+&lt;h3 id=&quot;section-3&quot;&gt;3.6 博客编辑工具&lt;/h3&gt;
+&lt;p&gt;通过以上就可以在本地编辑，运行博客啦&lt;/p&gt;
+
+&lt;p&gt;免费的编辑工具：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://25.io/mou/&quot;&gt;mou&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://macdown.uranusjr.com/&quot;&gt;macdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;A、共同功能&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;提供丰富的简洁大方好看的主题，同时支持自定义&lt;/li&gt;
+&lt;li&gt;提供丰富的渲染 Markdown 之后的 CSS 样式，同时支持自定义样式&lt;/li&gt;
+&lt;li&gt;英文单词的自动补全功能，按下 &lt;code&gt;Esc&lt;/code&gt; 键列出补全的列表&lt;/li&gt;
+&lt;li&gt;字符、单词统计功能&lt;/li&gt;
+&lt;li&gt;支持 fenced code blocks&lt;/li&gt;
+&lt;li&gt;TeX 数学公式的支持&lt;/li&gt;
+&lt;li&gt;支持导出 HTML 和 PDF 两种格式&lt;/li&gt;
+&lt;li&gt;便捷的快捷键操作&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;B、Mou 特色功能&lt;/h5&gt;
+&lt;h6&gt;集成 Tumblr 和 Scriptogr.am 发布博文&lt;/h6&gt;
+&lt;p&gt;可以配置 Tumblr 和 Scriptogr.am 的邮箱，在 Mou 上写文章通过 &lt;code&gt;File-&amp;gt;Post-&amp;gt;&lt;/code&gt; 可以发布到这两个平台上，非常方便。&lt;/p&gt;
+&lt;h6&gt;语言支持&lt;/h6&gt;
+&lt;p&gt;Mou 内置 CJK 字符支持，你可以很容易使用中文、日文、韩文等来写文章，同时还支持竖排的风格。&lt;/p&gt;
+&lt;h5&gt;C、MacDown 特色&lt;/h5&gt;
+&lt;h6&gt;代码高亮&lt;/h6&gt;
+&lt;p&gt;Mou 和 MacDown 都支持 fenced code blocks（前后三个反引号可以表示代码块），但 MacDown 支持加语言标识符实现代码高亮，这对程序员来说简直是福音啊，非常棒的功能。&lt;/p&gt;
+&lt;h6&gt;GFM Task List 支持&lt;/h6&gt;
+&lt;p&gt;MacDown 支持 &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;Task list&lt;/a&gt;，有了这个功能，你可以将你的 MD 编辑器立马变成 TODO list，是不是很赞？&lt;/p&gt;
+
+&lt;h3 id=&quot;github&quot;&gt;3.7 上传GitHub&lt;/h3&gt;
+
+&lt;p&gt;再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
+上传至GitHub后，我们就可以在线查看博客了。&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll-3&quot;&gt;番外：jekyll的使用&lt;/h2&gt;
+&lt;h4 id=&quot;rubygems-&quot;&gt;1、RubyGems 镜像&lt;/h4&gt;
+&lt;p&gt;RubyGems 的淘宝镜像&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。现在这个镜像已经不再维护了，作者 &lt;a href=&quot;https://ruby-china.org/huacnlee&quot;&gt;huacnlee (李华顺)&lt;/a&gt; 转到 &lt;a href=&quot;https://ruby-china.org/&quot;&gt;Ruby China&lt;/a&gt; 中继续维护了，详情见 &lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/h4&gt;
+&lt;p&gt;因为 jekyll 3 中默认安装已经没有这个分页组件了，官方把这个分页组件插件化了，因此要独立安装。详情见 &lt;a href=&quot;https://jekyllrb.com/docs/pagination/&quot;&gt;https://jekyllrb.com/docs/pagination/&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;3、其他可能需要安装的：&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll-paginate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;section-5&quot;&gt;4、更换端口：&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 查看端口被占用情况
+$ netstat -ano  
+## 在启动jekyll服务的时候指定端口号:  http://localhost:3000/
+$ jekyll serve --port 3000
+## 还可以在配置文件_config.yml中添加端口号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;jekyll-4&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;文件夹_layouts：用于存放模板的文件夹，&lt;/li&gt;
+&lt;li&gt;文件夹_posts：用于存放博客文章的文件夹&lt;/li&gt;
+&lt;li&gt;文件夹css：存放博客所用css的文件夹,比如主题文件以及高亮文件都是放在此处的&lt;/li&gt;
+&lt;li&gt;.gitignore：可以删掉，后面会将项目添加到git项目，所以这个不需要了&lt;/li&gt;
+&lt;li&gt;_coinfig.yml：jekyll的配置文件，里面可以定义相当多的配置参数，具体配置参数可以参照其官网&lt;/li&gt;
+&lt;li&gt;index.html：项目的首页&lt;/li&gt;
+&lt;li&gt;_includes:用于存放一些固定的HTML代码段，文件为.html格式，可以在模板中通过liquid标签引入，常用来在各个模板中复用如 导航条、标签栏、侧边栏之类的在每个页面上都一样不变的内容，需要注意的是，这个代码段也可以是未被编译的，也就是说也可以使用liquid标签放在这些代码段中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过修改配置文件_coinfig.yml以及post和layouts就可以实现主要blog的建立和修改。&lt;/p&gt;
+&lt;h4 id=&quot;jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
+ # 方案如下：
+ ## 在Gemfile文中添加：gem 'jekyll-paginate'
+ $ bundle
+ $ gem install jekyll-paginate
+ ## OK！
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;在我创建博客过程中，曾经浏览如下的文章，在此感谢！&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/07064eb79740&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ytysj.github.io/blog/myblog3&quot;&gt;ytysj&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/609e1197754c&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 21 Oct 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/10/21/IOS_Safety/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/10/21/IOS_Safety/</guid>
+        
+        <category>博客</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>博客</category>
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>创建我的GitHub博客</title>

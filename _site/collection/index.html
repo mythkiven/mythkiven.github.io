@@ -135,30 +135,118 @@
         <h1>Collections</h1>
         <hr>
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前端工具</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">前端语言</a>    <ul>
+  <li><a href="#ios-app-" id="markdown-toc-ios-app-">IOS APP 如何更加安全</a>    <ul>
+      <li><a href="#hack" id="markdown-toc-hack">1、hack必备：只有懂攻击，才能更给力的防御</a>        <ul>
+          <li><a href="#br" id="markdown-toc-br">1.1常用的命令和工具:终端&lt;/br&gt;</a></li>
+          <li><a href="#hello-world" id="markdown-toc-hello-world">1.2 使用终端手动编译Hello world</a></li>
+          <li><a href="#gdb" id="markdown-toc-gdb">1.3、GDB</a></li>
+        </ul>
+      </li>
+      <li><a href="#ios-app-app" id="markdown-toc-ios-app-app">2、IOS APP 安全系列文章《：：》分析+动态修改APP</a>        <ul>
+          <li><a href="#ios--1-ios" id="markdown-toc-ios--1-ios">2.1、IOS 安全系列 1 介绍如何在越狱的设备上搭建用来测试iOS安全的环境</a></li>
+          <li><a href="#ios-2class-dump-z--clutch-dump" id="markdown-toc-ios-2class-dump-z--clutch-dump">2.2、IOS 安全系列2介绍如何利用class-dump-z 和 Clutch 来dump类信息，利用这些信息，可以理解代码的设计和代码内部是如何工作的。</a></li>
+          <li><a href="#understanding-the-objective-c-runtime" id="markdown-toc-understanding-the-objective-c-runtime">2.3、Understanding the Objective-C Runtime</a></li>
+          <li><a href="#runtime-analysis-using-cycript-yahoo-weather-app" id="markdown-toc-runtime-analysis-using-cycript-yahoo-weather-app">2.4、Runtime Analysis Using Cycript (Yahoo Weather App)</a></li>
+          <li><a href="#part5-" id="markdown-toc-part5-">2.5、Part5 分享了一些高级分析技术。分析了如何获得特定类的信息（方法名，实例变量名称），并且如何在运行时修改。</a></li>
+          <li><a href="#new-security-features-in-ios-7" id="markdown-toc-new-security-features-in-ios-7">2.6、New Security Features in IOS 7</a></li>
+          <li><a href="#installing-and-running-custom-applications-on-device-without-a-registered-developer-account" id="markdown-toc-installing-and-running-custom-applications-on-device-without-a-registered-developer-account">2.7、 Installing and Running Custom Applications on Device without a registered developer account</a></li>
+        </ul>
+      </li>
+      <li><a href="#section" id="markdown-toc-section">代码</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">前端工具</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">前端语言</a>    <ul>
       <li><a href="#js" id="markdown-toc-js">JS</a></li>
       <li><a href="#es2015" id="markdown-toc-es2015">ES2015</a></li>
       <li><a href="#nodejs" id="markdown-toc-nodejs">NodeJS</a></li>
     </ul>
   </li>
-  <li><a href="#section-2" id="markdown-toc-section-2">框架&amp;脚手架</a>    <ul>
+  <li><a href="#section-3" id="markdown-toc-section-3">框架&amp;脚手架</a>    <ul>
       <li><a href="#webpack" id="markdown-toc-webpack">webpack</a></li>
       <li><a href="#vue" id="markdown-toc-vue">Vue</a></li>
       <li><a href="#react" id="markdown-toc-react">React</a></li>
       <li><a href="#angularjs" id="markdown-toc-angularjs">AngularJS</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">测试</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">测试</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">类库与插件</a></li>
-  <li><a href="#section-5" id="markdown-toc-section-5">模块化</a></li>
-  <li><a href="#section-6" id="markdown-toc-section-6">技巧</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">类库与插件</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">模块化</a></li>
+  <li><a href="#section-7" id="markdown-toc-section-7">技巧</a></li>
   <li><a href="#gitbook-" id="markdown-toc-gitbook-">GitBook 及其插件</a></li>
   <li><a href="#chrome-" id="markdown-toc-chrome-">Chrome 插件</a></li>
   <li><a href="#comments" id="markdown-toc-comments">Comments</a></li>
 </ul>
+<h2 id="ios-app-">IOS APP 如何更加安全</h2>
 
-<h2 id="section">前端工具</h2>
+<h3 id="hack">1、hack必备：只有懂攻击，才能更给力的防御</h3>
+<h5 id="br">1.1常用的命令和工具:终端&lt;/br&gt;</h5>
+<p><a href="http://blog.csdn.net/jiang314/article/details/52883433">原文</a><br /></p>
+
+<h5 id="hello-world">1.2 使用终端手动编译Hello world</h5>
+<p><a href="http://www.cocoachina.com/industry/20140211/7800.html">参考</a></p>
+
+<h5 id="gdb">1.3、GDB</h5>
+<p>–命令行调试器。虽说xcode比较强大，但是gdb可以让你更精确的调试。而且这在很多操作系统里都是可以通用的命令。</p>
+
+<h3 id="ios-app-app">2、IOS APP 安全系列文章《：：》分析+动态修改APP</h3>
+<h5 id="ios--1-ios">2.1、IOS 安全系列 1 介绍如何在越狱的设备上搭建用来测试iOS安全的环境</h5>
+<p><a href="http://resources.infosecinstitute.com/ios-application-security-part-1-setting-up-a-mobile-pentesting-platform/">P1</a></p>
+
+<h5 id="ios-2class-dump-z--clutch-dump">2.2、IOS 安全系列2介绍如何利用class-dump-z 和 Clutch 来dump类信息，利用这些信息，可以理解代码的设计和代码内部是如何工作的。</h5>
+<p><a href="http://resources.infosecinstitute.com/ios-application-security-part-2-getting-class-information-of-ios-apps/">P2</a></p>
+
+<p>例如有一个方法 -(BOOL)isFacebookSessionValid ，在某种情况下返回 NO，可以在运行时修改 instance variable变量的值，操纵它让它返回YES<br /></p>
+
+<h5 id="understanding-the-objective-c-runtime">2.3、Understanding the Objective-C Runtime</h5>
+
+<p>IOS 安全系列3 提到Method Swizzling
+<a href="http://resources.infosecinstitute.com/ios-application-security-part-3-understanding-the-objective-c-runtime/">P3</a></p>
+<h5 id="runtime-analysis-using-cycript-yahoo-weather-app">2.4、Runtime Analysis Using Cycript (Yahoo Weather App)</h5>
+<p>Part4介绍了用Cycript动态分析和修改app的方法。文章拿Yahoo Weather app做的例子。其中一处改动是给加上了badge number。
+<a href="http://resources.infosecinstitute.com/ios-application-security-part-4-runtime-analysis-using-cycript-yahoo-weather-app/">P4</a>
+<img src="http://farm3.staticflickr.com/2823/9241398663_b80335cd23.jpg" alt="" /></p>
+
+<h5 id="part5-">2.5、Part5 分享了一些高级分析技术。分析了如何获得特定类的信息（方法名，实例变量名称），并且如何在运行时修改。</h5>
+<p><a href="http://resources.infosecinstitute.com/ios-application-security-part-5-advanced-runtime-analysis-and-manipulation-using-cycript-yahoo-weather-app/">P5</a></p>
+<h5 id="new-security-features-in-ios-7">2.6、New Security Features in IOS 7</h5>
+<p><a href="http://resources.infosecinstitute.com/ios-application-security-part-6-new-security-features-in-ios-7/">P6</a></p>
+<h5 id="installing-and-running-custom-applications-on-device-without-a-registered-developer-account">2.7、 Installing and Running Custom Applications on Device without a registered developer account</h5>
+<p><a href="http://resources.infosecinstitute.com/ios-application-security-part-7-installing-and-running-custom-applications-on-device-without-a-registered-developer-account/">P7</a></p>
+
+<p><a href="http://blog.sina.com.cn/s/blog_71715bf801016d49.html">IOS开发之GDB命令行调试</a></p>
+
+<ul>
+  <li><a href=""> </a></li>
+  <li><a href="http://blog.imjun.net/2016/10/08/%E9%BB%91%E7%A7%91%E6%8A%80%EF%BC%9A%E6%8A%8A%E7%AC%AC%E4%B8%89%E6%96%B9-iOS-%E5%BA%94%E7%94%A8%E8%BD%AC%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93/">把第三方 iOS 应用转成动态库 </a></li>
+  <li><a href="http://blog.imjun.net/2016/08/25/iOS%E7%AC%A6%E5%8F%B7%E8%A1%A8%E6%81%A2%E5%A4%8D-%E9%80%86%E5%90%91%E6%94%AF%E4%BB%98%E5%AE%9D/">iOS符号表恢复&amp;逆向支付宝 </a></li>
+  <li><a href=""> </a></li>
+  <li><a href=""> </a></li>
+  <li><a href=""> </a></li>
+  <li>
+    <p><a href="http://blog.csdn.net/yiyaaixuexi/article/list/1">IOS 安全博客 </a></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
+ 		郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。	今天总结一下为hack而做的准备工作。
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><a href="https://github.com/southpeak/Minya">IOS层次 based on MVCS and KVO.</a></p>
+  </li>
+  <li><a href="https://github.com/gavinkwoe/weapp-ide-crack">【应用号】IDE + 破解 + Demo</a></li>
+  <li><a href=""> </a></li>
+  <li><a href=""> </a></li>
+  <li><a href=""> </a></li>
+  <li>
+    <h3 id="section">代码</h3>
+  </li>
+  <li><a href="https://github.com/MichaelHuyp/Bilibili_Wuxianda">高仿Bilibili客户端</a></li>
+</ul>
+
+<p>杨君，中山大学计算机系研究生，iOS 开发者，擅长领域 iOS 安全和逆向工程，个人博客：http://blog.imjun.net 。</p>
+
+<h2 id="section-1">前端工具</h2>
 
 <ul>
   <li><a href="http://www.cssmatic.com/box-shadow">box-shadow生成工具</a></li>
@@ -169,7 +257,7 @@
   <li><a href="http://tool.chinaz.com/Tools/unixtime.aspx">时间戳在线</a></li>
 </ul>
 
-<h2 id="section-1">前端语言</h2>
+<h2 id="section-2">前端语言</h2>
 <h3 id="js">JS</h3>
 <ul>
   <li><a href="http://javascript.ruanyifeng.com/">JavaScript 标准参考教程（alpha） -阮一峰</a></li>
@@ -195,7 +283,7 @@
   <li><a href="https://nqdeng.github.io/7-days-nodejs">七天学会NodeJS -Nanqiao Deng</a></li>
 </ul>
 
-<h2 id="section-2">框架&amp;脚手架</h2>
+<h2 id="section-3">框架&amp;脚手架</h2>
 
 <h3 id="webpack">webpack</h3>
 
@@ -236,13 +324,13 @@
   <li><a href="http://www.runoob.com/angularjs/angularjs-tutorial.html">AngularJS 教程 | 菜鸟教程</a></li>
 </ul>
 
-<h3 id="section-3">测试</h3>
+<h3 id="section-4">测试</h3>
 
 <ul>
   <li><a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html">测试框架 Mocha 实例教程 阮一峰</a></li>
 </ul>
 
-<h2 id="section-4">类库与插件</h2>
+<h2 id="section-5">类库与插件</h2>
 
 <ul>
   <li><a href="http://masonry.desandro.com/">Masonry</a></li>
@@ -250,7 +338,7 @@
   <li><a href="http://cssslider.com/">cssslider</a></li>
 </ul>
 
-<h2 id="section-5">模块化</h2>
+<h2 id="section-6">模块化</h2>
 
 <ul>
   <li><a href="http://lishaopeng.com/2016/02/05/js-module/">后端程序员的 JavaScript 之旅 - 模块化（一）</a></li>
@@ -261,7 +349,7 @@
   <li><a href="http://javascript.ruanyifeng.com/nodejs/module.html">CommonJS 规范 -来自 阮一峰 JavaScript 标准参考教程(alpha)</a></li>
 </ul>
 
-<h2 id="section-6">技巧</h2>
+<h2 id="section-7">技巧</h2>
 
 <ul>
   <li><a href="https://segmentfault.com/a/1190000004453249">将footer固定在页面底部的实现方法</a></li>
