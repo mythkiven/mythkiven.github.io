@@ -8,23 +8,21 @@ icon: heart
 * content
 {:toc}
 
+### About 3code.info
+```
+def missing_you():
+ for time in range(meet_you,forever):
+   missing_you()
+```
+
 ### 关于我
 
-从事移动开发工作，关注科技金融等
+* 目前从事征信相关的移动端开发工作。
 
 
 ### 联系我
 
 * email:[mythziven@gmail.com](mythziven@gmail.com)
-
-
-### Update Log
-
-*2016.10.19 创建博客 v1.0.0*
-
-* `[+]` 修改基本模板的部分样式
-* `[+]` 基于[Gaohaoyang](https://github.com/Gaohaoyang)的博客模板，再此感谢！
-
 
 
 ### 友情链接

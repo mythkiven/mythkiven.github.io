@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "创建我的GitHub博客"
+title:  "静态页面博客:jekyll+GitHubPages"
 categories: 博客 jekyll 
 tags:  博客 jekyll 
 author: MythKiven
@@ -9,18 +9,26 @@ author: MythKiven
 * content
 {:toc}
 
-这里记录我创建github的博客的经过，方便以后查阅和供有需要的朋友们参考
+其实蛮早就想开个独立的博客，碍于肚子没墨水一直也没建。最近闲了点，写写博客，记录生活。以后会将个人在简书、CSDN上发布的部分文章，搬到这里。3code.info
 
-![](https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg) 
+下面记录了我制作博客的大致过程，有问题还请留言。
+![](https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg)
 
-### 核心：免费的主机：github + 静态博客系统：jekyll
 
+## 说明：
+1、以下系统基于OS X EI ;
+
+2、免费主机：github + 静态制作：jekyll
 ## 1、git\github
 
-#### 1.1 注册下载Git客户端
-注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree
-#### 1.2 在github上创建博客主页：[参考官方页面提示](https://pages.github.com/)
+#### 1.1 github知识普及：
+githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。
 
+个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)
+#### 1.2  注册下载Git客户端
+注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)
+#### 1.3 在github上创建Pages：
+[参考官方页面提示](https://pages.github.com/)
 
 
 
@@ -46,9 +54,8 @@ author: MythKiven
 
 使用Jekyll，需要以下环境: 
 
-1. Ruby
-2. RubyGems
-3. Linux, Unix, or Mac OS X（这里使用Mac OS X进行搭建）
+1. Ruby  - Jekyll 需要Ruby语言
+2. Bundler - 捆绑器的软件包管理器
 
 ### 3.1 安装Ruby：
 详细的安装文档，可以查看 Ruby 官方的[安装](http://www.ruby-lang.org/en/downloads/)介绍。Mac 下使用 Homebrew[](http://brew.sh/) 来安装，挺方便的。
@@ -98,7 +105,7 @@ $ jekyll -v
 	或者：
 	$ jekyll serve --config _config.yml,_config-dev.yml 
 
-### 3.4 使用Jekyll的使用：博客的本地运行
+### 3.4 Jekyll的使用
 ```
 #创建你的博客
 $ jekyll new blog  
@@ -107,6 +114,7 @@ $ cd blog
 #启动你的http服务 	 
 $ jekyll serve 	 
 ```
+
 ### 3.5 博客主题
 参考如下：
 [jekllthemes](http://jekyllthemes.org/)
@@ -156,6 +164,86 @@ $ jekyll server
 再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
 上传至GitHub后，我们就可以在线查看博客了。
 
+## 3.8 jekyll的注意事项
+### 3.8.1 更新
+Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。
+
+```
+$bundle 
+```
+
+或者 
+```
+$gem update github-pages #没安装bundler
+```
+### 3.8.2 Gemfile文件
+Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
+Gemfile是可通过Bundler创建：
+
+```
+$gem install bundler
+$bundle init
+$bundle install
+```
+Gemfile文件中设置的内容如下：
+
+```
+#以下必须：
+source "https://rubygems.org"
+gem "jekyll-paginate"
+gem "kramdown"
+group :jekyll_plugins do
+   gem "jekyll-feed", "~> 0.6"
+   
+#以下按需：
+gem "jekyll-watch"
+gem "wdm", "~> 0.1.0" if Gem.win_platform?
+#以下按需：可以配合 Live Reload Extension 可以自动刷新
+gem 'guard'
+gem 'guard-jekyll-plus'
+gem 'guard-livereload'
+```
+
+设置好Gemfile之后，执行 $bundle install 如果开启了本地页面更新，那么会很耗时间。
+
+B、创建guard配置文件
+
+执行指令，将会生成一个Guardfile文件。
+
+```
+$guard init
+```
+生成的Guardfile文件内有一些代码，在代码的最后添加如下代码：
+
+```
+guard 'jekyll-plus', :serve => true do
+  watch /.*/
+  ignore /^_site/
+end
+
+guard 'livereload' do
+  watch /.*/
+end
+```
+
+C、添加livereload插件
+
+使用chrome安装Live Reload Extension。
+
+D、执行运行指令：
+
+```
+$bundle exec guard start
+```
+这里注意一下，livereload要先关闭。
+
+运行上面指令，当出现“Guard is now...”，再运行livereload。
+
+然后会出现“connected”连接了，接下来修改内容就会自动刷新页面了。
+
+
+###3.8.3 配置 Jekyll
+可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。
 
 
 ## 番外：jekyll的使用
@@ -211,3 +299,4 @@ $ jekyll serve --port 3000
 - [ezlippi](http://www.ezlippi.com//blog/2015/03/github-pages-blog.html)
 - [waylau](http://waylau.com/jekyll-static-bog/?utm_source=tuicool&utm_medium=referral)
 - [wowubuntu](http://wowubuntu.com/markdown/)
+- [cnblogs](http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
