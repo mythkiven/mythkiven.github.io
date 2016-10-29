@@ -314,7 +314,13 @@ $ jekyll serve --port 3000
 
 ## 参考
 
-- [jekyll](http://jekyll.com.cn/)  | - [zhanxin](http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html) | - [jianshu](http://www.jianshu.com/p/07064eb79740 )
-- [jianshu](http://www.jianshu.com/p/6c157af09e84 ) | - [ytysj](http://ytysj.github.io/blog/myblog3) | - [jianshu](http://www.jianshu.com/p/609e1197754c)
-- [ezlippi](http://www.ezlippi.com//blog/2015/03/github-pages-blog.html) | - [waylau](http://waylau.com/jekyll-static-bog/?utm_source=tuicool&utm_medium=referral)| - [wowubuntu](http://wowubuntu.com/markdown/)
-- [cnblogs](http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+------------ 
+
+ |- [jekyll](http://jekyll.com.cn/)  | - [zhanxin](http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html) | - [jianshu](http://www.jianshu.com/p/07064eb79740 )
+------------ 
+
+ |- [jianshu](http://www.jianshu.com/p/6c157af09e84 ) | - [ytysj](http://ytysj.github.io/blog/myblog3) | - [jianshu](http://www.jianshu.com/p/609e1197754c)
+------------ 
+
+ |- [ezlippi](http://www.ezlippi.com//blog/2015/03/github-pages-blog.html) | - [waylau](http://waylau.com/jekyll-static-bog/?utm_source=tuicool&utm_medium=referral)| - [wowubuntu](http://wowubuntu.com/markdown/) | - [cnblogs](http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+------------ 
