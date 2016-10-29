@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 16:13:15 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 16:13:15 +0800</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 16:18:48 +0800</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 16:18:48 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -35,17 +35,18 @@
       &lt;li&gt;&lt;a href=&quot;#github-1&quot; id=&quot;markdown-toc-github-1&quot;&gt;3.7 上传GitHub&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-3&quot; id=&quot;markdown-toc-jekyll-3&quot;&gt;3.8 jekyll的注意事项&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;3.8.1 更新&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#gemfile&quot; id=&quot;markdown-toc-gemfile&quot;&gt;3.8.2 Gemfile文件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-3&quot; id=&quot;markdown-toc-jekyll-3&quot;&gt;4 jekyll的注意事项&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;4.1 更新&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gemfile&quot; id=&quot;markdown-toc-gemfile&quot;&gt;4.2 Gemfile文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-4&quot; id=&quot;markdown-toc-jekyll-4&quot;&gt;4.3 配置 Jekyll&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-4&quot; id=&quot;markdown-toc-jekyll-4&quot;&gt;番外：jekyll的使用&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-5&quot; id=&quot;markdown-toc-jekyll-5&quot;&gt;番外：jekyll的使用&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#rubygems-&quot; id=&quot;markdown-toc-rubygems-&quot;&gt;1、RubyGems 镜像&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#jekyll-paginate-&quot; id=&quot;markdown-toc-jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3、其他可能需要安装的：&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;4、更换端口：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-5&quot; id=&quot;markdown-toc-jekyll-5&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-6&quot; id=&quot;markdown-toc-jekyll-6&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#jekyll-server-jekyllpaginate&quot; id=&quot;markdown-toc-jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -100,7 +101,7 @@
 
 &lt;h2 id=&quot;section-1&quot;&gt;3、本地环境搭建&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;环境搭建&lt;/h3&gt;
+&lt;h4 id=&quot;section-2&quot;&gt;环境搭建&lt;/h4&gt;
 
 &lt;p&gt;使用Jekyll，需要以下环境:&lt;/p&gt;
 
@@ -109,7 +110,7 @@
   &lt;li&gt;Bundler - 捆绑器的软件包管理器&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h3&gt;
+&lt;h4 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h4&gt;
 
 &lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 Homebrew&lt;a href=&quot;http://brew.sh/&quot;&gt;&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
 
@@ -129,7 +130,8 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;rubygems&quot;&gt;3.2 安装RubyGems：&lt;/h3&gt;
+&lt;h4 id=&quot;rubygems&quot;&gt;3.2 安装RubyGems：&lt;/h4&gt;
+
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;下载 RubyGems 安装包，2.0.6 版本：&lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.tgz&quot; target=&quot;_blank&quot;&gt;tgz&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.zip&quot; target=&quot;_blank&quot;&gt;zip&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-update-2.0.6.gem&quot; target=&quot;_blank&quot;&gt;gem&lt;/a&gt; - &lt;a href=&quot;http://github.com/rubygems/rubygems&quot; target=&quot;_blank&quot;&gt;git&lt;/a&gt;。安装到本地之后，在终端检查更新：&lt;/p&gt;
@@ -146,7 +148,8 @@ $ gem -v
   &lt;li&gt;gem update –system。这一步需要翻墙，否则会出现404错误。&lt;a href=&quot;https://ruby.taobao.org/&quot; target=&quot;_blank&quot;&gt;解决办法参考&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/h3&gt;
+&lt;h4 id=&quot;jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/h4&gt;
+
 &lt;p&gt;最好的安装方法应该是通过 RubyGems 来安装，在终端输入：&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;##可能需要根权限
@@ -171,7 +174,8 @@ $ jekyll serve --config _config.yml,_config-dev.yml
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;jekyll-2&quot;&gt;3.4 Jekyll的使用&lt;/h3&gt;
+&lt;h4 id=&quot;jekyll-2&quot;&gt;3.4 Jekyll的使用&lt;/h4&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#创建你的博客
 $ jekyll new blog  
 #进入blog目录,记得一定要进入创建的目录，否则服务无法开启
@@ -181,7 +185,8 @@ $ jekyll serve
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;3.5 博客主题&lt;/h3&gt;
+&lt;h4 id=&quot;section-3&quot;&gt;3.5 博客主题&lt;/h4&gt;
+
 &lt;p&gt;参考如下：
 &lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;jekllthemes&lt;/a&gt;&lt;/p&gt;
 
@@ -195,7 +200,8 @@ $ jekyll server
 &lt;p&gt;在浏览器中输入 http://localhost:4000 即可访问博客站点
 不能访问请检查_config.yml配置文件是否需要修改&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;3.6 博客编辑工具&lt;/h3&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;3.6 博客编辑工具&lt;/h4&gt;
+
 &lt;p&gt;通过以上就可以在本地编辑，运行博客啦&lt;/p&gt;
 
 &lt;p&gt;免费的编辑工具：&lt;/p&gt;
@@ -206,17 +212,21 @@ $ jekyll server
 &lt;/ul&gt;
 
 &lt;h6 id=&quot;mou&quot;&gt;Mou&lt;/h6&gt;
+
 &lt;p&gt;集成 Tumblr 和 Scriptogr.am 发布博文；内置 CJK 字符支持。&lt;/p&gt;
+
 &lt;h6 id=&quot;macdown-&quot;&gt;MacDown 特色&lt;/h6&gt;
+
 &lt;p&gt;代码高亮；MacDown 支持 &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;Task list&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;github-1&quot;&gt;3.7 上传GitHub&lt;/h3&gt;
+&lt;h4 id=&quot;github-1&quot;&gt;3.7 上传GitHub&lt;/h4&gt;
 
 &lt;p&gt;再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
 上传至GitHub后，我们就可以在线查看博客了。&lt;/p&gt;
 
-&lt;h2 id=&quot;jekyll-3&quot;&gt;3.8 jekyll的注意事项&lt;/h2&gt;
-&lt;h3 id=&quot;section-5&quot;&gt;3.8.1 更新&lt;/h3&gt;
+&lt;h2 id=&quot;jekyll-3&quot;&gt;4 jekyll的注意事项&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;4.1 更新&lt;/h4&gt;
 
 &lt;p&gt;Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。&lt;/p&gt;
 
@@ -229,7 +239,7 @@ $ jekyll server
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;gemfile&quot;&gt;3.8.2 Gemfile文件&lt;/h3&gt;
+&lt;h4 id=&quot;gemfile&quot;&gt;4.2 Gemfile文件&lt;/h4&gt;
 
 &lt;p&gt;Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
 Gemfile是可通过Bundler创建：&lt;/p&gt;
@@ -295,11 +305,12 @@ end
 
 &lt;p&gt;然后会出现“connected”连接了，接下来修改内容就会自动刷新页面了。&lt;/p&gt;
 
-&lt;p&gt;###3.8.3 配置 Jekyll&lt;/p&gt;
+&lt;h4 id=&quot;jekyll-4&quot;&gt;4.3 配置 Jekyll&lt;/h4&gt;
 
 &lt;p&gt;可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。&lt;/p&gt;
 
-&lt;h2 id=&quot;jekyll-4&quot;&gt;番外：jekyll的使用&lt;/h2&gt;
+&lt;h2 id=&quot;jekyll-5&quot;&gt;番外：jekyll的使用&lt;/h2&gt;
+
 &lt;h4 id=&quot;rubygems-&quot;&gt;1、RubyGems 镜像&lt;/h4&gt;
 
 &lt;p&gt;RubyGems 的淘宝镜像&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。现在这个镜像已经不再维护了，作者 &lt;a href=&quot;https://ruby-china.org/huacnlee&quot;&gt;huacnlee (李华顺)&lt;/a&gt; 转到 &lt;a href=&quot;https://ruby-china.org/&quot;&gt;Ruby China&lt;/a&gt; 中继续维护了，详情见 &lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
@@ -324,7 +335,7 @@ $ jekyll serve --port 3000
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;jekyll-5&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/h4&gt;
+&lt;h4 id=&quot;jekyll-6&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;文件夹_layouts：用于存放模板的文件夹，&lt;/li&gt;
@@ -341,10 +352,10 @@ $ jekyll serve --port 3000
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
  # 方案如下：
- ## 在Gemfile文中添加：gem 'jekyll-paginate'
+ # # 在Gemfile文中添加：gem 'jekyll-paginate'
  $ bundle
  $ gem install jekyll-paginate
- ## OK！
+ # # OK！
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;

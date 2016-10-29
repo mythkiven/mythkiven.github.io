@@ -57,14 +57,14 @@ githubPages 是基于github开源库的，所有博客的内容源码都是可�
 ## 3、本地环境搭建
 
 
-### 环境搭建
+#### 环境搭建
 
 使用Jekyll，需要以下环境: 
 
 1. Ruby  - Jekyll 需要Ruby语言
 2. Bundler - 捆绑器的软件包管理器
 
-### 3.1 安装Ruby：
+#### 3.1 安装Ruby：
 
 详细的安装文档，可以查看 Ruby 官方的[安装](http://www.ruby-lang.org/en/downloads/)介绍。Mac 下使用 Homebrew[](http://brew.sh/) 来安装，挺方便的。
 
@@ -78,7 +78,8 @@ $ brew install ruby
 $ ruby -v  
 ```
 
-### 3.2 安装RubyGems： 
+#### 3.2 安装RubyGems： 
+
 * <p>下载 RubyGems 安装包，2.0.6 版本：<a href="http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.tgz" target="_blank">tgz</a> - <a href="http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.zip" target="_blank">zip</a> - <a href="http://production.cf.rubygems.org/rubygems/rubygems-update-2.0.6.gem" target="_blank">gem</a> - <a href="http://github.com/rubygems/rubygems" target="_blank">git</a>。安装到本地之后，在终端检查更新：</p>
 
 * ```
@@ -90,7 +91,8 @@ $ gem -v
 * 可以参考<a href="https://rubygems.org/pages/download" target="_blank">官网安装教程</a>
 * gem update --system。这一步需要翻墙，否则会出现404错误。<a href="https://ruby.taobao.org/" target="_blank">解决办法参考</a>
 
-### 3.3 安装 Jekyll
+#### 3.3 安装 Jekyll
+
 最好的安装方法应该是通过 RubyGems 来安装，在终端输入：
 
 ```
@@ -113,7 +115,8 @@ $ jekyll -v
 	或者：
 	$ jekyll serve --config _config.yml,_config-dev.yml 
 
-### 3.4 Jekyll的使用
+#### 3.4 Jekyll的使用
+
 ```
 #创建你的博客
 $ jekyll new blog  
@@ -123,7 +126,8 @@ $ cd blog
 $ jekyll serve 	 
 ```
 
-### 3.5 博客主题
+#### 3.5 博客主题
+
 参考如下：
 [jekllthemes](http://jekyllthemes.org/)
 
@@ -137,7 +141,8 @@ $ jekyll server
 在浏览器中输入 http://localhost:4000 即可访问博客站点
 不能访问请检查_config.yml配置文件是否需要修改
 
-### 3.6 博客编辑工具
+#### 3.6 博客编辑工具
+
 通过以上就可以在本地编辑，运行博客啦
 
 免费的编辑工具：
@@ -146,17 +151,22 @@ $ jekyll server
 * [macdown](http://macdown.uranusjr.com/)
 
 ###### Mou
+
 集成 Tumblr 和 Scriptogr.am 发布博文；内置 CJK 字符支持。
+
 ###### MacDown 特色
+
 代码高亮；MacDown 支持 <a href="" target="_blank">Task list</a>
 
-### 3.7 上传GitHub
+#### 3.7 上传GitHub
+
 
 再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
 上传至GitHub后，我们就可以在线查看博客了。
 
-## 3.8 jekyll的注意事项
-### 3.8.1 更新
+## 4 jekyll的注意事项
+
+####  4.1 更新
 
 Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。
 
@@ -169,7 +179,7 @@ $bundle
 $gem update github-pages #没安装bundler
 ```
 
-### 3.8.2 Gemfile文件
+#### 4.2 Gemfile文件
 
 Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
 Gemfile是可通过Bundler创建：
@@ -236,13 +246,16 @@ $bundle exec guard start
 然后会出现“connected”连接了，接下来修改内容就会自动刷新页面了。
 
 
-###3.8.3 配置 Jekyll
+#### 4.3 配置 Jekyll
+
 
 可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。
 
 
 ## 番外：jekyll的使用
+
 #### 1、RubyGems 镜像
+
 
 <p>RubyGems 的淘宝镜像<a href="https://ruby.taobao.org/">https://ruby.taobao.org/</a>。现在这个镜像已经不再维护了，作者 <a href="https://ruby-china.org/huacnlee">huacnlee (李华顺)</a> 转到 <a href="https://ruby-china.org/">Ruby China</a> 中继续维护了，详情见 <a href="https://gems.ruby-china.org/">RubyGems 镜像- Ruby China</a>。</p>
 
@@ -286,10 +299,10 @@ $ jekyll serve --port 3000
 ```
  # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
  # 方案如下：
- ## 在Gemfile文中添加：gem 'jekyll-paginate'
+ # # 在Gemfile文中添加：gem 'jekyll-paginate'
  $ bundle
  $ gem install jekyll-paginate
- ## OK！
+ # # OK！
 
 ```
  
