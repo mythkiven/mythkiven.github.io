@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 16:34:21 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 16:34:21 +0800</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 16:46:46 +0800</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 16:46:46 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -56,7 +56,7 @@
   &lt;li&gt;&lt;a href=&quot;#ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio&quot; id=&quot;markdown-toc-ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio&quot;&gt;|- &lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt; | - &lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;| - &lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt; | - &lt;a href=&quot;http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;cnblogs&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;其实蛮早就想开个独立的博客，碍于肚子没墨水一直也没建。最近闲了点，写写博客，记录生活。以后会将个人在简书、CSDN上发布的部分文章，搬到这里。3code.info&lt;/p&gt;
+&lt;p&gt;其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info&lt;/p&gt;
 
 &lt;p&gt;下面记录了我制作博客的大致过程，有问题还请留言。
 &lt;img src=&quot;https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
