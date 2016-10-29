@@ -175,6 +175,7 @@ $bundle
 ```
 
 或者 
+
 ```
 $gem update github-pages #没安装bundler
 ```
@@ -219,6 +220,7 @@ $guard init
 ```
 生成的Guardfile文件内有一些代码，在代码的最后添加如下代码：
 
+
 ```
 guard 'jekyll-plus', :serve => true do
   watch /.*/
@@ -257,7 +259,9 @@ $bundle exec guard start
 #### 1、RubyGems 镜像
 
 
-<p>RubyGems 的淘宝镜像<a href="https://ruby.taobao.org/">https://ruby.taobao.org/</a>。现在这个镜像已经不再维护了，作者 <a href="https://ruby-china.org/huacnlee">huacnlee (李华顺)</a> 转到 <a href="https://ruby-china.org/">Ruby China</a> 中继续维护了，详情见 <a href="https://gems.ruby-china.org/">RubyGems 镜像- Ruby China</a>。</p>
+<p>RubyGems的淘宝镜像：<a href="https://ruby.taobao.org/">https://ruby.taobao.org/</a>。
+<br/>
+ Ruby China镜像：<a href="https://gems.ruby-china.org/">RubyGems 镜像- Ruby China</a>。</p>
 
 #### 2、jekyll-paginate 依赖缺失
 
@@ -308,15 +312,9 @@ $ jekyll serve --port 3000
  
 
 
-## 在我创建博客过程中，曾经浏览如下的文章，在此感谢！
+## 参考
 
-- [jekyll](http://jekyll.com.cn/)
-- [zhanxin](http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html)
-- [jianshu](http://www.jianshu.com/p/07064eb79740 )
-- [jianshu](http://www.jianshu.com/p/6c157af09e84 )
-- [ytysj](http://ytysj.github.io/blog/myblog3)
-- [jianshu](http://www.jianshu.com/p/609e1197754c)
-- [ezlippi](http://www.ezlippi.com//blog/2015/03/github-pages-blog.html)
-- [waylau](http://waylau.com/jekyll-static-bog/?utm_source=tuicool&utm_medium=referral)
-- [wowubuntu](http://wowubuntu.com/markdown/)
+- [jekyll](http://jekyll.com.cn/)  | - [zhanxin](http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html) | - [jianshu](http://www.jianshu.com/p/07064eb79740 )
+- [jianshu](http://www.jianshu.com/p/6c157af09e84 ) | - [ytysj](http://ytysj.github.io/blog/myblog3) | - [jianshu](http://www.jianshu.com/p/609e1197754c)
+- [ezlippi](http://www.ezlippi.com//blog/2015/03/github-pages-blog.html) | - [waylau](http://waylau.com/jekyll-static-bog/?utm_source=tuicool&utm_medium=referral)| - [wowubuntu](http://wowubuntu.com/markdown/)
 - [cnblogs](http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)

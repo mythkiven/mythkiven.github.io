@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 16:18:48 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 16:18:48 +0800</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 16:30:30 +0800</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 16:30:30 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -50,7 +50,7 @@
       &lt;li&gt;&lt;a href=&quot;#jekyll-server-jekyllpaginate&quot; id=&quot;markdown-toc-jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;在我创建博客过程中，曾经浏览如下的文章，在此感谢！&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;其实蛮早就想开个独立的博客，碍于肚子没墨水一直也没建。最近闲了点，写写博客，记录生活。以后会将个人在简书、CSDN上发布的部分文章，搬到这里。3code.info&lt;/p&gt;
@@ -235,6 +235,7 @@ $ jekyll server
 &lt;/div&gt;
 
 &lt;p&gt;或者&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$gem update github-pages #没安装bundler
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -313,7 +314,9 @@ end
 
 &lt;h4 id=&quot;rubygems-&quot;&gt;1、RubyGems 镜像&lt;/h4&gt;
 
-&lt;p&gt;RubyGems 的淘宝镜像&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。现在这个镜像已经不再维护了，作者 &lt;a href=&quot;https://ruby-china.org/huacnlee&quot;&gt;huacnlee (李华顺)&lt;/a&gt; 转到 &lt;a href=&quot;https://ruby-china.org/&quot;&gt;Ruby China&lt;/a&gt; 中继续维护了，详情见 &lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;RubyGems的淘宝镜像：&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。
+&lt;br /&gt;
+ Ruby China镜像：&lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h4 id=&quot;jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/h4&gt;
 
@@ -360,18 +363,42 @@ $ jekyll serve --port 3000
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;section-8&quot;&gt;在我创建博客过程中，曾经浏览如下的文章，在此感谢！&lt;/h2&gt;
+&lt;h2 id=&quot;section-8&quot;&gt;参考&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/07064eb79740&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ytysj.github.io/blog/myblog3&quot;&gt;ytysj&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/609e1197754c&quot;&gt;jianshu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://www.jianshu.com/p/07064eb79740&quot;&gt;jianshu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;jianshu&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://ytysj.github.io/blog/myblog3&quot;&gt;ytysj&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://www.jianshu.com/p/609e1197754c&quot;&gt;jianshu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;- &lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;cnblogs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
