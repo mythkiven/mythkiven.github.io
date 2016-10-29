@@ -5,14 +5,14 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 16:10:27 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 16:10:27 +0800</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 16:13:15 +0800</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 16:13:15 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
         <title>静态页面博客:jekyll+GitHubPages</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;说明：&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;说明&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#gitgithub&quot; id=&quot;markdown-toc-gitgithub&quot;&gt;1、git\github&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;1.1 github知识普及：&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#git&quot; id=&quot;markdown-toc-git&quot;&gt;1.2  注册下载Git客户端&lt;/a&gt;&lt;/li&gt;
@@ -57,24 +57,29 @@
 &lt;p&gt;下面记录了我制作博客的大致过程，有问题还请留言。
 &lt;img src=&quot;https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;说明：&lt;/h2&gt;
+&lt;h2 id=&quot;section&quot;&gt;说明&lt;/h2&gt;
 &lt;p&gt;1、以下系统基于OS X EI ;&lt;/p&gt;
 
 &lt;p&gt;2、免费主机：github + 静态制作：jekyll&lt;/p&gt;
 
 &lt;h2 id=&quot;gitgithub&quot;&gt;1、git\github&lt;/h2&gt;
+
 &lt;h4 id=&quot;github&quot;&gt;1.1 github知识普及：&lt;/h4&gt;
+
 &lt;p&gt;githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。&lt;/p&gt;
 
 &lt;p&gt;个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)&lt;/p&gt;
 
 &lt;h4 id=&quot;git&quot;&gt;1.2  注册下载Git客户端&lt;/h4&gt;
+
 &lt;p&gt;注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)&lt;/p&gt;
 
 &lt;h4 id=&quot;githubpages&quot;&gt;1.3 在github上创建Pages：&lt;/h4&gt;
+
 &lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;参考官方页面提示&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;jekyll&quot;&gt;2、Jekyll&lt;/h2&gt;
+
 &lt;p&gt;本博客使用Jekyll搭建，好处：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -82,7 +87,7 @@
   &lt;li&gt;支持markdown，liquid，以及原始的html、css&lt;/li&gt;
   &lt;li&gt;可以定义模板，并在模板上进行代码复用&lt;/li&gt;
   &lt;li&gt;github对其支持，可以直接在github上搭建，可以继承github上的各种好处（版本控制，免费，无流量限制）&lt;/li&gt;
-  &lt;li&gt;有很多扩展插件（但是在github上用不了，github不允许用户使用扩展插件，大概是出于安全性考虑）&lt;/li&gt;
+  &lt;li&gt;有很多扩展插件（但是在github上用不了）&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;当然缺点也有很多：&lt;/p&gt;
@@ -105,6 +110,7 @@
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h3&gt;
+
 &lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 Homebrew&lt;a href=&quot;http://brew.sh/&quot;&gt;&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
 
 &lt;ul&gt;

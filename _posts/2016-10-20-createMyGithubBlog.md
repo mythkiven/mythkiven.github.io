@@ -15,33 +15,38 @@ author: MythKiven
 ![](https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg)
 
 
-## 说明：
+## 说明
 1、以下系统基于OS X EI ;
 
 2、免费主机：github + 静态制作：jekyll
 
 ## 1、git\github
+
 #### 1.1 github知识普及：
+
 githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。
 
 个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)
 
 #### 1.2  注册下载Git客户端
+
 注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)
 
 #### 1.3 在github上创建Pages：
+
 [参考官方页面提示](https://pages.github.com/)
 
 
 
 ## 2、Jekyll
+
 本博客使用Jekyll搭建，好处：
 
 1. 不需要使用额外的数据库
 2. 支持markdown，liquid，以及原始的html、css
 3. 可以定义模板，并在模板上进行代码复用
 4. github对其支持，可以直接在github上搭建，可以继承github上的各种好处（版本控制，免费，无流量限制）
-5. 有很多扩展插件（但是在github上用不了，github不允许用户使用扩展插件，大概是出于安全性考虑）
+5. 有很多扩展插件（但是在github上用不了）
 
 当然缺点也有很多：
 
@@ -60,6 +65,7 @@ githubPages 是基于github开源库的，所有博客的内容源码都是可�
 2. Bundler - 捆绑器的软件包管理器
 
 ### 3.1 安装Ruby：
+
 详细的安装文档，可以查看 Ruby 官方的[安装](http://www.ruby-lang.org/en/downloads/)介绍。Mac 下使用 Homebrew[](http://brew.sh/) 来安装，挺方便的。
 
 * ```
