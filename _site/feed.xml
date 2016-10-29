@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 15:54:38 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 15:54:38 +0800</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 16:10:27 +0800</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 16:10:27 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -27,7 +27,11 @@
       &lt;li&gt;&lt;a href=&quot;#jekyll-1&quot; id=&quot;markdown-toc-jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#jekyll-2&quot; id=&quot;markdown-toc-jekyll-2&quot;&gt;3.4 Jekyll的使用&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3.5 博客主题&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;3.6 博客编辑工具&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;3.6 博客编辑工具&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#mou&quot; id=&quot;markdown-toc-mou&quot;&gt;Mou&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#macdown-&quot; id=&quot;markdown-toc-macdown-&quot;&gt;MacDown 特色&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#github-1&quot; id=&quot;markdown-toc-github-1&quot;&gt;3.7 上传GitHub&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -57,14 +61,16 @@
 &lt;p&gt;1、以下系统基于OS X EI ;&lt;/p&gt;
 
 &lt;p&gt;2、免费主机：github + 静态制作：jekyll&lt;/p&gt;
-&lt;h2 id=&quot;gitgithub&quot;&gt;1、git\github&lt;/h2&gt;
 
+&lt;h2 id=&quot;gitgithub&quot;&gt;1、git\github&lt;/h2&gt;
 &lt;h4 id=&quot;github&quot;&gt;1.1 github知识普及：&lt;/h4&gt;
 &lt;p&gt;githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。&lt;/p&gt;
 
 &lt;p&gt;个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)&lt;/p&gt;
+
 &lt;h4 id=&quot;git&quot;&gt;1.2  注册下载Git客户端&lt;/h4&gt;
 &lt;p&gt;注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)&lt;/p&gt;
+
 &lt;h4 id=&quot;githubpages&quot;&gt;1.3 在github上创建Pages：&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;参考官方页面提示&lt;/a&gt;&lt;/p&gt;
 
@@ -182,6 +188,7 @@ $ jekyll server
 &lt;/div&gt;
 &lt;p&gt;在浏览器中输入 http://localhost:4000 即可访问博客站点
 不能访问请检查_config.yml配置文件是否需要修改&lt;/p&gt;
+
 &lt;h3 id=&quot;section-4&quot;&gt;3.6 博客编辑工具&lt;/h3&gt;
 &lt;p&gt;通过以上就可以在本地编辑，运行博客啦&lt;/p&gt;
 
@@ -192,28 +199,10 @@ $ jekyll server
   &lt;li&gt;&lt;a href=&quot;http://macdown.uranusjr.com/&quot;&gt;macdown&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5&gt;A、共同功能&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;提供丰富的简洁大方好看的主题，同时支持自定义&lt;/li&gt;
-&lt;li&gt;提供丰富的渲染 Markdown 之后的 CSS 样式，同时支持自定义样式&lt;/li&gt;
-&lt;li&gt;英文单词的自动补全功能，按下 &lt;code&gt;Esc&lt;/code&gt; 键列出补全的列表&lt;/li&gt;
-&lt;li&gt;字符、单词统计功能&lt;/li&gt;
-&lt;li&gt;支持 fenced code blocks&lt;/li&gt;
-&lt;li&gt;TeX 数学公式的支持&lt;/li&gt;
-&lt;li&gt;支持导出 HTML 和 PDF 两种格式&lt;/li&gt;
-&lt;li&gt;便捷的快捷键操作&lt;/li&gt;
-&lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5&gt;B、Mou 特色功能&lt;/h5&gt;
-&lt;h6&gt;集成 Tumblr 和 Scriptogr.am 发布博文&lt;/h6&gt;
-&lt;p&gt;可以配置 Tumblr 和 Scriptogr.am 的邮箱，在 Mou 上写文章通过 &lt;code&gt;File-&amp;gt;Post-&amp;gt;&lt;/code&gt; 可以发布到这两个平台上，非常方便。&lt;/p&gt;
-&lt;h6&gt;语言支持&lt;/h6&gt;
-&lt;p&gt;Mou 内置 CJK 字符支持，你可以很容易使用中文、日文、韩文等来写文章，同时还支持竖排的风格。&lt;/p&gt;
-&lt;h5&gt;C、MacDown 特色&lt;/h5&gt;
-&lt;h6&gt;代码高亮&lt;/h6&gt;
-&lt;p&gt;Mou 和 MacDown 都支持 fenced code blocks（前后三个反引号可以表示代码块），但 MacDown 支持加语言标识符实现代码高亮，这对程序员来说简直是福音啊，非常棒的功能。&lt;/p&gt;
-&lt;h6&gt;GFM Task List 支持&lt;/h6&gt;
-&lt;p&gt;MacDown 支持 &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;Task list&lt;/a&gt;，有了这个功能，你可以将你的 MD 编辑器立马变成 TODO list，是不是很赞？&lt;/p&gt;
+&lt;h6 id=&quot;mou&quot;&gt;Mou&lt;/h6&gt;
+&lt;p&gt;集成 Tumblr 和 Scriptogr.am 发布博文；内置 CJK 字符支持。&lt;/p&gt;
+&lt;h6 id=&quot;macdown-&quot;&gt;MacDown 特色&lt;/h6&gt;
+&lt;p&gt;代码高亮；MacDown 支持 &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;Task list&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;github-1&quot;&gt;3.7 上传GitHub&lt;/h3&gt;
 
@@ -222,6 +211,7 @@ $ jekyll server
 
 &lt;h2 id=&quot;jekyll-3&quot;&gt;3.8 jekyll的注意事项&lt;/h2&gt;
 &lt;h3 id=&quot;section-5&quot;&gt;3.8.1 更新&lt;/h3&gt;
+
 &lt;p&gt;Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$bundle 
@@ -232,7 +222,9 @@ $ jekyll server
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$gem update github-pages #没安装bundler
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 &lt;h3 id=&quot;gemfile&quot;&gt;3.8.2 Gemfile文件&lt;/h3&gt;
+
 &lt;p&gt;Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
 Gemfile是可通过Bundler创建：&lt;/p&gt;
 
@@ -297,18 +289,25 @@ end
 
 &lt;p&gt;然后会出现“connected”连接了，接下来修改内容就会自动刷新页面了。&lt;/p&gt;
 
-&lt;p&gt;###3.8.3 配置 Jekyll
-可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。&lt;/p&gt;
+&lt;p&gt;###3.8.3 配置 Jekyll&lt;/p&gt;
+
+&lt;p&gt;可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。&lt;/p&gt;
 
 &lt;h2 id=&quot;jekyll-4&quot;&gt;番外：jekyll的使用&lt;/h2&gt;
 &lt;h4 id=&quot;rubygems-&quot;&gt;1、RubyGems 镜像&lt;/h4&gt;
+
 &lt;p&gt;RubyGems 的淘宝镜像&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。现在这个镜像已经不再维护了，作者 &lt;a href=&quot;https://ruby-china.org/huacnlee&quot;&gt;huacnlee (李华顺)&lt;/a&gt; 转到 &lt;a href=&quot;https://ruby-china.org/&quot;&gt;Ruby China&lt;/a&gt; 中继续维护了，详情见 &lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
+
 &lt;h4 id=&quot;jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/h4&gt;
+
 &lt;p&gt;因为 jekyll 3 中默认安装已经没有这个分页组件了，官方把这个分页组件插件化了，因此要独立安装。详情见 &lt;a href=&quot;https://jekyllrb.com/docs/pagination/&quot;&gt;https://jekyllrb.com/docs/pagination/&lt;/a&gt;。&lt;/p&gt;
+
 &lt;h4 id=&quot;section-6&quot;&gt;3、其他可能需要安装的：&lt;/h4&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll-paginate
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 &lt;h4 id=&quot;section-7&quot;&gt;4、更换端口：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 查看端口被占用情况
@@ -318,7 +317,9 @@ $ jekyll serve --port 3000
 ## 还可以在配置文件_config.yml中添加端口号
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 &lt;h4 id=&quot;jekyll-5&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/h4&gt;
+
 &lt;ol&gt;
 &lt;li&gt;文件夹_layouts：用于存放模板的文件夹，&lt;/li&gt;
 &lt;li&gt;文件夹_posts：用于存放博客文章的文件夹&lt;/li&gt;
@@ -329,6 +330,7 @@ $ jekyll serve --port 3000
 &lt;li&gt;_includes:用于存放一些固定的HTML代码段，文件为.html格式，可以在模板中通过liquid标签引入，常用来在各个模板中复用如 导航条、标签栏、侧边栏之类的在每个页面上都一样不变的内容，需要注意的是，这个代码段也可以是未被编译的，也就是说也可以使用liquid标签放在这些代码段中&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;通过修改配置文件_coinfig.yml以及post和layouts就可以实现主要blog的建立和修改。&lt;/p&gt;
+
 &lt;h4 id=&quot;jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
@@ -342,6 +344,7 @@ $ jekyll serve --port 3000
 &lt;/div&gt;
 
 &lt;h2 id=&quot;section-8&quot;&gt;在我创建博客过程中，曾经浏览如下的文章，在此感谢！&lt;/h2&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt;&lt;/li&gt;

@@ -19,14 +19,16 @@ author: MythKiven
 1、以下系统基于OS X EI ;
 
 2、免费主机：github + 静态制作：jekyll
-## 1、git\github
 
+## 1、git\github
 #### 1.1 github知识普及：
 githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。
 
 个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)
+
 #### 1.2  注册下载Git客户端
 注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)
+
 #### 1.3 在github上创建Pages：
 [参考官方页面提示](https://pages.github.com/)
 
@@ -128,6 +130,7 @@ $ jekyll server
 ```
 在浏览器中输入 http://localhost:4000 即可访问博客站点
 不能访问请检查_config.yml配置文件是否需要修改
+
 ### 3.6 博客编辑工具
 通过以上就可以在本地编辑，运行博客啦
 
@@ -136,28 +139,10 @@ $ jekyll server
 * [mou](http://25.io/mou/)
 * [macdown](http://macdown.uranusjr.com/)
 
-<h5>A、共同功能</h5>
-<ul>
-<li>提供丰富的简洁大方好看的主题，同时支持自定义</li>
-<li>提供丰富的渲染 Markdown 之后的 CSS 样式，同时支持自定义样式</li>
-<li>英文单词的自动补全功能，按下 <code>Esc</code> 键列出补全的列表</li>
-<li>字符、单词统计功能</li>
-<li>支持 fenced code blocks</li>
-<li>TeX 数学公式的支持</li>
-<li>支持导出 HTML 和 PDF 两种格式</li>
-<li>便捷的快捷键操作</li>
-<li>...</li>
-</ul>
-<h5>B、Mou 特色功能</h5>
-<h6>集成 Tumblr 和 Scriptogr.am 发布博文</h6>
-<p>可以配置 Tumblr 和 Scriptogr.am 的邮箱，在 Mou 上写文章通过 <code>File-&gt;Post-&gt;</code> 可以发布到这两个平台上，非常方便。</p>
-<h6>语言支持</h6>
-<p>Mou 内置 CJK 字符支持，你可以很容易使用中文、日文、韩文等来写文章，同时还支持竖排的风格。</p>
-<h5>C、MacDown 特色</h5>
-<h6>代码高亮</h6>
-<p>Mou 和 MacDown 都支持 fenced code blocks（前后三个反引号可以表示代码块），但 MacDown 支持加语言标识符实现代码高亮，这对程序员来说简直是福音啊，非常棒的功能。</p>
-<h6>GFM Task List 支持</h6>
-<p>MacDown 支持 <a href="" target="_blank">Task list</a>，有了这个功能，你可以将你的 MD 编辑器立马变成 TODO list，是不是很赞？</p>
+###### Mou
+集成 Tumblr 和 Scriptogr.am 发布博文；内置 CJK 字符支持。
+###### MacDown 特色
+代码高亮；MacDown 支持 <a href="" target="_blank">Task list</a>
 
 ### 3.7 上传GitHub
 
@@ -166,6 +151,7 @@ $ jekyll server
 
 ## 3.8 jekyll的注意事项
 ### 3.8.1 更新
+
 Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。
 
 ```
@@ -176,7 +162,9 @@ $bundle
 ```
 $gem update github-pages #没安装bundler
 ```
+
 ### 3.8.2 Gemfile文件
+
 Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
 Gemfile是可通过Bundler创建：
 
@@ -243,19 +231,27 @@ $bundle exec guard start
 
 
 ###3.8.3 配置 Jekyll
+
 可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。
 
 
 ## 番外：jekyll的使用
 #### 1、RubyGems 镜像
+
 <p>RubyGems 的淘宝镜像<a href="https://ruby.taobao.org/">https://ruby.taobao.org/</a>。现在这个镜像已经不再维护了，作者 <a href="https://ruby-china.org/huacnlee">huacnlee (李华顺)</a> 转到 <a href="https://ruby-china.org/">Ruby China</a> 中继续维护了，详情见 <a href="https://gems.ruby-china.org/">RubyGems 镜像- Ruby China</a>。</p>
+
 #### 2、jekyll-paginate 依赖缺失
+
 <p>因为 jekyll 3 中默认安装已经没有这个分页组件了，官方把这个分页组件插件化了，因此要独立安装。详情见 <a href="https://jekyllrb.com/docs/pagination/">https://jekyllrb.com/docs/pagination/</a>。</p>
+
 #### 3、其他可能需要安装的：
+
 ```
 $ gem install jekyll-paginate
 ```
+
 #### 4、更换端口：
+
 
 ```
 ## 查看端口被占用情况
@@ -264,7 +260,9 @@ $ netstat -ano
 $ jekyll serve --port 3000
 ## 还可以在配置文件_config.yml中添加端口号
 ```
+
 #### 5、jekyll库中所包含的主要文件及文件夹有：
+
 <ol>
 <li>文件夹_layouts：用于存放模板的文件夹，</li>
 <li>文件夹_posts：用于存放博客文章的文件夹</li>
@@ -275,7 +273,9 @@ $ jekyll serve --port 3000
 <li>_includes:用于存放一些固定的HTML代码段，文件为.html格式，可以在模板中通过liquid标签引入，常用来在各个模板中复用如 导航条、标签栏、侧边栏之类的在每个页面上都一样不变的内容，需要注意的是，这个代码段也可以是未被编译的，也就是说也可以使用liquid标签放在这些代码段中</li>
 </ol>
 <p>通过修改配置文件_coinfig.yml以及post和layouts就可以实现主要blog的建立和修改。</p>
+
 #### 6、运行jekyll server，提示 Jekyll::Paginate
+
 
 ```
  # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
@@ -290,6 +290,7 @@ $ jekyll serve --port 3000
 
 
 ## 在我创建博客过程中，曾经浏览如下的文章，在此感谢！
+
 - [jekyll](http://jekyll.com.cn/)
 - [zhanxin](http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html)
 - [jianshu](http://www.jianshu.com/p/07064eb79740 )
