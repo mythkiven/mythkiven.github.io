@@ -233,8 +233,10 @@
 <p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
 
 <h2 id="section">说明</h2>
+
 <p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong>
 如有问题，请参考<a href="http://3code.info/2016/10/29/useSublime/">基础教程</a></p>
+
 <h2 id="section-1">1、终端模式</h2>
 
 <p>Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令为sublime,但需要注意的是subl命令默认不在环境变量里，所以我们需要将其添加到环境变量，subl的位置为/Applications/Sublime Text 2.app/Contents/SharedSupport/bin(区分 2 3)),我们需要将这个路径添加到.bash_profile文件里。。</p>
@@ -557,6 +559,7 @@ F6 单词检测拼写</li>
 <p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
 
 <h2 id="section-1">1、简介</h2>
+
 <p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
 Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
 
@@ -642,7 +645,9 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
 </div>
 <p>如果是Bourne Shell。
 那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
+
 <h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
+
 <p>Mac系统的环境变量，加载顺序为：</p>
 
 <ul>
@@ -672,17 +677,21 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
 </div>
 
 <h2 id="sublime">2、实战 配置sublime的环境变量</h2>
+
 <p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
 </code></pre>
 </div>
 
 <p>然后我们在/usr/local/bin 里面做一个软连接：</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 </code></pre>
 </div>
 
 <p>最后加入环境变量：</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
 添加如下代码：
 export PATH=/usr/local/bin:$PATH

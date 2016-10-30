@@ -12,8 +12,10 @@ author: 3code
 ![](https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg)
 
 ## 说明
+
 **本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。**
 如有问题，请参考[基础教程](http://3code.info/2016/10/29/useSublime/)
+
 ## 1、终端模式
 
 Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令为sublime,但需要注意的是subl命令默认不在环境变量里，所以我们需要将其添加到环境变量，subl的位置为/Applications/Sublime Text 2.app/Contents/SharedSupport/bin(区分 2 3)),我们需要将这个路径添加到.bash_profile文件里。。

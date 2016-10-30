@@ -21,7 +21,9 @@ $ echo $SHELL
 ```
   如果是Bourne Shell。
 那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。
+
 ##### 1.2 Mac可配置环境变量的位置
+
 Mac系统的环境变量，加载顺序为：
 
 - 1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】
@@ -45,17 +47,21 @@ export PATH=$PATH:<PATH 1>:<PATH 2>:<PATH 3>:------:<PATH N>
 ```
  
 ## 2、实战 配置sublime的环境变量
+
 如果是sublime 2 则应该通过下面命令可以打开subl:
+
 ```
 $ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
 ```
 
 然后我们在/usr/local/bin 里面做一个软连接：
+
 ```
 $ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 ```
 
 最后加入环境变量：
+
 ```
 $ open ~/.bash_profile
 添加如下代码：

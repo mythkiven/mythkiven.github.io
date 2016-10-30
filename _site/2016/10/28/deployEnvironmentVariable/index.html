@@ -210,7 +210,9 @@
 </div>
 <p>如果是Bourne Shell。
 那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
+
 <h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
+
 <p>Mac系统的环境变量，加载顺序为：</p>
 
 <ul>
@@ -240,17 +242,21 @@
 </div>
 
 <h2 id="sublime">2、实战 配置sublime的环境变量</h2>
+
 <p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
 </code></pre>
 </div>
 
 <p>然后我们在/usr/local/bin 里面做一个软连接：</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 </code></pre>
 </div>
 
 <p>最后加入环境变量：</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
 添加如下代码：
 export PATH=/usr/local/bin:$PATH
