@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 30 Oct 2016 19:43:56 +0800</pubDate>
-    <lastBuildDate>Sun, 30 Oct 2016 19:43:56 +0800</lastBuildDate>
+    <pubDate>Sun, 30 Oct 2016 19:52:29 +0800</pubDate>
+    <lastBuildDate>Sun, 30 Oct 2016 19:52:29 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -34,11 +34,11 @@
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#markdown&quot; id=&quot;markdown-toc-markdown&quot;&gt;4、Markdown&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;设置目录&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;编辑：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#markdown-1&quot; id=&quot;markdown-toc-markdown-1&quot;&gt;在浏览器预览Markdown文档&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#pdf&quot; id=&quot;markdown-toc-pdf&quot;&gt;打印成pdf&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;关于快捷键&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;4.1 设置目录&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;4.2 编辑：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#markdown-1&quot; id=&quot;markdown-toc-markdown-1&quot;&gt;4.3 在浏览器预览Markdown文档&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pdf&quot; id=&quot;markdown-toc-pdf&quot;&gt;4.4 打印成pdf&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;4.5 关于快捷键&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;5、主题&lt;/a&gt;&lt;/li&gt;
@@ -74,6 +74,7 @@
 &lt;h2 id=&quot;section-2&quot;&gt;2、快捷键&lt;/h2&gt;
 &lt;p&gt;如果有冲突或者自定义快捷键，请打开：
 preference../Key Bindings 在这里可以修改快捷键设置&lt;/p&gt;
+
 &lt;h5 id=&quot;section-3&quot;&gt;2.1选择类&lt;/h5&gt;
 
 &lt;ul&gt;
@@ -210,28 +211,28 @@ F6 单词检测拼写&lt;/li&gt;
   &lt;li&gt;Markdown Extended + Extends Monokai：不错的Markdown主题，支持对多种语言的高亮&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;section-8&quot;&gt;设置目录&lt;/h5&gt;
+&lt;h5 id=&quot;section-8&quot;&gt;4.1 设置目录&lt;/h5&gt;
 
 &lt;p&gt;在文档最前面添加[TOC]，在左侧自动生成目录。&lt;/p&gt;
 
-&lt;h5 id=&quot;section-9&quot;&gt;编辑：&lt;/h5&gt;
+&lt;h5 id=&quot;section-9&quot;&gt;4.2 编辑：&lt;/h5&gt;
 
 &lt;p&gt;新建一个文档:cmd + N 
 语法高亮:cmd + Shift + P:输入ssm 后回车(Set Syntax: Markdown)&lt;/p&gt;
 
-&lt;h5 id=&quot;markdown-1&quot;&gt;在浏览器预览Markdown文档&lt;/h5&gt;
+&lt;h5 id=&quot;markdown-1&quot;&gt;4.3 在浏览器预览Markdown文档&lt;/h5&gt;
 
 &lt;p&gt;Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。
 按cmd + Shift + P
 输入mp 后回车(Markdown Preview: current file in browser)
 此时就可以在浏览器里看到刚才编辑的文档了;&lt;/p&gt;
 
-&lt;h5 id=&quot;pdf&quot;&gt;打印成pdf&lt;/h5&gt;
+&lt;h5 id=&quot;pdf&quot;&gt;4.4 打印成pdf&lt;/h5&gt;
 
 &lt;p&gt;将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。
 利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键-&amp;gt;打印-&amp;gt;另存为pdf-&amp;gt;调节页边距即可将pdf文件下载下来。&lt;/p&gt;
 
-&lt;h5 id=&quot;section-10&quot;&gt;关于快捷键&lt;/h5&gt;
+&lt;h5 id=&quot;section-10&quot;&gt;4.5 关于快捷键&lt;/h5&gt;
 
 &lt;ul&gt;
   &lt;li&gt;cmd+B 生成本地html文档&lt;/li&gt;

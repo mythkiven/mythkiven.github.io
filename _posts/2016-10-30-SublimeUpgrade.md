@@ -28,6 +28,7 @@ Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令
 ## 2、快捷键
 如果有冲突或者自定义快捷键，请打开：
 preference../Key Bindings 在这里可以修改快捷键设置
+
 ##### 2.1选择类
 
 - cmd+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。
@@ -156,29 +157,29 @@ F6 单词检测拼写
 - MarkDownPreview:在浏览器中预览MarkDown文件效果。
 - Markdown Extended + Extends Monokai：不错的Markdown主题，支持对多种语言的高亮
 
-##### 设置目录
+##### 4.1 设置目录
 
 在文档最前面添加[TOC]，在左侧自动生成目录。
 
-##### 编辑：
+##### 4.2 编辑：
 
 新建一个文档:cmd + N 
 语法高亮:cmd + Shift + P:输入ssm 后回车(Set Syntax: Markdown)
 
-#####  在浏览器预览Markdown文档
+#####  4.3 在浏览器预览Markdown文档
 
 Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。
 按cmd + Shift + P
 输入mp 后回车(Markdown Preview: current file in browser)
 此时就可以在浏览器里看到刚才编辑的文档了;
 
-##### 打印成pdf
+##### 4.4 打印成pdf
 
 将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。
 利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键->打印->另存为pdf->调节页边距即可将pdf文件下载下来。
 
 
-##### 关于快捷键
+##### 4.5 关于快捷键
 
 - cmd+B 生成本地html文档
 
