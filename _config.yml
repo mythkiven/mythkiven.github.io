@@ -7,7 +7,7 @@
 
 # Site settings
 title: 3行代码
-brief-intro: 移动Fintech
+brief-intro: 技术博客
 baseurl: "" # the subpath of your site, e.g. /blog
 # url: "http://mythkiven.github.io" # the base hostname & protocol for your site
 

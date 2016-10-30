@@ -3,7 +3,7 @@ layout: post
 title:  "静态页面博客:jekyll+GitHubPages"
 categories: 博客 jekyll 
 tags:  博客 jekyll 
-author: MythKiven
+author: 3code
 ---
 
 * content
@@ -11,7 +11,7 @@ author: MythKiven
 
 其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info
 
-下面记录了我制作博客的大致过程，有问题还请留言。
+下面针对jekyll博客的过程，有问题还请留言。
 ![](https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg)
 
 
