@@ -242,7 +242,23 @@ st支持自定义快捷键，markdown preview默认没有快捷键，我们可�
 
 ##### 7.4 修改模板
 
-SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。
+SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。参考：
+
+```
+
+---
+layout: post
+keywords: k
+description: d
+title: t
+categories: [笔记]
+tags: [笔记]
+group: archive
+icon: globe
+---
+
+```
+
 
 ##### 7.5 储存到印象笔记
 

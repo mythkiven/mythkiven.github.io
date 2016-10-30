@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 30 Oct 2016 20:02:27 +0800</pubDate>
-    <lastBuildDate>Sun, 30 Oct 2016 20:02:27 +0800</lastBuildDate>
+    <pubDate>Sun, 30 Oct 2016 20:04:34 +0800</pubDate>
+    <lastBuildDate>Sun, 30 Oct 2016 20:04:34 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -302,7 +302,22 @@ F6 单词检测拼写&lt;/li&gt;
 
 &lt;h5 id=&quot;section-14&quot;&gt;7.4 修改模板&lt;/h5&gt;
 
-&lt;p&gt;SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。&lt;/p&gt;
+&lt;p&gt;SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。参考：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+---
+layout: post
+keywords: k
+description: d
+title: t
+categories: [笔记]
+tags: [笔记]
+group: archive
+icon: globe
+---
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h5 id=&quot;section-15&quot;&gt;7.5 储存到印象笔记&lt;/h5&gt;
 
