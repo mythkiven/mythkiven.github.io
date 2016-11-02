@@ -51,7 +51,7 @@
     <header id="top">
     <div class="wrapper">
         <a href="/" class="brand">3行代码</a>
-        <small>移动Fintech</small>
+        <small>技术博客</small>
         <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
         <nav id="headerNav">
             <ul>
@@ -114,6 +114,8 @@
                             <i class="fa fa-heart"></i>About
                         </a>
                     </li>
+                    
+                
                     
                 
                     
@@ -417,6 +419,7 @@ F6 单词检测拼写</li>
 
 <p>st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
 方法是在Preferences -&gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+m"</span><span class="p">],</span><span class="w"> </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown_preview"</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"browser"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
@@ -464,11 +467,19 @@ F6 单词检测拼写</li>
 
 <p>在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：</p>
 
-<p>1、国内用户打开 https://app.yinxiang.com/api/DeveloperToken.action ，国际用户打开 https://www.evernote.com/api/DeveloperToken.action 。点击Revoke your developer token 授权应用</p>
+<p>1、国内用户打开 <a href="https://app.yinxiang.com/api/DeveloperToken.action">https://app.yinxiang.com/api/DeveloperToken.action</a></p>
+
+<p>国际用户打开 <a href="https://www.evernote.com/api/DeveloperToken.action">https://www.evernote.com/api/DeveloperToken.action</a> 。</p>
+
+<p>点击Revoke your developer token 授权应用</p>
 
 <p>2、打开 Preferences &gt; Package Settings &gt; Evernote &gt;Settings - User</p>
 
-<p>3、粘贴即可(格式英文)： { “noteStoreUrl”: “你自己的URL”, “token”: “你的Token” }</p>
+<p>3、粘贴即可(格式英文)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"noteStoreUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你自己的URL"</span><span class="p">,</span><span class="w"> </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你的Token"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 <h5 id="section-13">7.3测试是否授权成功</h5>
 
@@ -512,17 +523,12 @@ icon: globe
             
                 
                     
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/10/29/useSublime/">Sublime Text基础教程
-                            
-                            </a>
-                        </li>
-                        
-                        
+                
+            
+        
+            
+            
+                
                     
                 
             
@@ -534,6 +540,68 @@ icon: globe
                 
             
                 
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">Similar Posts</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/10/29/useSublime/">Sublime Text基础教程
+                            
+                            </a>
+                        </li>
+                        
+                        
                     
                 
             
@@ -562,11 +630,13 @@ icon: globe
     <div class="nex">
 
         
+        <p><strong>下一篇</strong> <a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></p>
+        
     </div>
 </div>
 
 
-        <h2 id="comments">Comments</h2>
+        <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
 <div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/30/SublimeUpgrade/" data-title="Sublime Text进阶教程" data-url="http://localhost:4000/2016/10/30/SublimeUpgrade/"></div>
@@ -600,7 +670,7 @@ icon: globe
             <!-- Content -->
             <div class="side content">
                 <div>
-                    Content
+                    内容
                 </div>
                 <ul id="content-side" class="content-ul">
                     <li><a href="#similar_posts">Similar Posts</a></li>

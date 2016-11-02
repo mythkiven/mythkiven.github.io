@@ -187,6 +187,7 @@ Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime
 
 st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
 方法是在Preferences -> Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：
+
 ```
 { "keys": ["alt+m"], "command": "markdown_preview", "args": { "target": "browser"}
 ```
@@ -229,11 +230,19 @@ st支持自定义快捷键，markdown preview默认没有快捷键，我们可�
 
 在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：
 
-1、国内用户打开 https://app.yinxiang.com/api/DeveloperToken.action ，国际用户打开 https://www.evernote.com/api/DeveloperToken.action 。点击Revoke your developer token 授权应用
+1、国内用户打开 [https://app.yinxiang.com/api/DeveloperToken.action](https://app.yinxiang.com/api/DeveloperToken.action) 
+
+国际用户打开 [https://www.evernote.com/api/DeveloperToken.action](https://www.evernote.com/api/DeveloperToken.action) 。
+
+点击Revoke your developer token 授权应用
 
 2、打开 Preferences > Package Settings > Evernote >Settings - User
 
-3、粘贴即可(格式英文)： { “noteStoreUrl”: “你自己的URL”, “token”: “你的Token” }
+3、粘贴即可(格式英文)： 
+
+```
+{ "noteStoreUrl": "你自己的URL", "token": "你的Token" }
+```
 
 ##### 7.3测试是否授权成功
 

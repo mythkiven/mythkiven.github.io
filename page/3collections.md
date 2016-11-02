@@ -85,6 +85,6 @@ icon: bookmark
 *  [认知心理学资源集](http://www.yangzhiping.com/info/resources.html)
   
 
-## Comments
+## 评论
 
 {% include comments.html %}

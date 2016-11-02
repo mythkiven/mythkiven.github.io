@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>OS X 部署环境变量</title>
-    <meta name="description" content="  1、设置环境变量          1.1 查看本机使用的Shell      1.2 Mac可配置环境变量的位置      1.3 设置PATH的语法：        2、实战 配置sublime的环境变量1、设置环境变量1.1 查看本机使用的Shell$ echo $SHELL输出的是：csh或者是tcs...">
+    <title>IOS逆向开发系列1_Class_dump</title>
+    <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/10/28/deployEnvironmentVariable/">
+    <link rel="canonical" href="http://localhost:4000/2016/11/01/1_Class_dump/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -134,11 +134,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>OS X 部署环境变量</h1>
+        <h1>IOS逆向开发系列1_Class_dump</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-10-28
+                <i class="fa fa-calendar"></i>2016-11-01
             </div>
 
             <div class="label-card">
@@ -159,7 +159,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
     
   
 
@@ -176,11 +176,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a-->
-        <a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a>&nbsp;
-    
-        <!--a href="/tag/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" title="Tag: 环境变量" rel="tag">环境变量</a-->
-        <a href="/tag/#环境变量" title="Tag: 环境变量" rel="tag">环境变量</a>
+        <!--a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a-->
+        <a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a>
     
   
 
@@ -192,85 +189,74 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、设置环境变量</a>    <ul>
-      <li><a href="#shell" id="markdown-toc-shell">1.1 查看本机使用的Shell</a></li>
-      <li><a href="#mac" id="markdown-toc-mac">1.2 Mac可配置环境变量的位置</a></li>
-      <li><a href="#path" id="markdown-toc-path">1.3 设置PATH的语法：</a></li>
+  <li><a href="#section" id="markdown-toc-section">1、概述</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.1 设置环境变量:</a></li>
     </ul>
   </li>
-  <li><a href="#sublime" id="markdown-toc-sublime">2、实战 配置sublime的环境变量</a></li>
 </ul>
 
-<h2 id="section">1、设置环境变量</h2>
+<h2 id="section">1、概述</h2>
 
-<h5 id="shell">1.1 查看本机使用的Shell</h5>
+<p>class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ echo $SHELL
-输出的是：csh或者是tcsh，就是C Shell。
-输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
-</code></pre>
-</div>
-<p>如果是Bourne Shell。
-那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
+<h2 id="section-1">2、安装</h2>
 
-<h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
+<p>class-dump的用法比较简单，首先去<a href="http://stevenygard.com/projects/class-dump">http://stevenygard.com/projects/class-dump</a>下载最新版的class-dump。</p>
 
-<p>Mac系统的环境变量，加载顺序为：</p>
+<p>下载class-dump-3.5.dmg后，将dmg文件里的class-dump复制到“/usr/bin”下，然后在Terminal中执行 $sudo chmod 777/usr/bin/class-dump”命令赋予其执行权限。</p>
+
+<p>以上方法已经不可用：OSX10.11的一个新特性Rootless也叫System Integrity Protection（SIP）和SELinux差不多，都是限制root用户的权限，其实可以在RecoveryMode关闭这个特性，这样就直接可以读写/usr/bin了，不过不建议。
+最新的方法如下：</p>
+
+<h5 id="section-2">2.1 设置环境变量:</h5>
 
 <ul>
-  <li>1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】</li>
-  <li>2、/etc/paths 可以全局修改配置，系统级别启动加载。添加path一行一个路径</li>
+  <li>
+    <p>打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；</p>
+  </li>
+  <li>
+    <p>把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；</p>
+  </li>
+  <li>
+    <p>打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；</p>
+  </li>
+  <li>
+    <p>在Terminal中执行$source ~/.bash_profile；</p>
+  </li>
+  <li>
+    <p>上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。</p>
+  </li>
+  <li>
+    <p>class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。</p>
+  </li>
 </ul>
 
-<p>以上不管是哪个用户，登录时都会读取该文件。下面几个是当前用户级的环境变量，按照从前往后的顺序读取。如果~/.bash_profile文件存在，则后面的几个文件就会被忽略不读了，如果~/.bash_profile文件不存在，才会以此类推读取后面的文件</p>
+<p>下面以笔者的一个App为例，来看看class-dump的完整流程。</p>
 
-<ul>
-  <li>3、~/.bash_profile  一般在这个文件中添加用户级环境变量。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!</li>
-  <li>4、~/.bash_login</li>
-  <li>5、~/.profile</li>
-</ul>
+<p>1.定位App的可执行文件</p>
 
-<p>其他：</p>
+<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/snakeninny”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
 
-<ul>
-  <li>~/.bashrc没有上述规则，它是bash shell打开的时候载入的。</li>
-  <li>/etc/bashrc 一般在这个文件中添加系统级环境变量，全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</li>
-</ul>
-
-<h5 id="path">1.3 设置PATH的语法：</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
+$ plutil -p Info.plist | grep CFBundleExecutable
+"CFBundleExecutable" =&gt; "AlipayWallet"
 </code></pre>
 </div>
 
-<h2 id="sublime">2、实战 配置sublime的环境变量</h2>
+<p>当前目录下的“AlipayWallet”就是App的可执行文件。</p>
 
-<p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
+<p>2.class-dump可执行文件</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
+<p>把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header 结果是： -APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore加密过) -【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了
 </code></pre>
 </div>
 
-<p>然后我们在/usr/local/bin 里面做一个软连接：</p>
+<p>透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
-</code></pre>
-</div>
-
-<p>最后加入环境变量：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
-添加如下代码：
-export PATH=/usr/local/bin:$PATH
-</code></pre>
-</div>
-
-<p>想立即生效请运行：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ source ~/.bash_profile
-</code></pre>
-</div>
-<p>OK，可以通过终端操控subl了！</p>
+<p>值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。要想吃核桃，还得先用别的工具把壳砸开才行，具体的内容下一章就会揭晓。</p>
 
 
         </article>
@@ -283,35 +269,10 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
-                    
-                
             
         
             
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -322,29 +283,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
-                    
-                
-            
-        
-            
             
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                 
                     
                 
@@ -355,6 +298,15 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
+                    
+                
+            
+                
                     
                 
             
@@ -364,6 +316,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
                     
                 
             
@@ -373,6 +330,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
                     
                 
             
@@ -381,6 +343,8 @@ export PATH=/usr/local/bin:$PATH
             
                 
                     
+                
+            
                 
                     
                 
@@ -391,13 +355,13 @@ export PATH=/usr/local/bin:$PATH
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/10/20/createMyGithubBlog/">静态页面博客:jekyll+GitHubPages</a></p>
+        <p><strong>上一篇</strong> <a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/10/29/useSublime/">Sublime Text基础教程</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></p>
         
     </div>
 </div>
@@ -406,7 +370,7 @@ export PATH=/usr/local/bin:$PATH
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/28/deployEnvironmentVariable/" data-title="OS X 部署环境变量" data-url="http://localhost:4000/2016/10/28/deployEnvironmentVariable/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/1_Class_dump/" data-title="IOS逆向开发系列1_Class_dump" data-url="http://localhost:4000/2016/11/01/1_Class_dump/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

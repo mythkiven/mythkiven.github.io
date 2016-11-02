@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>IOS逆向开发系列6_IOS工具集</title>
+    <meta name="description" content="  1、简介说明这里仅作为大纲展示1、简介前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。相关链接：Cydia Substrate http://www.cydiasubstrate...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2016/11/01/6_IOS_Tools/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>IOS逆向开发系列6_IOS工具集</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2016-11-01
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3code
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#%E9%80%86%E5%90%91_IOS%E5%B7%A5%E5%85%B7%E9%9B%86" title="Tag: 逆向_IOS工具集" rel="tag">逆向_IOS工具集</a-->
+        <a href="/tag/#逆向_IOS工具集" title="Tag: 逆向_IOS工具集" rel="tag">逆向_IOS工具集</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
+  <li><a href="#cydiasubstrate" id="markdown-toc-cydiasubstrate">2、CydiaSubstrate</a>    <ul>
+      <li><a href="#mobilehooker" id="markdown-toc-mobilehooker">2.1 MobileHooker</a></li>
+      <li><a href="#mobileloader" id="markdown-toc-mobileloader">2.2 MobileLoader</a></li>
+      <li><a href="#safe-mode" id="markdown-toc-safe-mode">2.3 Safe mode</a></li>
+    </ul>
+  </li>
+  <li><a href="#cycript" id="markdown-toc-cycript">3、Cycript</a></li>
+  <li><a href="#lldbdebugserver" id="markdown-toc-lldbdebugserver">4、LLDB与debugserver</a>    <ul>
+      <li><a href="#lldb" id="markdown-toc-lldb">1.1 LLDB</a></li>
+      <li><a href="#debugserver" id="markdown-toc-debugserver">1.2 debugserver</a></li>
+      <li><a href="#lldb-1" id="markdown-toc-lldb-1">1.3 LLDB的使用</a></li>
+      <li><a href="#lldb-2" id="markdown-toc-lldb-2">1.4 LLDB使用小提示</a></li>
+    </ul>
+  </li>
+  <li><a href="#dumpdecrypted" id="markdown-toc-dumpdecrypted">5、dumpdecrypted</a></li>
+  <li><a href="#openssh" id="markdown-toc-openssh">6、 OpenSSH</a></li>
+  <li><a href="#usbmuxd" id="markdown-toc-usbmuxd">7、usbmuxd</a></li>
+  <li><a href="#ifile" id="markdown-toc-ifile">8、iFile</a></li>
+  <li><a href="#mterminal" id="markdown-toc-mterminal">9、MTerminal</a></li>
+  <li><a href="#syslogd-tovarlogsyslog" id="markdown-toc-syslogd-tovarlogsyslog">10、syslogd to/var/log/syslog</a></li>
+</ul>
+
+<p><strong>说明这里仅作为大纲展示</strong></p>
+
+<h2 id="section">1、简介</h2>
+
+<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
+
+<p>相关链接：
+Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
+
+<h2 id="cydiasubstrate">2、CydiaSubstrate</h2>
+
+<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
+
+<h5 id="mobilehooker">2.1 MobileHooker</h5>
+
+<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
+	void MSHookFunction(void* function, void* replacement, void** p_original);
+</code></pre>
+</div>
+
+<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
+
+<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
+
+<p><strong>MSHookFunction</strong> 
+MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
+它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
+
+<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
+
+<p><strong>symbol</strong>
+在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
+
+<p>可参阅资料：
+<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
+
+<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
+
+<h5 id="mobileloader">2.2 MobileLoader</h5>
+
+<p>MobileLoader的作用是加载第三方dylib。在iOS启动时，会由launchd将MobileLoader载入内存，然后MobileLoader会根据dylib的同名plist文件指定的作用范围，有选择地在不同进程里通过dlopen函数打开目录/Library/MobileSubstrate/DynamicLibraries/下的所有dylib。这个plist文件的格式已在Theos部分详细讲解，此处不再赘述。对于大多数初级iOS逆向工程师来说，MobileLoader的工作过程是完全透明的，此处仅作简单了解即可。</p>
+
+<h5 id="safe-mode">2.3 Safe mode</h5>
+
+<p>应用的质量良莠不齐，程序崩溃在所难免。因为tweak的本质是dylib，寄生在别的进程里，一旦出错，可能会导致整个进程崩溃，而一旦崩溃的是SpringBoard等系统进程，则会造成iOS瘫痪，所以CydiaSubstrate引入了Safe mode，它会捕获SIGTRAP、SIGABRT、SIGILL、SIGBUS、SIGSEGV、SIGSYS这6种信号，然后进入安全模式。</p>
+
+<p>在安全模式里，所有基于CydiaSubstrate的第三方dylib均会被禁用，便于查错与修复。但是，并不是拥有了Safe mode就能高枕无忧，在很多时候，设备还是会因为第三方dylib的原因而无法进入系统，症状主要有：开机时卡在白苹果上，或者进度圈不停地转。在出现这种情况时，可以同时按住home和lock键硬重启，然后按住音量“+”键来完全禁用CydiaSubstrate，待系统重启完毕后，再来查错与修复。当问题被成功修复后，再重启一次iOS，就能重新启用CydiaSubstrate了，非常方便。</p>
+
+<h2 id="cycript">3、Cycript</h2>
+
+<p>Cycript是由saurik推出的一款脚本语言，可以看作是Objective-JavaScript。</p>
+
+<p>Cycript具备脚本语言的便利，可以直接用来写App，而且在Cycript中可以测试函数，明显节省时间。这是一门语法简单而功能强大的语言。</p>
+
+<p>更多详细资料可参阅它的官网<a href="http://www.cycript.org">http://www.cycript.org</a>。</p>
+
+<h2 id="lldbdebugserver">4、LLDB与debugserver</h2>
+
+<h5 id="lldb">1.1 LLDB</h5>
+
+<p>如果说IDA是倚天剑，那么LLDB就是屠龙刀，两者在iOS逆向工程中的地位不相上下，难分伯仲。LLDB全称为“Low Level Debugger”，是由苹果出品，内置于Xcode中的动态调试工具，不但通吃C、C++、Objective-C，还全盘支持OSX、iOS，以及iOS模拟器。LLDB的功能可以概括为以下四点：</p>
+
+<ul>
+  <li>在指定的条件下启动程序；</li>
+  <li>在指定的条件下停止程序；</li>
+  <li>在程序停止的时候检查程序内部发生的事；</li>
+  <li>在程序停止的时候对程序进行改动，观察程序的执行过程有什么变化。</li>
+</ul>
+
+<p>LLDB没有图形界面，使用时看着Terminal中黑压压的一片文字，初学者很容易被吓跑，但是一旦掌握其基本用法，配合IDA双管齐下，就能解决很多难倒大片初学者的问题，投资回报极高。LLDB是运行在OSX中的，要想调试iOS，还需要另一个工具的配合，它就是debugserver。</p>
+
+<h5 id="debugserver">1.2 debugserver</h5>
+
+<p>debugserver运行在iOS上，顾名思义，它作为服务端，实际执行LLDB（作为客户端）传过来的命令，再把执行结果反馈给LLDB，显示给用户，即所谓的“远程调试”。在默认情况下，iOS上并没有安装debugserver。需要配置debugserver+LLDB，动态调试别人的App，发挥它们在逆向工程中的真正威力。</p>
+
+<h5 id="lldb-1">1.3 LLDB的使用</h5>
+
+<p>常用的LLDB命令：</p>
+
+<p>1.image list</p>
+
+<p>“image list”与GDB中的“info shared”类似，用于列举当前进程中的所有模块（image）。因为ASLR（Address Space Layout Randomization，详见http://theiphonewiki.com/wiki/ASLR）的关系，每次进程启动时，同一进程的所有模块在虚拟内存中的起始地址都会产生随机偏移。所以要使用“image list-o-f”命令操作。</p>
+
+<p>2.breakpoint</p>
+
+<p>“breakpoint”与GDB中的“break”类似，用于设置断点。</p>
+
+<p>因为逆向工程中的调试涉及的多是汇编代码，所以大多数情况下都是在某一条汇编指令上下断点，在函数上下断点的情况很少。</p>
+
+<p>3.print</p>
+
+<p>LLDB的主要功能之一是“在程序停止的时候检查程序内部发生的事”，而这个功能正是通过“print”命令完成的，它可以打印某处的值。</p>
+
+<p>4.nexti与stepi</p>
+
+<p>“nexti”与“stepi”的作用都是执行下一条机器指令，它们最大的区别是前者不进入函数体，而后者会进入函数体。它们可分别简写为“ni”与“si”，是调试时使用最多的指令之一。</p>
+
+<p>5.register write</p>
+
+<p>“register write”命令用于给指定的寄存器赋值，从而“对程序进行改动，观察程序的执行过程有什么变化”。</p>
+
+<p>LLDB脱胎于GDB，虽然两者的命令有差别，但用法和思路是一脉相承的。要想完整地熟悉LLDB的使用，推荐阅读“Peter’s GDB tutorial”和“RMS’s gdb Debugger Tutorial”（Google一下）。IDA宜静，LLDB宜动，熟练地使用这两个工具是成为逆向高手的必经之路。</p>
+
+<h5 id="lldb-2">1.4 LLDB使用小提示</h5>
+
+<p>1.调试的二进制文件必须从iOS中提取</p>
+
+<p>IDA分析的二进制文件必须与LLDB调试的二进制文件相同，这样偏移前基地址、ASLR偏移、偏移后基地址才能对应得上。IDA分析的二进制文件可以通过dyld_decache工具从本机获取；从其他渠道（如SDK、模拟器等）提取的文件一般不能用作动态调试。</p>
+
+<p>2.LLDB中的简化输入</p>
+
+<p>在使用LLDB时，如果想重复执行上一条指令，直接按回车键就可以了；如果想查看以前执行过的指令，按方向键的向上和向下键就可以了。
+LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题，却不简单。</p>
+
+<h2 id="dumpdecrypted">5、dumpdecrypted</h2>
+
+<p>前面在介绍class-dump时提到过，从AppStore下载的App（以下简称StoreApp）是被苹果加密过的（从其他渠道下载的一般没有加密），可执行文件被套上了一层保护壳，而class-dump无法作用于加密过的App。在这种情况下，想要获取头文件，需要先解密App的可执行文件，俗称“砸壳”。dumpdecrypted就是由越狱社区的知名人士Stefan Esser（@i0n1c）出品的一款砸壳工具，被越狱社区广泛运用在iOS逆向工程研究中。</p>
+
+<h2 id="openssh">6、 OpenSSH</h2>
+
+<p>OpenSSH会在iOS上安装SSH服务 ，以给外界提供一个通过ssh接入iOS的途径。</p>
+
+<p>这里用得最多的一般只有2个命令：ssh和scp，前者用于远程登录，后者用于远程拷贝文件。
+两种命令的用法都比较简单直观。在安装OpenSSH后需要注意修改默认登录密码”alpine”。iOS上的用户有2个，分别是root和mobile。主义需要修改密码。如果没有修改默认密码，Ikee等病毒就有可能通过ssh以root用户身份登录iOS，拿到最高权限。这个后果是非常严重的：iOS中的所有数据，包括短信、电话本、AppleID的账号密码等敏感信息泄露的风险将大大增加，你的设备可能会被入侵者玩弄于股掌之间，为所欲为。因此，在安装OpenSSH之后一定要记得修改默认密码！</p>
+
+<h2 id="usbmuxd">7、usbmuxd</h2>
+
+<p>很多朋友是通过WiFi连接使用SSH服务的，因为无线网络的不稳定性及传输速度的限制，在复制文件或用LLDB远程调试时，iOS的响应很慢，效率不高。iOS越狱社区的知名人士Nikias Bassen（@pimskeks）开发了一款可以把本地OSX/Windows端口转发到远程iOS端口的工具usbmuxd，使我们能够通过USB连接线ssh到iOS中，大大增加了ssh连接的速度，也方便了那些没有WiFi的朋友。</p>
+
+<h2 id="ifile">8、iFile</h2>
+
+<p>iFile是iOS上一款非常强大的文件管理App，可以看作是iOS版的Finder。它能进行各种文件操作，从最简单的浏览，到编辑、剪贴、复制，还可以安装deb文件，十分方便。</p>
+
+<h2 id="mterminal">9、MTerminal</h2>
+
+<p>MTerminal是开源的iOS版Terminal，基本功能一应俱全。其用法与Terminal区别不大，只是屏幕和键盘小了点。笔者认为MTerminal最实用的场景是在没有电脑的环境下利用碎片时间，结合Cycript进行代码测试。</p>
+
+<h2 id="syslogd-tovarlogsyslog">10、syslogd to/var/log/syslog</h2>
+
+<p>syslogd是iOS中记录系统日志的守护进程，“syslogd to/var/log/syslog”的作用是把日志给写入“/var/log/syslog”文件中</p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2016/11/01/5_IDA-iFunBox-other/">IOS逆向开发系列5_IDA/iFunBox/other</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2016/11/01/7_IOS_Reverse_Theory/">IOS逆向开发系列7_IOS理论基础</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/6_IOS_Tools/" data-title="IOS逆向开发系列6_IOS工具集" data-url="http://localhost:4000/2016/11/01/6_IOS_Tools/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3code.info 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+<!--            <span>-->
+<!--                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.-->
+<!--            </span>-->
+
+<!--            <span>-->
+<!--                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.-->
+<!--            </span>-->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

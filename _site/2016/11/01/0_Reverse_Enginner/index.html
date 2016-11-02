@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>OS X 部署环境变量</title>
-    <meta name="description" content="  1、设置环境变量          1.1 查看本机使用的Shell      1.2 Mac可配置环境变量的位置      1.3 设置PATH的语法：        2、实战 配置sublime的环境变量1、设置环境变量1.1 查看本机使用的Shell$ echo $SHELL输出的是：csh或者是tcs...">
+    <title>IOS逆向开发系列_综述</title>
+    <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/10/28/deployEnvironmentVariable/">
+    <link rel="canonical" href="http://localhost:4000/2016/11/01/0_Reverse_Enginner/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -134,11 +134,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>OS X 部署环境变量</h1>
+        <h1>IOS逆向开发系列_综述</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-10-28
+                <i class="fa fa-calendar"></i>2016-11-01
             </div>
 
             <div class="label-card">
@@ -159,7 +159,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
     
   
 
@@ -176,11 +176,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a-->
-        <a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a>&nbsp;
-    
-        <!--a href="/tag/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" title="Tag: 环境变量" rel="tag">环境变量</a-->
-        <a href="/tag/#环境变量" title="Tag: 环境变量" rel="tag">环境变量</a>
+        <!--a href="/tag/#IOS%E9%80%86%E5%90%91%E5%BC%80%E5%8F%91" title="Tag: IOS逆向开发" rel="tag">IOS逆向开发</a-->
+        <a href="/tag/#IOS逆向开发" title="Tag: IOS逆向开发" rel="tag">IOS逆向开发</a>
     
   
 
@@ -192,85 +189,68 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、设置环境变量</a>    <ul>
-      <li><a href="#shell" id="markdown-toc-shell">1.1 查看本机使用的Shell</a></li>
-      <li><a href="#mac" id="markdown-toc-mac">1.2 Mac可配置环境变量的位置</a></li>
-      <li><a href="#path" id="markdown-toc-path">1.3 设置PATH的语法：</a></li>
+  <li><a href="#section" id="markdown-toc-section">1、概述</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1.1、逆向分为 系统分析+代码分析：</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.2、分析工具：</a></li>
     </ul>
   </li>
-  <li><a href="#sublime" id="markdown-toc-sublime">2、实战 配置sublime的环境变量</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">术语</a></li>
 </ul>
 
-<h2 id="section">1、设置环境变量</h2>
+<h2 id="section">1、概述</h2>
 
-<h5 id="shell">1.1 查看本机使用的Shell</h5>
+<h5 id="section-1">1.1、逆向分为 系统分析+代码分析：</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ echo $SHELL
-输出的是：csh或者是tcsh，就是C Shell。
-输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
-</code></pre>
-</div>
-<p>如果是Bourne Shell。
-那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
+<p>1.1.1 系统分析：</p>
 
-<h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
+<p>要从整体上观察目标程序的行为特征、文件的组织架构、设计思路，从而为我们做代码分析做准备。</p>
 
-<p>Mac系统的环境变量，加载顺序为：</p>
+<p>1.1.2 二进制代码分析：</p>
+
+<p>进入代码分析阶段，则要把软件的核心代码还原出来，最终达到我们的目的。</p>
+
+<p>1.1.3</p>
+
+<p>通过逆向工程，可以推导出某个App的设计思路、内部算法和实现细节，但这是一个非常复杂的过程，可以说是一种解构再重组的艺术。想让自己的逆向工程水平达到艺术的高度，需要对软件开发、硬件原理和iOS系统有透彻的理解。</p>
+
+<h5 id="section-2">1.2、分析工具：</h5>
+
+<p>相对于正向开发，逆向工程使用的工具并不那么“智能”，很多工作需要我们手工完成。只有对工具的熟练使用，才能够极大地提高逆向工程的效率。iOS逆向工程的工具可以分为四大类：监测工具、反汇编工具（disassembler）、调试工具（debugger）,以及开发工具 。</p>
+
+<p>1.2.1 监测工具</p>
+
+<p>在iOS逆向工程中，起到嗅探、监测、记录目标程序行为的工具统称为监测工具。这些工具通常可以记录并显示目标程序的某些操作，如UI变化、网络活动、文件访问等。iOS逆向常用的监测工具有Reveal(UI变化)、snoop-it、introspy等。</p>
+
+<p>1.2.2 反汇编工具</p>
+
+<p>从UI层面切入代码层面后，就要用到反汇编工具来梳理代码了。反汇编工具把二进制文件作为输入，经过处理后输出这个文件的汇编代码；在iOS逆向工程中，常用的反汇编工具主要是IDA和Hopper。
+作为老牌反汇编工具，IDA是逆向工程中最常用的利器之一。它支持Windows、Linux、OSX平台和多种处理器架构。Hopper是一款近年面世的反汇编工具，它主要针对的是苹果系操作系统。下文主要使用IDA</p>
+
+<p>1.2.3 调试工具</p>
+
+<p>iOS开发者对调试工具应该不陌生，在App开发中，少不了在Xcode中调试代码。我们可以在某一行代码上设置断点，使进程能够停止在那一行代码上，并实时显示进程当前的状态。在iOS逆向工程中，用到的调试工具主要是LLDB。</p>
+
+<p>1.2.4 开发工具</p>
+
+<p>从UI层面切入代码层面，用反汇编工具和调试工具分析过二进制文件后，就可以整理分析结果，用开发工具写程序了。对于App开发者来说，Xcode是最常用的开发工具。但是我们一旦将战场从AppStore转移到越狱iOS，开发工具的种类就得到了扩充，不但有基于Xcode的iOSOpenDev，还有偏命令行的Theos。从个人体验来说，Theos是让笔者最为兴奋的开发工具，在知道Theos之前，笔者感觉自己一直都被限制在AppStore中，直到掌握了Theos的用法，才突破了AppStore，完整地认识了整个iOS系统。这里主要以Theos作为开发工具 。</p>
+
+<p>之后系列文章将按照如下的几大块来进行：</p>
+
+<p>OSX 工具集：dump、Theos、Reveal、IDA、iFunBox、dyld_decache</p>
+
+<p>IOS 工具集：CydiaSubstrate、Cycript、LLDB与debugserver、dumpdecrypted、OpenSSH、usbmuxd、iFile、MTerminal、syslogd to/var/log/syslog</p>
+
+<p>理论篇：OC理论基础、ARM汇编相关的理论基础、</p>
+
+<p>实战篇：</p>
+
+<h2 id="section-3">术语</h2>
 
 <ul>
-  <li>1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】</li>
-  <li>2、/etc/paths 可以全局修改配置，系统级别启动加载。添加path一行一个路径</li>
+  <li>Cydia</li>
 </ul>
 
-<p>以上不管是哪个用户，登录时都会读取该文件。下面几个是当前用户级的环境变量，按照从前往后的顺序读取。如果~/.bash_profile文件存在，则后面的几个文件就会被忽略不读了，如果~/.bash_profile文件不存在，才会以此类推读取后面的文件</p>
-
-<ul>
-  <li>3、~/.bash_profile  一般在这个文件中添加用户级环境变量。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!</li>
-  <li>4、~/.bash_login</li>
-  <li>5、~/.profile</li>
-</ul>
-
-<p>其他：</p>
-
-<ul>
-  <li>~/.bashrc没有上述规则，它是bash shell打开的时候载入的。</li>
-  <li>/etc/bashrc 一般在这个文件中添加系统级环境变量，全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</li>
-</ul>
-
-<h5 id="path">1.3 设置PATH的语法：</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;
-</code></pre>
-</div>
-
-<h2 id="sublime">2、实战 配置sublime的环境变量</h2>
-
-<p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
-</code></pre>
-</div>
-
-<p>然后我们在/usr/local/bin 里面做一个软连接：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
-</code></pre>
-</div>
-
-<p>最后加入环境变量：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
-添加如下代码：
-export PATH=/usr/local/bin:$PATH
-</code></pre>
-</div>
-
-<p>想立即生效请运行：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ source ~/.bash_profile
-</code></pre>
-</div>
-<p>OK，可以通过终端操控subl了！</p>
+<p>是一个让用户在越狱的iOS设备上查找和安装各类软件包，包括软件、系统修改、主题和铃声等的软件管理器。</p>
 
 
         </article>
@@ -283,35 +263,10 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
-                    
-                
             
         
             
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -322,29 +277,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
-                    
-                
-            
-        
-            
             
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                 
                     
                 
@@ -355,6 +292,15 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
+                    
+                
+            
+                
                     
                 
             
@@ -364,6 +310,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
                     
                 
             
@@ -373,6 +324,11 @@ export PATH=/usr/local/bin:$PATH
                 
                     
                 
+            
+        
+            
+            
+                
                     
                 
             
@@ -381,6 +337,8 @@ export PATH=/usr/local/bin:$PATH
             
                 
                     
+                
+            
                 
                     
                 
@@ -391,13 +349,13 @@ export PATH=/usr/local/bin:$PATH
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/10/20/createMyGithubBlog/">静态页面博客:jekyll+GitHubPages</a></p>
+        <p><strong>上一篇</strong> <a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/10/29/useSublime/">Sublime Text基础教程</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></p>
         
     </div>
 </div>
@@ -406,7 +364,7 @@ export PATH=/usr/local/bin:$PATH
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/28/deployEnvironmentVariable/" data-title="OS X 部署环境变量" data-url="http://localhost:4000/2016/10/28/deployEnvironmentVariable/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/0_Reverse_Enginner/" data-title="IOS逆向开发系列_综述" data-url="http://localhost:4000/2016/11/01/0_Reverse_Enginner/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
