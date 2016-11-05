@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 30 Oct 2016 20:04:34 +0800</pubDate>
-    <lastBuildDate>Sun, 30 Oct 2016 20:04:34 +0800</lastBuildDate>
+    <pubDate>Sat, 05 Nov 2016 17:25:22 +0800</pubDate>
+    <lastBuildDate>Sat, 05 Nov 2016 17:25:22 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -424,8 +424,16 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
       </item>
     
       <item>
-        <title>OS X 部署环境变量</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+        <title>Deployenvironmentvariable</title>
+        <description>&lt;p&gt;I—
+layout: post
+title:  “OS X 部署环境变量”
+categories: OS_X
+tags:  sublime 环境变量
+author: 3code
+—&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、设置环境变量&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#shell&quot; id=&quot;markdown-toc-shell&quot;&gt;1.1 查看本机使用的Shell&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#mac&quot; id=&quot;markdown-toc-mac&quot;&gt;1.2 Mac可配置环境变量的位置&lt;/a&gt;&lt;/li&gt;
@@ -511,12 +519,6 @@ export PATH=/usr/local/bin:$PATH
         <link>http://localhost:4000/2016/10/28/deployEnvironmentVariable/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/10/28/deployEnvironmentVariable/</guid>
         
-        <category>sublime</category>
-        
-        <category>环境变量</category>
-        
-        
-        <category>OS_X</category>
         
       </item>
     
@@ -626,7 +628,7 @@ export PATH=/usr/local/bin:$PATH
 
 &lt;h4 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h4&gt;
 
-&lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 Homebrew&lt;a href=&quot;http://brew.sh/&quot;&gt;&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
+&lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 &lt;a href=&quot;http://brew.sh/&quot;&gt;Homebrew&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -731,7 +733,7 @@ $ jekyll server
 
 &lt;h6 id=&quot;macdown-&quot;&gt;MacDown 特色&lt;/h6&gt;
 
-&lt;p&gt;代码高亮；MacDown 支持 &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;Task list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;代码高亮；MacDown 支持Task list&lt;/p&gt;
 
 &lt;h4 id=&quot;github-1&quot;&gt;3.7 上传GitHub&lt;/h4&gt;
 

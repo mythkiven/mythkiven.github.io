@@ -66,7 +66,7 @@ githubPages 是基于github开源库的，所有博客的内容源码都是可�
 
 #### 3.1 安装Ruby：
 
-详细的安装文档，可以查看 Ruby 官方的[安装](http://www.ruby-lang.org/en/downloads/)介绍。Mac 下使用 Homebrew[](http://brew.sh/) 来安装，挺方便的。
+详细的安装文档，可以查看 Ruby 官方的[安装](http://www.ruby-lang.org/en/downloads/)介绍。Mac 下使用 [Homebrew](http://brew.sh/) 来安装，挺方便的。
 
 * ```
 $ brew install ruby
@@ -156,7 +156,7 @@ $ jekyll server
 
 ###### MacDown 特色
 
-代码高亮；MacDown 支持 <a href="" target="_blank">Task list</a>
+代码高亮；MacDown 支持Task list
 
 #### 3.7 上传GitHub
 
