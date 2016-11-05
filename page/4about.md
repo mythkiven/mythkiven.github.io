@@ -29,6 +29,6 @@ def missing_you():
 
 \| [MythKiven](http://blog.csdn.net/jiang314/) \| 
 
-### Comments
+### 评论
 
 {% include comments.html %}

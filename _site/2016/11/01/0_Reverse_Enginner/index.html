@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sublime Text基础教程</title>
-    <meta name="description" content="  说明  1、简介说明本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。1、简介Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinne...">
+    <title>IOS逆向开发系列_综述</title>
+    <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/10/29/useSublime/">
+    <link rel="canonical" href="http://localhost:4000/2016/11/01/0_Reverse_Enginner/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -130,15 +130,15 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Sublime Text基础教程</h1>
+        <h1>IOS逆向开发系列_综述</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-10-29
+                <i class="fa fa-calendar"></i>2016-11-01
             </div>
 
             <div class="label-card">
-                <i class="fa fa-user"></i>3Code
+                <i class="fa fa-user"></i>3code
                 
             </div>
 
@@ -155,7 +155,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
     
   
 
@@ -172,8 +172,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a-->
-        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+        <!--a href="/tag/#IOS%E9%80%86%E5%90%91%E5%BC%80%E5%8F%91" title="Tag: IOS逆向开发" rel="tag">IOS逆向开发</a-->
+        <a href="/tag/#IOS逆向开发" title="Tag: IOS逆向开发" rel="tag">IOS逆向开发</a>
     
   
 
@@ -185,75 +185,69 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">说明</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">1、简介</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">2、安装</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">2.1 命令模式</a></li>
-      <li><a href="#goto-anything-cmdp" id="markdown-toc-goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</a></li>
-      <li><a href="#packagecontrol" id="markdown-toc-packagecontrol">2.3 安装PackageControl组件</a></li>
+  <li><a href="#section" id="markdown-toc-section">1、概述</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1.1、逆向分为 系统分析+代码分析：</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.2、分析工具：</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">进阶</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">术语</a></li>
 </ul>
 
-<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+<h2 id="section">1、概述</h2>
 
-<h2 id="section">说明</h2>
-<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
+<h5 id="section-1">1.1、逆向分为 系统分析+代码分析：</h5>
 
-<h2 id="section-1">1、简介</h2>
+<p>1.1.1 系统分析：</p>
 
-<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
-Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+<p>要从整体上观察目标程序的行为特征、文件的组织架构、设计思路，从而为我们做代码分析做准备。</p>
 
-<h2 id="section-2">2、安装</h2>
+<p>1.1.2 二进制代码分析：</p>
 
-<p>Sublime 的安装比较简单，直接去官网<a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a>，点击Download菜单，进入之后选择自己操作系统的进行下载安装安装即可。</p>
+<p>进入代码分析阶段，则要把软件的核心代码还原出来，最终达到我们的目的。</p>
 
-<h5 id="section-3">2.1 命令模式</h5>
+<p>1.1.3</p>
 
-<p>习惯了Unix系列操作系统的人往往会觉得过于可视化操作会显得很low。当然Sublime Text 提供的也有命令模式操作，但Sublime Text的命令模式要比VIM的好用的多。</p>
+<p>通过逆向工程，可以推导出某个App的设计思路、内部算法和实现细节，但这是一个非常复杂的过程，可以说是一种解构再重组的艺术。想让自己的逆向工程水平达到艺术的高度，需要对软件开发、硬件原理和iOS系统有透彻的理解。</p>
 
-<p>cmd+shift+p来打开命令模式：
-在弹出的输入框里输入我们需要的命令，比如，我想拷贝当前文件的路径，输入copy之后，选择File:copy path选项之后，当前文件的路径就已经复制到了系统的剪切板上。</p>
+<h5 id="section-2">1.2、分析工具：</h5>
 
-<p>Sublime Text的命令模式支持模糊匹配，输入cp回车后可以直接实现上面的拷贝当前文件的路径功能（因为cp模糊匹配了File:copy path）。</p>
+<p>相对于正向开发，逆向工程使用的工具并不那么“智能”，很多工作需要我们手工完成。只有对工具的熟练使用，才能够极大地提高逆向工程的效率。iOS逆向工程的工具可以分为四大类：监测工具、反汇编工具（disassembler）、调试工具（debugger）,以及开发工具 。</p>
 
-<h5 id="goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</h5>
+<p>1.2.1 监测工具</p>
 
-<p>1、查找文件：如果项目文件目录很多层，文件查找是一个很头疼的问题，不过Sublime Text里有一个叫做Goto AnyThing的功能，通过快捷键cmd+p打开Goto AnyThing窗口，在输入框中输入我们想要打开的文件模糊名称即可，Sublime Text会为我们查找出符合的文件。</p>
+<p>在iOS逆向工程中，起到嗅探、监测、记录目标程序行为的工具统称为监测工具。这些工具通常可以记录并显示目标程序的某些操作，如UI变化、网络活动、文件访问等。iOS逆向常用的监测工具有Reveal(UI变化)、snoop-it、introspy等。</p>
 
-<p>2、快速查看文件内部结构：cmd+p打开Goto AnyThing窗口后，输入@字符，就会出现当前文件的结构，如js文件会列出所有方法，md文件会列出大纲。</p>
+<p>1.2.2 反汇编工具</p>
 
-<h5 id="packagecontrol">2.3 安装PackageControl组件</h5>
+<p>从UI层面切入代码层面后，就要用到反汇编工具来梳理代码了。反汇编工具把二进制文件作为输入，经过处理后输出这个文件的汇编代码；在iOS逆向工程中，常用的反汇编工具主要是IDA和Hopper。
+作为老牌反汇编工具，IDA是逆向工程中最常用的利器之一。它支持Windows、Linux、OSX平台和多种处理器架构。Hopper是一款近年面世的反汇编工具，它主要针对的是苹果系操作系统。下文主要使用IDA</p>
 
-<p>在sublime里面使用快捷键：ctrl+~ 调出控制台，Sublime Text2粘贴如下代码：</p>
+<p>1.2.3 调试工具</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import urllib2,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
-</code></pre>
-</div>
+<p>iOS开发者对调试工具应该不陌生，在App开发中，少不了在Xcode中调试代码。我们可以在某一行代码上设置断点，使进程能够停止在那一行代码上，并实时显示进程当前的状态。在iOS逆向工程中，用到的调试工具主要是LLDB。</p>
 
-<p>Sublime Text3可以粘贴如下代码：</p>
+<p>1.2.4 开发工具</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
-</code></pre>
-</div>
-<p>保险起见最好去官网复制代码。<a href="https://packagecontrol.io/installation#st3">传送门</a>
-粘贴回车就会自动安装。成功安装后，会有如下效果:</p>
+<p>从UI层面切入代码层面，用反汇编工具和调试工具分析过二进制文件后，就可以整理分析结果，用开发工具写程序了。对于App开发者来说，Xcode是最常用的开发工具。但是我们一旦将战场从AppStore转移到越狱iOS，开发工具的种类就得到了扩充，不但有基于Xcode的iOSOpenDev，还有偏命令行的Theos。从个人体验来说，Theos是让笔者最为兴奋的开发工具，在知道Theos之前，笔者感觉自己一直都被限制在AppStore中，直到掌握了Theos的用法，才突破了AppStore，完整地认识了整个iOS系统。这里主要以Theos作为开发工具 。</p>
 
-<p><img src="https://ooo.0o0.ooo/2016/10/29/58147bf453227.jpg" alt="" /></p>
+<p>之后系列文章将按照如下的几大块来进行：</p>
 
-<p>使用 cmd + Shift + P 调出面板，然后输入 pci ，选中“Package Control: Install Package”并回车，然后通过输入插件的名字找到插件并回车安装即可。</p>
+<p>OSX 工具集：dump、Theos、Reveal、IDA、iFunBox、dyld_decache</p>
 
-<p><strong>注意的是，需要本地装有python环境.</strong></p>
+<p>IOS 工具集：CydiaSubstrate、Cycript、LLDB与debugserver、dumpdecrypted、OpenSSH、usbmuxd、iFile、MTerminal、syslogd to/var/log/syslog</p>
 
-<p>有了package control，就可以安装想要的插件了!sublime下面有很多插件，一般编辑器有的，sublime都会以插件的形式出现。之后的操作就类似了，安装某插件xxx:</p>
+<p>理论篇：OC理论基础、ARM汇编相关的理论基础、</p>
 
-<p>cmd+Shift+P调出面板 -&gt; 输pci回车 -&gt; 然后搜索自己需要的插件安装即可.</p>
+<p>实战篇：</p>
 
-<h2 id="section-4">进阶</h2>
+<h2 id="section-3">术语</h2>
 
-<p><a href="http://3code.info/2016/10/30/SublimeUpgrade/">传送门</a></p>
+<ul>
+  <li>Cydia</li>
+</ul>
+
+<p>是一个让用户在越狱的iOS设备上查找和安装各类软件包，包括软件、系统修改、主题和铃声等的软件管理器。</p>
+
 
         </article>
         <hr>
@@ -332,18 +326,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
             
                 
                     
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
                 
             
         
@@ -351,19 +333,17 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
             
         
         
-            </ul>
-        
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/10/28/deployEnvironmentVariable/">Deployenvironmentvariable</a></p>
+        <p><strong>上一篇</strong> <a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></p>
         
     </div>
 </div>
@@ -372,7 +352,7 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/29/useSublime/" data-title="Sublime Text基础教程" data-url="http://localhost:4000/2016/10/29/useSublime/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/0_Reverse_Enginner/" data-title="IOS逆向开发系列_综述" data-url="http://localhost:4000/2016/11/01/0_Reverse_Enginner/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

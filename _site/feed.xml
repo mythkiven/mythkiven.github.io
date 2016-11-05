@@ -5,9 +5,1644 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Nov 2016 17:25:22 +0800</pubDate>
-    <lastBuildDate>Sat, 05 Nov 2016 17:25:22 +0800</lastBuildDate>
+    <pubDate>Sat, 05 Nov 2016 17:28:43 +0800</pubDate>
+    <lastBuildDate>Sat, 05 Nov 2016 17:28:43 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>IOS逆向开发系列7_IOS理论基础</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#tweakobjective-c&quot; id=&quot;markdown-toc-tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;Objective-C相关的iOS逆向理论基础&lt;/p&gt;
+
+&lt;p&gt;Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”&lt;/p&gt;
+
+&lt;h5 id=&quot;tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/h5&gt;
+
+&lt;p&gt;在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。&lt;/p&gt;
+
+&lt;p&gt;正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”&lt;/p&gt;
+
+&lt;p&gt;“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。&lt;/p&gt;
+
+&lt;p&gt;待续…&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/7_IOS_Reverse_Theory/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/7_IOS_Reverse_Theory/</guid>
+        
+        <category>IOS逆向开发理论基础</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列6_IOS工具集</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cydiasubstrate&quot; id=&quot;markdown-toc-cydiasubstrate&quot;&gt;2、CydiaSubstrate&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#mobilehooker&quot; id=&quot;markdown-toc-mobilehooker&quot;&gt;2.1 MobileHooker&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mobileloader&quot; id=&quot;markdown-toc-mobileloader&quot;&gt;2.2 MobileLoader&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#safe-mode&quot; id=&quot;markdown-toc-safe-mode&quot;&gt;2.3 Safe mode&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cycript&quot; id=&quot;markdown-toc-cycript&quot;&gt;3、Cycript&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lldbdebugserver&quot; id=&quot;markdown-toc-lldbdebugserver&quot;&gt;4、LLDB与debugserver&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#lldb&quot; id=&quot;markdown-toc-lldb&quot;&gt;1.1 LLDB&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#debugserver&quot; id=&quot;markdown-toc-debugserver&quot;&gt;1.2 debugserver&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lldb-1&quot; id=&quot;markdown-toc-lldb-1&quot;&gt;1.3 LLDB的使用&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lldb-2&quot; id=&quot;markdown-toc-lldb-2&quot;&gt;1.4 LLDB使用小提示&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dumpdecrypted&quot; id=&quot;markdown-toc-dumpdecrypted&quot;&gt;5、dumpdecrypted&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#openssh&quot; id=&quot;markdown-toc-openssh&quot;&gt;6、 OpenSSH&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#usbmuxd&quot; id=&quot;markdown-toc-usbmuxd&quot;&gt;7、usbmuxd&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ifile&quot; id=&quot;markdown-toc-ifile&quot;&gt;8、iFile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mterminal&quot; id=&quot;markdown-toc-mterminal&quot;&gt;9、MTerminal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#syslogd-tovarlogsyslog&quot; id=&quot;markdown-toc-syslogd-tovarlogsyslog&quot;&gt;10、syslogd to/var/log/syslog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;说明这里仅作为大纲展示&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。&lt;/p&gt;
+
+&lt;p&gt;相关链接：
+Cydia Substrate &lt;a href=&quot;http://www.cydiasubstrate.com/&quot;&gt;http://www.cydiasubstrate.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;cydiasubstrate&quot;&gt;2、CydiaSubstrate&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;mobilehooker&quot;&gt;2.1 MobileHooker&lt;/h5&gt;
+
+&lt;p&gt;MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
+	void MSHookFunction(void* function, void* replacement, void** p_original);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;MSHookMessageEx&lt;/strong&gt; 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。&lt;/p&gt;
+
+&lt;p&gt;之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：&lt;a href=&quot;http://www.cydiasubstrate.com/&quot;&gt;http://www.cydiasubstrate.com/&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MSHookFunction&lt;/strong&gt; 
+MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
+它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。&lt;/p&gt;
+
+&lt;p&gt;释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;symbol&lt;/strong&gt;
+在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。&lt;/p&gt;
+
+&lt;p&gt;可参阅资料：
+&lt;a href=&quot;http://www.cydiasubstrate.com/api/c/MSFindSymbol/&quot;&gt;http://www.cydiasubstrate.com/api/c/MSFindSymbol/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx&quot;&gt;http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types&quot;&gt;http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;mobileloader&quot;&gt;2.2 MobileLoader&lt;/h5&gt;
+
+&lt;p&gt;MobileLoader的作用是加载第三方dylib。在iOS启动时，会由launchd将MobileLoader载入内存，然后MobileLoader会根据dylib的同名plist文件指定的作用范围，有选择地在不同进程里通过dlopen函数打开目录/Library/MobileSubstrate/DynamicLibraries/下的所有dylib。这个plist文件的格式已在Theos部分详细讲解，此处不再赘述。对于大多数初级iOS逆向工程师来说，MobileLoader的工作过程是完全透明的，此处仅作简单了解即可。&lt;/p&gt;
+
+&lt;h5 id=&quot;safe-mode&quot;&gt;2.3 Safe mode&lt;/h5&gt;
+
+&lt;p&gt;应用的质量良莠不齐，程序崩溃在所难免。因为tweak的本质是dylib，寄生在别的进程里，一旦出错，可能会导致整个进程崩溃，而一旦崩溃的是SpringBoard等系统进程，则会造成iOS瘫痪，所以CydiaSubstrate引入了Safe mode，它会捕获SIGTRAP、SIGABRT、SIGILL、SIGBUS、SIGSEGV、SIGSYS这6种信号，然后进入安全模式。&lt;/p&gt;
+
+&lt;p&gt;在安全模式里，所有基于CydiaSubstrate的第三方dylib均会被禁用，便于查错与修复。但是，并不是拥有了Safe mode就能高枕无忧，在很多时候，设备还是会因为第三方dylib的原因而无法进入系统，症状主要有：开机时卡在白苹果上，或者进度圈不停地转。在出现这种情况时，可以同时按住home和lock键硬重启，然后按住音量“+”键来完全禁用CydiaSubstrate，待系统重启完毕后，再来查错与修复。当问题被成功修复后，再重启一次iOS，就能重新启用CydiaSubstrate了，非常方便。&lt;/p&gt;
+
+&lt;h2 id=&quot;cycript&quot;&gt;3、Cycript&lt;/h2&gt;
+
+&lt;p&gt;Cycript是由saurik推出的一款脚本语言，可以看作是Objective-JavaScript。&lt;/p&gt;
+
+&lt;p&gt;Cycript具备脚本语言的便利，可以直接用来写App，而且在Cycript中可以测试函数，明显节省时间。这是一门语法简单而功能强大的语言。&lt;/p&gt;
+
+&lt;p&gt;更多详细资料可参阅它的官网&lt;a href=&quot;http://www.cycript.org&quot;&gt;http://www.cycript.org&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;lldbdebugserver&quot;&gt;4、LLDB与debugserver&lt;/h2&gt;
+
+&lt;h5 id=&quot;lldb&quot;&gt;1.1 LLDB&lt;/h5&gt;
+
+&lt;p&gt;如果说IDA是倚天剑，那么LLDB就是屠龙刀，两者在iOS逆向工程中的地位不相上下，难分伯仲。LLDB全称为“Low Level Debugger”，是由苹果出品，内置于Xcode中的动态调试工具，不但通吃C、C++、Objective-C，还全盘支持OSX、iOS，以及iOS模拟器。LLDB的功能可以概括为以下四点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在指定的条件下启动程序；&lt;/li&gt;
+  &lt;li&gt;在指定的条件下停止程序；&lt;/li&gt;
+  &lt;li&gt;在程序停止的时候检查程序内部发生的事；&lt;/li&gt;
+  &lt;li&gt;在程序停止的时候对程序进行改动，观察程序的执行过程有什么变化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;LLDB没有图形界面，使用时看着Terminal中黑压压的一片文字，初学者很容易被吓跑，但是一旦掌握其基本用法，配合IDA双管齐下，就能解决很多难倒大片初学者的问题，投资回报极高。LLDB是运行在OSX中的，要想调试iOS，还需要另一个工具的配合，它就是debugserver。&lt;/p&gt;
+
+&lt;h5 id=&quot;debugserver&quot;&gt;1.2 debugserver&lt;/h5&gt;
+
+&lt;p&gt;debugserver运行在iOS上，顾名思义，它作为服务端，实际执行LLDB（作为客户端）传过来的命令，再把执行结果反馈给LLDB，显示给用户，即所谓的“远程调试”。在默认情况下，iOS上并没有安装debugserver。需要配置debugserver+LLDB，动态调试别人的App，发挥它们在逆向工程中的真正威力。&lt;/p&gt;
+
+&lt;h5 id=&quot;lldb-1&quot;&gt;1.3 LLDB的使用&lt;/h5&gt;
+
+&lt;p&gt;常用的LLDB命令：&lt;/p&gt;
+
+&lt;p&gt;1.image list&lt;/p&gt;
+
+&lt;p&gt;“image list”与GDB中的“info shared”类似，用于列举当前进程中的所有模块（image）。因为ASLR（Address Space Layout Randomization，详见http://theiphonewiki.com/wiki/ASLR）的关系，每次进程启动时，同一进程的所有模块在虚拟内存中的起始地址都会产生随机偏移。所以要使用“image list-o-f”命令操作。&lt;/p&gt;
+
+&lt;p&gt;2.breakpoint&lt;/p&gt;
+
+&lt;p&gt;“breakpoint”与GDB中的“break”类似，用于设置断点。&lt;/p&gt;
+
+&lt;p&gt;因为逆向工程中的调试涉及的多是汇编代码，所以大多数情况下都是在某一条汇编指令上下断点，在函数上下断点的情况很少。&lt;/p&gt;
+
+&lt;p&gt;3.print&lt;/p&gt;
+
+&lt;p&gt;LLDB的主要功能之一是“在程序停止的时候检查程序内部发生的事”，而这个功能正是通过“print”命令完成的，它可以打印某处的值。&lt;/p&gt;
+
+&lt;p&gt;4.nexti与stepi&lt;/p&gt;
+
+&lt;p&gt;“nexti”与“stepi”的作用都是执行下一条机器指令，它们最大的区别是前者不进入函数体，而后者会进入函数体。它们可分别简写为“ni”与“si”，是调试时使用最多的指令之一。&lt;/p&gt;
+
+&lt;p&gt;5.register write&lt;/p&gt;
+
+&lt;p&gt;“register write”命令用于给指定的寄存器赋值，从而“对程序进行改动，观察程序的执行过程有什么变化”。&lt;/p&gt;
+
+&lt;p&gt;LLDB脱胎于GDB，虽然两者的命令有差别，但用法和思路是一脉相承的。要想完整地熟悉LLDB的使用，推荐阅读“Peter’s GDB tutorial”和“RMS’s gdb Debugger Tutorial”（Google一下）。IDA宜静，LLDB宜动，熟练地使用这两个工具是成为逆向高手的必经之路。&lt;/p&gt;
+
+&lt;h5 id=&quot;lldb-2&quot;&gt;1.4 LLDB使用小提示&lt;/h5&gt;
+
+&lt;p&gt;1.调试的二进制文件必须从iOS中提取&lt;/p&gt;
+
+&lt;p&gt;IDA分析的二进制文件必须与LLDB调试的二进制文件相同，这样偏移前基地址、ASLR偏移、偏移后基地址才能对应得上。IDA分析的二进制文件可以通过dyld_decache工具从本机获取；从其他渠道（如SDK、模拟器等）提取的文件一般不能用作动态调试。&lt;/p&gt;
+
+&lt;p&gt;2.LLDB中的简化输入&lt;/p&gt;
+
+&lt;p&gt;在使用LLDB时，如果想重复执行上一条指令，直接按回车键就可以了；如果想查看以前执行过的指令，按方向键的向上和向下键就可以了。
+LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题，却不简单。&lt;/p&gt;
+
+&lt;h2 id=&quot;dumpdecrypted&quot;&gt;5、dumpdecrypted&lt;/h2&gt;
+
+&lt;p&gt;前面在介绍class-dump时提到过，从AppStore下载的App（以下简称StoreApp）是被苹果加密过的（从其他渠道下载的一般没有加密），可执行文件被套上了一层保护壳，而class-dump无法作用于加密过的App。在这种情况下，想要获取头文件，需要先解密App的可执行文件，俗称“砸壳”。dumpdecrypted就是由越狱社区的知名人士Stefan Esser（@i0n1c）出品的一款砸壳工具，被越狱社区广泛运用在iOS逆向工程研究中。&lt;/p&gt;
+
+&lt;h2 id=&quot;openssh&quot;&gt;6、 OpenSSH&lt;/h2&gt;
+
+&lt;p&gt;OpenSSH会在iOS上安装SSH服务 ，以给外界提供一个通过ssh接入iOS的途径。&lt;/p&gt;
+
+&lt;p&gt;这里用得最多的一般只有2个命令：ssh和scp，前者用于远程登录，后者用于远程拷贝文件。
+两种命令的用法都比较简单直观。在安装OpenSSH后需要注意修改默认登录密码”alpine”。iOS上的用户有2个，分别是root和mobile。主义需要修改密码。如果没有修改默认密码，Ikee等病毒就有可能通过ssh以root用户身份登录iOS，拿到最高权限。这个后果是非常严重的：iOS中的所有数据，包括短信、电话本、AppleID的账号密码等敏感信息泄露的风险将大大增加，你的设备可能会被入侵者玩弄于股掌之间，为所欲为。因此，在安装OpenSSH之后一定要记得修改默认密码！&lt;/p&gt;
+
+&lt;h2 id=&quot;usbmuxd&quot;&gt;7、usbmuxd&lt;/h2&gt;
+
+&lt;p&gt;很多朋友是通过WiFi连接使用SSH服务的，因为无线网络的不稳定性及传输速度的限制，在复制文件或用LLDB远程调试时，iOS的响应很慢，效率不高。iOS越狱社区的知名人士Nikias Bassen（@pimskeks）开发了一款可以把本地OSX/Windows端口转发到远程iOS端口的工具usbmuxd，使我们能够通过USB连接线ssh到iOS中，大大增加了ssh连接的速度，也方便了那些没有WiFi的朋友。&lt;/p&gt;
+
+&lt;h2 id=&quot;ifile&quot;&gt;8、iFile&lt;/h2&gt;
+
+&lt;p&gt;iFile是iOS上一款非常强大的文件管理App，可以看作是iOS版的Finder。它能进行各种文件操作，从最简单的浏览，到编辑、剪贴、复制，还可以安装deb文件，十分方便。&lt;/p&gt;
+
+&lt;h2 id=&quot;mterminal&quot;&gt;9、MTerminal&lt;/h2&gt;
+
+&lt;p&gt;MTerminal是开源的iOS版Terminal，基本功能一应俱全。其用法与Terminal区别不大，只是屏幕和键盘小了点。笔者认为MTerminal最实用的场景是在没有电脑的环境下利用碎片时间，结合Cycript进行代码测试。&lt;/p&gt;
+
+&lt;h2 id=&quot;syslogd-tovarlogsyslog&quot;&gt;10、syslogd to/var/log/syslog&lt;/h2&gt;
+
+&lt;p&gt;syslogd是iOS中记录系统日志的守护进程，“syslogd to/var/log/syslog”的作用是把日志给写入“/var/log/syslog”文件中&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/6_IOS_Tools/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/6_IOS_Tools/</guid>
+        
+        <category>逆向_IOS工具集</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列5_IDA/iFunBox/other</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.1 安装&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ida&quot; id=&quot;markdown-toc-ida&quot;&gt;2.2 IDA使用说明&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#main-window&quot; id=&quot;markdown-toc-main-window&quot;&gt;2.3 Main window&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ifunbox&quot; id=&quot;markdown-toc-ifunbox&quot;&gt;3、iFunBox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dylddecache&quot; id=&quot;markdown-toc-dylddecache&quot;&gt;4 dyld_decache&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;** 说明**&lt;/p&gt;
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。&lt;/p&gt;
+
+&lt;p&gt;笼统地说，IDA是一个支持Windows、Linux和Mac OS X的多平台反汇编器/调试器，它的功能非常强大，以至于连官方都不能给出一个详尽的功能列表。&lt;/p&gt;
+
+&lt;p&gt;IDA的正式版是收费的，但其作者也是程序员出身，深知我们生活不易，所以慷慨地提供了一个免费的试用版，对于逆向工程初学者来说，已完全够用了。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2、安装&lt;/h2&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;2.1 安装&lt;/h5&gt;
+
+&lt;p&gt;IDA的下载和安装十分方便，具体可参考：&lt;a href=&quot;https://www.hex-rays.com/products/ida/support/download.shtml&quot;&gt;https://www.hex-rays.com/products/ida/support/download.shtml&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;ida&quot;&gt;2.2 IDA使用说明&lt;/h5&gt;
+
+&lt;p&gt;启动之后，在该界面中，不用繁琐地在菜单里点击“打开文件”，然后一个目录一个目录地去翻找，只需把要分析的文件拖进IDA的灰色区域就行了。&lt;/p&gt;
+
+&lt;p&gt;有一个地方需要注意：对于一些fat binary（指的是为了兼容不同架构的处理器，而把多种指令集糅合到一个binary）来说
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/581869117b6b0.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图最上面的白框内会出现多个Mach-O文件供我们选择。需要我们识别设备对应的ARM信息，例如笔者的iPhone 5对应的是ARMv7s。如果设备的ARM没有出现在这些选项中，就选那个向下兼容的选项，即如果选项里有ARMv7S，就选它；否则选ARMv7。
+这里笔者选择了ARMv7S，然后点击“OK”，此时 会连续弹出好几个窗口，一路点击“Yes”和“OK”就可以了。
+之后就进入如下界面：
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58186a17dab43.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在上边的界面中，你会看到上方的进度条不断滚动，下方的Output window也会打印出对文件的分析进度。当进度条的主色调变成蓝色（IDA界面上的颜色在黑白印刷页上看不出来，请谅解），Output window中显示“The initial autoanalysis has been finished.”时，表示IDA的初始分析已完成。&lt;/p&gt;
+
+&lt;p&gt;在初学阶段，由于主要用IDA作静态分析，基本用不上Output window，所以在开始分析之前，可以先关掉“Output window。&lt;/p&gt;
+
+&lt;p&gt;Functions window中的Objective-C函数与class-dump导出的内容吻合。除了Objective-C函数外，IDA还将所有subroutine罗列了出来，这是class-dump做不到的。class-dump导出的内容都是Objective-C函数名，可读性高，容易上手，是iOS逆向工程初学者的乐园；subroutine的名称只是一个代号，没有明显含义，分析难度大，大多数初学者看到这里就打了退堂鼓。但是，iOS的底层是用C和C++实现的，编译之后生成的大都是subroutine，class-dump拿它没辙，只能使用IDA这样的工具。要想深层次挖掘iOS中最有趣的部分，掌握IDA的用法是必经之路。&lt;/p&gt;
+
+&lt;h5 id=&quot;main-window&quot;&gt;2.3 Main window&lt;/h5&gt;
+
+&lt;p&gt;绝大多数没有用过IDA的iOS开发者，包括笔者，在第一次看见初始分析完成后的Main window时都懵了——这都是些什么玩意儿？这是人类文字吗？还是把IDA关了，刷会儿微博压压惊吧。这跟很多工程师在写第一行代码时不知如何下手的感觉很类似。其实，跟写代码时需要定义一个入口函数一样，在逆向工程里，也需要找到自己感兴趣的入口函数。在Functions window中双击这个入口函数，使得Main window跳转到函数体，然后用鼠标选中Main window，按一下空格，界面会瞬间变清爽，可读性一下就强了起来。&lt;/p&gt;
+
+&lt;p&gt;。。。&lt;/p&gt;
+
+&lt;h2 id=&quot;ifunbox&quot;&gt;3、iFunBox&lt;/h2&gt;
+
+&lt;p&gt;iFunBox 是一款老牌iOS文件管理工具，可以非常方便地操作iOS中的文件。 iFunBox的使用并不复杂，我们主要用到的是它的文件传输功能。有一点需要注意的是，越狱iOS必须安装“Apple File Conduit 2” ，简称AFC2，这样iFunBox才能够浏览iOS全系统文件，而且这也是接下来大部分操作的先决条件。&lt;/p&gt;
+
+&lt;h2 id=&quot;dylddecache&quot;&gt;4 dyld_decache&lt;/h2&gt;
+
+&lt;p&gt;安装了iFunBox和AFC2之后，不少读者会迫不及待地开始浏览iOS文件系统，看看这个封闭平台的表面下到底暗藏了多少玄机。相信大家很快就会发现一个问题：“/System/Library/Frameworks/”、“/System/Library/PrivateFrameworks/”等目录下，怎么没有库文件？&lt;/p&gt;
+
+&lt;p&gt;从iOS 3.1开始，包括frameworks在内的许多库文件被存进了一个大cache里，这个cache文件位于“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”（名为dyld_shared_cache_armv7、dyld_shared_cache_armv7s或dyld_shared_cache_arm64），可以使用KennyTM开发的dyld_decache将其中的二进制文件提取出来。这样做的好处是确保分析的文件来自本机，在使用Mac工具集与iOS工具集分析同一目标时，OSX与iOS上分析出的指令和地址等数据是完全吻合的，避免了出现驴唇不对马嘴的低级错误。有关这个cache的进一步介绍，可以参阅DHowett的博客http://blog.howett.net/).&lt;/p&gt;
+
+&lt;p&gt;使用dyld_decache之前，要将“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”用iFunBox（不能用scp）从iOS拷贝到OSX中。然后从https://github.com/downloads/kennytm/Miscellaneous/dyld_decache[v0.1c].bz2下载dyld_decache。解压之后赋予其可执行权限，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:~ snakeninny$ chmod +x /path/to/dyld_decache\[v0.1c\]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后开始提取二进制文件，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:~ snakeninny$ /path/to/dyld_decache\[v0.1c\] -o /where/to/store/decached/binaries/ /path/to/dyld_shared_cache_armx
+  0/877: Dumping '/System/Library/AccessibilityBundles/AXSpeechImplementation.bundle/AXSpeechImplementation'...
+  1/877: Dumping '/System/Library/AccessibilityBundles/AccessibilitySettingsLoader.bundle/AccessibilitySettingsLoader'...
+  2/877: Dumping '/System/Library/AccessibilityBundles/AccountsUI.axbundle/AccountsUI'...
+……
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;提取出的所有二进制文件都存放在了“/where/to/store/decached/binaries/”下。值得一提的是，逆向工程需要分析的二进制文件现在散落在OSX和iOS两个系统中，不方便查找，建议利用下一章提到的scp工具把iOS文件系统拷贝一份存在OSX里。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/5_IDA-iFunBox-other/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/5_IDA-iFunBox-other/</guid>
+        
+        <category>IDA</category>
+        
+        <category>iFunBox</category>
+        
+        <category>dyld_decache</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列4_Reveal</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#reveal-loader&quot; id=&quot;markdown-toc-reveal-loader&quot;&gt;2.1 安装Reveal Loader&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#reveal-loader-1&quot; id=&quot;markdown-toc-reveal-loader-1&quot;&gt;2.2 配置Reveal Loader&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;Reveal是由ITTY BITTY出品的UI分析工具，可以直观地查看App的UI布局。&lt;/p&gt;
+
+&lt;p&gt;官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2、安装&lt;/h2&gt;
+
+&lt;h5 id=&quot;reveal-loader&quot;&gt;2.1 安装Reveal Loader&lt;/h5&gt;
+
+&lt;p&gt;在Cydia中搜索并安装Reveal Loader 在安装Reveal Loader的时候，它会自动从Reveal的官网下载一个必须的文件libReveal.dylib。如果网络状况不太好，Reveal Loader不一定能够成功下载这个dylib文件，而且它没有针对dylib下载失败的情况做容错处理，可能会在下载界面卡顿很长时间，导致Cydia停止响应。因此，在下载它之前最好连接美国VPN，且在下载完Reveal Loader后，检查iOS上的“/Library/”目录下有没有一个名为“RHRevealLoader”的文件夹，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FunMaker-5:~ root# ls -l /Library/ | grep RHRevealLoader
+drwxr-xr-x  2 root   admin  102 Dec  6 11:10 RHRevealLoader 如果没有，就手动创建一个，如下：
+
+FunMaker-5:~ root# mkdir /Library/RHRevealLoader 然后打开Reveal，在它标题栏的“Help”选项下，选中其中的“Show Reveal Library in Finder”子选项 ，就可以看到。 把这个libReveal.dylib通过scp或iFunBox等方式拷贝到刚才创建的RHRevealLoader目录下，如下：
+
+FunMaker-5:~ root# ls -l /Library/RHRevealLoader
+total 3836
+-rw-r--r-- 1 root admin 3927408 Dec  6 11:10 libReveal.dylib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;至此完成Reveal Loader的安装。&lt;/p&gt;
+
+&lt;h5 id=&quot;reveal-loader-1&quot;&gt;2.2 配置Reveal Loader&lt;/h5&gt;
+
+&lt;p&gt;Reveal Loader的配置界面位于Settings应用中，它的名字叫“Reveal” 点击“Reveal”进入其界面，呈现在我们面前的主要是一些使用声明。点击“Enabled Applications”，进入配置界面。要分析哪个App，就打开对应的开关。这里打开了AppStore和Calculator的开关。
+“Reveal Loader的配置就是这样了。既直观又方便，不是吗？&lt;/p&gt;
+
+&lt;p&gt;##3 使用Reveal查看目标App的UI布局&lt;/p&gt;
+
+&lt;p&gt;一切准备就绪，轮到主角Reveal出场了。&lt;/p&gt;
+
+&lt;p&gt;首先确认OSX和iOS位于同一网段内，然后启动Reveal，并重启iOS上的目标App（即如果App开着，需要先关掉，再打开）。从Reveal界面左上角选择目标App，稍等一会儿，Reveal就会把目标App的UI布局展现在我们面前&lt;/p&gt;
+
+&lt;p&gt;Reveal的使用并不复杂，它是一款用户体验不错的工具。但是在iOS逆向工程中，对App的分析往往不会只是停留在UI层，外在表象下的内在实现才是最终目标。在本书的后半部分，将采用Reveal的“文字版”，即recursiveDescription函数，配合Cycript来挖掘隐藏在UI布局下的代码，届时你就会感知iOS逆向工程的真正威力。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/4_Reveal/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/4_Reveal/</guid>
+        
+        <category>Reveal</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列3_Theos_file简介及Logos基本语法</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、说明&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#makefile&quot; id=&quot;markdown-toc-makefile&quot;&gt;2、Makefile&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.1 基本配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.2 指定处理器架构&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sdk&quot; id=&quot;markdown-toc-sdk&quot;&gt;2.3 指定SDK版本&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#framework&quot; id=&quot;markdown-toc-framework&quot;&gt;2.4 导入framework&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mach-omach-o-object&quot; id=&quot;markdown-toc-mach-omach-o-object&quot;&gt;2.5 链接Mach-O对象（Mach-O object）&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tweakxm&quot; id=&quot;markdown-toc-tweakxm&quot;&gt;3、Tweak.xm&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#hook&quot; id=&quot;markdown-toc-hook&quot;&gt;3.1 %hook&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#log&quot; id=&quot;markdown-toc-log&quot;&gt;3.2 %log&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#orig&quot; id=&quot;markdown-toc-orig&quot;&gt;3.3 %orig&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#group&quot; id=&quot;markdown-toc-group&quot;&gt;3.4 %group&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#init&quot; id=&quot;markdown-toc-init&quot;&gt;3.5 %init&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ctor&quot; id=&quot;markdown-toc-ctor&quot;&gt;3.6 %ctor&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#new&quot; id=&quot;markdown-toc-new&quot;&gt;3.7 %new&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#c&quot; id=&quot;markdown-toc-c&quot;&gt;3.8 %c&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#control&quot; id=&quot;markdown-toc-control&quot;&gt;4、control&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#projectby3codeplist&quot; id=&quot;markdown-toc-projectby3codeplist&quot;&gt;5、projectBy3code.plist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：&lt;a href=&quot;&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、说明&lt;/h2&gt;
+&lt;p&gt;使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件&lt;/p&gt;
+
+&lt;p&gt;参考教程：&lt;/p&gt;
+
+&lt;p&gt;Logos 语法
+&lt;a href=&quot;http://iphonedevwiki.net/index.php/Logos&quot;&gt;http://iphonedevwiki.net/index.php/Logos&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Makefile
+&lt;a href=&quot;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&quot;&gt;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;debian的官网
+&lt;a href=&quot;http://www.debian.org/doc/debian-policy/ch-controlfields.html&quot;&gt;http://www.debian.org/doc/debian-policy/ch-controlfields.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;makefile&quot;&gt;2、Makefile&lt;/h2&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;2.1 基本配置&lt;/h5&gt;
+
+&lt;p&gt;Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#固定写法:系统变量，不要更改。
+include $(THEOS)/makefiles/common.mk
+
+#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
+TWEAK_NAME = projectBy3code
+
+#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
+projectBy3code_FILES = Tweak.xm
+
+#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
+after-install::
+ 	install.exec &quot;killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/...&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;2.2 指定处理器架构&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARCHS = armv7 arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的语句在表示不同的处理器架构时，其间以空格分隔。值得注意的是，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。在绝大多数情况下，这里固定填写“arm7 arm64”就行了。&lt;/p&gt;
+
+&lt;h5 id=&quot;sdk&quot;&gt;2.3 指定SDK版本&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TARGET = iphone:latest:8.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;比如：TARGET = iphone:8.1:8.0
+   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0&lt;/p&gt;
+
+&lt;h5 id=&quot;framework&quot;&gt;2.4 导入framework&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_FRAMEWORKS = framework name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
+上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_PRIVATE_FRAMEWORKS = private framework name 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“ARCHS = armv7 arm64
+TARGET = iphone:latest:7.0
+include theos/makefiles/common.mk
+TWEAK_NAME = projectBy3code
+projectBy3code_FILES = Tweak.xm
+projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
+include $(THEOS_MAKE_PATH)/tweak.mk
+after-install::
+      install.exec &quot;killall -9 SpringBoard&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。&lt;/p&gt;
+
+&lt;h5 id=&quot;mach-omach-o-object&quot;&gt;2.5 链接Mach-O对象（Mach-O object）&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_LDFLAGS = -lx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅&lt;a href=&quot;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&quot;&gt;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tweakxm&quot;&gt;3、Tweak.xm&lt;/h2&gt;
+&lt;p&gt;用Theos创建tweak工程，默认生成的源文件是Tweak.xm。“xm”中的“x”代表这个文件支持Logos语法，如果后缀名是单独一个“x”，说明源文件支持Logos和C语法；如果后缀名是“xm”，说明源文件支持Logos和C/C++语法，与“m”和“mm”的区别类似。Tweak.xm的内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/* How to Hook with Logos
+Hooks are written with syntax similar to that of an Objective-C @implementation.”
+“You don't need to #include &amp;lt;substrate.h&amp;gt;, it will be done automatically, as will
+the generation of a class list and an automatic constructor.
+%hook ClassName
+// Hooking a class method
++ (id)sharedInstance {
+        return %orig;
+}
+// Hooking an instance method with an argument.
+- (void)messageName:(int)argument {
+      %log; // Write a message about this call, including its class, name and arguments, to the system log.
+      %orig; // Call through to the original function with its original arguments.
+      %orig(nil); // Call through to the original function with a custom argument.
+      // If you use %orig(), you MUST supply all arguments (except for self and _cmd, the automatically generated ones.)
+}
+// Hooking an instance method with no arguments.
+- (id)noArguments {
+      %log;
+      id awesome = %orig;
+      [awesome doSomethingElse];
+      return awesome;
+}
+// Always make sure you clean up after yourself; Not doing so could have grave consequences!
+%end
+*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这就是最基本的Logos语法，包含%hook、%log、%orig这3个预处理指令，它们的作用如下。&lt;/p&gt;
+
+&lt;h5 id=&quot;hook&quot;&gt;3.1 %hook&lt;/h5&gt;
+
+&lt;p&gt;指定需要hook的class，必须以%end结尾，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)_menuButtonDown:(id)down
+{
+    NSLog(@&quot;You've pressed home button.&quot;);
+    %orig; // call the original _menuButtonDown:
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这段代码的意思是钩住（hook）SpringBoard类里的_menuButtonDown:函数，先将一句话写入syslog，再执行函数的原始操作。&lt;/p&gt;
+
+&lt;h5 id=&quot;log&quot;&gt;3.2 %log&lt;/h5&gt;
+
+&lt;p&gt;该指令在%hook内部使用，将函数的类名、参数等信息写入syslog，可以以%log([(&lt;type&gt;)&lt;expr&gt;,...])的格式追加其他打印信息，如下：&lt;/expr&gt;&lt;/type&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)_menuButtonDown:(id)down
+{
+  %log((NSString *)@&quot;iOSRE&quot;, (NSString *)@&quot;Debug&quot;);
+  %orig; // call the original _menuButtonDown:
+}
+%end 打印结果如下：
+
+Dec  3 10:57:44 FunMaker-5 SpringBoard[786]: -[&amp;lt;SpringBoard: 0x150eb800&amp;gt; _menuBu-ttonDown:+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    Timestamp:           75607608282
+    Total Latency:       20266 us
+    SenderID:            0x0000000100000190
+    BuiltIn:             1
+    AttributeDataLength: 16
+    AttributeData:       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    ValueType:           Absolute
+    EventType:           Keyboard
+    UsagePage:           12
+    Usage:               64
+    Down:                1
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    ]: iOSRE, Debug
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;orig&quot;&gt;3.3 %orig&lt;/h5&gt;
+
+&lt;p&gt;该指令在%hook内部使用，执行被钩住（hook）的函数的原始代码，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)_menuButtonDown:(id)down
+{
+  NSLog(@&quot;You've pressed home button.&quot;);
+  %orig; // call the original _menuButtonDown:
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果去掉%orig，那么原始函数不会得到执行，例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)_menuButtonDown:(id)down
+{
+  NSLog(@&quot;You've pressed home button but it's not functioning.&quot;);
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;还可以利用%orig更改原始函数的参数，例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SBLockScreenDateViewController
+- (void)setCustomSubtitleText:(id)arg1 withColor:(id)arg2
+{
+  %orig(@&quot;iOS 8 App Reverse Engineering&quot;, arg2);
+}
+%end 上边就修改掉了锁屏显示，原本显示日期的地方就变掉了。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;除了%hook、%log、%orig以外，Logos常用的预处理指令还有%group、%init、%ctor、%new、%c，下面继续逐一介绍。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;group&quot;&gt;3.4 %group&lt;/h5&gt;
+
+&lt;p&gt;该指令用于将%hook分组，便于代码管理及按条件初始化分组（含义稍后有详细解释），必须以%end结尾；一个%group可以包含多个%hook，所有不属于某个自定义group的%hook会被隐式归类到%group_ungrouped中。%group的用法如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%group iOS7Hook
+%hook iOS7Class
+- (id)iOS7Method
+{
+    id result = %orig;
+    NSLog(@&quot;This class &amp;amp; method only exist in iOS 7.&quot;);
+    return result;
+}
+%end
+%end // iOS7Hook
+%group iOS8Hook
+%hook iOS8Class
+- (id)iOS8Method
+{
+    id result = %orig;
+    NSLog(@&quot;This class &amp;amp; method only exist in iOS 8.&quot;);
+    return result;
+}
+%end
+%end // iOS8Hook
+%hook SpringBoard
+-(void)powerDown
+{
+    %orig;
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这段代码的意思是在%group iOS7Hook中钩住iOS7Class的iOS7Method，在%group iOS8Hook中钩住iOS8Class的iOS8Method函数，然后在%group_ungrouped中钩住SpringBoard类的powerDown函数。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;需要注意的是，%group必须配合下面的%init使用才能生效。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;init&quot;&gt;3.5 %init&lt;/h5&gt;
+
+&lt;p&gt;该指令用于初始化某个%group，必须在%hook或%ctor内调用；如果带参数，则初始化指定的group，如果不带参数，则初始化_ungrouped，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#ifndef kCFCoreFoundationVersionNumber_iOS_8_0
+#define kCFCoreFoundationVersionNumber_iOS_8_0 1140.10
+#endif
+%hook SpringBoard
+- (void)applicationDidFinishLaunching:(id)application
+{
+    %orig;
+    %init; // Equals to %init(_ungrouped)
+    if (kCFCoreFoundationVersionNumber &amp;gt;= kCFCoreFoundationVersionNumber_iOS_7_0 &amp;amp;&amp;amp; kCFCoreFoundationVersionNumber &amp;lt; kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS7Hook);
+    if (kCFCoreFoundationVersionNumber &amp;gt;= kCFCoreFoundationVersionNumber_iOS_8_0) init(iOS8Hook);
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;只有调用了%init，对应的%group才能起作用，切记切记！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;ctor&quot;&gt;3.6 %ctor&lt;/h5&gt;
+
+&lt;p&gt;tweak的constructor，完成初始化工作；如果不显式定义，Theos会自动生成一个%ctor，并在其中调用%init(_ungrouped)。因此，&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)reboot
+{
+    NSLog(@&quot;If rebooting doesn't work then I'm screwed.&quot;);
+    %orig;
+}
+%end”
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;可以成功生效，因为Theos隐式定义了如下内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%ctor
+{
+    %init(_ungrouped);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;而&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)reboot
+{
+    NSLog(@&quot;If rebooting doesn't work then I'm screwed.&quot;);
+    %orig;
+}
+%end
+%ctor
+{
+    // Need to call %init explicitly!
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;里的%hook无法生效，因为这里显式定义了%ctor，却没有显式调用%init，%group(_ungrouped)不起作用。%ctor一般可以用来初始化%group，以及进行MSHookFunction等操作，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#ifndef kCFCoreFoundationVersionNumber_iOS_8_0
+#define kCFCoreFoundationVersionNumber_iOS_8_0 1140.10
+#endif
+%ctor
+{
+    %init;
+    if (kCFCoreFoundationVersionNumber &amp;gt;= kCFCoreFoundationVersionNumber_iOS_7_0 &amp;amp;&amp;amp; kCFCoreFoundationVersionNumber &amp;lt; kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS7Hook);
+    if (kCFCoreFoundationVersionNumber &amp;gt;= kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS8Hook);
+    MSHookFunction((void *)&amp;amp;AudioServicesPlaySystemSound,
+                (void *)&amp;amp;replaced_AudioServicesPlaySystemSound,
+            (void **)&amp;amp;original_AudioServicesPlaySystemSound);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意，%ctor不需要以%end结尾。&lt;/p&gt;
+
+&lt;h5 id=&quot;new&quot;&gt;3.7 %new&lt;/h5&gt;
+
+&lt;p&gt;在%hook内部使用，给一个现有class添加新函数，功能与class_addMethod相同。它的用法如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+%new
+- (void)namespaceNewMethod
+{
+  NSLog(@&quot;We've added a new method to SpringBoard.&quot;);
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;有的朋友可能会问，Objective-C的category语法也可以给现有class添加新函数，为什么还需要%new呢？其实原因就在于category与class_addMethod的区别，前者是静态的，而后者是动态的。那么在这种情况下，静态还是动态，有什么关系呢？当然有关系，尤其是当class来自某个可执行文件的时候。举个例子，上面的代码给SpringBoard类添加了一个新方法，如果使用category，代码应该是下面这样：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBoard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;iOSRE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;namespaceNewMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBoard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;iOSRE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;namespaceNewMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;We've added a new method to SpringBoard.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果尝试编译上面的代码，会得到“error：cannot find interface declaration for‘SpringBoard’”的报错信息，即编译器找不到SpringBoard类的定义。可以构造一个SpringBoard的定义，骗过编译器，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBoard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBoard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;iOSRE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;namespaceNewMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBoard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;iOSRE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;namespaceNewMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;We've added a new method to SpringBoard.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;重新编译，仍然会报错，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Undefined symbols for architecture armv7:
+&quot;_OBJC_CLASS_$_SpringBoard&quot;, referenced from:
+  l_OBJC_$_CATEGORY_SpringBoard_$_iOSRE in Tweak.xm.b1748661.o
+ld: symbol(s) not found for architecture armv7
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ld找不到“SpringBoard”的定义。一般来说，iOS程序员在碰到这个错误时的第一反应是：“是不是忘了导入哪个framework？”，但是转念一想，SpringBoard类是SpringBoard这个App里的一个类，而不是一个framework，要怎么导入？现在你是不是觉得%new非常可爱了呢？&lt;/p&gt;
+
+&lt;h5 id=&quot;c&quot;&gt;3.8 %c&lt;/h5&gt;
+
+&lt;p&gt;该指令的作用等同于objc_getClass或NSClassFromString，即动态获取一个类的定义，在%hook或%ctor内使用。
+Logos的预处理指令还有%subclass和%config，感兴趣的读者可以移步http://iphonedevwiki.net/index.php/Logos一探究竟&lt;/p&gt;
+
+&lt;h2 id=&quot;control&quot;&gt;4、control&lt;/h2&gt;
+
+&lt;p&gt;control文件记录了deb包管理系统所需的基本信息，会被打包进deb包里。projectBy3code里control文件的内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Package: com.jxc.projectBy3code
+Name: projectBy3code
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: gyjrong
+Author: 3code
+Section: Tweaks
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Package字段用于描述这个deb包的名字，采用的命名方式同bundle identifier类似，均为反向DNS格式，可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Name字段用于描述这个工程的名字，可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Depends字段用于描述这个deb包的“依赖”。“依赖”指的是这个程序运行的基本条件，可以填写固件版本或其他程序，如果当前iOS不满足“依赖”中定义的条件，则此tweak无法正常运行。如&lt;/li&gt;
+  &lt;li&gt;Depends: mobilesubstrate, firmware (&amp;gt;= 8.0)
+表示当前iOS版本必须在8.0以上，且必须安装CydiaSubstrate，才能正常运行这个tweak，可以按需更改。&lt;/li&gt;
+  &lt;li&gt;Version字段用于描述这个deb包的版本号，可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Architecture字段用于描述deb包安装的目标设备架构，不要更改；&lt;/li&gt;
+  &lt;li&gt;Description字段是deb包的简单介绍，可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Maintainter字段用于描述deb包的维护人，例如BigBoss源中所有deb包的维护人均为BigBoss，而非软件作者，可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Author字段用于描述tweak的作者（注意与Maintainer的区别），可以按需更改；&lt;/li&gt;
+  &lt;li&gt;Section字段用于描述deb包所属的程序类别，不要更改。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;control文件中可以自定义的字段还有很多，但上面这些信息就已经足够了。更全面的说明可以参阅debian的官方网站（http://www.debian.org/doc/debian-policy/ch-controlfields.html）或留意其他deb包里的control文件。值得注意的是，Theos在打包deb时会对control文件作进一步处理，上面的control文件在得到处理后内容变为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原始：
+“Package: com.iosre.projectBy3code
+Name: projectBy3code
+Depends: mobilesubstrate”
+“Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: snakeninny
+Author: snakeninny
+Section: Tweaks”
+
+处理后：
+Package: com.iosre.projectBy3code
+Name: projectBy3code
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: snakeninny
+Author: snakeninny
+Section: Tweaks
+Version: 0.0.1-1
+Installed-Size: 104
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里Theos更改了Version字段，用以表示Theos的打包次数，方便管理；&lt;/p&gt;
+
+&lt;p&gt;增加了一个Installed-Size字段，用以描述deb包安装后的估算大小，可能会与实际大小有偏差，但不要更改。
+control文件中的很多信息直接体现在Cydia中，如下所示，大家可以对比看看。&lt;/p&gt;
+
+&lt;h2 id=&quot;projectby3codeplist&quot;&gt;5、projectBy3code.plist&lt;/h2&gt;
+
+&lt;p&gt;这个plist文件的作用和App中的Info.plist类似，它记录了一些配置信息，描述了tweak的作用范围。我们可以用plutil，也可以用Xcode来编辑它。&lt;/p&gt;
+
+&lt;p&gt;projectBy3code.plist的最外层是一个dictionary，只有一个名为“Filter”的键,“Filter下是一系列array，可以分为三类。
+&lt;!--
+![](https://ooo.0o0.ooo/2016/11/01/58182ee3ac4ce.jpeg)--&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58182f3cc349a.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58182f616c699.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58182f80b74e4.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bundles，指定若干bundle为tweak的作用对象：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如上配置：tweak的作用对象是三个bundle，即SMSNinja、AddressBook.framework和SpringBoard。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Classes，指定若干class为tweak的作用对象：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;tweak的作用对象是三个class，即NSString、SBAwayController和SBIconModel。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Executables，指定若干可执行文件为tweak的作用对象：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;tweak的作用对象是三个可执行文件，即callservicesd、imagent和mediaserverd。&lt;/p&gt;
+
+&lt;p&gt;这三类array可以混合使用：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58182f9637bfa.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意，当Filter下有不同类的array时，需要添加一个“Mode：Any”键值对。当Filter下的array只有一类时，不需要添加“Mode：Any”键值对。”&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/3_Theos_-fourFile/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/3_Theos_-fourFile/</guid>
+        
+        <category>Theos</category>
+        
+        <category>Logos</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列2_Theos_安装编译打包运行</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、说明&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#theos&quot; id=&quot;markdown-toc-theos&quot;&gt;2、Theos简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#theos-1&quot; id=&quot;markdown-toc-theos-1&quot;&gt;3、安装Theos&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#xcodecommand-line-tools&quot; id=&quot;markdown-toc-xcodecommand-line-tools&quot;&gt;3.1 安装Xcode与Command Line Tools：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#theos-2&quot; id=&quot;markdown-toc-theos-2&quot;&gt;3.2 下载Theos&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ldid&quot; id=&quot;markdown-toc-ldid&quot;&gt;3.3 配置ldid&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cydiasubstrate&quot; id=&quot;markdown-toc-cydiasubstrate&quot;&gt;3.4 配置CydiaSubstrate&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dpkg-deb&quot; id=&quot;markdown-toc-dpkg-deb&quot;&gt;3.5 配置dpkg-deb&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#theos-nic-templates&quot; id=&quot;markdown-toc-theos-nic-templates&quot;&gt;3.6 配置Theos NIC templates&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#theos-3&quot; id=&quot;markdown-toc-theos-3&quot;&gt;4、Theos用法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;4.1 创建工程&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4.2 定制工程文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;4.3 编译&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;4.4 打包&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;4.5 安装&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#theostweak&quot; id=&quot;markdown-toc-theostweak&quot;&gt;5　Theos开发tweak示例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#theostweakiosregreetings&quot; id=&quot;markdown-toc-theostweakiosregreetings&quot;&gt;5.1 用Theos新建tweak工程“iOSREGreetings”&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tweakxm&quot; id=&quot;markdown-toc-tweakxm&quot;&gt;5.2.编辑Tweak.xm&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#makefilecontrol&quot; id=&quot;markdown-toc-makefilecontrol&quot;&gt;5.3.编辑Makefile及control&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：&lt;a href=&quot;&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、说明&lt;/h2&gt;
+&lt;p&gt;使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件&lt;/p&gt;
+
+&lt;p&gt;参考教程：&lt;/p&gt;
+
+&lt;p&gt;Logos 语法
+&lt;a href=&quot;http://iphonedevwiki.net/index.php/Logos&quot;&gt;http://iphonedevwiki.net/index.php/Logos&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Makefile
+&lt;a href=&quot;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&quot;&gt;http://www.gnu.org/software/make/manual/html_node/Makefiles.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;debian的官网
+&lt;a href=&quot;http://www.debian.org/doc/debian-policy/ch-controlfields.html&quot;&gt;http://www.debian.org/doc/debian-policy/ch-controlfields.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;debian:
+&lt;a href=&quot;http://www.debian.org/doc/debian-policy&quot;&gt;http://www.debian.org/doc/debian-policy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Theos安装:
+&lt;a href=&quot;https://github.com/theos/theos/wiki/Installation&quot;&gt;https://github.com/theos/theos/wiki/Installation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;theos&quot;&gt;2、Theos简介&lt;/h2&gt;
+
+&lt;p&gt;Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。&lt;/p&gt;
+
+&lt;p&gt;值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。&lt;/p&gt;
+
+&lt;p&gt;这里插播一个关于DHowett的小段子：DHowett的全名叫Dustin L.Howett，他是个很有个性的少年，出生在美国宾夕法尼亚州的郊区，从小痴迷电脑。 大学读了不到一年，觉得老师讲得没意思，就不愿意好好听了，自然也就跟不上。更重要的是，他和一个姑娘展开了疯狂的异地恋，于是就干脆辍学，搬到了那个姑娘的所在地加州，并求职进了Saurik的公司SaurikIT。DHowett的早期作品CyDelete以Cy开头，而这种命名方式是Saurik御用的，说明DHowett的作品得到了Saurik的认可，也足见DHowett与Saurik关系之好。但遗憾的是，在Dustin辍学后，他和女朋友之间开始出现问题，最后分道扬镳了。之后Dustin离开了SaurikIT，进入了另一家创业公司DailyBooth，但这家公司经营不善，没多久就倒闭了，他就又回家待业了。过了没多久，Dustin爱上了另一个女孩，所以他又为了这个姑娘搬回旧金山，并且在当地一家不错的公司Airbnb找到了一份新工作。可以说是一个风一般的男子，令人十分崇拜。&lt;/p&gt;
+
+&lt;h2 id=&quot;theos-1&quot;&gt;3、安装Theos&lt;/h2&gt;
+
+&lt;p&gt;首先需要的环境和工具如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;curl&lt;/li&gt;
+  &lt;li&gt;git&lt;/li&gt;
+  &lt;li&gt;make&lt;/li&gt;
+  &lt;li&gt;openssh&lt;/li&gt;
+  &lt;li&gt;perl&lt;/li&gt;
+  &lt;li&gt;rsync&lt;/li&gt;
+  &lt;li&gt;dpkg (port or homebrew install on Mac OS X)&lt;/li&gt;
+  &lt;li&gt;python (if on Windows)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;没有的就用 brew install **&lt;/p&gt;
+
+&lt;h5 id=&quot;xcodecommand-line-tools&quot;&gt;3.1 安装Xcode与Command Line Tools：&lt;/h5&gt;
+
+&lt;p&gt;iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没有安装Xcode，请到Mac AppStore免费下载。&lt;/p&gt;
+
+&lt;h5 id=&quot;theos-2&quot;&gt;3.2 下载Theos&lt;/h5&gt;
+
+&lt;p&gt;从GitHub上下载Theos，操作如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export THEOS=/opt/theos
+sudo git clone git://github.com/DHowett/theos.git $THEOS
+Password:
+Cloning into '/opt/theos'...
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后设置软连接：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open ~/.bash_profile
+export THEOS=/opt/theos
+export PATH=$THEOS/bin:$PATH
+source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;ldid&quot;&gt;3.3 配置ldid&lt;/h5&gt;
+
+&lt;p&gt;ldid是专门用来签名iOS可执行文件的工具，用以在越狱iOS中取代Xcode自带的codesign。从&lt;a href=&quot;http://joedj.net/ldid&quot;&gt;http://joedj.net/ldid&lt;/a&gt;下载ldid，把它放在  “/opt/theos/bin/” 下。然后用以下命令赋予它可执行权限：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod 777 /opt/theos/bin/ldid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;cydiasubstrate&quot;&gt;3.4 配置CydiaSubstrate&lt;/h5&gt;
+&lt;p&gt;首先运行Theos的自动化配置脚本，操作如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo /opt/theos/bin/bootstrap.sh substrate
+$sudo: /opt/theos/bin/bootstrap.sh: command not found
+[最新版的 theos 已经没有这个脚本bootstrap.sh，可以跳过这步，直接执行后面的操作就可以了。 ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;dpkg-deb&quot;&gt;3.5 配置dpkg-deb&lt;/h5&gt;
+
+&lt;p&gt;deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文件的工具，有了这个工具，Theos才能正确地把工程打包成为deb文件。从&lt;a href=&quot;https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl&quot;&gt;https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl&lt;/a&gt;拷贝出dm.pl，将其重命名为dpkg-deb.pl后，放到“/opt/theos/bin/”目录下，然后用以下命令赋予其可执行权限：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:~ snakeninny$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;theos-nic-templates&quot;&gt;3.6 配置Theos NIC templates&lt;/h5&gt;
+
+&lt;p&gt;Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从&lt;a href=&quot;https://github.com/DHowett/theos-nic-templates/archive/master.zip&quot;&gt;https://github.com/DHowett/theos-nic-templates/archive/master.zip&lt;/a&gt;获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。&lt;/p&gt;
+
+&lt;h2 id=&quot;theos-3&quot;&gt;4、Theos用法&lt;/h2&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;4.1 创建工程&lt;/h5&gt;
+
+&lt;p&gt;1）切换工作目录至常用的iOS工程目录，然后启动：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$cd /Users/Test/CODE
+$/opt/theos/bin/nic.pl ，启动NIC（New Instance Creator）
+或者使用：
+$nic.pl 路径是： THEOS=/opt/theos 路直接启动的话，需要添加到/usr/bin：$ cd ~  $ $THEOS/bin/nic.pl19
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;结果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NIC 2.0 - New Instance Creator
+------------------------------
+[1.] iphone/activator_event
+[2.] iphone/application_modern
+[3.] iphone/cydget
+[4.] iphone/cydget
+[5.] iphone/cydget
+[6.] iphone/flipswitch_switch
+[7.] iphone/framework
+[8.] iphone/framework
+[9.] iphone/framework
+[10.] iphone/ios7_notification_center_widget
+[11.] iphone/library
+[12.] iphone/notification_center_widget
+[13.] iphone/notification_center_widget
+[14.] iphone/notification_center_widget
+[15.] iphone/preference_bundle_modern
+[16.] iphone/sbsettingstoggle
+[17.] iphone/sbsettingstoggle
+[18.] iphone/tool
+[19.] iphone/tweak
+[20.] iphone/xpc_service
+[21.] iphone/xpc_service
+[22.] iphone/xpc_service
+Choose a Template (required):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。&lt;/p&gt;
+
+&lt;p&gt;2）选择“19”，即创建一个tweak工程： Choose a Template (required): 19&lt;/p&gt;
+
+&lt;p&gt;3）输入tweak的工程名称： Project Name (required): projectBy3cod&lt;/p&gt;
+
+&lt;p&gt;4）输入deb包的名字（类似于bundle identifier）： Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod&lt;/p&gt;
+
+&lt;p&gt;5）输入tweak作者的名字，命令如下： Author/Maintainer Name [gyjrong]: gyjrong&lt;/p&gt;
+
+&lt;p&gt;6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
+…[com.apple.springboard]: com.apple.springboard&lt;/p&gt;
+
+&lt;p&gt;7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
+…[SpringBoard]: SpringBoard Instantiating iphone/tweak in iosreproject/…
+Done.&lt;/p&gt;
+
+&lt;p&gt;简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;4.2 定制工程文件&lt;/h5&gt;
+&lt;p&gt;用Theos创建tweak工程非常方便，但简洁的工程框架下目前还是些粗糙的内容，需要进一步加工相关的文件。先来看看刚刚生成的工程目录，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd projectBy3cod
+$ ls -l
+total 32
+-rw-r--r--  1 gyjrong  admin    57 10 31 18:46 projectBy3cod.plist
+-rw-r--r--  1 gyjrong  admin   274 10 31 18:46 Makefile
+-rw-r--r--  1 gyjrong  admin  1045 10 31 18:46 Tweak.xm
+-rw-r--r--  1 gyjrong  admin   207 10 31 18:46 control
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;具体的操作参见文章&lt;/p&gt;
+
+&lt;p&gt;[越狱开发系列3&lt;em&gt;Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos&lt;/em&gt; install&amp;amp;run/)&lt;/p&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;4.3 编译&lt;/h5&gt;
+
+&lt;p&gt;在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。&lt;/p&gt;
+
+&lt;p&gt;1）编译&lt;/p&gt;
+
+&lt;p&gt;Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make
+Making all for tweak iOSREProject...
+Preprocessing Tweak.xm...
+Compiling Tweak.xm...
+Linking tweak ...
+Stripping ...
+Signing ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;从输出的信息看，Theos完成了预处理、编译、签名等一系列动作，此时会发现当前目录下多了一个新的“obj”文件夹，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l
+Makefile Tweak.xm control iOSREProject.plist  obj  /opt/theos
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;里面有一个.dylib文件，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l ./obj
+Tweak.xm.b1748661.o	iOSREProject.dylib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;它就是tweak的核心。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;4.4 打包&lt;/h5&gt;
+
+&lt;p&gt;打包使用的“make package”命令来自于Theos本身，其实就是先执行“make”命令，然后再执行“dpkg-deb”命令，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make package
+Making all for tweak iOSREProject...
+ Preprocessing Tweak.xm...
+ Compiling Tweak.xm...
+ Linking tweak iOSREProject...
+ Stripping iOSREProject...
+ Signing iOSREProject...
+Making stage for tweak iOSREProject...
+dm.pl: building package `com.iosre.iosreproject' in `./com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb'.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;上面生成了一个名为“com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb”的文件，这就是可以最终发布的安装包。&lt;/p&gt;
+
+&lt;p&gt;“make package”命令还有一个很重要的功能。在执行完“make package”之后，除了“obj”文件夹外，你会发现tweak工程目录下还生成了一个“_”文件夹，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l
+total 40
+-rw-r--r--  1 snakeninny  staff   262 Dec  3 09:20 Makefile
+-rw-r--r--  1 snakeninny  staff     0 Dec  3 11:28 Tweak.xm
+drwxr-xr-x  4 snakeninny  staff   136 Dec  3 11:35 _
+-rw-r--r--  1 snakeninny  staff  2396 Dec  3 11:35 com.iosre.iosreproject_0.0.1-7 _iphoneos-arm.deb
+-rw-r--r--  1 snakeninny  staff   223 Dec  3 09:05 control
+-rw-r--r--@ 1 snakeninny  staff   175 Dec  3 09:48 iOSREProject.plist
+drwxr-xr-x  5 snakeninny  staff   170 Dec  3 11:35 obj
+lrwxr-xr-x  1 snakeninny  staff    11 Dec  3 09:05 theos -&amp;gt; /opt/theos
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这个文件夹是干什么的？打开它，可以看到2个文件夹，分别是“DEBIAN”和“Library”：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l _
+total 0
+drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 DEBIAN
+drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 Library
+其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译[…]”
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译过程中向control文件里稍稍增加了几个字段而已，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:iosreproject snakeninny$ ls -l _/DEBIAN
+total 8
+-rw-r--r--  1 snakeninny  staff  245 Dec  3 11:35 control
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;“Library”的目录结构如下：
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58184149d2d6e.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;对比生成deb的包内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ dpkg -c com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb
+drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./
+drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/
+drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/
+drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/
+-rwxr-xr-x snakeninny/staff 98784 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.dylib
+-rw-r--r-- snakeninny/staff   175 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.plist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以及在Cydia中iOSREProject的文件系统，如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/581841f406d47.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到，三者是完全相同的。到这里，你可能也猜到了，这个deb包其实就是由“DEBIAN”提供debian信息，“Library”提供实际文件的简单组合。事实上，还可以在工程目录下创建一个名为“layout”的文件夹，然后把工程打包成deb并安装到iOS中，此时“layout”中的所有文件会被解包到iOS文件系统的相同位置（这里的“layout”相当于iOS中的根目录“/”），这极大扩充了deb包的作用范围。下面用一个小示例佐以说明。&lt;/p&gt;
+
+&lt;p&gt;回到刚才的iOSREProject中，在Terminal中输入“make clean”及“rm*.deb”，将工程恢复到最初的状态，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make clean
+rm -rf ./obj
+rm -rf &quot;/Users/snakeninny/Code/iosreproject/_&quot;
+$ rm *.deb
+$ ls -l
+total 32
+-rw-r--r--  1 snakeninny  staff  262 Dec  3 09:20 Makefile
+-rw-r--r--  1 snakeninny  staff    0 Dec  3 11:28 Tweak.xm
+-rw-r--r--  1 snakeninny  staff  223 Dec  3 09:05 control
+-rw-r--r--@ 1 snakeninny  staff  175 Dec  3 09:48 iOSREProject.plist
+lrwxr-xr-x  1 snakeninny  staff   11 Dec  3 09:05 theos -&amp;gt; /opt/theos
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后生成一个空的“layout”目录，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir layout 并在“layout”下随便放一些空文件，如下：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ touch ./layout/1.test
+$ mkdir ./layout/Developer
+$ touch ./layout/Developer/2.test
+$ mkdir -p ./layout/var/mobile/Library/Preferences
+$ touch ./layout/var/mobile/Library/Preferences/3.test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;最后用“make package”打包，并将生成的deb文件拷贝到iOS中，用iFile安装。然后在Cydia中查看iOSREProject的文件系统，如图下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/581842e2adbd5.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;除“DEBIAN”以外的所有文件都被解包到了iOS文件系统的相同位置，本来不存在的中间文件夹也被自动创建。deb包的玄机还有很多，这里也只是管中窥豹，更全面的介绍请移步&lt;a href=&quot;http://www.debian.org/doc/debian-policy&quot;&gt;http://www.debian.org/doc/debian-policy&lt;/a&gt;，官方文档总是最好的学习资料。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;4.5 安装&lt;/h5&gt;
+
+&lt;p&gt;最后，要把这个deb文件安装到iOS中去。安装的方法多种多样，这里介绍两种最具代表性的：图形界面安装法和命令行安装法。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;图形界面安装法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个方法确实简单：通过iFunBox等软件把deb拖到iOS里去，然后用iFile安装它，最后重启iOS。虽然全过程都由图形界面操作，但人机交互太多，又要动电脑又要滑手机，一来二去非常繁琐，并不适用于tweak开发。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;命令行安装法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，如果对这部分知识不了解，请google。下面具体介绍安装法。&lt;/p&gt;
+
+&lt;p&gt;首先，需要在Makefile的最上一行加上本机IP地址，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;THEOS_DEVICE_IP = iOSIP
+ARCHS = armv7 arm64
+TARGET = iphone:latest:8.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后调用“make package install”命令完成编译打包安装一条龙服务，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make package install
+Making all for tweak iOSREProject...
+ Preprocessing Tweak.xm...
+ Compiling Tweak.xm...
+ Linking tweak iOSREProject...
+ Stripping iOSREProject...
+ Signing iOSREProject...
+Making stage for tweak iOSREProject...
+dm.pl: building package `com.iosre.iosreproject:iphoneos-arm' in `./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb'
+install.exec &quot;cat &amp;gt; /tmp/_theos_install.deb; dpkg -i /tmp/_theos_install.deb &amp;amp;&amp;amp; rm /tmp/_theos_install.deb&quot; &amp;lt; &quot;./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb&quot;
+root@iOSIP's password: 
+Selecting previously deselected package com.iosre.iosreproject.
+(Reading database ... 2864 files and directories currently installed.)
+Unpacking com.iosre.iosreproject (from /tmp/_theos_install.deb) ...
+Setting up com.iosre.iosreproject (0.0.1-15) ...
+install.exec &quot;killall -9 SpringBoard&quot;
+root@iOSIP's password:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;从以上信息可以看到，Theos在整个安装过程中要求我们输入两次root密码。虽然多次输入密码给人很安全的感觉，但实在是太麻烦了。好在通过设置iOS的authorized_keys可以省略SSH输密码的步骤，让“make package install”真正地从“一只多脚虫”变成“一条飞天龙”，具体步骤如下：&lt;/p&gt;
+
+&lt;p&gt;1）删除“/Users/snakeninny/.ssh/known_hosts”中iOSIP对应的条目。
+假设iOS的IP地址是iOSIP。编辑“/Users/snakeninny/.ssh/known_hosts”，找到iOSIP所在的那一行，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iOSIP ssh-rsa hXFscxBCVXgqXhwm4PUoUVBFWRrNeG6gVI3Ewm4dqwusoRcyCxZtm5bRiv4bXfkPjsRkWVVfrW3uT52Hhx4RqIuCOxtWE7tZqc1vVap4HIzUu3mwBuxog7WiFbsbbaJY4AagNZmX83Wmvf8li5aYMsuKeNagdJHzJNtjM3vtuskK4jKzBkNuj0M89TrV4iEmKtI4VEoEmHMYzWwMzExXbyX5NyEg5CRFmA46XeYCbcaY0L90GExXsWMMLA27tA1Vt1ndHrKNxZttgAw31J90UDnOGlMbWW4M7FEqRWQsWXxfGPk0W7AlA54vaDXllI5CD5nLAu4VkRjPIUBrdH5O1fqQ3qGkPayhsym3g0VZeYgU4JAMeFc3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;完整删掉这一行。
+2）生成authorized_keys。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/snakeninny/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/snakeninny/.ssh/id_rsa.
+Your public key has been saved in /Users/snakeninny/.ssh/id_rsa.pub.
+……
+$ cp /Users/snakeninny/.ssh/id_rsa.pub ~/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;就会在用户目录下生成authorized_keys。
+3）配置iOS。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FunMaker-5:~ root# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/var/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /var/root/.ssh/id_rsa.
+Your public key has been saved in /var/root/.ssh/id_rsa.pub.
+……
+FunMaker-5:~ root# logout
+Connection to iOSIP closed.
+$ scp ~/authorized_keys root@iOSIP:/var/root/.ssh
+The authenticity of host 'iOSIP (iOSIP)' can't be established.
+RSA key fingerprint is 75:98:9a:05:a3:27:2d:23:08:d3:ee:f4:d1:28:ba:1a.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'iOSIP' (RSA) to the list of known hosts.
+root@iOSIP's password: 
+authorized_keys                            100%  408    0.4KB/s   00:00
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;重新使用ssh命令进入iOS试试看，还需要输密码吗？此时，“make package install”真正变成了一次配置，一键安装，一劳永逸！
+（4）清理&lt;/p&gt;
+
+&lt;p&gt;Theos提供了方便的工程清理命令“make clean”，其“实际作用就是依次执行“rm-rf./obj”和“rm-rf”/Users/snakeninny/Code/iosre/_“”两个命令，从而删除“make”和“make package”命令生成的文件夹。也可以用“rm*.deb”，删除“make package”命令生成的所有deb文件。&lt;/p&gt;
+
+&lt;h2 id=&quot;theostweak&quot;&gt;5　Theos开发tweak示例&lt;/h2&gt;
+
+&lt;p&gt;接下来将以一个最简单的tweak为例来进行讲解。安装了该程序之后，每次重启SpringBoard都将会弹出一个UIAlertView。&lt;/p&gt;
+
+&lt;h5 id=&quot;theostweakiosregreetings&quot;&gt;5.1 用Theos新建tweak工程“iOSREGreetings”&lt;/h5&gt;
+
+&lt;p&gt;新建iOSREGreetings工程的命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /opt/theos/bin/nic.pl
+NIC 2.0 - New Instance Creator
+------------------------------
+  [1.] iphone/application
+  [2.] iphone/cydget
+  [3.] iphone/framework
+  [4.] iphone/library
+  [5.] iphone/notification_center_widget
+  [6.] iphone/preference_bundle
+  [7.] iphone/sbsettingstoggle
+  [8.] iphone/tool
+  [9.] iphone/tweak
+  [10.] iphone/xpc_service
+Choose a Template (required): 9
+Project Name (required): iOSREGreetings
+Package Name [com.yourcompany.iosregreetings]: com.iosre.iosregreetings
+Author/Maintainer Name [snakeninny]: snakeninny
+[iphone/tweak] MobileSubstrate Bundle filter [com.apple.springboard]: com.apple.springboard
+[iphone/tweak] List of applications to terminate upon installation (space-separated, '-' for none) [SpringBoard]: 
+Instantiating iphone/tweak in iosregreetings/...
+Done.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;tweakxm&quot;&gt;5.2.编辑Tweak.xm&lt;/h5&gt;
+
+&lt;p&gt;编辑后的Tweak.xm内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
+- (void)applicationDidFinishLaunching:(id)application
+{
+    %orig;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Come to http://bbs.iosre.com for more fun!&quot; message:nil delegate:self cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+%end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;makefilecontrol&quot;&gt;5.3.编辑Makefile及control&lt;/h5&gt;
+
+&lt;p&gt;编辑后的Makefile内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;THEOS_DEVICE_IP = iOSIP
+ARCHS = armv7 arm64
+TARGET = iphone:latest:8.0
+include theos/makefiles/common.mk
+TWEAK_NAME = iOSREGreetings
+iOSREGreetings_FILES = Tweak.xm
+iOSREGreetings_FRAMEWORKS = UIKit
+include $(THEOS_MAKE_PATH)/tweak.mk
+after-install::
+      install.exec &quot;killall -9 SpringBoard&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;编辑后的control内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Package: com.iosre.iosregreetings
+Name: iOSREGreetings
+Depends: mobilesubstrate, firmware (&amp;gt;= 8.0)
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Greetings from iOSRE!
+Maintainer: snakeninny
+Author: snakeninny
+Section: Tweaks
+Homepage: http://3code.info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;以上代码非常简单，当SpringBoard的applicationDidFinishLaunching:函数得到调用时，代表SpringBoard的启动过程已经结束。钩住（hook）这个函数，调用%orig完成它的原始操作，然后弹出一个自定义的UIAlertView；这样一来，每次重启SpringBoard都会弹“出一个对话框。你看懂了吗？&lt;/p&gt;
+
+&lt;p&gt;准备就绪，在Terminal中敲入“make package install”，
+如果出现错误:&lt;code class=&quot;highlighter-rouge&quot;&gt;PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/VVDocumenter-Xcode.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+==&amp;gt; Error: The vendor/include and/or vendor/lib directories are missing. Please run `git submodule update --init --recursive` in your Theos directory. More information: https://github.com/theos/theos/wiki/Installation.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;就在 Theos 目录里运行 $git submodule update –init –recursive&lt;/p&gt;
+
+&lt;p&gt;待SpringBoard重启之后会看到结果，简单粗暴。是的，仅仅是这样一些小小的改动，就已经可以改变App的行为了。此时，封闭的iOS已经向我们打开了大门……&lt;/p&gt;
+
+&lt;p&gt;因为有Theos这样的开发工具存在，修改闭源的iOS程序变得前所未有的方便。不过在前面也提到了，现在的App工程量越来越大，class-dump头文件也越来越多，要从浩如烟海的函数名中筛选出我们感兴趣的目标，比确定目标后编写代码还要难得多。面对成千上万行代码，如果没有其他工具辅助分析，逆向工程简直是一场噩梦，让人一筹莫展。那么接下来，就轮到这些辅助分析工具隆重登场了。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/2_Theos_-install&run/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/2_Theos_-install&run/</guid>
+        
+        <category>Theos</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列1_Class_dump</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、概述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.1 设置环境变量:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、概述&lt;/h2&gt;
+
+&lt;p&gt;class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2、安装&lt;/h2&gt;
+
+&lt;p&gt;class-dump的用法比较简单，首先去&lt;a href=&quot;http://stevenygard.com/projects/class-dump&quot;&gt;http://stevenygard.com/projects/class-dump&lt;/a&gt;下载最新版的class-dump。&lt;/p&gt;
+
+&lt;p&gt;下载class-dump-3.5.dmg后，将dmg文件里的class-dump复制到“/usr/bin”下，然后在Terminal中执行 $sudo chmod 777/usr/bin/class-dump”命令赋予其执行权限。&lt;/p&gt;
+
+&lt;p&gt;以上方法已经不可用：OSX10.11的一个新特性Rootless也叫System Integrity Protection（SIP）和SELinux差不多，都是限制root用户的权限，其实可以在RecoveryMode关闭这个特性，这样就直接可以读写/usr/bin了，不过不建议。
+最新的方法如下：&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;2.1 设置环境变量:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Terminal中执行$source ~/.bash_profile；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面以笔者的一个App为例，来看看class-dump的完整流程。&lt;/p&gt;
+
+&lt;p&gt;1.定位App的可执行文件&lt;/p&gt;
+
+&lt;p&gt;首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/snakeninny”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
+$ plutil -p Info.plist | grep CFBundleExecutable
+&quot;CFBundleExecutable&quot; =&amp;gt; &quot;AlipayWallet&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当前目录下的“AlipayWallet”就是App的可执行文件。&lt;/p&gt;
+
+&lt;p&gt;2.class-dump可执行文件&lt;/p&gt;
+
+&lt;p&gt;把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header 结果是： -APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore加密过) -【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。要想吃核桃，还得先用别的工具把壳砸开才行，具体的内容下一章就会揭晓。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/1_Class_dump/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/1_Class_dump/</guid>
+        
+        <category>class_dump</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列_综述</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、概述&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.2、分析工具：&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;术语&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、概述&lt;/h2&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/h5&gt;
+
+&lt;p&gt;1.1.1 系统分析：&lt;/p&gt;
+
+&lt;p&gt;要从整体上观察目标程序的行为特征、文件的组织架构、设计思路，从而为我们做代码分析做准备。&lt;/p&gt;
+
+&lt;p&gt;1.1.2 二进制代码分析：&lt;/p&gt;
+
+&lt;p&gt;进入代码分析阶段，则要把软件的核心代码还原出来，最终达到我们的目的。&lt;/p&gt;
+
+&lt;p&gt;1.1.3&lt;/p&gt;
+
+&lt;p&gt;通过逆向工程，可以推导出某个App的设计思路、内部算法和实现细节，但这是一个非常复杂的过程，可以说是一种解构再重组的艺术。想让自己的逆向工程水平达到艺术的高度，需要对软件开发、硬件原理和iOS系统有透彻的理解。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;1.2、分析工具：&lt;/h5&gt;
+
+&lt;p&gt;相对于正向开发，逆向工程使用的工具并不那么“智能”，很多工作需要我们手工完成。只有对工具的熟练使用，才能够极大地提高逆向工程的效率。iOS逆向工程的工具可以分为四大类：监测工具、反汇编工具（disassembler）、调试工具（debugger）,以及开发工具 。&lt;/p&gt;
+
+&lt;p&gt;1.2.1 监测工具&lt;/p&gt;
+
+&lt;p&gt;在iOS逆向工程中，起到嗅探、监测、记录目标程序行为的工具统称为监测工具。这些工具通常可以记录并显示目标程序的某些操作，如UI变化、网络活动、文件访问等。iOS逆向常用的监测工具有Reveal(UI变化)、snoop-it、introspy等。&lt;/p&gt;
+
+&lt;p&gt;1.2.2 反汇编工具&lt;/p&gt;
+
+&lt;p&gt;从UI层面切入代码层面后，就要用到反汇编工具来梳理代码了。反汇编工具把二进制文件作为输入，经过处理后输出这个文件的汇编代码；在iOS逆向工程中，常用的反汇编工具主要是IDA和Hopper。
+作为老牌反汇编工具，IDA是逆向工程中最常用的利器之一。它支持Windows、Linux、OSX平台和多种处理器架构。Hopper是一款近年面世的反汇编工具，它主要针对的是苹果系操作系统。下文主要使用IDA&lt;/p&gt;
+
+&lt;p&gt;1.2.3 调试工具&lt;/p&gt;
+
+&lt;p&gt;iOS开发者对调试工具应该不陌生，在App开发中，少不了在Xcode中调试代码。我们可以在某一行代码上设置断点，使进程能够停止在那一行代码上，并实时显示进程当前的状态。在iOS逆向工程中，用到的调试工具主要是LLDB。&lt;/p&gt;
+
+&lt;p&gt;1.2.4 开发工具&lt;/p&gt;
+
+&lt;p&gt;从UI层面切入代码层面，用反汇编工具和调试工具分析过二进制文件后，就可以整理分析结果，用开发工具写程序了。对于App开发者来说，Xcode是最常用的开发工具。但是我们一旦将战场从AppStore转移到越狱iOS，开发工具的种类就得到了扩充，不但有基于Xcode的iOSOpenDev，还有偏命令行的Theos。从个人体验来说，Theos是让笔者最为兴奋的开发工具，在知道Theos之前，笔者感觉自己一直都被限制在AppStore中，直到掌握了Theos的用法，才突破了AppStore，完整地认识了整个iOS系统。这里主要以Theos作为开发工具 。&lt;/p&gt;
+
+&lt;p&gt;之后系列文章将按照如下的几大块来进行：&lt;/p&gt;
+
+&lt;p&gt;OSX 工具集：dump、Theos、Reveal、IDA、iFunBox、dyld_decache&lt;/p&gt;
+
+&lt;p&gt;IOS 工具集：CydiaSubstrate、Cycript、LLDB与debugserver、dumpdecrypted、OpenSSH、usbmuxd、iFile、MTerminal、syslogd to/var/log/syslog&lt;/p&gt;
+
+&lt;p&gt;理论篇：OC理论基础、ARM汇编相关的理论基础、&lt;/p&gt;
+
+&lt;p&gt;实战篇：&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;术语&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cydia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;是一个让用户在越狱的iOS设备上查找和安装各类软件包，包括软件、系统修改、主题和铃声等的软件管理器。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/0_Reverse_Enginner/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/0_Reverse_Enginner/</guid>
+        
+        <category>IOS逆向开发</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
     
       <item>
         <title>Sublime Text进阶教程</title>
@@ -242,6 +1877,7 @@ F6 单词检测拼写&lt;/li&gt;
 
 &lt;p&gt;st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
 方法是在Preferences -&amp;gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;keys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alt+m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;markdown_preview&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;target&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;browser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -289,11 +1925,19 @@ F6 单词检测拼写&lt;/li&gt;
 
 &lt;p&gt;在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：&lt;/p&gt;
 
-&lt;p&gt;1、国内用户打开 https://app.yinxiang.com/api/DeveloperToken.action ，国际用户打开 https://www.evernote.com/api/DeveloperToken.action 。点击Revoke your developer token 授权应用&lt;/p&gt;
+&lt;p&gt;1、国内用户打开 &lt;a href=&quot;https://app.yinxiang.com/api/DeveloperToken.action&quot;&gt;https://app.yinxiang.com/api/DeveloperToken.action&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;国际用户打开 &lt;a href=&quot;https://www.evernote.com/api/DeveloperToken.action&quot;&gt;https://www.evernote.com/api/DeveloperToken.action&lt;/a&gt; 。&lt;/p&gt;
+
+&lt;p&gt;点击Revoke your developer token 授权应用&lt;/p&gt;
 
 &lt;p&gt;2、打开 Preferences &amp;gt; Package Settings &amp;gt; Evernote &amp;gt;Settings - User&lt;/p&gt;
 
-&lt;p&gt;3、粘贴即可(格式英文)： { “noteStoreUrl”: “你自己的URL”, “token”: “你的Token” }&lt;/p&gt;
+&lt;p&gt;3、粘贴即可(格式英文)：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;noteStoreUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你自己的URL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你的Token&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h5 id=&quot;section-13&quot;&gt;7.3测试是否授权成功&lt;/h5&gt;
 
@@ -420,487 +2064,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
         
         
         <category>Sublime</category>
-        
-      </item>
-    
-      <item>
-        <title>Deployenvironmentvariable</title>
-        <description>&lt;p&gt;I—
-layout: post
-title:  “OS X 部署环境变量”
-categories: OS_X
-tags:  sublime 环境变量
-author: 3code
-—&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、设置环境变量&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#shell&quot; id=&quot;markdown-toc-shell&quot;&gt;1.1 查看本机使用的Shell&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#mac&quot; id=&quot;markdown-toc-mac&quot;&gt;1.2 Mac可配置环境变量的位置&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#path&quot; id=&quot;markdown-toc-path&quot;&gt;1.3 设置PATH的语法：&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#sublime&quot; id=&quot;markdown-toc-sublime&quot;&gt;2、实战 配置sublime的环境变量&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1、设置环境变量&lt;/h2&gt;
-
-&lt;h5 id=&quot;shell&quot;&gt;1.1 查看本机使用的Shell&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo $SHELL
-输出的是：csh或者是tcsh，就是C Shell。
-输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;如果是Bourne Shell。
-那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。&lt;/p&gt;
-
-&lt;h5 id=&quot;mac&quot;&gt;1.2 Mac可配置环境变量的位置&lt;/h5&gt;
-
-&lt;p&gt;Mac系统的环境变量，加载顺序为：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】&lt;/li&gt;
-  &lt;li&gt;2、/etc/paths 可以全局修改配置，系统级别启动加载。添加path一行一个路径&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以上不管是哪个用户，登录时都会读取该文件。下面几个是当前用户级的环境变量，按照从前往后的顺序读取。如果~/.bash_profile文件存在，则后面的几个文件就会被忽略不读了，如果~/.bash_profile文件不存在，才会以此类推读取后面的文件&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;3、~/.bash_profile  一般在这个文件中添加用户级环境变量。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!&lt;/li&gt;
-  &lt;li&gt;4、~/.bash_login&lt;/li&gt;
-  &lt;li&gt;5、~/.profile&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;其他：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;~/.bashrc没有上述规则，它是bash shell打开的时候载入的。&lt;/li&gt;
-  &lt;li&gt;/etc/bashrc 一般在这个文件中添加系统级环境变量，全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;path&quot;&gt;1.3 设置PATH的语法：&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export PATH=$PATH:&amp;lt;PATH 1&amp;gt;:&amp;lt;PATH 2&amp;gt;:&amp;lt;PATH 3&amp;gt;:------:&amp;lt;PATH N&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;sublime&quot;&gt;2、实战 配置sublime的环境变量&lt;/h2&gt;
-
-&lt;p&gt;如果是sublime 2 则应该通过下面命令可以打开subl:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;然后我们在/usr/local/bin 里面做一个软连接：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;最后加入环境变量：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ open ~/.bash_profile
-添加如下代码：
-export PATH=/usr/local/bin:$PATH
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;想立即生效请运行：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;OK，可以通过终端操控subl了！&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 28 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/10/28/deployEnvironmentVariable/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/10/28/deployEnvironmentVariable/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>静态页面博客:jekyll+GitHubPages</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;说明&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#gitgithub&quot; id=&quot;markdown-toc-gitgithub&quot;&gt;1、git\github&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;1.1 github知识普及：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#git&quot; id=&quot;markdown-toc-git&quot;&gt;1.2  注册下载Git客户端&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#githubpages&quot; id=&quot;markdown-toc-githubpages&quot;&gt;1.3 在github上创建Pages：&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;2、Jekyll&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;3、本地环境搭建&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;环境搭建&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;3.1 安装Ruby：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#rubygems&quot; id=&quot;markdown-toc-rubygems&quot;&gt;3.2 安装RubyGems：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-1&quot; id=&quot;markdown-toc-jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-2&quot; id=&quot;markdown-toc-jekyll-2&quot;&gt;3.4 Jekyll的使用&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3.5 博客主题&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;3.6 博客编辑工具&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#mou&quot; id=&quot;markdown-toc-mou&quot;&gt;Mou&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#macdown-&quot; id=&quot;markdown-toc-macdown-&quot;&gt;MacDown 特色&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#github-1&quot; id=&quot;markdown-toc-github-1&quot;&gt;3.7 上传GitHub&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-3&quot; id=&quot;markdown-toc-jekyll-3&quot;&gt;4 jekyll的注意事项&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;4.1 更新&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#gemfile&quot; id=&quot;markdown-toc-gemfile&quot;&gt;4.2 Gemfile文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-4&quot; id=&quot;markdown-toc-jekyll-4&quot;&gt;4.3 配置 Jekyll&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyll-5&quot; id=&quot;markdown-toc-jekyll-5&quot;&gt;番外：jekyll的使用&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#rubygems-&quot; id=&quot;markdown-toc-rubygems-&quot;&gt;1、RubyGems 镜像&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-paginate-&quot; id=&quot;markdown-toc-jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3、其他可能需要安装的：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;4、更换端口：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-6&quot; id=&quot;markdown-toc-jekyll-6&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-server-jekyllpaginate&quot; id=&quot;markdown-toc-jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-&quot; id=&quot;markdown-toc-jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-&quot;&gt;|- &lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;  | - &lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt; | - &lt;a href=&quot;http://www.jianshu.com/p/07064eb79740&quot;&gt;jianshu&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c&quot; id=&quot;markdown-toc-jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c&quot;&gt;|- &lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;jianshu&lt;/a&gt; | - &lt;a href=&quot;http://ytysj.github.io/blog/myblog3&quot;&gt;ytysj&lt;/a&gt; | - &lt;a href=&quot;http://www.jianshu.com/p/609e1197754c&quot;&gt;jianshu&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio&quot; id=&quot;markdown-toc-ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio&quot;&gt;|- &lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt; | - &lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;| - &lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt; | - &lt;a href=&quot;http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;cnblogs&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info&lt;/p&gt;
-
-&lt;p&gt;下面针对jekyll博客的过程，有问题还请留言。
-&lt;img src=&quot;https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;说明&lt;/h2&gt;
-&lt;p&gt;1、以下系统基于OS X EI ;&lt;/p&gt;
-
-&lt;p&gt;2、免费主机：github + 静态制作：jekyll&lt;/p&gt;
-
-&lt;h2 id=&quot;gitgithub&quot;&gt;1、git\github&lt;/h2&gt;
-
-&lt;h4 id=&quot;github&quot;&gt;1.1 github知识普及：&lt;/h4&gt;
-
-&lt;p&gt;githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。&lt;/p&gt;
-
-&lt;p&gt;个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)&lt;/p&gt;
-
-&lt;h4 id=&quot;git&quot;&gt;1.2  注册下载Git客户端&lt;/h4&gt;
-
-&lt;p&gt;注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)&lt;/p&gt;
-
-&lt;h4 id=&quot;githubpages&quot;&gt;1.3 在github上创建Pages：&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;参考官方页面提示&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyll&quot;&gt;2、Jekyll&lt;/h2&gt;
-
-&lt;p&gt;本博客使用Jekyll搭建，好处：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;不需要使用额外的数据库&lt;/li&gt;
-  &lt;li&gt;支持markdown，liquid，以及原始的html、css&lt;/li&gt;
-  &lt;li&gt;可以定义模板，并在模板上进行代码复用&lt;/li&gt;
-  &lt;li&gt;github对其支持，可以直接在github上搭建，可以继承github上的各种好处（版本控制，免费，无流量限制）&lt;/li&gt;
-  &lt;li&gt;有很多扩展插件（但是在github上用不了）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;当然缺点也有很多：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;生成的是静态网页，无法动态加载，若需要外部服务如评论，只能使用类似于disquz，多说这样的外部插件了&lt;/li&gt;
-  &lt;li&gt;仅仅适合小型网站，不适合大中型网站&lt;/li&gt;
-  &lt;li&gt;没有数据库及服务端的逻辑&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;3、本地环境搭建&lt;/h2&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;环境搭建&lt;/h4&gt;
-
-&lt;p&gt;使用Jekyll，需要以下环境:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Ruby  - Jekyll 需要Ruby语言&lt;/li&gt;
-  &lt;li&gt;Bundler - 捆绑器的软件包管理器&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;ruby&quot;&gt;3.1 安装Ruby：&lt;/h4&gt;
-
-&lt;p&gt;详细的安装文档，可以查看 Ruby 官方的&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;安装&lt;/a&gt;介绍。Mac 下使用 &lt;a href=&quot;http://brew.sh/&quot;&gt;Homebrew&lt;/a&gt; 来安装，挺方便的。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install ruby
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安装完成之后运行查看版本号，过低需要更新，我的是 2.0.0。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ruby -v  
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;rubygems&quot;&gt;3.2 安装RubyGems：&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;下载 RubyGems 安装包，2.0.6 版本：&lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.tgz&quot; target=&quot;_blank&quot;&gt;tgz&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.zip&quot; target=&quot;_blank&quot;&gt;zip&lt;/a&gt; - &lt;a href=&quot;http://production.cf.rubygems.org/rubygems/rubygems-update-2.0.6.gem&quot; target=&quot;_blank&quot;&gt;gem&lt;/a&gt; - &lt;a href=&quot;http://github.com/rubygems/rubygems&quot; target=&quot;_blank&quot;&gt;git&lt;/a&gt;。安装到本地之后，在终端检查更新：&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 可能需要根权限
-$ gem update --system
-## 检查当前版本 我的是：2.6.4
-$ gem -v
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;可以参考&lt;a href=&quot;https://rubygems.org/pages/download&quot; target=&quot;_blank&quot;&gt;官网安装教程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;gem update –system。这一步需要翻墙，否则会出现404错误。&lt;a href=&quot;https://ruby.taobao.org/&quot; target=&quot;_blank&quot;&gt;解决办法参考&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;jekyll-1&quot;&gt;3.3 安装 Jekyll&lt;/h4&gt;
-
-&lt;p&gt;最好的安装方法应该是通过 RubyGems 来安装，在终端输入：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;##可能需要根权限
-$ gem install jekyll
-##安装完了之后，查看版本号，我这打印出来的是 jekyll 3.3.0
-$ jekyll -v
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;至此，你已经成功在本地电脑上安装好了 Jekyll。&lt;/p&gt;
-
-&lt;p&gt;安装过程中可能会遇到的问题：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;问题1：cannot load such file -- bundler (LoadError)::::
-解决方案：
-$ gem install bundler
-$ bundle install
-$ bundle exec jekyll serve
-问题2：服务无法开启：
-$ gem install json 
-或者：
-$ jekyll serve --config _config.yml,_config-dev.yml 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;jekyll-2&quot;&gt;3.4 Jekyll的使用&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#创建你的博客
-$ jekyll new blog  
-#进入blog目录,记得一定要进入创建的目录，否则服务无法开启
-$ cd blog    
-#启动你的http服务 	 
-$ jekyll serve 	 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;3.5 博客主题&lt;/h4&gt;
-
-&lt;p&gt;参考如下：
-&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;jekllthemes&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 从上网站下载主题，在终端中使用命令cd到该主题根目录下；
-## 博客生成，默认生成再_site目录下，当然也可以在配置文件中自定义
-$ jekyll build
-## 开启jekyll本地预览
-$ jekyll server 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;在浏览器中输入 http://localhost:4000 即可访问博客站点
-不能访问请检查_config.yml配置文件是否需要修改&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;3.6 博客编辑工具&lt;/h4&gt;
-
-&lt;p&gt;通过以上就可以在本地编辑，运行博客啦&lt;/p&gt;
-
-&lt;p&gt;免费的编辑工具：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://25.io/mou/&quot;&gt;mou&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://macdown.uranusjr.com/&quot;&gt;macdown&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&quot;mou&quot;&gt;Mou&lt;/h6&gt;
-
-&lt;p&gt;集成 Tumblr 和 Scriptogr.am 发布博文；内置 CJK 字符支持。&lt;/p&gt;
-
-&lt;h6 id=&quot;macdown-&quot;&gt;MacDown 特色&lt;/h6&gt;
-
-&lt;p&gt;代码高亮；MacDown 支持Task list&lt;/p&gt;
-
-&lt;h4 id=&quot;github-1&quot;&gt;3.7 上传GitHub&lt;/h4&gt;
-
-&lt;p&gt;再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
-上传至GitHub后，我们就可以在线查看博客了。&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyll-3&quot;&gt;4 jekyll的注意事项&lt;/h2&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;4.1 更新&lt;/h4&gt;
-
-&lt;p&gt;Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$bundle 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;或者&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$gem update github-pages #没安装bundler
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;gemfile&quot;&gt;4.2 Gemfile文件&lt;/h4&gt;
-
-&lt;p&gt;Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
-Gemfile是可通过Bundler创建：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$gem install bundler
-$bundle init
-$bundle install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Gemfile文件中设置的内容如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#以下必须：
-source &quot;https://rubygems.org&quot;
-gem &quot;jekyll-paginate&quot;
-gem &quot;kramdown&quot;
-group :jekyll_plugins do
-   gem &quot;jekyll-feed&quot;, &quot;~&amp;gt; 0.6&quot;
-   
-#以下按需：
-gem &quot;jekyll-watch&quot;
-gem &quot;wdm&quot;, &quot;~&amp;gt; 0.1.0&quot; if Gem.win_platform?
-#以下按需：可以配合 Live Reload Extension 可以自动刷新
-gem 'guard'
-gem 'guard-jekyll-plus'
-gem 'guard-livereload'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;设置好Gemfile之后，执行 $bundle install 如果开启了本地页面更新，那么会很耗时间。&lt;/p&gt;
-
-&lt;p&gt;B、创建guard配置文件&lt;/p&gt;
-
-&lt;p&gt;执行指令，将会生成一个Guardfile文件。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$guard init
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;生成的Guardfile文件内有一些代码，在代码的最后添加如下代码：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;guard 'jekyll-plus', :serve =&amp;gt; true do
-  watch /.*/
-  ignore /^_site/
-end
-
-guard 'livereload' do
-  watch /.*/
-end
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;C、添加livereload插件&lt;/p&gt;
-
-&lt;p&gt;使用chrome安装Live Reload Extension。&lt;/p&gt;
-
-&lt;p&gt;D、执行运行指令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$bundle exec guard start
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;这里注意一下，livereload要先关闭。&lt;/p&gt;
-
-&lt;p&gt;运行上面指令，当出现“Guard is now…”，再运行livereload。&lt;/p&gt;
-
-&lt;p&gt;然后会出现“connected”连接了，接下来修改内容就会自动刷新页面了。&lt;/p&gt;
-
-&lt;h4 id=&quot;jekyll-4&quot;&gt;4.3 配置 Jekyll&lt;/h4&gt;
-
-&lt;p&gt;可以通过创建一个 _config.yml 来配置 Jekyll 大部分属性。&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyll-5&quot;&gt;番外：jekyll的使用&lt;/h2&gt;
-
-&lt;h4 id=&quot;rubygems-&quot;&gt;1、RubyGems 镜像&lt;/h4&gt;
-
-&lt;p&gt;RubyGems的淘宝镜像：&lt;a href=&quot;https://ruby.taobao.org/&quot;&gt;https://ruby.taobao.org/&lt;/a&gt;。
-&lt;br /&gt;
- Ruby China镜像：&lt;a href=&quot;https://gems.ruby-china.org/&quot;&gt;RubyGems 镜像- Ruby China&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;jekyll-paginate-&quot;&gt;2、jekyll-paginate 依赖缺失&lt;/h4&gt;
-
-&lt;p&gt;因为 jekyll 3 中默认安装已经没有这个分页组件了，官方把这个分页组件插件化了，因此要独立安装。详情见 &lt;a href=&quot;https://jekyllrb.com/docs/pagination/&quot;&gt;https://jekyllrb.com/docs/pagination/&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;3、其他可能需要安装的：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll-paginate
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-7&quot;&gt;4、更换端口：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 查看端口被占用情况
-$ netstat -ano  
-## 在启动jekyll服务的时候指定端口号:  http://localhost:3000/
-$ jekyll serve --port 3000
-## 还可以在配置文件_config.yml中添加端口号
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;jekyll-6&quot;&gt;5、jekyll库中所包含的主要文件及文件夹有：&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;文件夹_layouts：用于存放模板的文件夹，&lt;/li&gt;
-&lt;li&gt;文件夹_posts：用于存放博客文章的文件夹&lt;/li&gt;
-&lt;li&gt;文件夹css：存放博客所用css的文件夹,比如主题文件以及高亮文件都是放在此处的&lt;/li&gt;
-&lt;li&gt;.gitignore：可以删掉，后面会将项目添加到git项目，所以这个不需要了&lt;/li&gt;
-&lt;li&gt;_coinfig.yml：jekyll的配置文件，里面可以定义相当多的配置参数，具体配置参数可以参照其官网&lt;/li&gt;
-&lt;li&gt;index.html：项目的首页&lt;/li&gt;
-&lt;li&gt;_includes:用于存放一些固定的HTML代码段，文件为.html格式，可以在模板中通过liquid标签引入，常用来在各个模板中复用如 导航条、标签栏、侧边栏之类的在每个页面上都一样不变的内容，需要注意的是，这个代码段也可以是未被编译的，也就是说也可以使用liquid标签放在这些代码段中&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;通过修改配置文件_coinfig.yml以及post和layouts就可以实现主要blog的建立和修改。&lt;/p&gt;
-
-&lt;h4 id=&quot;jekyll-server-jekyllpaginate&quot;&gt;6、运行jekyll server，提示 Jekyll::Paginate&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
- # 方案如下：
- # # 在Gemfile文中添加：gem 'jekyll-paginate'
- $ bundle
- $ gem install jekyll-paginate
- # # OK！
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;section-8&quot;&gt;参考&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-&quot;&gt;|- &lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;  | - &lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;zhanxin&lt;/a&gt; | - &lt;a href=&quot;http://www.jianshu.com/p/07064eb79740&quot;&gt;jianshu&lt;/a&gt;&lt;/h2&gt;
-
-&lt;h2 id=&quot;jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c&quot;&gt;|- &lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;jianshu&lt;/a&gt; | - &lt;a href=&quot;http://ytysj.github.io/blog/myblog3&quot;&gt;ytysj&lt;/a&gt; | - &lt;a href=&quot;http://www.jianshu.com/p/609e1197754c&quot;&gt;jianshu&lt;/a&gt;&lt;/h2&gt;
-
-&lt;h2 id=&quot;ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio&quot;&gt;|- &lt;a href=&quot;http://www.ezlippi.com//blog/2015/03/github-pages-blog.html&quot;&gt;ezlippi&lt;/a&gt; | - &lt;a href=&quot;http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;waylau&lt;/a&gt;| - &lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;wowubuntu&lt;/a&gt; | - &lt;a href=&quot;http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;cnblogs&lt;/a&gt;&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 20 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/10/20/createMyGithubBlog/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/10/20/createMyGithubBlog/</guid>
-        
-        <category>博客</category>
-        
-        <category>jekyll</category>
-        
-        
-        <category>博客</category>
-        
-        <category>jekyll</category>
         
       </item>
     
