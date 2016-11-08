@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>3行代码</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/page3/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" index>
+    <div class="left">
+        <h1>Welcome to 3code.info!</h1>
+        <small>记录生活</small>
+        <hr>
+        <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/10/20/createMyGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-10-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#博客" title="Category: 博客" rel="category">博客</a>&nbsp;
+    
+        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#博客" title="Tag: 博客" rel="tag">博客</a>&nbsp;
+    
+        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#gitgithub" id="markdown-toc-gitgithub">1、git\github</a>    <ul>
+      <li><a href="#github" id="markdown-toc-github">1.1 github知识普及：</a></li>
+      <li><a href="#git" id="markdown-toc-git">1.2  注册下载Git客户端</a></li>
+      <li><a href="#githubpages" id="markdown-toc-githubpages">1.3 在github上创建Pages：</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info</p>
+
+<p>下面针对jekyll博客的过程，有问题还请留言。
+<img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
+
+<h2 id="section">说明</h2>
+<p>1、以下系统基于OS X EI ;</p>
+
+<p>2、免费主机：github + 静态制作：jekyll</p>
+
+<h2 id="gitgithub">1、git\github</h2>
+
+<h4 id="github">1.1 github知识普及：</h4>
+
+<p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
+
+<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)</p>
+
+<h4 id="git">1.2  注册下载Git客户端</h4>
+
+<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)</p>
+
+<h4 id="githubpages">1.3 在github上创建Pages：</h4>
+
+<p><a href="https://pages.github.com/">参考官方页面提示</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/10/20/createMyGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+        </ul>
+
+
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="/page2" class="previous"><i class="fa fa-angle-left"></i></a>
+          
+          <span class="page_number ">3/3</span>
+          
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          
+        </div>
+    </div>
+    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <div class="right">
+        <div class="wrap">
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    最新文章
+                </div>
+                <ul class="content-ul" recent>
+                    
+                        <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
+                    
+                        <li><a href="/2016/11/01/7_IOS_Reverse_Theory/">IOS逆向开发系列7_IOS理论基础</a></li>
+                    
+                        <li><a href="/2016/11/01/6_IOS_Tools/">IOS逆向开发系列6_IOS工具集</a></li>
+                    
+                        <li><a href="/2016/11/01/5_IDA-iFunBox-other/">IOS逆向开发系列5_IDA/iFunBox/other</a></li>
+                    
+                        <li><a href="/2016/11/01/4_Reveal/">IOS逆向开发系列4_Reveal</a></li>
+                    
+                        <li><a href="/2016/11/01/3_Theos_-fourFile/">IOS逆向开发系列3_Theos_file简介及Logos基本语法</a></li>
+                    
+                        <li><a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></li>
+                    
+                        <li><a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></li>
+                    
+                        <li><a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></li>
+                    
+                        <li><a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></li>
+                    
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    分类
+                </div>
+                <ul class="content-ul" cate>
+                    
+                    <li>
+                        <a href="/category/#博客" class="categories-list-item" cate="博客">
+                            <span class="name">
+                                博客
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#jekyll" class="categories-list-item" cate="jekyll">
+                            <span class="name">
+                                jekyll
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Sublime" class="categories-list-item" cate="Sublime">
+                            <span class="name">
+                                Sublime
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS逆向开发" class="categories-list-item" cate="IOS逆向开发">
+                            <span class="name">
+                                IOS逆向开发
+                            </span>
+                            <span class="badge">8</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS基础" class="categories-list-item" cate="IOS基础">
+                            <span class="name">
+                                IOS基础
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#博客" style="font-size: 9pt; color: #999;">博客</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#jekyll" style="font-size: 9pt; color: #999;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Sublime" style="font-size: 18pt; color: #000;">Sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS逆向开发" style="font-size: 9pt; color: #999;">IOS逆向开发</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#class_dump" style="font-size: 9pt; color: #999;">class_dump</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Theos" style="font-size: 18pt; color: #000;">Theos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Logos" style="font-size: 9pt; color: #999;">Logos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Reveal" style="font-size: 9pt; color: #999;">Reveal</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IDA" style="font-size: 9pt; color: #999;">IDA</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iFunBox" style="font-size: 9pt; color: #999;">iFunBox</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#dyld_decache" style="font-size: 9pt; color: #999;">dyld_decache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#逆向_IOS工具集" style="font-size: 9pt; color: #999;">逆向_IOS工具集</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS代码规范" style="font-size: 9pt; color: #999;">IOS代码规范</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS基础" style="font-size: 9pt; color: #999;">IOS基础</a>
+                    
+                </div>
+            </div>
+
+            <!-- <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    Links
+                </div>
+                <ul  class="content-ul">
+
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <script src="/js/scroll.min.js " charset="utf-8"></script> -->
+<!-- <script src="/js/pageContent.js " charset="utf-8"></script> -->
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3code.info 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

@@ -126,6 +126,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -138,6 +140,120 @@
         <small>记录生活</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#theos" id="markdown-toc-theos">2、Theos简介</a></li>
+  <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
+</ul>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<p>debian:
+<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a></p>
+
+<p>Theos安装:
+<a href="https://github.com/theos/theos/wiki/Installation">https://github.com/theos/theos/wiki/Installation</a></p>
+
+<h2 id="theos">2、Theos简介</h2>
+
+<p>Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。</p>
+
+<p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
+
+<p>这里插播一个关于DHowett的小段子：DHowett的全名叫Dustin L.Howett，他是个很有个性的少年，出生在美国宾夕法尼亚州的郊区，从小痴迷电脑。 大学读了不到一年，觉得老师讲得没意思，就不愿意好好听了，自然也就跟不上。更重要的是，他和一个姑娘展开了疯狂的异地恋，于是就干脆辍学，搬到了那个姑娘的所在地加州，并求职进了Saurik的公司SaurikIT。DHowett的早期作品CyDelete以Cy开头，而这种命名方式是Saurik御用的，说明DHowett的作品得到了Saurik的认可，也足见DHowett与Saurik关系之好。但遗憾的是，在Dustin辍学后，他和女朋友之间开始出现问题，最后分道扬镳了。之后Dustin离开了SaurikIT，进入了另一家创业公司DailyBooth，但这家公司经营不善，没多久就倒闭了，他就又回家待业了。过了没多久，Dustin爱上了另一个女孩，所以他又为了这个姑娘搬回旧金山，并且在当地一家不错的公司Airbnb找到了一份新工作。可以说是一个风一般的男子，令人十分崇拜。</p>
+
+<h2 id="theos-1">3、安装Theos</h2>
+
+<p>首先需要的环境和工具如下：</p>
+
+<ul>
+  <li>curl</li>
+  <li>git</li>
+  <li>make</li>
+  <li>openssh</li>
+  <li>perl</li>
+  <li>rsync</li>
+  <li>dpkg (port or homebrew install on Mac OS X)</li>
+  <li>python (if on Windows)</li>
+</ul>
+
+<p>没有的就用 brew install **</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/01/2_Theos_-install&run/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -849,105 +965,6 @@ export PATH=/usr/local/bin:$PATH
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/10/20/createMyGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-10-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#博客" title="Category: 博客" rel="category">博客</a>&nbsp;
-    
-        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#博客" title="Tag: 博客" rel="tag">博客</a>&nbsp;
-    
-        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">说明</a></li>
-  <li><a href="#gitgithub" id="markdown-toc-gitgithub">1、git\github</a>    <ul>
-      <li><a href="#github" id="markdown-toc-github">1.1 github知识普及：</a></li>
-      <li><a href="#git" id="markdown-toc-git">1.2  注册下载Git客户端</a></li>
-      <li><a href="#githubpages" id="markdown-toc-githubpages">1.3 在github上创建Pages：</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info</p>
-
-<p>下面针对jekyll博客的过程，有问题还请留言。
-<img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
-
-<h2 id="section">说明</h2>
-<p>1、以下系统基于OS X EI ;</p>
-
-<p>2、免费主机：github + 静态制作：jekyll</p>
-
-<h2 id="gitgithub">1、git\github</h2>
-
-<h4 id="github">1.1 github知识普及：</h4>
-
-<p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
-
-<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)</p>
-
-<h4 id="git">1.2  注册下载Git客户端</h4>
-
-<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)</p>
-
-<h4 id="githubpages">1.3 在github上创建Pages：</h4>
-
-<p><a href="https://pages.github.com/">参考官方页面提示</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/10/20/createMyGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -958,10 +975,10 @@ export PATH=/usr/local/bin:$PATH
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">2/2</span>
+          <span class="page_number ">2/3</span>
           
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+            <a href="/page3" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="/page3" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -974,6 +991,8 @@ export PATH=/usr/local/bin:$PATH
                     最新文章
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
                     
                         <li><a href="/2016/11/01/7_IOS_Reverse_Theory/">IOS逆向开发系列7_IOS理论基础</a></li>
                     
@@ -992,8 +1011,6 @@ export PATH=/usr/local/bin:$PATH
                         <li><a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></li>
                     
                         <li><a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></li>
-                    
-                        <li><a href="/2016/10/29/useSublime/">Sublime Text基础教程</a></li>
                     
                 </ul>
             </div>
@@ -1039,6 +1056,15 @@ export PATH=/usr/local/bin:$PATH
                                 IOS逆向开发
                             </span>
                             <span class="badge">8</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS基础" class="categories-list-item" cate="IOS基础">
+                            <span class="name">
+                                IOS基础
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1149,6 +1175,20 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS代码规范" style="font-size: 9pt; color: #999;">IOS代码规范</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS基础" style="font-size: 9pt; color: #999;">IOS基础</a>
                     
                 </div>
             </div>
