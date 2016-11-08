@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title> 一道面试题里藏的IOS世界</title>
-    <meta name="description" content="  前序  解析          1、解析枚举                  1.1 定义规范的枚举          1.2 定义规范的枚举内容          1.3 枚举的深入          1.4 优化后的写法                    上边这张图是前段时间网上比较火的一套面试题中...">
+    <meta name="description" content="  前序  解析          1、枚举                  1.1 定义规范的枚举          1.2 定义规范的枚举内容          1.3 枚举的深入          1.4 优化后的写法                    上边这张图是前段时间网上比较火的一套面试题中的。...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -196,7 +196,7 @@
         <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">前序</a></li>
   <li><a href="#section-1" id="markdown-toc-section-1">解析</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1、解析枚举</a>        <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">1、枚举</a>        <ul>
           <li><a href="#section-3" id="markdown-toc-section-3">1.1 定义规范的枚举</a></li>
           <li><a href="#section-4" id="markdown-toc-section-4">1.2 定义规范的枚举内容</a></li>
           <li><a href="#section-5" id="markdown-toc-section-5">1.3 枚举的深入</a></li>
@@ -222,9 +222,10 @@
     </ul>
   </li>
   <li><a href="#section-14" id="markdown-toc-section-14">5、运行时</a>    <ul>
-      <li><a href="#clang-" id="markdown-toc-clang-">1、研究工具Clang 参见后边的番外。</a></li>
-      <li><a href="#objcnil" id="markdown-toc-objcnil">2、objc中向nil对象发送消息</a></li>
-      <li><a href="#obj-foo-vs-objcmsgsend" id="markdown-toc-obj-foo-vs-objcmsgsend">3、[obj foo] VS objc_msgSend()</a></li>
+      <li><a href="#clang-" id="markdown-toc-clang-">5.1、研究工具Clang 参见后边的番外。</a></li>
+      <li><a href="#objcnil" id="markdown-toc-objcnil">5.2、objc中向nil对象发送消息</a></li>
+      <li><a href="#obj-foo-vs-objcmsgsend" id="markdown-toc-obj-foo-vs-objcmsgsend">5.3、[obj foo] VS objc_msgSend()</a></li>
+      <li><a href="#objcmsgforward" id="markdown-toc-objcmsgforward">5.4、 _objc_msgForward</a></li>
     </ul>
   </li>
   <li><a href="#clang" id="markdown-toc-clang">番外：Clang</a>    <ul>
@@ -255,7 +256,7 @@
 
 <!-- 这里先推荐官方的写法：[传送门](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html#//apple_ref/doc/uid/TP40014150-CH1-SW4) -->
 
-<h3 id="section-2">1、解析枚举</h3>
+<h3 id="section-2">1、枚举</h3>
 
 <p>问题点：</p>
 
@@ -498,14 +499,14 @@ objc_getAssociatedObject</p>
 <p><strong>上边提到运行时，下边简单的说下运行时</strong></p>
 <h2 id="section-14">5、运行时</h2>
 
-<h4 id="clang-">1、研究工具Clang 参见后边的番外。</h4>
+<h4 id="clang-">5.1、研究工具Clang 参见后边的番外。</h4>
 
-<h4 id="objcnil">2、objc中向nil对象发送消息</h4>
+<h4 id="objcnil">5.2、objc中向nil对象发送消息</h4>
 
 <p>objc是动态语言，每个方法在运行时会被动态转为消息发送，即：objc_msgSend(receiver, selector)。
 objc在向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象实际所属的类，然后在该类中的方法列表以及其父类方法列表中寻找方法运行，然后在发送消息的时候，objc_msgSend方法不会返回值，所谓的返回内容都是具体调用时执行的。so，向一个nil对象发送消息，首先在寻找对象的isa指针(0)时就返回了，所以不会出现什么问题。</p>
 
-<h4 id="obj-foo-vs-objcmsgsend">3、[obj foo] VS objc_msgSend()</h4>
+<h4 id="obj-foo-vs-objcmsgsend">5.3、[obj foo] VS objc_msgSend()</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>int main(int argc, char * argv[]) {
     /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
@@ -526,6 +527,136 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 也就是说：
 [obj foo];在objc动态编译时，会被转意为：objc_msgSend(obj, @selector(foo))。
 当调用该对象上某个方法,而该对象上没有实现这个方法的时候， 可以通过“消息转发”进行解决。如果，在最顶层的父类中依然找不到相应的方法时，程序在运行时会挂掉并抛出异常unrecognized selector sent to XXX 。</p>
+
+<h4 id="objcmsgforward">5.4、 _objc_msgForward</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>_objc_msgForward是 IMP 类型，用于消息转发的，当向一个对象发送一条消息，但它并没有实现时，_objc_msgForward会尝试做消息转发。
+</code></pre>
+</div>
+
+<p>5.4.1 功能：</p>
+
+<p>在objc-runtime-new.mm里面搜索到如下的说明:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/***********************************************************************
+* lookUpImpOrForward.
+* The standard IMP lookup. 
+* initialize==NO tries to avoid +initialize (but sometimes fails)
+* cache==NO skips optimistic unlocked lookup (but uses cache elsewhere)
+* Most callers should use initialize==YES and cache==YES.
+* inst is an instance of cls or a subclass thereof, or nil if none is known. 
+*   If cls is an un-initialized metaclass then a non-nil inst is faster.
+* May return _objc_msgForward_impcache. IMPs destined for external use 
+*   must be converted to _objc_msgForward or _objc_msgForward_stret.
+*   If you don't want forwarding at all, use lookUpImpOrNil() instead.
+**********************************************************************/
+</code></pre>
+</div>
+
+<p>在“消息传递”过程中，objc_msgSend的动作比较清晰：首先在 Class 中的缓存查找 IMP （缓存没有时重建缓存），如果没找到，则向父类的 Class 查找。如果一直查找到根类仍旧没有实现，则用_objc_msgForward函数指针代替 IMP 。最后，执行这个 IMP 。</p>
+
+<p>5.4.2 实战说明:</p>
+
+<p>尝试向一个对象发送一条错误的消息，并查看一下_objc_msgForward是如何进行转发的。
+随意想一个不存在的方法的类发一条消息，</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>int main(int argc, char * argv[]) {
+
+      @autoreleasepool {
+         JTest *test = [[JTest alloc] init];
+         [test performSelector:(@selector(QQQQQQQQ))];
+         NSLog(@"打印：3code.info");
+         return 0 ;
+     }
+}
+</code></pre>
+</div>
+
+<p>断点在发消息之处。运行至此，在此gdb中输入下面的命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>call (void)instrumentObjcMessageSends(YES) 然后在终端执行
+
+ $ open /private/tmp 找到最新的一条(msgSends-4488)，打开如下：
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ JTest NSObject initialize
++ JTest NSObject alloc
+- JTest NSObject init
+- JTest NSObject performSelector:
++ JTest NSObject resolveInstanceMethod:
++ JTest NSObject resolveInstanceMethod:
+- JTest NSObject forwardingTargetForSelector:
+- JTest NSObject forwardingTargetForSelector:
+- JTest NSObject methodSignatureForSelector:
+- JTest NSObject methodSignatureForSelector:
+- JTest NSObject class
+- JTest NSObject doesNotRecognizeSelector:
+- JTest NSObject doesNotRecognizeSelector:
+- JTest NSObject class
+- OS_xpc_serializer OS_object _xref_dispose
+- OS_xpc_serializer OS_xpc_object _dispose
+- OS_xpc_serializer NSObject dealloc
+....
+</code></pre>
+</div>
+<p>从中可以看出它做的几件主要的是：</p>
+
+<ul>
+  <li>1、调用resolveInstanceMethod:方法 (resolveClassMethod:)。允许用户在此时为该 Class 动态添加实现。如果有实现了，则调用并返回YES，重新开始objc_msgSend流程(这一次对象会响应这个选择器，一般是因为它已经调用过class_addMethod)。如果仍没实现，继续下面的动作。</li>
+  <li>2、调用forwardingTargetForSelector:方法，尝试找到一个能响应该消息的对象。如果获取到，则直接把消息转发给它，返回非nil对象。否则返回nil继续下面的动作。此处不可返回self，否则会形成死循环。</li>
+  <li>3、调用methodSignatureForSelector:方法，尝试获得一个方法签名。如果获取不到，则直接调用doesNotRecognizeSelector抛出异常。如果能获取，则返回非nil：创建一个 NSlnvocation 并传给forwardInvocation:。</li>
+  <li>4、调用forwardInvocation:方法，将第3步获取到的方法签名包装成 Invocation 传入，如何处理就在这里面了，并返回非ni。</li>
+  <li>5、调用doesNotRecognizeSelector: 默认的实现是抛出异常。如果第3步没能获得一个方法签名，执行该步骤。</li>
+</ul>
+
+<p>上面前4个方法均是模板方法，开发者可以overwrite，由runtime来调用。最常见的实现消息转发：就是重写方法3和4。</p>
+
+<p>5.4.3  使用</p>
+
+<p><code class="highlighter-rouge">_objc_msgForward</code>隶属 C 语言，有三个参数 ：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>–</th>
+      <th>参数</th>
+      <th>类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.</td>
+      <td>所属对象</td>
+      <td>id类型</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>方法名</td>
+      <td>SEL类型</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>可变参数</td>
+      <td>可变参数类型</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>我们可以通过如下方式定义一个 IMP类型 ：</p>
+
+<pre><code class="language-Objective-C">typedef void (*voidIMP)(id, SEL, ...)
+</code></pre>
+<p>一旦调用<code class="highlighter-rouge">_objc_msgForward</code>，将跳过查找 IMP 的过程，直接触发“消息转发”，</p>
+
+<p>如果调用了<code class="highlighter-rouge">_objc_msgForward</code>，即使这个对象确实已经实现了这个方法，你也会告诉<code class="highlighter-rouge">objc_msgSend</code>： “我没有在这个对象里找到这个方法的实现”</p>
+
+<p>_objc_msgForward最常见的场景是：你想获取某方法所对应的<code class="highlighter-rouge">NSInvocation</code>对象：</p>
+
+<p><a href="https://github.com/bang590/JSPatch">JSPatch （Github 链接）</a>就是直接调用<code class="highlighter-rouge">_objc_msgForward</code>来实现其核心功能的。</p>
+
+<blockquote>
+  <p>JSPatch 以小巧的体积做到了让JS调用/替换任意OC方法，让iOS APP具备热更新的能力。</p>
+</blockquote>
 
 <h2 id="clang">番外：Clang</h2>
 
@@ -795,7 +926,7 @@ $ clang -fobjc-arc -framework Foundation main.m -o nihau
     <div class="wrapper">
 
         <p class="description">
-             3code.info 
+             3行代码的技术博客 
         </p>
         <p class="contact">
             Contact me at:  
