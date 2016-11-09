@@ -5,9 +5,26 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Nov 2016 23:31:22 +0800</pubDate>
-    <lastBuildDate>Tue, 08 Nov 2016 23:31:22 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2016 22:40:52 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2016 22:40:52 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>淘宝和12306的那些事</title>
+        <description>
+</description>
+        <pubDate>Sun, 06 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/06/TaoBao/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/06/TaoBao/</guid>
+        
+        <category>淘宝</category>
+        
+        <category>12306</category>
+        
+        
+        <category>杂谈</category>
+        
+      </item>
     
       <item>
         <title> 一道面试题里藏的IOS世界</title>
@@ -431,7 +448,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 &lt;p&gt;5.4.3  使用&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_objc_msgForward&lt;/code&gt;隶属 C 语言，有三个参数 ：&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_objc_msgForward&lt;/code&gt;是C语言函数，有三个参数 ：&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -2195,345 +2212,6 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         
         
         <category>IOS逆向开发</category>
-        
-      </item>
-    
-      <item>
-        <title>Sublime Text进阶教程</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;说明&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1、终端模式&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2、快捷键&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.1选择类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.2 编辑类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.3 搜索类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;2.4显示类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#multi-selection&quot; id=&quot;markdown-toc-multi-selection&quot;&gt;2.5 多重选择（Multi-Selection）&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3、无插件不神器&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#advancednewfile&quot; id=&quot;markdown-toc-advancednewfile&quot;&gt;3.1 AdvancedNewFile:创建文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sidebarenhancementssidebar&quot; id=&quot;markdown-toc-sidebarenhancementssidebar&quot;&gt;3.2 SideBarEnhancements:增强的sidebar&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#emmet&quot; id=&quot;markdown-toc-emmet&quot;&gt;3.3 Emmet&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sublimecodeintel&quot; id=&quot;markdown-toc-sublimecodeintel&quot;&gt;3.4 Sublime​Code​Intel&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#browser-refresh&quot; id=&quot;markdown-toc-browser-refresh&quot;&gt;3.5 Browser Refresh&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#converttoutf8&quot; id=&quot;markdown-toc-converttoutf8&quot;&gt;3.6 ConvertToUTF8&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#alignment&quot; id=&quot;markdown-toc-alignment&quot;&gt;3.7 Alignment&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#theme--soda&quot; id=&quot;markdown-toc-theme--soda&quot;&gt;3.8 Theme – Soda:&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#markdown&quot; id=&quot;markdown-toc-markdown&quot;&gt;4、Markdown&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;4.1 设置目录&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;4.2 编辑：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#markdown-1&quot; id=&quot;markdown-toc-markdown-1&quot;&gt;4.3 在浏览器预览Markdown文档&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#pdf&quot; id=&quot;markdown-toc-pdf&quot;&gt;4.4 打印成pdf&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;4.5 关于快捷键&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;5、主题&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#git&quot; id=&quot;markdown-toc-git&quot;&gt;6、Git&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#evernote&quot; id=&quot;markdown-toc-evernote&quot;&gt;7、Evernote&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;7.1 相关插件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#evernote-1&quot; id=&quot;markdown-toc-evernote-1&quot;&gt;7.2关联Evernote&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;7.3测试是否授权成功&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;7.4 修改模板&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;7.5 储存到印象笔记&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;说明&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。&lt;/strong&gt;
-如有问题，请参考&lt;a href=&quot;http://3code.info/2016/10/29/useSublime/&quot;&gt;基础教程&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;1、终端模式&lt;/h2&gt;
-
-&lt;p&gt;Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令为sublime,但需要注意的是subl命令默认不在环境变量里，所以我们需要将其添加到环境变量，subl的位置为/Applications/Sublime Text 2.app/Contents/SharedSupport/bin(区分 2 3)),我们需要将这个路径添加到.bash_profile文件里。。&lt;/p&gt;
-
-&lt;p&gt;参考文章：&lt;a href=&quot;http://3code.info/2016/10/28/deployEnvironmentVariable/&quot;&gt;配置环境变量&lt;/a&gt;
-完成上述操作后，我们就可以在终端使用Sublime Text 打开文件了：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sublime fileName      //创建文件&lt;/li&gt;
-  &lt;li&gt;sublime folderName	 //打开文件夹&lt;/li&gt;
-  &lt;li&gt;sublime .				 //打开当前目录&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;2、快捷键&lt;/h2&gt;
-&lt;p&gt;如果有冲突或者自定义快捷键，请打开：
-preference../Key Bindings 在这里可以修改快捷键设置&lt;/p&gt;
-
-&lt;h5 id=&quot;section-3&quot;&gt;2.1选择类&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cmd+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。&lt;/li&gt;
-  &lt;li&gt;Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。&lt;/li&gt;
-  &lt;li&gt;cmd+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。&lt;/li&gt;
-  &lt;li&gt;cmd+M 光标移动至括号内结束或开始的位置。&lt;/li&gt;
-  &lt;li&gt;cmd+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+[ 选中代码，按下快捷键，折叠代码。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+] 选中代码，按下快捷键，展开代码。&lt;/li&gt;
-  &lt;li&gt;cmd+K+0 展开所有折叠代码。&lt;/li&gt;
-  &lt;li&gt;cmd+← 向左单位性地移动光标，快速移动光标。&lt;/li&gt;
-  &lt;li&gt;cmd+→ 向右单位性地移动光标，快速移动光标。&lt;/li&gt;
-  &lt;li&gt;shift+↑ 向上选中多行。&lt;/li&gt;
-  &lt;li&gt;shift+↓ 向下选中多行。&lt;/li&gt;
-  &lt;li&gt;Shift+← 向左选中文本。&lt;/li&gt;
-  &lt;li&gt;Shift+→ 向右选中文本。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+← 向左单位性地选中文本。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+→ 向右单位性地选中文本。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。&lt;/li&gt;
-  &lt;li&gt;cmd+Alt+↑ 向上添加多行光标，可同时编辑多行。&lt;/li&gt;
-  &lt;li&gt;cmd+Alt+↓ 向下添加多行光标，可同时编辑多行。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section-4&quot;&gt;2.2 编辑类&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cmd+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+D 复制光标所在整行，插入到下一行。&lt;/li&gt;
-  &lt;li&gt;Tab 向右缩进。只对光标后（或者选中的）的代码有效&lt;/li&gt;
-  &lt;li&gt;Shift+Tab 向左缩进。&lt;/li&gt;
-  &lt;li&gt;cmd+[ 向左缩进。对整行有效&lt;/li&gt;
-  &lt;li&gt;cmd+] 向右缩进。对整行有效&lt;/li&gt;
-  &lt;li&gt;cmd+K+K 从光标处开始删除代码至行尾。按住cmd，按两次K。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+K 删除整行。&lt;/li&gt;
-  &lt;li&gt;cmd+/ 注释单行。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+/ 注释多行。&lt;/li&gt;
-  &lt;li&gt;cmd+K+U 转换大写。&lt;/li&gt;
-  &lt;li&gt;cmd+K+L 转换小写。&lt;/li&gt;
-  &lt;li&gt;cmd+Z 撤销。&lt;/li&gt;
-  &lt;li&gt;cmd+Y 恢复撤销。&lt;/li&gt;
-  &lt;li&gt;cmd+U 软撤销，感觉和 Gtrl+Z 一样。&lt;/li&gt;
-  &lt;li&gt;cmd+F2 设置书签，F2切换书签&lt;/li&gt;
-  &lt;li&gt;cmd+T 左右字母互换。
-F6 单词检测拼写&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section-5&quot;&gt;2.3 搜索类&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cmd+F 打开底部搜索框，查找关键字。&lt;/li&gt;
-  &lt;li&gt;cmd+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。&lt;/li&gt;
-  &lt;li&gt;cmd+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。&lt;/li&gt;
-  &lt;li&gt;cmd+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。&lt;/li&gt;
-  &lt;li&gt;cmd+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。&lt;/li&gt;
-  &lt;li&gt;cmd+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。&lt;/li&gt;
-  &lt;li&gt;Esc 退出光标多行选择，退出搜索框，命令框等。&lt;/li&gt;
-  &lt;li&gt;cmd+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section-6&quot;&gt;2.4显示类&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cmd+Tab 按文件浏览过的顺序，切换当前窗口的标签页。&lt;/li&gt;
-  &lt;li&gt;cmd+PageDown 向左切换当前窗口的标签页。&lt;/li&gt;
-  &lt;li&gt;cmd+PageUp 向右切换当前窗口的标签页。&lt;/li&gt;
-  &lt;li&gt;Alt+cmd+1 窗口分屏，恢复默认1屏（非小键盘的数字）&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +2 左右分屏-2列&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +3 左右分屏-3列&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +4 左右分屏-4列&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +5 等分4屏&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +8 垂直分屏-2屏&lt;/li&gt;
-  &lt;li&gt;Alt+ cmd +9 垂直分屏-3屏&lt;/li&gt;
-  &lt;li&gt;cmd+K+B 开启/关闭侧边栏。&lt;/li&gt;
-  &lt;li&gt;F11 全屏模式&lt;/li&gt;
-  &lt;li&gt;Shift+F11 免打扰模式&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;multi-selection&quot;&gt;2.5 多重选择（Multi-Selection）&lt;/h5&gt;
-
-&lt;p&gt;多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
-激活多重选择的方法有两几种：&lt;/p&gt;
-
-&lt;p&gt;按住 cmd 然后在页面中希望中现光标的位置点击。
-选择数行文本，然后按下 Shift + cmd + L。
-通过反复按下 cmd + D 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 Alt+F3即可一次性选择所有相同的词。
-按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-7&quot;&gt;3、无插件不神器&lt;/h2&gt;
-
-&lt;h5 id=&quot;advancednewfile&quot;&gt;3.1 AdvancedNewFile:创建文件&lt;/h5&gt;
-
-&lt;p&gt;可以使用快捷键cmd+alt+n,Sublime Text底部会弹出输入框:
-只需在这个输入框里输入需要新建的文件名回车即可（可以带路径）。默认情况下文件会存储在当前目录，如果当前没有目录，会存储在用户的home目录。&lt;/p&gt;
-
-&lt;h5 id=&quot;sidebarenhancementssidebar&quot;&gt;3.2 SideBarEnhancements:增强的sidebar&lt;/h5&gt;
-
-&lt;p&gt;当我们用sublime打开一个文件夹时，会在sublime的左侧出现一个sidebar，以此方便我们可以通过点击的方式快速打开文件。但这个sidebar功能很少。SideBarEnhancements的插件可以增强sidebar的功能。打开命令模式－&amp;gt;进入pci界面-&amp;gt;输入SideBarEnhancements回车安装即可。&lt;/p&gt;
-
-&lt;h5 id=&quot;emmet&quot;&gt;3.3 Emmet&lt;/h5&gt;
-&lt;p&gt;前身是大名鼎鼎的Zen coding,它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。&lt;/p&gt;
-
-&lt;p&gt;调用方法：cmd+E 或者 !&lt;/p&gt;
-
-&lt;h5 id=&quot;sublimecodeintel&quot;&gt;3.4 Sublime​Code​Intel&lt;/h5&gt;
-&lt;p&gt;支持所有 Komode Editor 支持的代码语言，如：JavaScript, Mason, XBL, XUL,..&lt;/p&gt;
-
-&lt;p&gt;调用方法：跳转到定义位置（Alt+Click 或 Control+Windows+Alt+Up）、返回（Control+Windows+Alt+Left）&lt;/p&gt;
-
-&lt;h5 id=&quot;browser-refresh&quot;&gt;3.5 Browser Refresh&lt;/h5&gt;
-&lt;p&gt;通过一个快捷键可以实现保存文件，切换到浏览器并自动刷新浏览器来查看更改结果。&lt;/p&gt;
-
-&lt;p&gt;调用方法：默认为cmd+Shift+R，可自行修改&lt;/p&gt;
-
-&lt;h5 id=&quot;converttoutf8&quot;&gt;3.6 ConvertToUTF8&lt;/h5&gt;
-&lt;p&gt;解决编码问题，直接在菜单栏中可以转了，专为中文设计&lt;/p&gt;
-
-&lt;h5 id=&quot;alignment&quot;&gt;3.7 Alignment&lt;/h5&gt;
-&lt;p&gt;代码对齐，如写几个变量，选中这几行，cmd+Alt+A，对齐&lt;/p&gt;
-
-&lt;h5 id=&quot;theme--soda&quot;&gt;3.8 Theme – Soda:&lt;/h5&gt;
-&lt;p&gt;完美的编码主题，用过的都说好，Setting user里面添加”theme”: “Soda Dark.sublime-theme”&lt;/p&gt;
-
-&lt;h2 id=&quot;markdown&quot;&gt;4、Markdown&lt;/h2&gt;
-&lt;p&gt;所需插件：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MarkDownEditing:在Sublime中编辑MarkDown文件。&lt;/li&gt;
-  &lt;li&gt;MarkDownPreview:在浏览器中预览MarkDown文件效果。&lt;/li&gt;
-  &lt;li&gt;Markdown Extended + Extends Monokai：不错的Markdown主题，支持对多种语言的高亮&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section-8&quot;&gt;4.1 设置目录&lt;/h5&gt;
-
-&lt;p&gt;在文档最前面添加[TOC]，在左侧自动生成目录。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-9&quot;&gt;4.2 编辑：&lt;/h5&gt;
-
-&lt;p&gt;新建一个文档:cmd + N 
-语法高亮:cmd + Shift + P:输入ssm 后回车(Set Syntax: Markdown)&lt;/p&gt;
-
-&lt;h5 id=&quot;markdown-1&quot;&gt;4.3 在浏览器预览Markdown文档&lt;/h5&gt;
-
-&lt;p&gt;Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。
-按cmd + Shift + P
-输入mp 后回车(Markdown Preview: current file in browser)
-此时就可以在浏览器里看到刚才编辑的文档了;&lt;/p&gt;
-
-&lt;h5 id=&quot;pdf&quot;&gt;4.4 打印成pdf&lt;/h5&gt;
-
-&lt;p&gt;将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。
-利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键-&amp;gt;打印-&amp;gt;另存为pdf-&amp;gt;调节页边距即可将pdf文件下载下来。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-10&quot;&gt;4.5 关于快捷键&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cmd+B 生成本地html文档&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
-方法是在Preferences -&amp;gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;keys&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alt+m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;markdown_preview&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;target&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;browser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;“alt+m”可设置为您自己喜欢的按键。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-11&quot;&gt;5、主题&lt;/h2&gt;
-
-&lt;p&gt;在设置一个新的主题时，需要设置theme和color_scheme两个方面，前者决定了打开不同类型文件的配色，后者决定了Tab栏，SideBar大小和图标，以及相应字体的大小设置。&lt;/p&gt;
-
-&lt;p&gt;软件自带：在Preferences-&amp;gt;Color Theme中可以任意选择，选择完即可查看主题风格。并且会在Preferebces.sublime-seetings中自动保存设定。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ColorSublime：
-一个Sublime主题的网站&lt;/li&gt;
-  &lt;li&gt;Predawn：
-一款为Sublime和Atom打造的暗色主题，可以定义Tab的大小，SideBar大小，Find栏大小，为Markdown高亮着色，并提供主题同款的ICON。&lt;/li&gt;
-  &lt;li&gt;SpaceGray&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;git&quot;&gt;6、Git&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SublimeGit：Git必备&lt;/li&gt;
-  &lt;li&gt;Gitignore：
-一键生成the collection of gitignore boilerplates by Github，多种文件类型任你选，以下用Gitignore新建C语言的忽略文件模板。&lt;/li&gt;
-  &lt;li&gt;Git Config
-设置.gitignore和.gitconfig等文件语法高亮。&lt;/li&gt;
-  &lt;li&gt;Github Tools / Sublime GitHub：与GitHub网站紧密联系，可以直接在Sublime中打开与GitHub关联的网址&lt;/li&gt;
-  &lt;li&gt;Git Conflict Resolver：用以解决在Merge过程中产生的冲突用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;evernote&quot;&gt;7、Evernote&lt;/h2&gt;
-
-&lt;h5 id=&quot;section-12&quot;&gt;7.1 相关插件&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Git:方便我们在Sublime中提交博客。&lt;/li&gt;
-  &lt;li&gt;MarkDownEditing:在Sublime中编辑MarkDown文件。&lt;/li&gt;
-  &lt;li&gt;MarkDownPreview:在浏览器中预览MarkDown文件效果。&lt;/li&gt;
-  &lt;li&gt;SublimeTmpl:可以生成MarkDown文件模板。&lt;/li&gt;
-  &lt;li&gt;Evernote:保存文件到印象笔记.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;evernote-1&quot;&gt;7.2关联Evernote&lt;/h5&gt;
-
-&lt;p&gt;在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：&lt;/p&gt;
-
-&lt;p&gt;1、国内用户打开 &lt;a href=&quot;https://app.yinxiang.com/api/DeveloperToken.action&quot;&gt;https://app.yinxiang.com/api/DeveloperToken.action&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;国际用户打开 &lt;a href=&quot;https://www.evernote.com/api/DeveloperToken.action&quot;&gt;https://www.evernote.com/api/DeveloperToken.action&lt;/a&gt; 。&lt;/p&gt;
-
-&lt;p&gt;点击Revoke your developer token 授权应用&lt;/p&gt;
-
-&lt;p&gt;2、打开 Preferences &amp;gt; Package Settings &amp;gt; Evernote &amp;gt;Settings - User&lt;/p&gt;
-
-&lt;p&gt;3、粘贴即可(格式英文)：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;noteStoreUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你自己的URL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你的Token&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;section-13&quot;&gt;7.3测试是否授权成功&lt;/h5&gt;
-
-&lt;p&gt;接下来我们可以尝试是否授权成功，通过shift+cmd+p打开命令窗口,输入Evernote，就会看见Evernote的许多命令。
-可以点击Evernote:list recent notes,如果看到罗列出最新的笔记，则说明授权成功。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-14&quot;&gt;7.4 修改模板&lt;/h5&gt;
-
-&lt;p&gt;SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。参考：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
----
-layout: post
-keywords: k
-description: d
-title: t
-categories: [笔记]
-tags: [笔记]
-group: archive
-icon: globe
----
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;section-15&quot;&gt;7.5 储存到印象笔记&lt;/h5&gt;
-
-&lt;p&gt;打开命令模式，搜索ese,就会找到Evernote send to Evernote as new note命令。&lt;/p&gt;
-
-&lt;p&gt;点击后会显示让我们选择存放在哪个笔记本，我们选择后就会自动存放到我们的印象笔记中。&lt;/p&gt;
-
-&lt;p&gt;我们再去我们的印象笔记看一下，你会发现存储在印象笔记中的格式已经是排版过的效果。&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 30 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/10/30/SublimeUpgrade/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/10/30/SublimeUpgrade/</guid>
-        
-        <category>Sublime</category>
-        
-        
-        <category>Sublime</category>
         
       </item>
     
