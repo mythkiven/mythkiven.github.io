@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About</title>
+    <title>IOS逆向开发系列7_IOS理论基础</title>
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/about/">
+    <link rel="canonical" href="http://localhost:4000/z-%20Runtime-theory/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -109,8 +109,8 @@
                     
                     <li>
                         
-                        <a class="active" href="/about/">
-                            
+                        <a href="/about/">
+                        
                             <i class="fa fa-heart"></i>About
                         </a>
                     </li>
@@ -125,8 +125,8 @@
                     
                     <li>
                         
-                        <a href="/z-%20Runtime-theory/">
-                        
+                        <a class="active" href="/z-%20Runtime-theory/">
+                            
                             <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
                         </a>
                     </li>
@@ -144,43 +144,108 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>About</h1>
+        <h1>IOS逆向开发系列7_IOS理论基础</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3code
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#IOS%E9%80%86%E5%90%91%E5%BC%80%E5%8F%91%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80" title="Tag: IOS逆向开发理论基础" rel="tag">IOS逆向开发理论基础</a-->
+        <a href="/tag/#IOS逆向开发理论基础" title="Tag: IOS逆向开发理论基础" rel="tag">IOS逆向开发理论基础</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
         <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#about-3codeinfo" id="markdown-toc-about-3codeinfo">About 3code.info</a></li>
-  <li><a href="#section" id="markdown-toc-section">关于我</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">联系我</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">友情链接</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">评论</a></li>
+  <li><a href="#section" id="markdown-toc-section">1、简介</a>    <ul>
+      <li><a href="#tweakobjective-c" id="markdown-toc-tweakobjective-c">1.1 tweak在Objective-C中的工作方式</a></li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="about-3codeinfo">About 3code.info</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>def missing_you():
- for time in range(meet_you,forever):
-   missing_you()
-</code></pre>
+<hr />
+
+<h2 id="section">1、简介</h2>
+
+<p>Objective-C相关的iOS逆向理论基础</p>
+
+<p>Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”</p>
+
+<h5 id="tweakobjective-c">1.1 tweak在Objective-C中的工作方式</h5>
+
+<p>在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。</p>
+
+<p>正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”</p>
+
+<p>“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。</p>
+
+<p>待续…</p>
+
+
+        </article>
+        <hr>
+
+        
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+    </div>
+    <div class="nex">
+
+        
+    </div>
 </div>
 
-<h3 id="section">关于我</h3>
 
-<ul>
-  <li>目前从事征信相关的移动端开发工作。</li>
-</ul>
-
-<h3 id="section-1">联系我</h3>
-
-<ul>
-  <li>email:<a href="mythziven@gmail.com">mythziven@gmail.com</a></li>
-</ul>
-
-<h3 id="section-2">友情链接</h3>
-
-<p>| <a href="http://blog.csdn.net/jiang314/">MythKiven</a> |</p>
-
-<h3 id="section-3">评论</h3>
-
+        <h2 id="comments">评论</h2>
+        
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/about/" data-title="About" data-url="http://localhost:4000/about/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/z-%20Runtime-theory/" data-title="IOS逆向开发系列7_IOS理论基础" data-url="http://localhost:4000/z-%20Runtime-theory/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -196,8 +261,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
 </script>
-
 <!-- 多说公共JS代码 end -->
+
+
+
+
 
 
     </div>
@@ -211,6 +279,8 @@
                     内容
                 </div>
                 <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    <li><a href="#comments">Comments</a></li>
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -218,6 +288,17 @@
         </div>
     </div>
 </div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
 <script src="/js/pageContent.js " charset="utf-8"></script>
 
 
