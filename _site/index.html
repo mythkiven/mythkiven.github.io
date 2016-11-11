@@ -123,6 +123,16 @@
                     
                 
                     
+                    <li>
+                        
+                        <a href="/z-%20Runtime-theory/">
+                        
+                            <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
+                        </a>
+                    </li>
+                    
+                
+                    
                 
                     
                 
@@ -140,6 +150,312 @@
         <small>记录生活</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/08/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#爬基金数据" title="Tag: 爬基金数据" rel="tag">爬基金数据</a>&nbsp;
+    
+        <a href="/tag/#脚本" title="Tag: 脚本" rel="tag">脚本</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#python" id="markdown-toc-python">1、python爬取原理及代码</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">1.1 引入需要的库</a></li>
+      <li><a href="#html" id="markdown-toc-html">1.2 获取html</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">1.3 获取内容</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.4 获取每条信息</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">1.5 写入文件</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">1.6 防止数据重复写入</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">1.7 按日期爬取数据</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">2、开机自动爬取数据的脚本</a></li>
+</ul>
+
+<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
+不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
+但是网站上也只展示在单个基金里，多基金对比就没
+成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
+
+<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
+
+<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
+，不论是pyCharm还是pip还是直接托安装包，
+后来改用excel，数据直接写入excel中。</p>
+
+<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
+
+<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
+代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
+
+<p>实际展示：</p>
+
+<p>控制台打印：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
+
+<p>写入txt：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
+
+<p>写入xls：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
+
+<h2 id="python">1、python爬取原理及代码</h2>
+
+<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
+
+<h5 id="section">1.1 引入需要的库</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
+import xlwt
+import time, datetime
+from xlutils.copy import copy
+from xlrd import open_workbook
+from xlwt import easyxf
+</code></pre>
+</div>
+
+<h5 id="html">1.2 获取html</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
+        html = requests.get(url)
+        return html.text
+
+</code></pre>
+</div>
+
+<h5 id="section-1">1.3 获取内容</h5>
+
+<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
+。区别在于:</p>
+
+<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
+
+<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
+        everyclass = re.search(
+            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
+            source, re.S).group(1)
+        return everyclass
+</code></pre>
+</div>
+
+<h5 id="section-2">1.4 获取每条信息</h5>
+
+<p>将自己需要的信息单独抽取出来：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
+        info = {}
+        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
+        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
+        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
+        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
+
+        return info
+</code></pre>
+</div>
+
+<h5 id="section-3">1.5 写入文件</h5>
+
+<p>创建txt：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
+        for each in classinfo:
+            f.writelines('xuhao:' + each['num'] + '\n')
+            f.writelines('daima:' + each['id'] + '\n')
+            f.writelines('name:' + each['name'] + '\n')
+            f.writelines('time:' + each['time'] + '\n')
+            f.writelines('price1:' + each['price1'] + '\n')
+            f.writelines('price2:' + each['price2'] + '\n')
+            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
+        f.close()
+</code></pre>
+</div>
+
+<p>打开xls,开始写入内容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
+        rb = open_workbook(path, formatting_info=True)
+        r_sheet = rb.sheet_by_index(0)
+        wb = copy(rb)
+        sheet = wb.get_sheet(0)
+        j = r_sheet.ncols
+        i = 1
+        timeShould = timePrevious
+        timeQ = timePrevious
+        tListB = []
+        tListS = []
+        print sheet
+
+        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
+#写入列信息
+        for each in classinfo:
+            sheet.write(i, j + 0, each['id'])
+            sheet.write(i, j + 1, each['time'])
+            sheet.write(i, j + 2, each['price1'])
+            sheet.write(i, j + 3, each['price2'])
+            i += 1
+            timeQ = each['time']
+            if timeQ &gt; timeShould:
+                tListB.append(each['id']+' '+timeQ)
+            elif timeQ &lt; timeShould:
+                tListS.append(each['id']+' '+timeQ)
+
+        for k in range(j, j + 5):
+            sheet.write(0, k, fir[k - j])
+            print k
+            if k == j + 4:
+                sheet.write(1, k, timeNow.decode('utf-8'))
+                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
+
+</code></pre>
+</div>
+
+<h5 id="section-4">1.6 防止数据重复写入</h5>
+
+<p>按时间判断是否需要写入数据</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
+    rb = open_workbook(path, formatting_info=True)
+    r_sheet = rb.sheet_by_index(0)
+    # 遍历第2行所有列,是否有时间数据c
+    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
+    for c in range(0, r_sheet.ncols):
+        age_nov = r_sheet.cell(1, c).value
+        print age_nov
+        if ((c + 1) % 5 == 0) and (c != 0):
+            print "\n"
+        if age_nov == timeNow:
+            return 1
+    else:
+        return 0
+
+</code></pre>
+</div>
+
+<h5 id="section-5">1.7 按日期爬取数据</h5>
+
+<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
+
+<p>注意weekday() 返回的是0-6是星期一到星期日</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
+    timeT = datetime.date.today()
+    zhouji = timeT.weekday()
+    print zhouji
+    if zhouji &gt;= 1 and zhouji &lt;= 5:
+        return timeToday  
+    else:
+        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
+        return 0
+
+</code></pre>
+</div>
+
+<h2 id="section-6">2、开机自动爬取数据的脚本</h2>
+
+<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
+
+<p>plist脚本存放路径为:</p>
+
+<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
+
+<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
+
+<p>    可以通过两种方式来设置脚本的执行时间。一个是使用StartInterval，它指定脚本每间隔多长时间（单位：秒）执行一次；另外一个使用 StartCalendarInterval，它可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置。</p>
+
+<p>一个简单例子如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>com.3code.test.plist<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/Users/3code/plist-test.sh<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/array&gt;</span>
+    <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;false/&gt;</span>
+    <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;true/&gt;</span>
+    <span class="nt">&lt;key&gt;</span>StartInterval<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;integer&gt;</span>60<span class="nt">&lt;/integer&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/plist&gt;</span>
+</code></pre>
+</div>
+
+<p>其中key是plist脚本定义的属性，紧跟着的下一行是该属性对应的值。上述脚本是每间隔60秒执行一次/Users/3code/plist-test.sh这个shell脚本，也可以使用StartCalendarInterval来替换StartInterval达到同样的效 果，例如：</p>
+
+<key>StartCalendarInterval</key>
+<dict>
+  <key>Minute</key>
+  <integer>0</integer>
+</dict>
+<p>上述设置的意思为每天的每个小时的第0分钟执行，也即使每60秒执行一次。</p>
+
+<p>plist脚本中定义的属性以及具体的含义，可以参看苹果官方网站的说明。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/08/pythonGetFund/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -596,148 +912,6 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/5_IDA-iFunBox-other/">IOS逆向开发系列5_IDA/iFunBox/other</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#IDA" title="Tag: IDA" rel="tag">IDA</a>&nbsp;
-    
-        <a href="/tag/#iFunBox" title="Tag: iFunBox" rel="tag">iFunBox</a>&nbsp;
-    
-        <a href="/tag/#dyld_decache" title="Tag: dyld_decache" rel="tag">dyld_decache</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.1 安装</a></li>
-      <li><a href="#ida" id="markdown-toc-ida">2.2 IDA使用说明</a></li>
-      <li><a href="#main-window" id="markdown-toc-main-window">2.3 Main window</a></li>
-    </ul>
-  </li>
-  <li><a href="#ifunbox" id="markdown-toc-ifunbox">3、iFunBox</a></li>
-  <li><a href="#dylddecache" id="markdown-toc-dylddecache">4 dyld_decache</a></li>
-</ul>
-
-<p>** 说明**</p>
-<h2 id="section">1、简介</h2>
-
-<p>即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。</p>
-
-<p>笼统地说，IDA是一个支持Windows、Linux和Mac OS X的多平台反汇编器/调试器，它的功能非常强大，以至于连官方都不能给出一个详尽的功能列表。</p>
-
-<p>IDA的正式版是收费的，但其作者也是程序员出身，深知我们生活不易，所以慷慨地提供了一个免费的试用版，对于逆向工程初学者来说，已完全够用了。</p>
-
-<h2 id="section-1">2、安装</h2>
-
-<h5 id="section-2">2.1 安装</h5>
-
-<p>IDA的下载和安装十分方便，具体可参考：<a href="https://www.hex-rays.com/products/ida/support/download.shtml">https://www.hex-rays.com/products/ida/support/download.shtml</a></p>
-
-<h5 id="ida">2.2 IDA使用说明</h5>
-
-<p>启动之后，在该界面中，不用繁琐地在菜单里点击“打开文件”，然后一个目录一个目录地去翻找，只需把要分析的文件拖进IDA的灰色区域就行了。</p>
-
-<p>有一个地方需要注意：对于一些fat binary（指的是为了兼容不同架构的处理器，而把多种指令集糅合到一个binary）来说
-<img src="https://ooo.0o0.ooo/2016/11/01/581869117b6b0.jpeg" alt="" /></p>
-
-<p>上图最上面的白框内会出现多个Mach-O文件供我们选择。需要我们识别设备对应的ARM信息，例如笔者的iPhone 5对应的是ARMv7s。如果设备的ARM没有出现在这些选项中，就选那个向下兼容的选项，即如果选项里有ARMv7S，就选它；否则选ARMv7。
-这里笔者选择了ARMv7S，然后点击“OK”，此时 会连续弹出好几个窗口，一路点击“Yes”和“OK”就可以了。
-之后就进入如下界面：
-<img src="https://ooo.0o0.ooo/2016/11/01/58186a17dab43.jpeg" alt="" /></p>
-
-<p>在上边的界面中，你会看到上方的进度条不断滚动，下方的Output window也会打印出对文件的分析进度。当进度条的主色调变成蓝色（IDA界面上的颜色在黑白印刷页上看不出来，请谅解），Output window中显示“The initial autoanalysis has been finished.”时，表示IDA的初始分析已完成。</p>
-
-<p>在初学阶段，由于主要用IDA作静态分析，基本用不上Output window，所以在开始分析之前，可以先关掉“Output window。</p>
-
-<p>Functions window中的Objective-C函数与class-dump导出的内容吻合。除了Objective-C函数外，IDA还将所有subroutine罗列了出来，这是class-dump做不到的。class-dump导出的内容都是Objective-C函数名，可读性高，容易上手，是iOS逆向工程初学者的乐园；subroutine的名称只是一个代号，没有明显含义，分析难度大，大多数初学者看到这里就打了退堂鼓。但是，iOS的底层是用C和C++实现的，编译之后生成的大都是subroutine，class-dump拿它没辙，只能使用IDA这样的工具。要想深层次挖掘iOS中最有趣的部分，掌握IDA的用法是必经之路。</p>
-
-<h5 id="main-window">2.3 Main window</h5>
-
-<p>绝大多数没有用过IDA的iOS开发者，包括笔者，在第一次看见初始分析完成后的Main window时都懵了——这都是些什么玩意儿？这是人类文字吗？还是把IDA关了，刷会儿微博压压惊吧。这跟很多工程师在写第一行代码时不知如何下手的感觉很类似。其实，跟写代码时需要定义一个入口函数一样，在逆向工程里，也需要找到自己感兴趣的入口函数。在Functions window中双击这个入口函数，使得Main window跳转到函数体，然后用鼠标选中Main window，按一下空格，界面会瞬间变清爽，可读性一下就强了起来。</p>
-
-<p>。。。</p>
-
-<h2 id="ifunbox">3、iFunBox</h2>
-
-<p>iFunBox 是一款老牌iOS文件管理工具，可以非常方便地操作iOS中的文件。 iFunBox的使用并不复杂，我们主要用到的是它的文件传输功能。有一点需要注意的是，越狱iOS必须安装“Apple File Conduit 2” ，简称AFC2，这样iFunBox才能够浏览iOS全系统文件，而且这也是接下来大部分操作的先决条件。</p>
-
-<h2 id="dylddecache">4 dyld_decache</h2>
-
-<p>安装了iFunBox和AFC2之后，不少读者会迫不及待地开始浏览iOS文件系统，看看这个封闭平台的表面下到底暗藏了多少玄机。相信大家很快就会发现一个问题：“/System/Library/Frameworks/”、“/System/Library/PrivateFrameworks/”等目录下，怎么没有库文件？</p>
-
-<p>从iOS 3.1开始，包括frameworks在内的许多库文件被存进了一个大cache里，这个cache文件位于“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”（名为dyld_shared_cache_armv7、dyld_shared_cache_armv7s或dyld_shared_cache_arm64），可以使用KennyTM开发的dyld_decache将其中的二进制文件提取出来。这样做的好处是确保分析的文件来自本机，在使用Mac工具集与iOS工具集分析同一目标时，OSX与iOS上分析出的指令和地址等数据是完全吻合的，避免了出现驴唇不对马嘴的低级错误。有关这个cache的进一步介绍，可以参阅DHowett的博客http://blog.howett.net/).</p>
-
-<p>使用dyld_decache之前，要将“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”用iFunBox（不能用scp）从iOS拷贝到OSX中。然后从https://github.com/downloads/kennytm/Miscellaneous/dyld_decache[v0.1c].bz2下载dyld_decache。解压之后赋予其可执行权限，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ chmod +x /path/to/dyld_decache\[v0.1c\]
-</code></pre>
-</div>
-
-<p>然后开始提取二进制文件，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ /path/to/dyld_decache\[v0.1c\] -o /where/to/store/decached/binaries/ /path/to/dyld_shared_cache_armx
-  0/877: Dumping '/System/Library/AccessibilityBundles/AXSpeechImplementation.bundle/AXSpeechImplementation'...
-  1/877: Dumping '/System/Library/AccessibilityBundles/AccessibilitySettingsLoader.bundle/AccessibilitySettingsLoader'...
-  2/877: Dumping '/System/Library/AccessibilityBundles/AccountsUI.axbundle/AccountsUI'...
-……
-</code></pre>
-</div>
-
-<p>提取出的所有二进制文件都存放在了“/where/to/store/decached/binaries/”下。值得一提的是，逆向工程需要分析的二进制文件现在散落在OSX和iOS两个系统中，不方便查找，建议利用下一章提到的scp工具把iOS文件系统拷贝一份存在OSX里。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/5_IDA-iFunBox-other/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -765,6 +939,8 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2016/11/08/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
+                    
                         <li><a href="/2016/11/07/Runtime-theory/">IOS逆向开发系列7_IOS理论基础</a></li>
                     
                         <li><a href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a></li>
@@ -782,8 +958,6 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                         <li><a href="/2016/11/01/3_Theos_-fourFile/">IOS逆向开发系列3_Theos_file简介及Logos基本语法</a></li>
                     
                         <li><a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></li>
-                    
-                        <li><a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></li>
                     
                 </ul>
             </div>
@@ -845,6 +1019,15 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                         <a href="/category/#杂谈" class="categories-list-item" cate="杂谈">
                             <span class="name">
                                 杂谈
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#python" class="categories-list-item" cate="python">
+                            <span class="name">
+                                python
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -985,6 +1168,20 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                       
                       
                       <a href="/tag/#12306" style="font-size: 9pt; color: #999;">12306</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#爬基金数据" style="font-size: 9pt; color: #999;">爬基金数据</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#脚本" style="font-size: 9pt; color: #999;">脚本</a>
                     
                 </div>
             </div>
