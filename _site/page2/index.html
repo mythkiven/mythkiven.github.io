@@ -123,16 +123,6 @@
                     
                 
                     
-                    <li>
-                        
-                        <a href="/z-%20Runtime-theory/">
-                        
-                            <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
-                        </a>
-                    </li>
-                    
-                
-                    
                 
                     
                 
@@ -150,6 +140,112 @@
         <small>记录生活</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/01/4_Reveal/">IOS逆向开发系列4_Reveal</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Reveal" title="Tag: Reveal" rel="tag">Reveal</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
+      <li><a href="#reveal-loader" id="markdown-toc-reveal-loader">2.1 安装Reveal Loader</a></li>
+      <li><a href="#reveal-loader-1" id="markdown-toc-reveal-loader-1">2.2 配置Reveal Loader</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">1、简介</h2>
+
+<p>Reveal是由ITTY BITTY出品的UI分析工具，可以直观地查看App的UI布局。</p>
+
+<p>官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。</p>
+
+<h2 id="section-1">2、安装</h2>
+
+<h5 id="reveal-loader">2.1 安装Reveal Loader</h5>
+
+<p>在Cydia中搜索并安装Reveal Loader 在安装Reveal Loader的时候，它会自动从Reveal的官网下载一个必须的文件libReveal.dylib。如果网络状况不太好，Reveal Loader不一定能够成功下载这个dylib文件，而且它没有针对dylib下载失败的情况做容错处理，可能会在下载界面卡顿很长时间，导致Cydia停止响应。因此，在下载它之前最好连接美国VPN，且在下载完Reveal Loader后，检查iOS上的“/Library/”目录下有没有一个名为“RHRevealLoader”的文件夹，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FunMaker-5:~ root# ls -l /Library/ | grep RHRevealLoader
+drwxr-xr-x  2 root   admin  102 Dec  6 11:10 RHRevealLoader 如果没有，就手动创建一个，如下：
+
+FunMaker-5:~ root# mkdir /Library/RHRevealLoader 然后打开Reveal，在它标题栏的“Help”选项下，选中其中的“Show Reveal Library in Finder”子选项 ，就可以看到。 把这个libReveal.dylib通过scp或iFunBox等方式拷贝到刚才创建的RHRevealLoader目录下，如下：
+
+FunMaker-5:~ root# ls -l /Library/RHRevealLoader
+total 3836
+-rw-r--r-- 1 root admin 3927408 Dec  6 11:10 libReveal.dylib
+</code></pre>
+</div>
+
+<p>至此完成Reveal Loader的安装。</p>
+
+<h5 id="reveal-loader-1">2.2 配置Reveal Loader</h5>
+
+<p>Reveal Loader的配置界面位于Settings应用中，它的名字叫“Reveal” 点击“Reveal”进入其界面，呈现在我们面前的主要是一些使用声明。点击“Enabled Applications”，进入配置界面。要分析哪个App，就打开对应的开关。这里打开了AppStore和Calculator的开关。
+“Reveal Loader的配置就是这样了。既直观又方便，不是吗？</p>
+
+<p>##3 使用Reveal查看目标App的UI布局</p>
+
+<p>一切准备就绪，轮到主角Reveal出场了。</p>
+
+<p>首先确认OSX和iOS位于同一网段内，然后启动Reveal，并重启iOS上的目标App（即如果App开着，需要先关掉，再打开）。从Reveal界面左上角选择目标App，稍等一会儿，Reveal就会把目标App的UI布局展现在我们面前</p>
+
+<p>Reveal的使用并不复杂，它是一款用户体验不错的工具。但是在iOS逆向工程中，对App的分析往往不会只是停留在UI层，外在表象下的内在实现才是最终目标。在本书的后半部分，将采用Reveal的“文字版”，即recursiveDescription函数，配合Cycript来挖掘隐藏在UI布局下的代码，届时你就会感知iOS逆向工程的真正威力。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/01/4_Reveal/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -951,80 +1047,6 @@ icon: globe
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/10/29/useSublime/">Sublime Text基础教程</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-10-29
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3Code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">说明</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">1、简介</a></li>
-</ul>
-
-<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
-
-<h2 id="section">说明</h2>
-<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
-
-<h2 id="section-1">1、简介</h2>
-
-<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
-Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/10/29/useSublime/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1052,6 +1074,8 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2016/11/07/Runtime-theory/">IOS逆向开发系列7_IOS理论基础</a></li>
+                    
                         <li><a href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a></li>
                     
                         <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
@@ -1069,8 +1093,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                         <li><a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></li>
                     
                         <li><a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></li>
-                    
-                        <li><a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></li>
                     
                 </ul>
             </div>
@@ -1115,7 +1137,7 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                             <span class="name">
                                 IOS逆向开发
                             </span>
-                            <span class="badge">8</span>
+                            <span class="badge">9</span>
                         </a>
                     </li>
                     
@@ -1243,7 +1265,7 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                       
                       
                       
-                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
+                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 18pt; color: #000;">IOS逆向开发理论基础</a>
                     
                       
                       

@@ -5,9 +5,48 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Nov 2016 12:49:17 +0800</pubDate>
-    <lastBuildDate>Thu, 10 Nov 2016 12:49:17 +0800</lastBuildDate>
+    <pubDate>Fri, 11 Nov 2016 10:52:26 +0800</pubDate>
+    <lastBuildDate>Fri, 11 Nov 2016 10:52:26 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>IOS逆向开发系列7_IOS理论基础</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#tweakobjective-c&quot; id=&quot;markdown-toc-tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;Objective-C相关的iOS逆向理论基础&lt;/p&gt;
+
+&lt;p&gt;Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”&lt;/p&gt;
+
+&lt;h5 id=&quot;tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/h5&gt;
+
+&lt;p&gt;在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。&lt;/p&gt;
+
+&lt;p&gt;正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”&lt;/p&gt;
+
+&lt;p&gt;“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。&lt;/p&gt;
+
+&lt;p&gt;待续…&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 07 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/07/Runtime-theory/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/07/Runtime-theory/</guid>
+        
+        <category>IOS逆向开发理论基础</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
     
       <item>
         <title>淘宝和12306的那些事</title>
@@ -2131,84 +2170,6 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <guid isPermaLink="true">http://localhost:4000/2016/11/01/1_Class_dump/</guid>
         
         <category>class_dump</category>
-        
-        
-        <category>IOS逆向开发</category>
-        
-      </item>
-    
-      <item>
-        <title>IOS逆向开发系列_综述</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、概述&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.2、分析工具：&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;术语&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1、概述&lt;/h2&gt;
-
-&lt;h5 id=&quot;section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/h5&gt;
-
-&lt;p&gt;1.1.1 系统分析：&lt;/p&gt;
-
-&lt;p&gt;要从整体上观察目标程序的行为特征、文件的组织架构、设计思路，从而为我们做代码分析做准备。&lt;/p&gt;
-
-&lt;p&gt;1.1.2 二进制代码分析：&lt;/p&gt;
-
-&lt;p&gt;进入代码分析阶段，则要把软件的核心代码还原出来，最终达到我们的目的。&lt;/p&gt;
-
-&lt;p&gt;1.1.3&lt;/p&gt;
-
-&lt;p&gt;通过逆向工程，可以推导出某个App的设计思路、内部算法和实现细节，但这是一个非常复杂的过程，可以说是一种解构再重组的艺术。想让自己的逆向工程水平达到艺术的高度，需要对软件开发、硬件原理和iOS系统有透彻的理解。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;1.2、分析工具：&lt;/h5&gt;
-
-&lt;p&gt;相对于正向开发，逆向工程使用的工具并不那么“智能”，很多工作需要我们手工完成。只有对工具的熟练使用，才能够极大地提高逆向工程的效率。iOS逆向工程的工具可以分为四大类：监测工具、反汇编工具（disassembler）、调试工具（debugger）,以及开发工具 。&lt;/p&gt;
-
-&lt;p&gt;1.2.1 监测工具&lt;/p&gt;
-
-&lt;p&gt;在iOS逆向工程中，起到嗅探、监测、记录目标程序行为的工具统称为监测工具。这些工具通常可以记录并显示目标程序的某些操作，如UI变化、网络活动、文件访问等。iOS逆向常用的监测工具有Reveal(UI变化)、snoop-it、introspy等。&lt;/p&gt;
-
-&lt;p&gt;1.2.2 反汇编工具&lt;/p&gt;
-
-&lt;p&gt;从UI层面切入代码层面后，就要用到反汇编工具来梳理代码了。反汇编工具把二进制文件作为输入，经过处理后输出这个文件的汇编代码；在iOS逆向工程中，常用的反汇编工具主要是IDA和Hopper。
-作为老牌反汇编工具，IDA是逆向工程中最常用的利器之一。它支持Windows、Linux、OSX平台和多种处理器架构。Hopper是一款近年面世的反汇编工具，它主要针对的是苹果系操作系统。下文主要使用IDA&lt;/p&gt;
-
-&lt;p&gt;1.2.3 调试工具&lt;/p&gt;
-
-&lt;p&gt;iOS开发者对调试工具应该不陌生，在App开发中，少不了在Xcode中调试代码。我们可以在某一行代码上设置断点，使进程能够停止在那一行代码上，并实时显示进程当前的状态。在iOS逆向工程中，用到的调试工具主要是LLDB。&lt;/p&gt;
-
-&lt;p&gt;1.2.4 开发工具&lt;/p&gt;
-
-&lt;p&gt;从UI层面切入代码层面，用反汇编工具和调试工具分析过二进制文件后，就可以整理分析结果，用开发工具写程序了。对于App开发者来说，Xcode是最常用的开发工具。但是我们一旦将战场从AppStore转移到越狱iOS，开发工具的种类就得到了扩充，不但有基于Xcode的iOSOpenDev，还有偏命令行的Theos。从个人体验来说，Theos是让笔者最为兴奋的开发工具，在知道Theos之前，笔者感觉自己一直都被限制在AppStore中，直到掌握了Theos的用法，才突破了AppStore，完整地认识了整个iOS系统。这里主要以Theos作为开发工具 。&lt;/p&gt;
-
-&lt;p&gt;之后系列文章将按照如下的几大块来进行：&lt;/p&gt;
-
-&lt;p&gt;OSX 工具集：dump、Theos、Reveal、IDA、iFunBox、dyld_decache&lt;/p&gt;
-
-&lt;p&gt;IOS 工具集：CydiaSubstrate、Cycript、LLDB与debugserver、dumpdecrypted、OpenSSH、usbmuxd、iFile、MTerminal、syslogd to/var/log/syslog&lt;/p&gt;
-
-&lt;p&gt;理论篇：OC理论基础、ARM汇编相关的理论基础、&lt;/p&gt;
-
-&lt;p&gt;实战篇：&lt;/p&gt;
-
-&lt;h2 id=&quot;section-3&quot;&gt;术语&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cydia&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;是一个让用户在越狱的iOS设备上查找和安装各类软件包，包括软件、系统修改、主题和铃声等的软件管理器。&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/01/0_Reverse_Enginner/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/01/0_Reverse_Enginner/</guid>
-        
-        <category>IOS逆向开发</category>
         
         
         <category>IOS逆向开发</category>
