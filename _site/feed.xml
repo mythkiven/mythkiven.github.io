@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Nov 2016 16:07:06 +0800</pubDate>
-    <lastBuildDate>Fri, 11 Nov 2016 16:07:06 +0800</lastBuildDate>
+    <pubDate>Fri, 11 Nov 2016 16:13:05 +0800</pubDate>
+    <lastBuildDate>Fri, 11 Nov 2016 16:13:05 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -257,9 +257,9 @@ from xlwt import easyxf
 &lt;p&gt;plist脚本中定义的属性以及具体的含义，可以参看苹果官方网站的说明。&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 08 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/08/pythonGetFund/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/08/pythonGetFund/</guid>
+        <pubDate>Thu, 10 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/10/pythonGetFund/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/10/pythonGetFund/</guid>
         
         <category>爬基金数据</category>
         
