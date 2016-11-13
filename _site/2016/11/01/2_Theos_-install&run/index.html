@@ -273,6 +273,13 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
 
 <h5 id="theos-2">3.2 下载Theos</h5>
 
+<p><a href="https://github.com/theos/theos/wiki/Installation">最好参见官方安装文档，这是最新的</a></p>
+
+<p>安装的路径有:~/theos, /opt/theos, or /var/theos.我安装的是最后一个。
+安装方式有两种，首先介绍zip安装，目前已经不推荐：</p>
+
+<p>1、使用下载包安装</p>
+
 <p>从GitHub上下载Theos，操作如下：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ export THEOS=/opt/theos
@@ -291,6 +298,55 @@ $ export PATH=$THEOS/bin:$PATH
 $ source ~/.bash_profile
 </code></pre>
 </div>
+
+<p>2、直接使用git 安装：推荐：</p>
+
+<p>注意以下如果不行，就加上sudo：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install dpkg ldid
+$ brew install --HEAD hbang/repo/deviceconsole  # (not required, but very useful)
+$ cd /opt/theos
+$ git clone --recursive https://github.com/theos/theos.git 
+$ sudo chown $(id -u):$(id -g) theos 
+在 ~/.bash_profile写入： 并执行
+export THEOS=/opt/theos
+export PATH=$THEOS/bin:$PATH 
+
+$ curl https://ghostbin.com/ghost.sh -o $THEOS/bin/ghost
+$ chmod +x $THEOS/bin/ghost
+
+$ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
+
+
+【【【update-theos的方法】】】
+
+最好的办法就是：进入到一个具体的theos工程里面。先make，然后:
+
+$ sudo make update-theos
+报错：
+Makefile:3: /makefiles/common.mk: No such file or directory
+Makefile:13: /tweak.mk: No such file or directory
+make: *** No rule to make target `/tweak.mk'.  Stop.
+
+修改路径：
+#固定写法:系统变量，不要更改。
+include /opt/theos/makefiles/common.mk 
+
+然后：或者+sudo
+$ make update-theos
+
+报错：
+&gt; Updating Theos…
+error: cannot open .git/FETCH_HEAD: Permission denied
+ 如何解决？？？？？？？？？？？
+ 
+</code></pre>
+</div>
+
+<p>可能出现的问题汇总:
+SDK “iphoneos” cannot be located
+解决方法：给Xcode命令行工具指定路径
+$ sudo xcode-select –switch /Applications/Xcode.app/Contents/Developer/</p>
 
 <h5 id="ldid">3.3 配置ldid</h5>
 
