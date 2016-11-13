@@ -123,6 +123,16 @@
                     
                 
                     
+                    <li>
+                        
+                        <a href="/z-%20Runtime-theory/">
+                        
+                            <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
+                        </a>
+                    </li>
+                    
+                
+                    
                 
                     
                 
@@ -140,6 +150,464 @@
         <small>记录生活</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-10-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、终端模式</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">2、快捷键</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">2.1选择类</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">2.2 编辑类</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">2.3 搜索类</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2.4显示类</a></li>
+      <li><a href="#multi-selection" id="markdown-toc-multi-selection">2.5 多重选择（Multi-Selection）</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">3、无插件不神器</a>    <ul>
+      <li><a href="#advancednewfile" id="markdown-toc-advancednewfile">3.1 AdvancedNewFile:创建文件</a></li>
+      <li><a href="#sidebarenhancementssidebar" id="markdown-toc-sidebarenhancementssidebar">3.2 SideBarEnhancements:增强的sidebar</a></li>
+      <li><a href="#emmet" id="markdown-toc-emmet">3.3 Emmet</a></li>
+      <li><a href="#sublimecodeintel" id="markdown-toc-sublimecodeintel">3.4 Sublime​Code​Intel</a></li>
+      <li><a href="#browser-refresh" id="markdown-toc-browser-refresh">3.5 Browser Refresh</a></li>
+      <li><a href="#converttoutf8" id="markdown-toc-converttoutf8">3.6 ConvertToUTF8</a></li>
+      <li><a href="#alignment" id="markdown-toc-alignment">3.7 Alignment</a></li>
+      <li><a href="#theme--soda" id="markdown-toc-theme--soda">3.8 Theme – Soda:</a></li>
+    </ul>
+  </li>
+  <li><a href="#markdown" id="markdown-toc-markdown">4、Markdown</a>    <ul>
+      <li><a href="#section-8" id="markdown-toc-section-8">4.1 设置目录</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">4.2 编辑：</a></li>
+      <li><a href="#markdown-1" id="markdown-toc-markdown-1">4.3 在浏览器预览Markdown文档</a></li>
+      <li><a href="#pdf" id="markdown-toc-pdf">4.4 打印成pdf</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">4.5 关于快捷键</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-11" id="markdown-toc-section-11">5、主题</a></li>
+  <li><a href="#git" id="markdown-toc-git">6、Git</a></li>
+  <li><a href="#evernote" id="markdown-toc-evernote">7、Evernote</a>    <ul>
+      <li><a href="#section-12" id="markdown-toc-section-12">7.1 相关插件</a></li>
+      <li><a href="#evernote-1" id="markdown-toc-evernote-1">7.2关联Evernote</a></li>
+      <li><a href="#section-13" id="markdown-toc-section-13">7.3测试是否授权成功</a></li>
+      <li><a href="#section-14" id="markdown-toc-section-14">7.4 修改模板</a></li>
+      <li><a href="#section-15" id="markdown-toc-section-15">7.5 储存到印象笔记</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+
+<h2 id="section">说明</h2>
+
+<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong>
+如有问题，请参考<a href="http://3code.info/2016/10/29/useSublime/">基础教程</a></p>
+
+<h2 id="section-1">1、终端模式</h2>
+
+<p>Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令为sublime,但需要注意的是subl命令默认不在环境变量里，所以我们需要将其添加到环境变量，subl的位置为/Applications/Sublime Text 2.app/Contents/SharedSupport/bin(区分 2 3)),我们需要将这个路径添加到.bash_profile文件里。。</p>
+
+<p>参考文章：<a href="http://3code.info/2016/10/28/deployEnvironmentVariable/">配置环境变量</a>
+完成上述操作后，我们就可以在终端使用Sublime Text 打开文件了：</p>
+
+<ul>
+  <li>sublime fileName      //创建文件</li>
+  <li>sublime folderName	 //打开文件夹</li>
+  <li>sublime .				 //打开当前目录</li>
+</ul>
+
+<h2 id="section-2">2、快捷键</h2>
+<p>如果有冲突或者自定义快捷键，请打开：
+preference../Key Bindings 在这里可以修改快捷键设置</p>
+
+<h5 id="section-3">2.1选择类</h5>
+
+<ul>
+  <li>cmd+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</li>
+  <li>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</li>
+  <li>cmd+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</li>
+  <li>cmd+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</li>
+  <li>cmd+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。</li>
+  <li>cmd+M 光标移动至括号内结束或开始的位置。</li>
+  <li>cmd+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</li>
+  <li>cmd+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</li>
+  <li>cmd+Shift+[ 选中代码，按下快捷键，折叠代码。</li>
+  <li>cmd+Shift+] 选中代码，按下快捷键，展开代码。</li>
+  <li>cmd+K+0 展开所有折叠代码。</li>
+  <li>cmd+← 向左单位性地移动光标，快速移动光标。</li>
+  <li>cmd+→ 向右单位性地移动光标，快速移动光标。</li>
+  <li>shift+↑ 向上选中多行。</li>
+  <li>shift+↓ 向下选中多行。</li>
+  <li>Shift+← 向左选中文本。</li>
+  <li>Shift+→ 向右选中文本。</li>
+  <li>cmd+Shift+← 向左单位性地选中文本。</li>
+  <li>cmd+Shift+→ 向右单位性地选中文本。</li>
+  <li>cmd+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</li>
+  <li>cmd+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</li>
+  <li>cmd+Alt+↑ 向上添加多行光标，可同时编辑多行。</li>
+  <li>cmd+Alt+↓ 向下添加多行光标，可同时编辑多行。</li>
+</ul>
+
+<h5 id="section-4">2.2 编辑类</h5>
+
+<ul>
+  <li>cmd+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</li>
+  <li>cmd+Shift+D 复制光标所在整行，插入到下一行。</li>
+  <li>Tab 向右缩进。只对光标后（或者选中的）的代码有效</li>
+  <li>Shift+Tab 向左缩进。</li>
+  <li>cmd+[ 向左缩进。对整行有效</li>
+  <li>cmd+] 向右缩进。对整行有效</li>
+  <li>cmd+K+K 从光标处开始删除代码至行尾。按住cmd，按两次K。</li>
+  <li>cmd+Shift+K 删除整行。</li>
+  <li>cmd+/ 注释单行。</li>
+  <li>cmd+Shift+/ 注释多行。</li>
+  <li>cmd+K+U 转换大写。</li>
+  <li>cmd+K+L 转换小写。</li>
+  <li>cmd+Z 撤销。</li>
+  <li>cmd+Y 恢复撤销。</li>
+  <li>cmd+U 软撤销，感觉和 Gtrl+Z 一样。</li>
+  <li>cmd+F2 设置书签，F2切换书签</li>
+  <li>cmd+T 左右字母互换。
+F6 单词检测拼写</li>
+</ul>
+
+<h5 id="section-5">2.3 搜索类</h5>
+
+<ul>
+  <li>cmd+F 打开底部搜索框，查找关键字。</li>
+  <li>cmd+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</li>
+  <li>cmd+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</li>
+  <li>cmd+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</li>
+  <li>cmd+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</li>
+  <li>cmd+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</li>
+  <li>Esc 退出光标多行选择，退出搜索框，命令框等。</li>
+  <li>cmd+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。</li>
+</ul>
+
+<h5 id="section-6">2.4显示类</h5>
+
+<ul>
+  <li>cmd+Tab 按文件浏览过的顺序，切换当前窗口的标签页。</li>
+  <li>cmd+PageDown 向左切换当前窗口的标签页。</li>
+  <li>cmd+PageUp 向右切换当前窗口的标签页。</li>
+  <li>Alt+cmd+1 窗口分屏，恢复默认1屏（非小键盘的数字）</li>
+  <li>Alt+ cmd +2 左右分屏-2列</li>
+  <li>Alt+ cmd +3 左右分屏-3列</li>
+  <li>Alt+ cmd +4 左右分屏-4列</li>
+  <li>Alt+ cmd +5 等分4屏</li>
+  <li>Alt+ cmd +8 垂直分屏-2屏</li>
+  <li>Alt+ cmd +9 垂直分屏-3屏</li>
+  <li>cmd+K+B 开启/关闭侧边栏。</li>
+  <li>F11 全屏模式</li>
+  <li>Shift+F11 免打扰模式</li>
+</ul>
+
+<h5 id="multi-selection">2.5 多重选择（Multi-Selection）</h5>
+
+<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
+激活多重选择的方法有两几种：</p>
+
+<p>按住 cmd 然后在页面中希望中现光标的位置点击。
+选择数行文本，然后按下 Shift + cmd + L。
+通过反复按下 cmd + D 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 Alt+F3即可一次性选择所有相同的词。
+按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</p>
+
+<h2 id="section-7">3、无插件不神器</h2>
+
+<h5 id="advancednewfile">3.1 AdvancedNewFile:创建文件</h5>
+
+<p>可以使用快捷键cmd+alt+n,Sublime Text底部会弹出输入框:
+只需在这个输入框里输入需要新建的文件名回车即可（可以带路径）。默认情况下文件会存储在当前目录，如果当前没有目录，会存储在用户的home目录。</p>
+
+<h5 id="sidebarenhancementssidebar">3.2 SideBarEnhancements:增强的sidebar</h5>
+
+<p>当我们用sublime打开一个文件夹时，会在sublime的左侧出现一个sidebar，以此方便我们可以通过点击的方式快速打开文件。但这个sidebar功能很少。SideBarEnhancements的插件可以增强sidebar的功能。打开命令模式－&gt;进入pci界面-&gt;输入SideBarEnhancements回车安装即可。</p>
+
+<h5 id="emmet">3.3 Emmet</h5>
+<p>前身是大名鼎鼎的Zen coding,它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。</p>
+
+<p>调用方法：cmd+E 或者 !</p>
+
+<h5 id="sublimecodeintel">3.4 Sublime​Code​Intel</h5>
+<p>支持所有 Komode Editor 支持的代码语言，如：JavaScript, Mason, XBL, XUL,..</p>
+
+<p>调用方法：跳转到定义位置（Alt+Click 或 Control+Windows+Alt+Up）、返回（Control+Windows+Alt+Left）</p>
+
+<h5 id="browser-refresh">3.5 Browser Refresh</h5>
+<p>通过一个快捷键可以实现保存文件，切换到浏览器并自动刷新浏览器来查看更改结果。</p>
+
+<p>调用方法：默认为cmd+Shift+R，可自行修改</p>
+
+<h5 id="converttoutf8">3.6 ConvertToUTF8</h5>
+<p>解决编码问题，直接在菜单栏中可以转了，专为中文设计</p>
+
+<h5 id="alignment">3.7 Alignment</h5>
+<p>代码对齐，如写几个变量，选中这几行，cmd+Alt+A，对齐</p>
+
+<h5 id="theme--soda">3.8 Theme – Soda:</h5>
+<p>完美的编码主题，用过的都说好，Setting user里面添加”theme”: “Soda Dark.sublime-theme”</p>
+
+<h2 id="markdown">4、Markdown</h2>
+<p>所需插件：</p>
+
+<ul>
+  <li>MarkDownEditing:在Sublime中编辑MarkDown文件。</li>
+  <li>MarkDownPreview:在浏览器中预览MarkDown文件效果。</li>
+  <li>Markdown Extended + Extends Monokai：不错的Markdown主题，支持对多种语言的高亮</li>
+</ul>
+
+<h5 id="section-8">4.1 设置目录</h5>
+
+<p>在文档最前面添加[TOC]，在左侧自动生成目录。</p>
+
+<h5 id="section-9">4.2 编辑：</h5>
+
+<p>新建一个文档:cmd + N 
+语法高亮:cmd + Shift + P:输入ssm 后回车(Set Syntax: Markdown)</p>
+
+<h5 id="markdown-1">4.3 在浏览器预览Markdown文档</h5>
+
+<p>Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。
+按cmd + Shift + P
+输入mp 后回车(Markdown Preview: current file in browser)
+此时就可以在浏览器里看到刚才编辑的文档了;</p>
+
+<h5 id="pdf">4.4 打印成pdf</h5>
+
+<p>将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。
+利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键-&gt;打印-&gt;另存为pdf-&gt;调节页边距即可将pdf文件下载下来。</p>
+
+<h5 id="section-10">4.5 关于快捷键</h5>
+
+<ul>
+  <li>cmd+B 生成本地html文档</li>
+</ul>
+
+<p>st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
+方法是在Preferences -&gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+m"</span><span class="p">],</span><span class="w"> </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown_preview"</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"browser"</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>“alt+m”可设置为您自己喜欢的按键。</p>
+
+<h2 id="section-11">5、主题</h2>
+
+<p>在设置一个新的主题时，需要设置theme和color_scheme两个方面，前者决定了打开不同类型文件的配色，后者决定了Tab栏，SideBar大小和图标，以及相应字体的大小设置。</p>
+
+<p>软件自带：在Preferences-&gt;Color Theme中可以任意选择，选择完即可查看主题风格。并且会在Preferebces.sublime-seetings中自动保存设定。</p>
+
+<ul>
+  <li>ColorSublime：
+一个Sublime主题的网站</li>
+  <li>Predawn：
+一款为Sublime和Atom打造的暗色主题，可以定义Tab的大小，SideBar大小，Find栏大小，为Markdown高亮着色，并提供主题同款的ICON。</li>
+  <li>SpaceGray</li>
+</ul>
+
+<h2 id="git">6、Git</h2>
+
+<ul>
+  <li>SublimeGit：Git必备</li>
+  <li>Gitignore：
+一键生成the collection of gitignore boilerplates by Github，多种文件类型任你选，以下用Gitignore新建C语言的忽略文件模板。</li>
+  <li>Git Config
+设置.gitignore和.gitconfig等文件语法高亮。</li>
+  <li>Github Tools / Sublime GitHub：与GitHub网站紧密联系，可以直接在Sublime中打开与GitHub关联的网址</li>
+  <li>Git Conflict Resolver：用以解决在Merge过程中产生的冲突用</li>
+</ul>
+
+<h2 id="evernote">7、Evernote</h2>
+
+<h5 id="section-12">7.1 相关插件</h5>
+
+<ul>
+  <li>Git:方便我们在Sublime中提交博客。</li>
+  <li>MarkDownEditing:在Sublime中编辑MarkDown文件。</li>
+  <li>MarkDownPreview:在浏览器中预览MarkDown文件效果。</li>
+  <li>SublimeTmpl:可以生成MarkDown文件模板。</li>
+  <li>Evernote:保存文件到印象笔记.</li>
+</ul>
+
+<h5 id="evernote-1">7.2关联Evernote</h5>
+
+<p>在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：</p>
+
+<p>1、国内用户打开 <a href="https://app.yinxiang.com/api/DeveloperToken.action">https://app.yinxiang.com/api/DeveloperToken.action</a></p>
+
+<p>国际用户打开 <a href="https://www.evernote.com/api/DeveloperToken.action">https://www.evernote.com/api/DeveloperToken.action</a> 。</p>
+
+<p>点击Revoke your developer token 授权应用</p>
+
+<p>2、打开 Preferences &gt; Package Settings &gt; Evernote &gt;Settings - User</p>
+
+<p>3、粘贴即可(格式英文)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"noteStoreUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你自己的URL"</span><span class="p">,</span><span class="w"> </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你的Token"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="section-13">7.3测试是否授权成功</h5>
+
+<p>接下来我们可以尝试是否授权成功，通过shift+cmd+p打开命令窗口,输入Evernote，就会看见Evernote的许多命令。
+可以点击Evernote:list recent notes,如果看到罗列出最新的笔记，则说明授权成功。</p>
+
+<h5 id="section-14">7.4 修改模板</h5>
+
+<p>SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。参考：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+---
+layout: post
+keywords: k
+description: d
+title: t
+categories: [笔记]
+tags: [笔记]
+group: archive
+icon: globe
+---
+
+</code></pre>
+</div>
+
+<h5 id="section-15">7.5 储存到印象笔记</h5>
+
+<p>打开命令模式，搜索ese,就会找到Evernote send to Evernote as new note命令。</p>
+
+<p>点击后会显示让我们选择存放在哪个笔记本，我们选择后就会自动存放到我们的印象笔记中。</p>
+
+<p>我们再去我们的印象笔记看一下，你会发现存储在印象笔记中的格式已经是排版过的效果。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/10/30/SublimeUpgrade/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/10/29/useSublime/">Sublime Text基础教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-10-29
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3Code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、简介</a></li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+
+<h2 id="section">说明</h2>
+<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
+
+<h2 id="section-1">1、简介</h2>
+
+<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
+Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/10/29/useSublime/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -399,6 +867,10 @@ export PATH=/usr/local/bin:$PATH
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
+                    
+                        <li><a href="/2016/11/07/Runtime-theory/">IOS逆向开发系列7_IOS理论基础</a></li>
+                    
                         <li><a href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a></li>
                     
                         <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
@@ -414,10 +886,6 @@ export PATH=/usr/local/bin:$PATH
                         <li><a href="/2016/11/01/3_Theos_-fourFile/">IOS逆向开发系列3_Theos_file简介及Logos基本语法</a></li>
                     
                         <li><a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></li>
-                    
-                        <li><a href="/2016/11/01/1_Class_dump/">IOS逆向开发系列1_Class_dump</a></li>
-                    
-                        <li><a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></li>
                     
                 </ul>
             </div>
@@ -462,7 +930,7 @@ export PATH=/usr/local/bin:$PATH
                             <span class="name">
                                 IOS逆向开发
                             </span>
-                            <span class="badge">8</span>
+                            <span class="badge">9</span>
                         </a>
                     </li>
                     
@@ -479,6 +947,15 @@ export PATH=/usr/local/bin:$PATH
                         <a href="/category/#杂谈" class="categories-list-item" cate="杂谈">
                             <span class="name">
                                 杂谈
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#python" class="categories-list-item" cate="python">
+                            <span class="name">
+                                python
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -590,7 +1067,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
+                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 18pt; color: #000;">IOS逆向开发理论基础</a>
                     
                       
                       
@@ -619,6 +1096,20 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       <a href="/tag/#12306" style="font-size: 9pt; color: #999;">12306</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#爬基金数据" style="font-size: 9pt; color: #999;">爬基金数据</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#脚本" style="font-size: 9pt; color: #999;">脚本</a>
                     
                 </div>
             </div>

@@ -5,9 +5,311 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+
     <pubDate>Sun, 13 Nov 2016 10:49:03 +0800</pubDate>
     <lastBuildDate>Sun, 13 Nov 2016 10:49:03 +0800</lastBuildDate>
+
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>python脚本 - 开机自动爬基金数据</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#python&quot; id=&quot;markdown-toc-python&quot;&gt;1、python爬取原理及代码&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1.1 引入需要的库&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#html&quot; id=&quot;markdown-toc-html&quot;&gt;1.2 获取html&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1.3 获取内容&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.4 获取每条信息&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;1.5 写入文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;1.6 防止数据重复写入&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;1.7 按日期爬取数据&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;2、开机自动爬取数据的脚本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
+不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
+但是网站上也只展示在单个基金里，多基金对比就没
+成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。&lt;/p&gt;
+
+&lt;p&gt;    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。&lt;/p&gt;
+
+&lt;p&gt;    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
+，不论是pyCharm还是pip还是直接托安装包，
+后来改用excel，数据直接写入excel中。&lt;/p&gt;
+
+&lt;p&gt;    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。&lt;/p&gt;
+
+&lt;p&gt;    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
+代码在github&lt;a href=&quot;https://github.com/mythkiven/getFund&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;实际展示：&lt;/p&gt;
+
+&lt;p&gt;控制台打印：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/11/5825712e47466.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;写入txt：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;写入xls：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/11/58257180958e8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;python&quot;&gt;1、python爬取原理及代码&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;原理:获取html – 使用正则匹配 – 解析 – 存储&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section&quot;&gt;1.1 引入需要的库&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import xlrd
+import xlwt
+import time, datetime
+from xlutils.copy import copy
+from xlrd import open_workbook
+from xlwt import easyxf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;html&quot;&gt;1.2 获取html&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; def getSource(self, url):
+        html = requests.get(url)
+        return html.text
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;1.3 获取内容&lt;/h5&gt;
+
+&lt;p&gt;这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
+。区别在于:&lt;/p&gt;
+
+&lt;p&gt;match只从字串的开始位置进行匹配，如果失败，它就此放弃；&lt;/p&gt;
+
+&lt;p&gt;search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def getMainText(self, source):
+        everyclass = re.search(
+            '(&amp;lt;table width=&quot;950&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;table02&quot; id=&quot;fundlist&quot; data-lt=&quot;sypm&quot;&amp;gt;.*?&amp;lt;/table&amp;gt;)',
+            source, re.S).group(1)
+        return everyclass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;1.4 获取每条信息&lt;/h5&gt;
+
+&lt;p&gt;将自己需要的信息单独抽取出来：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def getInfo(self, eachclass):
+        info = {}
+        info[&quot;num&quot;] = re.search('&amp;lt;td width=&quot;3%&quot; align=&quot;center&quot;&amp;gt;(.*?)&amp;lt;/td&amp;gt;', eachclass, re.S).group(1)
+        info[&quot;id&quot;] = re.search('target=&quot;_blank&quot;&amp;gt;(.*?)&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;', eachclass, re.S).group(1)
+        info['name'] = re.search('target=&quot;_blank&quot; class=&quot;blue ellipsis&quot; title=&quot;(.*?)&quot;&amp;gt;', eachclass, re.S).group(1)
+        info['time'] = re.search('&amp;lt;td width=&quot;7%&quot; align=&quot;center&quot;&amp;gt;(.*?)&amp;lt;/td&amp;gt;', eachclass, re.S).group(1)
+        info[&quot;price1&quot;] = re.findall('&amp;lt;td width=&quot;6%&quot; align=&quot;center&quot;&amp;gt;(.*?)&amp;lt;/td&amp;gt;', eachclass, re.S)[1]
+        info[&quot;price2&quot;] = re.findall('&amp;lt;td width=&quot;6%&quot; align=&quot;center&quot;&amp;gt;(.*?)&amp;lt;/td&amp;gt;', eachclass, re.S)[2]
+
+        return info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;1.5 写入文件&lt;/h5&gt;
+
+&lt;p&gt;创建txt：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = open(&quot;/Users/www_3code_info/fund/&quot; + timePrevious + &quot;.txt&quot;, 'a+')
+        for each in classinfo:
+            f.writelines('xuhao:' + each['num'] + '\n')
+            f.writelines('daima:' + each['id'] + '\n')
+            f.writelines('name:' + each['name'] + '\n')
+            f.writelines('time:' + each['time'] + '\n')
+            f.writelines('price1:' + each['price1'] + '\n')
+            f.writelines('price2:' + each['price2'] + '\n')
+            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
+        f.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;打开xls,开始写入内容&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 打开文件
+        rb = open_workbook(path, formatting_info=True)
+        r_sheet = rb.sheet_by_index(0)
+        wb = copy(rb)
+        sheet = wb.get_sheet(0)
+        j = r_sheet.ncols
+        i = 1
+        timeShould = timePrevious
+        timeQ = timePrevious
+        tListB = []
+        tListS = []
+        print sheet
+
+        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
+#写入列信息
+        for each in classinfo:
+            sheet.write(i, j + 0, each['id'])
+            sheet.write(i, j + 1, each['time'])
+            sheet.write(i, j + 2, each['price1'])
+            sheet.write(i, j + 3, each['price2'])
+            i += 1
+            timeQ = each['time']
+            if timeQ &amp;gt; timeShould:
+                tListB.append(each['id']+' '+timeQ)
+            elif timeQ &amp;lt; timeShould:
+                tListS.append(each['id']+' '+timeQ)
+
+        for k in range(j, j + 5):
+            sheet.write(0, k, fir[k - j])
+            print k
+            if k == j + 4:
+                sheet.write(1, k, timeNow.decode('utf-8'))
+                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;1.6 防止数据重复写入&lt;/h5&gt;
+
+&lt;p&gt;按时间判断是否需要写入数据&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def read_excel():
+    rb = open_workbook(path, formatting_info=True)
+    r_sheet = rb.sheet_by_index(0)
+    # 遍历第2行所有列,是否有时间数据c
+    print &quot;\n已经爬取的列数:&quot; + str(r_sheet.ncols) + &quot;\n&quot;
+    for c in range(0, r_sheet.ncols):
+        age_nov = r_sheet.cell(1, c).value
+        print age_nov
+        if ((c + 1) % 5 == 0) and (c != 0):
+            print &quot;\n&quot;
+        if age_nov == timeNow:
+            return 1
+    else:
+        return 0
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;1.7 按日期爬取数据&lt;/h5&gt;
+
+&lt;p&gt;基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新&lt;/p&gt;
+
+&lt;p&gt;注意weekday() 返回的是0-6是星期一到星期日&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def getTime():
+    timeT = datetime.date.today()
+    zhouji = timeT.weekday()
+    print zhouji
+    if zhouji &amp;gt;= 1 and zhouji &amp;lt;= 5:
+        return timeToday  
+    else:
+        print &quot;今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息&quot;
+        return 0
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;2、开机自动爬取数据的脚本&lt;/h2&gt;
+
+&lt;p&gt;    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。&lt;/p&gt;
+
+&lt;p&gt;plist脚本存放路径为:&lt;/p&gt;
+
+&lt;p&gt;/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。&lt;/p&gt;
+
+&lt;p&gt;或/Library/LaunchAgents:当用户登陆系统后才会被执行。&lt;/p&gt;
+
+&lt;p&gt;    可以通过两种方式来设置脚本的执行时间。一个是使用StartInterval，它指定脚本每间隔多长时间（单位：秒）执行一次；另外一个使用 StartCalendarInterval，它可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置。&lt;/p&gt;
+
+&lt;p&gt;一个简单例子如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;plist&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;Label&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;com.3code.test.plist&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;ProgramArguments&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;/Users/3code/plist-test.sh&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;KeepAlive&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;false/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;RunAtLoad&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;true/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;StartInterval&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;integer&amp;gt;&lt;/span&gt;60&lt;span class=&quot;nt&quot;&gt;&amp;lt;/integer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plist&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中key是plist脚本定义的属性，紧跟着的下一行是该属性对应的值。上述脚本是每间隔60秒执行一次/Users/3code/plist-test.sh这个shell脚本，也可以使用StartCalendarInterval来替换StartInterval达到同样的效 果，例如：&lt;/p&gt;
+
+&lt;key&gt;StartCalendarInterval&lt;/key&gt;
+&lt;dict&gt;
+  &lt;key&gt;Minute&lt;/key&gt;
+  &lt;integer&gt;0&lt;/integer&gt;
+&lt;/dict&gt;
+&lt;p&gt;上述设置的意思为每天的每个小时的第0分钟执行，也即使每60秒执行一次。&lt;/p&gt;
+
+&lt;p&gt;plist脚本中定义的属性以及具体的含义，可以参看苹果官方网站的说明。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 10 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/10/pythonGetFund/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/10/pythonGetFund/</guid>
+        
+        <category>爬基金数据</category>
+        
+        <category>脚本</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>IOS逆向开发系列7_IOS理论基础</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#tweakobjective-c&quot; id=&quot;markdown-toc-tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
+
+&lt;p&gt;Objective-C相关的iOS逆向理论基础&lt;/p&gt;
+
+&lt;p&gt;Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”&lt;/p&gt;
+
+&lt;h5 id=&quot;tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/h5&gt;
+
+&lt;p&gt;在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。&lt;/p&gt;
+
+&lt;p&gt;正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”&lt;/p&gt;
+
+&lt;p&gt;“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。&lt;/p&gt;
+
+&lt;p&gt;待续…&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 07 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/07/Runtime-theory/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/07/Runtime-theory/</guid>
+        
+        <category>IOS逆向开发理论基础</category>
+        
+        
+        <category>IOS逆向开发</category>
+        
+      </item>
     
       <item>
         <title>淘宝和12306的那些事</title>
@@ -2045,6 +2347,7 @@ Homepage: http://3code.info
         
       </item>
     
+
       <item>
         <title>IOS逆向开发系列1_Class_dump</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -2393,5 +2696,6 @@ $ plutil -p /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app/en.lproj/Loc
         
       </item>
     
+
   </channel>
 </rss>
