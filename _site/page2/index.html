@@ -244,7 +244,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 #tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
 after-install::
- 	install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
+		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
 </code></pre>
 </div>
 
@@ -269,20 +269,20 @@ after-install::
 
 <h5 id="framework">2.4 导入framework</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS = framework name
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
 </code></pre>
 </div>
 
 <p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
 上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = private framework name 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
 </code></pre>
 </div>
 
 <p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>“ARCHS = armv7 arm64
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
 TARGET = iphone:latest:7.0
 include theos/makefiles/common.mk
 TWEAK_NAME = projectBy3code
@@ -380,8 +380,7 @@ after-install::
   <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
 </ul>
 
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
 
 <h2 id="section">1、说明</h2>
 <p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
@@ -548,7 +547,12 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                     </div>
                 </div>
                 <div class="excerpt">
-                    
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+</ul>
+
+<h2 id="section">前言</h2>
+
 
                 </div>
                 <div class="read-all">

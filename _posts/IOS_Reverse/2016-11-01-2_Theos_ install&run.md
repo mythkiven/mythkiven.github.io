@@ -11,7 +11,7 @@ author: 3code
 
 
 在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：[传送门]()
+
 
 ## 1、说明
 使用theos创建工程：projectBy3code。文件夹内有四个文件：
@@ -66,6 +66,13 @@ iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没
 
 ##### 3.2 下载Theos 
 
+[最好参见官方安装文档，这是最新的](https://github.com/theos/theos/wiki/Installation)
+
+安装的路径有:~/theos, /opt/theos, or /var/theos.我安装的是最后一个。
+安装方式有两种，首先介绍zip安装，目前已经不推荐：
+
+1、使用下载包安装
+
 从GitHub上下载Theos，操作如下：
 
 	$ export THEOS=/opt/theos
@@ -76,10 +83,61 @@ iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没
 	
 然后设置软连接：
 
-	open ~/.bash_profile
-	export THEOS=/opt/theos
-	export PATH=$THEOS/bin:$PATH
-	source ~/.bash_profile
+	$ open ~/.bash_profile
+	$ export THEOS=/opt/theos
+	$ export PATH=$THEOS/bin:$PATH
+	$ source ~/.bash_profile
+
+2、直接使用git 安装：推荐：
+
+注意以下如果不行，就加上sudo：
+
+```
+$ brew install dpkg ldid
+$ brew install --HEAD hbang/repo/deviceconsole  # (not required, but very useful)
+$ cd /opt/theos
+$ git clone --recursive https://github.com/theos/theos.git 
+$ sudo chown $(id -u):$(id -g) theos 
+在 ~/.bash_profile写入： 并执行
+export THEOS=/opt/theos
+export PATH=$THEOS/bin:$PATH 
+
+$ curl https://ghostbin.com/ghost.sh -o $THEOS/bin/ghost
+$ chmod +x $THEOS/bin/ghost
+
+$ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
+
+
+【【【update-theos的方法】】】
+
+最好的办法就是：进入到一个具体的theos工程里面。先make，然后:
+
+$ sudo make update-theos
+报错：
+Makefile:3: /makefiles/common.mk: No such file or directory
+Makefile:13: /tweak.mk: No such file or directory
+make: *** No rule to make target `/tweak.mk'.  Stop.
+
+修改路径：
+#固定写法:系统变量，不要更改。
+include /opt/theos/makefiles/common.mk 
+
+然后：或者+sudo
+$ make update-theos
+
+报错：
+> Updating Theos…
+error: cannot open .git/FETCH_HEAD: Permission denied
+ 如何解决？？？？？？？？？？？
+ 
+```
+
+
+可能出现的问题汇总:
+SDK "iphoneos" cannot be located
+解决方法：给Xcode命令行工具指定路径
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+
 
 ##### 3.3 配置ldid
 
@@ -98,11 +156,13 @@ ldid是专门用来签名iOS可执行文件的工具，用以在越狱iOS中取�
 
 deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文件的工具，有了这个工具，Theos才能正确地把工程打包成为deb文件。从[https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl](https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl)拷贝出dm.pl，将其重命名为dpkg-deb.pl后，放到“/opt/theos/bin/”目录下，然后用以下命令赋予其可执行权限：
 
-	snakeninnysiMac:~ snakeninny$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
+	$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
 	
 ##### 3.6 配置Theos NIC templates
 
 Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从[https://github.com/DHowett/theos-nic-templates/archive/master.zip](https://github.com/DHowett/theos-nic-templates/archive/master.zip)获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。
+
+(注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板...)
 
 ## 4、Theos用法
 
@@ -117,48 +177,48 @@ Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样�
     $nic.pl 路径是： THEOS=/opt/theos 路直接启动的话，需要添加到/usr/bin：$ cd ~  $ $THEOS/bin/nic.pl19
     
 结果：
-
+```
 	NIC 2.0 - New Instance Creator
 	------------------------------
 	[1.] iphone/activator_event
-	[2.] iphone/application_modern
-	[3.] iphone/cydget
-    [4.] iphone/cydget
-    [5.] iphone/cydget
-    [6.] iphone/flipswitch_switch
-    [7.] iphone/framework
-    [8.] iphone/framework
-    [9.] iphone/framework
-    [10.] iphone/ios7_notification_center_widget
-    [11.] iphone/library
-    [12.] iphone/notification_center_widget
-    [13.] iphone/notification_center_widget
-    [14.] iphone/notification_center_widget
-    [15.] iphone/preference_bundle_modern
-    [16.] iphone/sbsettingstoggle
-    [17.] iphone/sbsettingstoggle
-    [18.] iphone/tool
-    [19.] iphone/tweak
-    [20.] iphone/xpc_service
-    [21.] iphone/xpc_service
-    [22.] iphone/xpc_service
+  	[2.] iphone/application_modern
+  	[3.] iphone/cydget
+  	[4.] iphone/flipswitch_switch
+  	[5.] iphone/framework
+  	[6.] iphone/ios7_notification_center_widget
+  	[7.] iphone/library
+  	[8.] iphone/notification_center_widget
+  	[9.] iphone/preference_bundle_modern
+  	[10.] iphone/tool
+  	[11.] iphone/tweak
+  	[12.] iphone/xpc_service
     Choose a Template (required):
-    
+    ```
 可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。
 
-2）选择“19”，即创建一个tweak工程： Choose a Template (required): 19
+2）选择“19”，即创建一个tweak工程：
 
-3）输入tweak的工程名称： Project Name (required): projectBy3cod
+	 Choose a Template (required): 11
 
-4）输入deb包的名字（类似于bundle identifier）： Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod
+3）输入tweak的工程名称： 
 
-5）输入tweak作者的名字，命令如下： Author/Maintainer Name [gyjrong]: gyjrong
+	Project Name (required): projectBy3cod
+
+4）输入deb包的名字（类似于bundle identifier）： 
+
+	Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod
+
+5）输入tweak作者的名字，命令如下： 
+	
+	Author/Maintainer Name [gyjrong]: 3code
 
 6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
-...[com.apple.springboard]: com.apple.springboard
+
+	...[com.apple.springboard]: com.apple.springboard
 
 7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
-...[SpringBoard]: SpringBoard Instantiating iphone/tweak in iosreproject/...
+
+	...[SpringBoard]: SpringBoard 
 Done.
 
 简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。
@@ -323,7 +383,17 @@ $ touch ./layout/var/mobile/Library/Preferences/3.test
 
 - 命令行安装法
 
-这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，如果对这部分知识不了解，请google。下面具体介绍安装法。
+这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，
+
+
+打开ssh通道，这里使用PP助手实现，之后按照其操作：
+
+$ ssh root@localhost -p 2222
+
+输入密码即可。
+
+
+下面具体介绍安装法。
 
 首先，需要在Makefile的最上一行加上本机IP地址，如下：
 

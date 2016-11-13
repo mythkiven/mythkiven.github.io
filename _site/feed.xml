@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Nov 2016 22:40:52 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Nov 2016 22:40:52 +0800</lastBuildDate>
+    <pubDate>Sun, 13 Nov 2016 10:49:03 +0800</pubDate>
+    <lastBuildDate>Sun, 13 Nov 2016 10:49:03 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -1025,7 +1025,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 #tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
 after-install::
- 	install.exec &quot;killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/...&quot;
+		install.exec &quot;killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/...&quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1050,20 +1050,20 @@ after-install::
 
 &lt;h5 id=&quot;framework&quot;&gt;2.4 导入framework&lt;/h5&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_FRAMEWORKS = framework name
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
 上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_PRIVATE_FRAMEWORKS = private framework name 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“ARCHS = armv7 arm64
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARCHS = armv7 arm64
 TARGET = iphone:latest:7.0
 include theos/makefiles/common.mk
 TWEAK_NAME = projectBy3code
@@ -1519,22 +1519,12 @@ control文件中的很多信息直接体现在Cydia中，如下所示，大家�
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#theos-3&quot; id=&quot;markdown-toc-theos-3&quot;&gt;4、Theos用法&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;4.1 创建工程&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;4.2 定制工程文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;4.3 编译&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;4.4 打包&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;4.5 安装&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#theostweak&quot; id=&quot;markdown-toc-theostweak&quot;&gt;5　Theos开发tweak示例&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#theostweakiosregreetings&quot; id=&quot;markdown-toc-theostweakiosregreetings&quot;&gt;5.1 用Theos新建tweak工程“iOSREGreetings”&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#tweakxm&quot; id=&quot;markdown-toc-tweakxm&quot;&gt;5.2.编辑Tweak.xm&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#makefilecontrol&quot; id=&quot;markdown-toc-makefilecontrol&quot;&gt;5.3.编辑Makefile及control&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：&lt;a href=&quot;&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;1、说明&lt;/h2&gt;
 &lt;p&gt;使用theos创建工程：projectBy3code。文件夹内有四个文件：
@@ -1600,10 +1590,10 @@ Cloning into '/opt/theos'...
 
 &lt;p&gt;然后设置软连接：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open ~/.bash_profile
-export THEOS=/opt/theos
-export PATH=$THEOS/bin:$PATH
-source ~/.bash_profile
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ open ~/.bash_profile
+$ export THEOS=/opt/theos
+$ export PATH=$THEOS/bin:$PATH
+$ source ~/.bash_profile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1628,13 +1618,15 @@ $sudo: /opt/theos/bin/bootstrap.sh: command not found
 
 &lt;p&gt;deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文件的工具，有了这个工具，Theos才能正确地把工程打包成为deb文件。从&lt;a href=&quot;https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl&quot;&gt;https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl&lt;/a&gt;拷贝出dm.pl，将其重命名为dpkg-deb.pl后，放到“/opt/theos/bin/”目录下，然后用以下命令赋予其可执行权限：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:~ snakeninny$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;h5 id=&quot;theos-nic-templates&quot;&gt;3.6 配置Theos NIC templates&lt;/h5&gt;
 
 &lt;p&gt;Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从&lt;a href=&quot;https://github.com/DHowett/theos-nic-templates/archive/master.zip&quot;&gt;https://github.com/DHowett/theos-nic-templates/archive/master.zip&lt;/a&gt;获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。&lt;/p&gt;
+
+&lt;p&gt;(注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板…)&lt;/p&gt;
 
 &lt;h2 id=&quot;theos-3&quot;&gt;4、Theos用法&lt;/h2&gt;
 
@@ -1650,268 +1642,267 @@ $nic.pl 路径是： THEOS=/opt/theos 路直接启动的话，需要添加到/us
 &lt;/div&gt;
 
 &lt;p&gt;结果：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	NIC 2.0 - New Instance Creator
+	------------------------------
+	[1.] iphone/activator_event
+  	[2.] iphone/application_modern
+  	[3.] iphone/cydget
+  	[4.] iphone/flipswitch_switch
+  	[5.] iphone/framework
+  	[6.] iphone/ios7_notification_center_widget
+  	[7.] iphone/library
+  	[8.] iphone/notification_center_widget
+  	[9.] iphone/preference_bundle_modern
+  	[10.] iphone/tool
+  	[11.] iphone/tweak
+  	[12.] iphone/xpc_service
+    Choose a Template (required):
+    ```
+可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NIC 2.0 - New Instance Creator
-------------------------------
-[1.] iphone/activator_event
-[2.] iphone/application_modern
-[3.] iphone/cydget
-[4.] iphone/cydget
-[5.] iphone/cydget
-[6.] iphone/flipswitch_switch
-[7.] iphone/framework
-[8.] iphone/framework
-[9.] iphone/framework
-[10.] iphone/ios7_notification_center_widget
-[11.] iphone/library
-[12.] iphone/notification_center_widget
-[13.] iphone/notification_center_widget
-[14.] iphone/notification_center_widget
-[15.] iphone/preference_bundle_modern
-[16.] iphone/sbsettingstoggle
-[17.] iphone/sbsettingstoggle
-[18.] iphone/tool
-[19.] iphone/tweak
-[20.] iphone/xpc_service
-[21.] iphone/xpc_service
-[22.] iphone/xpc_service
-Choose a Template (required):
+2）选择“19”，即创建一个tweak工程：
+
+	 Choose a Template (required): 11
+
+3）输入tweak的工程名称： 
+
+	Project Name (required): projectBy3cod
+
+4）输入deb包的名字（类似于bundle identifier）： 
+
+	Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod
+
+5）输入tweak作者的名字，命令如下： 
+	
+	Author/Maintainer Name [gyjrong]: 3code
+
+6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
+
+	...[com.apple.springboard]: com.apple.springboard
+
+7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
+
+	...[SpringBoard]: SpringBoard 
+Done.
+
+简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。
+
+##### 4.2 定制工程文件
+用Theos创建tweak工程非常方便，但简洁的工程框架下目前还是些粗糙的内容，需要进一步加工相关的文件。先来看看刚刚生成的工程目录，如下：
+
+	$ cd projectBy3cod
+	$ ls -l
+	total 32
+	-rw-r--r--  1 gyjrong  admin    57 10 31 18:46 projectBy3cod.plist
+	-rw-r--r--  1 gyjrong  admin   274 10 31 18:46 Makefile
+	-rw-r--r--  1 gyjrong  admin  1045 10 31 18:46 Tweak.xm
+	-rw-r--r--  1 gyjrong  admin   207 10 31 18:46 control
+
+具体的操作参见文章
+
+[越狱开发系列3_Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos_ install&amp;amp;run/)
+
+##### 4.3 编译
+
+在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。
+
+1）编译
+
+Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：
+
+	$ make
+	Making all for tweak iOSREProject...
+	Preprocessing Tweak.xm...
+	Compiling Tweak.xm...
+	Linking tweak ...
+	Stripping ...
+	Signing ...
+	
+从输出的信息看，Theos完成了预处理、编译、签名等一系列动作，此时会发现当前目录下多了一个新的“obj”文件夹，如下：
+
+	$ ls -l
+	Makefile Tweak.xm control iOSREProject.plist  obj  /opt/theos
+	
+里面有一个.dylib文件，如下：
+
+	$ ls -l ./obj
+	Tweak.xm.b1748661.o	iOSREProject.dylib
+	
+它就是tweak的核心。
+
+##### 4.4 打包
+
+打包使用的“make package”命令来自于Theos本身，其实就是先执行“make”命令，然后再执行“dpkg-deb”命令，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;$ make package
+Making all for tweak iOSREProject…
+ Preprocessing Tweak.xm…
+ Compiling Tweak.xm…
+ Linking tweak iOSREProject…
+ Stripping iOSREProject…
+ Signing iOSREProject…
+Making stage for tweak iOSREProject…
+dm.pl: building package &lt;code class=&quot;highlighter-rouge&quot;&gt;com.iosre.iosreproject' in &lt;/code&gt;./com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb’.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;上面生成了一个名为“com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb”的文件，这就是可以最终发布的安装包。
 
-&lt;p&gt;可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。&lt;/p&gt;
+“make package”命令还有一个很重要的功能。在执行完“make package”之后，除了“obj”文件夹外，你会发现tweak工程目录下还生成了一个“_”文件夹，如下：
 
-&lt;p&gt;2）选择“19”，即创建一个tweak工程： Choose a Template (required): 19&lt;/p&gt;
-
-&lt;p&gt;3）输入tweak的工程名称： Project Name (required): projectBy3cod&lt;/p&gt;
-
-&lt;p&gt;4）输入deb包的名字（类似于bundle identifier）： Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod&lt;/p&gt;
-
-&lt;p&gt;5）输入tweak作者的名字，命令如下： Author/Maintainer Name [gyjrong]: gyjrong&lt;/p&gt;
-
-&lt;p&gt;6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
-…[com.apple.springboard]: com.apple.springboard&lt;/p&gt;
-
-&lt;p&gt;7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
-…[SpringBoard]: SpringBoard Instantiating iphone/tweak in iosreproject/…
-Done.&lt;/p&gt;
-
-&lt;p&gt;简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;4.2 定制工程文件&lt;/h5&gt;
-&lt;p&gt;用Theos创建tweak工程非常方便，但简洁的工程框架下目前还是些粗糙的内容，需要进一步加工相关的文件。先来看看刚刚生成的工程目录，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd projectBy3cod
-$ ls -l
-total 32
--rw-r--r--  1 gyjrong  admin    57 10 31 18:46 projectBy3cod.plist
--rw-r--r--  1 gyjrong  admin   274 10 31 18:46 Makefile
--rw-r--r--  1 gyjrong  admin  1045 10 31 18:46 Tweak.xm
--rw-r--r--  1 gyjrong  admin   207 10 31 18:46 control
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;具体的操作参见文章&lt;/p&gt;
-
-&lt;p&gt;[越狱开发系列3&lt;em&gt;Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos&lt;/em&gt; install&amp;amp;run/)&lt;/p&gt;
-
-&lt;h5 id=&quot;section-3&quot;&gt;4.3 编译&lt;/h5&gt;
-
-&lt;p&gt;在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。&lt;/p&gt;
-
-&lt;p&gt;1）编译&lt;/p&gt;
-
-&lt;p&gt;Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make
-Making all for tweak iOSREProject...
-Preprocessing Tweak.xm...
-Compiling Tweak.xm...
-Linking tweak ...
-Stripping ...
-Signing ...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;从输出的信息看，Theos完成了预处理、编译、签名等一系列动作，此时会发现当前目录下多了一个新的“obj”文件夹，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l
-Makefile Tweak.xm control iOSREProject.plist  obj  /opt/theos
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;里面有一个.dylib文件，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l ./obj
-Tweak.xm.b1748661.o	iOSREProject.dylib
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;它就是tweak的核心。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-4&quot;&gt;4.4 打包&lt;/h5&gt;
-
-&lt;p&gt;打包使用的“make package”命令来自于Theos本身，其实就是先执行“make”命令，然后再执行“dpkg-deb”命令，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make package
-Making all for tweak iOSREProject...
- Preprocessing Tweak.xm...
- Compiling Tweak.xm...
- Linking tweak iOSREProject...
- Stripping iOSREProject...
- Signing iOSREProject...
-Making stage for tweak iOSREProject...
-dm.pl: building package `com.iosre.iosreproject' in `./com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb'.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;上面生成了一个名为“com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb”的文件，这就是可以最终发布的安装包。&lt;/p&gt;
-
-&lt;p&gt;“make package”命令还有一个很重要的功能。在执行完“make package”之后，除了“obj”文件夹外，你会发现tweak工程目录下还生成了一个“_”文件夹，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l
+&lt;p&gt;$ ls -l
 total 40
--rw-r--r--  1 snakeninny  staff   262 Dec  3 09:20 Makefile
--rw-r--r--  1 snakeninny  staff     0 Dec  3 11:28 Tweak.xm
+-rw-r–r–  1 snakeninny  staff   262 Dec  3 09:20 Makefile
+-rw-r–r–  1 snakeninny  staff     0 Dec  3 11:28 Tweak.xm
 drwxr-xr-x  4 snakeninny  staff   136 Dec  3 11:35 _
--rw-r--r--  1 snakeninny  staff  2396 Dec  3 11:35 com.iosre.iosreproject_0.0.1-7 _iphoneos-arm.deb
--rw-r--r--  1 snakeninny  staff   223 Dec  3 09:05 control
--rw-r--r--@ 1 snakeninny  staff   175 Dec  3 09:48 iOSREProject.plist
+-rw-r–r–  1 snakeninny  staff  2396 Dec  3 11:35 com.iosre.iosreproject_0.0.1-7 _iphoneos-arm.deb
+-rw-r–r–  1 snakeninny  staff   223 Dec  3 09:05 control
+-rw-r–r–@ 1 snakeninny  staff   175 Dec  3 09:48 iOSREProject.plist
 drwxr-xr-x  5 snakeninny  staff   170 Dec  3 11:35 obj
-lrwxr-xr-x  1 snakeninny  staff    11 Dec  3 09:05 theos -&amp;gt; /opt/theos
+lrwxr-xr-x  1 snakeninny  staff    11 Dec  3 09:05 theos -&amp;gt; /opt/theos&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+这个文件夹是干什么的？打开它，可以看到2个文件夹，分别是“DEBIAN”和“Library”：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;这个文件夹是干什么的？打开它，可以看到2个文件夹，分别是“DEBIAN”和“Library”：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -l _
+&lt;p&gt;$ ls -l _
 total 0
 drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 DEBIAN
 drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 Library
-其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译[…]”
+其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译[…]”&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译过程中向control文件里稍稍增加了几个字段而已，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译过程中向control文件里稍稍增加了几个字段而已，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snakeninnysiMac:iosreproject snakeninny$ ls -l _/DEBIAN
+&lt;p&gt;snakeninnysiMac:iosreproject snakeninny$ ls -l _/DEBIAN
 total 8
--rw-r--r--  1 snakeninny  staff  245 Dec  3 11:35 control
+-rw-r–r–  1 snakeninny  staff  245 Dec  3 11:35 control&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+“Library”的目录结构如下：
+![](https://ooo.0o0.ooo/2016/11/01/58184149d2d6e.jpeg)
+
+
+对比生成deb的包内容：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;“Library”的目录结构如下：
-&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/58184149d2d6e.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;对比生成deb的包内容：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ dpkg -c com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb
+&lt;p&gt;$ dpkg -c com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/
 -rwxr-xr-x snakeninny/staff 98784 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.dylib
--rw-r--r-- snakeninny/staff   175 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.plist
+-rw-r–r– snakeninny/staff   175 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.plist&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+以及在Cydia中iOSREProject的文件系统，如下
+
+![](https://ooo.0o0.ooo/2016/11/01/581841f406d47.png)
+
+可以看到，三者是完全相同的。到这里，你可能也猜到了，这个deb包其实就是由“DEBIAN”提供debian信息，“Library”提供实际文件的简单组合。事实上，还可以在工程目录下创建一个名为“layout”的文件夹，然后把工程打包成deb并安装到iOS中，此时“layout”中的所有文件会被解包到iOS文件系统的相同位置（这里的“layout”相当于iOS中的根目录“/”），这极大扩充了deb包的作用范围。下面用一个小示例佐以说明。
+
+回到刚才的iOSREProject中，在Terminal中输入“make clean”及“rm*.deb”，将工程恢复到最初的状态，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;以及在Cydia中iOSREProject的文件系统，如下&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/581841f406d47.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到，三者是完全相同的。到这里，你可能也猜到了，这个deb包其实就是由“DEBIAN”提供debian信息，“Library”提供实际文件的简单组合。事实上，还可以在工程目录下创建一个名为“layout”的文件夹，然后把工程打包成deb并安装到iOS中，此时“layout”中的所有文件会被解包到iOS文件系统的相同位置（这里的“layout”相当于iOS中的根目录“/”），这极大扩充了deb包的作用范围。下面用一个小示例佐以说明。&lt;/p&gt;
-
-&lt;p&gt;回到刚才的iOSREProject中，在Terminal中输入“make clean”及“rm*.deb”，将工程恢复到最初的状态，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make clean
+&lt;p&gt;$ make clean
 rm -rf ./obj
-rm -rf &quot;/Users/snakeninny/Code/iosreproject/_&quot;
+rm -rf “/Users/snakeninny/Code/iosreproject/_”
 $ rm *.deb
 $ ls -l
 total 32
--rw-r--r--  1 snakeninny  staff  262 Dec  3 09:20 Makefile
--rw-r--r--  1 snakeninny  staff    0 Dec  3 11:28 Tweak.xm
--rw-r--r--  1 snakeninny  staff  223 Dec  3 09:05 control
--rw-r--r--@ 1 snakeninny  staff  175 Dec  3 09:48 iOSREProject.plist
-lrwxr-xr-x  1 snakeninny  staff   11 Dec  3 09:05 theos -&amp;gt; /opt/theos
+-rw-r–r–  1 snakeninny  staff  262 Dec  3 09:20 Makefile
+-rw-r–r–  1 snakeninny  staff    0 Dec  3 11:28 Tweak.xm
+-rw-r–r–  1 snakeninny  staff  223 Dec  3 09:05 control
+-rw-r–r–@ 1 snakeninny  staff  175 Dec  3 09:48 iOSREProject.plist
+lrwxr-xr-x  1 snakeninny  staff   11 Dec  3 09:05 theos -&amp;gt; /opt/theos&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+然后生成一个空的“layout”目录，如下：
+
+	$ mkdir layout
+并在“layout”下随便放一些空文件，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;然后生成一个空的“layout”目录，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir layout 并在“layout”下随便放一些空文件，如下：
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ touch ./layout/1.test
+&lt;p&gt;$ touch ./layout/1.test
 $ mkdir ./layout/Developer
 $ touch ./layout/Developer/2.test
 $ mkdir -p ./layout/var/mobile/Library/Preferences
-$ touch ./layout/var/mobile/Library/Preferences/3.test
+$ touch ./layout/var/mobile/Library/Preferences/3.test&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;最后用“make package”打包，并将生成的deb文件拷贝到iOS中，用iFile安装。然后在Cydia中查看iOSREProject的文件系统，如图下
+
+![](https://ooo.0o0.ooo/2016/11/01/581842e2adbd5.jpeg)
+ 
+除“DEBIAN”以外的所有文件都被解包到了iOS文件系统的相同位置，本来不存在的中间文件夹也被自动创建。deb包的玄机还有很多，这里也只是管中窥豹，更全面的介绍请移步[http://www.debian.org/doc/debian-policy](http://www.debian.org/doc/debian-policy)，官方文档总是最好的学习资料。
+
+
+
+##### 4.5 安装
+
+最后，要把这个deb文件安装到iOS中去。安装的方法多种多样，这里介绍两种最具代表性的：图形界面安装法和命令行安装法。
+
+- 图形界面安装法
+
+这个方法确实简单：通过iFunBox等软件把deb拖到iOS里去，然后用iFile安装它，最后重启iOS。虽然全过程都由图形界面操作，但人机交互太多，又要动电脑又要滑手机，一来二去非常繁琐，并不适用于tweak开发。
+
+- 命令行安装法
+
+这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，
+
+
+打开ssh通道，这里使用PP助手实现，之后按照其操作：
+
+$ ssh root@localhost -p 2222
+
+输入密码即可。
+
+
+下面具体介绍安装法。
+
+首先，需要在Makefile的最上一行加上本机IP地址，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;最后用“make package”打包，并将生成的deb文件拷贝到iOS中，用iFile安装。然后在Cydia中查看iOSREProject的文件系统，如图下&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/01/581842e2adbd5.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;除“DEBIAN”以外的所有文件都被解包到了iOS文件系统的相同位置，本来不存在的中间文件夹也被自动创建。deb包的玄机还有很多，这里也只是管中窥豹，更全面的介绍请移步&lt;a href=&quot;http://www.debian.org/doc/debian-policy&quot;&gt;http://www.debian.org/doc/debian-policy&lt;/a&gt;，官方文档总是最好的学习资料。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-5&quot;&gt;4.5 安装&lt;/h5&gt;
-
-&lt;p&gt;最后，要把这个deb文件安装到iOS中去。安装的方法多种多样，这里介绍两种最具代表性的：图形界面安装法和命令行安装法。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;图形界面安装法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这个方法确实简单：通过iFunBox等软件把deb拖到iOS里去，然后用iFile安装它，最后重启iOS。虽然全过程都由图形界面操作，但人机交互太多，又要动电脑又要滑手机，一来二去非常繁琐，并不适用于tweak开发。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;命令行安装法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，如果对这部分知识不了解，请google。下面具体介绍安装法。&lt;/p&gt;
-
-&lt;p&gt;首先，需要在Makefile的最上一行加上本机IP地址，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;THEOS_DEVICE_IP = iOSIP
+&lt;p&gt;THEOS_DEVICE_IP = iOSIP
 ARCHS = armv7 arm64
-TARGET = iphone:latest:8.0
+TARGET = iphone:latest:8.0&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+然后调用“make package install”命令完成编译打包安装一条龙服务，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;然后调用“make package install”命令完成编译打包安装一条龙服务，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ make package install
-Making all for tweak iOSREProject...
- Preprocessing Tweak.xm...
- Compiling Tweak.xm...
- Linking tweak iOSREProject...
- Stripping iOSREProject...
- Signing iOSREProject...
-Making stage for tweak iOSREProject...
-dm.pl: building package `com.iosre.iosreproject:iphoneos-arm' in `./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb'
-install.exec &quot;cat &amp;gt; /tmp/_theos_install.deb; dpkg -i /tmp/_theos_install.deb &amp;amp;&amp;amp; rm /tmp/_theos_install.deb&quot; &amp;lt; &quot;./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb&quot;
-root@iOSIP's password: 
+&lt;p&gt;$ make package install
+Making all for tweak iOSREProject…
+ Preprocessing Tweak.xm…
+ Compiling Tweak.xm…
+ Linking tweak iOSREProject…
+ Stripping iOSREProject…
+ Signing iOSREProject…
+Making stage for tweak iOSREProject…
+dm.pl: building package &lt;code class=&quot;highlighter-rouge&quot;&gt;com.iosre.iosreproject:iphoneos-arm' in &lt;/code&gt;./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb’
+install.exec “cat &amp;gt; /tmp/_theos_install.deb; dpkg -i /tmp/_theos_install.deb &amp;amp;&amp;amp; rm /tmp/_theos_install.deb” &amp;lt; “./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb”
+root@iOSIP’s password: 
 Selecting previously deselected package com.iosre.iosreproject.
-(Reading database ... 2864 files and directories currently installed.)
-Unpacking com.iosre.iosreproject (from /tmp/_theos_install.deb) ...
-Setting up com.iosre.iosreproject (0.0.1-15) ...
-install.exec &quot;killall -9 SpringBoard&quot;
-root@iOSIP's password:
+(Reading database … 2864 files and directories currently installed.)
+Unpacking com.iosre.iosreproject (from /tmp/_theos_install.deb) …
+Setting up com.iosre.iosreproject (0.0.1-15) …
+install.exec “killall -9 SpringBoard”
+root@iOSIP’s password:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+从以上信息可以看到，Theos在整个安装过程中要求我们输入两次root密码。虽然多次输入密码给人很安全的感觉，但实在是太麻烦了。好在通过设置iOS的authorized_keys可以省略SSH输密码的步骤，让“make package install”真正地从“一只多脚虫”变成“一条飞天龙”，具体步骤如下：
+
+1）删除“/Users/snakeninny/.ssh/known_hosts”中iOSIP对应的条目。
+假设iOS的IP地址是iOSIP。编辑“/Users/snakeninny/.ssh/known_hosts”，找到iOSIP所在的那一行，如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;iOSIP ssh-rsa hXFscxBCVXgqXhwm4PUoUVBFWRrNeG6gVI3Ewm4dqwusoRcyCxZtm5bRiv4bXfkPjsRkWVVfrW3uT52Hhx4RqIuCOxtWE7tZqc1vVap4HIzUu3mwBuxog7WiFbsbbaJY4AagNZmX83Wmvf8li5aYMsuKeNagdJHzJNtjM3vtuskK4jKzBkNuj0M89TrV4iEmKtI4VEoEmHMYzWwMzExXbyX5NyEg5CRFmA46XeYCbcaY0L90GExXsWMMLA27tA1Vt1ndHrKNxZttgAw31J90UDnOGlMbWW4M7FEqRWQsWXxfGPk0W7AlA54vaDXllI5CD5nLAu4VkRjPIUBrdH5O1fqQ3qGkPayhsym3g0VZeYgU4JAMeFc3&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;完整删掉这一行。
+2）生成authorized_keys。
 
-&lt;p&gt;从以上信息可以看到，Theos在整个安装过程中要求我们输入两次root密码。虽然多次输入密码给人很安全的感觉，但实在是太麻烦了。好在通过设置iOS的authorized_keys可以省略SSH输密码的步骤，让“make package install”真正地从“一只多脚虫”变成“一条飞天龙”，具体步骤如下：&lt;/p&gt;
-
-&lt;p&gt;1）删除“/Users/snakeninny/.ssh/known_hosts”中iOSIP对应的条目。
-假设iOS的IP地址是iOSIP。编辑“/Users/snakeninny/.ssh/known_hosts”，找到iOSIP所在的那一行，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iOSIP ssh-rsa hXFscxBCVXgqXhwm4PUoUVBFWRrNeG6gVI3Ewm4dqwusoRcyCxZtm5bRiv4bXfkPjsRkWVVfrW3uT52Hhx4RqIuCOxtWE7tZqc1vVap4HIzUu3mwBuxog7WiFbsbbaJY4AagNZmX83Wmvf8li5aYMsuKeNagdJHzJNtjM3vtuskK4jKzBkNuj0M89TrV4iEmKtI4VEoEmHMYzWwMzExXbyX5NyEg5CRFmA46XeYCbcaY0L90GExXsWMMLA27tA1Vt1ndHrKNxZttgAw31J90UDnOGlMbWW4M7FEqRWQsWXxfGPk0W7AlA54vaDXllI5CD5nLAu4VkRjPIUBrdH5O1fqQ3qGkPayhsym3g0VZeYgU4JAMeFc3
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;完整删掉这一行。
-2）生成authorized_keys。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa
+&lt;p&gt;$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/snakeninny/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -1919,13 +1910,13 @@ Enter same passphrase again:
 Your identification has been saved in /Users/snakeninny/.ssh/id_rsa.
 Your public key has been saved in /Users/snakeninny/.ssh/id_rsa.pub.
 ……
-$ cp /Users/snakeninny/.ssh/id_rsa.pub ~/authorized_keys
+$ cp /Users/snakeninny/.ssh/id_rsa.pub ~/authorized_keys&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;就会在用户目录下生成authorized_keys。
+3）配置iOS。
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;就会在用户目录下生成authorized_keys。
-3）配置iOS。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FunMaker-5:~ root# ssh-keygen
+&lt;p&gt;FunMaker-5:~ root# ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/var/root/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -1936,31 +1927,31 @@ Your public key has been saved in /var/root/.ssh/id_rsa.pub.
 FunMaker-5:~ root# logout
 Connection to iOSIP closed.
 $ scp ~/authorized_keys root@iOSIP:/var/root/.ssh
-The authenticity of host 'iOSIP (iOSIP)' can't be established.
+The authenticity of host ‘iOSIP (iOSIP)’ can’t be established.
 RSA key fingerprint is 75:98:9a:05:a3:27:2d:23:08:d3:ee:f4:d1:28:ba:1a.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'iOSIP' (RSA) to the list of known hosts.
-root@iOSIP's password: 
-authorized_keys                            100%  408    0.4KB/s   00:00
+Warning: Permanently added ‘iOSIP’ (RSA) to the list of known hosts.
+root@iOSIP’s password: 
+authorized_keys                            100%  408    0.4KB/s   00:00&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+重新使用ssh命令进入iOS试试看，还需要输密码吗？此时，“make package install”真正变成了一次配置，一键安装，一劳永逸！
+（4）清理
+
+Theos提供了方便的工程清理命令“make clean”，其“实际作用就是依次执行“rm-rf./obj”和“rm-rf&quot;/Users/snakeninny/Code/iosre/_&quot;”两个命令，从而删除“make”和“make package”命令生成的文件夹。也可以用“rm*.deb”，删除“make package”命令生成的所有deb文件。
+
+## 5　Theos开发tweak示例
+
+接下来将以一个最简单的tweak为例来进行讲解。安装了该程序之后，每次重启SpringBoard都将会弹出一个UIAlertView。
+
+##### 5.1 用Theos新建tweak工程“iOSREGreetings”
+
+新建iOSREGreetings工程的命令如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;p&gt;重新使用ssh命令进入iOS试试看，还需要输密码吗？此时，“make package install”真正变成了一次配置，一键安装，一劳永逸！
-（4）清理&lt;/p&gt;
-
-&lt;p&gt;Theos提供了方便的工程清理命令“make clean”，其“实际作用就是依次执行“rm-rf./obj”和“rm-rf”/Users/snakeninny/Code/iosre/_“”两个命令，从而删除“make”和“make package”命令生成的文件夹。也可以用“rm*.deb”，删除“make package”命令生成的所有deb文件。&lt;/p&gt;
-
-&lt;h2 id=&quot;theostweak&quot;&gt;5　Theos开发tweak示例&lt;/h2&gt;
-
-&lt;p&gt;接下来将以一个最简单的tweak为例来进行讲解。安装了该程序之后，每次重启SpringBoard都将会弹出一个UIAlertView。&lt;/p&gt;
-
-&lt;h5 id=&quot;theostweakiosregreetings&quot;&gt;5.1 用Theos新建tweak工程“iOSREGreetings”&lt;/h5&gt;
-
-&lt;p&gt;新建iOSREGreetings工程的命令如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /opt/theos/bin/nic.pl
+&lt;p&gt;$ /opt/theos/bin/nic.pl
 NIC 2.0 - New Instance Creator
-------------------------------
+——————————
   [1.] iphone/application
   [2.] iphone/cydget
   [3.] iphone/framework
@@ -1976,27 +1967,28 @@ Project Name (required): iOSREGreetings
 Package Name [com.yourcompany.iosregreetings]: com.iosre.iosregreetings
 Author/Maintainer Name [snakeninny]: snakeninny
 [iphone/tweak] MobileSubstrate Bundle filter [com.apple.springboard]: com.apple.springboard
-[iphone/tweak] List of applications to terminate upon installation (space-separated, '-' for none) [SpringBoard]: 
-Instantiating iphone/tweak in iosregreetings/...
-Done.
+[iphone/tweak] List of applications to terminate upon installation (space-separated, ‘-‘ for none) [SpringBoard]: 
+Instantiating iphone/tweak in iosregreetings/…
+Done.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+##### 5.2.编辑Tweak.xm
+
+编辑后的Tweak.xm内容如下：
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;h5 id=&quot;tweakxm&quot;&gt;5.2.编辑Tweak.xm&lt;/h5&gt;
-
-&lt;p&gt;编辑后的Tweak.xm内容如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%hook SpringBoard
-- (void)applicationDidFinishLaunching:(id)application
+&lt;p&gt;%hook SpringBoard&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;(void)applicationDidFinishLaunching:(id)application
 {
-    %orig;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Come to http://bbs.iosre.com for more fun!&quot; message:nil delegate:self cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+  %orig;
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@”Come to http://bbs.iosre.com for more fun!” message:nil delegate:self cancelButtonTitle:@”OK” otherButtonTitles:nil];
+  [alert show];
+  [alert release];
 }
 %end
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h5 id=&quot;makefilecontrol&quot;&gt;5.3.编辑Makefile及control&lt;/h5&gt;
 
@@ -2071,10 +2063,7 @@ Homepage: http://3code.info
 
 &lt;p&gt;class-dump的用法比较简单，首先去&lt;a href=&quot;http://stevenygard.com/projects/class-dump&quot;&gt;http://stevenygard.com/projects/class-dump&lt;/a&gt;下载最新版的class-dump。&lt;/p&gt;
 
-&lt;p&gt;下载class-dump-3.5.dmg后，将dmg文件里的class-dump复制到“/usr/bin”下，然后在Terminal中执行 $sudo chmod 777/usr/bin/class-dump”命令赋予其执行权限。&lt;/p&gt;
-
-&lt;p&gt;以上方法已经不可用：OSX10.11的一个新特性Rootless也叫System Integrity Protection（SIP）和SELinux差不多，都是限制root用户的权限，其实可以在RecoveryMode关闭这个特性，这样就直接可以读写/usr/bin了，不过不建议。
-最新的方法如下：&lt;/p&gt;
+&lt;p&gt;然后操作如下：&lt;/p&gt;
 
 &lt;h5 id=&quot;section-2&quot;&gt;2.1 设置环境变量:&lt;/h5&gt;
 
@@ -2099,11 +2088,11 @@ Homepage: http://3code.info
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;下面以笔者的一个App为例，来看看class-dump的完整流程。&lt;/p&gt;
+&lt;p&gt;下面以支付宝为例，来看看class-dump的完整流程。&lt;/p&gt;
 
 &lt;p&gt;1.定位App的可执行文件&lt;/p&gt;
 
-&lt;p&gt;首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/snakeninny”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：&lt;/p&gt;
+&lt;p&gt;首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
 $ plutil -p Info.plist | grep CFBundleExecutable
@@ -2117,9 +2106,13 @@ $ plutil -p Info.plist | grep CFBundleExecutable
 
 &lt;p&gt;把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header 结果是： -APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore加密过) -【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;p&gt;结果是：
+-APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
+-【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了&lt;/p&gt;
 
 &lt;p&gt;透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。&lt;/p&gt;
 
@@ -2140,17 +2133,40 @@ $ plutil -p Info.plist | grep CFBundleExecutable
       <item>
         <title>IOS逆向开发系列_综述</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、概述&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.2、分析工具：&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;前言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1、概述&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;1.2、分析工具：&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;术语&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ios-&quot; id=&quot;markdown-toc-ios-&quot;&gt;2、IOS 文件系统&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ios&quot; id=&quot;markdown-toc-ios&quot;&gt;2.1、IOS目录结构&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ios-1&quot; id=&quot;markdown-toc-ios-1&quot;&gt;2.2、 iOS文件权限简介&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ios-2&quot; id=&quot;markdown-toc-ios-2&quot;&gt;2.3、 iOS二进制文件类型&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#application&quot; id=&quot;markdown-toc-application&quot;&gt;2.3.1 Application&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dynamic-library&quot; id=&quot;markdown-toc-dynamic-library&quot;&gt;2.3.2 Dynamic Library&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#daemon&quot; id=&quot;markdown-toc-daemon&quot;&gt;2.3.3 Daemon&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;1、概述&lt;/h2&gt;
+&lt;h2 id=&quot;section&quot;&gt;前言&lt;/h2&gt;
 
-&lt;h5 id=&quot;section-1&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/h5&gt;
+&lt;p&gt;未越狱的iOS是个封闭的黑盒子，直到evad3rs、盘古、太极等团队把iOS越狱之后，这个黑盒子才被打开，神秘的iOS得以完整地展现在我们面前。&lt;/p&gt;
+
+&lt;p&gt;因为权限极低，来自App Store的普通App（以下简称StoreApp）不能访问自身目录以外的绝大多数文件。而iOS一旦越狱，来自Cydia的App就可以拥有比StoreApp更高的权限，从而访问全系统文件；来自Cydia的iFile即是iOS上一个老牌的第三方文件管理App。&lt;/p&gt;
+
+&lt;p&gt;iOS逆向工程，主要作用是：&lt;/p&gt;
+
+&lt;p&gt;1、借鉴他人app:想开发IM类APP可以根据竞争对手选择去逆向哪一家的APP，然对手的app整体构架和设计思路对于我们的开发是很有益处的。&lt;/p&gt;
+
+&lt;p&gt;2、安全等级鉴定:通过逆向去判别一款软件的安全等级。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;1、概述&lt;/h2&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;1.1、逆向分为 系统分析+代码分析：&lt;/h5&gt;
 
 &lt;p&gt;1.1.1 系统分析：&lt;/p&gt;
 
@@ -2164,7 +2180,7 @@ $ plutil -p Info.plist | grep CFBundleExecutable
 
 &lt;p&gt;通过逆向工程，可以推导出某个App的设计思路、内部算法和实现细节，但这是一个非常复杂的过程，可以说是一种解构再重组的艺术。想让自己的逆向工程水平达到艺术的高度，需要对软件开发、硬件原理和iOS系统有透彻的理解。&lt;/p&gt;
 
-&lt;h5 id=&quot;section-2&quot;&gt;1.2、分析工具：&lt;/h5&gt;
+&lt;h5 id=&quot;section-3&quot;&gt;1.2、分析工具：&lt;/h5&gt;
 
 &lt;p&gt;相对于正向开发，逆向工程使用的工具并不那么“智能”，很多工作需要我们手工完成。只有对工具的熟练使用，才能够极大地提高逆向工程的效率。iOS逆向工程的工具可以分为四大类：监测工具、反汇编工具（disassembler）、调试工具（debugger）,以及开发工具 。&lt;/p&gt;
 
@@ -2195,13 +2211,175 @@ $ plutil -p Info.plist | grep CFBundleExecutable
 
 &lt;p&gt;实战篇：&lt;/p&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;术语&lt;/h2&gt;
+&lt;h2 id=&quot;ios-&quot;&gt;2、IOS 文件系统&lt;/h2&gt;
+
+&lt;p&gt;因为权限极低，来自App Store的普通App（以下简称StoreApp）不能访问自身目录以外的绝大多数文件。而iOS一旦越狱，来自Cydia的App就可以拥有比StoreApp更高的权限，从而访问全系统文件；来自Cydia的iFile即是iOS上一个老牌的第三方文件管理App。&lt;/p&gt;
+
+&lt;h5 id=&quot;ios&quot;&gt;2.1、IOS目录结构&lt;/h5&gt;
+
+&lt;p&gt;iOS是由OSX演化而来的，而OSX则是基于UNIX操作系统的。这三者虽然有很大区别，但它们血脉相连。从Filesystem Hierarchy Standard和hier(7)中，可以一窥iOS目录结构的设计标准。&lt;/p&gt;
+
+&lt;p&gt;Filesystem Hierarchy Standard（以下简称FHS）为类UNIX操作系统的文件目录结构制定了一套标准，它的初衷之一是让用户预知文件或目录的存放位置。OSX在此基础上形成了自己的hier(7)框架。&lt;/p&gt;
+
+&lt;p&gt;越狱后的文件展示:
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/12/5827229be3e42.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;类UNIX操作系统的常见目录结构如下所示:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+·/：根目录，以斜杠表示，其他所有文件和目录在根目录下展开。
+·/bin：“binary”的简写，存放提供用户级基础功能的二进制文件，如ls、ps等。
+·/boot：存放能使系统成功启动的所有文件。iOS中此目录为空。
+·/dev：“device”的简写，存放BSD设备文件。每个文件代表系统的一个块设备或字符设备，一般来说，“块设备”以块为单位传输数据，如硬盘；而“字符设备”以字符为单位传输数据，如调制解调器。
+·/sbin：“system binaries”的简写，存放提供系统级基础功能的二进制文件，如netstat、reboot等。
+·/etc：“Et Cetera”的简写，存放系统脚本及配置文件，如passwd、hosts等。在iOS中，/etc是一个符号链接，实际指向/private/etc。
+·/lib：存放系统库文件、内核模块及设备驱动等。iOS中此目录为空。
+·/mnt：“mount”的简写，存放临时的文件系统挂载点。iOS中此目录为空。
+·/private：存放两个目录，分别是/private/etc和/private/var。
+·/tmp：临时目录。在iOS中，/tmp是一个符号链接，实际指向/private/var/tmp。
+·/usr：包含了大多数用户工具和程序。/usr/bin包含那些/bin和/sbin中未出现的基础功能，如nm、killall等；/usr/include包含所有的标准C头文件；/usr/lib存放库文件。
+·/var：“variable”的简写，存放一些经常更改的文件，比如日志、用户数据、临时文件等。其中/var/mobile和/var/root分别存放了mobile用户和root用户的文件，是重点关注的目录。
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;作为iOS开发者，日常操作所对应的功能模块大多来自iOS的独有目录：
+&lt;img src=&quot;https://ooo.0o0.ooo/2016/11/12/5827237fb21fd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;·/Applications：存放所有的系统App和来自于Cydia的App，不包括StoreApp
+
+·/Developer：如果一台设备连接Xcode后被指定为调试用机，Xcode就会在iOS中生成这个目录，其中会含有一些调试需要的工具和数据
+
+·/Library：存放一些提供系统支持的数据，其中/Library/MobileSubstrate下存放了所有基于CydiaSubstrate（原名MobileSubstrate）的插件。
+
+·/System/Library：iOS文件系统中最重要的目录之一，存放大量系统组件
+·/System/Library/Frameworks和/System/Library/PrivateFrameworks：存放iOS中的各种framework
+·/System/Library/CoreServices里的SpringBoard.app：iOS桌面管理器（类似于Windows里的explorer），是用户与系统交流的最重要中介。
+/System目录下的玄机远不止上面提到的3个目录这么简单
+
+·/User：用户目录，实际指向/var/mobile，其目录结构如下。这个目录里存放大量用户数据，比如：
+     ·/var/mobile/Media/DCIM下存放照片；
+     ·/var/mobile/Media/Recordings下存放录音文件；”
+     “·/var/mobile/Library/SMS下存放短信数据库；
+      ·/var/mobile/Library/Mail下存放邮件数据。
+另外一个非常重要的子目录是/var/mobile/Containers，存放StoreApp。值得注意的是，App的可执行文件在bundle与App中的数据目录被分别存放在/var/mobile/Containers/Bundle和/var/mobile/Containers/Data这两个不同目录下
+
+在逆向初期，我们最好关注以下几个文件夹：
+·/Developer
+·/Library/Logs
+·/Library/MobileDevice
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;ios-1&quot;&gt;2.2、 iOS文件权限简介&lt;/h4&gt;
+
+&lt;p&gt;iOS是一个多用户操作系统。&lt;/p&gt;
+
+&lt;p&gt;“用户”是一个抽象的概念，它代表对操作系统的所有权和使用权。比如，mobile用户无法调用reboot命令重启iOS，而root用户却可以；&lt;/p&gt;
+
+&lt;p&gt;“组”是用户的一种组织方式，一个组可以包含多个用户，一个用户也可以属于多个组。iOS中的每个文件都有一个属主用户和一个属主组，或者说这个用户和这个组拥有这个文件；每个文件都具有一系列权限，简单地说，权限的作用在于说明文件的属主用户能做什么，属主组能做什么，以及其他所有人能做什么。&lt;/p&gt;
+
+&lt;p&gt;iOS用3位（bit）来表示文件的权限，从高位到低位分别是r（read）权限、w（write）权限，以及x（execute）权限。文件与用户的关系存在以下三种可能性：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Cydia&lt;/li&gt;
+  &lt;li&gt;·此用户是属主用户；&lt;/li&gt;
+  &lt;li&gt;·此用户不是属主用户，但在属主组里；&lt;/li&gt;
+  &lt;li&gt;·此用户既不是属主用户，又不在属主组里。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;是一个让用户在越狱的iOS设备上查找和安装各类软件包，包括软件、系统修改、主题和铃声等的软件管理器。&lt;/p&gt;
+&lt;h4 id=&quot;ios-2&quot;&gt;2.3、 iOS二进制文件类型&lt;/h4&gt;
+
+&lt;p&gt;在iOS逆向工程初学阶段，我们的目标主要是Application、Dynamic Library（以下简称dylib）和Daemon这三类二进制文件，对它们的了解越深入，逆向工程就会越顺利。这三类文件分工不同，其目录结构和文件权限也有一些区别。&lt;/p&gt;
+
+&lt;h6 id=&quot;application&quot;&gt;2.3.1 Application&lt;/h6&gt;
+
+&lt;p&gt;Application就是我们最熟悉的App了。了解下面的几个App相关概念，是开始逆向工程前的必备工作。&lt;/p&gt;
+
+&lt;p&gt;1.bundle&lt;/p&gt;
+
+&lt;p&gt;bundle的概念来源于NeXTSTEP，它不是一个文件，而是一个按某种标准结构来组织的目录，其中包含了二进制文件及运行所需的资源。正向开发中常见的App和framework都是以bundle的形式存在的；在越狱iOS中常见的PreferenceBundle，可以看成是一种依附于Settings的App，结构与App类似，本质也是bundle。 Framework也是bundle，但framework的bundle中存放的是一个dylib，而不是可执行文件。相对来说，framework的地位比App更高，因为一个App的绝大多数功能都是通过调用framework提供的接口来实现的。将某个bundle确立为逆向目标后，绝大多数逆向线索都可以在bundle内找到，这大大降低了逆向工程的复杂度。&lt;/p&gt;
+
+&lt;p&gt;2.App目录结构&lt;/p&gt;
+
+&lt;p&gt;在iOS逆向工程中，对App目录结构的熟悉程度是决定工作效率的重要因素。App目录的以下三个部分比较重要。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、Info.plist
+Info.plist记录了App的基本信息，如bundle identifier、可执行文件名、图标文件名等。其中bundle identifier会在CydiaSubstrate中成为tweak的重要配置信息。可以通过Xcode查看它的值；Xcode自带的命令行工具plutil查看它的值:
+如下： 
+plutil -p  目录 | grep CFBundleIdentifier
+
+$ plutil -p /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app/info.plist | grep CFBundleIdentifier
+
+结果:   &quot;CFBundleIdentifier&quot; =&amp;gt; &quot;com.alipay.iphoneclient&quot;
+
+2、可执行文件
+可执行文件的重要性不言而喻，它是App目录下最核心的部分，也是逆向工程最主要的目标。同样可以通过Xcode和plutil两种方式来查看Info.plist，定位可执行文件。
+ plutil -p  目录 | grep  CFBundleExecutable
+ 
+$ plutil -p /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app/info.plist | grep CFBundleExecutable
+
+结果：  &quot;CFBundleExecutable&quot; =&amp;gt; &quot;AlipayWallet&quot;
+
+3、·lproj目录 本地化
+lproj目录下存放的是各种本地化的字符串（.strings），是iOS逆向工程的重要线索，也可以用plutil查看，如下：
+
+$ plutil -p /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app/en.lproj/Localizable.strings
+
+结果： file does not exist or is not readable or is not a regular file (Error Domain=NSCocoaErrorDomain Code=260 &quot;The file “Localizable.strings” couldn’t be opened because there is no such file.&quot; UserInfo={NSFilePath=/Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app/en.lproj/Localizable.strings, NSUnderlyingError=0x7fd538c00b40 {Error Domain=NSPOSIXErrorDomain Code=2 &quot;No such file or directory&quot;}})
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3.系统App VS.StoreApp&lt;/p&gt;
+
+&lt;p&gt;/Applications/目录存放系统App和从Cydia下载的App（我们把来自Cydia的App视为系统App），而/var/mobile/Containers/目录存放的则是StoreApp。虽然两者都是App，但它们在如下方面存在着一些差别。&lt;/p&gt;
+
+&lt;p&gt;·目录结构
+     两种App的bundle内部目录结构区别不大，都含有Info.plist、可执行文件、lproj目录等，但是数据目录的位置不同：StoreApp的数据目录在/var/mobile/Containers/Data/下，以mobile权限运行的系统App的数据目录在/var/mobile/下，而以root权限运行的系统App的数据目录在/var/root/下。&lt;/p&gt;
+
+&lt;p&gt;·安装包格式与权限
+     Cydia App的安装包格式一般是deb，StoreApp的安装包格式一般是ipa。其中deb是来自Debian的安装包格式，由Cydia作者saurik移植到iOS中，它的属主用户和属主组一般是root和admin，能够以root权限运行；而ipa是苹果为iOS推出的专属App安装包格式，属主用户和属主组都是mobile，只能以mobile权限运行。&lt;/p&gt;
+
+&lt;p&gt;·沙盒（sandbox）
+     通俗地说，iOS中的沙盒就是一种访问限制机制，我们可以把它看作是权限的一种表现形式，授权文件（entitlements）也是沙盒的一部分。它是iOS最核心的安全组件之一，其实现很复杂，这里不过多讨论其细节。总的来说，沙盒会将App的文件访问范围限制在这个App内部，一个App一般不知道其他App的存在，更别说访问它们了；沙盒还会限制App的功能，例如对iCloud接口的调用就必须经过沙盒的允许。&lt;/p&gt;
+
+&lt;h6 id=&quot;dynamic-library&quot;&gt;2.3.2 Dynamic Library&lt;/h6&gt;
+
+&lt;p&gt;大部分iOS开发者的日常工作应该都是写App，估计很少有人写过dylib，因此对dylib的概念很陌生。殊不知，在Xcode工程里导入的各种framework，链接的各种lib，其实本质都是dylib。 可以用“file”命令验证一下，如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ file /Users/…./Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK
+.../Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK: Mach-O universal binary with 4 architectures.../Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK (for architecture i386): Mach-O object i386.../Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK (for architecture x86_64): Mach-O 64-bit object x86_64.../Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK (for architecture armv7): Mach-O object arm
+.../Lib/AliPaySDK/AlipaySDK.framework/AlipaySDK (for architecture arm64): Mach-O 64-bit object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果把焦点转移到越狱iOS中，Cydia里的各种tweak无一不是以dylib的形式工作的，正是这些tweak的存在让我们能够随意定制自己的iOS。在逆向工程中，我们会频繁接触各种dylib，因此有必要了解一些相关知识。&lt;/p&gt;
+
+&lt;p&gt;在iOS中，lib分为static和dynamic两种&lt;/p&gt;
+
+&lt;p&gt;–其中static lib在编译阶段成为App可执行文件的一部分，会增加可执行文件的大小。因为App尺寸变大，启动时需要加载的内容变多，所以可能会导致App启动变慢。&lt;/p&gt;
+
+&lt;p&gt;–dylib则相对“智能”一些，它不会改变可执行文件的大小，只有当App需要用到这个dylib时，iOS才会把它加载进内存，成为App进程的一部分。是逆向工程的重要目标类型，但其本身并不是可执行文件，不能独立运行，只能为别的进程服务，而且它们寄生在别的进程里，成为了这个进程的一部分。&lt;/p&gt;
+
+&lt;p&gt;因此，dylib的权限是由它寄生的那个App决定的，同一个dylib寄生在系统App和StoreApp里时的权限是不同的。例如，你写了一个Instagram的tweak，用来把喜欢的图片保存在本地，如果保存目录是/var/mobile/Containers/Data/下App对应的Documents目录，那么因为Instagram是一个StoreApp，这样的操作是没有问题的，tweak能够正常工作。而如果保存目录是/var/mobile/Documents，那么在兴高采烈地保存了一大堆美图，准备回头细细品味时，你就会发现/var/mobile/Documents里啥图片也没有——操作都被sandbox给禁掉了。&lt;/p&gt;
+
+&lt;h6 id=&quot;daemon&quot;&gt;2.3.3 Daemon&lt;/h6&gt;
+
+&lt;p&gt;1）当我们正在用iPhone上网或刷微博时来了一个电话，所有其他操作会立即中断，iOS第一时间将接听电话的界面呈现在我们面前。如果iOS中没有真正的后台多任务，系统是如何实时处理这个来电的呢？&lt;/p&gt;
+
+&lt;p&gt;2）对于那些经常收到垃圾短信和骚扰电话的”“朋友来说，类似于SMSNinja这样的防火墙软件必不可少。如果它不能常驻iOS后台，怎么能够实时地处理并过滤收到的每一条短信呢？&lt;/p&gt;
+
+&lt;p&gt;….
+     这些现象无一不说明iOS实际上存在真正的后台多任务。对于StoreApp来说，可以把iOS看作是没有真正后台多任务的系统 ，当用户按下home键时，进程就进入后台了，大多数功能都会被暂停。&lt;/p&gt;
+
+&lt;p&gt;但iOS源于OSX，后者又跟所有类UNIX操作系统一样，有daemon（即守护进程，Windows称Service）的概念。越狱开放了iOS全文件系统，daemon也得以展现在我们面前。 Daemon为后台运行而生，给用户提供了各种“守护”，如imagent保障了iMessage的正确收发,mediaserverd处理了几乎所有的音频、视频，syslogd则用于记录系统日志等。&lt;/p&gt;
+
+&lt;p&gt;iOS中的daemon主要由一个可执行文件和一个plist文件构成。iOS的根进程是launchd，它会在开机时检查/System/Library/LaunchDaemons和/Library/LaunchDaemons下所有格式符合规定的plist文件，然后启动对应的daemon。这里的plist文件与App中的Info.plist文件作用类似，即记录daemon的基本信息，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ plutil -p /Users/snakeninny/Code/iOSSystemBinaries/ 8.1.1_iPhone5/System/Library/LaunchDaemons/com.apple.imagent.plist 。。。。。。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;相对于App，daemon提供的功能要底层得多，逆向难度也要大得多，随意改动造成的后果当然也就严重得多，所以白苹果的惨案才会时有发生。在iOS逆向工程初学阶段，请不要把daemon当作练习目标；当你逆向了几个App，有了一定的心得和积累后再挑战这些daemon才是比较明智的选择。相比App，逆向daemon花费的时间和精力会更多，但更多的付出一定会带来更丰厚的回报。例如，“iOS上的第一款电话录音软件”Audio Recorder就是通过逆向mediaserverd这个daemon实现的。”&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
