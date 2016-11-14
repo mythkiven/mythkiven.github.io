@@ -71,7 +71,7 @@ iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没
 安装的路径有:~/theos, /opt/theos, or /var/theos.我安装的是最后一个。
 安装方式有两种，首先介绍zip安装，目前已经不推荐：
 
-1、使用下载包安装
+1、方法1：使用下载包安装
 
 从GitHub上下载Theos，操作如下：
 
@@ -88,7 +88,7 @@ iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没
 	$ export PATH=$THEOS/bin:$PATH
 	$ source ~/.bash_profile
 
-2、直接使用git 安装：推荐：
+2、方法1：直接使用git 安装：推荐：
 
 注意以下如果不行，就加上sudo：
 
@@ -107,45 +107,47 @@ $ chmod +x $THEOS/bin/ghost
 
 $ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
 
+```
 
-【【【update-theos的方法】】】
+
+
+##### 3.3  update-theos 
 
 最好的办法就是：进入到一个具体的theos工程里面。先make，然后:
-
+```
 $ sudo make update-theos
 报错：
 Makefile:3: /makefiles/common.mk: No such file or directory
 Makefile:13: /tweak.mk: No such file or directory
 make: *** No rule to make target `/tweak.mk'.  Stop.
-
+```
 修改路径：
 #固定写法:系统变量，不要更改。
+
 include /opt/theos/makefiles/common.mk 
 
-然后：或者+sudo
+然后：(不行再加上+sudo)
+
+```
 $ make update-theos
 
+【我在mac上执行 include /opt/theos/makefiles/common.mk  以及 make update-theos 之后，升级成功。但是pro上出现如下的问题...】
 报错：
 > Updating Theos…
 error: cannot open .git/FETCH_HEAD: Permission denied
  如何解决？？？？？？？？？？？
- 
 ```
 
+##### 3.4 配置ldid
 
-可能出现的问题汇总:
-SDK "iphoneos" cannot be located
-解决方法：给Xcode命令行工具指定路径
-$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
-
-
-##### 3.3 配置ldid
+ldid的作用是模拟给iPhone签名的流程，使得你能够在真实的设备上安装越狱的apps/hacks。
 
 ldid是专门用来签名iOS可执行文件的工具，用以在越狱iOS中取代Xcode自带的codesign。从[http://joedj.net/ldid](http://joedj.net/ldid)下载ldid，把它放在  “/opt/theos/bin/” 下。然后用以下命令赋予它可执行权限：
 
 	$ sudo chmod 777 /opt/theos/bin/ldid
 	
-##### 3.4 配置CydiaSubstrate
+
+##### 3.5 配置CydiaSubstrate
 首先运行Theos的自动化配置脚本，操作如下：
 
 	$sudo /opt/theos/bin/bootstrap.sh substrate
@@ -158,11 +160,146 @@ deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文
 
 	$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
 	
+
+###### 给Xcode命令行工具指定路径.【如果是多个xcode 需要指定】
+
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+
+
+
+
 ##### 3.6 配置Theos NIC templates
+(注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板...)
 
 Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从[https://github.com/DHowett/theos-nic-templates/archive/master.zip](https://github.com/DHowett/theos-nic-templates/archive/master.zip)获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。
 
-(注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板...)
+##### 3.7  sdks 安装
+
+关于sdk，简述如此：
+Xcode 7.3 removed all private frameworks from the SDK. For now, please download iOS 9.2 SDK from https://sdks.website/, extract to 【Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs 】and set TARGET to use that, or just download Xcode 7.2 again (https://developer.apple.com/downloads/) and use xcode-select to switch to it.
+否则，会报错的。
+在cd /opt/theos/sdks 里面需要载入sdk
+
+最好直接配置在~/.theosrc里面，这个需要创建该文件。假如SDK设置的是ios9.2，
+那么设置：
+TARGET = iphone::9.2:9.0 意思是用IOS9.2的SDK，支持到IOS9.0
+。
+最好使用这一个：(with private frameworks.)
+9.3 sdk：https://github.com/mstg/iOS-full-sdk
+放在：You can place the sdk folder in $THEOS/sdks and do:
+在：~/.theosrc：
+SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk
+
+in ~/.theosrc
+参考：https://github.com/theos/theos/issues/146#issuecomment-240574611
+
+
+**IOS sdk下载地址：https://sdks.website/ **
+
+清理：make clean 
+
+
+操作如下：
+
+    $cd /opt/theos/sdks
+    $wget https://sdks.website/dl/iPhoneOS8.1.sdk.tbz2
+    $tar jxvf iPhoneOS8.1.sdk.tbz2
+
+    如果不行，就直接下载zip，然后解压到/opt/theos/sdks
+    $cp -r iPhoneOS8.1.SDK $THEOS/sdks
+
+##### 3.8 支持64位设备的操作
+
+    ln -s $THEOS/makefiles/platform/Darwin-arm.mk $THEOS/makefiles/platform/Darwin-arm64.mk
+    ln -s $THEOS/makefiles/targets/Darwin-arm $THEOS/makefiles/targets/Darwin-arm64
+
+
+##### 3.9 lib配置
+
+下载libsubstrate.dylib
+https://github.com/zqmiOSRE/CydiaSubstrateResource
+，然后copy到/opt/theos/lib
+
+方法2： 现在采用方法2 
+因为Theos 的一个 bug,它无法自动生成一个有效的 libsubstrate.dylib 文件,需要手动操作。
+在 Cydia 中搜索安装“Cydia Substrate”,然后用 iFunBox 或 scp 等方式将 iOS 上的“/Library/Frameworks/CydiaSubstrate.framework/ CydiaSubstrate ” copy到 OSX 中,将其重命名为 libsubstrate.dylib 后放到“ /opt/theos/vendor/lib/libsubstrate.dylib”中, 替换掉无效的文件即可。
+
+
+将https://github.com/theos/lib 这里的下载，放进去。
+
+
+##### 3.10 安装Macports ++ dpkg
+
+下载地址:
+https://www.macports.org/
+安装之后，新开一个终端窗口：
+
+$ port version
+Version: 2.3.4
+
+如果没有安装dpkg，那么以下是安装dpkg的命令
+
+    $sudo port install dpkg
+
+
+#####  3.11 iOS headers  /include 
+
+很可能theos本身就自带了你所需要的头文件，但是，如果你编译程序的时候提示你头文件相关的问题，那你就需要准备相关的头文件了。
+下载iphoneheader到/opt/theos/include：
+
+使用 https://github.com/theos/headers【我是这个】
+或者 https://github.com/kennytm/iphone-private-frameworks.git
+
+    $git clone https://github.com/kennytm/iphone-private-frameworks.git
+    $mv iphoneheaders/* theos/include/
+
+从OSX library中拷贝IOSurfaceAPI.h到theos/include/IOSurface目录下：
+
+      cp /System/Library/Frameworks/IOSurface.framework/Headers/IOSurfaceAPI.h theos/include/IOSurface 
+
+给IOSurfaceAPI.h打补丁，注释掉IOSurfaceCreateXPCObject 和IOSurfaceLookupFromXPCObject。
+注释后的结果是：
+
+```
+/* This call lets you get an xpc_object_t that holds a reference to the IOSurface.
+   Note: Any live XPC objects created from an IOSurfaceRef implicity increase the IOSurface's global use
+   count by one until the object is destroyed. */
+
+/*xpc_object_t IOSurfaceCreateXPCObject(IOSurfaceRef aSurface) XPC_RETURNS_RETAINED
+    IOSFC_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_NA);*/
+
+
+/* This call lets you take an xpc_object_t created via IOSurfaceCreatePort() and recreate an IOSurfaceRef from it. */
+
+/*IOSurfaceRef IOSurfaceLookupFromXPCObject(xpc_object_t xobj) CF_RETURNS_RETAINED
+    IOSFC_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_NA);
+*/
+```
+
+
+
+##  手机端配置 
+
+参考http://iphonedevwiki.net/index.php/Theos/Setup/iOS
+
+手机端配置
+建议开VPN，然后进入Cydia，先添加两个源
+
+http://coolstar.org/publicrepo
+
+http://nix.howett.net/theos
+
+刷新后，搜索安装以下所需软件
+
+BigBoss Recommended Tools
+Perl
+Theos
+iOS Toolchain
+
+
+
+
 
 ## 4、Theos用法
 
@@ -193,7 +330,7 @@ Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样�
   	[11.] iphone/tweak
   	[12.] iphone/xpc_service
     Choose a Template (required):
-    ```
+```
 可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。
 
 2）选择“19”，即创建一个tweak工程：
@@ -212,7 +349,9 @@ Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样�
 	
 	Author/Maintainer Name [gyjrong]: 3code
 
-6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
+6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：
+filter这一项表示要hook的程序，默认是com.apple.springboard，就是hook Spring Board，如果你想hook别的App，这里改成那个App的BundleID.
+
 
 	...[com.apple.springboard]: com.apple.springboard
 
@@ -238,11 +377,49 @@ Done.
 
 [越狱开发系列3_Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos_ install&run/)
 
+
+**小技巧： make messages=yes 打印全部的logs信息**
+
+
 ##### 4.3 编译
 
 在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。
 
 1）编译
+
+编译报错处理:
+```
+1、$ make
+xcrun: error: SDK "iphoneos" cannot be located
+==> Error: You do not have an SDK in /Library/Developer/CommandLineTools/Platforms/iPhoneOS.platform/Developer/SDKs.
+原因，多个xcode导致路径问题。解决方法：给Xcode命令行工具指定路径.【如果是多个xcode 需要指定】
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+
+2、$ make
+PluginLoading: Required plug-in compatibility UUID (。。。)for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/VVDocumenter-Xcode.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+
+解决方法，回头按照上边的方法： update-theos 成功操作之后，
+再次make：
+发现中文的",然后重新辨析xm，修改掉，
+再次make：提示clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of iOS 7
+Undefined symbols for architecture armv7:....
+
+先完成了上边你的全部设置。编译报错。
+3、$ make
+clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of iOS 7
+Undefined symbols for architecture armv7:
+  "_main", referenced from:
+      start in crt1.3.1.o
+ld: symbol(s) not found for architecture armv7
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[3]: *** [/Users/Test/CODE/changelockwin/.theos/obj/debug/armv7/changeLockWin.dylib] Error 1。。。。
+
+
+
+```
+
+
+
 
 Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：
 

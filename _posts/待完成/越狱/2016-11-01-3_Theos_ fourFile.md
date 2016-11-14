@@ -35,12 +35,14 @@ debian的官网
  Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：
  
 	#固定写法:系统变量，不要更改。
+    #告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
 	include $(THEOS)/makefiles/common.mk
 	
 	#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
 	TWEAK_NAME = projectBy3code
 
 	#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
+    #这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
 	projectBy3code_FILES = Tweak.xm
 
 	#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
@@ -55,6 +57,8 @@ debian的官网
 
 ##### 2.2 指定处理器架构
 
+**问题的原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64**
+
 	ARCHS = armv7 arm64
 
 上面的语句在表示不同的处理器架构时，其间以空格分隔。值得注意的是，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。在绝大多数情况下，这里固定填写“arm7 arm64”就行了。
@@ -63,11 +67,13 @@ debian的官网
 
 	TARGET = iphone:latest:8.0
 
+ 
 
 比如：TARGET = iphone:8.1:8.0
    上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0
    
 ##### 2.4 导入framework
+这里包括你想用到框架的名称
 
 	projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
 	
