@@ -216,10 +216,7 @@
 
 <p>class-dump的用法比较简单，首先去<a href="http://stevenygard.com/projects/class-dump">http://stevenygard.com/projects/class-dump</a>下载最新版的class-dump。</p>
 
-<p>下载class-dump-3.5.dmg后，将dmg文件里的class-dump复制到“/usr/bin”下，然后在Terminal中执行 $sudo chmod 777/usr/bin/class-dump”命令赋予其执行权限。</p>
-
-<p>以上方法已经不可用：OSX10.11的一个新特性Rootless也叫System Integrity Protection（SIP）和SELinux差不多，都是限制root用户的权限，其实可以在RecoveryMode关闭这个特性，这样就直接可以读写/usr/bin了，不过不建议。
-最新的方法如下：</p>
+<p>然后操作如下：</p>
 
 <h5 id="section-2">2.1 设置环境变量:</h5>
 
@@ -244,11 +241,11 @@
   </li>
 </ul>
 
-<p>下面以笔者的一个App为例，来看看class-dump的完整流程。</p>
+<p>下面以支付宝为例，来看看class-dump的完整流程。</p>
 
 <p>1.定位App的可执行文件</p>
 
-<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/snakeninny”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
+<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
 $ plutil -p Info.plist | grep CFBundleExecutable
@@ -262,9 +259,13 @@ $ plutil -p Info.plist | grep CFBundleExecutable
 
 <p>把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header 结果是： -APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore加密过) -【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了
+<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
 </code></pre>
 </div>
+
+<p>结果是：
+-APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
+-【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了</p>
 
 <p>透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。</p>
 

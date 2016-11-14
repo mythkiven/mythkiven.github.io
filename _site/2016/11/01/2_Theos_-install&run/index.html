@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>IOS逆向开发系列2_Theos_安装编译打包运行</title>
-    <meta name="description" content="  1、说明  2、Theos简介  3、安装Theos在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。怎样安装theos，在前边的文章已有介绍：传送门1、说...">
+    <meta name="description" content="  1、说明  2、Theos简介  3、安装Theos在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。1、说明使用theos创建工程：projectBy3c...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -214,22 +214,12 @@
   </li>
   <li><a href="#theos-3" id="markdown-toc-theos-3">4、Theos用法</a>    <ul>
       <li><a href="#section-1" id="markdown-toc-section-1">4.1 创建工程</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">4.2 定制工程文件</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">4.3 编译</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">4.4 打包</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">4.5 安装</a></li>
-    </ul>
-  </li>
-  <li><a href="#theostweak" id="markdown-toc-theostweak">5　Theos开发tweak示例</a>    <ul>
-      <li><a href="#theostweakiosregreetings" id="markdown-toc-theostweakiosregreetings">5.1 用Theos新建tweak工程“iOSREGreetings”</a></li>
-      <li><a href="#tweakxm" id="markdown-toc-tweakxm">5.2.编辑Tweak.xm</a></li>
       <li><a href="#makefilecontrol" id="markdown-toc-makefilecontrol">5.3.编辑Makefile及control</a></li>
     </ul>
   </li>
 </ul>
 
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
 
 <h2 id="section">1、说明</h2>
 <p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
@@ -283,6 +273,13 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
 
 <h5 id="theos-2">3.2 下载Theos</h5>
 
+<p><a href="https://github.com/theos/theos/wiki/Installation">最好参见官方安装文档，这是最新的</a></p>
+
+<p>安装的路径有:~/theos, /opt/theos, or /var/theos.我安装的是最后一个。
+安装方式有两种，首先介绍zip安装，目前已经不推荐：</p>
+
+<p>1、使用下载包安装</p>
+
 <p>从GitHub上下载Theos，操作如下：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ export THEOS=/opt/theos
@@ -295,12 +292,61 @@ Cloning into '/opt/theos'...
 
 <p>然后设置软连接：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>open ~/.bash_profile
-export THEOS=/opt/theos
-export PATH=$THEOS/bin:$PATH
-source ~/.bash_profile
+<div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
+$ export THEOS=/opt/theos
+$ export PATH=$THEOS/bin:$PATH
+$ source ~/.bash_profile
 </code></pre>
 </div>
+
+<p>2、直接使用git 安装：推荐：</p>
+
+<p>注意以下如果不行，就加上sudo：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install dpkg ldid
+$ brew install --HEAD hbang/repo/deviceconsole  # (not required, but very useful)
+$ cd /opt/theos
+$ git clone --recursive https://github.com/theos/theos.git 
+$ sudo chown $(id -u):$(id -g) theos 
+在 ~/.bash_profile写入： 并执行
+export THEOS=/opt/theos
+export PATH=$THEOS/bin:$PATH 
+
+$ curl https://ghostbin.com/ghost.sh -o $THEOS/bin/ghost
+$ chmod +x $THEOS/bin/ghost
+
+$ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
+
+
+【【【update-theos的方法】】】
+
+最好的办法就是：进入到一个具体的theos工程里面。先make，然后:
+
+$ sudo make update-theos
+报错：
+Makefile:3: /makefiles/common.mk: No such file or directory
+Makefile:13: /tweak.mk: No such file or directory
+make: *** No rule to make target `/tweak.mk'.  Stop.
+
+修改路径：
+#固定写法:系统变量，不要更改。
+include /opt/theos/makefiles/common.mk 
+
+然后：或者+sudo
+$ make update-theos
+
+报错：
+&gt; Updating Theos…
+error: cannot open .git/FETCH_HEAD: Permission denied
+ 如何解决？？？？？？？？？？？
+ 
+</code></pre>
+</div>
+
+<p>可能出现的问题汇总:
+SDK “iphoneos” cannot be located
+解决方法：给Xcode命令行工具指定路径
+$ sudo xcode-select –switch /Applications/Xcode.app/Contents/Developer/</p>
 
 <h5 id="ldid">3.3 配置ldid</h5>
 
@@ -323,13 +369,15 @@ $sudo: /opt/theos/bin/bootstrap.sh: command not found
 
 <p>deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文件的工具，有了这个工具，Theos才能正确地把工程打包成为deb文件。从<a href="https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl">https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl</a>拷贝出dm.pl，将其重命名为dpkg-deb.pl后，放到“/opt/theos/bin/”目录下，然后用以下命令赋予其可执行权限：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
 </code></pre>
 </div>
 
 <h5 id="theos-nic-templates">3.6 配置Theos NIC templates</h5>
 
 <p>Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从<a href="https://github.com/DHowett/theos-nic-templates/archive/master.zip">https://github.com/DHowett/theos-nic-templates/archive/master.zip</a>获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。</p>
+
+<p>(注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板…)</p>
 
 <h2 id="theos-3">4、Theos用法</h2>
 
@@ -345,268 +393,267 @@ $nic.pl 路径是： THEOS=/opt/theos 路直接启动的话，需要添加到/us
 </div>
 
 <p>结果：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>	NIC 2.0 - New Instance Creator
+	------------------------------
+	[1.] iphone/activator_event
+  	[2.] iphone/application_modern
+  	[3.] iphone/cydget
+  	[4.] iphone/flipswitch_switch
+  	[5.] iphone/framework
+  	[6.] iphone/ios7_notification_center_widget
+  	[7.] iphone/library
+  	[8.] iphone/notification_center_widget
+  	[9.] iphone/preference_bundle_modern
+  	[10.] iphone/tool
+  	[11.] iphone/tweak
+  	[12.] iphone/xpc_service
+    Choose a Template (required):
+    ```
+可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。
 
-<div class="highlighter-rouge"><pre class="highlight"><code>NIC 2.0 - New Instance Creator
-------------------------------
-[1.] iphone/activator_event
-[2.] iphone/application_modern
-[3.] iphone/cydget
-[4.] iphone/cydget
-[5.] iphone/cydget
-[6.] iphone/flipswitch_switch
-[7.] iphone/framework
-[8.] iphone/framework
-[9.] iphone/framework
-[10.] iphone/ios7_notification_center_widget
-[11.] iphone/library
-[12.] iphone/notification_center_widget
-[13.] iphone/notification_center_widget
-[14.] iphone/notification_center_widget
-[15.] iphone/preference_bundle_modern
-[16.] iphone/sbsettingstoggle
-[17.] iphone/sbsettingstoggle
-[18.] iphone/tool
-[19.] iphone/tweak
-[20.] iphone/xpc_service
-[21.] iphone/xpc_service
-[22.] iphone/xpc_service
-Choose a Template (required):
+2）选择“19”，即创建一个tweak工程：
+
+	 Choose a Template (required): 11
+
+3）输入tweak的工程名称： 
+
+	Project Name (required): projectBy3cod
+
+4）输入deb包的名字（类似于bundle identifier）： 
+
+	Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod
+
+5）输入tweak作者的名字，命令如下： 
+	
+	Author/Maintainer Name [gyjrong]: 3code
+
+6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
+
+	...[com.apple.springboard]: com.apple.springboard
+
+7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
+
+	...[SpringBoard]: SpringBoard 
+Done.
+
+简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。
+
+##### 4.2 定制工程文件
+用Theos创建tweak工程非常方便，但简洁的工程框架下目前还是些粗糙的内容，需要进一步加工相关的文件。先来看看刚刚生成的工程目录，如下：
+
+	$ cd projectBy3cod
+	$ ls -l
+	total 32
+	-rw-r--r--  1 gyjrong  admin    57 10 31 18:46 projectBy3cod.plist
+	-rw-r--r--  1 gyjrong  admin   274 10 31 18:46 Makefile
+	-rw-r--r--  1 gyjrong  admin  1045 10 31 18:46 Tweak.xm
+	-rw-r--r--  1 gyjrong  admin   207 10 31 18:46 control
+
+具体的操作参见文章
+
+[越狱开发系列3_Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos_ install&amp;run/)
+
+##### 4.3 编译
+
+在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。
+
+1）编译
+
+Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：
+
+	$ make
+	Making all for tweak iOSREProject...
+	Preprocessing Tweak.xm...
+	Compiling Tweak.xm...
+	Linking tweak ...
+	Stripping ...
+	Signing ...
+	
+从输出的信息看，Theos完成了预处理、编译、签名等一系列动作，此时会发现当前目录下多了一个新的“obj”文件夹，如下：
+
+	$ ls -l
+	Makefile Tweak.xm control iOSREProject.plist  obj  /opt/theos
+	
+里面有一个.dylib文件，如下：
+
+	$ ls -l ./obj
+	Tweak.xm.b1748661.o	iOSREProject.dylib
+	
+它就是tweak的核心。
+
+##### 4.4 打包
+
+打包使用的“make package”命令来自于Theos本身，其实就是先执行“make”命令，然后再执行“dpkg-deb”命令，如下：
+
 </code></pre>
 </div>
+<p>$ make package
+Making all for tweak iOSREProject…
+ Preprocessing Tweak.xm…
+ Compiling Tweak.xm…
+ Linking tweak iOSREProject…
+ Stripping iOSREProject…
+ Signing iOSREProject…
+Making stage for tweak iOSREProject…
+dm.pl: building package <code class="highlighter-rouge">com.iosre.iosreproject' in </code>./com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb’.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>上面生成了一个名为“com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb”的文件，这就是可以最终发布的安装包。
 
-<p>可以看到，这里共有多种模板可供选择，其中一些事是Theos的自带模板，一些是之前下载的。在逆向工程初级阶段，所开发程序的主要类型是tweak。</p>
+“make package”命令还有一个很重要的功能。在执行完“make package”之后，除了“obj”文件夹外，你会发现tweak工程目录下还生成了一个“_”文件夹，如下：
 
-<p>2）选择“19”，即创建一个tweak工程： Choose a Template (required): 19</p>
-
-<p>3）输入tweak的工程名称： Project Name (required): projectBy3cod</p>
-
-<p>4）输入deb包的名字（类似于bundle identifier）： Package Name [com.yourcompany.projectBy3cod]: com.jxc.projectBy3cod</p>
-
-<p>5）输入tweak作者的名字，命令如下： Author/Maintainer Name [gyjrong]: gyjrong</p>
-
-<p>6）输入“MobileSubstrate Bundle filter”，也就是tweak作用对象的bundle identifier：这里选支付宝
-…[com.apple.springboard]: com.apple.springboard</p>
-
-<p>7）输入tweak安装完成后需要重启的应用，以进程名表示，如下：
-…[SpringBoard]: SpringBoard Instantiating iphone/tweak in iosreproject/…
-Done.</p>
-
-<p>简单的7步完成之后，一个名为projectBy3cod的文件夹就在当前目录生成了，该文件夹里就是刚创建的tweak工程。</p>
-
-<h5 id="section-2">4.2 定制工程文件</h5>
-<p>用Theos创建tweak工程非常方便，但简洁的工程框架下目前还是些粗糙的内容，需要进一步加工相关的文件。先来看看刚刚生成的工程目录，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd projectBy3cod
-$ ls -l
-total 32
--rw-r--r--  1 gyjrong  admin    57 10 31 18:46 projectBy3cod.plist
--rw-r--r--  1 gyjrong  admin   274 10 31 18:46 Makefile
--rw-r--r--  1 gyjrong  admin  1045 10 31 18:46 Tweak.xm
--rw-r--r--  1 gyjrong  admin   207 10 31 18:46 control
 </code></pre>
 </div>
-
-<p>具体的操作参见文章</p>
-
-<p>[越狱开发系列3<em>Theos_file简介及Logos基本语法](http://3code.info/2016/11/01/2_Theos</em> install&amp;run/)</p>
-
-<h5 id="section-3">4.3 编译</h5>
-
-<p>在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。</p>
-
-<p>1）编译</p>
-
-<p>Theos采用“make”命令来编译Theos工程。在Theos工程目录下运行make命令，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ make
-Making all for tweak iOSREProject...
-Preprocessing Tweak.xm...
-Compiling Tweak.xm...
-Linking tweak ...
-Stripping ...
-Signing ...
-</code></pre>
-</div>
-
-<p>从输出的信息看，Theos完成了预处理、编译、签名等一系列动作，此时会发现当前目录下多了一个新的“obj”文件夹，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ls -l
-Makefile Tweak.xm control iOSREProject.plist  obj  /opt/theos
-</code></pre>
-</div>
-
-<p>里面有一个.dylib文件，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ls -l ./obj
-Tweak.xm.b1748661.o	iOSREProject.dylib
-</code></pre>
-</div>
-
-<p>它就是tweak的核心。</p>
-
-<h5 id="section-4">4.4 打包</h5>
-
-<p>打包使用的“make package”命令来自于Theos本身，其实就是先执行“make”命令，然后再执行“dpkg-deb”命令，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ make package
-Making all for tweak iOSREProject...
- Preprocessing Tweak.xm...
- Compiling Tweak.xm...
- Linking tweak iOSREProject...
- Stripping iOSREProject...
- Signing iOSREProject...
-Making stage for tweak iOSREProject...
-dm.pl: building package `com.iosre.iosreproject' in `./com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb'.
-</code></pre>
-</div>
-<p>上面生成了一个名为“com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb”的文件，这就是可以最终发布的安装包。</p>
-
-<p>“make package”命令还有一个很重要的功能。在执行完“make package”之后，除了“obj”文件夹外，你会发现tweak工程目录下还生成了一个“_”文件夹，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ls -l
+<p>$ ls -l
 total 40
--rw-r--r--  1 snakeninny  staff   262 Dec  3 09:20 Makefile
--rw-r--r--  1 snakeninny  staff     0 Dec  3 11:28 Tweak.xm
+-rw-r–r–  1 snakeninny  staff   262 Dec  3 09:20 Makefile
+-rw-r–r–  1 snakeninny  staff     0 Dec  3 11:28 Tweak.xm
 drwxr-xr-x  4 snakeninny  staff   136 Dec  3 11:35 _
--rw-r--r--  1 snakeninny  staff  2396 Dec  3 11:35 com.iosre.iosreproject_0.0.1-7 _iphoneos-arm.deb
--rw-r--r--  1 snakeninny  staff   223 Dec  3 09:05 control
--rw-r--r--@ 1 snakeninny  staff   175 Dec  3 09:48 iOSREProject.plist
+-rw-r–r–  1 snakeninny  staff  2396 Dec  3 11:35 com.iosre.iosreproject_0.0.1-7 _iphoneos-arm.deb
+-rw-r–r–  1 snakeninny  staff   223 Dec  3 09:05 control
+-rw-r–r–@ 1 snakeninny  staff   175 Dec  3 09:48 iOSREProject.plist
 drwxr-xr-x  5 snakeninny  staff   170 Dec  3 11:35 obj
-lrwxr-xr-x  1 snakeninny  staff    11 Dec  3 09:05 theos -&gt; /opt/theos
+lrwxr-xr-x  1 snakeninny  staff    11 Dec  3 09:05 theos -&gt; /opt/theos</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+这个文件夹是干什么的？打开它，可以看到2个文件夹，分别是“DEBIAN”和“Library”：
+
 </code></pre>
 </div>
-
-<p>这个文件夹是干什么的？打开它，可以看到2个文件夹，分别是“DEBIAN”和“Library”：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ls -l _
+<p>$ ls -l _
 total 0
 drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 DEBIAN
 drwxr-xr-x  3 snakeninny  staff  102 Dec  3 11:35 Library
-其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译[…]”
+其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译[…]”</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译过程中向control文件里稍稍增加了几个字段而已，如下：
+
 </code></pre>
 </div>
-<p>其中“DEBIAN”里只有tweak工程里的control文件，Theos在编译过程中向control文件里稍稍增加了几个字段而已，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:iosreproject snakeninny$ ls -l _/DEBIAN
+<p>snakeninnysiMac:iosreproject snakeninny$ ls -l _/DEBIAN
 total 8
--rw-r--r--  1 snakeninny  staff  245 Dec  3 11:35 control
+-rw-r–r–  1 snakeninny  staff  245 Dec  3 11:35 control</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+“Library”的目录结构如下：
+![](https://ooo.0o0.ooo/2016/11/01/58184149d2d6e.jpeg)
+
+
+对比生成deb的包内容：
+
 </code></pre>
 </div>
-
-<p>“Library”的目录结构如下：
-<img src="https://ooo.0o0.ooo/2016/11/01/58184149d2d6e.jpeg" alt="" /></p>
-
-<p>对比生成deb的包内容：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ dpkg -c com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb
+<p>$ dpkg -c com.iosre.iosreproject_0.0.1-7_iphoneos-arm.deb
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/
 drwxr-xr-x snakeninny/staff  0 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/
 -rwxr-xr-x snakeninny/staff 98784 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.dylib
--rw-r--r-- snakeninny/staff   175 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.plist
+-rw-r–r– snakeninny/staff   175 2014-12-03 11:35 ./Library/MobileSubstrate/DynamicLibraries/iOSREProject.plist</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+以及在Cydia中iOSREProject的文件系统，如下
+
+![](https://ooo.0o0.ooo/2016/11/01/581841f406d47.png)
+
+可以看到，三者是完全相同的。到这里，你可能也猜到了，这个deb包其实就是由“DEBIAN”提供debian信息，“Library”提供实际文件的简单组合。事实上，还可以在工程目录下创建一个名为“layout”的文件夹，然后把工程打包成deb并安装到iOS中，此时“layout”中的所有文件会被解包到iOS文件系统的相同位置（这里的“layout”相当于iOS中的根目录“/”），这极大扩充了deb包的作用范围。下面用一个小示例佐以说明。
+
+回到刚才的iOSREProject中，在Terminal中输入“make clean”及“rm*.deb”，将工程恢复到最初的状态，如下：
+
 </code></pre>
 </div>
-
-<p>以及在Cydia中iOSREProject的文件系统，如下</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/01/581841f406d47.png" alt="" /></p>
-
-<p>可以看到，三者是完全相同的。到这里，你可能也猜到了，这个deb包其实就是由“DEBIAN”提供debian信息，“Library”提供实际文件的简单组合。事实上，还可以在工程目录下创建一个名为“layout”的文件夹，然后把工程打包成deb并安装到iOS中，此时“layout”中的所有文件会被解包到iOS文件系统的相同位置（这里的“layout”相当于iOS中的根目录“/”），这极大扩充了deb包的作用范围。下面用一个小示例佐以说明。</p>
-
-<p>回到刚才的iOSREProject中，在Terminal中输入“make clean”及“rm*.deb”，将工程恢复到最初的状态，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ make clean
+<p>$ make clean
 rm -rf ./obj
-rm -rf "/Users/snakeninny/Code/iosreproject/_"
+rm -rf “/Users/snakeninny/Code/iosreproject/_”
 $ rm *.deb
 $ ls -l
 total 32
--rw-r--r--  1 snakeninny  staff  262 Dec  3 09:20 Makefile
--rw-r--r--  1 snakeninny  staff    0 Dec  3 11:28 Tweak.xm
--rw-r--r--  1 snakeninny  staff  223 Dec  3 09:05 control
--rw-r--r--@ 1 snakeninny  staff  175 Dec  3 09:48 iOSREProject.plist
-lrwxr-xr-x  1 snakeninny  staff   11 Dec  3 09:05 theos -&gt; /opt/theos
+-rw-r–r–  1 snakeninny  staff  262 Dec  3 09:20 Makefile
+-rw-r–r–  1 snakeninny  staff    0 Dec  3 11:28 Tweak.xm
+-rw-r–r–  1 snakeninny  staff  223 Dec  3 09:05 control
+-rw-r–r–@ 1 snakeninny  staff  175 Dec  3 09:48 iOSREProject.plist
+lrwxr-xr-x  1 snakeninny  staff   11 Dec  3 09:05 theos -&gt; /opt/theos</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+然后生成一个空的“layout”目录，如下：
+
+	$ mkdir layout
+并在“layout”下随便放一些空文件，如下：
+
 </code></pre>
 </div>
-
-<p>然后生成一个空的“layout”目录，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir layout 并在“layout”下随便放一些空文件，如下：
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ touch ./layout/1.test
+<p>$ touch ./layout/1.test
 $ mkdir ./layout/Developer
 $ touch ./layout/Developer/2.test
 $ mkdir -p ./layout/var/mobile/Library/Preferences
-$ touch ./layout/var/mobile/Library/Preferences/3.test
+$ touch ./layout/var/mobile/Library/Preferences/3.test</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>最后用“make package”打包，并将生成的deb文件拷贝到iOS中，用iFile安装。然后在Cydia中查看iOSREProject的文件系统，如图下
+
+![](https://ooo.0o0.ooo/2016/11/01/581842e2adbd5.jpeg)
+ 
+除“DEBIAN”以外的所有文件都被解包到了iOS文件系统的相同位置，本来不存在的中间文件夹也被自动创建。deb包的玄机还有很多，这里也只是管中窥豹，更全面的介绍请移步[http://www.debian.org/doc/debian-policy](http://www.debian.org/doc/debian-policy)，官方文档总是最好的学习资料。
+
+
+
+##### 4.5 安装
+
+最后，要把这个deb文件安装到iOS中去。安装的方法多种多样，这里介绍两种最具代表性的：图形界面安装法和命令行安装法。
+
+- 图形界面安装法
+
+这个方法确实简单：通过iFunBox等软件把deb拖到iOS里去，然后用iFile安装它，最后重启iOS。虽然全过程都由图形界面操作，但人机交互太多，又要动电脑又要滑手机，一来二去非常繁琐，并不适用于tweak开发。
+
+- 命令行安装法
+
+这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，
+
+
+打开ssh通道，这里使用PP助手实现，之后按照其操作：
+
+$ ssh root@localhost -p 2222
+
+输入密码即可。
+
+
+下面具体介绍安装法。
+
+首先，需要在Makefile的最上一行加上本机IP地址，如下：
+
 </code></pre>
 </div>
-<p>最后用“make package”打包，并将生成的deb文件拷贝到iOS中，用iFile安装。然后在Cydia中查看iOSREProject的文件系统，如图下</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/01/581842e2adbd5.jpeg" alt="" /></p>
-
-<p>除“DEBIAN”以外的所有文件都被解包到了iOS文件系统的相同位置，本来不存在的中间文件夹也被自动创建。deb包的玄机还有很多，这里也只是管中窥豹，更全面的介绍请移步<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a>，官方文档总是最好的学习资料。</p>
-
-<h5 id="section-5">4.5 安装</h5>
-
-<p>最后，要把这个deb文件安装到iOS中去。安装的方法多种多样，这里介绍两种最具代表性的：图形界面安装法和命令行安装法。</p>
-
-<ul>
-  <li>图形界面安装法</li>
-</ul>
-
-<p>这个方法确实简单：通过iFunBox等软件把deb拖到iOS里去，然后用iFile安装它，最后重启iOS。虽然全过程都由图形界面操作，但人机交互太多，又要动电脑又要滑手机，一来二去非常繁琐，并不适用于tweak开发。</p>
-
-<ul>
-  <li>命令行安装法</li>
-</ul>
-
-<p>这个方法要用到简单的ssh命令，故而要求越狱的iOS安装了OpenSSH，如果对这部分知识不了解，请google。下面具体介绍安装法。</p>
-
-<p>首先，需要在Makefile的最上一行加上本机IP地址，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>THEOS_DEVICE_IP = iOSIP
+<p>THEOS_DEVICE_IP = iOSIP
 ARCHS = armv7 arm64
-TARGET = iphone:latest:8.0
+TARGET = iphone:latest:8.0</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+然后调用“make package install”命令完成编译打包安装一条龙服务，如下：
+
 </code></pre>
 </div>
-
-<p>然后调用“make package install”命令完成编译打包安装一条龙服务，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ make package install
-Making all for tweak iOSREProject...
- Preprocessing Tweak.xm...
- Compiling Tweak.xm...
- Linking tweak iOSREProject...
- Stripping iOSREProject...
- Signing iOSREProject...
-Making stage for tweak iOSREProject...
-dm.pl: building package `com.iosre.iosreproject:iphoneos-arm' in `./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb'
-install.exec "cat &gt; /tmp/_theos_install.deb; dpkg -i /tmp/_theos_install.deb &amp;&amp; rm /tmp/_theos_install.deb" &lt; "./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb"
-root@iOSIP's password: 
+<p>$ make package install
+Making all for tweak iOSREProject…
+ Preprocessing Tweak.xm…
+ Compiling Tweak.xm…
+ Linking tweak iOSREProject…
+ Stripping iOSREProject…
+ Signing iOSREProject…
+Making stage for tweak iOSREProject…
+dm.pl: building package <code class="highlighter-rouge">com.iosre.iosreproject:iphoneos-arm' in </code>./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb’
+install.exec “cat &gt; /tmp/_theos_install.deb; dpkg -i /tmp/_theos_install.deb &amp;&amp; rm /tmp/_theos_install.deb” &lt; “./com.iosre.iosreproject_0.0.1-15_iphoneos-arm.deb”
+root@iOSIP’s password: 
 Selecting previously deselected package com.iosre.iosreproject.
-(Reading database ... 2864 files and directories currently installed.)
-Unpacking com.iosre.iosreproject (from /tmp/_theos_install.deb) ...
-Setting up com.iosre.iosreproject (0.0.1-15) ...
-install.exec "killall -9 SpringBoard"
-root@iOSIP's password:
+(Reading database … 2864 files and directories currently installed.)
+Unpacking com.iosre.iosreproject (from /tmp/_theos_install.deb) …
+Setting up com.iosre.iosreproject (0.0.1-15) …
+install.exec “killall -9 SpringBoard”
+root@iOSIP’s password:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+从以上信息可以看到，Theos在整个安装过程中要求我们输入两次root密码。虽然多次输入密码给人很安全的感觉，但实在是太麻烦了。好在通过设置iOS的authorized_keys可以省略SSH输密码的步骤，让“make package install”真正地从“一只多脚虫”变成“一条飞天龙”，具体步骤如下：
+
+1）删除“/Users/snakeninny/.ssh/known_hosts”中iOSIP对应的条目。
+假设iOS的IP地址是iOSIP。编辑“/Users/snakeninny/.ssh/known_hosts”，找到iOSIP所在的那一行，如下：
+
 </code></pre>
 </div>
+<p>iOSIP ssh-rsa hXFscxBCVXgqXhwm4PUoUVBFWRrNeG6gVI3Ewm4dqwusoRcyCxZtm5bRiv4bXfkPjsRkWVVfrW3uT52Hhx4RqIuCOxtWE7tZqc1vVap4HIzUu3mwBuxog7WiFbsbbaJY4AagNZmX83Wmvf8li5aYMsuKeNagdJHzJNtjM3vtuskK4jKzBkNuj0M89TrV4iEmKtI4VEoEmHMYzWwMzExXbyX5NyEg5CRFmA46XeYCbcaY0L90GExXsWMMLA27tA1Vt1ndHrKNxZttgAw31J90UDnOGlMbWW4M7FEqRWQsWXxfGPk0W7AlA54vaDXllI5CD5nLAu4VkRjPIUBrdH5O1fqQ3qGkPayhsym3g0VZeYgU4JAMeFc3</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>完整删掉这一行。
+2）生成authorized_keys。
 
-<p>从以上信息可以看到，Theos在整个安装过程中要求我们输入两次root密码。虽然多次输入密码给人很安全的感觉，但实在是太麻烦了。好在通过设置iOS的authorized_keys可以省略SSH输密码的步骤，让“make package install”真正地从“一只多脚虫”变成“一条飞天龙”，具体步骤如下：</p>
-
-<p>1）删除“/Users/snakeninny/.ssh/known_hosts”中iOSIP对应的条目。
-假设iOS的IP地址是iOSIP。编辑“/Users/snakeninny/.ssh/known_hosts”，找到iOSIP所在的那一行，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>iOSIP ssh-rsa hXFscxBCVXgqXhwm4PUoUVBFWRrNeG6gVI3Ewm4dqwusoRcyCxZtm5bRiv4bXfkPjsRkWVVfrW3uT52Hhx4RqIuCOxtWE7tZqc1vVap4HIzUu3mwBuxog7WiFbsbbaJY4AagNZmX83Wmvf8li5aYMsuKeNagdJHzJNtjM3vtuskK4jKzBkNuj0M89TrV4iEmKtI4VEoEmHMYzWwMzExXbyX5NyEg5CRFmA46XeYCbcaY0L90GExXsWMMLA27tA1Vt1ndHrKNxZttgAw31J90UDnOGlMbWW4M7FEqRWQsWXxfGPk0W7AlA54vaDXllI5CD5nLAu4VkRjPIUBrdH5O1fqQ3qGkPayhsym3g0VZeYgU4JAMeFc3
 </code></pre>
 </div>
-<p>完整删掉这一行。
-2）生成authorized_keys。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ssh-keygen -t rsa
+<p>$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/snakeninny/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -614,13 +661,13 @@ Enter same passphrase again:
 Your identification has been saved in /Users/snakeninny/.ssh/id_rsa.
 Your public key has been saved in /Users/snakeninny/.ssh/id_rsa.pub.
 ……
-$ cp /Users/snakeninny/.ssh/id_rsa.pub ~/authorized_keys
+$ cp /Users/snakeninny/.ssh/id_rsa.pub ~/authorized_keys</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>就会在用户目录下生成authorized_keys。
+3）配置iOS。
+
 </code></pre>
 </div>
-<p>就会在用户目录下生成authorized_keys。
-3）配置iOS。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>FunMaker-5:~ root# ssh-keygen
+<p>FunMaker-5:~ root# ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/var/root/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -631,31 +678,31 @@ Your public key has been saved in /var/root/.ssh/id_rsa.pub.
 FunMaker-5:~ root# logout
 Connection to iOSIP closed.
 $ scp ~/authorized_keys root@iOSIP:/var/root/.ssh
-The authenticity of host 'iOSIP (iOSIP)' can't be established.
+The authenticity of host ‘iOSIP (iOSIP)’ can’t be established.
 RSA key fingerprint is 75:98:9a:05:a3:27:2d:23:08:d3:ee:f4:d1:28:ba:1a.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'iOSIP' (RSA) to the list of known hosts.
-root@iOSIP's password: 
-authorized_keys                            100%  408    0.4KB/s   00:00
+Warning: Permanently added ‘iOSIP’ (RSA) to the list of known hosts.
+root@iOSIP’s password: 
+authorized_keys                            100%  408    0.4KB/s   00:00</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+重新使用ssh命令进入iOS试试看，还需要输密码吗？此时，“make package install”真正变成了一次配置，一键安装，一劳永逸！
+（4）清理
+
+Theos提供了方便的工程清理命令“make clean”，其“实际作用就是依次执行“rm-rf./obj”和“rm-rf"/Users/snakeninny/Code/iosre/_"”两个命令，从而删除“make”和“make package”命令生成的文件夹。也可以用“rm*.deb”，删除“make package”命令生成的所有deb文件。
+
+## 5　Theos开发tweak示例
+
+接下来将以一个最简单的tweak为例来进行讲解。安装了该程序之后，每次重启SpringBoard都将会弹出一个UIAlertView。
+
+##### 5.1 用Theos新建tweak工程“iOSREGreetings”
+
+新建iOSREGreetings工程的命令如下：
+
 </code></pre>
 </div>
-
-<p>重新使用ssh命令进入iOS试试看，还需要输密码吗？此时，“make package install”真正变成了一次配置，一键安装，一劳永逸！
-（4）清理</p>
-
-<p>Theos提供了方便的工程清理命令“make clean”，其“实际作用就是依次执行“rm-rf./obj”和“rm-rf”/Users/snakeninny/Code/iosre/_“”两个命令，从而删除“make”和“make package”命令生成的文件夹。也可以用“rm*.deb”，删除“make package”命令生成的所有deb文件。</p>
-
-<h2 id="theostweak">5　Theos开发tweak示例</h2>
-
-<p>接下来将以一个最简单的tweak为例来进行讲解。安装了该程序之后，每次重启SpringBoard都将会弹出一个UIAlertView。</p>
-
-<h5 id="theostweakiosregreetings">5.1 用Theos新建tweak工程“iOSREGreetings”</h5>
-
-<p>新建iOSREGreetings工程的命令如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ /opt/theos/bin/nic.pl
+<p>$ /opt/theos/bin/nic.pl
 NIC 2.0 - New Instance Creator
-------------------------------
+——————————
   [1.] iphone/application
   [2.] iphone/cydget
   [3.] iphone/framework
@@ -671,27 +718,28 @@ Project Name (required): iOSREGreetings
 Package Name [com.yourcompany.iosregreetings]: com.iosre.iosregreetings
 Author/Maintainer Name [snakeninny]: snakeninny
 [iphone/tweak] MobileSubstrate Bundle filter [com.apple.springboard]: com.apple.springboard
-[iphone/tweak] List of applications to terminate upon installation (space-separated, '-' for none) [SpringBoard]: 
-Instantiating iphone/tweak in iosregreetings/...
-Done.
+[iphone/tweak] List of applications to terminate upon installation (space-separated, ‘-‘ for none) [SpringBoard]: 
+Instantiating iphone/tweak in iosregreetings/…
+Done.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+##### 5.2.编辑Tweak.xm
+
+编辑后的Tweak.xm内容如下：
+
 </code></pre>
 </div>
-
-<h5 id="tweakxm">5.2.编辑Tweak.xm</h5>
-
-<p>编辑后的Tweak.xm内容如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>%hook SpringBoard
-- (void)applicationDidFinishLaunching:(id)application
+<p>%hook SpringBoard</p>
+<ul>
+  <li>(void)applicationDidFinishLaunching:(id)application
 {
-    %orig;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Come to http://bbs.iosre.com for more fun!" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+  %orig;
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@”Come to http://bbs.iosre.com for more fun!” message:nil delegate:self cancelButtonTitle:@”OK” otherButtonTitles:nil];
+  [alert show];
+  [alert release];
 }
 %end
-</code></pre>
-</div>
+```</li>
+</ul>
 
 <h5 id="makefilecontrol">5.3.编辑Makefile及control</h5>
 

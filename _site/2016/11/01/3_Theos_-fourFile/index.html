@@ -266,7 +266,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 #tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
 after-install::
- 	install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
+		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
 </code></pre>
 </div>
 
@@ -291,20 +291,20 @@ after-install::
 
 <h5 id="framework">2.4 导入framework</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS = framework name
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
 </code></pre>
 </div>
 
 <p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
 上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = private framework name 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
 </code></pre>
 </div>
 
 <p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>“ARCHS = armv7 arm64
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
 TARGET = iphone:latest:7.0
 include theos/makefiles/common.mk
 TWEAK_NAME = projectBy3code
