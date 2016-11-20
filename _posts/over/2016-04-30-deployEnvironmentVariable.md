@@ -1,4 +1,4 @@
-I---
+---
 layout: post
 title:  "OS X 部署环境变量"
 categories: OS_X
@@ -16,8 +16,8 @@ author: 3code
 
 ```
 $ echo $SHELL
-输出的是：csh或者是tcsh，就是C Shell。
-输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
+# 输出的是：csh或者是tcsh，就是C Shell。
+# 输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
 ```
   如果是Bourne Shell。
 那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。
@@ -64,7 +64,7 @@ $ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/
 
 ```
 $ open ~/.bash_profile
-添加如下代码：
+# 添加如下代码：
 export PATH=/usr/local/bin:$PATH
 ```
 

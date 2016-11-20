@@ -405,6 +405,8 @@ from xlwt import easyxf
 
 <h2 id="section-6">2、开机自动爬取数据的脚本</h2>
 
+<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
+
 <p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
 
 <p>plist脚本存放路径为:</p>
@@ -412,42 +414,6 @@ from xlwt import easyxf
 <p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
 
 <p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
-
-<p>    可以通过两种方式来设置脚本的执行时间。一个是使用StartInterval，它指定脚本每间隔多长时间（单位：秒）执行一次；另外一个使用 StartCalendarInterval，它可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置。</p>
-
-<p>一个简单例子如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
-<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;dict&gt;</span>
-    <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;string&gt;</span>com.3code.test.plist<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;array&gt;</span>
-        <span class="nt">&lt;string&gt;</span>/Users/3code/plist-test.sh<span class="nt">&lt;/string&gt;</span>
-    <span class="nt">&lt;/array&gt;</span>
-    <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;false/&gt;</span>
-    <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;true/&gt;</span>
-    <span class="nt">&lt;key&gt;</span>StartInterval<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;integer&gt;</span>60<span class="nt">&lt;/integer&gt;</span>
-<span class="nt">&lt;/dict&gt;</span>
-<span class="nt">&lt;/plist&gt;</span>
-</code></pre>
-</div>
-
-<p>其中key是plist脚本定义的属性，紧跟着的下一行是该属性对应的值。上述脚本是每间隔60秒执行一次/Users/3code/plist-test.sh这个shell脚本，也可以使用StartCalendarInterval来替换StartInterval达到同样的效 果，例如：</p>
-
-<key>StartCalendarInterval</key>
-<dict>
-  <key>Minute</key>
-  <integer>0</integer>
-</dict>
-<p>上述设置的意思为每天的每个小时的第0分钟执行，也即使每60秒执行一次。</p>
-
-<p>plist脚本中定义的属性以及具体的含义，可以参看苹果官方网站的说明。</p>
 
 
                 </div>
@@ -989,6 +955,15 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                     </li>
                     
                     <li>
+                        <a href="/category/#OS_X" class="categories-list-item" cate="OS_X">
+                            <span class="name">
+                                OS_X
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/category/#Sublime" class="categories-list-item" cate="Sublime">
                             <span class="name">
                                 Sublime
@@ -1063,6 +1038,20 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
                       
                       
                       <a href="/tag/#jekyll" style="font-size: 9pt; color: #999;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#sublime" style="font-size: 9pt; color: #999;">sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#环境变量" style="font-size: 9pt; color: #999;">环境变量</a>
                     
                       
                       
