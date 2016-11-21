@@ -57,13 +57,28 @@ debian的官网
 
 ##### 2.2 指定处理器架构
 
-**问题的原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64**
+**这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码**
 
 	ARCHS = armv7 arm64
 
-上面的语句在表示不同的处理器架构时，其间以空格分隔。值得注意的是，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。在绝大多数情况下，这里固定填写“arm7 arm64”就行了。
+上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
+You shouldn't need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.
+
 
 ##### 2.3 指定SDK版本
+
+默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。
+
+SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
+方法如下：
+ you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:
+ 
+SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk
+
+TARGET = iphone::9.2:9.0
+
+Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.
 
 	TARGET = iphone:latest:8.0
 

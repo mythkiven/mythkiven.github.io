@@ -512,15 +512,29 @@ after-install::
 
 <h5 id="section-2">2.2 指定处理器架构</h5>
 
-<p><strong>问题的原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64</strong></p>
+<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
 </code></pre>
 </div>
 
-<p>上面的语句在表示不同的处理器架构时，其间以空格分隔。值得注意的是，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。在绝大多数情况下，这里固定填写“arm7 arm64”就行了。</p>
+<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
+You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
 
 <h5 id="sdk">2.3 指定SDK版本</h5>
+
+<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
+
+<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
+方法如下：
+ you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
+
+<p>SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
+
+<p>TARGET = iphone::9.2:9.0</p>
+
+<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
 </code></pre>
@@ -672,7 +686,9 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
 
 <p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
 
-<p>这里插播一个关于DHowett的小段子：DHowett的全名叫Dustin L.Howett，他是个很有个性的少年，出生在美国宾夕法尼亚州的郊区，从小痴迷电脑。 大学读了不到一年，觉得老师讲得没意思，就不愿意好好听了，自然也就跟不上。更重要的是，他和一个姑娘展开了疯狂的异地恋，于是就干脆辍学，搬到了那个姑娘的所在地加州，并求职进了Saurik的公司SaurikIT。DHowett的早期作品CyDelete以Cy开头，而这种命名方式是Saurik御用的，说明DHowett的作品得到了Saurik的认可，也足见DHowett与Saurik关系之好。但遗憾的是，在Dustin辍学后，他和女朋友之间开始出现问题，最后分道扬镳了。之后Dustin离开了SaurikIT，进入了另一家创业公司DailyBooth，但这家公司经营不善，没多久就倒闭了，他就又回家待业了。过了没多久，Dustin爱上了另一个女孩，所以他又为了这个姑娘搬回旧金山，并且在当地一家不错的公司Airbnb找到了一份新工作。可以说是一个风一般的男子，令人十分崇拜。</p>
+<p><strong>下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation</strong></p>
+
+<p><strong>其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案</strong></p>
 
 <h2 id="theos-1">3、安装Theos</h2>
 

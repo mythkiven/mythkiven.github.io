@@ -40,7 +40,9 @@ Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett �
 
 值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。
 
-这里插播一个关于DHowett的小段子：DHowett的全名叫Dustin L.Howett，他是个很有个性的少年，出生在美国宾夕法尼亚州的郊区，从小痴迷电脑。 大学读了不到一年，觉得老师讲得没意思，就不愿意好好听了，自然也就跟不上。更重要的是，他和一个姑娘展开了疯狂的异地恋，于是就干脆辍学，搬到了那个姑娘的所在地加州，并求职进了Saurik的公司SaurikIT。DHowett的早期作品CyDelete以Cy开头，而这种命名方式是Saurik御用的，说明DHowett的作品得到了Saurik的认可，也足见DHowett与Saurik关系之好。但遗憾的是，在Dustin辍学后，他和女朋友之间开始出现问题，最后分道扬镳了。之后Dustin离开了SaurikIT，进入了另一家创业公司DailyBooth，但这家公司经营不善，没多久就倒闭了，他就又回家待业了。过了没多久，Dustin爱上了另一个女孩，所以他又为了这个姑娘搬回旧金山，并且在当地一家不错的公司Airbnb找到了一份新工作。可以说是一个风一般的男子，令人十分崇拜。
+**下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation**
+
+**其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案**
 
 ## 3、安装Theos
 
@@ -62,13 +64,13 @@ Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett �
 
 ##### 3.1 安装Xcode与Command Line Tools：
 
-iOS开发者都会安装Xcode，其中附带了Command Line Tools。如果还没有安装Xcode，请到Mac AppStore免费下载。
+安装Xcode，其中附带了Command Line Tools。
 
 ##### 3.2 下载Theos 
 
 [最好参见官方安装文档，这是最新的](https://github.com/theos/theos/wiki/Installation)
 
-安装的路径有:~/theos, /opt/theos, or /var/theos.我安装的是最后一个。
+安装的路径有:~/theos, /opt/theos, or /var/theos.
 安装方式有两种，首先介绍zip安装，目前已经不推荐：
 
 1、方法1：使用下载包安装
@@ -98,40 +100,42 @@ $ brew install --HEAD hbang/repo/deviceconsole  # (not required, but very useful
 $ cd /opt/theos
 $ git clone --recursive https://github.com/theos/theos.git 
 $ sudo chown $(id -u):$(id -g) theos 
-在 ~/.bash_profile写入： 并执行
-export THEOS=/opt/theos
-export PATH=$THEOS/bin:$PATH 
 
 $ curl https://ghostbin.com/ghost.sh -o $THEOS/bin/ghost
 $ chmod +x $THEOS/bin/ghost
 
-$ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
-
 ```
 
+##### 3.2.1 设置环境变量
 
+```
+在 ~/.bash_profile写入： 并执行
+export THEOS=/opt/theos
+export PATH=$THEOS/bin:$PATH 
+export THEOS_DEVICE_IP=Jiang.local THEOS_DEVICE_PORT=22
+#手机的IP。如果知道手机IP，就直接将Jiang.local替换成实际的IP即可。
+
+```
 
 ##### 3.3  update-theos 
+可以晚点执行，先创建一个工程，然后在进行如下操作：
 
-最好的办法就是：进入到一个具体的theos工程里面。先make，然后:
 ```
+进入到一个具体的theos工程里面。先make，然后:
 $ sudo make update-theos
-报错：
+如果报错：
 Makefile:3: /makefiles/common.mk: No such file or directory
 Makefile:13: /tweak.mk: No such file or directory
-make: *** No rule to make target `/tweak.mk'.  Stop.
-```
-修改路径：
-#固定写法:系统变量，不要更改。
-
+就修改makefile：
 include /opt/theos/makefiles/common.mk 
+```
 
-然后：(不行再加上+sudo)
+然后：
 
 ```
 $ make update-theos
 
-【我在mac上执行 include /opt/theos/makefiles/common.mk  以及 make update-theos 之后，升级成功。但是pro上出现如下的问题...】
+【在mac上include /opt/theos/makefiles/common.mk 执行  make update-theos 之后，升级成功。但是pro上出现如下的问题...】
 报错：
 > Updating Theos…
 error: cannot open .git/FETCH_HEAD: Permission denied
@@ -140,9 +144,7 @@ error: cannot open .git/FETCH_HEAD: Permission denied
 
 ##### 3.4 配置ldid
 
-ldid的作用是模拟给iPhone签名的流程，使得你能够在真实的设备上安装越狱的apps/hacks。
-
-ldid是专门用来签名iOS可执行文件的工具，用以在越狱iOS中取代Xcode自带的codesign。从[http://joedj.net/ldid](http://joedj.net/ldid)下载ldid，把它放在  “/opt/theos/bin/” 下。然后用以下命令赋予它可执行权限：
+ldid的作用是模拟给iPhone签名的流程，使得你能够在真实的设备上安装越狱的apps/hacks。签名iOS可执行文件的，用以在越狱iOS中取代Xcode自带的codesign。从[http://joedj.net/ldid](http://joedj.net/ldid)下载ldid，把它放在  “/opt/theos/bin/” 下。然后用以下命令赋予它可执行权限：
 
 	$ sudo chmod 777 /opt/theos/bin/ldid
 	
@@ -154,98 +156,83 @@ ldid是专门用来签名iOS可执行文件的工具，用以在越狱iOS中取�
 	$sudo: /opt/theos/bin/bootstrap.sh: command not found
 	[最新版的 theos 已经没有这个脚本bootstrap.sh，可以跳过这步，直接执行后面的操作就可以了。 ]
 
-##### 3.5 配置dpkg-deb
+##### 3.6  安装\配置dpkg-deb
+
+安装port：
+下载地址:https://www.macports.org/
+安装之后，新开一个终端窗口：
+
+    $ port version
+    Version: 2.3.4
+然后安装pkg:
+
+    $sudo port install dpkg
+
+配置：
 
 deb是越狱开发安装包的标准格式，dpkg-deb是一个用于操作deb文件的工具，有了这个工具，Theos才能正确地把工程打包成为deb文件。从[https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl](https://raw.githubusercontent.com/DHowett/dm.pl/master/dm.pl)拷贝出dm.pl，将其重命名为dpkg-deb.pl后，放到“/opt/theos/bin/”目录下，然后用以下命令赋予其可执行权限：
 
 	$ sudo chmod 777 /opt/theos/bin/dpkg-deb.pl
 	
 
-###### 给Xcode命令行工具指定路径.【如果是多个xcode 需要指定】
+##### 3.7 指定xcode 
 
-$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+给Xcode命令行工具指定路径.【如果是多个xcode 需要指定】,我指定的是Xcode_7_2_1。
+$ sudo xcode-select --switch /Applications/Xcode_7_2_1.app/Contents/Developer/
 
-
-
-
-##### 3.6 配置Theos NIC templates
+#####  配置Theos NIC templates
 (注意：最新的已经包含这几种模板了，不用重复操作。否则下边的用法里，会出现重复的模板...)
 
 Theos NIC templates内置了5种Theos工程类型的模板，方便创建多样的Theos工程。除此以外，还可以从[https://github.com/DHowett/theos-nic-templates/archive/master.zip](https://github.com/DHowett/theos-nic-templates/archive/master.zip)获取额外的5种模板，下载后将解压得到的5个.tar文件复制到/opt/theos/templates/iphone/ 或 /opt/theos/templates/ios/下即可。
 
-##### 3.7  sdks 安装
+##### 3.8  iOS sdks 安装
 
 关于sdk，简述如此：
 Xcode 7.3 removed all private frameworks from the SDK. For now, please download iOS 9.2 SDK from https://sdks.website/, extract to 【Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs 】and set TARGET to use that, or just download Xcode 7.2 again (https://developer.apple.com/downloads/) and use xcode-select to switch to it.
-否则，会报错的。
-在cd /opt/theos/sdks 里面需要载入sdk
 
-最好直接配置在~/.theosrc里面，这个需要创建该文件。假如SDK设置的是ios9.2，
-那么设置：
-TARGET = iphone::9.2:9.0 意思是用IOS9.2的SDK，支持到IOS9.0
-。
-最好使用这一个：(with private frameworks.)
-9.3 sdk：https://github.com/mstg/iOS-full-sdk
-放在：You can place the sdk folder in $THEOS/sdks and do:
-在：~/.theosrc：
+sdk下载地址:https://sdks.website/ 
+
+安装位置：
+
+一种是放在xcode的包里，Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs，然后在~/.theosrc设置 TARGET = iphone::9.3:9.0
+
+另一种是放在theos(/opt/theos/sdks)，也是最推荐的：
+You can place the sdk folder in $THEOS/sdks and do:
 SDKVERSION = 9.3
 SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk
-
 in ~/.theosrc
+
 参考：https://github.com/theos/theos/issues/146#issuecomment-240574611
 
+具体操作8.1为例：
 
-**IOS sdk下载地址：https://sdks.website/ **
-
-清理：make clean 
-
-
-操作如下：
-
-    $cd /opt/theos/sdks
+    $mkdir -p $THEOS/sdks 或者：$cd /opt/theos/sdks
     $wget https://sdks.website/dl/iPhoneOS8.1.sdk.tbz2
     $tar jxvf iPhoneOS8.1.sdk.tbz2
+如果不行，就直接下载zip，然后解压到/opt/theos/sdks
 
-    如果不行，就直接下载zip，然后解压到/opt/theos/sdks
-    $cp -r iPhoneOS8.1.SDK $THEOS/sdks
-
-##### 3.8 支持64位设备的操作
+##### 3.9 支持64位设备的操作
 
     ln -s $THEOS/makefiles/platform/Darwin-arm.mk $THEOS/makefiles/platform/Darwin-arm64.mk
     ln -s $THEOS/makefiles/targets/Darwin-arm $THEOS/makefiles/targets/Darwin-arm64
 
-
-##### 3.9 lib配置
+##### 3.10 libsubstrate.dylib +substrate.h 配置
 
 下载libsubstrate.dylib
 https://github.com/zqmiOSRE/CydiaSubstrateResource
 ，然后copy到/opt/theos/lib
+或者：将https://github.com/theos/lib 这里的下载，放进去。
 
 方法2： 现在采用方法2 
 因为Theos 的一个 bug,它无法自动生成一个有效的 libsubstrate.dylib 文件,需要手动操作。
 在 Cydia 中搜索安装“Cydia Substrate”,然后用 iFunBox 或 scp 等方式将 iOS 上的“/Library/Frameworks/CydiaSubstrate.framework/ CydiaSubstrate ” copy到 OSX 中,将其重命名为 libsubstrate.dylib 后放到“ /opt/theos/vendor/lib/libsubstrate.dylib”中, 替换掉无效的文件即可。
 
+2、拷贝手机文件 /Library/Frameworks/CydiaSubstrate.framework/Headers/CydiaSubstrate.h 到---> $THEOS/include 重命名为 substrate.h
 
-将https://github.com/theos/lib 这里的下载，放进去。
+参考http://iphonedevwiki.net/index.php/Theos/Setup
 
+#####  3.11 iOS headers 
 
-##### 3.10 安装Macports ++ dpkg
-
-下载地址:
-https://www.macports.org/
-安装之后，新开一个终端窗口：
-
-$ port version
-Version: 2.3.4
-
-如果没有安装dpkg，那么以下是安装dpkg的命令
-
-    $sudo port install dpkg
-
-
-#####  3.11 iOS headers  /include 
-
-很可能theos本身就自带了你所需要的头文件，但是，如果你编译程序的时候提示你头文件相关的问题，那你就需要准备相关的头文件了。
 下载iphoneheader到/opt/theos/include：
 
 使用 https://github.com/theos/headers【我是这个】
@@ -278,8 +265,21 @@ Version: 2.3.4
 ```
 
 
+#### 报错汇总
 
-##  手机端配置 
+```
+报错1
+$ make update-theos   会报错 make: *** No rule to make target `update-theos'.  Stop.是因为：  then you are either not currently in a project directory, or are using a version of Theos older than this feature
+
+报错2
+Makefile:3: /makefiles/common.mk: No such file or directory
+Makefile:13: /tweak.mk: No such file or directory
+Makefile修改路径：
+include /opt/theos/makefiles/common.mk 
+
+```
+
+###  手机端配置 
 
 参考http://iphonedevwiki.net/index.php/Theos/Setup/iOS
 
@@ -297,9 +297,18 @@ Perl
 Theos
 iOS Toolchain
 
+###  ssh等配置
+
+    $ open ~/.bash_profile
+添加：
+
+使用pp助手，开启SSH通道。手机mac连同一个网络。
 
 
+清理：make clean 
 
+$ make package 
+$ make install
 
 ## 4、Theos用法
 
@@ -385,6 +394,8 @@ Done.
 
 在完成了Theos的安装后，使用NIC创建了第一个tweak工程，那么现在就剩下最后一步——编译了。完成这一步，一个tweak就算正式完成——我们可以把tweak安装到设备上，开始周而复始的“safe mode”之旅。
 
+$ make clean && make do #啥作用？？
+
 1）编译
 
 编译报错处理:
@@ -415,6 +426,26 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 make[3]: *** [/Users/Test/CODE/changelockwin/.theos/obj/debug/armv7/changeLockWin.dylib] Error 1。。。。
 
 
+4、package的原因：【dpkg-deb: error: obsolete compression type 'lzma'; use xz instead】
+
+问题参见：
+https://github.com/theos/theos/issues/211 以及
+https://github.com/theos/theos/issues/180
+
+因为最新的dpkg已经舍弃了部分旧的方法，而theos还在使用。所以简单粗暴的就是使用低版本的dpkg
+地址：[https://bintray.com/homebrew/bottles/dpkg#files.](https://bintray.com/homebrew/bottles/dpkg#files)
+
+首先：brew list --versions
+看看自己的版本，需要安装1.18.10甚至更低的版本。
+解压到：  /usr/local/Cellar/dpkg/1.18.10 
+然后：
+$ for i in $(brew --cellar)/dpkg/1.18.10/bin/*; do sed -i s/'@@HOMEBREW_CELLAR@@'/$(brew --cellar)/g "$i"; done
+$ brew switch dpkg 1.18.10#选择版本
+$ brew pin dpkg #禁止升级
+
+如果还有这个警告，可以忽略之。
+
+```
 
 ```
 
