@@ -201,6 +201,8 @@ def getTime():
 
 ## 2、开机自动爬取数据的脚本
 
+开机启动相关的可参考我的另一篇文章：[OSX环境变量的设置](www.3code.info/2016/04/30/deployEnvironmentVariable/)
+
 
 &ensp;&ensp;&ensp;&ensp;在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。
 
@@ -209,6 +211,9 @@ plist脚本存放路径为:
 /Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。
 
 或/Library/LaunchAgents:当用户登陆系统后才会被执行。
+
+
+
 
 &ensp;&ensp;&ensp;&ensp;可以通过两种方式来设置脚本的执行时间。一个是使用StartInterval，它指定脚本每间隔多长时间（单位：秒）执行一次；另外一个使用 StartCalendarInterval，它可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置。
 

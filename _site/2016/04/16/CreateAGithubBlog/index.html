@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>静态页面博客:jekyll+GitHubPages</title>
-    <meta name="description" content="  说明  1、git\github          1.1 github知识普及：      1.2  注册下载Git客户端      1.3 在github上创建Pages：      其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个...">
+    <meta name="description" content="  说明  1、git\github          1.1 github知识普及：      1.2  注册下载Git客户端      1.3 在github上创建Pages：      前段时间一朋友想开个独立博客，问我有没有好的教程参考，以前弄博客时写过流程，这又重新整理了下发上来。Mac上想建博客的可以...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/10/20/createMyGithubBlog/">
+    <link rel="canonical" href="http://localhost:4000/2016/04/16/CreateAGithubBlog/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -150,7 +150,7 @@
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-10-20
+                <i class="fa fa-calendar"></i>2016-04-16
             </div>
 
             <div class="label-card">
@@ -217,7 +217,7 @@
   <li><a href="#section-1" id="markdown-toc-section-1">3、本地环境搭建</a>    <ul>
       <li><a href="#section-2" id="markdown-toc-section-2">环境搭建</a></li>
       <li><a href="#ruby" id="markdown-toc-ruby">3.1 安装Ruby：</a></li>
-      <li><a href="#rubygems" id="markdown-toc-rubygems">3.2 安装RubyGems：</a></li>
+      <li><a href="#rubygemsbundler" id="markdown-toc-rubygemsbundler">3.2 安装RubyGems、Bundler：</a></li>
       <li><a href="#jekyll-1" id="markdown-toc-jekyll-1">3.3 安装 Jekyll</a></li>
       <li><a href="#jekyll-2" id="markdown-toc-jekyll-2">3.4 Jekyll的使用</a></li>
       <li><a href="#section-3" id="markdown-toc-section-3">3.5 博客主题</a></li>
@@ -226,7 +226,6 @@
           <li><a href="#macdown-" id="markdown-toc-macdown-">MacDown 特色</a></li>
         </ul>
       </li>
-      <li><a href="#github-1" id="markdown-toc-github-1">3.7 上传GitHub</a></li>
     </ul>
   </li>
   <li><a href="#jekyll-3" id="markdown-toc-jekyll-3">4 jekyll的注意事项</a>    <ul>
@@ -245,18 +244,16 @@
     </ul>
   </li>
   <li><a href="#section-8" id="markdown-toc-section-8">参考</a></li>
-  <li><a href="#jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-" id="markdown-toc-jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-">|- <a href="http://jekyll.com.cn/">jekyll</a>  | - <a href="http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html">zhanxin</a> | - <a href="http://www.jianshu.com/p/07064eb79740">jianshu</a></a></li>
-  <li><a href="#jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c" id="markdown-toc-jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c">|- <a href="http://www.jianshu.com/p/6c157af09e84">jianshu</a> | - <a href="http://ytysj.github.io/blog/myblog3">ytysj</a> | - <a href="http://www.jianshu.com/p/609e1197754c">jianshu</a></a></li>
-  <li><a href="#ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio" id="markdown-toc-ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio">|- <a href="http://www.ezlippi.com//blog/2015/03/github-pages-blog.html">ezlippi</a> | - <a href="http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;utm_medium=referral">waylau</a>| - <a href="http://wowubuntu.com/markdown/">wowubuntu</a> | - <a href="http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">cnblogs</a></a></li>
+  <li><a href="#jekyllhttpjekyllcomcn-----githubhttpshelpgithubcomarticlessetting-up-your-github-pages-site-locally-with-jekyll----ytysjhttpytysjgithubioblogmyblog3" id="markdown-toc-jekyllhttpjekyllcomcn-----githubhttpshelpgithubcomarticlessetting-up-your-github-pages-site-locally-with-jekyll----ytysjhttpytysjgithubioblogmyblog3">|- <a href="http://jekyll.com.cn/">jekyll</a>  | - <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">github</a> | - <a href="http://ytysj.github.io/blog/myblog3">ytysj</a></a></li>
+  <li><a href="#jianshuhttpwwwjianshucomp6c157af09e84----ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio" id="markdown-toc-jianshuhttpwwwjianshucomp6c157af09e84----ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio">|- <a href="http://www.jianshu.com/p/6c157af09e84">jianshu</a> |- <a href="http://www.ezlippi.com//blog/2015/03/github-pages-blog.html">ezlippi</a> | - <a href="http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;utm_medium=referral">waylau</a>| - <a href="http://wowubuntu.com/markdown/">wowubuntu</a> | - <a href="http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">cnblogs</a></a></li>
 </ul>
 
-<p>其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info</p>
+<p>前段时间一朋友想开个独立博客，问我有没有好的教程参考，以前弄博客时写过流程，这又重新整理了下发上来。Mac上想建博客的可以参考下。</p>
 
-<p>下面针对jekyll博客的过程，有问题还请留言。
-<img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
+<p><img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
 
 <h2 id="section">说明</h2>
-<p>1、以下系统基于OS X EI ;</p>
+<p>1、以下系统基于OS X EI;</p>
 
 <p>2、免费主机：github + 静态制作：jekyll</p>
 
@@ -266,11 +263,11 @@
 
 <p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
 
-<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)</p>
+<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。</p>
 
 <h4 id="git">1.2  注册下载Git客户端</h4>
 
-<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)</p>
+<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者用github自带的客户端。</p>
 
 <h4 id="githubpages">1.3 在github上创建Pages：</h4>
 
@@ -281,18 +278,17 @@
 <p>本博客使用Jekyll搭建，好处：</p>
 
 <ol>
-  <li>不需要使用额外的数据库</li>
-  <li>支持markdown，liquid，以及原始的html、css</li>
-  <li>可以定义模板，并在模板上进行代码复用</li>
-  <li>github对其支持，可以直接在github上搭建，可以继承github上的各种好处（版本控制，免费，无流量限制）</li>
-  <li>有很多扩展插件（但是在github上用不了）</li>
+  <li>不需要使用额外的数据库；</li>
+  <li>支持markdown，liquid，以及原始的html、css；</li>
+  <li>可以定义模板，并在模板上进行代码复用；</li>
+  <li>github对其支持，可以直接在github上搭建。</li>
 </ol>
 
-<p>当然缺点也有很多：</p>
+<p>当然缺点也有:</p>
 
 <ol>
   <li>生成的是静态网页，无法动态加载，若需要外部服务如评论，只能使用类似于disquz，多说这样的外部插件了</li>
-  <li>仅仅适合小型网站，不适合大中型网站</li>
+  <li>仅仅适合个人博客或小型网站，不适合大中型网站</li>
   <li>没有数据库及服务端的逻辑</li>
 </ol>
 
@@ -303,8 +299,8 @@
 <p>使用Jekyll，需要以下环境:</p>
 
 <ol>
-  <li>Ruby  - Jekyll 需要Ruby语言</li>
-  <li>Bundler - 捆绑器的软件包管理器</li>
+  <li>Ruby；</li>
+  <li>Bundler。</li>
 </ol>
 
 <h4 id="ruby">3.1 安装Ruby：</h4>
@@ -318,7 +314,7 @@
     </div>
   </li>
   <li>
-    <p>安装完成之后运行查看版本号，过低需要更新，我的是 2.0.0。</p>
+    <p>安装完成之后运行查看版本号，过低需要更新。</p>
   </li>
   <li>
     <div class="highlighter-rouge"><pre class="highlight"><code>$ ruby -v  
@@ -327,31 +323,36 @@
   </li>
 </ul>
 
-<h4 id="rubygems">3.2 安装RubyGems：</h4>
+<h4 id="rubygemsbundler">3.2 安装RubyGems、Bundler：</h4>
 
 <ul>
   <li>
     <p>下载 RubyGems 安装包，2.0.6 版本：<a href="http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.tgz" target="_blank">tgz</a> - <a href="http://production.cf.rubygems.org/rubygems/rubygems-2.0.6.zip" target="_blank">zip</a> - <a href="http://production.cf.rubygems.org/rubygems/rubygems-update-2.0.6.gem" target="_blank">gem</a> - <a href="http://github.com/rubygems/rubygems" target="_blank">git</a>。安装到本地之后，在终端检查更新：</p>
   </li>
   <li>
-    <div class="highlighter-rouge"><pre class="highlight"><code>## 可能需要根权限
+    <div class="highlighter-rouge"><pre class="highlight"><code># 可能需要根权限
 $ gem update --system
-## 检查当前版本 我的是：2.6.4
+# 检查当前版本
 $ gem -v
 </code></pre>
     </div>
   </li>
   <li>可以参考<a href="https://rubygems.org/pages/download" target="_blank">官网安装教程</a></li>
-  <li>gem update –system。这一步需要翻墙，否则会出现404错误。<a href="https://ruby.taobao.org/" target="_blank">解决办法参考</a></li>
+  <li>
+    <p>gem update –system。这一步需要翻墙，否则会出现404错误。<a href="https://ruby.taobao.org/" target="_blank">解决办法参考</a></p>
+  </li>
+  <li>安装Bundler
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ gem install bundler
+</code></pre>
+    </div>
+  </li>
 </ul>
 
 <h4 id="jekyll-1">3.3 安装 Jekyll</h4>
 
-<p>最好的安装方法应该是通过 RubyGems 来安装，在终端输入：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>##可能需要根权限
+<div class="highlighter-rouge"><pre class="highlight"><code># 可能需要根权限
 $ gem install jekyll
-##安装完了之后，查看版本号，我这打印出来的是 jekyll 3.3.0
+# 安装完了之后，查看版本号，我的是 jekyll 3.3.0
 $ jekyll -v
 </code></pre>
 </div>
@@ -359,47 +360,70 @@ $ jekyll -v
 
 <p>安装过程中可能会遇到的问题：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>问题1：cannot load such file -- bundler (LoadError)::::
-解决方案：
+<div class="highlighter-rouge"><pre class="highlight"><code># 问题1：cannot load such file -- bundler (LoadError)::::
+# 解决方案：
 $ gem install bundler
 $ bundle install
 $ bundle exec jekyll serve
-问题2：服务无法开启：
+# 问题2：服务无法开启：
 $ gem install json 
-或者：
+# 或者：
 $ jekyll serve --config _config.yml,_config-dev.yml 
 </code></pre>
 </div>
 
 <h4 id="jekyll-2">3.4 Jekyll的使用</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#创建你的博客
+<div class="highlighter-rouge"><pre class="highlight"><code># 创建你的博客
 $ jekyll new blog  
-#进入blog目录,记得一定要进入创建的目录，否则服务无法开启
+# 进入blog目录,记得一定要进入创建的目录，否则服务无法开启
 $ cd blog    
-#启动你的http服务 	 
+# 启动本地预览	 
 $ jekyll serve 	 
+
+# 如果是其他目录:
+$ cd 目录
+$ bundle  
+$ bundle exec jekyll serve
 </code></pre>
 </div>
+
+<p>注意，自己创建或者下载的博客都要先看是否有Gemfile文件，没有需要创建的。</p>
+
+<p>创建一个名为Gemfile的文件，并添加如下内容,保存在博客的根目录。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source 'https://rubygems.org'
+gem 'github-pages', group: :jekyll_plugins
+</code></pre>
+</div>
+
+<p>然后运行:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ bundle install
+</code></pre>
+</div>
+
+<p>具体见下文。</p>
 
 <h4 id="section-3">3.5 博客主题</h4>
 
-<p>参考如下：
+<p>下载地址参考如下：
 <a href="http://jekyllthemes.org/">jekllthemes</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>## 从上网站下载主题，在终端中使用命令cd到该主题根目录下；
-## 博客生成，默认生成再_site目录下，当然也可以在配置文件中自定义
-$ jekyll build
-## 开启jekyll本地预览
-$ jekyll server 
+<p>这个网站中主题挺多的，可以下载直接使用。如果想改造成自己独特的风格又不懂html，最好还是去看看CSS相关的内容<a href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a>，w3school里面都是比较基础而且容易入手的，不懂Html的稍微学点CSS相关知识，就可修改页面风格。</p>
+
+<p>下载主题之后:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd 目录
+$ jekyll build 
+$ jekyll serve
+# 在浏览器中输入 http://localhost:4000 即可预览刚才下载的主题
 </code></pre>
 </div>
-<p>在浏览器中输入 http://localhost:4000 即可访问博客站点
-不能访问请检查_config.yml配置文件是否需要修改</p>
 
 <h4 id="section-4">3.6 博客编辑工具</h4>
 
-<p>通过以上就可以在本地编辑，运行博客啦</p>
+<p>以上操作之后，就可以在本地预览博客，下边说说编辑博客内容:</p>
 
 <p>免费的编辑工具：</p>
 
@@ -416,24 +440,19 @@ $ jekyll server
 
 <p>代码高亮；MacDown 支持Task list</p>
 
-<h4 id="github-1">3.7 上传GitHub</h4>
-
-<p>再_post中放入md文件，文件格式必须遵从YEAR-MONTH-DAY-title.md。
-上传至GitHub后，我们就可以在线查看博客了。</p>
-
 <h2 id="jekyll-3">4 jekyll的注意事项</h2>
 
 <h4 id="section-5">4.1 更新</h4>
 
 <p>Jekyll 是一个动态开源项目，它会频繁地更新。当服务器更新后，本地就会过时，可能导致你的网站出现本地和发布在 GitHub 的样子不一致。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$bundle 
+<div class="highlighter-rouge"><pre class="highlight"><code>$ bundle 
 </code></pre>
 </div>
 
 <p>或者</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$gem update github-pages #没安装bundler
+<div class="highlighter-rouge"><pre class="highlight"><code>$ gem update github-pages #没安装bundler
 </code></pre>
 </div>
 
@@ -442,37 +461,37 @@ $ jekyll server
 <p>Gemfile是一个用于描述gem之间依赖的文件。gem是一堆Ruby代码的集合，它能够为我们提供调用。
 Gemfile是可通过Bundler创建：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$gem install bundler
-$bundle init
-$bundle install
+<div class="highlighter-rouge"><pre class="highlight"><code>$ gem install bundler
+$ bundle init
+$ bundle install
 </code></pre>
 </div>
 <p>Gemfile文件中设置的内容如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#以下必须：
+<div class="highlighter-rouge"><pre class="highlight"><code># 以下必须：
 source "https://rubygems.org"
 gem "jekyll-paginate"
 gem "kramdown"
 group :jekyll_plugins do
    gem "jekyll-feed", "~&gt; 0.6"
    
-#以下按需：
+# 以下按需：
 gem "jekyll-watch"
 gem "wdm", "~&gt; 0.1.0" if Gem.win_platform?
-#以下按需：可以配合 Live Reload Extension 可以自动刷新
+# 以下按需：可以配合 Live Reload Extension 可以自动刷新
 gem 'guard'
 gem 'guard-jekyll-plus'
 gem 'guard-livereload'
 </code></pre>
 </div>
 
-<p>设置好Gemfile之后，执行 $bundle install 如果开启了本地页面更新，那么会很耗时间。</p>
+<p>设置好Gemfile之后，执行 $ bundle install 如果开启了本地页面更新，那么会很耗时间。</p>
 
 <p>B、创建guard配置文件</p>
 
 <p>执行指令，将会生成一个Guardfile文件。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$guard init
+<div class="highlighter-rouge"><pre class="highlight"><code>$ guard init
 </code></pre>
 </div>
 <p>生成的Guardfile文件内有一些代码，在代码的最后添加如下代码：</p>
@@ -494,7 +513,7 @@ end
 
 <p>D、执行运行指令：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$bundle exec guard start
+<div class="highlighter-rouge"><pre class="highlight"><code>$ bundle exec guard start
 </code></pre>
 </div>
 <p>这里注意一下，livereload要先关闭。</p>
@@ -527,11 +546,11 @@ end
 
 <h4 id="section-7">4、更换端口：</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>## 查看端口被占用情况
+<div class="highlighter-rouge"><pre class="highlight"><code># 查看端口被占用情况
 $ netstat -ano  
-## 在启动jekyll服务的时候指定端口号:  http://localhost:3000/
+# 在启动jekyll服务的时候指定端口号:  http://localhost:3000/
 $ jekyll serve --port 3000
-## 还可以在配置文件_config.yml中添加端口号
+# 还可以在配置文件_config.yml中添加端口号
 </code></pre>
 </div>
 
@@ -552,23 +571,23 @@ $ jekyll serve --port 3000
 
 <div class="highlighter-rouge"><pre class="highlight"><code> # 在自己的github仓库里面，运行 jekyll build + jekyll server 报错：Jekyll::Paginate
  # 方案如下：
- # # 在Gemfile文中添加：gem 'jekyll-paginate'
+ # 在Gemfile文中添加：gem 'jekyll-paginate'
  $ bundle
  $ gem install jekyll-paginate
- # # OK！
+ # OK！
 
 </code></pre>
 </div>
 
 <h2 id="section-8">参考</h2>
 
+<p>相关内容可参考:</p>
+
 <hr />
 
-<h2 id="jekyllhttpjekyllcomcn-----zhanxinhttpwwwzhanxininfojekyll2013-08-07-jekyll-doc-installationhtml----jianshuhttpwwwjianshucomp07064eb79740-">|- <a href="http://jekyll.com.cn/">jekyll</a>  | - <a href="http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html">zhanxin</a> | - <a href="http://www.jianshu.com/p/07064eb79740">jianshu</a></h2>
+<h2 id="jekyllhttpjekyllcomcn-----githubhttpshelpgithubcomarticlessetting-up-your-github-pages-site-locally-with-jekyll----ytysjhttpytysjgithubioblogmyblog3">|- <a href="http://jekyll.com.cn/">jekyll</a>  | - <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">github</a> | - <a href="http://ytysj.github.io/blog/myblog3">ytysj</a></h2>
 
-<h2 id="jianshuhttpwwwjianshucomp6c157af09e84-----ytysjhttpytysjgithubioblogmyblog3----jianshuhttpwwwjianshucomp609e1197754c">|- <a href="http://www.jianshu.com/p/6c157af09e84">jianshu</a> | - <a href="http://ytysj.github.io/blog/myblog3">ytysj</a> | - <a href="http://www.jianshu.com/p/609e1197754c">jianshu</a></h2>
-
-<h2 id="ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio">|- <a href="http://www.ezlippi.com//blog/2015/03/github-pages-blog.html">ezlippi</a> | - <a href="http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;utm_medium=referral">waylau</a>| - <a href="http://wowubuntu.com/markdown/">wowubuntu</a> | - <a href="http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">cnblogs</a></h2>
+<h2 id="jianshuhttpwwwjianshucomp6c157af09e84----ezlippihttpwwwezlippicomblog201503github-pages-bloghtml----waylauhttpwaylaucomjekyll-static-bogutmsourcetuicoolutmmediumreferral---wowubuntuhttpwowubuntucommarkdown----cnblogshttpwwwcnblogscomstrickp5448570htmlhmsrtoutiaoioutmmediumtoutiaoioutmsourcetoutiaoio">|- <a href="http://www.jianshu.com/p/6c157af09e84">jianshu</a> |- <a href="http://www.ezlippi.com//blog/2015/03/github-pages-blog.html">ezlippi</a> | - <a href="http://waylau.com/jekyll-static-bog/?utm_source=tuicool&amp;utm_medium=referral">waylau</a>| - <a href="http://wowubuntu.com/markdown/">wowubuntu</a> | - <a href="http://www.cnblogs.com/strick/p/5448570.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">cnblogs</a></h2>
 
         </article>
         <hr>
@@ -710,7 +729,7 @@ $ jekyll serve --port 3000
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/10/28/deployEnvironmentVariable/">Deployenvironmentvariable</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/04/30/deployEnvironmentVariable/">OS X 部署环境变量</a></p>
         
     </div>
 </div>
@@ -719,7 +738,7 @@ $ jekyll serve --port 3000
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/20/createMyGithubBlog/" data-title="静态页面博客:jekyll+GitHubPages" data-url="http://localhost:4000/2016/10/20/createMyGithubBlog/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/04/16/CreateAGithubBlog/" data-title="静态页面博客:jekyll+GitHubPages" data-url="http://localhost:4000/2016/04/16/CreateAGithubBlog/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

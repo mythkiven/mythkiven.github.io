@@ -676,13 +676,14 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/10/28/deployEnvironmentVariable/">Deployenvironmentvariable</a>
+                  <a class="post-link" href="/2016/04/30/deployEnvironmentVariable/">OS X 部署环境变量</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-10-28
+                        <i class="fa fa-calendar"></i>2016-04-30
                     </div>
                     <div class="label-card">
+                        <i class="fa fa-user"></i>3code
                         
                     </div>
                     <div class="label-card">
@@ -692,6 +693,18 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                     <div class="label-card">
                     
 
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
 
 
                     </div>
@@ -703,6 +716,10 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
   <i class="fa fa-tags"></i>
   
     
+        <a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a>&nbsp;
+    
+        <a href="/tag/#环境变量" title="Tag: 环境变量" rel="tag">环境变量</a>
+    
   
 
 </span>
@@ -710,15 +727,7 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                     </div>
                 </div>
                 <div class="excerpt">
-                    <p>I—
-layout: post
-title:  “OS X 部署环境变量”
-categories: OS_X
-tags:  sublime 环境变量
-author: 3code
-—</p>
-
-<ul id="markdown-toc">
+                    <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">1、设置环境变量</a>    <ul>
       <li><a href="#shell" id="markdown-toc-shell">1.1 查看本机使用的Shell</a></li>
       <li><a href="#mac" id="markdown-toc-mac">1.2 Mac可配置环境变量的位置</a></li>
@@ -733,8 +742,8 @@ author: 3code
 <h5 id="shell">1.1 查看本机使用的Shell</h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ echo $SHELL
-输出的是：csh或者是tcsh，就是C Shell。
-输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
+# 输出的是：csh或者是tcsh，就是C Shell。
+# 输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
 </code></pre>
 </div>
 <p>如果是Bourne Shell。
@@ -787,7 +796,7 @@ author: 3code
 <p>最后加入环境变量：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
-添加如下代码：
+# 添加如下代码：
 export PATH=/usr/local/bin:$PATH
 </code></pre>
 </div>
@@ -801,18 +810,18 @@ export PATH=/usr/local/bin:$PATH
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/10/28/deployEnvironmentVariable/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/04/30/deployEnvironmentVariable/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/10/20/createMyGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
+                  <a class="post-link" href="/2016/04/16/CreateAGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-10-20
+                        <i class="fa fa-calendar"></i>2016-04-16
                     </div>
                     <div class="label-card">
                         <i class="fa fa-user"></i>3code
@@ -871,13 +880,12 @@ export PATH=/usr/local/bin:$PATH
   </li>
 </ul>
 
-<p>其实蛮早就想开个独立的博客，碍于肚子没墨水一直没建。前段时间在友人推荐下开始用Jekyll搭建博客。从页面到域名花了两三个晚上，终于搞定。以后就在这写写博客，记录生活，部分在简书、CSDN上的文章也会搬到这里：3code.info</p>
+<p>前段时间一朋友想开个独立博客，问我有没有好的教程参考，以前弄博客时写过流程，这又重新整理了下发上来。Mac上想建博客的可以参考下。</p>
 
-<p>下面针对jekyll博客的过程，有问题还请留言。
-<img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
+<p><img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
 
 <h2 id="section">说明</h2>
-<p>1、以下系统基于OS X EI ;</p>
+<p>1、以下系统基于OS X EI;</p>
 
 <p>2、免费主机：github + 静态制作：jekyll</p>
 
@@ -887,11 +895,11 @@ export PATH=/usr/local/bin:$PATH
 
 <p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
 
-<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。(了解的略过)</p>
+<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。</p>
 
 <h4 id="git">1.2  注册下载Git客户端</h4>
 
-<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者github自带(不懂自己度娘)</p>
+<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者用github自带的客户端。</p>
 
 <h4 id="githubpages">1.3 在github上创建Pages：</h4>
 
@@ -900,7 +908,7 @@ export PATH=/usr/local/bin:$PATH
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/10/20/createMyGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/04/16/CreateAGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -982,6 +990,15 @@ export PATH=/usr/local/bin:$PATH
                     </li>
                     
                     <li>
+                        <a href="/category/#OS_X" class="categories-list-item" cate="OS_X">
+                            <span class="name">
+                                OS_X
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/category/#Sublime" class="categories-list-item" cate="Sublime">
                             <span class="name">
                                 Sublime
@@ -1056,6 +1073,20 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       <a href="/tag/#jekyll" style="font-size: 9pt; color: #999;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#sublime" style="font-size: 9pt; color: #999;">sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#环境变量" style="font-size: 9pt; color: #999;">环境变量</a>
                     
                       
                       
