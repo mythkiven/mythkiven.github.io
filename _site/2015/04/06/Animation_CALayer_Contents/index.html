@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>iOS动画那些事-基础理论</title>
-    <meta name="description" content="">
+    <title>iOS动画系列-基础部分-CADisplayLink</title>
+    <meta name="description" content="本系列是个人iOS动画学习笔记，参阅了iOS Core Animation以及万能的google">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2015/04/11/Animation/">
+    <link rel="canonical" href="http://localhost:4000/2015/04/06/Animation_CALayer_Contents/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -138,6 +138,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -146,11 +148,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>iOS动画那些事-基础理论</h1>
+        <h1>iOS动画系列-基础部分-CADisplayLink</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2015-04-11
+                <i class="fa fa-calendar"></i>2015-04-06
             </div>
 
             <div class="label-card">
@@ -189,7 +191,10 @@
   
     
         <!--a href="/tag/#iOS%E5%8A%A8%E7%94%BB" title="Tag: iOS动画" rel="tag">iOS动画</a-->
-        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <!--a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a-->
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
     
   
 
@@ -200,7 +205,32 @@
         </div>
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
-        
+        <ul id="markdown-toc">
+  <li><a href="#cadisplaylink" id="markdown-toc-cadisplaylink">1、CADisplayLink</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">1、是什么</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、怎么用</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">3、是什么</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
+
+<h3 id="cadisplaylink">1、CADisplayLink</h3>
+
+<h5 id="section">1、是什么</h5>
+
+<p>先上文档链接:<a href="https://developer.apple.com/reference/quartzcore/cadisplaylink">https://developer.apple.com/reference/quartzcore/cadisplaylink</a></p>
+
+<p>是什么，文档里面已经写的很清楚了:A CADisplayLink object is a timer object that allows your application to synchronize its drawing to the refresh rate of the display.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(rotating)];
+ [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+</code></pre>
+</div>
+<h5 id="section-1">2、怎么用</h5>
+
+<h5 id="section-2">3、是什么</h5>
 
         </article>
         <hr>
@@ -212,7 +242,11 @@
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -223,15 +257,6 @@
                 
                     
                 
-            
-        
-            
-            
-                
-                    
-                
-            
-                
                     
                 
             
@@ -241,14 +266,11 @@
                 
                     
                 
-            
-                
                     
                 
             
-        
-            
-            
+                
+                    
                 
                     
                 
@@ -259,18 +281,11 @@
                 
                     
                 
-            
-        
-            
-            
-                
                     
                 
             
                 
                     
-                
-            
                 
                     
                 
@@ -281,6 +296,8 @@
                 
                     
                 
+                    
+                
             
         
             
@@ -288,7 +305,26 @@
                 
                     
                 
+                    
+                
             
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
                 
                     
                 
@@ -296,6 +332,32 @@
         
             
             
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                 
                     
                 
@@ -310,7 +372,7 @@
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/04/16/CreateAGithubBlog/">静态页面博客:jekyll+GitHubPages</a></p>
+        <p><strong>下一篇</strong> <a href="/2015/04/10/Animation_CALayer_Layout/">iOS动画系列-CALayer-布局</a></p>
         
     </div>
 </div>
@@ -319,7 +381,7 @@
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2015/04/11/Animation/" data-title="iOS动画那些事-基础理论" data-url="http://localhost:4000/2015/04/11/Animation/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/04/06/Animation_CALayer_Contents/" data-title="iOS动画系列-基础部分-CADisplayLink" data-url="http://localhost:4000/2015/04/06/Animation_CALayer_Contents/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

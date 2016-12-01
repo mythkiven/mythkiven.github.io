@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>IOS逆向开发系列1_Class_dump</title>
-    <meta name="description" content="">
+    <title>IOS逆向开发系列_Reveal_调试任意APP的UI</title>
+    <meta name="description" content="  前言  RevealLoader  SSH  Reveal  framework +  dylib + plist          RevealServer.framework      libReveal.dylib                  方法1：iOSOpenDev创建一个         ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/11/01/1_Class_dump/">
+    <link rel="canonical" href="http://localhost:4000/2015/08/07/REVERSE_reveal/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -148,15 +148,15 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>IOS逆向开发系列1_Class_dump</h1>
+        <h1>IOS逆向开发系列_Reveal_调试任意APP的UI</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-11-01
+                <i class="fa fa-calendar"></i>2015-08-07
             </div>
 
             <div class="label-card">
-                <i class="fa fa-user"></i>3code
+                <i class="fa fa-user"></i>3行代码
                 
             </div>
 
@@ -190,8 +190,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a-->
-        <a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a>
+        <!--a href="/tag/#Reveal" title="Tag: Reveal" rel="tag">Reveal</a-->
+        <a href="/tag/#Reveal" title="Tag: Reveal" rel="tag">Reveal</a>&nbsp;
+    
+        <!--a href="/tag/#iOSOpenDev" title="Tag: iOSOpenDev" rel="tag">iOSOpenDev</a-->
+        <a href="/tag/#iOSOpenDev" title="Tag: iOSOpenDev" rel="tag">iOSOpenDev</a>
     
   
 
@@ -203,75 +206,118 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、概述</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.1 设置环境变量:</a></li>
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
+  <li><a href="#ssh" id="markdown-toc-ssh">SSH</a></li>
+  <li><a href="#reveal" id="markdown-toc-reveal">Reveal</a></li>
+  <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">framework +  dylib + plist</a>    <ul>
+      <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">RevealServer.framework</a></li>
+      <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">libReveal.dylib</a>        <ul>
+          <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
+          <li><a href="#section-1" id="markdown-toc-section-1">方法2</a></li>
+        </ul>
+      </li>
+      <li><a href="#librevealplist" id="markdown-toc-librevealplist">libReveal.plist</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="section">1、概述</h2>
+<h2 id="section">前言</h2>
 
-<p>class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。</p>
+<p>从最开始在笔记上写的Reveal使用文章，到现在开放到博客，Reveal也历经了好多个版本：1.5.x-&gt;1.6.x-&gt;Version++。
+下边更新了以前写的文章。最近安装Reveal的朋友们可以参照此教程。</p>
 
-<h2 id="section-1">2、安装</h2>
+<p>新的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。首先简述如何创建。</p>
 
-<p>class-dump的用法比较简单，首先去<a href="http://stevenygard.com/projects/class-dump">http://stevenygard.com/projects/class-dump</a>下载最新版的class-dump。</p>
+<h2 id="revealloader">RevealLoader</h2>
 
-<p>然后操作如下：</p>
+<p>在手机上添加源:http://rheard.com/cydia</p>
 
-<h5 id="section-2">2.1 设置环境变量:</h5>
+<p>然后安装 Reveal Loader。注意需要VPN才行。</p>
+
+<h2 id="ssh">SSH</h2>
+
+<p>手动开启，或者使用PP助手，没有使用过的话，记得开启后修改密码。</p>
+
+<h2 id="reveal">Reveal</h2>
+
+<p>与其他几个功能相近的工具比如PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）相比，最明显的区别就是直观。</p>
+
+<p>其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网<a href="http://revealapp.com/">http://revealapp.com/</a>，</p>
+
+<p>前期准备：越狱版iphone+破解版Reveal。
+破解方法网上很多，大家可以搜搜。
+下面直接进重点。</p>
+
+<h2 id="framework---dylib--plist">framework +  dylib + plist</h2>
+
+<h4 id="revealserverframework">RevealServer.framework</h4>
+<p>通过openSSH拷贝framework到越狱机</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
+</code></pre>
+</div>
+
+<p>早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
+</code></pre>
+</div>
+
+<h4 id="librevealdylib">libReveal.dylib</h4>
+
+<p>这个文件是没有的，网上有一种方法是使用iOSOpenDev创建的，简述如下：</p>
+
+<h6 id="iosopendev">方法1：iOSOpenDev创建一个</h6>
 
 <ul>
-  <li>
-    <p>打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；</p>
-  </li>
-  <li>
-    <p>把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；</p>
-  </li>
-  <li>
-    <p>打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；</p>
-  </li>
-  <li>
-    <p>在Terminal中执行$source ~/.bash_profile；</p>
-  </li>
-  <li>
-    <p>上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。</p>
-  </li>
-  <li>
-    <p>class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。</p>
-  </li>
+  <li>1、安装 macports</li>
+  <li>2、 已经安装可能要升级,更新MacPorts到最新版本，时间比较长。 $sudo port -v selfupdate</li>
+  <li>3、更新MacPorts后，安装DPKG文件，装过的忽略。 $ sudo port -f install dpkg</li>
+  <li>4、安装iOSOpenDev <a href="http://iosopendev.com/download/">http://iosopendev.com/download/</a></li>
+  <li>5、期间会各种报错，可以google解决。</li>
+  <li>6、新建CaptainHookTweak工程，使用Reveal.framwwork生成一个libReaveal.dylib即可。
+注意一定要添加相关的库，否则编译会报错。</li>
 </ul>
 
-<p>下面以支付宝为例，来看看class-dump的完整流程。</p>
+<h6 id="section-1">方法2</h6>
 
-<p>1.定位App的可执行文件</p>
+<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/</p>
 
-<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
+<p>注：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
-$ plutil -p Info.plist | grep CFBundleExecutable
-"CFBundleExecutable" =&gt; "AlipayWallet"
+<h4 id="librevealplist">libReveal.plist</h4>
+
+<p>在电脑上创建libReveal.plist，然后copy到iphone的 /Library/MobileSubstrate/DynamicLibraries/ 目录下。
+libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制定多个):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">     
+    </span><span class="err">Filter</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">{</span><span class="w">    
+         </span><span class="err">Bundles</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">(</span><span class="nt">"info.3code.www"</span><span class="err">);</span><span class="w">     
+    </span><span class="err">};</span><span class="w">     
+</span><span class="err">}</span><span class="w">  
+</span></code></pre>
+</div>
+
+<p>说明：</p>
+
+<p>0、只有安装 Cydia Substrate之后才会有MobileSubstrate目录。mobilesubstrate是cydia插件/软件运行的一个基础依赖包。它提供软件运行的公共库，可以用来动态替换内存中的代码、数据等。安装的插件或软件比如iFile、Activator、SBSettings几乎都是依赖mobilesubstrate才能运行的。</p>
+
+<p>1、libReveal.plist：这个plist是有过滤作用的，它决定你要研究那个App，你通过指定bundleId来决定哪个App/进程启动时，这个libReveal.dylib注入进去。当libReveal.plist不存在时，相当于没有过滤，没有限制，所有进程都会被注入，可能出现白苹果，修复方法见google…</p>
+
+<p>2、手机的/Library/MobileSubstrate/DynamicLibraries目录下存放着所有在系统启动时就需要加载的动态链接库，所以把reveal的动态链接库上传</p>
+
+<p>以上完成之后：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># killall SpringBoard
+或者手动重启手机，
 </code></pre>
 </div>
 
-<p>当前目录下的“AlipayWallet”就是App的可执行文件。</p>
+<p>然后 开启Reveal，就可以尽情的分析APP喽。</p>
 
-<p>2.class-dump可执行文件</p>
-
-<p>把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
-</code></pre>
-</div>
-
-<p>结果是：
--APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
--【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了</p>
-
-<p>透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。</p>
-
-<p>值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。要想吃核桃，还得先用别的工具把壳砸开才行，具体的内容下一章就会揭晓。</p>
+<p>链接：
+<a href="https://github.com/heardrwt/RevealLoader">https://github.com/heardrwt/RevealLoader</a></p>
 
 
         </article>
@@ -284,7 +330,11 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -295,15 +345,6 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
-            
-        
-            
-            
-                
-                    
-                
-            
-                
                     
                 
             
@@ -313,14 +354,11 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
-            
-                
                     
                 
             
-        
-            
-            
+                
+                    
                 
                     
                 
@@ -331,18 +369,11 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
-            
-        
-            
-            
-                
                     
                 
             
                 
                     
-                
-            
                 
                     
                 
@@ -353,15 +384,6 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
-            
-        
-            
-            
-                
-                    
-                
-            
-                
                     
                 
             
@@ -371,20 +393,90 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                 
                     
                 
+                    
+                
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">相似文章</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/11/01/4_Reveal/">IOS逆向开发系列4_Reveal
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></p>
+        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE_Charles/">IOS逆向开发系列_Charles_iPhone网络抓包</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/11/01/2_Theos_-install&run/">2_theos_ install&run</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/04/16/CreateAGithubBlog/">静态页面博客:jekyll+GitHubPages</a></p>
         
     </div>
 </div>
@@ -393,7 +485,7 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/1_Class_dump/" data-title="IOS逆向开发系列1_Class_dump" data-url="http://localhost:4000/2016/11/01/1_Class_dump/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE_reveal/" data-title="IOS逆向开发系列_Reveal_调试任意APP的UI" data-url="http://localhost:4000/2015/08/07/REVERSE_reveal/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

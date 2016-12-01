@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>IOS逆向开发系列1_Class_dump</title>
-    <meta name="description" content="">
+    <title>IOS逆向开发系列_Charles_iPhone网络抓包</title>
+    <meta name="description" content="  安装Charles  配置安装Charles官网下载：https://www.charlesproxy.com/从网上找到最新的破解文件：charles.jar，替换系统的即可破解配置">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/11/01/1_Class_dump/">
+    <link rel="canonical" href="http://localhost:4000/2015/08/07/REVERSE_Charles/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -148,15 +148,15 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>IOS逆向开发系列1_Class_dump</h1>
+        <h1>IOS逆向开发系列_Charles_iPhone网络抓包</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-11-01
+                <i class="fa fa-calendar"></i>2015-08-07
             </div>
 
             <div class="label-card">
-                <i class="fa fa-user"></i>3code
+                <i class="fa fa-user"></i>3行代码
                 
             </div>
 
@@ -190,8 +190,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a-->
-        <a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a>
+        <!--a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a-->
+        <a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a>
     
   
 
@@ -203,75 +203,42 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、概述</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.1 设置环境变量:</a></li>
-    </ul>
-  </li>
+  <li><a href="#charles" id="markdown-toc-charles">安装Charles</a></li>
+  <li><a href="#section" id="markdown-toc-section">配置</a></li>
 </ul>
 
-<h2 id="section">1、概述</h2>
+<h2 id="charles">安装Charles</h2>
 
-<p>class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。</p>
+<p>官网下载：<a href="https://www.charlesproxy.com/">https://www.charlesproxy.com/</a></p>
 
-<h2 id="section-1">2、安装</h2>
+<p>从网上找到最新的破解文件：charles.jar，替换系统的即可破解</p>
 
-<p>class-dump的用法比较简单，首先去<a href="http://stevenygard.com/projects/class-dump">http://stevenygard.com/projects/class-dump</a>下载最新版的class-dump。</p>
+<h2 id="section">配置</h2>
 
-<p>然后操作如下：</p>
+<p>1、配置代理：</p>
 
-<h5 id="section-2">2.1 设置环境变量:</h5>
-
-<ul>
-  <li>
-    <p>打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；</p>
-  </li>
-  <li>
-    <p>把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；</p>
-  </li>
-  <li>
-    <p>打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；</p>
-  </li>
-  <li>
-    <p>在Terminal中执行$source ~/.bash_profile；</p>
-  </li>
-  <li>
-    <p>上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。</p>
-  </li>
-  <li>
-    <p>class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。</p>
-  </li>
-</ul>
-
-<p>下面以支付宝为例，来看看class-dump的完整流程。</p>
-
-<p>1.定位App的可执行文件</p>
-
-<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
-$ plutil -p Info.plist | grep CFBundleExecutable
-"CFBundleExecutable" =&gt; "AlipayWallet"
+<div class="highlighter-rouge"><pre class="highlight"><code>Proxy-&gt;Proxy Settings 设置端口8888，勾选Enable transparent HTTP proxying
 </code></pre>
 </div>
 
-<p>当前目录下的“AlipayWallet”就是App的可执行文件。</p>
+<p>2、配置手机：
+查看电脑IP(Help-&gt;Local IP Address)，然后iPhone上也设置相同的IP(在无线局域网-&gt;当前连接的wifi-&gt;详情-&gt;最底部HTTP 代理-&gt;手动-&gt;填上电脑的IP、端口号8888)</p>
 
-<p>2.class-dump可执行文件</p>
+<p>3、拦截HTTPS配置：</p>
 
-<p>把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
+<div class="highlighter-rouge"><pre class="highlight"><code>HELP-&gt; SSL Proxying-&gt;ICRC 安装证书 
 </code></pre>
 </div>
 
-<p>结果是：
--APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
--【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了</p>
+<p>4、手机安装证书：</p>
 
-<p>透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code> Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser
+</code></pre>
+</div>
 
-<p>值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。要想吃核桃，还得先用别的工具把壳砸开才行，具体的内容下一章就会揭晓。</p>
+<p>在手机浏览器中访问地址：http://charlesproxy.com/getssl，即可打开证书安装的界面，安装完证书后，就可以截取手机上的Https通讯内容了</p>
+
+<p>5、对于手机上某个请求的网址，右键选择激活SSL proxy</p>
 
 
         </article>
@@ -378,13 +345,13 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/11/01/0_Reverse_Enginner/">IOS逆向开发系列_综述</a></p>
+        <p><strong>上一篇</strong> <a href="/2015/05/05/macServe/">在mac上开启http服务</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/11/01/2_Theos_-install&run/">2_theos_ install&run</a></p>
+        <p><strong>下一篇</strong> <a href="/2015/08/07/REVERSE_reveal/">IOS逆向开发系列_Reveal_调试任意APP的UI</a></p>
         
     </div>
 </div>
@@ -393,7 +360,7 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/01/1_Class_dump/" data-title="IOS逆向开发系列1_Class_dump" data-url="http://localhost:4000/2016/11/01/1_Class_dump/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE_Charles/" data-title="IOS逆向开发系列_Charles_iPhone网络抓包" data-url="http://localhost:4000/2015/08/07/REVERSE_Charles/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

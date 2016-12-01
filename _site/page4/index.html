@@ -13,7 +13,7 @@
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/page4/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -58,8 +58,8 @@
                 
                 <li>
                     
-                    <a class="active" href="/">
-                        
+                    <a href="/">
+                    
                         <i class="fa fa-home"></i>Home
                     </a>
                 </li>
@@ -155,286 +155,14 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
+                  <a class="post-link" href="/2015/08/07/REVERSE_Charles/">IOS逆向开发系列_Charles_iPhone网络抓包</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-10
+                        <i class="fa fa-calendar"></i>2015-08-07
                     </div>
                     <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#python" title="Category: python" rel="category">python</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#爬基金数据" title="Tag: 爬基金数据" rel="tag">爬基金数据</a>&nbsp;
-    
-        <a href="/tag/#脚本" title="Tag: 脚本" rel="tag">脚本</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#python" id="markdown-toc-python">1、python爬取原理及代码</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">1.1 引入需要的库</a></li>
-      <li><a href="#html" id="markdown-toc-html">1.2 获取html</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">1.3 获取内容</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">1.4 获取每条信息</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">1.5 写入文件</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">1.6 防止数据重复写入</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">1.7 按日期爬取数据</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">2、开机自动爬取数据的脚本</a></li>
-</ul>
-
-<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
-不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
-但是网站上也只展示在单个基金里，多基金对比就没
-成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
-
-<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
-
-<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
-，不论是pyCharm还是pip还是直接托安装包，
-后来改用excel，数据直接写入excel中。</p>
-
-<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
-
-<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
-代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
-
-<p>实际展示：</p>
-
-<p>控制台打印：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
-
-<p>写入txt：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
-
-<p>写入xls：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
-
-<h2 id="python">1、python爬取原理及代码</h2>
-
-<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
-
-<h5 id="section">1.1 引入需要的库</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
-import xlwt
-import time, datetime
-from xlutils.copy import copy
-from xlrd import open_workbook
-from xlwt import easyxf
-</code></pre>
-</div>
-
-<h5 id="html">1.2 获取html</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
-        html = requests.get(url)
-        return html.text
-
-</code></pre>
-</div>
-
-<h5 id="section-1">1.3 获取内容</h5>
-
-<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
-。区别在于:</p>
-
-<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
-
-<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
-        everyclass = re.search(
-            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
-            source, re.S).group(1)
-        return everyclass
-</code></pre>
-</div>
-
-<h5 id="section-2">1.4 获取每条信息</h5>
-
-<p>将自己需要的信息单独抽取出来：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
-        info = {}
-        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
-        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
-        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
-        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
-
-        return info
-</code></pre>
-</div>
-
-<h5 id="section-3">1.5 写入文件</h5>
-
-<p>创建txt：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
-        for each in classinfo:
-            f.writelines('xuhao:' + each['num'] + '\n')
-            f.writelines('daima:' + each['id'] + '\n')
-            f.writelines('name:' + each['name'] + '\n')
-            f.writelines('time:' + each['time'] + '\n')
-            f.writelines('price1:' + each['price1'] + '\n')
-            f.writelines('price2:' + each['price2'] + '\n')
-            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
-        f.close()
-</code></pre>
-</div>
-
-<p>打开xls,开始写入内容</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
-        rb = open_workbook(path, formatting_info=True)
-        r_sheet = rb.sheet_by_index(0)
-        wb = copy(rb)
-        sheet = wb.get_sheet(0)
-        j = r_sheet.ncols
-        i = 1
-        timeShould = timePrevious
-        timeQ = timePrevious
-        tListB = []
-        tListS = []
-        print sheet
-
-        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
-#写入列信息
-        for each in classinfo:
-            sheet.write(i, j + 0, each['id'])
-            sheet.write(i, j + 1, each['time'])
-            sheet.write(i, j + 2, each['price1'])
-            sheet.write(i, j + 3, each['price2'])
-            i += 1
-            timeQ = each['time']
-            if timeQ &gt; timeShould:
-                tListB.append(each['id']+' '+timeQ)
-            elif timeQ &lt; timeShould:
-                tListS.append(each['id']+' '+timeQ)
-
-        for k in range(j, j + 5):
-            sheet.write(0, k, fir[k - j])
-            print k
-            if k == j + 4:
-                sheet.write(1, k, timeNow.decode('utf-8'))
-                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
-
-</code></pre>
-</div>
-
-<h5 id="section-4">1.6 防止数据重复写入</h5>
-
-<p>按时间判断是否需要写入数据</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
-    rb = open_workbook(path, formatting_info=True)
-    r_sheet = rb.sheet_by_index(0)
-    # 遍历第2行所有列,是否有时间数据c
-    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
-    for c in range(0, r_sheet.ncols):
-        age_nov = r_sheet.cell(1, c).value
-        print age_nov
-        if ((c + 1) % 5 == 0) and (c != 0):
-            print "\n"
-        if age_nov == timeNow:
-            return 1
-    else:
-        return 0
-
-</code></pre>
-</div>
-
-<h5 id="section-5">1.7 按日期爬取数据</h5>
-
-<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
-
-<p>注意weekday() 返回的是0-6是星期一到星期日</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
-    timeT = datetime.date.today()
-    zhouji = timeT.weekday()
-    print zhouji
-    if zhouji &gt;= 1 and zhouji &lt;= 5:
-        return timeToday  
-    else:
-        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
-        return 0
-
-</code></pre>
-</div>
-
-<h2 id="section-6">2、开机自动爬取数据的脚本</h2>
-
-<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
-
-<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
-
-<p>plist脚本存放路径为:</p>
-
-<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
-
-<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/10/pythonGetFund/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/07/Runtime-theory/">IOS逆向开发系列7_IOS理论基础</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
+                        <i class="fa fa-user"></i>3行代码
                         
                     </div>
                     <div class="label-card">
@@ -467,7 +195,7 @@ from xlwt import easyxf
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#IOS逆向开发理论基础" title="Tag: IOS逆向开发理论基础" rel="tag">IOS逆向开发理论基础</a>
+        <a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a>
     
   
 
@@ -477,48 +205,36 @@ from xlwt import easyxf
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a>    <ul>
-      <li><a href="#tweakobjective-c" id="markdown-toc-tweakobjective-c">1.1 tweak在Objective-C中的工作方式</a></li>
-    </ul>
-  </li>
+  <li><a href="#charles" id="markdown-toc-charles">安装Charles</a></li>
+  <li><a href="#section" id="markdown-toc-section">配置</a></li>
 </ul>
 
-<hr />
+<h2 id="charles">安装Charles</h2>
 
-<h2 id="section">1、简介</h2>
+<p>官网下载：<a href="https://www.charlesproxy.com/">https://www.charlesproxy.com/</a></p>
 
-<p>Objective-C相关的iOS逆向理论基础</p>
+<p>从网上找到最新的破解文件：charles.jar，替换系统的即可破解</p>
 
-<p>Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”</p>
-
-<h5 id="tweakobjective-c">1.1 tweak在Objective-C中的工作方式</h5>
-
-<p>在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。</p>
-
-<p>正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”</p>
-
-<p>“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。</p>
-
-<p>待续…</p>
+<h2 id="section">配置</h2>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/07/Runtime-theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/08/07/REVERSE_Charles/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a>
+                  <a class="post-link" href="/2015/05/05/macServe/">在mac上开启http服务</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-06
+                        <i class="fa fa-calendar"></i>2015-05-05
                     </div>
                     <div class="label-card">
-                        <i class="fa fa-user"></i>3code
+                        <i class="fa fa-user"></i>3行代码
                         
                     </div>
                     <div class="label-card">
@@ -534,7 +250,7 @@ from xlwt import easyxf
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#杂谈" title="Category: 杂谈" rel="category">杂谈</a>
+        <a href="/category/#apache" title="Category: apache" rel="category">apache</a>
     
   
 
@@ -551,9 +267,7 @@ from xlwt import easyxf
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#淘宝" title="Tag: 淘宝" rel="tag">淘宝</a>&nbsp;
-    
-        <a href="/tag/#12306" title="Tag: 12306" rel="tag">12306</a>
+        <a href="/tag/#apache" title="Tag: apache" rel="tag">apache</a>
     
   
 
@@ -566,21 +280,21 @@ from xlwt import easyxf
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/06/TaoBao/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/05/05/macServe/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a>
+                  <a class="post-link" href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/">iOS动画系列-基础部分-CADisplayLink</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-05
+                        <i class="fa fa-calendar"></i>2015-04-12
                     </div>
                     <div class="label-card">
-                        <i class="fa fa-user"></i>3code
+                        <i class="fa fa-user"></i>3行代码
                         
                     </div>
                     <div class="label-card">
@@ -596,7 +310,7 @@ from xlwt import easyxf
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS基础" title="Category: IOS基础" rel="category">IOS基础</a>
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
     
   
 
@@ -613,9 +327,9 @@ from xlwt import easyxf
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#IOS代码规范" title="Tag: IOS代码规范" rel="tag">IOS代码规范</a>&nbsp;
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
     
-        <a href="/tag/#IOS基础" title="Tag: IOS基础" rel="tag">IOS基础</a>
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
     
   
 
@@ -624,116 +338,27 @@ from xlwt import easyxf
                     </div>
                 </div>
                 <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前序</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">解析</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1、枚举</a>        <ul>
-          <li><a href="#section-3" id="markdown-toc-section-3">1.1 定义规范的枚举</a></li>
-          <li><a href="#section-4" id="markdown-toc-section-4">1.2 定义规范的枚举内容</a></li>
-          <li><a href="#section-5" id="markdown-toc-section-5">1.3 枚举的深入</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">1.4 优化后的写法</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/05/581daad679042.png" alt="" /></p>
-
-<p>上边这张图是前段时间网上比较火的一套面试题中的。这套题来源是 目前就职于百度的孙源。</p>
-
-<h2 id="section">前序</h2>
-
-<p>会有开发者，看这道题目时会觉着没有啥太大毛病，实际中他们也可能就是这样写的。</p>
-
-<p>其实在github上会经常看到这样类似的代码，特别是在一些小demo里很常见。之所以忽略其中的问题，主要是因为没有认识到规范的写法，以及这种写法可能引起的问题。扯远点就是，一个人的编码语言认知水平会极大的影响他的编码行为。然而认知水平和学习的途径有莫大的关系。</p>
-
-<p>前几个月，我们公司招聘移动开人员，本人也面试不少android和ios的开发者，发现一个很普遍的问题：代码不规范。不论是刚从培训学校里刚出来的，还是已经5~6年经验的开发者。当提到代码的规范时，大多回答的就是驼峰式命名法，甚至有位”资深的”求职者向我”普及现今业界的普遍形式”:其实代码规范与否并不重要，对多数中小创业公司而言,重要的是快速上线，及时迭代，占有市场。话是不错，也道出了像我们这种在风口创业公司的基本路线，就是及早入场，拿到牌照，占有市场。但最终我也没有通过他的面试。理由是:工作经验丰富(开发过Symbian,android,iOS)但不适合做开发(因android\iOS不资深。我们要招聘资深的android，懂点iOS，创业公司嘛，iOS和android分的不是很清，是活都干)。</p>
-
-<p>上边扯远了，代码的规范与否，最初的学习途径和形式固然重要，更重要的是在后期的工作中，是否较为全面系统的从官方提供的资料中进行相关学习。可能有人觉得不重要，但是在我看来，这是一名合格开发者的必经之路。你所用的语言、规则，都是人家定的,即便能开发出可用的app，那也未必合格，特别是项目逐渐做大之后，简单的模式，不规范的代码所带来的隐患就会逐渐呈现出来。</p>
-
-<p><strong>下边首先会解析问题，并就部分内容深入解析，如有疑问还请留言相告</strong></p>
-
-<h2 id="section-1">解析</h2>
-
-<!-- 这里先推荐官方的写法：[传送门](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html#//apple_ref/doc/uid/TP40014150-CH1-SW4) -->
-
-<h3 id="section-2">1、枚举</h3>
-
-<p>问题点：</p>
-
-<p>1、题目中写枚举是使用C的风格；
-2、枚举定义的不规范；
-3、枚举的内容不严谨。</p>
-
-<h5 id="section-3">1.1 定义规范的枚举</h5>
-
-<p>官方文档中，enum 建议使用 NS_ENUM 和 NS_OPTIONS 宏来定义枚举类型。
-    NS_ENUM枚举项的值为NSInteger，定义通用的枚举；
-    NS_OPTIONS枚举项的值为NSUInteger，定义位移枚举。
-一般开发者可能用不到后者，但如果进入到UIKit的头文件里，就会看到很多这种书写格式。</p>
-
-<p>enum 中驼峰命名法和下划线命名法的使用：枚举类型的命名规则和函数的命名规则相同：命名时使用驼峰命名法，勿同时使用下划线命名法。</p>
-
-<h5 id="section-4">1.2 定义规范的枚举内容</h5>
-
-<p>试题的model实际使用场景不清楚，这里将该枚举场景放宽到生活中：
-那么除了男性，女性，实际上还应该有包括：内心男性的女性，以及内心女性的男性，以及无性，以及其他未知的性别(考虑未知的特殊情况。当然下边的枚举针对不同的行业场景，可能要进行调整)</p>
-
-<h4 id="section-5">1.3 枚举的深入</h4>
-
-<p>这两个宏的定义在Foundation.framework的NSObjCRuntime.h中：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#if (__cplusplus &amp;&amp; __cplusplus &gt;= 201103L &amp;&amp; (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus &amp;&amp; __has_feature(objc_fixed_enum))  
-#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type  
-#if (__cplusplus)  
-#define NS_OPTIONS(_type, _name) _type _name; enum : _type  
-#else  
-#define NS_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type  
-#endif  
-#else  
-#define NS_ENUM(_type, _name) _type _name; enum  
-#define NS_OPTIONS(_type, _name) _type _name; enum  
-#endif  
-</code></pre>
-</div>
-<p>其实上述的写法，等价于：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef enum JUserGender : NSInteger JUserGender;  
-enum JUserGender : NSInteger {  }
-</code></pre>
-</div>
-
-<p>从枚举定义来看，NS_ENUM和NS_OPTIONS本质是一样的，仅仅从字面上来区分其用途。NS_ENUM是通用情况，NS_OPTIONS一般用来定义具有位移或特点的情况。</p>
-
-<h4 id="section-6">1.4 优化后的写法</h4>
-
-<p>typedef NS_ENUM(NSInteger, JUserGender) {
-    JUserGenderUnknown,
-    JUserGenderMale,
-    JUserGenderGay,
-    JUserGenderFemale,
-    JUserGenderLesbian,
-    JUserGenderNeuter
-};</p>
+                    
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/05/IOS_Adopt/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/01/7_IOS_Reverse_Theory/">IOS逆向开发系列7_IOS理论基础</a>
+                  <a class="post-link" href="/2015/04/11/Animation_CALayer_/">iOS动画系列-基础部分-CADisplayLink</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
+                        <i class="fa fa-calendar"></i>2015-04-11
                     </div>
                     <div class="label-card">
-                        <i class="fa fa-user"></i>3code
+                        <i class="fa fa-user"></i>3行代码
                         
                     </div>
                     <div class="label-card">
@@ -749,7 +374,7 @@ enum JUserGender : NSInteger {  }
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
     
   
 
@@ -766,7 +391,9 @@ enum JUserGender : NSInteger {  }
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#IOS逆向开发理论基础" title="Tag: IOS逆向开发理论基础" rel="tag">IOS逆向开发理论基础</a>
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
     
   
 
@@ -775,49 +402,27 @@ enum JUserGender : NSInteger {  }
                     </div>
                 </div>
                 <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a>    <ul>
-      <li><a href="#tweakobjective-c" id="markdown-toc-tweakobjective-c">1.1 tweak在Objective-C中的工作方式</a></li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="section">1、简介</h2>
-
-<p>Objective-C相关的iOS逆向理论基础</p>
-
-<p>Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”</p>
-
-<h5 id="tweakobjective-c">1.1 tweak在Objective-C中的工作方式</h5>
-
-<p>在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。</p>
-
-<p>正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”</p>
-
-<p>“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。</p>
-
-<p>待续…</p>
+                    
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/01/7_IOS_Reverse_Theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/04/11/Animation_CALayer_/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/01/6_IOS_Tools/">IOS逆向开发系列6_IOS工具集</a>
+                  <a class="post-link" href="/2015/04/10/Animation_CALayer_Layout/">iOS动画系列-CALayer-布局</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
+                        <i class="fa fa-calendar"></i>2015-04-10
                     </div>
                     <div class="label-card">
-                        <i class="fa fa-user"></i>3code
+                        <i class="fa fa-user"></i>3行代码
                         
                     </div>
                     <div class="label-card">
@@ -833,7 +438,9 @@ enum JUserGender : NSInteger {  }
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>&nbsp;
+    
+        <a href="/category/#CALayer" title="Category: CALayer" rel="category">CALayer</a>
     
   
 
@@ -850,7 +457,9 @@ enum JUserGender : NSInteger {  }
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#逆向_IOS工具集" title="Tag: 逆向_IOS工具集" rel="tag">逆向_IOS工具集</a>
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CALayer" title="Tag: CALayer" rel="tag">CALayer</a>
     
   
 
@@ -859,23 +468,80 @@ enum JUserGender : NSInteger {  }
                     </div>
                 </div>
                 <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-</ul>
+                    
+<p>**本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google
+**</p>
 
-<p><strong>说明这里仅作为大纲展示</strong></p>
-
-<h2 id="section">1、简介</h2>
-
-<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
-
-<p>相关链接：
-Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
+<p>##</p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/01/6_IOS_Tools/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/04/10/Animation_CALayer_Layout/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/04/06/Animation_CALayer_Contents/">iOS动画系列-基础部分-CADisplayLink</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-04-06
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/04/06/Animation_CALayer_Contents/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -887,13 +553,13 @@ Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstra
         <!-- Pagination links -->
         <div class="pagination">
           
-            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
-            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="/page3" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">1/4</span>
+          <span class="page_number ">4/4</span>
           
-            <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page4" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
           
         </div>
     </div>
