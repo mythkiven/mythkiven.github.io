@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>WKWebView使用小结</title>
-    <meta name="description" content="  前言  1、基础          1.1 初始化      1.2 监听title和estimatedProgress      1.3 加载页面      1.4 代理方法      1.5 导航刷新相关        2、Native与JS的通信          2.1 iOS6:JS与Native的...">
+    <meta name="description" content="  前言  1、基础          1.1 初始化      1.2 监听title和estimatedProgress      1.3 加载页面                  1.3.1 加载本地页面                    1.4 代理方法      1.5 导航刷新相关       ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -123,16 +123,6 @@
                     
                 
                     
-                    <li>
-                        
-                        <a href="/z-%20Runtime-theory/">
-                        
-                            <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
-                        </a>
-                    </li>
-                    
-                
-                    
                 
                     
                 
@@ -209,25 +199,28 @@
   <li><a href="#section-1" id="markdown-toc-section-1">1、基础</a>    <ul>
       <li><a href="#section-2" id="markdown-toc-section-2">1.1 初始化</a></li>
       <li><a href="#titleestimatedprogress" id="markdown-toc-titleestimatedprogress">1.2 监听title和estimatedProgress</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">1.3 加载页面</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">1.4 代理方法</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">1.5 导航刷新相关</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">1.3 加载页面</a>        <ul>
+          <li><a href="#section-4" id="markdown-toc-section-4">1.3.1 加载本地页面</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-5" id="markdown-toc-section-5">1.4 代理方法</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">1.5 导航刷新相关</a></li>
     </ul>
   </li>
   <li><a href="#nativejs" id="markdown-toc-nativejs">2、Native与JS的通信</a>    <ul>
       <li><a href="#ios6jsnativeiframe" id="markdown-toc-ios6jsnativeiframe">2.1 iOS6:JS与Native的通信：iFrame</a></li>
       <li><a href="#ios7jsnativejavascriptcore" id="markdown-toc-ios7jsnativejavascriptcore">2.2 iOS7:JS与Native的通信：JavaScriptCore</a></li>
       <li><a href="#ios8jsnativewkscriptmessagehandler" id="markdown-toc-ios8jsnativewkscriptmessagehandler">2.3 iOS8:JS与Native的通信：WKScriptMessageHandler</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">2.4 当然也可以使用三方库 进行通信</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">2.5 缓存</a></li>
-      <li><a href="#section-8" id="markdown-toc-section-8">2.6 类</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">2.4 当然也可以使用三方库 进行通信</a></li>
+      <li><a href="#section-8" id="markdown-toc-section-8">2.5 缓存</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">2.6 类</a></li>
     </ul>
   </li>
   <li><a href="#wkwebview" id="markdown-toc-wkwebview">3、WKWebView的常见问题</a>    <ul>
       <li><a href="#post" id="markdown-toc-post">post请求</a></li>
     </ul>
   </li>
-  <li><a href="#section-9" id="markdown-toc-section-9">4、其他</a></li>
+  <li><a href="#section-10" id="markdown-toc-section-10">4、其他</a></li>
 </ul>
 
 <h2 id="section">前言</h2>
@@ -313,13 +306,21 @@ webView.allowsBackForwardNavigationGestures =YES;
 </code></pre>
 </div>
 
-<p>2、不同的是，WKWebView不支持用loadRequest的方法加载本地的静态HTML，可以用</p>
+<p>2、不同的是，WKWebView加载本地的静态HTML需要注意：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[self.webView loadFileURL:[NSURLfileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:accessPath]]; 其中的前面一个参数url是指想要加载的具体哪个文件(比如指向一个index.html)，后面一个参数它是指系统能够访问的文件路径，就是HTML所需的相关JS、CSS 等文件所在的目录。 注意的是，要放进沙盒中。
+<h6 id="section-4">1.3.1 加载本地页面</h6>
+
+<p>1、IOS9
+[WKWebView loadFileURL:allowingReadAccessToURL:]: 是IOS9的方法，使用时注意判断。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[self.webView loadFileURL:[NSURL fileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:path]]; 其中的前面一个参数url是指想要加载的具体哪个文件(比如指向一个index.html)，后面一个参数它是指系统能够访问的文件路径，就是HTML所需的相关JS、CSS 等文件所在的目录。
 </code></pre>
 </div>
 
-<h4 id="section-4">1.4 代理方法</h4>
+<p>2、IOS8
+加载本地页面:可以先将所需文件copy到tmp中，然后使用loadRequest加载。</p>
+
+<h4 id="section-5">1.4 代理方法</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>
 /* WKNavigationDelegate  */
@@ -357,7 +358,7 @@ webView.allowsBackForwardNavigationGestures =YES;
 </code></pre>
 </div>
 
-<h4 id="section-5">1.5 导航刷新相关</h4>
+<h4 id="section-6">1.5 导航刷新相关</h4>
 
 <p>网页导航刷新相关函数和UIWebview几乎一样，不同的是增加了函数reloadFromOrigin和goToBackForwardListItem。</p>
 
@@ -379,7 +380,7 @@ webView.allowsBackForwardNavigationGestures =YES;
 
 <p>2、编码方面：</p>
 <ul>
-  <li>通信过程中，可能会出现乱码情况，最好将JSON进行Base64编码然后附加在url后面进行传递</li>
+  <li>通信过程中，从JS向Native传递可能会出现乱码情况，最好进行Base64编码然后附加在url后面进行传递</li>
   <li>Native调用JS需要在页面加载完成之后进行；</li>
   <li>键盘的控制不好处理: [obj becomeFirstResponder]方法不可用</li>
 </ul>
@@ -483,15 +484,28 @@ function showAlert(msg){
 </code></pre>
 </div>
 
-<p>2、OC调用JS
-方法1：stringByEvaluatingJavaScriptFromString:不过该方法是同步执行的，可能会阻塞UI的刷新。
-方法2：</p>
+<p>2、OC调用JS</p>
+
+<p>方法1：stringByEvaluatingJavaScriptFromString:不过该方法是同步执行的，可能会阻塞UI的刷新。</p>
+
+<p>方法2： -evaluateScript</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
 NSString *textJS = @"showAlert('弹出message')";
-[context evaluateScript:textJS];
+[context evaluateScript:textJS]; 方法3： -callWithArguments
+
+JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+[context[@"payResult"] callWithArguments:@[@"支付结果"]];
 </code></pre>
 </div>
+
+<p>需要注意的是:WKWebView不支持通过如下的KVC的方式创建JSContext：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+</code></pre>
+</div>
+
+<p>在WKWebView中有OC和JS交互的方式，更简洁，因此JavaScriptCore对我来说是昙花一现，基本不使用的。</p>
 
 <h4 id="ios8jsnativewkscriptmessagehandler">2.3 iOS8:JS与Native的通信：WKScriptMessageHandler</h4>
 
@@ -552,15 +566,15 @@ NSString *jsString = @" var p = document.createElement('p'); \
 
 <p>//completionHandler 拥有两个参数，一个是返回错误，一个可以返回执行脚本后的返回值，</p>
 
-<h4 id="section-6">2.4 当然也可以使用三方库 进行通信</h4>
+<h4 id="section-7">2.4 当然也可以使用三方库 进行通信</h4>
 
-<h4 id="section-7">2.5 缓存</h4>
+<h4 id="section-8">2.5 缓存</h4>
 
 <p>但是他有一个最致命的缺陷，就是WKWebView的请求不能被NSURLProtocol截获。而我们团队开发的app中对于H5容器最佳的优化点主要就在于使用NSURLProtocol技术对于H5进行离线包的处理和H5的图片和Native的图片公用一套缓存的技术。因为该问题的存在，目前我们团队还没有使用WKWebView代替UIWebVIew。</p>
 
 <p>在UIWebView，使用NSURLCache缓存，通过setSharedURLCache可以设置成我们自己的缓存，但WKWebView不支持NSURLCache。所以涉及到离线缓存的问题时，要注意区分使用哪个。</p>
 
-<h4 id="section-8">2.6 类</h4>
+<h4 id="section-9">2.6 类</h4>
 
 <p>WKBackForwardList: 之前访问过的 web 页面的列表，可以通过后退和前进动作来访问到。
 WKBackForwardListItem: webview 中后退列表里的某一个网页。
@@ -644,7 +658,7 @@ WKScriptMessage: 包含网页发出的信息。
 </code></pre>
 </div>
 
-<h2 id="section-9">4、其他</h2>
+<h2 id="section-10">4、其他</h2>
 
 <p>iOS Xcode工程目录的 folder 和 group的区别(蓝色和黄色文件夹的区别)：</p>
 

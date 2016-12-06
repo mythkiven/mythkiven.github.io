@@ -91,11 +91,19 @@ webView.allowsBackForwardNavigationGestures =YES;
 [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
 ```
 
-2、不同的是，WKWebView不支持用loadRequest的方法加载本地的静态HTML，可以用
+2、不同的是，WKWebView加载本地的静态HTML需要注意：
 
-    [self.webView loadFileURL:[NSURLfileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:accessPath]];
+###### 1.3.1 加载本地页面
+
+1、IOS9
+[WKWebView loadFileURL:allowingReadAccessToURL:]: 是IOS9的方法，使用时注意判断。
+
+    [self.webView loadFileURL:[NSURL fileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:path]];
 其中的前面一个参数url是指想要加载的具体哪个文件(比如指向一个index.html)，后面一个参数它是指系统能够访问的文件路径，就是HTML所需的相关JS、CSS 等文件所在的目录。
-注意的是，要放进沙盒中。
+
+2、IOS8
+加载本地页面:可以先将所需文件copy到tmp中，然后使用loadRequest加载。
+
 
 #### 1.4 代理方法
 
