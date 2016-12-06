@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>IOS逆向开发系列_Reveal_调试任意APP的UI</title>
-    <meta name="description" content="  前言  RevealLoader  SSH  Reveal  framework +  dylib + plist          RevealServer.framework      libReveal.dylib                  方法1：iOSOpenDev创建一个         ...">
+    <title>IOS逆向开发系列_Reveal_解码任意APP的UI界面</title>
+    <meta name="description" content="  前言  关于破解：  RevealLoader  SSH  Reveal  framework +  dylib + plist          RevealServer.framework      libReveal.dylib                  方法1：iOSOpenDev创建一个  ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -150,7 +150,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>IOS逆向开发系列_Reveal_调试任意APP的UI</h1>
+        <h1>IOS逆向开发系列_Reveal_解码任意APP的UI界面</h1>
         <div class="label">
 
             <div class="label-card">
@@ -209,6 +209,7 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">关于破解：</a></li>
   <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
   <li><a href="#ssh" id="markdown-toc-ssh">SSH</a></li>
   <li><a href="#reveal" id="markdown-toc-reveal">Reveal</a></li>
@@ -216,7 +217,7 @@
       <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">RevealServer.framework</a></li>
       <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">libReveal.dylib</a>        <ul>
           <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
-          <li><a href="#section-1" id="markdown-toc-section-1">方法2</a></li>
+          <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
         </ul>
       </li>
       <li><a href="#librevealplist" id="markdown-toc-librevealplist">libReveal.plist</a></li>
@@ -226,10 +227,16 @@
 
 <h2 id="section">前言</h2>
 
-<p>从最开始在笔记上写的Reveal使用文章，到现在开放到博客，Reveal也历经了好多个版本：1.5.x-&gt;1.6.x-&gt;Version++。
-下边更新了以前写的文章。最近安装Reveal的朋友们可以参照此教程。</p>
+<p>从最开始写在笔记上的Reveal使用记录，到现在开放到博客，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)。
+下边更新了以前写的记录，最近安装Reveal的朋友可以参照此教程。</p>
 
-<p>新的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。首先简述如何创建。</p>
+<h2 id="section-1">关于破解：</h2>
+
+<p>如果是使用1.6.3及以下的版本，可以google到破解文件，覆盖安装就行。
+如果是V2及以上版本，破解方法我还没找呢，公司用的是1.6.3版本，家里的就通过修改电脑时间。。
+顺便说下，免费使用时长，是可以通过修改电脑日期来调整。这个是我用过的版本里通用的福利方法。。</p>
+
+<p>新版的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
 
 <h2 id="revealloader">RevealLoader</h2>
 
@@ -247,9 +254,7 @@
 
 <p>其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网<a href="http://revealapp.com/">http://revealapp.com/</a>，</p>
 
-<p>前期准备：越狱版iphone+破解版Reveal。
-破解方法网上很多，大家可以搜搜。
-下面直接进重点。</p>
+<p>下面进重点。</p>
 
 <h2 id="framework---dylib--plist">framework +  dylib + plist</h2>
 
@@ -260,7 +265,7 @@
 </code></pre>
 </div>
 
-<p>早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：</p>
+<p>早期版本(V++之前)的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
 </code></pre>
@@ -282,11 +287,9 @@
 注意一定要添加相关的库，否则编译会报错。</li>
 </ul>
 
-<h6 id="section-1">方法2</h6>
+<h6 id="section-2">方法2</h6>
 
 <p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/</p>
-
-<p>注：</p>
 
 <h4 id="librevealplist">libReveal.plist</h4>
 
@@ -312,7 +315,7 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
 <p>以上完成之后：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># killall SpringBoard
-或者手动重启手机，
+或者手动重启
 </code></pre>
 </div>
 
@@ -487,7 +490,7 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE_Reveal/" data-title="IOS逆向开发系列_Reveal_调试任意APP的UI" data-url="http://localhost:4000/2015/08/07/REVERSE_Reveal/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE_Reveal/" data-title="IOS逆向开发系列_Reveal_解码任意APP的UI界面" data-url="http://localhost:4000/2015/08/07/REVERSE_Reveal/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

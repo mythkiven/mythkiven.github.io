@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WKWebView使用小结</title>
+    <meta name="description" content="  前言  1、基础          1.1 初始化      1.2 监听title和estimatedProgress      1.3 加载页面      1.4 代理方法      1.5 导航刷新相关        2、Native与JS的通信          2.1 iOS6:JS与Native的...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2015/06/10/WKWebView/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/z-%20Runtime-theory/">
+                        
+                            <i class="fa fa-"></i>IOS逆向开发系列7_IOS理论基础
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>WKWebView使用小结</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2015-06-10
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#WKWebView" title="Category: WKWebView" rel="category">WKWebView</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#WKWebView" title="Tag: WKWebView" rel="tag">WKWebView</a-->
+        <a href="/tag/#WKWebView" title="Tag: WKWebView" rel="tag">WKWebView</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、基础</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.1 初始化</a></li>
+      <li><a href="#titleestimatedprogress" id="markdown-toc-titleestimatedprogress">1.2 监听title和estimatedProgress</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">1.3 加载页面</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">1.4 代理方法</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">1.5 导航刷新相关</a></li>
+    </ul>
+  </li>
+  <li><a href="#nativejs" id="markdown-toc-nativejs">2、Native与JS的通信</a>    <ul>
+      <li><a href="#ios6jsnativeiframe" id="markdown-toc-ios6jsnativeiframe">2.1 iOS6:JS与Native的通信：iFrame</a></li>
+      <li><a href="#ios7jsnativejavascriptcore" id="markdown-toc-ios7jsnativejavascriptcore">2.2 iOS7:JS与Native的通信：JavaScriptCore</a></li>
+      <li><a href="#ios8jsnativewkscriptmessagehandler" id="markdown-toc-ios8jsnativewkscriptmessagehandler">2.3 iOS8:JS与Native的通信：WKScriptMessageHandler</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2.4 当然也可以使用三方库 进行通信</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">2.5 缓存</a></li>
+      <li><a href="#section-8" id="markdown-toc-section-8">2.6 类</a></li>
+    </ul>
+  </li>
+  <li><a href="#wkwebview" id="markdown-toc-wkwebview">3、WKWebView的常见问题</a>    <ul>
+      <li><a href="#post" id="markdown-toc-post">post请求</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-9" id="markdown-toc-section-9">4、其他</a></li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+<p>一直使用UIWebView，使用久了就会发现，相比 Nirtro JavaScript引擎的Safari，WebView实在太过笨重，还会有内存泄漏。
+然而自诩有60fps刷新率、内置手势、高效的app和web信息交换通道、和 Safari相同的JavaScript引擎，WKWebView明显的优化了这些不足，下边就个人使用体会做个小结。</p>
+
+<h2 id="section-1">1、基础</h2>
+
+<p>WKWebView是在iOS8中新增的，如果需要兼容iOS7，需要判断系统版本，然后选择性的使用。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#import &lt;WebKit/WebKit.h&gt;
+WKWebView *webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+// 加载过程代理
+webView.navigationDelegate = self;
+// UI界面相关代理，原生控件支持。
+webView.UIDelegate = self;
+// 设置是否透明，默认yes，不透明的。设置为NO，可以在web下面放一个img
+webView.opaque = NO;   
+// web内手势左右滑动导航
+webView.allowsBackForwardNavigationGestures =YES;  
+// 设置加载进度：自带的进度条: webView.estimatedProgress
+// get是否加载 webView.loading
+// get标题 webView.title
+[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
+</code></pre>
+</div>
+
+<h4 id="section-2">1.1 初始化</h4>
+
+<p>// 初始化方法，两种</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 默认初始化
+- (instancetype)initWithFrame:(CGRect)frame;
+// 根据对webview的相关配置，进行初始化
+- (instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+
+使用见下文的JS交互
+</code></pre>
+</div>
+
+<h4 id="titleestimatedprogress">1.2 监听title和estimatedProgress</h4>
+
+<p>可以利用title和estimatedProgress，用KVO去监听，实时改变进度和标题:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+[self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"] &amp;&amp; object == self.webView) {
+        [self.progress setAlpha:1.0f];
+        [self.progress setProgress:self.webView.estimatedProgress animated:YES];
+        
+        if(self.webView.estimatedProgress &gt;= 1.0f) {
+            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progress setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progress setProgress:0.0f animated:NO];
+            }];
+        }
+    }
+    else
+        if ([keyPath isEqualToString:@"title"] &amp;&amp; object == self.webView)
+        {
+            NSString * titleText = self.webView.title;
+            title.text = titleText; 
+        }
+        else {
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
+}
+
+注意：移除掉观察者
+ [self.webView removeObserver:self forKeyPath:@"title"];
+ [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+
+</code></pre>
+</div>
+
+<h4 id="section-3">1.3 加载页面</h4>
+
+<p>1、加载网页与HTML代码的方式与UIWebView相同，代码如下：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
+</code></pre>
+</div>
+
+<p>2、不同的是，WKWebView不支持用loadRequest的方法加载本地的静态HTML，可以用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[self.webView loadFileURL:[NSURLfileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:accessPath]]; 其中的前面一个参数url是指想要加载的具体哪个文件(比如指向一个index.html)，后面一个参数它是指系统能够访问的文件路径，就是HTML所需的相关JS、CSS 等文件所在的目录。 注意的是，要放进沙盒中。
+</code></pre>
+</div>
+
+<h4 id="section-4">1.4 代理方法</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+/* WKNavigationDelegate  */
+
+//1、在发送请求之前，决定是否跳转
+- (void)webView: decidePolicyForNavigationAction: 
+
+//2、页面开始加载时调用
+- (void)webView: didStartProvisionalNavigation: 
+//3、当内容开始返回时调用
+- (void)webView: didCommitNavigation: 
+//4、页面加载完成之后调用
+- (void)webView: didFinishNavigation: 
+// 页面加载失败时调用
+- (void)webView: didFailProvisionalNavigation: 
+
+/* 决定是否执行页面跳转的代理方法 */
+// 接收到服务器跳转请求之后调用
+- (void)webView:  didReceiveServerRedirectForProvisionalNavigation: 
+// 当客户端收到服务器的响应头，根据response相关信息，可以决定这次跳转是否可以继续进行
+1、需要执行对应的block 2、可以拦截自定义的URL来实现JS调用OC方法
+- (void)webView: decidePolicyForNavigationResponse: 
+// 根据webView、navigationAction相关信息决定这次跳转是否可以继续进行
+- (void)webView: decidePolicyForNavigationAction: 
+
+/* UIDelegate  */
+当页面中有调用了js的alert、confirm、prompt方法就会触发以下方法
+// 页面中有输入框弹出警告框时调用
+- (void)webView: runJavaScriptTextInputPanelWithPrompt: 
+// 页面中有确认框弹出警告框时调用
+- (void)webView: runJavaScriptConfirmPanelWithMessage:( 
+// 警告框页面中有警告框弹出警告框时调用
+- (void)webView: runJavaScriptAlertPanelWithMessage: 
+
+</code></pre>
+</div>
+
+<h4 id="section-5">1.5 导航刷新相关</h4>
+
+<p>网页导航刷新相关函数和UIWebview几乎一样，不同的是增加了函数reloadFromOrigin和goToBackForwardListItem。</p>
+
+<p>//会比较网络数据是否有变化，没有变化则使用缓存，否则从新请求。
+-(WKNavigation *)reloadFromOrigin;</p>
+
+<p>//比向前向后更强大，可以跳转到某个指定历史页面
+-(WKNavigation *)goToBackForwardListItem:(WKBackForwardListItem *)item;</p>
+
+<h2 id="nativejs">2、Native与JS的通信</h2>
+
+<p>几点注意：</p>
+
+<p>1、线程方面需要注意的是:</p>
+<ul>
+  <li>iframe调用Navite是异步执行的(android中是同步的)；</li>
+  <li>stringByEvaluatingJavaScriptFromString是同步执行的；</li>
+</ul>
+
+<p>2、编码方面：</p>
+<ul>
+  <li>通信过程中，可能会出现乱码情况，最好将JSON进行Base64编码然后附加在url后面进行传递</li>
+  <li>Native调用JS需要在页面加载完成之后进行；</li>
+  <li>键盘的控制不好处理: [obj becomeFirstResponder]方法不可用</li>
+</ul>
+
+<h4 id="ios6jsnativeiframe">2.1 iOS6:JS与Native的通信：iFrame</h4>
+
+<p>iOS6原生没有提供js直接调用Objective-C的方式，只能通过UIWebView的UIWebViewDelegate协议拦截iframe请求实现。</p>
+
+<p>1、Native调用JS  stringByEvaluatingJavaScriptFromString:</p>
+
+<p>如果需要OC给JS回调，也用这个方法</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSString *jsString = @" var p = document.createElement('p'); \
+                        p.innerText = 'New page';            \
+                        document.body.appendChild(p);        \
+";
+[_webView stringByEvaluatingJavaScriptFromString:jsString];
+</code></pre>
+</div>
+
+<p>2、JS调用Native  webView:shouldStartLoadWithRequest:</p>
+
+<p>JS中：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    function loadURL(url) {
+        var iFrame;
+        iFrame = document.createElement("iframe");
+        iFrame.setAttribute("src", url);
+        iFrame.setAttribute("style", "display:none;");
+        iFrame.setAttribute("height", "0px");
+        iFrame.setAttribute("width", "0px");
+        iFrame.setAttribute("frameborder", "0");
+        document.body.appendChild(iFrame);
+        // 发起请求后这个iFrame就没用了，从dom上移除掉
+        iFrame.parentNode.removeChild(iFrame);
+        iFrame = null;
+    }
+比如我们在js代码中，调用js方法：
+    function iOS_alert() {//调用自定义对话框
+        //window.location.href调用的话会导致前一次操作取消
+        loadURL("alert://baidu");
+    }
+    // 以下是为了解决OC回调给JS时候，可能存在的阻塞主线程情形。可以结合实际决定要不要使用。
+    function asyncAlert(content) {
+    setTimeout(function(){
+               alert(content);
+               },1);
+    }
+    function setLocation(location) {
+        asyncAlert(location);
+        document.getElementById("Value").value = location;
+    }
+
+</code></pre>
+</div>
+
+<p>Native中：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// url.scheme 区分是不是我要拦截的，url.host决定调用哪个方法。
+//return YES则会加载URL，NO不加载URL
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSURL * url = [request URL];
+    if ([[url scheme] isEqualToString:@"alert"]) {//拦截alert
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"test" message:[url host] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        return NO;
+    }
+    return YES;
+}
+</code></pre>
+</div>
+
+<h4 id="ios7jsnativejavascriptcore">2.2 iOS7:JS与Native的通信：JavaScriptCore</h4>
+
+<p>iOS7中加入了JavaScriptCore.framework框架。把WebKit的JavaScript引擎用OC 封装。该框架让Objective-C和JavaScript代码直接的交互变得更加的简单。</p>
+
+<p>1、JS调用Native
+JS中：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;button type="button" onclick="showAlert('YES')"&gt;Click&lt;/button&gt;
+function showAlert(msg){
+            alert(msg);
+        }
+</code></pre>
+</div>
+<p>Native中：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    //定义好JS要调用的方法, alert就是方法名
+    context[@"alert"] = ^() {
+        NSArray *args = [JSContext currentArguments];
+        UIAlertView *alertView = [[UIAlertView alloc] init
+        [alertView show];
+        
+        for (JSValue *jsVal in args) {
+            NSLog(@"%@", jsVal.toString);
+        }
+    };
+}
+
+</code></pre>
+</div>
+
+<p>2、OC调用JS
+方法1：stringByEvaluatingJavaScriptFromString:不过该方法是同步执行的，可能会阻塞UI的刷新。
+方法2：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>JSContext *context = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+NSString *textJS = @"showAlert('弹出message')";
+[context evaluateScript:textJS];
+</code></pre>
+</div>
+
+<h4 id="ios8jsnativewkscriptmessagehandler">2.3 iOS8:JS与Native的通信：WKScriptMessageHandler</h4>
+
+<p>1、JS调用Native：</p>
+
+<p>注入JS</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>// 除了和UIWebView加载一个隐藏的ifame之外，WKWebView自身还提供了一套js调用native的方法,如下：
+
+// 创建配置
+WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+// 提供javaScript向webView发送消息的方法
+ WKUserContentController *userContent = [[WKUserContentController alloc] init];
+// 注入JS对象：NativeMethod，注意：self需要遵守WKScriptMessageHandler协议，结束时需要移除
+[userContent addScriptMessageHandler:self name:@"NativeMethod"];
+// 将UserContentController设置到配置文件中
+config.userContentController = userContent;
+// 自定义配置创建WKWebView
+WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+</code></pre>
+</div>
+
+<p>Native拦截JS</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)userContentController:(WKUserContentController *)userContentController
+      didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:@"NativeMethod"]) {
+        NSLog(@"message.body:%@", message.body);
+        //如果是自己定义的协议, 再截取协议中的方法和参数, 判断无误后在这里手动调用oc方法
+        NSMutableDictionary *param = [self queryStringToDictionary:message.body];
+        NSLog(@"get param:%@",[param description]);
+        
+        NSString *func = [param objectForKey:@"func"];
+        
+        //调用本地函数
+        if([func isEqualToString:@"alert"])
+        {
+            [self showMessage:@"来自网页的提示" message:[param objectForKey:@"message"]];
+        }
+     
+    }
+}
+</code></pre>
+</div>
+<p>// 注意decisionHandler必须执行。</p>
+
+<p>2、Native调用JS：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^)(id, NSError *))completionHandler;
+//使用，同上webview
+NSString *jsString = @" var p = document.createElement('p'); \
+                        p.innerText = 'New Line';            \
+                        document.body.appendChild(p);        \
+";
+[_wkView evaluateJavaScript:jsString completionHandler:^(id item, NSError *error) {
+// 这里是回调的结果
+}];
+</code></pre>
+</div>
+
+<p>//completionHandler 拥有两个参数，一个是返回错误，一个可以返回执行脚本后的返回值，</p>
+
+<h4 id="section-6">2.4 当然也可以使用三方库 进行通信</h4>
+
+<h4 id="section-7">2.5 缓存</h4>
+
+<p>但是他有一个最致命的缺陷，就是WKWebView的请求不能被NSURLProtocol截获。而我们团队开发的app中对于H5容器最佳的优化点主要就在于使用NSURLProtocol技术对于H5进行离线包的处理和H5的图片和Native的图片公用一套缓存的技术。因为该问题的存在，目前我们团队还没有使用WKWebView代替UIWebVIew。</p>
+
+<p>在UIWebView，使用NSURLCache缓存，通过setSharedURLCache可以设置成我们自己的缓存，但WKWebView不支持NSURLCache。所以涉及到离线缓存的问题时，要注意区分使用哪个。</p>
+
+<h4 id="section-8">2.6 类</h4>
+
+<p>WKBackForwardList: 之前访问过的 web 页面的列表，可以通过后退和前进动作来访问到。
+WKBackForwardListItem: webview 中后退列表里的某一个网页。
+WKFrameInfo: 包含一个网页的布局信息。
+WKNavigation: 包含一个网页的加载进度信息。
+WKNavigationAction: 包含可能让网页导航变化的信息，用于判断是否做出导航变化。
+WKNavigationResponse: 包含可能让网页导航变化的返回内容信息，用于判断是否做出导航变化。
+WKPreferences: 概括一个 webview 的偏好设置。
+WKProcessPool: 表示一个 web 内容加载池。
+WKScriptMessage: 包含网页发出的信息。
+…</p>
+
+<h2 id="wkwebview">3、WKWebView的常见问题</h2>
+
+<p>崩溃问题: Terminating app due to uncaught exception ‘NSInternalInconsistencyException’ reason: ‘Completion handler passed to - [ViewController webView: decidePolicyForNavigationAction: decisionHandler:] was not called’
+解决办法: 在webView:decidePolicyForNavigationAction:decisionHandler:函数里需执行decisionHandler的block</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+- (void)webView:(WKWebView*)webView decidePolicyForNavigationAction:(WKNavigationAction*)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+    else {
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+}
+</code></pre>
+</div>
+
+<h4 id="post">post请求</h4>
+
+<p>在Native中使用WKWeb发送POST暂时不支持的，需要通过JS走：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+         //调用格式： post('URL', {"key": "value"});
+         function post(path, params) {
+             var method = "post";
+             var form = document.createElement("form");
+             form.setAttribute("method", method);
+             form.setAttribute("action", path);
+
+             for(var key in params) {
+                 if(params.hasOwnProperty(key)) {
+                     var hiddenField = document.createElement("input");
+                     hiddenField.setAttribute("type", "hidden");
+                     hiddenField.setAttribute("name", key);
+                     hiddenField.setAttribute("value", params[key]);
+
+                     form.appendChild(hiddenField);
+                 }
+             }
+             document.body.appendChild(form);
+             form.submit();
+         }
+     &lt;/script&gt;
+</code></pre>
+</div>
+<p>然后在- (void)webView: didFinishNavigation: 中调用如下代码：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+     if (self.ONCE) {
+         // 调用使用JS发送POST请求的方法
+         [self postRequestWithJS];
+         // 将Flag置为NO（后面就不需要加载了）
+         self.needLoadJSPOST = NO;
+     }
+ }
+ // 调用JS发送POST请求
+ - (void)postRequestWithJS {
+     // 发送POST的参数
+     NSString *postData = @"\"username\":\"aaa\",\"password\":\"123\"";
+     // 请求的页面地址
+     NSString *urlStr = @"http://www.baidu.com";
+     // 拼装成调用JavaScript的字符串
+     NSString *jscript = [NSString stringWithFormat:@"post('%@', /\%\}/@});", urlStr, postData];
+     // NSLog(@"Javascript: %@", jscript);
+     // 调用JS代码
+     [self.webView evaluateJavaScript:jscript completionHandler:^(id object, NSError * _Nullable error) {
+
+     }];
+ }
+</code></pre>
+</div>
+
+<h2 id="section-9">4、其他</h2>
+
+<p>iOS Xcode工程目录的 folder 和 group的区别(蓝色和黄色文件夹的区别)：</p>
+
+<p>group 一般只在你的工程中是文件夹的形式，但是在本地的目录中还是以散乱的形式放在一起的，除非你是从外部以group的形式引用进来的。</p>
+
+<p>folder 只能作为资源，整个引用进项目，不能编译代码，也就是说，以folder形式引用进来的文件，不能被放在complie sources列表里面。</p>
+
+<p>从外部拖入文件时，
+选择Creat Groups：文件夹黄色的 <br />
+Creat Floder：这里我选择的是以folder的形式引用文件夹，点击完成，如下图所示，文件夹是蓝色的</p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2015/06/10/WKWebView/">Wkwebview</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2015/08/07/REVERSE_Charles/">IOS逆向开发系列_Charles_iPhone网络抓包</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/06/10/WKWebView/" data-title="WKWebView使用小结" data-url="http://localhost:4000/2015/06/10/WKWebView/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

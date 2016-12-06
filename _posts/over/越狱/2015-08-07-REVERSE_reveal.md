@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "IOS逆向开发系列_Reveal_调试任意APP的UI"
+title:  "IOS逆向开发系列_Reveal_解码任意APP的UI界面"
 categories:  IOS逆向开发
 tags:     Reveal iOSOpenDev
 author: 3行代码
@@ -11,10 +11,16 @@ author: 3行代码
 
 ## 前言
 
-从最开始在笔记上写的Reveal使用文章，到现在开放到博客，Reveal也历经了好多个版本：1.5.x->1.6.x->Version++。
-下边更新了以前写的文章。最近安装Reveal的朋友们可以参照此教程。
+从最开始写在笔记上的Reveal使用记录，到现在开放到博客，Reveal也历经了好几个版本：1.5.x->1.6.x->V++(V2等)。
+下边更新了以前写的记录，最近安装Reveal的朋友可以参照此教程。
 
-新的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。首先简述如何创建。
+## 关于破解：
+
+如果是使用1.6.3及以下的版本，可以google到破解文件，覆盖安装就行。
+如果是V2及以上版本，破解方法我还没找呢，公司用的是1.6.3版本，家里的就通过修改电脑时间。。
+顺便说下，免费使用时长，是可以通过修改电脑日期来调整。这个是我用过的版本里通用的福利方法。。
+
+新版的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。
 
 ## RevealLoader
 
@@ -32,9 +38,7 @@ author: 3行代码
 
 其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网[http://revealapp.com/](http://revealapp.com/)，
 
-前期准备：越狱版iphone+破解版Reveal。
-破解方法网上很多，大家可以搜搜。
-下面直接进重点。
+下面进重点。
 
 ## framework +  dylib + plist
 
@@ -43,7 +47,7 @@ author: 3行代码
 
     scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
 
-早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：
+早期版本(V++之前)的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：
 
     scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
 
@@ -65,7 +69,6 @@ author: 3行代码
 
 将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/
 
-注：
 
 
 ####  libReveal.plist
@@ -92,7 +95,7 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
 以上完成之后：
 
     # killall SpringBoard
-    或者手动重启手机，
+    或者手动重启
 
 然后 开启Reveal，就可以尽情的分析APP喽。
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title> 一道面试题里藏的IOS世界</title>
-    <meta name="description" content="  前序  解析          1、枚举                  1.1 定义规范的枚举          1.2 定义规范的枚举内容          1.3 枚举的深入          1.4 优化后的写法                    上边这张图是前段时间网上比较火的一套面试题中的。...">
+    <meta name="description" content="  前序  解析          1、枚举                  1.1 定义规范的枚举          1.2 定义规范的枚举内容          1.3 枚举的深入          1.4 优化后的写法                      2、属性          属性的修饰符  ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -319,14 +319,16 @@ enum JUserGender : NSInteger {  }
 
 <h4 id="section-6">1.4 优化后的写法</h4>
 
-<p>typedef NS_ENUM(NSInteger, JUserGender) {
+<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSInteger, JUserGender) {
     JUserGenderUnknown,
     JUserGenderMale,
     JUserGenderGay,
     JUserGenderFemale,
     JUserGenderLesbian,
     JUserGenderNeuter
-};</p>
+};
+</code></pre>
+</div>
 
 <h2 id="section-7">2、属性</h2>
 
