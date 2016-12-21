@@ -25,9 +25,7 @@ def missing_you():
 * email:[mythziven@gmail.com](mythziven@gmail.com)
 
 
-### 友情链接
 
-\| [MythKiven](http://blog.csdn.net/jiang314/) \| 
 
 ### 评论
 
