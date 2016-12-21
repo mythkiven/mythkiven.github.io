@@ -47,13 +47,13 @@ author: 3行代码
 
     scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
 
-早期版本(V++之前)的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，正如下边的已经废弃的代码：
+早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，如下：
 
     scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
 
 ####  libReveal.dylib
 
-这个文件是没有的，网上有一种方法是使用iOSOpenDev创建的，简述如下：
+新版的这个文件是没有的，在早期是有的。麻烦点可以使用iOSOpenDev创建：
 
 ###### 方法1：iOSOpenDev创建一个
 
@@ -67,7 +67,7 @@ author: 3行代码
 
 ###### 方法2
 
-将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/
+将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/
 
 
 
