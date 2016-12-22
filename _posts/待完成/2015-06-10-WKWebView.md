@@ -2,7 +2,7 @@
 layout: post
 title:  "WKWebView使用小结"
 categories: WKWebView
-tags: WKWebView
+tags: WKWebView、Native与JS交互、离线缓存与NSURLProtocol
 author: 3行代码
 ---
 
@@ -11,126 +11,108 @@ author: 3行代码
 
 ## 前言
 
-一直使用UIWebView，使用久了就会发现，相比 Nirtro JavaScript引擎的Safari，WebView实在太过笨重，还会有内存泄漏。
-然而自诩有60fps刷新率、内置手势、高效的app和web信息交换通道、和 Safari相同的JavaScript引擎，WKWebView明显的优化了这些不足，下边就个人使用体会做个小结。
+WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WkWebView，下边总结了前段时间学习的笔记，记录下来。如果需要demo的还请留言。
+早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。
+
+就这段时间的使用体验来看，变化集中在：
+- 1、内存消耗少；
+- 2、协议接口更细化，更丰富；
+- 3、有导航的概览、网站窗口、网站列表等概念；
+
 
 ## 1、基础
 
-WKWebView是在iOS8中新增的，如果需要兼容iOS7，需要判断系统版本，然后选择性的使用。
+基本属性
 
 ```
 #import <WebKit/WebKit.h>
 WKWebView *webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-// 加载过程代理
+
+// 代理
 webView.navigationDelegate = self;
-// UI界面相关代理，原生控件支持。
 webView.UIDelegate = self;
-// 设置是否透明，默认yes，不透明的。设置为NO，可以在web下面放一个img
-webView.opaque = NO;   
+
+// opaque不透明的。
+webView.opaque = NO;  
+
+// YES证明webView还在加载数据,所有数据加载完毕后,webView就会为No
+// webView.loading;
+
 // web内手势左右滑动导航
-webView.allowsBackForwardNavigationGestures =YES;  
-// 设置加载进度：自带的进度条: webView.estimatedProgress
-// get是否加载 webView.loading
-// get标题 webView.title
+webView.allowsBackForwardNavigationGestures =YES;
+
 [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
 ```
 
 #### 1.1 初始化
 
-// 初始化方法，两种
+初始化方法，两种：
 
     // 默认初始化
     - (instancetype)initWithFrame:(CGRect)frame;
     // 根据对webview的相关配置，进行初始化
     - (instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
-    
-    使用见下文的JS交互
+     
 
 
-#### 1.2 监听title和estimatedProgress
+#### 1.2 加载页面
 
-可以利用title和estimatedProgress，用KVO去监听，实时改变进度和标题:
-```
-[self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
-[self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
-        [self.progress setAlpha:1.0f];
-        [self.progress setProgress:self.webView.estimatedProgress animated:YES];
-        
-        if(self.webView.estimatedProgress >= 1.0f) {
-            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                [self.progress setAlpha:0.0f];
-            } completion:^(BOOL finished) {
-                [self.progress setProgress:0.0f animated:NO];
-            }];
-        }
-    }
-    else
-        if ([keyPath isEqualToString:@"title"] && object == self.webView)
-        {
-            NSString * titleText = self.webView.title;
-            title.text = titleText; 
-        }
-        else {
-            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        }
-}
-
-注意：移除掉观察者
- [self.webView removeObserver:self forKeyPath:@"title"];
- [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-
-```
-
-#### 1.3 加载页面
-
-1、加载网页与HTML代码的方式与UIWebView相同，代码如下：
-```
-[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
-```
-
-2、不同的是，WKWebView加载本地的静态HTML需要注意：
-
-###### 1.3.1 加载本地页面
-
-1、IOS9
-[WKWebView loadFileURL:allowingReadAccessToURL:]: 是IOS9的方法，使用时注意判断。
-
-    [self.webView loadFileURL:[NSURL fileURLWithPath:url] allowingReadAccessToURL:[NSURL fileURLWithPath:path]];
-其中的前面一个参数url是指想要加载的具体哪个文件(比如指向一个index.html)，后面一个参数它是指系统能够访问的文件路径，就是HTML所需的相关JS、CSS 等文件所在的目录。
-
-2、IOS8
-加载本地页面:可以先将所需文件copy到tmp中，然后使用loadRequest加载。
+// 通过一个网页URL来加载一个WKWebView
+-loadRequest: 
+// 根据一个文件,加载一个WKWebView，后边是资源路径 【IOS9】
+-loadFileURL: allowingReadAccessToURL: 
+// 将html文件读取为字符串从而加载为WKWebView，baseURL是我们自己设置的资源路径
+-loadHTMLString: baseURL: 
+// 下边方法使用的比较少，但更加自由，其中data是文件数据，MIMEType是文件类型，characterEncodingName是编码类型，baseURL是素材资源路径
+-(nullable WKNavigation *)loadData:(NSData *)data MIMEType:(NSString *)MIMEType characterEncodingName:(NSString *)characterEncodingName baseURL:(NSURL *)baseURL NS_AVAILABLE(10_11, 9_0);
 
 
-#### 1.4 代理方法
+#### 1.3 协议方法
+
+##### 1.3.1  需要注意的几个协议方法：
+
+1、-(void)webView: decidePolicyForNavigationAction: 
+
+注意的是：
+A、需要call decisionHandler，允许或者不允许加载，否则报错。
+B、
+当点击link时，如果有标签_blank,在webview中不会新开窗口，但是在WKWeb中，可以控制新开一个WKWebview。这时可以通过该方法的第一个参数WKNavigationAction的属性，来判断是否需要开新的view:
+
+    if(!navigationAction.targetFrame.mainFrame){开新窗口}
+这时就会调用 createWebViewWithConfiguration方法return的wkwebview，来加载新的页面。但如果没有实现这个协议，那么操作link就不会有反应了。
+我在开发中实际没有用到需要开view的复杂情况，所以我的处理也是简单粗暴，直接处理掉所有的_blank标签。
+
+2、-(void) webView: decidePolicyForNavigationResponse: 
+这个也需要call decisionHandler,允许or不允许加载。
+
+##### 1.3.2 其它协议方法汇总
 
 ```
 
 /* WKNavigationDelegate  */
 
-//1、在发送请求之前，决定是否跳转
+//1、【即将发送request请求】 可以决定是否请求，拦截request、cookie等。call decisionHandler
 - (void)webView: decidePolicyForNavigationAction: 
-
-//2、页面开始加载时调用
+//2、【开始请求页面】
 - (void)webView: didStartProvisionalNavigation: 
-//3、当内容开始返回时调用
+//3、【收到response】 根据response决定要不要继续加载。call decisionHandler
+-(void) webView: decidePolicyForNavigationResponse: 
+//4、【收到web内容，开始渲染】 可以注入JS
 - (void)webView: didCommitNavigation: 
-//4、页面加载完成之后调用
+//5、【页面渲染完成】可以注入JS
 - (void)webView: didFinishNavigation: 
-// 页面加载失败时调用
-- (void)webView: didFailProvisionalNavigation: 
 
-/* 决定是否执行页面跳转的代理方法 */
-// 接收到服务器跳转请求之后调用
-- (void)webView:  didReceiveServerRedirectForProvisionalNavigation: 
-// 当客户端收到服务器的响应头，根据response相关信息，可以决定这次跳转是否可以继续进行
-1、需要执行对应的block 2、可以拦截自定义的URL来实现JS调用OC方法
-- (void)webView: decidePolicyForNavigationResponse: 
-// 根据webView、navigationAction相关信息决定这次跳转是否可以继续进行
-- (void)webView: decidePolicyForNavigationAction: 
+// 【网页内容被终止】
+- (void)webViewWebContentProcessDidTerminate:
+// 【错误：页面跳转失败】
+- (void)webView: didFailNavigation: 
+// 【错误：启动加载数据失败】
+- (void)webView: didFailProvisionalNavigation: 
+// 【页面校验身份】
+- (void)webView: didReceiveAuthenticationChallenge: 
+// 【重定向】
+- (void)webView: didReceiveServerRedirectForProvisionalNavigation
+ 
 
 /* UIDelegate  */
 当页面中有调用了js的alert、confirm、prompt方法就会触发以下方法
@@ -153,7 +135,40 @@ webView.allowsBackForwardNavigationGestures =YES;
 //比向前向后更强大，可以跳转到某个指定历史页面
 -(WKNavigation *)goToBackForwardListItem:(WKBackForwardListItem *)item; 
 
- 
+#### 1.6 KVO监听标题和进度条
+
+可以利用title和estimatedProgress，用KVO去监听，实时改变进度和标题:
+```
+[self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+[self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
+        [self.progress setAlpha:1.0f];
+        [self.progress setProgress:self.webView.estimatedProgress animated:YES];
+        
+        if(self.webView.estimatedProgress >= 1.0f) {
+            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progress setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progress setProgress:0.0f animated:NO];
+            }];
+        }
+    }
+    else if ([keyPath isEqualToString:@"title"] && object == self.webView) {
+            NSString * titleText = self.webView.title;
+            self.title = titleText; 
+    } else {
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
+}
+
+注意：移除掉观察者
+ [self.webView removeObserver:self forKeyPath:@"title"];
+ [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+
+```
+
 
 ##  2、Native与JS的通信
 
@@ -345,28 +360,15 @@ Native拦截JS
 
 #### 2.4 当然也可以使用三方库 进行通信
 
+## 3、 缓存与NSURLProtocol
 
-#### 2.5 缓存
-
-但是他有一个最致命的缺陷，就是WKWebView的请求不能被NSURLProtocol截获。而我们团队开发的app中对于H5容器最佳的优化点主要就在于使用NSURLProtocol技术对于H5进行离线包的处理和H5的图片和Native的图片公用一套缓存的技术。因为该问题的存在，目前我们团队还没有使用WKWebView代替UIWebVIew。
+WKWebView的请求不能被NSURLProtocol截获。而我们团队开发的app中对于H5容器最佳的优化点主要就在于使用NSURLProtocol技术对于H5进行离线包的处理和H5的图片和Native的图片公用一套缓存的技术。因为该问题的存在，目前我们团队还没有使用WKWebView代替UIWebVIew。
 
 在UIWebView，使用NSURLCache缓存，通过setSharedURLCache可以设置成我们自己的缓存，但WKWebView不支持NSURLCache。所以涉及到离线缓存的问题时，要注意区分使用哪个。
-
-#### 2.6 类
-
-WKBackForwardList: 之前访问过的 web 页面的列表，可以通过后退和前进动作来访问到。
-WKBackForwardListItem: webview 中后退列表里的某一个网页。
-WKFrameInfo: 包含一个网页的布局信息。
-WKNavigation: 包含一个网页的加载进度信息。
-WKNavigationAction: 包含可能让网页导航变化的信息，用于判断是否做出导航变化。
-WKNavigationResponse: 包含可能让网页导航变化的返回内容信息，用于判断是否做出导航变化。
-WKPreferences: 概括一个 webview 的偏好设置。
-WKProcessPool: 表示一个 web 内容加载池。
-WKScriptMessage: 包含网页发出的信息。
-...
+ 
 
 
-## 3、WKWebView的常见问题
+## 4、WKWebView的常见问题
 
 崩溃问题: Terminating app due to uncaught exception ‘NSInternalInconsistencyException’ reason: ‘Completion handler passed to - [ViewController webView: decidePolicyForNavigationAction: decisionHandler:] was not called’
 解决办法: 在webView:decidePolicyForNavigationAction:decisionHandler:函数里需执行decisionHandler的block
