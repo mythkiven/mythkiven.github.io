@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>NSURLProtocol使用报告</title>
+    <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头        5、request.URL重定向          6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSession注意...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2015/10/15/NSURLProtocol/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>NSURLProtocol使用报告</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2015-10-15
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a-->
+        <a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a>&nbsp;
+    
+        <!--a href="/tag/#%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98" title="Tag: 离线缓存" rel="tag">离线缓存</a-->
+        <a href="/tag/#离线缓存" title="Tag: 离线缓存" rel="tag">离线缓存</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、基本使用</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、注册</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、实现方法</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3、坑</a></li>
+      <li><a href="#request" id="markdown-toc-request">4、修改request请求头</a></li>
+    </ul>
+  </li>
+  <li><a href="#requesturl" id="markdown-toc-requesturl">5、request.URL重定向</a>    <ul>
+      <li><a href="#nsurlprotocolclient" id="markdown-toc-nsurlprotocolclient">6、NSURLProtocolClient</a></li>
+    </ul>
+  </li>
+  <li><a href="#nsurlprotocolnsurlsession" id="markdown-toc-nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">3、缓存策略</a>    <ul>
+      <li><a href="#xcdatamodeld" id="markdown-toc-xcdatamodeld">1、创建.xcdatamodeld</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">2、创建操作实体类</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>注意的是:本文写的比较早，一些情况没有考虑进来。像WKWebview，NSURLSession的支持等，下面会统一说明。</p>
+
+<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如今天分享的NSURLProtocol。</p>
+
+<p>NSURLProtocol并不是protocol是一个虚拟类。使用的话需要实例化一个子类来操作。在这个子类中，可以实现如下的功能，是不是很神奇？</p>
+
+<ul>
+  <li>重定向网络请求</li>
+  <li>忽略网络请求，使用本地缓存</li>
+  <li>自定义网络请求的返回结果</li>
+  <li>全局的网络请求设置</li>
+</ul>
+
+<p>注意:</p>
+<ul>
+  <li>NSURLProtocol只能拦截 UIURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
+  <li>AFN，SDWebImage等开始使用NSURLSession，这个也需要注意</li>
+  <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
+</ul>
+
+<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol，感兴趣的可以在文档中阅读相关的内容。</p>
+
+<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i</a></p>
+
+<p>图：</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="" /></p>
+
+<h2 id="section">1、基本使用</h2>
+
+<h4 id="section-1">1、注册</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [NSURLProtocol registerClass:[CodeURLProtocol class]];
+    return YES;
+}
+</code></pre>
+</div>
+
+<h4 id="section-2">2、实现方法</h4>
+
+<p>// 1、每有一个请求的时候都会调用这个方法，如果返回YES就代表这个request需要被处理，反之就是不需要被处理。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>static NSString * const protocolKey = @"protocolKey";
+
++ (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    //防止无限循环，因为一个请求在被拦截处理过程中，也会发起一个请求，这样又会走到这里
+    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
+        return NO;
+    }
+    // 对https请求做相关处理
+    NSString *scheme = [[request URL] scheme];
+    if ([scheme caseInsensitiveCompare:@"https"] == NSOrderedSame) {
+        
+        return YES;
+    }
+    return NO;
+}
+</code></pre>
+</div>
+
+<p>// 2、这个方法返回request，一般不做处理直接返回request</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
+    return request;
+}
+</code></pre>
+</div>
+
+<p>///3 这个方法用于处理被拦截的request，拦截请求头、重定向、缓存处理等</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ * 开始请求
+ */
+- (void)startLoading {
+    
+}
+</code></pre>
+</div>
+
+<p>// 4 停止请求</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void) stopLoading {}
+</code></pre>
+</div>
+
+<h4 id="section-3">3、坑</h4>
+<p>不做解释，遇到的人都懂：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
+    return NO;
+}
+[NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
+</code></pre>
+</div>
+
+<h4 id="request">4、修改request请求头</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)startLoading {
+    NSMutableURLRequest *request = [self.request mutableCopy];
+
+    //给请求头添加一个请求体
+    NSMutableDictionary *headers = [request.allHTTPHeaderFields mutableCopy];
+    [headers setObject:@"3code.info" forKey:@"key"];
+    request.allHTTPHeaderFields = headers;
+
+    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
+
+    .....然后使用NSURLSession发送request
+}
+</code></pre>
+</div>
+<h2 id="requesturl">5、request.URL重定向</h2>
+<p>将请求重定向到3code.info</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+- (void)startLoading {
+
+    NSMutableURLRequest *request = [self.request mutableCopy];
+    //request改为访问3code.info了
+    request.URL = [NSURL URLWithString:@"http://www.3code.info"];
+    
+    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
+    
+    //使用NSURLSession继续把重定向的request发送出去
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:mainQueue];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+    
+    [task resume];
+}
+</code></pre>
+</div>
+<h4 id="nsurlprotocolclient">6、NSURLProtocolClient</h4>
+
+<p>webview中发送一个request，在这里拦截后使用NSURLSession重新发request。那webview是收不到response的。这里就要做一个处理，每一个NSURLProtocol的子类都有一个client对象来处理response。写法用下边这个就行，比较固定的。(保留了以前的NSURLConnection)</p>
+
+<p>本次更新：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error) {
+        [self.client URLProtocol:self didFailWithError:error];
+    } else {
+        [self.client URLProtocolDidFinishLoading:self];
+    }
+}
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    
+    completionHandler(NSURLSessionResponseAllow);
+}
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    [self.client URLProtocol:self didLoadData:data];
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
+{
+    completionHandler(proposedResponse);
+}
+</code></pre>
+</div>
+<p>历史记录</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+}
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.client URLProtocol:self didLoadData:data];
+}
+- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+    [self.client URLProtocolDidFinishLoading:self];
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [self.client URLProtocol:self didFailWithError:error];
+}
+</code></pre>
+</div>
+
+<h2 id="nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</h2>
+
+<p>上一期的项目有个需求，就是在移动网络下，不进行高清图片，视频等下载操作。其中遇到的问题就是拦截NSURLSession。这里简化以不下载图片为例，解说如何实现。</p>
+
+<p>思路：使用NSURLProtocol拦截所有的request，过滤耗流量的request。并做处理。其实蛮简单的，但是AFNetwork、SDWebImageCache等三方库并未拦截。原因是NSURLSession。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
+        return NO;
+    }
+    //满足条件时直接截获请求
+    if ([[UserConfig sharedInstance] isOffPicture] &amp;&amp; ([request.URL.pathExtension caseInsensitiveCompare:@"jpg"] == NSOrderedSame || [request.URL.pathExtension caseInsensitiveCompare:@"png"] == NSOrderedSame) &amp;&amp; [self isPictureDownload]) {
+        return YES;
+    }
+    return NO;
+}
+</code></pre>
+</div>
+
+<p>从官方文档中可以了解到自定义的NSURLProtocol子类需要赋给NSURLSessionConfiguration的protocolClasses属性,同时其创建的Session时关联的NSURLSessionConfiguration为defaultSessionConfiguration。那么解决方法就跃然纸上了，如下代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLSessionConfiguration *)zw_defaultSessionConfiguration{
+//    如果需要NSURLProtocol来截获NSURLSession发出的请求，需要每一个NSURLSession在创建时配置的NSURLSessionConfiguration类的protocolClasses属性附上自定义的NSURLProtocol：如下
+    
+    NSURLSessionConfiguration *configuration = [self zw_defaultSessionConfiguration];
+    NSArray *protocolClasses = @[[CodeURLProtocol class]];
+    configuration.protocolClasses = protocolClasses;
+    
+    return configuration;
+}
++ (void)load{
+//  使用Method Swizzling方法，defaultSessionConfiguration实现（AFNetwork、SDWebImageCache在创建时使用的是[NSURLSessionConfiguration defaultSessionConfiguration]）如下：
+    Method systemMethod = class_getClassMethod([NSURLSessionConfiguration class], @selector(defaultSessionConfiguration));
+    Method zwMethod = class_getClassMethod([self class], @selector(zw_defaultSessionConfiguration));
+    method_exchangeImplementations(systemMethod, zwMethod);
+    
+    [NSURLProtocol registerClass:[CodeURLProtocol class]];
+}
+
+</code></pre>
+</div>
+
+<p>以上就解决了NSURLProtocol拦截NSURLSession的问题。</p>
+
+<h2 id="section-4">3、缓存策略</h2>
+
+<h4 id="xcdatamodeld">1、创建.xcdatamodeld</h4>
+
+<p>有些没用过的可能不认识这个家伙，其实就是CoreData，将模型对象的持久化到磁盘里。</p>
+
+<ul>
+  <li>创建实体 Add Entity</li>
+  <li>添加字段(键值)data(Binary data)\encoding (String)\mimeType (String) \url(String)\timeStamp(data)</li>
+</ul>
+
+<p>注意： Codegen可能需要改成Manual/none。如果出现错误:<code class="highlighter-rouge">error: filename used twice</code></p>
+
+<h4 id="section-5">2、创建操作实体类</h4>
+<p>xcode菜单栏-&gt;Edit-&gt;Create NSManagedObject Subclass</p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE_Reveal/">IOS逆向开发系列_Reveal_解码任意APP的UI界面</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2015/10/30/SecureCRT/">SecureCRT小教程</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/10/15/NSURLProtocol/" data-title="NSURLProtocol使用报告" data-url="http://localhost:4000/2015/10/15/NSURLProtocol/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>
