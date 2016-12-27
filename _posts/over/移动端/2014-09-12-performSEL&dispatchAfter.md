@@ -58,7 +58,7 @@ author: 3行代码
 dispatch_async(dispatch_get_main_queue(), ^{ [self run]  });
 ```
 
-原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有定时器，没法delay执行SEL，所以要添加到主线程操作。
+原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有runloop(需要手动添加)，没法delay执行SEL，so添加到主线程操作。
 
 #### 2、方案2
 

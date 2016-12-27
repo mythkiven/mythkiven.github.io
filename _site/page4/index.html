@@ -170,7 +170,9 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>
+        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>&nbsp;
+    
+        <a href="/category/#缓存~~~" title="Category: 缓存~~~" rel="category">缓存~~~</a>
     
   
 
@@ -189,7 +191,7 @@
     
         <a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a>&nbsp;
     
-        <a href="/tag/#离线缓存" title="Tag: 离线缓存" rel="tag">离线缓存</a>
+        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
     
   
 
@@ -213,11 +215,9 @@
   <li><a href="#nsurlprotocolnsurlsession" id="markdown-toc-nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</a></li>
 </ul>
 
-<p>注意的是:本文写的比较早，一些情况没有考虑进来。像WKWebview，NSURLSession的支持等，下面会统一说明。</p>
+<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。</p>
 
-<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如今天分享的NSURLProtocol。</p>
-
-<p>NSURLProtocol并不是protocol是一个虚拟类。使用的话需要实例化一个子类来操作。在这个子类中，可以实现如下的功能，是不是很神奇？</p>
+<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能，是不是很神奇？</p>
 
 <ul>
   <li>重定向网络请求</li>
@@ -228,16 +228,15 @@
 
 <p>注意:</p>
 <ul>
-  <li>NSURLProtocol只能拦截 UIURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
-  <li>AFN，SDWebImage等开始使用NSURLSession，这个也需要注意</li>
+  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
   <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
+  <li>AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑</li>
+  <li>UIWebView本身是有缓存的，基于NSURLCache来实现</li>
 </ul>
 
-<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol，感兴趣的可以在文档中阅读相关的内容。</p>
+<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">官方文档</a></p>
 
-<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i</a></p>
-
-<p>图：</p>
+<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。</p>
 
 <p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="" /></p>
 
@@ -435,6 +434,479 @@
                 </div>
                 <div class="read-all">
                     <a  href="/2015/10/15/NSURLProtocol/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-10-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#NSURLCache" title="Category: NSURLCache" rel="category">NSURLCache</a>&nbsp;
+    
+        <a href="/category/#缓存" title="Category: 缓存" rel="category">缓存</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#NSURLCache" title="Tag: NSURLCache" rel="tag">NSURLCache</a>&nbsp;
+    
+        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">基础篇</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、扫盲普及</a></li>
+      <li><a href="#get-" id="markdown-toc-get-">2、基础：GET 缓存</a></li>
+      <li><a href="#post-" id="markdown-toc-post-">3、进阶：POST 缓存</a></li>
+      <li><a href="#nsurlcache" id="markdown-toc-nsurlcache">4、进阶：自定义缓存策略的NSURLCache</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-2" id="markdown-toc-section-2">进阶篇</a>    <ul>
+      <li><a href="#useprotocolcachepolicy---" id="markdown-toc-useprotocolcachepolicy---">1、UseProtocolCachePolicy - 默认缓存的机制</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">2、缓存高清图片</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>不少的开源项目的网络缓存都是自己家的轮子(譬如AFN俩独立缓存模块：AFAFImagecache (处理image)、NSURLCache(默认URL缓存))，我们现在的项目并未涉及到太复杂的缓存需求，自己造轮子不划算直接用系统的NSURLCache就OK。</p>
+
+<p>在使用中也遇到不少坑：</p>
+
+<ul>
+  <li>响应内容过大，不会被缓存；</li>
+  <li>Transfer-Encoding: Chunked  分块传输也会导致不缓存。</li>
+  <li>…</li>
+</ul>
+
+<p>目前在协助子公司开发的一个项目里涉及到各种HTML5中的离线存储需求，实际用的是NSURLProtocol+NSURLCache，根据场景，用两套缓存的方案。对NSURLProtocol感兴趣的可以浏览我的另一篇关于NSURLProtocol的blog。</p>
+
+<h3 id="section">基础篇</h3>
+
+<h4 id="section-1">1、扫盲普及</h4>
+
+<p>1、在iOS中，可以使用NSURLCache类缓存数据，iOS 5之前只支持内存缓存；从iOS 5开始同时支持内存缓存和硬盘缓存；iOS6.0开始，支持HTTPS缓存。</p>
+
+<p>2、缓存分为:内存缓存\硬盘缓存。从app运行角度来说：如果程序没有退出，那么会使用内存中的缓存，如果已经退出重启，则使用硬盘缓存(读取到内存中)。</p>
+
+<p>3、NSURLCache不支持Post请求的缓存处理，GET默认缓存：由于GET请求一般用来查询数据，POST请求一般是发大量数据给服务器处理。因此一般只对GET请求进行缓存，而不对POST请求进行缓存。</p>
+
+<p>4、使用前提：</p>
+
+<ul>
+  <li>经常更新：不能用缓存；</li>
+  <li>一成不变：果断用缓存；</li>
+  <li>偶尔更新：可以定期更改缓存策略或者清除缓存</li>
+  <li>GET网络请求、webview页面：果断缓存；</li>
+  <li>App离线缓存功能等</li>
+</ul>
+
+<p>5、使用也很简单，几行代码搞定：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 1 修改默认的缓存空间：
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+  NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024diskCapacity:20 * 1024 * 1024 diskPath:nil];
+  [NSURLCache setSharedURLCache:URLCache];
+}
+// 2 设置缓存策略：
+request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+OK，搞定。
+</code></pre>
+</div>
+<p>如果不想使用缓存，上边数值设置0即可。</p>
+
+<p>6、缓存的有效性，下文会提到，服务器返回的数据需要一个有效期，过期有效期就得更新本地的缓存。</p>
+
+<h4 id="get-">2、基础：GET 缓存</h4>
+
+<p>1、基本用法:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+（1）获得全局缓存对象 NSURLCache *cache = [NSURLCache sharedURLCache]; 
+（2）设置内存缓存的最大容量（字节为单位，默认为512KB）- (void)setMemoryCapacity:
+（3）设置硬盘缓存的最大容量（字节为单位，默认为10M）- (void)setDiskCapacity:
+（4）硬盘缓存的位置：沙盒/Library/Caches
+（5）取得某个请求的缓存- (NSCachedURLResponse *)cachedResponseForRequest:
+（6）清除某个请求的缓存- (void)removeCachedResponseForRequest:
+（7）清除所有的缓存- (void)removeAllCachedResponses;
+</code></pre>
+</div>
+
+<p>2、缓存</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    // 1.创建请求
+    NSURL *url = [NSURL URLWithString:@"GET"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+    
+    // 2.根据request检测缓存  
+    NSURLCache *cache = [NSURLCache sharedURLCache];
+    NSCachedURLResponse *response = [cache cachedResponseForRequest:request];
+    if (response) {
+        NSLog(@"已经有缓存:%@",response.data);
+        // 判断时间，超时就移除缓存
+    } else {
+        NSLog(@"暂无缓存,开启请求");
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+         if (data) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+             NSLog(@"%@", dict);
+         }
+    }];
+    }
+    
+    
+</code></pre>
+</div>
+
+<h4 id="post-">3、进阶：POST 缓存</h4>
+
+<p>POST 实现缓存需要自己手动实现，如下解说：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+// 读取缓存
++ (id)getCacheResponseWithURL:(NSString *)url params:(NSDictionary *)params {
+    id cacheData = nil;
+    if (url) {
+        // 指定目录
+        NSString *directoryPath = DIRECTORYPATH;
+        // url+param确定唯一路径
+        NSString *originString = [NSString stringWithFormat:@"%@+%@",url,params];
+
+        NSString *path = [directoryPath stringByAppendingPathComponent:[self md5:originString]];
+        NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
+        if (data) {
+            cacheData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        }
+    }
+    return cacheData;
+}
+// 写入缓存
++ (void)cacheResponseObject:(id)responseObject request:(NSURLRequest *)request params:(NSDictionary *)params {
+    if (request &amp;&amp; responseObject &amp;&amp; ![responseObject isKindOfClass:[NSNull class]]) {
+        NSString *directoryPath = DIRECTORYPATH;
+        NSError *error = nil;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:directoryPath isDirectory:nil]) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:directoryPath
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&amp;error];
+        }
+
+        NSString *originString = [NSString stringWithFormat:@"%@+%@",request.URL.absoluteString,params];
+
+        NSString *path = [directoryPath stringByAppendingPathComponent:[self md5:originString]];
+        NSDictionary *dict = (NSDictionary *)responseObject;
+
+        NSData *data = nil;
+        if ([dict isKindOfClass:[NSData class]]) {
+            data = responseObject;
+        } else {
+            data = [NSJSONSerialization dataWithJSONObject:dict
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:&amp;error];
+        }
+        if (data &amp;&amp; error == nil) {
+            [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
+        }
+    }
+}
+// 加密
++ (NSString *)md5:(NSString *)string {
+    if (string == nil || [string length] == 0) {
+        return nil;
+    }
+    unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
+    CC_MD5([string UTF8String], (int)[string lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
+    NSMutableString *ms = [NSMutableString string];
+
+    for (i = 0; i &lt; CC_MD5_DIGEST_LENGTH; i++) {
+        [ms appendFormat:@"%02x", (int)(digest[i])];
+    }
+
+    return [ms copy];
+}
+</code></pre>
+</div>
+
+<h4 id="nsurlcache">4、进阶：自定义缓存策略的NSURLCache</h4>
+
+<p>思路如下：</p>
+
+<ul>
+  <li>1、网络请求开始时，首先会判断沙盒中是否存在缓存数据；[没有直接请求]</li>
+  <li>2、如果有，判断是否过期；没过期则使用本地数据。[过期则删除缓存，直接请求]</li>
+  <li>3、请求URL
+代码如下：</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+// 判断是否为GET
+-(NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest*)request{
+    if ([request.HTTPMethod compare:@"GET"] != NSOrderedSame) {
+        return [super cachedResponseForRequest:request];
+    }
+    return [self customResponseForRequest:request];
+}
+
+// 加密
+-(NSString *)getFileName:(NSString *)url{
+    return [url getMd5_32Bit];
+}
+
+-(NSString *)getOtherInfoName:(NSString *)url{
+    return [[NSString stringWithFormat:@"%@-otherInfo",url] getMd5_32Bit];
+}
+- (NSString *)cacheFilePath:(NSString *)fileName{
+    NSString *filePath = [NSString stringWithFormat:@"URLCache/%@",fileName];
+    NSString *path = kFilePathAtCachWithName(filePath);
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    if([fileManager fileExistsAtPath:path isDirectory:&amp;isDir] &amp;&amp; isDir) {
+    } else{
+         [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return path;
+}
+
+-(NSCachedURLResponse*)customResponseForRequest:(NSURLRequest*)request{
+    ​NSString *url = request.URL.absoluteString;//请求的链接
+    
+    // URL MD5 后作为缓存文件名。这里取出MD5后的文件名
+    NSString*fileName = [self getFileName:url];
+    // 缓存信息的文件名 @"%@-otherInfo",url
+    NSString*otherInfoName = [self getOtherInfoName:url];
+    // 创建/获取 缓存的目录路径
+    NSString*filePath = [self cacheFilePath:fileName];
+    // 缓存信息字典路径
+    NSString*otherInfoPath = [self cacheFilePath:otherInfoName];
+    
+    ​NSFileManager *fileManger = [NSFileManager defaultManager];
+    //当文件存在的时候
+    if ([fileManger fileExistsAtPath:filePath]) {
+        NSDate*date = [NSDate date];
+        BOOL isOverdue = YES;
+        NSDictionary *dicInfo = [NSDictionary dictionaryWithContentsOfFile:otherInfoPath];
+        // 过期与否？
+        if(self.catchTime &gt; 0 &amp;&amp; dicInfo) {
+            NSDate*createDate = dicInfo[kTimeKey];
+            double createTime = [date timeIntervalSinceDate:createDate];
+            if (createTime &lt; self.catchTime) {
+                isOverdue = NO;
+        }}
+        //没有过期 加载缓存数据
+        if (!isOverdue) {
+            NSLog(@"访问缓存数据..");
+            NSData *data = [NSData dataWithContentsOfFile:filePath];
+            NSURLResponse *response = [[NSURLResponse alloc] initWithURL:request.URL MIMEType:dicInfo[kMIMETypeKey] expectedContentLength:data.lengthtextEncodingName:dicInfo[kTextEncodingNameKey]];
+            NSCachedURLResponse *cacheResponse = [[NSCachedURLResponsealloc] initWithResponse:response data:data];
+            return cacheResponse;
+            
+        }else{//已经过期，删除数据
+            [fileManger removeItemAtPath :filePath error:nil];
+            [fileManger removeItemAtPath :otherInfoPath error:nil];
+        }
+    }
+    
+    BOOL isExsit = [[self.dicResponse objectForKey:url] boolValue];
+    if (!isExsit) {
+        [self .dicResponse setObject:@(YES) forKey:url];
+        NSLog(@"网络请求数据...");
+        __block NSCachedURLResponse *cacheResponse = nil;
+        [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse*response, NSData *data, NSError *connectionError) {
+            //移除请求记录
+            [self.dicResponse removeObjectForKey:url];
+            if (data &amp;&amp; response) {
+                NSMutableDictionary *dicInfo = [NSMutableDictionarydictionary];
+                [dicInfo setObject :[NSDate date] forKey:kTimeKey];
+                [dicInfo setObject :kUnNilStr(response.MIMEType) forKey:kMIMETypeKey];
+                [dicInfo setObject :kUnNilStr(response.textEncodingName) forKey:kTextEncodingNameKey];
+                BOOL state = [data writeToFile:filePath atomically:NO];
+                NSLog(@"%d",state);
+                [dicInfo writeToFile :otherInfoPath atomically:YES];
+                cacheResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+            }
+        }];
+        return cacheResponse;
+    }else{
+        NSLog(@"该请求已存在");
+    }
+    return nil;
+    
+}
+
+</code></pre>
+</div>
+<h2 id="section-2">进阶篇</h2>
+
+<h4 id="useprotocolcachepolicy---">1、UseProtocolCachePolicy - 默认缓存的机制</h4>
+
+<p>1、首先从apple提供的一个缓存策略的枚举说起：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)
+{
+    // 默认值：按照HTTP协议进行缓存
+    NSURLRequestUseProtocolCachePolicy = 0, 
+    // 非缓存模式：不使用缓存数据，无论是否有本地缓存
+    NSURLRequestReloadIgnoringLocalCacheData = 1,
+    // 缓存模式：无论缓存是否过期都是用缓存，没有缓存就进行网络请求
+    NSURLRequestReturnCacheDataElseLoad = 2,
+    // 离线模式：无论缓存是否过期都是用缓存，没有缓存也不会进行网络请求
+    NSURLRequestReturnCacheDataDontLoad = 3,
+
+    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,
+    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented
+    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented
+};
+</code></pre>
+</div>
+<p>这个枚举大家应该很熟悉，创建request时经常用到的。这里我进行了分类，主要是4类。其余3个排除。这里除了默认值，其他3个模式都很容易理解，下面以QQ空间的web页面拦截为例说明默认值是如何实现的：</p>
+
+<p>2、拦截QQ WebView的请求
+首先在webview上加载QQ空间页面，然后拦截webview上QQ空间登录的response，部分Header字段如下：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+HTTP/1.1 200 OK
+Content-Type    application/x-javascript
+Server  QZHTTP-2.38.20
+Content-Encoding    gzip
+Cache-Control   public; max-age=86400
+Proxy-Connection    Keep-alive
+</code></pre>
+</div>
+<p>注意：这里的Cache-Control是我们的目标字段。</p>
+
+<p>3、Cache-Control</p>
+
+<p>这个字段用于指定该次整个请求中的缓存机制。常见的取值有public、private、no-cache、max-age、must-revalidate等，默认为private。QQ空间的Cache-Control解读如下：</p>
+
+<ul>
+  <li>public : 所有内容都将被缓存(客户端和代理服务器都可缓存)；</li>
+  <li>max-age=86400 : 缓存的内容将在86400秒后失效, 这个选项只在HTTP 1.1可用。</li>
+</ul>
+
+<p>4、Cache位置</p>
+
+<p>对于webview而言，缓存的数据默认在Library/Caches里。如下所示(ssh连接iphone)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+# ls
+Documents/  Library/  tmp/
+# cd Library/ &amp;&amp; ls
+2222/  Caches/  Cookies/  Preferences/  WebKit/
+# cd Caches/ &amp;&amp; ls
+
+Databases.db                         http_ui.ptlogin2.qq.com_0.localstorage
+Snapshots/                           https_auth.alipay.com_0.localstorage
+com.apple.WebKit.Networking/         https_passport.jd.com_0/
+com.apple.WebKit.WebContent/         https_passport.jd.com_0.localstorage
+http_h5.m.taobao.com_0.localstorage  
+[截取部分缓存数据]
+</code></pre>
+</div>
+
+<p>那在app收到response之后，会根据Cache-Control字段，选择缓存的内容以及缓存的时间，而这些缓存的机制则是由服务器端定义。</p>
+
+<h4 id="section-3">2、缓存高清图片</h4>
+
+<p>经常会见到小图点开之后显示高清图片，那实现的一种方式就是:提前缓存高清图片,功能的实现要基于SDWebImage内部缓存的相关接口。</p>
+
+<p>操作如下：拦截response，然后以url为key，数据为value，先缓存起来，在查看大图的时候，直接加载缓存的图片
+代码如下：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+- (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse forRequest:(NSURLRequest *)request {
+    [super storeCachedResponse:cachedResponse forRequest:request];
+    NSString *mimeType = cachedResponse.response.MIMEType;
+
+    if ([mimeType hasPrefix:@"image"]) {
+        NSString *url = request.URL.absoluteString;
+        NSLog(@"cache url:%@", url);
+
+        SDImageCache *cache = [SDImageCache sharedImageCache];
+        [cache storeImage:[UIImage imageWithData:cachedResponse.data] forKey:url toDisk:NO];
+    }
+
+}
+</code></pre>
+</div>
+<p>但是注意，这种方法需要URL固定，如果Referer到其他站就会有问题了。</p>
+
+<p>最佳的方案是使用NSURLProtocol解决。详细的可以参考我的NSURLProtocol博文。
+如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+- (void)startLoading {
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSMutableURLRequest *request = [self.request mutableCopy];
+    [NSURLProtocol setProperty:@(YES) forKey:kProtocolHandledKey inRequest:request];
+    __weak typeof(self) weakSelf = self;
+    self.sessionTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            return;
+        }
+        NSString *mimeType = response.MIMEType;
+        if ([mimeType hasPrefix:@"image"]) {
+            NSString *url = weakSelf.request.URL.absoluteString;
+            SDImageCache *cache = [SDImageCache sharedImageCache];
+            [cache storeImage:[UIImage imageWithData:data] forKey:url toDisk:NO];
+        }
+        [weakSelf.client URLProtocol:weakSelf didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowedInMemoryOnly];
+        [weakSelf.client URLProtocol:weakSelf didLoadData:data];
+        [weakSelf.client URLProtocolDidFinishLoading:weakSelf];
+    }];
+    [self.task resume];
+}
+- (void)stopLoading {
+    [self.sessionTask cancel];
+    self.sessionTask = nil;
+}
+
+</code></pre>
+</div>
+
+<p>我们使用了自定义的NSURLProtocol对所有http(s)请求进行了拦截，并在资源加载完成的时候进行对mime-type的判断，如果是image，那我们就以请求的URL为key，把请求得到的数据转换为UIImage存入SDImageCache中。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/10/15/NSURLCache/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1252,70 +1724,6 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/">iOS动画系列-基础部分-CADisplayLink</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2015-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
-    
-        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1429,9 +1837,36 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                     </li>
                     
                     <li>
+                        <a href="/category/#NSURLCache" class="categories-list-item" cate="NSURLCache">
+                            <span class="name">
+                                NSURLCache
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#缓存" class="categories-list-item" cate="缓存">
+                            <span class="name">
+                                缓存
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/category/#NSURLProtocol" class="categories-list-item" cate="NSURLProtocol">
                             <span class="name">
                                 NSURLProtocol
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#缓存~~~" class="categories-list-item" cate="缓存~~~">
+                            <span class="name">
+                                缓存~~~
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1594,14 +2029,21 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                       
                       
                       
-                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
+                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#离线缓存" style="font-size: 9pt; color: #999;">离线缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 12pt; color: #666;">缓存</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
                     
                       
                       

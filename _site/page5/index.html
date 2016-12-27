@@ -147,6 +147,70 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/">iOS动画系列-基础部分-CADisplayLink</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-04-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/04/12/Animation_CALayer_%E5%89%AF%E6%9C%AC/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2015/04/11/Animation_CALayer_/">iOS动画系列-基础部分-CADisplayLink</a>
                 </h2>
                 <div class="label">
@@ -450,7 +514,7 @@
 </code></pre>
 </div>
 
-<p>原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有定时器，没法delay执行SEL，所以要添加到主线程操作。</p>
+<p>原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有runloop(需要手动添加)，没法delay执行SEL，so添加到主线程操作。</p>
 
 <h4 id="section-1">2、方案2</h4>
 
@@ -653,9 +717,36 @@ static void cancel_delayed_block(SMDelayedBlockHandle delayedHandle) {
                     </li>
                     
                     <li>
+                        <a href="/category/#NSURLCache" class="categories-list-item" cate="NSURLCache">
+                            <span class="name">
+                                NSURLCache
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#缓存" class="categories-list-item" cate="缓存">
+                            <span class="name">
+                                缓存
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/category/#NSURLProtocol" class="categories-list-item" cate="NSURLProtocol">
                             <span class="name">
                                 NSURLProtocol
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#缓存~~~" class="categories-list-item" cate="缓存~~~">
+                            <span class="name">
+                                缓存~~~
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -818,14 +909,21 @@ static void cancel_delayed_block(SMDelayedBlockHandle delayedHandle) {
                       
                       
                       
-                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
+                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#离线缓存" style="font-size: 9pt; color: #999;">离线缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 12pt; color: #666;">缓存</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
                     
                       
                       

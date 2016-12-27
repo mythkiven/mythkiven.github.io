@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>NSURLProtocol使用报告</title>
-    <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头        5、request.URL重定向          6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSession注意...">
+    <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头        5、request.URL重定向          6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSessioniO...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -165,7 +165,9 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>
+        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>&nbsp;
+    
+        <a href="/category/#缓存~~~" title="Category: 缓存~~~" rel="category">缓存~~~</a>
     
   
 
@@ -185,8 +187,8 @@
         <!--a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a-->
         <a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a>&nbsp;
     
-        <!--a href="/tag/#%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98" title="Tag: 离线缓存" rel="tag">离线缓存</a-->
-        <a href="/tag/#离线缓存" title="Tag: 离线缓存" rel="tag">离线缓存</a>
+        <!--a href="/tag/#%E7%BC%93%E5%AD%98" title="Tag: 缓存" rel="tag">缓存</a-->
+        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
     
   
 
@@ -218,11 +220,9 @@
   </li>
 </ul>
 
-<p>注意的是:本文写的比较早，一些情况没有考虑进来。像WKWebview，NSURLSession的支持等，下面会统一说明。</p>
+<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。</p>
 
-<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如今天分享的NSURLProtocol。</p>
-
-<p>NSURLProtocol并不是protocol是一个虚拟类。使用的话需要实例化一个子类来操作。在这个子类中，可以实现如下的功能，是不是很神奇？</p>
+<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能，是不是很神奇？</p>
 
 <ul>
   <li>重定向网络请求</li>
@@ -233,16 +233,15 @@
 
 <p>注意:</p>
 <ul>
-  <li>NSURLProtocol只能拦截 UIURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
-  <li>AFN，SDWebImage等开始使用NSURLSession，这个也需要注意</li>
+  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
   <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
+  <li>AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑</li>
+  <li>UIWebView本身是有缓存的，基于NSURLCache来实现</li>
 </ul>
 
-<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol，感兴趣的可以在文档中阅读相关的内容。</p>
+<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">官方文档</a></p>
 
-<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i</a></p>
-
-<p>图：</p>
+<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。</p>
 
 <p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="" /></p>
 
@@ -492,6 +491,7 @@
 }
 </code></pre>
 </div>
+
 <p>以及NSURLConnection：</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
@@ -708,6 +708,10 @@
 
 <p>这种方式使用起来较为简便，没有太多的嵌入感。</p>
 
+<p>注意：使用缓存的关键点在于缓存时候过期。一般思路如下：</p>
+
+<p>检测本地是否有缓存–&gt;(NO请求服务器)_YES–&gt;本地缓存是否过期:(YES请求服务器)__NO–&gt;加载缓存</p>
+
 
         </article>
         <hr>
@@ -845,7 +849,7 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE_Reveal/">IOS逆向开发系列_Reveal_解码任意APP的UI界面</a></p>
+        <p><strong>上一篇</strong> <a href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a></p>
         
     </div>
     <div class="nex">
