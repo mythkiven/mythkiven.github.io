@@ -210,9 +210,10 @@
     </ul>
   </li>
   <li><a href="#nsurlprotocolnsurlsession" id="markdown-toc-nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">3、缓存策略</a>    <ul>
-      <li><a href="#xcdatamodeld" id="markdown-toc-xcdatamodeld">1、创建.xcdatamodeld</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">2、创建操作实体类</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">3、缓存的实现</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">缓存概述</a></li>
+      <li><a href="#coredata" id="markdown-toc-coredata">3.1、使用CoreData缓存：</a></li>
+      <li><a href="#nsurlcache" id="markdown-toc-nsurlcache">3.1、使用NSURLCache缓存：</a></li>
     </ul>
   </li>
 </ul>
@@ -435,21 +436,277 @@
 
 <p>以上就解决了NSURLProtocol拦截NSURLSession的问题。</p>
 
-<h2 id="section-4">3、缓存策略</h2>
+<h2 id="section-4">3、缓存的实现</h2>
 
-<h4 id="xcdatamodeld">1、创建.xcdatamodeld</h4>
+<p>实现这个的方式还是蛮多的，如果不想重复造轮子，就直接使用苹果的NSURLCache就足够了。</p>
+
+<h4 id="section-5">缓存概述</h4>
+
+<ul>
+  <li>1、NSURLCache，这是apple的网络请求缓存类，拿过来就能用。缓存在Library/Caches目录下。</li>
+  <li>2、自己缓存，在 <code class="highlighter-rouge">URLSession: task: didCompleteWithError:</code> 里面缓存数据即可。</li>
+  <li>3、自己缓存，可以使用CoreData、归档、SQLite等等。</li>
+</ul>
+
+<p><strong>下边就我使用过的CoreData、和NSURLCache，分别作介绍：</strong></p>
+
+<h3 id="coredata">3.1、使用CoreData缓存：</h3>
+
+<p>1、创建 .xcdatamodeld 及实体类</p>
 
 <p>有些没用过的可能不认识这个家伙，其实就是CoreData，将模型对象的持久化到磁盘里。</p>
 
 <ul>
-  <li>创建实体 Add Entity</li>
-  <li>添加字段(键值)data(Binary data)\encoding (String)\mimeType (String) \url(String)\timeStamp(data)</li>
+  <li>创建实体： Add Entity</li>
+  <li>添加字段(键值)：data(Binary data)\encoding (String)\mimeType (String) \url(String)\timeStamp(data)</li>
+  <li>实体类：xcode菜单栏-&gt;Edit-&gt;Create NSManagedObject Subclass</li>
 </ul>
 
 <p>注意： Codegen可能需要改成Manual/none。如果出现错误:<code class="highlighter-rouge">error: filename used twice</code></p>
 
-<h4 id="section-5">2、创建操作实体类</h4>
-<p>xcode菜单栏-&gt;Edit-&gt;Create NSManagedObject Subclass</p>
+<p>2、NSURLProtocol中拦截缓存数据</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    completionHandler(NSURLSessionResponseAllow);
+    self.response = response;
+    self.mutableData = [[NSMutableData alloc] init];
+}
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    [self.client URLProtocol:self didLoadData:data];
+    [self.mutableData appendData:data];
+}
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error) {
+        NSLog(@"error url = %@",task.currentRequest.URL.absoluteString);
+        [self.client URLProtocol:self didFailWithError:error];
+    } else {
+        [self.client URLProtocolDidFinishLoading:self];
+        // 缓存数据
+        [self saveCachedResponse];
+    }
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
+{
+    completionHandler(proposedResponse);
+}
+</code></pre>
+</div>
+<p>以及NSURLConnection：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    self.response = response;
+    self.mutableData = [[NSMutableData alloc] init];
+}
+- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.client URLProtocol:self didLoadData:data];
+    [self.mutableData appendData:data];
+}
+- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+    [self.client URLProtocolDidFinishLoading:self];
+    // 缓存数据
+    [self saveCachedResponse];
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [self.client URLProtocol:self didFailWithError:error];
+}
+</code></pre>
+</div>
+
+<p>保存方法如下，其中保存逻辑在AppDelegate中。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>#pragma mark 保存缓存到本地
+- (void) saveCachedResponse {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    CachedURLResponse *cachedResponse = [NSEntityDescription insertNewObjectForEntityForName:@"CachedURLResponse"inManagedObjectContext:context];
+    cachedResponse.data = self.mutableData;
+    cachedResponse.url = self.request.URL.absoluteString;
+    cachedResponse.timestamp = [NSDate date];
+    cachedResponse.mimeType = self.response.MIMEType;
+    cachedResponse.encoding = self.response.textEncodingName;
+    
+    NSError *error;
+    [context save:&amp;error];
+    if (error) {
+        NSLog(@"Could not cache the response.");
+    }
+    
+    
+}
+</code></pre>
+</div>
+
+<p>在 <strong>startLoading</strong>中调用如下方法：用于判断是否需要加载本地缓存</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-(void)localResource{
+    CachedURLResponse *cachedResponse = [self cachedResponseForCurrentRequest];
+    if (cachedResponse) {
+        NSData *data = cachedResponse.data;
+        NSString *mimeType = cachedResponse.mimeType;
+        NSString *encoding = cachedResponse.encoding;
+        NSURLResponse *response = [[NSURLResponse alloc] initWithURL:self.request.URL
+                                                            MIMEType:mimeType
+                                               expectedContentLength:data.length
+                                                    textEncodingName:encoding];
+        
+        [self.client URLProtocol:self
+              didReceiveResponse:response
+              cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+        
+        [self.client URLProtocol:self didLoadData:data];
+        [self.client URLProtocolDidFinishLoading:self];
+        
+    } else {
+        NSMutableURLRequest *newRequest = [self.request mutableCopy];
+        
+        [NSURLProtocol setProperty:@YES forKey:protocolKey inRequest:newRequest];
+        
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:mainQueue];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:newRequest];
+        [task resume];
+    }
+    
+}
+</code></pre>
+</div>
+<p>检测本地是否有缓存：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>#pragma mark 检测本地是否存在缓存
+- (NSCachedURLResponse *)cachedResponseForCurrentRequest {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CachedURLResponse"inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url == %@", self.request.URL.absoluteString];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *result = [context executeFetchRequest:fetchRequest error:&amp;error];
+
+    if (result &amp;&amp; result.count &gt; 0) {
+        return result[0];
+    }
+    return nil;
+}
+</code></pre>
+</div>
+
+<p>AppDelegate：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="n">h</span>
+<span class="c1">// 缓存策略
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSManagedObjectModel</span> <span class="o">*</span><span class="n">managedObjectModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">persistentStoreCoordinator</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">saveContext</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">applicationDocumentsDirectory</span><span class="p">;</span>
+
+<span class="p">.</span><span class="n">m</span>
+
+<span class="cp">#import &lt;CoreData/CoreData.h&gt;
+</span>
+<span class="k">@synthesize</span> <span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
+<span class="k">@synthesize</span> <span class="n">managedObjectModel</span> <span class="o">=</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
+<span class="k">@synthesize</span> <span class="n">persistentStoreCoordinator</span> <span class="o">=</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationWillTerminate</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="p">{</span>
+   <span class="p">[</span><span class="n">self</span> <span class="nf">saveContext</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">saveContext</span><span class="p">{</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">managedObjectContext</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">([</span><span class="n">managedObjectContext</span> <span class="nf">hasChanges</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">[</span><span class="n">managedObjectContext</span> <span class="nf">save</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Unresolved error %@, %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">userInfo</span><span class="p">]);</span>
+            <span class="n">abort</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="p">)</span><span class="n">managedObjectContext</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_managedObjectContext</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">coordinator</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">persistentStoreCoordinator</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">coordinator</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_managedObjectContext</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSManagedObjectContext</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">_managedObjectContext</span> <span class="nf">setPersistentStoreCoordinator</span><span class="p">:</span><span class="n">coordinator</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSManagedObjectModel</span> <span class="o">*</span><span class="p">)</span><span class="n">managedObjectModel</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_managedObjectModel</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">modelURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSBundle</span> <span class="nf">mainBundle</span><span class="p">]</span> <span class="nf">URLForResource</span><span class="p">:</span><span class="s">@"NSURLProtocolExample"</span> <span class="nf">withExtension</span><span class="p">:</span><span class="s">@"mom"</span><span class="p">];</span>
+    <span class="n">_managedObjectModel</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSManagedObjectModel</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithContentsOfURL</span><span class="p">:</span><span class="n">modelURL</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="p">)</span><span class="n">persistentStoreCoordinator</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_persistentStoreCoordinator</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">storeURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">self</span> <span class="nf">applicationDocumentsDirectory</span><span class="p">]</span> <span class="nf">URLByAppendingPathComponent</span><span class="p">:</span><span class="s">@"NSURLProtocolExample.sqlite"</span><span class="p">];</span>
+    
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="n">_persistentStoreCoordinator</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSPersistentStoreCoordinator</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithManagedObjectModel</span><span class="p">:[</span><span class="n">self</span> <span class="nf">managedObjectModel</span><span class="p">]];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">_persistentStoreCoordinator</span> <span class="nf">addPersistentStoreWithType</span><span class="p">:</span><span class="n">NSSQLiteStoreType</span> <span class="nf">configuration</span><span class="p">:</span><span class="nb">nil</span> <span class="n">URL</span><span class="o">:</span><span class="n">storeURL</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
+        
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Unresolved error %@, %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">userInfo</span><span class="p">]);</span>
+        <span class="n">abort</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">applicationDocumentsDirectory</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[[</span><span class="n">NSFileManager</span> <span class="nf">defaultManager</span><span class="p">]</span> <span class="nf">URLsForDirectory</span><span class="p">:</span><span class="n">NSDocumentDirectory</span> <span class="nf">inDomains</span><span class="p">:</span><span class="nf">NSUserDomainMask</span><span class="p">]</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="nsurlcache">3.1、使用NSURLCache缓存：</h3>
+<p>与上边的CoreData原理一样，只不过使用了系统的。
+下边给出主要的部分：</p>
+
+<p>保存缓存</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
+    if (error) {
+        [self.client URLProtocol:self didFailWithError:error];
+    } else {
+        [self.client URLProtocolDidFinishLoading:self];
+        if (!self.data) {
+            return;
+        }
+        // 保存缓存
+        NSCachedURLResponse *cacheUrlResponse = [[NSCachedURLResponse alloc] initWithResponse:task.response data:self.data];
+        [[NSURLCache sharedURLCache] storeCachedResponse:cacheUrlResponse forRequest:self.request];
+        self.data = nil;
+        NSLog(@"缓存成功");
+    }
+}
+
+</code></pre>
+</div>
+
+<p>是否使用缓存</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)startLoading{
+    NSCachedURLResponse *urlResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:[self request]];
+    if (urlResponse) {
+        //如果缓存存在，则使用缓存。
+        [self.client URLProtocol:self didReceiveResponse:urlResponse.response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+        [self.client URLProtocol:self didLoadData:urlResponse.data];
+        [self.client URLProtocolDidFinishLoading:self];
+        [self backgroundCheckUpdate];
+        return;
+    }
+    NSMutableURLRequest *mutableRequest = [[self request] mutableCopy];
+    [NSURLProtocol setProperty:@YES forKey:URLProtocolAlreadyHandleKey inRequest:mutableRequest];
+    [self netRequestWithRequest:mutableRequest];
+}
+</code></pre>
+</div>
+
+<p>这种方式使用起来较为简便，没有太多的嵌入感。</p>
 
 
         </article>
