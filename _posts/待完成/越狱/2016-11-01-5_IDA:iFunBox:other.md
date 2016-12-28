@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "IOS逆向开发系列5_IDA/iFunBox/other"
-categories:  IOS逆向开发 
-tags:  IDA   iFunBox dyld_decache
-author: 3code
+title:  "iOS逆向系列5_IDA/iFunBox/other"
+categories: iOS逆向
+tags: IDA、iFunBox、dyld_decache
+author: 3行代码
 ---
 
 * content
 {:toc}
 
-** 说明**
+
 ## 1、简介
 
 即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。

@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Dec 2016 17:21:53 +0800</pubDate>
-    <lastBuildDate>Wed, 28 Dec 2016 17:21:53 +0800</lastBuildDate>
+    <pubDate>Wed, 28 Dec 2016 18:15:01 +0800</pubDate>
+    <lastBuildDate>Wed, 28 Dec 2016 18:15:01 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -867,44 +867,26 @@ $ clang -fobjc-arc -framework Foundation main.m -o nihau
       </item>
     
       <item>
-        <title>IOS逆向开发系列7_IOS理论基础</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#tweakobjective-c&quot; id=&quot;markdown-toc-tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
-
-&lt;p&gt;Objective-C相关的iOS逆向理论基础&lt;/p&gt;
-
-&lt;p&gt;Objective-C语言是一门面向对象的高级语言，想必大家都能较为熟练地掌握它的基本用法，在逆向工程的入门阶段采用Objective-C语言有助于大家更平稳地从App开发进阶到逆向工程。幸运地是，iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件；有了这些信息，就可以开始Objective-C级别的逆向工程了，而撰写tweak无疑是这个阶段最受欢迎的项目，下面就从它开始吧！”&lt;/p&gt;
-
-&lt;h5 id=&quot;tweakobjective-c&quot;&gt;1.1 tweak在Objective-C中的工作方式&lt;/h5&gt;
-
-&lt;p&gt;在第3章中介绍Theos时，已经介绍了tweak的概念。依据维基百科的定义，tweak指的是对电子系统进行轻微调整来增强其功能的工具；在iOS中，tweak特指那些能够增强其他进程功能的dylib，是越狱iOS的最重要组成部分。&lt;/p&gt;
-
-&lt;p&gt;正是因为tweak的存在，越狱iOS用户才能依照自己的喜好打造独一无二的个性化系统，iOS开发者才有机会站在优秀软件的肩膀上为它们添砖加瓦，丰富它们的功能，而这些便利都是原版iOS和”&lt;/p&gt;
-
-&lt;p&gt;“每次越狱发布后，都会有人把最新的头文件发布出来，Google一下“iOS private headers”即可轻松找到下载链接，省去了自己class-dump的麻烦。&lt;/p&gt;
+        <title>iOS逆向系列7_iOS理论基础</title>
+        <description>
+&lt;p&gt;iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件&lt;/p&gt;
 
 &lt;p&gt;待续…&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/01/7_IOS_Reverse_Theory/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/01/7_IOS_Reverse_Theory/</guid>
+        <link>http://localhost:4000/2016/11/01/7_IOS_Theory/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/7_IOS_Theory/</guid>
         
-        <category>IOS逆向开发理论基础</category>
+        <category>iOS逆向理论基础</category>
         
         
-        <category>IOS逆向开发</category>
+        <category>iOS逆向</category>
         
       </item>
     
       <item>
-        <title>IOS逆向开发系列6_IOS工具集</title>
+        <title>iOS逆向系列6_iOS工具集</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#cydiasubstrate&quot; id=&quot;markdown-toc-cydiasubstrate&quot;&gt;2、CydiaSubstrate&lt;/a&gt;    &lt;ul&gt;
@@ -928,8 +910,6 @@ $ clang -fobjc-arc -framework Foundation main.m -o nihau
   &lt;li&gt;&lt;a href=&quot;#mterminal&quot; id=&quot;markdown-toc-mterminal&quot;&gt;9、MTerminal&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#syslogd-tovarlogsyslog&quot; id=&quot;markdown-toc-syslogd-tovarlogsyslog&quot;&gt;10、syslogd to/var/log/syslog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;说明这里仅作为大纲展示&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
 
@@ -1079,15 +1059,15 @@ LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题�
         <link>http://localhost:4000/2016/11/01/6_IOS_Tools/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/11/01/6_IOS_Tools/</guid>
         
-        <category>逆向_IOS工具集</category>
+        <category>iOS逆向工具集</category>
         
         
-        <category>IOS逆向开发</category>
+        <category>iOS逆向</category>
         
       </item>
     
       <item>
-        <title>IOS逆向开发系列5_IDA/iFunBox/other</title>
+        <title>iOS逆向系列5_IDA/iFunBox/other</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
@@ -1100,7 +1080,6 @@ LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题�
   &lt;li&gt;&lt;a href=&quot;#dylddecache&quot; id=&quot;markdown-toc-dylddecache&quot;&gt;4 dyld_decache&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;** 说明**&lt;/p&gt;
 &lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
 
 &lt;p&gt;即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。&lt;/p&gt;
@@ -1172,80 +1151,15 @@ LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题�
         <link>http://localhost:4000/2016/11/01/5_IDA-iFunBox-other/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/11/01/5_IDA-iFunBox-other/</guid>
         
-        <category>IDA</category>
-        
-        <category>iFunBox</category>
-        
-        <category>dyld_decache</category>
+        <category>IDA、iFunBox、dyld_decache</category>
         
         
-        <category>IOS逆向开发</category>
+        <category>iOS逆向</category>
         
       </item>
     
       <item>
-        <title>IOS逆向开发系列4_Reveal</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、简介&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#reveal-loader&quot; id=&quot;markdown-toc-reveal-loader&quot;&gt;2.1 安装Reveal Loader&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#reveal-loader-1&quot; id=&quot;markdown-toc-reveal-loader-1&quot;&gt;2.2 配置Reveal Loader&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;1、简介&lt;/h2&gt;
-
-&lt;p&gt;Reveal是由ITTY BITTY出品的UI分析工具，可以直观地查看App的UI布局。&lt;/p&gt;
-
-&lt;p&gt;官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;2、安装&lt;/h2&gt;
-
-&lt;h5 id=&quot;reveal-loader&quot;&gt;2.1 安装Reveal Loader&lt;/h5&gt;
-
-&lt;p&gt;在Cydia中搜索并安装Reveal Loader 在安装Reveal Loader的时候，它会自动从Reveal的官网下载一个必须的文件libReveal.dylib。如果网络状况不太好，Reveal Loader不一定能够成功下载这个dylib文件，而且它没有针对dylib下载失败的情况做容错处理，可能会在下载界面卡顿很长时间，导致Cydia停止响应。因此，在下载它之前最好连接美国VPN，且在下载完Reveal Loader后，检查iOS上的“/Library/”目录下有没有一个名为“RHRevealLoader”的文件夹，如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FunMaker-5:~ root# ls -l /Library/ | grep RHRevealLoader
-drwxr-xr-x  2 root   admin  102 Dec  6 11:10 RHRevealLoader 如果没有，就手动创建一个，如下：
-
-FunMaker-5:~ root# mkdir /Library/RHRevealLoader 然后打开Reveal，在它标题栏的“Help”选项下，选中其中的“Show Reveal Library in Finder”子选项 ，就可以看到。 把这个libReveal.dylib通过scp或iFunBox等方式拷贝到刚才创建的RHRevealLoader目录下，如下：
-
-FunMaker-5:~ root# ls -l /Library/RHRevealLoader
-total 3836
--rw-r--r-- 1 root admin 3927408 Dec  6 11:10 libReveal.dylib
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;至此完成Reveal Loader的安装。&lt;/p&gt;
-
-&lt;h5 id=&quot;reveal-loader-1&quot;&gt;2.2 配置Reveal Loader&lt;/h5&gt;
-
-&lt;p&gt;Reveal Loader的配置界面位于Settings应用中，它的名字叫“Reveal” 点击“Reveal”进入其界面，呈现在我们面前的主要是一些使用声明。点击“Enabled Applications”，进入配置界面。要分析哪个App，就打开对应的开关。这里打开了AppStore和Calculator的开关。
-“Reveal Loader的配置就是这样了。既直观又方便，不是吗？&lt;/p&gt;
-
-&lt;p&gt;##3 使用Reveal查看目标App的UI布局&lt;/p&gt;
-
-&lt;p&gt;一切准备就绪，轮到主角Reveal出场了。&lt;/p&gt;
-
-&lt;p&gt;首先确认OSX和iOS位于同一网段内，然后启动Reveal，并重启iOS上的目标App（即如果App开着，需要先关掉，再打开）。从Reveal界面左上角选择目标App，稍等一会儿，Reveal就会把目标App的UI布局展现在我们面前&lt;/p&gt;
-
-&lt;p&gt;Reveal的使用并不复杂，它是一款用户体验不错的工具。但是在iOS逆向工程中，对App的分析往往不会只是停留在UI层，外在表象下的内在实现才是最终目标。在本书的后半部分，将采用Reveal的“文字版”，即recursiveDescription函数，配合Cycript来挖掘隐藏在UI布局下的代码，届时你就会感知iOS逆向工程的真正威力。&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/01/4_Reveal/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/01/4_Reveal/</guid>
-        
-        <category>Reveal</category>
-        
-        
-        <category>IOS逆向开发</category>
-        
-      </item>
-    
-      <item>
-        <title>IOS逆向开发系列3_Theos_file简介及Logos基本语法</title>
+        <title>iOS逆向系列3_Theos_file简介及Logos基本语法</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、说明&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#makefile&quot; id=&quot;markdown-toc-makefile&quot;&gt;2、Makefile&lt;/a&gt;    &lt;ul&gt;
@@ -1802,12 +1716,12 @@ control文件中的很多信息直接体现在Cydia中，如下所示，大家�
         <category>Logos</category>
         
         
-        <category>IOS逆向开发</category>
+        <category>iOS逆向</category>
         
       </item>
     
       <item>
-        <title>IOS逆向开发系列2_Theos_安装编译打包运行</title>
+        <title>iOS逆向系列2_Theos_安装编译打包运行</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、说明&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#theos&quot; id=&quot;markdown-toc-theos&quot;&gt;2、Theos简介&lt;/a&gt;&lt;/li&gt;
@@ -2637,7 +2551,92 @@ Homepage: http://3code.info
         <category>Theos</category>
         
         
-        <category>IOS逆向开发</category>
+        <category>iOS逆向</category>
+        
+      </item>
+    
+      <item>
+        <title>iOS逆向系列1_Class_dump</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1、概述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2、安装&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.1 设置环境变量:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;1、概述&lt;/h2&gt;
+
+&lt;p&gt;class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2、安装&lt;/h2&gt;
+
+&lt;p&gt;class-dump的用法比较简单，首先去&lt;a href=&quot;http://stevenygard.com/projects/class-dump&quot;&gt;http://stevenygard.com/projects/class-dump&lt;/a&gt;下载最新版的class-dump。&lt;/p&gt;
+
+&lt;p&gt;然后操作如下：&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;2.1 设置环境变量:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Terminal中执行$source ~/.bash_profile；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面以支付宝为例，来看看class-dump的完整流程。&lt;/p&gt;
+
+&lt;p&gt;1.定位App的可执行文件&lt;/p&gt;
+
+&lt;p&gt;首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
+$ plutil -p Info.plist | grep CFBundleExecutable
+&quot;CFBundleExecutable&quot; =&amp;gt; &quot;AlipayWallet&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当前目录下的“AlipayWallet”就是App的可执行文件。&lt;/p&gt;
+
+&lt;p&gt;2.class-dump可执行文件&lt;/p&gt;
+
+&lt;p&gt;把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;结果是：
+-APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
+-【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了&lt;/p&gt;
+
+&lt;p&gt;透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/11/01/1_Class_dump/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/01/1_Class_dump/</guid>
+        
+        <category>class_dump</category>
+        
+        
+        <category>iOS逆向</category>
         
       </item>
     

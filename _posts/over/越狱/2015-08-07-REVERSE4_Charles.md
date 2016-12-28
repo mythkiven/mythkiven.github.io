@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "IOS逆向开发系列_Charles_iPhone网络抓包"
-categories:  IOS逆向开发
+title:  "IOS逆向系列_Charles_iPhone网络抓包"
+categories:  IOS逆向
 tags:     Charles
 author: 3行代码
 ---
@@ -16,8 +16,6 @@ author: 3行代码
 从网上找到最新的破解文件：charles.jar，替换系统的即可破解
 
 ## 配置
-
-
 
 #### 1、配置代理：
 

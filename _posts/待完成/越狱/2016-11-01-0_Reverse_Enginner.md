@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "IOS逆向开发系列_综述"
-categories:  IOS逆向开发
-tags:     IOS逆向开发
-author: 3code
+title:  "iOS逆向系列_综述"
+categories:  iOS逆向
+tags:     iOS逆向
+author: 3行代码
 ---
 
 * content

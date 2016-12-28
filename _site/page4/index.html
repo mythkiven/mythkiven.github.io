@@ -147,771 +147,7 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2015/10/15/NSURLProtocol/">NSURLProtocol小教程</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2015-10-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>&nbsp;
-    
-        <a href="/category/#缓存" title="Category: 缓存" rel="category">缓存</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a>&nbsp;
-    
-        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、基本使用</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">1、注册</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2、实现方法</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">3、坑</a></li>
-      <li><a href="#request" id="markdown-toc-request">4、修改request请求头</a></li>
-    </ul>
-  </li>
-  <li><a href="#requesturl" id="markdown-toc-requesturl">5、request.URL重定向</a>    <ul>
-      <li><a href="#nsurlprotocolclient" id="markdown-toc-nsurlprotocolclient">6、NSURLProtocolClient</a></li>
-    </ul>
-  </li>
-  <li><a href="#nsurlprotocolnsurlsession" id="markdown-toc-nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</a></li>
-</ul>
-
-<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。</p>
-
-<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能:</p>
-
-<ul>
-  <li>重定向网络请求</li>
-  <li>忽略网络请求，使用本地缓存</li>
-  <li>自定义网络请求的返回结果</li>
-  <li>全局的网络请求设置</li>
-</ul>
-
-<p>注意:</p>
-<ul>
-  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView中发出的网络请求。</li>
-  <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
-  <li>AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑</li>
-  <li>UIWebView本身是有缓存的，基于NSURLCache来实现</li>
-</ul>
-
-<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。</p>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="" /></p>
-
-<h2 id="section">1、基本使用</h2>
-
-<h4 id="section-1">1、注册</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSURLProtocol registerClass:[CodeURLProtocol class]];
-    return YES;
-}
-</code></pre>
-</div>
-
-<h4 id="section-2">2、实现方法</h4>
-
-<p>// 1、每有一个请求的时候都会调用这个方法，如果返回YES就代表这个request需要被处理，反之就是不需要被处理。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>static NSString * const protocolKey = @"protocolKey";
-
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    //防止无限循环，因为一个请求在被拦截处理过程中，也会发起一个请求，这样又会走到这里
-    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-        return NO;
-    }
-    // 对https请求做相关处理
-    NSString *scheme = [[request URL] scheme];
-    if ([scheme caseInsensitiveCompare:@"https"] == NSOrderedSame) {
-        
-        return YES;
-    }
-    return NO;
-}
-</code></pre>
-</div>
-
-<p>// 2、这个方法返回request，一般不做处理直接返回request</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
-    return request;
-}
-</code></pre>
-</div>
-
-<p>///3 这个方法用于处理被拦截的request，拦截请求头、重定向、缓存处理等</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * 开始请求
- */
-- (void)startLoading {
-    
-}
-</code></pre>
-</div>
-
-<p>// 4 停止请求</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void) stopLoading {}
-</code></pre>
-</div>
-
-<h4 id="section-3">3、坑</h4>
-<p>不做解释，遇到的人都懂：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-    return NO;
-}
-[NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
-</code></pre>
-</div>
-
-<h4 id="request">4、修改request请求头</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)startLoading {
-    NSMutableURLRequest *request = [self.request mutableCopy];
-
-    //给请求头添加一个请求体
-    NSMutableDictionary *headers = [request.allHTTPHeaderFields mutableCopy];
-    [headers setObject:@"3code.info" forKey:@"key"];
-    request.allHTTPHeaderFields = headers;
-
-    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
-
-    .....然后使用NSURLSession发送request
-}
-</code></pre>
-</div>
-<h2 id="requesturl">5、request.URL重定向</h2>
-<p>将请求重定向到3code.info</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-- (void)startLoading {
-
-    NSMutableURLRequest *request = [self.request mutableCopy];
-    //request改为访问3code.info了
-    request.URL = [NSURL URLWithString:@"http://www.3code.info"];
-    
-    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
-    
-    //使用NSURLSession继续把重定向的request发送出去
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:mainQueue];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-    
-    [task resume];
-}
-</code></pre>
-</div>
-<h4 id="nsurlprotocolclient">6、NSURLProtocolClient</h4>
-
-<p>webview中发送一个request，在这里拦截后使用NSURLSession重新发request。那webview是收不到response的。这里就要做一个处理，每一个NSURLProtocol的子类都有一个client对象来处理response。写法用下边这个就行，比较固定的。(保留了以前的NSURLConnection)</p>
-
-<p>本次更新：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    if (error) {
-        [self.client URLProtocol:self didFailWithError:error];
-    } else {
-        [self.client URLProtocolDidFinishLoading:self];
-    }
-}
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    
-    completionHandler(NSURLSessionResponseAllow);
-}
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
-{
-    completionHandler(proposedResponse);
-}
-</code></pre>
-</div>
-<p>历史记录</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-}
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-}
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self.client URLProtocolDidFinishLoading:self];
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self.client URLProtocol:self didFailWithError:error];
-}
-</code></pre>
-</div>
-
-<h2 id="nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</h2>
-
-<p>上一期的项目有个需求，就是在移动网络下，不进行高清图片，视频等下载操作。其中遇到的问题就是拦截NSURLSession。这里简化以不下载图片为例，解说如何实现。</p>
-
-<p>思路：使用NSURLProtocol拦截所有的request，过滤耗流量的request。并做处理。其实蛮简单的，但是AFNetwork、SDWebImageCache等三方库并未拦截。原因是NSURLSession。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request
-{
-    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-        return NO;
-    }
-    //满足条件时直接截获请求
-    if ([[UserConfig sharedInstance] isOffPicture] &amp;&amp; ([request.URL.pathExtension caseInsensitiveCompare:@"jpg"] == NSOrderedSame || [request.URL.pathExtension caseInsensitiveCompare:@"png"] == NSOrderedSame) &amp;&amp; [self isPictureDownload]) {
-        return YES;
-    }
-    return NO;
-}
-</code></pre>
-</div>
-
-<p>从官方文档中可以了解到自定义的NSURLProtocol子类需要赋给NSURLSessionConfiguration的protocolClasses属性,同时其创建的Session时关联的NSURLSessionConfiguration为defaultSessionConfiguration。那么解决方法就跃然纸上了，如下代码：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLSessionConfiguration *)zw_defaultSessionConfiguration{
-//    如果需要NSURLProtocol来截获NSURLSession发出的请求，需要每一个NSURLSession在创建时配置的NSURLSessionConfiguration类的protocolClasses属性附上自定义的NSURLProtocol：如下
-    
-    NSURLSessionConfiguration *configuration = [self zw_defaultSessionConfiguration];
-    NSArray *protocolClasses = @[[CodeURLProtocol class]];
-    configuration.protocolClasses = protocolClasses;
-    
-    return configuration;
-}
-+ (void)load{
-//  使用Method Swizzling方法，defaultSessionConfiguration实现（AFNetwork、SDWebImageCache在创建时使用的是[NSURLSessionConfiguration defaultSessionConfiguration]）如下：
-    Method systemMethod = class_getClassMethod([NSURLSessionConfiguration class], @selector(defaultSessionConfiguration));
-    Method zwMethod = class_getClassMethod([self class], @selector(zw_defaultSessionConfiguration));
-    method_exchangeImplementations(systemMethod, zwMethod);
-    
-    [NSURLProtocol registerClass:[CodeURLProtocol class]];
-}
-
-</code></pre>
-</div>
-
-<p>以上就解决了NSURLProtocol拦截NSURLSession的问题。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2015/10/15/NSURLProtocol/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2015-10-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#NSURLCache" title="Category: NSURLCache" rel="category">NSURLCache</a>&nbsp;
-    
-        <a href="/category/#缓存" title="Category: 缓存" rel="category">缓存</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#NSURLCache" title="Tag: NSURLCache" rel="tag">NSURLCache</a>&nbsp;
-    
-        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">基础篇</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">1、扫盲普及</a></li>
-      <li><a href="#get-" id="markdown-toc-get-">2、基础：GET 缓存</a></li>
-      <li><a href="#post-" id="markdown-toc-post-">3、进阶：POST 缓存</a></li>
-      <li><a href="#nsurlcache" id="markdown-toc-nsurlcache">4、进阶：自定义缓存策略的NSURLCache</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-2" id="markdown-toc-section-2">进阶篇</a>    <ul>
-      <li><a href="#useprotocolcachepolicy---" id="markdown-toc-useprotocolcachepolicy---">1、UseProtocolCachePolicy - 默认缓存的机制</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">2、缓存高清图片</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>不少的开源项目的网络缓存都是自己家的轮子(譬如AFN俩独立缓存模块：AFAFImagecache (处理image)、NSURLCache(默认URL缓存))，我们现在的项目并未涉及到太复杂的缓存需求，自己造轮子不划算直接用系统的NSURLCache就OK。</p>
-
-<p>在使用中也遇到不少坑：</p>
-
-<ul>
-  <li>响应内容过大，不会被缓存；</li>
-  <li>Transfer-Encoding: Chunked  分块传输也会导致不缓存。</li>
-  <li>…</li>
-</ul>
-
-<p>目前在协助子公司开发的一个项目里涉及到各种HTML5中的离线存储需求，实际用的是NSURLProtocol+NSURLCache，根据场景，用两套缓存的方案。对NSURLProtocol感兴趣的可以浏览我的另一篇关于NSURLProtocol的blog。</p>
-
-<h3 id="section">基础篇</h3>
-
-<h4 id="section-1">1、扫盲普及</h4>
-
-<p>1、在iOS中，可以使用NSURLCache类缓存数据，iOS 5之前只支持内存缓存；从iOS 5开始同时支持内存缓存和硬盘缓存；iOS6.0开始，支持HTTPS缓存。</p>
-
-<p>2、缓存分为:内存缓存\硬盘缓存。从app运行角度来说：如果程序没有退出，那么会使用内存中的缓存，如果已经退出重启，则使用硬盘缓存(读取到内存中)。</p>
-
-<p>3、NSURLCache不支持Post请求的缓存处理，GET默认缓存：由于GET请求一般用来查询数据，POST请求一般是发大量数据给服务器处理。因此一般只对GET请求进行缓存，而不对POST请求进行缓存。</p>
-
-<p>4、使用前提：</p>
-
-<ul>
-  <li>经常更新：不能用缓存；</li>
-  <li>一成不变：果断用缓存；</li>
-  <li>偶尔更新：可以定期更改缓存策略或者清除缓存</li>
-  <li>GET网络请求、webview页面：果断缓存；</li>
-  <li>App离线缓存功能等</li>
-</ul>
-
-<p>5、使用也很简单，几行代码搞定：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>// 1 修改默认的缓存空间：
-- (BOOL)application:(UIApplication *)application
-didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-  NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024diskCapacity:20 * 1024 * 1024 diskPath:nil];
-  [NSURLCache setSharedURLCache:URLCache];
-}
-// 2 设置缓存策略：
-request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-OK，搞定。
-</code></pre>
-</div>
-<p>如果不想使用缓存，上边数值设置0即可。</p>
-
-<p>6、缓存的有效性，下文会提到，服务器返回的数据需要一个有效期，过期有效期就得更新本地的缓存。</p>
-
-<h4 id="get-">2、基础：GET 缓存</h4>
-
-<p>1、基本用法:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-（1）获得全局缓存对象 NSURLCache *cache = [NSURLCache sharedURLCache]; 
-（2）设置内存缓存的最大容量（字节为单位，默认为512KB）- (void)setMemoryCapacity:
-（3）设置硬盘缓存的最大容量（字节为单位，默认为10M）- (void)setDiskCapacity:
-（4）硬盘缓存的位置：沙盒/Library/Caches
-（5）取得某个请求的缓存- (NSCachedURLResponse *)cachedResponseForRequest:
-（6）清除某个请求的缓存- (void)removeCachedResponseForRequest:
-（7）清除所有的缓存- (void)removeAllCachedResponses;
-</code></pre>
-</div>
-
-<p>2、缓存</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-    // 1.创建请求
-    NSURL *url = [NSURL URLWithString:@"GET"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-    
-    // 2.根据request检测缓存  
-    NSURLCache *cache = [NSURLCache sharedURLCache];
-    NSCachedURLResponse *response = [cache cachedResponseForRequest:request];
-    if (response) {
-        NSLog(@"已经有缓存:%@",response.data);
-        // 判断时间，超时就移除缓存
-    } else {
-        NSLog(@"暂无缓存,开启请求");
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-         if (data) {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-             NSLog(@"%@", dict);
-         }
-    }];
-    }
-    
-    
-</code></pre>
-</div>
-
-<h4 id="post-">3、进阶：POST 缓存</h4>
-
-<p>POST 实现缓存需要自己手动实现，如下解说：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-// 读取缓存
-+ (id)getCacheResponseWithURL:(NSString *)url params:(NSDictionary *)params {
-    id cacheData = nil;
-    if (url) {
-        // 指定目录
-        NSString *directoryPath = DIRECTORYPATH;
-        // url+param确定唯一路径
-        NSString *originString = [NSString stringWithFormat:@"%@+%@",url,params];
-
-        NSString *path = [directoryPath stringByAppendingPathComponent:[self md5:originString]];
-        NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
-        if (data) {
-            cacheData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        }
-    }
-    return cacheData;
-}
-// 写入缓存
-+ (void)cacheResponseObject:(id)responseObject request:(NSURLRequest *)request params:(NSDictionary *)params {
-    if (request &amp;&amp; responseObject &amp;&amp; ![responseObject isKindOfClass:[NSNull class]]) {
-        NSString *directoryPath = DIRECTORYPATH;
-        NSError *error = nil;
-        if (![[NSFileManager defaultManager] fileExistsAtPath:directoryPath isDirectory:nil]) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:directoryPath
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:&amp;error];
-        }
-
-        NSString *originString = [NSString stringWithFormat:@"%@+%@",request.URL.absoluteString,params];
-
-        NSString *path = [directoryPath stringByAppendingPathComponent:[self md5:originString]];
-        NSDictionary *dict = (NSDictionary *)responseObject;
-
-        NSData *data = nil;
-        if ([dict isKindOfClass:[NSData class]]) {
-            data = responseObject;
-        } else {
-            data = [NSJSONSerialization dataWithJSONObject:dict
-                                                   options:NSJSONWritingPrettyPrinted
-                                                     error:&amp;error];
-        }
-        if (data &amp;&amp; error == nil) {
-            [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
-        }
-    }
-}
-// 加密
-+ (NSString *)md5:(NSString *)string {
-    if (string == nil || [string length] == 0) {
-        return nil;
-    }
-    unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
-    CC_MD5([string UTF8String], (int)[string lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
-    NSMutableString *ms = [NSMutableString string];
-
-    for (i = 0; i &lt; CC_MD5_DIGEST_LENGTH; i++) {
-        [ms appendFormat:@"%02x", (int)(digest[i])];
-    }
-
-    return [ms copy];
-}
-</code></pre>
-</div>
-
-<h4 id="nsurlcache">4、进阶：自定义缓存策略的NSURLCache</h4>
-
-<p>思路如下：</p>
-
-<ul>
-  <li>1、网络请求开始时，首先会判断沙盒中是否存在缓存数据；[没有直接请求]</li>
-  <li>2、如果有，判断是否过期；没过期则使用本地数据。[过期则删除缓存，直接请求]</li>
-  <li>3、请求URL
-代码如下：</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-// 判断是否为GET
--(NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest*)request{
-    if ([request.HTTPMethod compare:@"GET"] != NSOrderedSame) {
-        return [super cachedResponseForRequest:request];
-    }
-    return [self customResponseForRequest:request];
-}
-
-// 加密
--(NSString *)getFileName:(NSString *)url{
-    return [url getMd5_32Bit];
-}
-
--(NSString *)getOtherInfoName:(NSString *)url{
-    return [[NSString stringWithFormat:@"%@-otherInfo",url] getMd5_32Bit];
-}
-- (NSString *)cacheFilePath:(NSString *)fileName{
-    NSString *filePath = [NSString stringWithFormat:@"URLCache/%@",fileName];
-    NSString *path = kFilePathAtCachWithName(filePath);
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isDir;
-    if([fileManager fileExistsAtPath:path isDirectory:&amp;isDir] &amp;&amp; isDir) {
-    } else{
-         [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return path;
-}
-
--(NSCachedURLResponse*)customResponseForRequest:(NSURLRequest*)request{
-    ​NSString *url = request.URL.absoluteString;//请求的链接
-    
-    // URL MD5 后作为缓存文件名。这里取出MD5后的文件名
-    NSString*fileName = [self getFileName:url];
-    // 缓存信息的文件名 @"%@-otherInfo",url
-    NSString*otherInfoName = [self getOtherInfoName:url];
-    // 创建/获取 缓存的目录路径
-    NSString*filePath = [self cacheFilePath:fileName];
-    // 缓存信息字典路径
-    NSString*otherInfoPath = [self cacheFilePath:otherInfoName];
-    
-    ​NSFileManager *fileManger = [NSFileManager defaultManager];
-    //当文件存在的时候
-    if ([fileManger fileExistsAtPath:filePath]) {
-        NSDate*date = [NSDate date];
-        BOOL isOverdue = YES;
-        NSDictionary *dicInfo = [NSDictionary dictionaryWithContentsOfFile:otherInfoPath];
-        // 过期与否？
-        if(self.catchTime &gt; 0 &amp;&amp; dicInfo) {
-            NSDate*createDate = dicInfo[kTimeKey];
-            double createTime = [date timeIntervalSinceDate:createDate];
-            if (createTime &lt; self.catchTime) {
-                isOverdue = NO;
-        }}
-        //没有过期 加载缓存数据
-        if (!isOverdue) {
-            NSLog(@"访问缓存数据..");
-            NSData *data = [NSData dataWithContentsOfFile:filePath];
-            NSURLResponse *response = [[NSURLResponse alloc] initWithURL:request.URL MIMEType:dicInfo[kMIMETypeKey] expectedContentLength:data.lengthtextEncodingName:dicInfo[kTextEncodingNameKey]];
-            NSCachedURLResponse *cacheResponse = [[NSCachedURLResponsealloc] initWithResponse:response data:data];
-            return cacheResponse;
-            
-        }else{//已经过期，删除数据
-            [fileManger removeItemAtPath :filePath error:nil];
-            [fileManger removeItemAtPath :otherInfoPath error:nil];
-        }
-    }
-    
-    BOOL isExsit = [[self.dicResponse objectForKey:url] boolValue];
-    if (!isExsit) {
-        [self .dicResponse setObject:@(YES) forKey:url];
-        NSLog(@"网络请求数据...");
-        __block NSCachedURLResponse *cacheResponse = nil;
-        [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse*response, NSData *data, NSError *connectionError) {
-            //移除请求记录
-            [self.dicResponse removeObjectForKey:url];
-            if (data &amp;&amp; response) {
-                NSMutableDictionary *dicInfo = [NSMutableDictionarydictionary];
-                [dicInfo setObject :[NSDate date] forKey:kTimeKey];
-                [dicInfo setObject :kUnNilStr(response.MIMEType) forKey:kMIMETypeKey];
-                [dicInfo setObject :kUnNilStr(response.textEncodingName) forKey:kTextEncodingNameKey];
-                BOOL state = [data writeToFile:filePath atomically:NO];
-                NSLog(@"%d",state);
-                [dicInfo writeToFile :otherInfoPath atomically:YES];
-                cacheResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-            }
-        }];
-        return cacheResponse;
-    }else{
-        NSLog(@"该请求已存在");
-    }
-    return nil;
-    
-}
-
-</code></pre>
-</div>
-<h2 id="section-2">进阶篇</h2>
-
-<h4 id="useprotocolcachepolicy---">1、UseProtocolCachePolicy - 默认缓存的机制</h4>
-
-<p>1、首先从apple提供的一个缓存策略的枚举说起：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)
-{
-    // 默认值：按照HTTP协议进行缓存
-    NSURLRequestUseProtocolCachePolicy = 0, 
-    // 非缓存模式：不使用缓存数据，无论是否有本地缓存
-    NSURLRequestReloadIgnoringLocalCacheData = 1,
-    // 缓存模式：无论缓存是否过期都是用缓存，没有缓存就进行网络请求
-    NSURLRequestReturnCacheDataElseLoad = 2,
-    // 离线模式：无论缓存是否过期都是用缓存，没有缓存也不会进行网络请求
-    NSURLRequestReturnCacheDataDontLoad = 3,
-
-    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,
-    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented
-    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented
-};
-</code></pre>
-</div>
-<p>这个枚举大家应该很熟悉，创建request时经常用到的。这里我进行了分类，主要是4类。其余3个排除。这里除了默认值，其他3个模式都很容易理解，下面以QQ空间的web页面拦截为例说明默认值是如何实现的：</p>
-
-<p>2、拦截QQ WebView的请求
-首先在webview上加载QQ空间页面，然后拦截webview上QQ空间登录的response，部分Header字段如下：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-HTTP/1.1 200 OK
-Content-Type    application/x-javascript
-Server  QZHTTP-2.38.20
-Content-Encoding    gzip
-Cache-Control   public; max-age=86400
-Proxy-Connection    Keep-alive
-</code></pre>
-</div>
-<p>注意：这里的Cache-Control是我们的目标字段。</p>
-
-<p>3、Cache-Control</p>
-
-<p>这个字段用于指定该次整个请求中的缓存机制。常见的取值有public、private、no-cache、max-age、must-revalidate等，默认为private。QQ空间的Cache-Control解读如下：</p>
-
-<ul>
-  <li>public : 所有内容都将被缓存(客户端和代理服务器都可缓存)；</li>
-  <li>max-age=86400 : 缓存的内容将在86400秒后失效, 这个选项只在HTTP 1.1可用。</li>
-</ul>
-
-<p>4、Cache位置</p>
-
-<p>对于webview而言，缓存的数据默认在Library/Caches里。如下所示(ssh连接iphone)</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-# ls
-Documents/  Library/  tmp/
-# cd Library/ &amp;&amp; ls
-2222/  Caches/  Cookies/  Preferences/  WebKit/
-# cd Caches/ &amp;&amp; ls
-
-Databases.db                         http_ui.ptlogin2.qq.com_0.localstorage
-Snapshots/                           https_auth.alipay.com_0.localstorage
-com.apple.WebKit.Networking/         https_passport.jd.com_0/
-com.apple.WebKit.WebContent/         https_passport.jd.com_0.localstorage
-http_h5.m.taobao.com_0.localstorage  
-[截取部分缓存数据]
-</code></pre>
-</div>
-
-<p>那在app收到response之后，会根据Cache-Control字段，选择缓存的内容以及缓存的时间，而这些缓存的机制则是由服务器端定义。</p>
-
-<h4 id="section-3">2、缓存高清图片</h4>
-
-<p>经常会见到小图点开之后显示高清图片，那实现的一种方式就是:提前缓存高清图片,功能的实现要基于SDWebImage内部缓存的相关接口。</p>
-
-<p>操作如下：拦截response，然后以url为key，数据为value，先缓存起来，在查看大图的时候，直接加载缓存的图片
-代码如下：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-- (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse forRequest:(NSURLRequest *)request {
-    [super storeCachedResponse:cachedResponse forRequest:request];
-    NSString *mimeType = cachedResponse.response.MIMEType;
-
-    if ([mimeType hasPrefix:@"image"]) {
-        NSString *url = request.URL.absoluteString;
-        NSLog(@"cache url:%@", url);
-
-        SDImageCache *cache = [SDImageCache sharedImageCache];
-        [cache storeImage:[UIImage imageWithData:cachedResponse.data] forKey:url toDisk:NO];
-    }
-
-}
-</code></pre>
-</div>
-<p>但是注意，这种方法需要URL固定，如果Referer到其他站就会有问题了。</p>
-
-<p>最佳的方案是使用NSURLProtocol解决。详细的可以参考我的NSURLProtocol博文。
-如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-- (void)startLoading {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSMutableURLRequest *request = [self.request mutableCopy];
-    [NSURLProtocol setProperty:@(YES) forKey:kProtocolHandledKey inRequest:request];
-    __weak typeof(self) weakSelf = self;
-    self.sessionTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error) {
-            return;
-        }
-        NSString *mimeType = response.MIMEType;
-        if ([mimeType hasPrefix:@"image"]) {
-            NSString *url = weakSelf.request.URL.absoluteString;
-            SDImageCache *cache = [SDImageCache sharedImageCache];
-            [cache storeImage:[UIImage imageWithData:data] forKey:url toDisk:NO];
-        }
-        [weakSelf.client URLProtocol:weakSelf didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowedInMemoryOnly];
-        [weakSelf.client URLProtocol:weakSelf didLoadData:data];
-        [weakSelf.client URLProtocolDidFinishLoading:weakSelf];
-    }];
-    [self.task resume];
-}
-- (void)stopLoading {
-    [self.sessionTask cancel];
-    self.sessionTask = nil;
-}
-
-</code></pre>
-</div>
-
-<p>我们使用了自定义的NSURLProtocol对所有http(s)请求进行了拦截，并在资源加载完成的时候进行对mime-type的判断，如果是image，那我们就以请求的URL为key，把请求得到的数据转换为UIImage存入SDImageCache中。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2015/10/15/NSURLCache/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2015/08/07/REVERSE_Reveal/">IOS逆向开发系列_Reveal_解码任意APP的UI界面</a>
+                  <a class="post-link" href="/2015/08/07/REVERSE4_Reveal/">IOS逆向系列_Reveal_解码任意APP的UI界面</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -934,7 +170,7 @@ http_h5.m.taobao.com_0.localstorage
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+        <a href="/category/#IOS逆向" title="Category: IOS逆向" rel="category">IOS逆向</a>
     
   
 
@@ -964,15 +200,22 @@ http_h5.m.taobao.com_0.localstorage
                 <div class="excerpt">
                     <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">前言</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">关于破解：</a></li>
-  <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
-  <li><a href="#ssh" id="markdown-toc-ssh">SSH</a></li>
-  <li><a href="#reveal" id="markdown-toc-reveal">Reveal</a></li>
-  <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">framework +  dylib + plist</a>    <ul>
-      <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">RevealServer.framework</a></li>
-      <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">libReveal.dylib</a>        <ul>
-          <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
-          <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
+  <li><a href="#iphone" id="markdown-toc-iphone">iphone配置</a>    <ul>
+      <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
+    </ul>
+  </li>
+  <li><a href="#mac" id="markdown-toc-mac">Mac配置</a>    <ul>
+      <li><a href="#ssh" id="markdown-toc-ssh">1、SSH</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、关于破解：</a></li>
+      <li><a href="#reveal" id="markdown-toc-reveal">3、Reveal</a></li>
+      <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">4、framework +  dylib + plist</a>        <ul>
+          <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">4.1  RevealServer.framework</a></li>
+          <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">4.2 libReveal.dylib</a>            <ul>
+              <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
+              <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
+            </ul>
+          </li>
+          <li><a href="#librevealplist" id="markdown-toc-librevealplist">4.3 libReveal.plist</a></li>
         </ul>
       </li>
     </ul>
@@ -981,53 +224,71 @@ http_h5.m.taobao.com_0.localstorage
 
 <h2 id="section">前言</h2>
 
-<p>从最开始写在笔记上的Reveal使用记录，到现在开放到博客，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)。
-下边更新了以前写的记录，最近安装Reveal的朋友可以参照此教程。</p>
+<p>Reveal可以直观地查看App的UI布局，官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。</p>
 
-<h2 id="section-1">关于破解：</h2>
+<p>从使用至今，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)，不论是哪个版本都有免费使用的机会。旧版的可以直接破解，新版的可以修改系统时间来解决。</p>
 
-<p>如果是使用1.6.3及以下的版本，可以google到破解文件，覆盖安装就行。
-如果是V2及以上版本，破解方法我还没找呢，公司用的是1.6.3版本，家里的就通过修改电脑时间。。
-顺便说下，免费使用时长，是可以通过修改电脑日期来调整。这个是我用过的版本里通用的福利方法。。</p>
+<h2 id="iphone">iphone配置</h2>
 
-<p>新版的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
+<h3 id="revealloader">RevealLoader</h3>
 
-<h2 id="revealloader">RevealLoader</h2>
+<p>1、在手机上添加源:http://rheard.com/cydia然后安装 Reveal Loader。注意需要VPN才行。</p>
 
-<p>在手机上添加源:http://rheard.com/cydia</p>
+<p>2、下载完Reveal Loader后，检查iOS上的/Library/目录下有没有一个名为RHRevealLoader的文件夹:</p>
 
-<p>然后安装 Reveal Loader。注意需要VPN才行。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># ls -l /Library/ | grep RHRevealLoader
+</code></pre>
+</div>
 
-<h2 id="ssh">SSH</h2>
+<p>如果没有，就手动创建一个:</p>
 
-<p>手动开启，或者使用PP助手，没有使用过的话，记得开启后修改密码。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /Library/RHRevealLoader
+</code></pre>
+</div>
 
-<h2 id="reveal">Reveal</h2>
+<p>3、Reveal Loader的配置界面位于Settings应用中，点击Reveal进入其界面，呈现在我们面前的主要是一些使用声明。点击Enabled Applications，进入配置界面。要分析哪个App，就打开对应的开关。</p>
 
-<p>与其他几个功能相近的工具比如PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）相比，最明显的区别就是直观。</p>
+<h2 id="mac">Mac配置</h2>
+
+<h3 id="ssh">1、SSH</h3>
+
+<p>手动开启，或者使用PP助手，没有使用过的话，<strong>记得开启后修改密码。</strong></p>
+
+<h3 id="section-1">2、关于破解：</h3>
+
+<p>如果是使用1.6.x以下的版本，可以google到破解文件，覆盖安装就行。
+如果是V2及以上版本，破解方法我还没找，现在用的是1.5.x。。</p>
+
+<p>注意：新版的Reveal缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
+
+<h3 id="reveal">3、Reveal</h3>
+
+<p>与其功能相近的工具有：PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）。不过Reveal在UI上更直观些。</p>
 
 <p>其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网<a href="http://revealapp.com/">http://revealapp.com/</a>，</p>
 
 <p>下面进重点。</p>
 
-<h2 id="framework---dylib--plist">framework +  dylib + plist</h2>
+<h3 id="framework---dylib--plist">4、framework +  dylib + plist</h3>
 
-<h4 id="revealserverframework">RevealServer.framework</h4>
+<h4 id="revealserverframework">4.1  RevealServer.framework</h4>
 <p>通过openSSH拷贝framework到越狱机</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
 </code></pre>
 </div>
 
-<p>早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，如下：</p>
+<p>早期版本的libReveal.dylib是支持ARM架构的，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
 </code></pre>
 </div>
 
-<h4 id="librevealdylib">libReveal.dylib</h4>
+<h4 id="librevealdylib">4.2 libReveal.dylib</h4>
 
-<p>新版的这个文件是没有的，在早期是有的。麻烦点可以使用iOSOpenDev创建：</p>
+<p>然后打开Reveal，在它标题栏的Help选项下，点开Show Reveal Library in Finder,把libReveal.dylib拷贝到RHRevealLoader目录下。</p>
+
+<p>新版的这个文件是没有的，麻烦点可以使用iOSOpenDev创建：</p>
 
 <h6 id="iosopendev">方法1：iOSOpenDev创建一个</h6>
 
@@ -1043,19 +304,55 @@ http_h5.m.taobao.com_0.localstorage
 
 <h6 id="section-2">方法2</h6>
 
-<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/</p>
+<p>注意，还有简单的方法😁😁😁</p>
+
+<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/即可</p>
+
+<h4 id="librevealplist">4.3 libReveal.plist</h4>
+
+<p>在电脑上创建libReveal.plist，然后copy到iphone的 /Library/MobileSubstrate/DynamicLibraries/ 目录下。</p>
+
+<p>libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制定多个):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">     
+    </span><span class="err">Filter</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">{</span><span class="w">    
+         </span><span class="err">Bundles</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">(</span><span class="nt">"info.3code.www"</span><span class="err">);</span><span class="w">     
+    </span><span class="err">};</span><span class="w">     
+</span><span class="err">}</span><span class="w">  
+</span></code></pre>
+</div>
+
+<p><strong>注意：</strong></p>
+
+<p>0、只有安装 Cydia Substrate之后才会有MobileSubstrate目录。mobilesubstrate是cydia插件/软件运行的一个基础依赖包。它提供软件运行的公共库，可以用来动态替换内存中的代码、数据等。安装的插件或软件比如iFile、Activator、SBSettings几乎都是依赖mobilesubstrate才能运行的。</p>
+
+<p>1、libReveal.plist：这个plist是有过滤作用的，它决定你要研究那个App，你通过指定bundleId来决定哪个App/进程启动时，这个libReveal.dylib注入进去。当libReveal.plist不存在时，相当于没有过滤，没有限制，所有进程都会被注入，可能出现白苹果，修复方法见google…</p>
+
+<p>2、手机的/Library/MobileSubstrate/DynamicLibraries目录下存放着所有在系统启动时就需要加载的动态链接库，所以把reveal的动态链接库上传</p>
+
+<p>以上完成之后：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># killall SpringBoard
+或者手动重启
+</code></pre>
+</div>
+
+<p>然后 开启Reveal，就可以尽情的分析APP喽。</p>
+
+<p>链接：
+<a href="https://github.com/heardrwt/RevealLoader">https://github.com/heardrwt/RevealLoader</a></p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2015/08/07/REVERSE_Reveal/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/08/07/REVERSE4_Reveal/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2015/08/07/REVERSE_Charles/">IOS逆向开发系列_Charles_iPhone网络抓包</a>
+                  <a class="post-link" href="/2015/08/07/REVERSE4_Charles/">IOS逆向系列_Charles_iPhone网络抓包</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -1078,7 +375,7 @@ http_h5.m.taobao.com_0.localstorage
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+        <a href="/category/#IOS逆向" title="Category: IOS逆向" rel="category">IOS逆向</a>
     
   
 
@@ -1106,7 +403,15 @@ http_h5.m.taobao.com_0.localstorage
                 <div class="excerpt">
                     <ul id="markdown-toc">
   <li><a href="#charles" id="markdown-toc-charles">安装Charles</a></li>
-  <li><a href="#section" id="markdown-toc-section">配置</a></li>
+  <li><a href="#section" id="markdown-toc-section">配置</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、配置代理：</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、配置手机：</a></li>
+      <li><a href="#https" id="markdown-toc-https">3、拦截HTTPS配置：</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">4、手机安装证书：</a></li>
+      <li><a href="#ssl-proxy" id="markdown-toc-ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">6、模拟慢网速</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="charles">安装Charles</h2>
@@ -1117,10 +422,38 @@ http_h5.m.taobao.com_0.localstorage
 
 <h2 id="section">配置</h2>
 
+<h4 id="section-1">1、配置代理：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Proxy-&gt;Proxy Settings 设置端口8888，勾选Enable transparent HTTP proxying
+</code></pre>
+</div>
+
+<h4 id="section-2">2、配置手机：</h4>
+<p>查看电脑IP(Help-&gt;Local IP Address)，然后iPhone上也设置相同的IP(在无线局域网-&gt;当前连接的wifi-&gt;详情-&gt;最底部HTTP 代理-&gt;手动-&gt;填上电脑的IP、端口号8888)</p>
+
+<h4 id="https">3、拦截HTTPS配置：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HELP-&gt; SSL Proxying-&gt;ICRC 安装证书 
+</code></pre>
+</div>
+
+<h4 id="section-3">4、手机安装证书：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser
+</code></pre>
+</div>
+
+<p>在手机浏览器中访问地址：http://charlesproxy.com/getssl，即可打开证书安装的界面，安装完证书后，就可以截取手机上的Https通讯内容了</p>
+
+<h4 id="ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</h4>
+
+<h4 id="section-4">6、模拟慢网速</h4>
+<p>proxy–&gt;throttle setting —&gt;enable throttling 即可，这个页面就是设置网络节流的</p>
+
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2015/08/07/REVERSE_Charles/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2015/08/07/REVERSE4_Charles/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1376,6 +709,136 @@ http_h5.m.taobao.com_0.localstorage
                 <hr>
               </li>
             
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/04/10/Animation_CALayer_Layout/">iOS动画系列-CALayer-布局</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-04-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>&nbsp;
+    
+        <a href="/category/#CALayer" title="Category: CALayer" rel="category">CALayer</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CALayer" title="Tag: CALayer" rel="tag">CALayer</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>待填..</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/04/10/Animation_CALayer_Layout/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/04/06/Animation_CALayer_Contents/">iOS动画系列-基础部分-CADisplayLink</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-04-06
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS动画" title="Category: iOS动画" rel="category">iOS动画</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#iOS动画" title="Tag: iOS动画" rel="tag">iOS动画</a>&nbsp;
+    
+        <a href="/tag/#CADisplayLink" title="Tag: CADisplayLink" rel="tag">CADisplayLink</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p><strong>本系列是个人iOS动画学习笔记，参阅了<a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>以及万能的google</strong></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/04/06/Animation_CALayer_Contents/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
         </ul>
 
 
@@ -1411,17 +874,17 @@ http_h5.m.taobao.com_0.localstorage
                     
                         <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
                     
-                        <li><a href="/2016/11/01/7_IOS_Reverse_Theory/">IOS逆向开发系列7_IOS理论基础</a></li>
+                        <li><a href="/2016/11/01/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a></li>
                     
-                        <li><a href="/2016/11/01/6_IOS_Tools/">IOS逆向开发系列6_IOS工具集</a></li>
+                        <li><a href="/2016/11/01/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a></li>
                     
-                        <li><a href="/2016/11/01/5_IDA-iFunBox-other/">IOS逆向开发系列5_IDA/iFunBox/other</a></li>
+                        <li><a href="/2016/11/01/5_IDA-iFunBox-other/">iOS逆向系列5_IDA/iFunBox/other</a></li>
                     
-                        <li><a href="/2016/11/01/4_Reveal/">IOS逆向开发系列4_Reveal</a></li>
+                        <li><a href="/2016/11/01/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a></li>
                     
-                        <li><a href="/2016/11/01/3_Theos_-fourFile/">IOS逆向开发系列3_Theos_file简介及Logos基本语法</a></li>
+                        <li><a href="/2016/11/01/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a></li>
                     
-                        <li><a href="/2016/11/01/2_Theos_-install&run/">IOS逆向开发系列2_Theos_安装编译打包运行</a></li>
+                        <li><a href="/2016/11/01/1_Class_dump/">iOS逆向系列1_Class_dump</a></li>
                     
                 </ul>
             </div>
@@ -1448,7 +911,7 @@ http_h5.m.taobao.com_0.localstorage
                             <span class="name">
                                 iOS动画
                             </span>
-                            <span class="badge">4</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1480,18 +943,18 @@ http_h5.m.taobao.com_0.localstorage
                     </li>
                     
                     <li>
-                        <a href="/category/#IOS逆向开发" class="categories-list-item" cate="IOS逆向开发">
+                        <a href="/category/#IOS逆向" class="categories-list-item" cate="IOS逆向">
                             <span class="name">
-                                IOS逆向开发
+                                IOS逆向
                             </span>
-                            <span class="badge">10</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
                     <li>
-                        <a href="/category/#NSURLCache" class="categories-list-item" cate="NSURLCache">
+                        <a href="/category/#NSURLProtocol" class="categories-list-item" cate="NSURLProtocol">
                             <span class="name">
-                                NSURLCache
+                                NSURLProtocol
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1507,9 +970,9 @@ http_h5.m.taobao.com_0.localstorage
                     </li>
                     
                     <li>
-                        <a href="/category/#NSURLProtocol" class="categories-list-item" cate="NSURLProtocol">
+                        <a href="/category/#NSURLCache" class="categories-list-item" cate="NSURLCache">
                             <span class="name">
-                                NSURLProtocol
+                                NSURLCache
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1557,6 +1020,15 @@ http_h5.m.taobao.com_0.localstorage
                                 Sublime
                             </span>
                             <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#iOS逆向" class="categories-list-item" cate="iOS逆向">
+                            <span class="name">
+                                iOS逆向
+                            </span>
+                            <span class="badge">7</span>
                         </a>
                     </li>
                     
@@ -1632,7 +1104,7 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#CADisplayLink" style="font-size: 15pt; color: #333;">CADisplayLink</a>
+                      <a href="/tag/#CADisplayLink" style="font-size: 9pt; color: #999;">CADisplayLink</a>
                     
                       
                       
@@ -1667,7 +1139,7 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#Reveal" style="font-size: 12pt; color: #666;">Reveal</a>
+                      <a href="/tag/#Reveal" style="font-size: 9pt; color: #999;">Reveal</a>
                     
                       
                       
@@ -1681,21 +1153,21 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#缓存" style="font-size: 12pt; color: #666;">缓存</a>
-                    
-                      
-                      
-                      
-                      
-                      
                       <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#缓存" style="font-size: 18pt; color: #000;">缓存</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
                     
                       
                       
@@ -1737,14 +1209,14 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#Sublime" style="font-size: 12pt; color: #666;">Sublime</a>
+                      <a href="/tag/#Sublime" style="font-size: 18pt; color: #000;">Sublime</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#IOS逆向开发" style="font-size: 9pt; color: #999;">IOS逆向开发</a>
+                      <a href="/tag/#iOS逆向" style="font-size: 9pt; color: #999;">iOS逆向</a>
                     
                       
                       
@@ -1758,7 +1230,7 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#Theos" style="font-size: 12pt; color: #666;">Theos</a>
+                      <a href="/tag/#Theos" style="font-size: 18pt; color: #000;">Theos</a>
                     
                       
                       
@@ -1772,35 +1244,21 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#IDA" style="font-size: 9pt; color: #999;">IDA</a>
+                      <a href="/tag/#IDA、iFunBox、dyld_decache" style="font-size: 9pt; color: #999;">IDA、iFunBox、dyld_decache</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#iFunBox" style="font-size: 9pt; color: #999;">iFunBox</a>
+                      <a href="/tag/#iOS逆向工具集" style="font-size: 9pt; color: #999;">iOS逆向工具集</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#dyld_decache" style="font-size: 9pt; color: #999;">dyld_decache</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#逆向_IOS工具集" style="font-size: 9pt; color: #999;">逆向_IOS工具集</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
+                      <a href="/tag/#iOS逆向理论基础" style="font-size: 9pt; color: #999;">iOS逆向理论基础</a>
                     
                       
                       

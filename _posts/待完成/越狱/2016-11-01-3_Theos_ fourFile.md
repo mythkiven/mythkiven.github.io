@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "IOS逆向开发系列3_Theos_file简介及Logos基本语法"
-categories: IOS逆向开发
-tags:  Theos   Logos
-author: 3code
+title:  "iOS逆向系列3_Theos_file简介及Logos基本语法"
+categories: iOS逆向
+tags:  Theos  Logos
+author: 3行代码
 ---
 
 * content

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>NSURLProtocol小教程</title>
-    <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头        5、request.URL重定向          6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSessioniO...">
+    <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头      5、request.URL重定向      6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSessioniOS里面总有一...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -205,9 +205,7 @@
       <li><a href="#section-2" id="markdown-toc-section-2">2、实现方法</a></li>
       <li><a href="#section-3" id="markdown-toc-section-3">3、坑</a></li>
       <li><a href="#request" id="markdown-toc-request">4、修改request请求头</a></li>
-    </ul>
-  </li>
-  <li><a href="#requesturl" id="markdown-toc-requesturl">5、request.URL重定向</a>    <ul>
+      <li><a href="#requesturl" id="markdown-toc-requesturl">5、request.URL重定向</a></li>
       <li><a href="#nsurlprotocolclient" id="markdown-toc-nsurlprotocolclient">6、NSURLProtocolClient</a></li>
     </ul>
   </li>
@@ -247,103 +245,89 @@
 
 <h4 id="section-1">1、注册</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSURLProtocol registerClass:[CodeURLProtocol class]];
-    return YES;
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">application:</span><span class="o">(</span><span class="n">UIApplication</span> <span class="o">*)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="o">(</span><span class="n">NSDictionary</span> <span class="o">*)</span><span class="n">launchOptions</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">registerClass:</span><span class="o">[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+    <span class="nc">return</span> <span class="n">YES</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
-
 <h4 id="section-2">2、实现方法</h4>
 
 <p>// 1、每有一个请求的时候都会调用这个方法，如果返回YES就代表这个request需要被处理，反之就是不需要被处理。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>static NSString * const protocolKey = @"protocolKey";
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">static</span> <span class="n">NSString</span> <span class="o">*</span> <span class="kd">const</span> <span class="n">protocolKey</span> <span class="o">=</span> <span class="err">@</span><span class="s">"protocolKey"</span><span class="o">;</span>
 
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    //防止无限循环，因为一个请求在被拦截处理过程中，也会发起一个请求，这样又会走到这里
-    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-        return NO;
-    }
-    // 对https请求做相关处理
-    NSString *scheme = [[request URL] scheme];
-    if ([scheme caseInsensitiveCompare:@"https"] == NSOrderedSame) {
-        
-        return YES;
-    }
-    return NO;
-}
+<span class="o">+</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">canInitWithRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="c1">//防止无限循环，因为一个请求在被拦截处理过程中，也会发起一个请求，这样又会走到这里</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// 对https请求做相关处理</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">scheme</span> <span class="o">=</span> <span class="o">[[</span><span class="n">request</span> <span class="n">URL</span><span class="o">]</span> <span class="n">scheme</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">scheme</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"https"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
-<p>// 2、这个方法返回request，一般不做处理直接返回request</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
-    return request;
-}
+<p>// 2、这个方法返回request，可以修改request</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">+</span> <span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="nl">canonicalRequestForRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">request</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
-<p>///3 这个方法用于处理被拦截的request，拦截请求头、重定向、缓存处理等</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * 开始请求
- */
-- (void)startLoading {
-    
-}
+<p>// 3、这个方法用于处理被拦截的request，从而处理请求头、重定向、缓存等</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">startLoading</span> <span class="p">{</span>
+
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>// 4 停止请求</p>
+<p>// 4、停止请求</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span> <span class="nx">stopLoading</span> <span class="p">{</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void) stopLoading {}
+<span class="p">}</span>
 </code></pre>
 </div>
-
 <h4 id="section-3">3、坑</h4>
 <p>不做解释，遇到的人都懂：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-    return NO;
-}
-[NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
 </code></pre>
 </div>
 
 <h4 id="request">4、修改request请求头</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)startLoading {
-    NSMutableURLRequest *request = [self.request mutableCopy];
-
-    //给请求头添加一个请求体
-    NSMutableDictionary *headers = [request.allHTTPHeaderFields mutableCopy];
-    [headers setObject:@"3code.info" forKey:@"key"];
-    request.allHTTPHeaderFields = headers;
-
-    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
-
-    .....然后使用NSURLSession发送request
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">startLoading</span> <span class="o">{</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">request</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="c1">//给请求头添加一个请求体</span>
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="o">[</span><span class="n">request</span><span class="o">.</span><span class="na">allHTTPHeaderFields</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">headers</span> <span class="nl">setObject:</span><span class="err">@</span><span class="s">"3code.info"</span> <span class="nl">forKey:</span><span class="err">@</span><span class="s">"key"</span><span class="o">];</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="c1">//.....然后使用NSURLSession发送request</span>
+<span class="o">}</span>
 </code></pre>
 </div>
-<h2 id="requesturl">5、request.URL重定向</h2>
+<h4 id="requesturl">5、request.URL重定向</h4>
 <p>将请求重定向到3code.info</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-- (void)startLoading {
-
-    NSMutableURLRequest *request = [self.request mutableCopy];
-    //request改为访问3code.info了
-    request.URL = [NSURL URLWithString:@"http://www.3code.info"];
-    
-    [NSURLProtocol setProperty:@(YES) forKey:protocolKey inRequest:request];
-    
-    //使用NSURLSession继续把重定向的request发送出去
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:mainQueue];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-    
-    [task resume];
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">startLoading</span> <span class="o">{</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">request</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="c1">//request改为访问3code.info了</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">URL</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="err">@</span><span class="s">"http://www.3code.info"</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="c1">//使用NSURLSession继续把重定向的request发送出去</span>
+    <span class="n">NSURLSessionConfiguration</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSessionConfiguration</span> <span class="n">ephemeralSessionConfiguration</span><span class="o">];</span>
+    <span class="n">NSOperationQueue</span> <span class="o">*</span><span class="n">mainQueue</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSOperationQueue</span> <span class="n">mainQueue</span><span class="o">];</span>
+    <span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSession</span> <span class="nl">sessionWithConfiguration:</span><span class="n">config</span> <span class="nl">delegate:</span><span class="n">self</span> <span class="nl">delegateQueue:</span><span class="n">mainQueue</span><span class="o">];</span>
+    <span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">task</span> <span class="o">=</span> <span class="o">[</span><span class="n">session</span> <span class="nl">dataTaskWithRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">task</span> <span class="n">resume</span><span class="o">];</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <h4 id="nsurlprotocolclient">6、NSURLProtocolClient</h4>
@@ -351,83 +335,77 @@
 <p>webview中发送一个request，在这里拦截后使用NSURLSession重新发request。那webview是收不到response的。这里就要做一个处理，每一个NSURLProtocol的子类都有一个client对象来处理response。写法用下边这个就行，比较固定的。(保留了以前的NSURLConnection)</p>
 
 <p>本次更新：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    if (error) {
-        [self.client URLProtocol:self didFailWithError:error];
-    } else {
-        [self.client URLProtocolDidFinishLoading:self];
-    }
-}
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    
-    completionHandler(NSURLSessionResponseAllow);
-}
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
-{
-    completionHandler(proposedResponse);
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">task:</span><span class="o">(</span><span class="n">NSURLSessionTask</span> <span class="o">*)</span><span class="n">task</span> <span class="nl">didCompleteWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSURLSessionResponseDisposition</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">NSURLSessionResponseAllow</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">willCacheResponse:</span><span class="o">(</span><span class="n">NSCachedURLResponse</span> <span class="o">*)</span><span class="n">proposedResponse</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSCachedURLResponse</span> <span class="o">*</span><span class="n">cachedResponse</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">proposedResponse</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 </div>
-<p>历史记录</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-}
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-}
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self.client URLProtocolDidFinishLoading:self];
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self.client URLProtocol:self didFailWithError:error];
-}
+<p>NSURLConnection：</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connectionDidFinishLoading:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didFailWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <h2 id="nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</h2>
 
-<p>上一期的项目有个需求，就是在移动网络下，不进行高清图片，视频等下载操作。其中遇到的问题就是拦截NSURLSession。这里简化以不下载图片为例，解说如何实现。</p>
+<p>上一期的项目有个需求，就是在移动网络下，不进行高清图片，视频等下载操作。其中遇到的问题就是拦截NSURLSession。这里简化为如下实现。</p>
 
 <p>思路：使用NSURLProtocol拦截所有的request，过滤耗流量的request。并做处理。其实蛮简单的，但是AFNetwork、SDWebImageCache等三方库并未拦截。原因是NSURLSession。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request
-{
-    if ([NSURLProtocol propertyForKey:protocolKey inRequest:request]) {
-        return NO;
-    }
-    //满足条件时直接截获请求
-    if ([[UserConfig sharedInstance] isOffPicture] &amp;&amp; ([request.URL.pathExtension caseInsensitiveCompare:@"jpg"] == NSOrderedSame || [request.URL.pathExtension caseInsensitiveCompare:@"png"] == NSOrderedSame) &amp;&amp; [self isPictureDownload]) {
-        return YES;
-    }
-    return NO;
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="o">+</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">canInitWithRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//满足条件时直接截获请求</span>
+    <span class="k">if</span> <span class="o">([[</span><span class="n">UserConfig</span> <span class="n">sharedInstance</span><span class="o">]</span> <span class="n">isOffPicture</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">([</span><span class="n">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">pathExtension</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"jpg"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span> <span class="o">||</span> <span class="o">[</span><span class="n">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">pathExtension</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"png"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">[</span><span class="n">self</span> <span class="n">isPictureDownload</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>从官方文档中可以了解到自定义的NSURLProtocol子类需要赋给NSURLSessionConfiguration的protocolClasses属性,同时其创建的Session时关联的NSURLSessionConfiguration为defaultSessionConfiguration。那么解决方法就跃然纸上了，如下代码：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSURLSessionConfiguration *)zw_defaultSessionConfiguration{
-//    如果需要NSURLProtocol来截获NSURLSession发出的请求，需要每一个NSURLSession在创建时配置的NSURLSessionConfiguration类的protocolClasses属性附上自定义的NSURLProtocol：如下
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">+</span> <span class="o">(</span><span class="n">NSURLSessionConfiguration</span> <span class="o">*)</span><span class="n">zw_defaultSessionConfiguration</span> <span class="o">{</span>
+<span class="c1">//    如果需要NSURLProtocol来截获NSURLSession发出的请求，需要每一个NSURLSession在创建时配置的NSURLSessionConfiguration类的protocolClasses属性附上自定义的NSURLProtocol：如下</span>
+    <span class="n">NSURLSessionConfiguration</span> <span class="o">*</span><span class="n">configuration</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span> <span class="n">zw_defaultSessionConfiguration</span><span class="o">];</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">protocolClasses</span> <span class="o">=</span> <span class="err">@</span><span class="o">[[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+    <span class="nc">configuration</span><span class="o">.</span><span class="na">protocolClasses</span> <span class="o">=</span> <span class="n">protocolClasses</span><span class="o">;</span>
     
-    NSURLSessionConfiguration *configuration = [self zw_defaultSessionConfiguration];
-    NSArray *protocolClasses = @[[CodeURLProtocol class]];
-    configuration.protocolClasses = protocolClasses;
-    
-    return configuration;
-}
-+ (void)load{
-//  使用Method Swizzling方法，defaultSessionConfiguration实现（AFNetwork、SDWebImageCache在创建时使用的是[NSURLSessionConfiguration defaultSessionConfiguration]）如下：
-    Method systemMethod = class_getClassMethod([NSURLSessionConfiguration class], @selector(defaultSessionConfiguration));
-    Method zwMethod = class_getClassMethod([self class], @selector(zw_defaultSessionConfiguration));
-    method_exchangeImplementations(systemMethod, zwMethod);
-    
-    [NSURLProtocol registerClass:[CodeURLProtocol class]];
-}
-
+    <span class="k">return</span> <span class="n">configuration</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">+</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">load</span> <span class="o">{</span>
+<span class="c1">//  使用Method Swizzling方法，defaultSessionConfiguration实现（AFNetwork、SDWebImageCache在创建时使用的是[NSURLSessionConfiguration defaultSessionConfiguration]）如下：</span>
+    <span class="n">Method</span> <span class="n">systemMethod</span> <span class="o">=</span> <span class="n">class_getClassMethod</span><span class="o">([</span><span class="n">NSURLSessionConfiguration</span> <span class="kd">class</span><span class="err">],</span> <span class="err">@</span><span class="nc">selector</span><span class="o">(</span><span class="n">defaultSessionConfiguration</span><span class="o">));</span>
+    <span class="n">Method</span> <span class="n">zwMethod</span> <span class="o">=</span> <span class="n">class_getClassMethod</span><span class="o">([</span><span class="n">self</span> <span class="kd">class</span><span class="err">],</span> <span class="err">@</span><span class="nc">selector</span><span class="o">(</span><span class="n">zw_defaultSessionConfiguration</span><span class="o">));</span>
+    <span class="n">method_exchangeImplementations</span><span class="o">(</span><span class="n">systemMethod</span><span class="o">,</span> <span class="n">zwMethod</span><span class="o">);</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">registerClass:</span><span class="o">[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+<span class="err">}</span>
 </code></pre>
 </div>
 
@@ -441,17 +419,16 @@
 
 <ul>
   <li>1、NSURLCache，这是apple的网络请求缓存类，拿过来就能用。缓存在Library/Caches目录下。</li>
-  <li>2、自己缓存，在 <code class="highlighter-rouge">URLSession: task: didCompleteWithError:</code> 里面缓存数据即可。</li>
-  <li>3、自己缓存，可以使用CoreData、归档、SQLite等等。</li>
+  <li>2、自己缓存，在 <code class="highlighter-rouge">URLSession: task: didCompleteWithError:</code> 里面使用CoreData等缓存数据即可。</li>
 </ul>
 
-<p><strong>下边就我使用过的CoreData、和NSURLCache，分别作介绍：</strong></p>
+<p><strong>下边就我使用过的CoreData、NSURLCache，分别作介绍：</strong></p>
 
 <h3 id="coredata">3.1、使用CoreData缓存：</h3>
 
 <p>1、创建 .xcdatamodeld 及实体类</p>
 
-<p>有些没用过的可能不认识这个家伙，其实就是CoreData，将模型对象的持久化到磁盘里。</p>
+<p>有些没用过的可能不认识这个家伙，其实就是CoreData，将模型对象持久化到磁盘里。</p>
 
 <ul>
   <li>创建实体： Add Entity</li>
@@ -463,202 +440,190 @@
 
 <p>2、NSURLProtocol中拦截缓存数据</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    completionHandler(NSURLSessionResponseAllow);
-    self.response = response;
-    self.mutableData = [[NSMutableData alloc] init];
-}
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-    [self.mutableData appendData:data];
-}
--(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    if (error) {
-        NSLog(@"error url = %@",task.currentRequest.URL.absoluteString);
-        [self.client URLProtocol:self didFailWithError:error];
-    } else {
-        [self.client URLProtocolDidFinishLoading:self];
-        // 缓存数据
-        [self saveCachedResponse];
-    }
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
-{
-    completionHandler(proposedResponse);
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSURLSessionResponseDisposition</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">NSURLSessionResponseAllow</span><span class="o">);</span>
+    <span class="n">self</span><span class="o">.</span><span class="na">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">;</span>
+    <span class="n">self</span><span class="o">.</span><span class="na">mutableData</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSMutableData</span> <span class="n">alloc</span><span class="o">]</span> <span class="n">init</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">mutableData</span> <span class="nl">appendData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">task:</span><span class="o">(</span><span class="n">NSURLSessionTask</span> <span class="o">*)</span><span class="n">task</span> <span class="nl">didCompleteWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">NSLog</span><span class="o">(</span><span class="err">@</span><span class="s">"error url = %@"</span><span class="o">,</span><span class="n">task</span><span class="o">.</span><span class="na">currentRequest</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">absoluteString</span><span class="o">);</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+        <span class="c1">// 缓存数据</span>
+        <span class="o">[</span><span class="n">self</span> <span class="n">saveCachedResponse</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">willCacheResponse:</span><span class="o">(</span><span class="n">NSCachedURLResponse</span> <span class="o">*)</span><span class="n">proposedResponse</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSCachedURLResponse</span> <span class="o">*</span><span class="n">cachedResponse</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">proposedResponse</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>以及NSURLConnection：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    self.response = response;
-    self.mutableData = [[NSMutableData alloc] init];
-}
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.client URLProtocol:self didLoadData:data];
-    [self.mutableData appendData:data];
-}
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self.client URLProtocolDidFinishLoading:self];
-    // 缓存数据
-    [self saveCachedResponse];
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self.client URLProtocol:self didFailWithError:error];
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+    <span class="n">self</span><span class="o">.</span><span class="na">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">;</span>
+    <span class="n">self</span><span class="o">.</span><span class="na">mutableData</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSMutableData</span> <span class="n">alloc</span><span class="o">]</span> <span class="n">init</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">mutableData</span> <span class="nl">appendData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connectionDidFinishLoading:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+    <span class="c1">// 缓存数据</span>
+    <span class="o">[</span><span class="n">self</span> <span class="n">saveCachedResponse</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didFailWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>保存方法如下，其中保存逻辑在AppDelegate中。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#pragma mark 保存缓存到本地
-- (void) saveCachedResponse {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    CachedURLResponse *cachedResponse = [NSEntityDescription insertNewObjectForEntityForName:@"CachedURLResponse"inManagedObjectContext:context];
-    cachedResponse.data = self.mutableData;
-    cachedResponse.url = self.request.URL.absoluteString;
-    cachedResponse.timestamp = [NSDate date];
-    cachedResponse.mimeType = self.response.MIMEType;
-    cachedResponse.encoding = self.response.textEncodingName;
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="n">pragma</span> <span class="n">mark</span> <span class="err">保存缓存到本地</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="n">saveCachedResponse</span> <span class="o">{</span>
+    <span class="n">AppDelegate</span> <span class="o">*</span><span class="n">delegate</span> <span class="o">=</span> <span class="o">[[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="o">]</span> <span class="n">delegate</span><span class="o">];</span>
+    <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">context</span> <span class="o">=</span> <span class="n">delegate</span><span class="o">.</span><span class="na">managedObjectContext</span><span class="o">;</span>
+    <span class="n">CachedURLResponse</span> <span class="o">*</span><span class="n">cachedResponse</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSEntityDescription</span> <span class="nl">insertNewObjectForEntityForName:</span><span class="err">@</span><span class="s">"CachedURLResponse"</span><span class="nl">inManagedObjectContext:</span><span class="n">context</span><span class="o">];</span>
+    <span class="n">cachedResponse</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="na">mutableData</span><span class="o">;</span>
+    <span class="n">cachedResponse</span><span class="o">.</span><span class="na">url</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">absoluteString</span><span class="o">;</span>
+    <span class="n">cachedResponse</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="o">];</span>
+    <span class="n">cachedResponse</span><span class="o">.</span><span class="na">mimeType</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="na">response</span><span class="o">.</span><span class="na">MIMEType</span><span class="o">;</span>
+    <span class="n">cachedResponse</span><span class="o">.</span><span class="na">encoding</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="na">response</span><span class="o">.</span><span class="na">textEncodingName</span><span class="o">;</span>
     
-    NSError *error;
-    [context save:&amp;error];
-    if (error) {
-        NSLog(@"Could not cache the response.");
-    }
-    
-    
-}
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="o">;</span>
+    <span class="o">[</span><span class="n">context</span> <span class="nl">save:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">NSLog</span><span class="o">(</span><span class="err">@</span><span class="s">"Could not cache the response."</span><span class="o">);</span>
+    <span class="o">}</span> 
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>在 <strong>startLoading</strong>中调用如下方法：用于判断是否需要加载本地缓存</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-(void)localResource{
-    CachedURLResponse *cachedResponse = [self cachedResponseForCurrentRequest];
-    if (cachedResponse) {
-        NSData *data = cachedResponse.data;
-        NSString *mimeType = cachedResponse.mimeType;
-        NSString *encoding = cachedResponse.encoding;
-        NSURLResponse *response = [[NSURLResponse alloc] initWithURL:self.request.URL
-                                                            MIMEType:mimeType
-                                               expectedContentLength:data.length
-                                                    textEncodingName:encoding];
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="n">localResource</span> <span class="o">{</span>
+    <span class="n">CachedURLResponse</span> <span class="o">*</span><span class="n">cachedResponse</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span> <span class="n">cachedResponseForCurrentRequest</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">cachedResponse</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="n">cachedResponse</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">mimeType</span> <span class="o">=</span> <span class="n">cachedResponse</span><span class="o">.</span><span class="na">mimeType</span><span class="o">;</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">cachedResponse</span><span class="o">.</span><span class="na">encoding</span><span class="o">;</span>
+        <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSURLResponse</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithURL:</span><span class="n">self</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">URL</span> <span class="nl">MIMEType:</span><span class="n">mimeType</span> <span class="nl">expectedContentLength:</span><span class="n">data</span><span class="o">.</span><span class="na">length</span>
+                                                    <span class="nl">textEncodingName:</span><span class="n">encoding</span><span class="o">];</span>
         
-        [self.client URLProtocol:self
-              didReceiveResponse:response
-              cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span>
+              <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
         
-        [self.client URLProtocol:self didLoadData:data];
-        [self.client URLProtocolDidFinishLoading:self];
-        
-    } else {
-        NSMutableURLRequest *newRequest = [self.request mutableCopy];
-        
-        [NSURLProtocol setProperty:@YES forKey:protocolKey inRequest:newRequest];
-        
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:mainQueue];
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:newRequest];
-        [task resume];
-    }
-    
-}
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">newRequest</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">request</span> <span class="n">mutableCopy</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="nd">@YES</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">newRequest</span><span class="o">];</span>
+        <span class="n">NSURLSessionConfiguration</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSessionConfiguration</span> <span class="n">defaultSessionConfiguration</span><span class="o">];</span>
+        <span class="n">NSOperationQueue</span> <span class="o">*</span><span class="n">mainQueue</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSOperationQueue</span> <span class="n">mainQueue</span><span class="o">];</span>
+        <span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSession</span> <span class="nl">sessionWithConfiguration:</span><span class="n">config</span> <span class="nl">delegate:</span><span class="n">self</span> <span class="nl">delegateQueue:</span><span class="n">mainQueue</span><span class="o">];</span>
+        <span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">task</span> <span class="o">=</span> <span class="o">[</span><span class="n">session</span> <span class="nl">dataTaskWithRequest:</span><span class="n">newRequest</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">task</span> <span class="n">resume</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <p>检测本地是否有缓存：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#pragma mark 检测本地是否存在缓存
-- (NSCachedURLResponse *)cachedResponseForCurrentRequest {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CachedURLResponse"inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="n">pragma</span> <span class="n">mark</span> <span class="err">检测本地是否存在缓存</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSCachedURLResponse</span> <span class="o">*)</span><span class="n">cachedResponseForCurrentRequest</span> <span class="o">{</span>
+    <span class="n">AppDelegate</span> <span class="o">*</span><span class="n">delegate</span> <span class="o">=</span> <span class="o">[[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="o">]</span> <span class="n">delegate</span><span class="o">];</span>
+    <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">context</span> <span class="o">=</span> <span class="n">delegate</span><span class="o">.</span><span class="na">managedObjectContext</span><span class="o">;</span>
+    <span class="n">NSFetchRequest</span> <span class="o">*</span><span class="n">fetchRequest</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSFetchRequest</span> <span class="n">alloc</span><span class="o">]</span> <span class="n">init</span><span class="o">];</span>
+    <span class="n">NSEntityDescription</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSEntityDescription</span> <span class="nl">entityForName:</span><span class="err">@</span><span class="s">"CachedURLResponse"</span><span class="nl">inManagedObjectContext:</span><span class="n">context</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">fetchRequest</span> <span class="nl">setEntity:</span><span class="n">entity</span><span class="o">];</span>
 
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url == %@", self.request.URL.absoluteString];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error;
-    NSArray *result = [context executeFetchRequest:fetchRequest error:&amp;error];
+    <span class="n">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="err">@</span><span class="s">"url == %@"</span><span class="o">,</span> <span class="n">self</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">absoluteString</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">fetchRequest</span> <span class="nl">setPredicate:</span><span class="n">predicate</span><span class="o">];</span>
 
-    if (result &amp;&amp; result.count &gt; 0) {
-        return result[0];
-    }
-    return nil;
-}
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="o">;</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="o">[</span><span class="n">context</span> <span class="nl">executeFetchRequest:</span><span class="n">fetchRequest</span> <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">&amp;&amp;</span> <span class="n">result</span><span class="o">.</span><span class="na">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">nil</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>AppDelegate：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="n">h</span>
-<span class="c1">// 缓存策略
-</span><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSManagedObjectModel</span> <span class="o">*</span><span class="n">managedObjectModel</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">persistentStoreCoordinator</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">saveContext</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">applicationDocumentsDirectory</span><span class="p">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">.</span><span class="na">h</span>
+<span class="c1">// 缓存策略</span>
+<span class="nd">@property</span> <span class="o">(</span><span class="n">readonly</span><span class="o">,</span> <span class="n">strong</span><span class="o">,</span> <span class="n">nonatomic</span><span class="o">)</span> <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span><span class="o">;</span>
+<span class="nd">@property</span> <span class="o">(</span><span class="n">readonly</span><span class="o">,</span> <span class="n">strong</span><span class="o">,</span> <span class="n">nonatomic</span><span class="o">)</span> <span class="n">NSManagedObjectModel</span> <span class="o">*</span><span class="n">managedObjectModel</span><span class="o">;</span>
+<span class="nd">@property</span> <span class="o">(</span><span class="n">readonly</span><span class="o">,</span> <span class="n">strong</span><span class="o">,</span> <span class="n">nonatomic</span><span class="o">)</span> <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">persistentStoreCoordinator</span><span class="o">;</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">saveContext</span><span class="o">;</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSURL</span> <span class="o">*)</span><span class="n">applicationDocumentsDirectory</span><span class="o">;</span>
 
-<span class="p">.</span><span class="n">m</span>
+<span class="o">.</span><span class="na">m</span>
 
-<span class="cp">#import &lt;CoreData/CoreData.h&gt;
-</span>
-<span class="k">@synthesize</span> <span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
-<span class="k">@synthesize</span> <span class="n">managedObjectModel</span> <span class="o">=</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
-<span class="k">@synthesize</span> <span class="n">persistentStoreCoordinator</span> <span class="o">=</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
+<span class="err">#</span><span class="kn">import</span> <span class="err">&lt;</span><span class="nn">CoreData</span><span class="o">/</span><span class="n">CoreData</span><span class="o">.</span><span class="na">h</span><span class="o">&gt;</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationWillTerminate</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">self</span> <span class="nf">saveContext</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">saveContext</span><span class="p">{</span>
-    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-    <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">managedObjectContext</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">([</span><span class="n">managedObjectContext</span> <span class="nf">hasChanges</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">[</span><span class="n">managedObjectContext</span> <span class="nf">save</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Unresolved error %@, %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">userInfo</span><span class="p">]);</span>
-            <span class="n">abort</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="p">)</span><span class="n">managedObjectContext</span><span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">_managedObjectContext</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">coordinator</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">persistentStoreCoordinator</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">coordinator</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">_managedObjectContext</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSManagedObjectContext</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">_managedObjectContext</span> <span class="nf">setPersistentStoreCoordinator</span><span class="p">:</span><span class="n">coordinator</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSManagedObjectModel</span> <span class="o">*</span><span class="p">)</span><span class="n">managedObjectModel</span><span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">_managedObjectModel</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">NSURL</span> <span class="o">*</span><span class="n">modelURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSBundle</span> <span class="nf">mainBundle</span><span class="p">]</span> <span class="nf">URLForResource</span><span class="p">:</span><span class="s">@"NSURLProtocolExample"</span> <span class="nf">withExtension</span><span class="p">:</span><span class="s">@"mom"</span><span class="p">];</span>
-    <span class="n">_managedObjectModel</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSManagedObjectModel</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithContentsOfURL</span><span class="p">:</span><span class="n">modelURL</span><span class="p">];</span>
-    <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="p">)</span><span class="n">persistentStoreCoordinator</span><span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">_persistentStoreCoordinator</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="nd">@synthesize</span> <span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">_managedObjectContext</span><span class="o">;</span>
+<span class="nd">@synthesize</span> <span class="n">managedObjectModel</span> <span class="o">=</span> <span class="n">_managedObjectModel</span><span class="o">;</span>
+<span class="nd">@synthesize</span> <span class="n">persistentStoreCoordinator</span> <span class="o">=</span> <span class="n">_persistentStoreCoordinator</span><span class="o">;</span>
+
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">applicationWillTerminate:</span><span class="o">(</span><span class="n">UIApplication</span> <span class="o">*)</span><span class="n">application</span> <span class="o">{</span>
+   <span class="o">[</span><span class="n">self</span> <span class="n">saveContext</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">saveContext</span><span class="o">{</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="n">nil</span><span class="o">;</span>
+    <span class="n">NSManagedObjectContext</span> <span class="o">*</span><span class="n">managedObjectContext</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="na">managedObjectContext</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">managedObjectContext</span> <span class="o">!=</span> <span class="n">nil</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">([</span><span class="n">managedObjectContext</span> <span class="n">hasChanges</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">![</span><span class="n">managedObjectContext</span> <span class="nl">save:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">NSLog</span><span class="o">(</span><span class="err">@</span><span class="s">"Unresolved error %@, %@"</span><span class="o">,</span> <span class="n">error</span><span class="o">,</span> <span class="o">[</span><span class="n">error</span> <span class="n">userInfo</span><span class="o">]);</span>
+            <span class="n">abort</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSManagedObjectContext</span> <span class="o">*)</span><span class="n">managedObjectContext</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">_managedObjectContext</span> <span class="o">!=</span> <span class="n">nil</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">coordinator</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span> <span class="n">persistentStoreCoordinator</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">coordinator</span> <span class="o">!=</span> <span class="n">nil</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">_managedObjectContext</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSManagedObjectContext</span> <span class="n">alloc</span><span class="o">]</span> <span class="n">init</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">_managedObjectContext</span> <span class="nl">setPersistentStoreCoordinator:</span><span class="n">coordinator</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">_managedObjectContext</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSManagedObjectModel</span> <span class="o">*)</span><span class="n">managedObjectModel</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">_managedObjectModel</span> <span class="o">!=</span> <span class="n">nil</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">modelURL</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSBundle</span> <span class="n">mainBundle</span><span class="o">]</span> <span class="nl">URLForResource:</span><span class="err">@</span><span class="s">"NSURLProtocolExample"</span> <span class="nl">withExtension:</span><span class="err">@</span><span class="s">"mom"</span><span class="o">];</span>
+    <span class="n">_managedObjectModel</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSManagedObjectModel</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithContentsOfURL:</span><span class="n">modelURL</span><span class="o">];</span>
+    <span class="k">return</span> <span class="n">_managedObjectModel</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSPersistentStoreCoordinator</span> <span class="o">*)</span><span class="n">persistentStoreCoordinator</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">_persistentStoreCoordinator</span> <span class="o">!=</span> <span class="n">nil</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="o">;</span>
+    <span class="o">}</span>
     
-    <span class="n">NSURL</span> <span class="o">*</span><span class="n">storeURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">self</span> <span class="nf">applicationDocumentsDirectory</span><span class="p">]</span> <span class="nf">URLByAppendingPathComponent</span><span class="p">:</span><span class="s">@"NSURLProtocolExample.sqlite"</span><span class="p">];</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">storeURL</span> <span class="o">=</span> <span class="o">[[</span><span class="n">self</span> <span class="n">applicationDocumentsDirectory</span><span class="o">]</span> <span class="nl">URLByAppendingPathComponent:</span><span class="err">@</span><span class="s">"NSURLProtocolExample.sqlite"</span><span class="o">];</span>
     
-    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-    <span class="n">_persistentStoreCoordinator</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSPersistentStoreCoordinator</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithManagedObjectModel</span><span class="p">:[</span><span class="n">self</span> <span class="nf">managedObjectModel</span><span class="p">]];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">_persistentStoreCoordinator</span> <span class="nf">addPersistentStoreWithType</span><span class="p">:</span><span class="n">NSSQLiteStoreType</span> <span class="nf">configuration</span><span class="p">:</span><span class="nb">nil</span> <span class="n">URL</span><span class="o">:</span><span class="n">storeURL</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
-        
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Unresolved error %@, %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">userInfo</span><span class="p">]);</span>
-        <span class="n">abort</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">applicationDocumentsDirectory</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[[[</span><span class="n">NSFileManager</span> <span class="nf">defaultManager</span><span class="p">]</span> <span class="nf">URLsForDirectory</span><span class="p">:</span><span class="n">NSDocumentDirectory</span> <span class="nf">inDomains</span><span class="p">:</span><span class="nf">NSUserDomainMask</span><span class="p">]</span> <span class="n">lastObject</span><span class="p">];</span>
-<span class="p">}</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="n">nil</span><span class="o">;</span>
+    <span class="n">_persistentStoreCoordinator</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSPersistentStoreCoordinator</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithManagedObjectModel:</span><span class="o">[</span><span class="n">self</span> <span class="n">managedObjectModel</span><span class="o">]];</span>
+    <span class="k">if</span> <span class="o">(![</span><span class="n">_persistentStoreCoordinator</span> <span class="nl">addPersistentStoreWithType:</span><span class="n">NSSQLiteStoreType</span> <span class="nl">configuration:</span><span class="n">nil</span> <span class="nl">URL:</span><span class="n">storeURL</span> <span class="nl">options:</span><span class="n">nil</span> <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="o">])</span> <span class="o">{</span>
+        <span class="n">NSLog</span><span class="o">(</span><span class="err">@</span><span class="s">"Unresolved error %@, %@"</span><span class="o">,</span> <span class="n">error</span><span class="o">,</span> <span class="o">[</span><span class="n">error</span> <span class="n">userInfo</span><span class="o">]);</span>
+        <span class="n">abort</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">_persistentStoreCoordinator</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="n">NSURL</span> <span class="o">*)</span><span class="n">applicationDocumentsDirectory</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">[[[</span><span class="n">NSFileManager</span> <span class="n">defaultManager</span><span class="o">]</span> <span class="nl">URLsForDirectory:</span><span class="n">NSDocumentDirectory</span> <span class="nl">inDomains:</span><span class="n">NSUserDomainMask</span><span class="o">]</span> <span class="n">lastObject</span><span class="o">];</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
@@ -667,48 +632,44 @@
 下边给出主要的部分：</p>
 
 <p>保存缓存</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-    if (error) {
-        [self.client URLProtocol:self didFailWithError:error];
-    } else {
-        [self.client URLProtocolDidFinishLoading:self];
-        if (!self.data) {
-            return;
-        }
-        // 保存缓存
-        NSCachedURLResponse *cacheUrlResponse = [[NSCachedURLResponse alloc] initWithResponse:task.response data:self.data];
-        [[NSURLCache sharedURLCache] storeCachedResponse:cacheUrlResponse forRequest:self.request];
-        self.data = nil;
-        NSLog(@"缓存成功");
-    }
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">task:</span><span class="o">(</span><span class="n">NSURLSessionTask</span> <span class="o">*)</span><span class="n">task</span> <span class="nl">didCompleteWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">self</span><span class="o">.</span><span class="na">data</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="c1">// 保存缓存</span>
+        <span class="n">NSCachedURLResponse</span> <span class="o">*</span><span class="n">cacheUrlResponse</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSCachedURLResponse</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithResponse:</span><span class="n">task</span><span class="o">.</span><span class="na">response</span> <span class="nl">data:</span><span class="n">self</span><span class="o">.</span><span class="na">data</span><span class="o">];</span>
+        <span class="o">[[</span><span class="n">NSURLCache</span> <span class="n">sharedURLCache</span><span class="o">]</span> <span class="nl">storeCachedResponse:</span><span class="n">cacheUrlResponse</span> <span class="nl">forRequest:</span><span class="n">self</span><span class="o">.</span><span class="na">request</span><span class="o">];</span>
+        <span class="n">self</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">nil</span><span class="o">;</span>
+        <span class="n">NSLog</span><span class="o">(</span><span class="err">@</span><span class="s">"缓存成功"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 
 </code></pre>
 </div>
 
 <p>是否使用缓存</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)startLoading{
-    NSCachedURLResponse *urlResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:[self request]];
-    if (urlResponse) {
-        //如果缓存存在，则使用缓存。
-        [self.client URLProtocol:self didReceiveResponse:urlResponse.response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-        [self.client URLProtocol:self didLoadData:urlResponse.data];
-        [self.client URLProtocolDidFinishLoading:self];
-        [self backgroundCheckUpdate];
-        return;
-    }
-    NSMutableURLRequest *mutableRequest = [[self request] mutableCopy];
-    [NSURLProtocol setProperty:@YES forKey:URLProtocolAlreadyHandleKey inRequest:mutableRequest];
-    [self netRequestWithRequest:mutableRequest];
-}
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">startLoading</span><span class="o">{</span>
+    <span class="n">NSCachedURLResponse</span> <span class="o">*</span><span class="n">urlResponse</span> <span class="o">=</span> <span class="o">[[</span><span class="n">NSURLCache</span> <span class="n">sharedURLCache</span><span class="o">]</span> <span class="nl">cachedResponseForRequest:</span><span class="o">[</span><span class="n">self</span> <span class="n">request</span><span class="o">]];</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">urlResponse</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//如果缓存存在，则使用缓存。</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">urlResponse</span><span class="o">.</span><span class="na">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">urlResponse</span><span class="o">.</span><span class="na">data</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+        <span class="o">[</span><span class="n">self</span> <span class="n">backgroundCheckUpdate</span><span class="o">];</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">mutableRequest</span> <span class="o">=</span> <span class="o">[[</span><span class="n">self</span> <span class="n">request</span><span class="o">]</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="nd">@YES</span> <span class="nl">forKey:</span><span class="n">URLProtocolAlreadyHandleKey</span> <span class="nl">inRequest:</span><span class="n">mutableRequest</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">self</span> <span class="nl">netRequestWithRequest:</span><span class="n">mutableRequest</span><span class="o">];</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
 <p>这种方式使用起来较为简便，没有太多的嵌入感。</p>
-
-<p>注意：使用缓存的关键点在于缓存时候过期。一般思路如下：</p>
-
-<p>检测本地是否有缓存–&gt;(NO请求服务器)_YES–&gt;本地缓存是否过期:(YES请求服务器)__NO–&gt;加载缓存</p>
 
 
         </article>
@@ -796,6 +757,9 @@
                     
                 
             
+        
+            
+            
                 
                     
                 
@@ -810,21 +774,6 @@
             
         
             
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
             
                 
                     
@@ -847,13 +796,13 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a></p>
+        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE4_Reveal/">IOS逆向系列_Reveal_解码任意APP的UI界面</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2015/10/30/SecureCRT/">SecureCRT小教程</a></p>
+        <p><strong>下一篇</strong> <a href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a></p>
         
     </div>
 </div>

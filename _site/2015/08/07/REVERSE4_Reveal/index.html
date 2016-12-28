@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>IOS逆向开发系列_Reveal_解码任意APP的UI界面</title>
-    <meta name="description" content="  前言  关于破解：  RevealLoader  SSH  Reveal  framework +  dylib + plist          RevealServer.framework      libReveal.dylib                  方法1：iOSOpenDev创建一个  ...">
+    <title>IOS逆向系列_Reveal_解码任意APP的UI界面</title>
+    <meta name="description" content="  前言  iphone配置          RevealLoader        Mac配置          1、SSH      2、关于破解：      3、Reveal      4、framework +  dylib + plist                  4.1  RevealSer...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2015/08/07/REVERSE_Reveal/">
+    <link rel="canonical" href="http://localhost:4000/2015/08/07/REVERSE4_Reveal/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -140,7 +140,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>IOS逆向开发系列_Reveal_解码任意APP的UI界面</h1>
+        <h1>IOS逆向系列_Reveal_解码任意APP的UI界面</h1>
         <div class="label">
 
             <div class="label-card">
@@ -165,7 +165,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#IOS逆向开发" title="Category: IOS逆向开发" rel="category">IOS逆向开发</a>
+        <a href="/category/#IOS逆向" title="Category: IOS逆向" rel="category">IOS逆向</a>
     
   
 
@@ -199,71 +199,95 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
   <li><a href="#section" id="markdown-toc-section">前言</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">关于破解：</a></li>
-  <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
-  <li><a href="#ssh" id="markdown-toc-ssh">SSH</a></li>
-  <li><a href="#reveal" id="markdown-toc-reveal">Reveal</a></li>
-  <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">framework +  dylib + plist</a>    <ul>
-      <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">RevealServer.framework</a></li>
-      <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">libReveal.dylib</a>        <ul>
-          <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
-          <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
+  <li><a href="#iphone" id="markdown-toc-iphone">iphone配置</a>    <ul>
+      <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
+    </ul>
+  </li>
+  <li><a href="#mac" id="markdown-toc-mac">Mac配置</a>    <ul>
+      <li><a href="#ssh" id="markdown-toc-ssh">1、SSH</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、关于破解：</a></li>
+      <li><a href="#reveal" id="markdown-toc-reveal">3、Reveal</a></li>
+      <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">4、framework +  dylib + plist</a>        <ul>
+          <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">4.1  RevealServer.framework</a></li>
+          <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">4.2 libReveal.dylib</a>            <ul>
+              <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
+              <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
+            </ul>
+          </li>
+          <li><a href="#librevealplist" id="markdown-toc-librevealplist">4.3 libReveal.plist</a></li>
         </ul>
       </li>
-      <li><a href="#librevealplist" id="markdown-toc-librevealplist">libReveal.plist</a></li>
     </ul>
   </li>
 </ul>
 
 <h2 id="section">前言</h2>
 
-<p>从最开始写在笔记上的Reveal使用记录，到现在开放到博客，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)。
-下边更新了以前写的记录，最近安装Reveal的朋友可以参照此教程。</p>
+<p>Reveal可以直观地查看App的UI布局，官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。</p>
 
-<h2 id="section-1">关于破解：</h2>
+<p>从使用至今，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)，不论是哪个版本都有免费使用的机会。旧版的可以直接破解，新版的可以修改系统时间来解决。</p>
 
-<p>如果是使用1.6.3及以下的版本，可以google到破解文件，覆盖安装就行。
-如果是V2及以上版本，破解方法我还没找呢，公司用的是1.6.3版本，家里的就通过修改电脑时间。。
-顺便说下，免费使用时长，是可以通过修改电脑日期来调整。这个是我用过的版本里通用的福利方法。。</p>
+<h2 id="iphone">iphone配置</h2>
 
-<p>新版的Reveal上缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
+<h3 id="revealloader">RevealLoader</h3>
 
-<h2 id="revealloader">RevealLoader</h2>
+<p>1、在手机上添加源:http://rheard.com/cydia然后安装 Reveal Loader。注意需要VPN才行。</p>
 
-<p>在手机上添加源:http://rheard.com/cydia</p>
+<p>2、下载完Reveal Loader后，检查iOS上的/Library/目录下有没有一个名为RHRevealLoader的文件夹:</p>
 
-<p>然后安装 Reveal Loader。注意需要VPN才行。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># ls -l /Library/ | grep RHRevealLoader
+</code></pre>
+</div>
 
-<h2 id="ssh">SSH</h2>
+<p>如果没有，就手动创建一个:</p>
 
-<p>手动开启，或者使用PP助手，没有使用过的话，记得开启后修改密码。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /Library/RHRevealLoader
+</code></pre>
+</div>
 
-<h2 id="reveal">Reveal</h2>
+<p>3、Reveal Loader的配置界面位于Settings应用中，点击Reveal进入其界面，呈现在我们面前的主要是一些使用声明。点击Enabled Applications，进入配置界面。要分析哪个App，就打开对应的开关。</p>
 
-<p>与其他几个功能相近的工具比如PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）相比，最明显的区别就是直观。</p>
+<h2 id="mac">Mac配置</h2>
+
+<h3 id="ssh">1、SSH</h3>
+
+<p>手动开启，或者使用PP助手，没有使用过的话，<strong>记得开启后修改密码。</strong></p>
+
+<h3 id="section-1">2、关于破解：</h3>
+
+<p>如果是使用1.6.x以下的版本，可以google到破解文件，覆盖安装就行。
+如果是V2及以上版本，破解方法我还没找，现在用的是1.5.x。。</p>
+
+<p>注意：新版的Reveal缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
+
+<h3 id="reveal">3、Reveal</h3>
+
+<p>与其功能相近的工具有：PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）。不过Reveal在UI上更直观些。</p>
 
 <p>其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网<a href="http://revealapp.com/">http://revealapp.com/</a>，</p>
 
 <p>下面进重点。</p>
 
-<h2 id="framework---dylib--plist">framework +  dylib + plist</h2>
+<h3 id="framework---dylib--plist">4、framework +  dylib + plist</h3>
 
-<h4 id="revealserverframework">RevealServer.framework</h4>
+<h4 id="revealserverframework">4.1  RevealServer.framework</h4>
 <p>通过openSSH拷贝framework到越狱机</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
 </code></pre>
 </div>
 
-<p>早期版本的libReveal.dylib是支持ARM架构的，那时，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了，如下：</p>
+<p>早期版本的libReveal.dylib是支持ARM架构的，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了：</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
 </code></pre>
 </div>
 
-<h4 id="librevealdylib">libReveal.dylib</h4>
+<h4 id="librevealdylib">4.2 libReveal.dylib</h4>
 
-<p>新版的这个文件是没有的，在早期是有的。麻烦点可以使用iOSOpenDev创建：</p>
+<p>然后打开Reveal，在它标题栏的Help选项下，点开Show Reveal Library in Finder,把libReveal.dylib拷贝到RHRevealLoader目录下。</p>
+
+<p>新版的这个文件是没有的，麻烦点可以使用iOSOpenDev创建：</p>
 
 <h6 id="iosopendev">方法1：iOSOpenDev创建一个</h6>
 
@@ -279,12 +303,15 @@
 
 <h6 id="section-2">方法2</h6>
 
-<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/</p>
+<p>注意，还有简单的方法😁😁😁</p>
 
-<h4 id="librevealplist">libReveal.plist</h4>
+<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/即可</p>
 
-<p>在电脑上创建libReveal.plist，然后copy到iphone的 /Library/MobileSubstrate/DynamicLibraries/ 目录下。
-libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制定多个):</p>
+<h4 id="librevealplist">4.3 libReveal.plist</h4>
+
+<p>在电脑上创建libReveal.plist，然后copy到iphone的 /Library/MobileSubstrate/DynamicLibraries/ 目录下。</p>
+
+<p>libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制定多个):</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">     
     </span><span class="err">Filter</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">{</span><span class="w">    
@@ -294,7 +321,7 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
 </span></code></pre>
 </div>
 
-<p>说明：</p>
+<p><strong>注意：</strong></p>
 
 <p>0、只有安装 Cydia Substrate之后才会有MobileSubstrate目录。mobilesubstrate是cydia插件/软件运行的一个基础依赖包。它提供软件运行的公共库，可以用来动态替换内存中的代码、数据等。安装的插件或软件比如iFile、Activator、SBSettings几乎都是依赖mobilesubstrate才能运行的。</p>
 
@@ -400,39 +427,6 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
                     
                 
             
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <h2 id="similar_posts">相似文章</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/11/01/4_Reveal/">IOS逆向开发系列4_Reveal
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-            
         
             
             
@@ -458,20 +452,27 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
                 
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
         
-            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE_Charles/">IOS逆向开发系列_Charles_iPhone网络抓包</a></p>
+        <p><strong>上一篇</strong> <a href="/2015/08/07/REVERSE4_Charles/">IOS逆向系列_Charles_iPhone网络抓包</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2015/10/15/NSURLCache/">NSURLCache缓存的那些事</a></p>
+        <p><strong>下一篇</strong> <a href="/2015/10/15/NSURLProtocol/">NSURLProtocol小教程</a></p>
         
     </div>
 </div>
@@ -480,7 +481,7 @@ libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制�
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE_Reveal/" data-title="IOS逆向开发系列_Reveal_解码任意APP的UI界面" data-url="http://localhost:4000/2015/08/07/REVERSE_Reveal/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE4_Reveal/" data-title="IOS逆向系列_Reveal_解码任意APP的UI界面" data-url="http://localhost:4000/2015/08/07/REVERSE4_Reveal/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

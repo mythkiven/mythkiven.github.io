@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "IOS逆向开发系列2_Theos_安装编译打包运行"
-categories: IOS逆向开发
+title:  "iOS逆向系列2_Theos_安装编译打包运行"
+categories: iOS逆向
 tags:  Theos
-author: 3code
+author: 3行代码
 ---
 
 * content
