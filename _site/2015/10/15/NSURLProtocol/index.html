@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>NSURLProtocol使用报告</title>
+    <title>NSURLProtocol小教程</title>
     <meta name="description" content="  1、基本使用          1、注册      2、实现方法      3、坑      4、修改request请求头        5、request.URL重定向          6、NSURLProtocolClient        2、NSURLProtocol拦截NSURLSessioniO...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
@@ -140,7 +140,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>NSURLProtocol使用报告</h1>
+        <h1>NSURLProtocol小教程</h1>
         <div class="label">
 
             <div class="label-card">
@@ -167,7 +167,7 @@
     
         <a href="/category/#NSURLProtocol" title="Category: NSURLProtocol" rel="category">NSURLProtocol</a>&nbsp;
     
-        <a href="/category/#缓存~~~" title="Category: 缓存~~~" rel="category">缓存~~~</a>
+        <a href="/category/#缓存" title="Category: 缓存" rel="category">缓存</a>
     
   
 
@@ -222,7 +222,7 @@
 
 <p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。</p>
 
-<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能，是不是很神奇？</p>
+<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能:</p>
 
 <ul>
   <li>重定向网络请求</li>
@@ -233,13 +233,11 @@
 
 <p>注意:</p>
 <ul>
-  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)</li>
+  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView中发出的网络请求。</li>
   <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
   <li>AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑</li>
   <li>UIWebView本身是有缓存的，基于NSURLCache来实现</li>
 </ul>
-
-<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">官方文档</a></p>
 
 <p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。</p>
 
@@ -864,7 +862,7 @@
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2015/10/15/NSURLProtocol/" data-title="NSURLProtocol使用报告" data-url="http://localhost:4000/2015/10/15/NSURLProtocol/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2015/10/15/NSURLProtocol/" data-title="NSURLProtocol小教程" data-url="http://localhost:4000/2015/10/15/NSURLProtocol/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

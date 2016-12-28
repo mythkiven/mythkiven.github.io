@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "NSURLProtocol使用报告"
-categories: NSURLProtocol 缓存~~~ 
+title:  "NSURLProtocol小教程"
+categories: NSURLProtocol 缓存
 tags: NSURLProtocol 缓存 
 author: 3行代码
 ---
@@ -12,7 +12,7 @@ author: 3行代码
 
 iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。
 
-NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能，是不是很神奇？
+NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能:
 
 - 重定向网络请求
 - 忽略网络请求，使用本地缓存
@@ -20,12 +20,10 @@ NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例�
 - 全局的网络请求设置
 
 注意:
-- NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView(网络基于WebKit内核)中发出的网络请求。(可使用WKNavigationDelegate处理)
+- NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView中发出的网络请求。
 - 可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。
 - AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑
 - UIWebView本身是有缓存的，基于NSURLCache来实现
-
-[官方文档](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i)
 
 如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。
 
