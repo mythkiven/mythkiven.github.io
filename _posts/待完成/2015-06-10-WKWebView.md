@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "WKWebView使用小结"
+title:  "WKWebView总结教程"
 categories: WKWebView
-tags: WKWebView、Native与JS交互、离线缓存与NSURLProtocol
+tags: WKWebView、Native与JS、缓存、NSURLProtocol
 author: 3行代码
 ---
 
@@ -11,7 +11,7 @@ author: 3行代码
 
 ## 前言
 
-WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WkWebView，下边总结了前段时间学习的笔记，记录下来。如果需要demo的还请留言。
+WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WKWebView，下边总结了之前学习的笔记，如果需要demo的还请留言。
 早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。
 
 就这段时间的使用体验来看，变化集中在：
@@ -24,7 +24,7 @@ WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼�
 
 基本属性
 
-```
+```objective-c
 #import <WebKit/WebKit.h>
 WKWebView *webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 

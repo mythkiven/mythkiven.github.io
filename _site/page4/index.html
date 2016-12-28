@@ -1129,7 +1129,7 @@ http_h5.m.taobao.com_0.localstorage
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2015/06/10/WKWebView/">WKWebView使用小结</a>
+                  <a class="post-link" href="/2015/06/10/WKWebView/">WKWebView总结教程</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -1169,7 +1169,7 @@ http_h5.m.taobao.com_0.localstorage
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#WKWebView、Native与JS交互、离线缓存与NSURLProtocol" title="Tag: WKWebView、Native与JS交互、离线缓存与NSURLProtocol" rel="tag">WKWebView、Native与JS交互、离线缓存与NSURLProtocol</a>
+        <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" title="Tag: WKWebView、Native与JS、缓存、NSURLProtocol" rel="tag">WKWebView、Native与JS、缓存、NSURLProtocol</a>
     
   
 
@@ -1209,7 +1209,7 @@ http_h5.m.taobao.com_0.localstorage
 
 <h2 id="section">前言</h2>
 
-<p>WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WkWebView，下边总结了前段时间学习的笔记，记录下来。如果需要demo的还请留言。
+<p>WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WKWebView，下边总结了之前学习的笔记，如果需要demo的还请留言。
 早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。</p>
 
 <p>就这段时间的使用体验来看，变化集中在：</p>
@@ -1223,7 +1223,7 @@ http_h5.m.taobao.com_0.localstorage
 
 <p>基本属性</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#import &lt;WebKit/WebKit.h&gt;
+<pre><code class="language-objective-c">#import &lt;WebKit/WebKit.h&gt;
 WKWebView *webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 // 代理
@@ -1241,7 +1241,6 @@ webView.allowsBackForwardNavigationGestures =YES;
 
 [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.3code.info"]]];
 </code></pre>
-</div>
 
 <h4 id="section-2">1.1 初始化</h4>
 
@@ -1753,7 +1752,7 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                     
                         <li><a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
                     
-                        <li><a href="/2016/11/07/Runtime-theory/">IOS逆向开发系列7_IOS理论基础</a></li>
+                        <li><a href="/2016/11/07/Runtime-theory/">Runtime基础</a></li>
                     
                         <li><a href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a></li>
                     
@@ -1832,7 +1831,7 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                             <span class="name">
                                 IOS逆向开发
                             </span>
-                            <span class="badge">11</span>
+                            <span class="badge">10</span>
                         </a>
                     </li>
                     
@@ -1936,6 +1935,15 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                     </li>
                     
                     <li>
+                        <a href="/category/#Runtime" class="categories-list-item" cate="Runtime">
+                            <span class="name">
+                                Runtime
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/category/#python" class="categories-list-item" cate="python">
                             <span class="name">
                                 python
@@ -2001,7 +2009,7 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                       
                       
                       
-                      <a href="/tag/#WKWebView、Native与JS交互、离线缓存与NSURLProtocol" style="font-size: 9pt; color: #999;">WKWebView、Native与JS交互、离线缓存与NSURLProtocol</a>
+                      <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" style="font-size: 9pt; color: #999;">WKWebView、Native与JS、缓存、NSURLProtocol</a>
                     
                       
                       
@@ -2148,7 +2156,7 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                       
                       
                       
-                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 12pt; color: #666;">IOS逆向开发理论基础</a>
+                      <a href="/tag/#IOS逆向开发理论基础" style="font-size: 9pt; color: #999;">IOS逆向开发理论基础</a>
                     
                       
                       
@@ -2177,6 +2185,13 @@ Creat Floder：这里我选择的是以folder的形式引用文件夹，点击�
                       
                       
                       <a href="/tag/#12306" style="font-size: 9pt; color: #999;">12306</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Runtime" style="font-size: 9pt; color: #999;">Runtime</a>
                     
                       
                       
