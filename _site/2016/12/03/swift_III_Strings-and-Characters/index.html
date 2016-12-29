@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Swift_III_字符(串)</title>
+    <meta name="description" content="  String Literals：字面字符串  Initializing an Empty String:初始化空串  String Mutability：可变字符串  Strings Are Value Types：String是值类型  Working with Characters:使用字符  Conca...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2016/12/03/swift_III_Strings-and-Characters/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>Swift_III_字符(串)</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2016-12-03
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a-->
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#string-literals" id="markdown-toc-string-literals">String Literals：字面字符串</a></li>
+  <li><a href="#initializing-an-empty-string" id="markdown-toc-initializing-an-empty-string">Initializing an Empty String:初始化空串</a></li>
+  <li><a href="#string-mutability" id="markdown-toc-string-mutability">String Mutability：可变字符串</a></li>
+  <li><a href="#strings-are-value-typesstring" id="markdown-toc-strings-are-value-typesstring">Strings Are Value Types：String是值类型</a></li>
+  <li><a href="#working-with-characters" id="markdown-toc-working-with-characters">Working with Characters:使用字符</a></li>
+  <li><a href="#concatenating-strings-and-characters" id="markdown-toc-concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</a></li>
+  <li><a href="#string-interpolation" id="markdown-toc-string-interpolation">String Interpolation：字符串插值</a></li>
+  <li><a href="#unicode" id="markdown-toc-unicode">Unicode</a></li>
+  <li><a href="#counting-characters" id="markdown-toc-counting-characters">Counting Characters：字符计数</a></li>
+  <li><a href="#accessing-and-modifying-a-string" id="markdown-toc-accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">索引访问</a></li>
+      <li><a href="#inserting-and-removing" id="markdown-toc-inserting-and-removing">Inserting and Removing：插入取出</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Strings and Characters ：字符和字符串</strong></p>
+
+<ul>
+  <li>Swift的String与OC中的NSString可以进行无缝桥接，可以引入Foundation框架的API展开工作；</li>
+  <li>Swift的字符串都是由独立编码的Unicode字符组成；</li>
+  <li>Swift的字符串可以使用+进行操控；</li>
+</ul>
+
+<h3 id="string-literals">String Literals：字面字符串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift会自动推断someString为String类型。</span>
+<span class="k">let</span> <span class="nv">someString</span> <span class="o">=</span> <span class="s">"Some string literal value"</span>
+</code></pre>
+</div>
+
+<h3 id="initializing-an-empty-string">Initializing an Empty String:初始化空串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">emptyString</span> <span class="o">=</span> <span class="s">""</span>               <span class="c1">// empty string literal</span>
+<span class="k">var</span> <span class="nv">anotherEmptyString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">()</span>  <span class="c1">// initializer syntax</span>
+<span class="k">if</span> <span class="n">emptyString</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Nothing to see here"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h3 id="string-mutability">String Mutability：可变字符串</h3>
+<p>在OC中，是否可变是通过NSMutableString类来决定的，但是在此，仅仅是通过定义来决定 var or let</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">variableString</span> <span class="o">=</span> <span class="s">"Horse"</span>
+<span class="n">variableString</span> <span class="o">+=</span> <span class="s">" and carriage"</span>
+</code></pre>
+</div>
+
+<h3 id="strings-are-value-typesstring">Strings Are Value Types：String是值类型</h3>
+
+<p>1、Swift的String是值类型。new一个String之后，进行赋值或者在函数入参都会进行值拷贝。</p>
+
+<p>换句话就是说，Swift的String操作都会对已有String拷贝副本，然后操作副本。而不是传递操作指针。</p>
+
+<p>2、Cocoa中的NSString传递给函数时，传递的其实是他的指针。除非手动copy，否则不会创建副本操作。</p>
+
+<h3 id="working-with-characters">Working with Characters:使用字符</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="s">"Dog!🐶"</span><span class="o">.</span><span class="n">characters</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// D</span>
+<span class="c1">// o</span>
+<span class="c1">// g</span>
+<span class="c1">// !</span>
+<span class="c1">// 🐶</span>
+
+<span class="k">let</span> <span class="nv">catCharacters</span><span class="p">:</span> <span class="p">[</span><span class="kt">Character</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"C"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"!"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">catString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="n">catCharacters</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">catString</span><span class="p">)</span>
+<span class="c1">// Prints "Cat!🐱"</span>
+
+</code></pre>
+</div>
+
+<h3 id="concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">instruction</span> <span class="o">=</span> <span class="s">"look over"</span>
+<span class="n">instruction</span> <span class="o">+=</span> <span class="n">string2</span>
+
+<span class="k">let</span> <span class="nv">exclamationMark</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"!"</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">exclamationMark</span><span class="p">)</span>
+
+</code></pre>
+</div>
+
+<h3 id="string-interpolation">String Interpolation：字符串插值</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">multiplier</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="nv">message</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">multiplier</span><span class="se">)</span><span class="s"> times 2.5 is </span><span class="se">\(</span><span class="kt">Double</span><span class="p">(</span><span class="n">multiplier</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.5</span><span class="se">)</span><span class="s">"</span>
+<span class="c1">// message is "3 times 2.5 is 7.5"</span>
+</code></pre>
+</div>
+
+<p>注意：插值字符串中的括号中的表达式:不能包含在反斜杠\、回车或换行</p>
+
+<h3 id="unicode">Unicode</h3>
+
+<p>Unicode是一套国际文本的编码标准。其中的每一个字符都可以被解释为一个或多个Unicode标量。字符的Unicode标量是一个唯一的21位数字。</p>
+
+<p>例如：U+0061表示小写的拉丁字母A（”a”），或U+1F425表示小鸡表情（”🐥”）。</p>
+
+<p>字符串中还有特殊字符：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- 转义特殊字符\0（空字符）， \\（反斜杠）， \t（水平制表）， \n（换行）， \r（回车）， \"（双引号）和\'（单引号）
+- 任意Unicode标量，都可写成\u{Ñ}，其中Ñ是用一个值等于一个有效的Unicode代码点的1-8位十六进制数
+  
+
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{0061}"        // a,  Unicode scalar U+0061
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+</code></pre>
+</div>
+
+<p>其他诸如：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">eAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{E9}</span><span class="s">"</span>                         <span class="c1">// é</span>
+<span class="k">let</span> <span class="nv">combinedEAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{65}\u{301}</span><span class="s">"</span>          <span class="c1">// e followed by ́</span>
+<span class="k">let</span> <span class="nv">precomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{D55C}</span><span class="s">"</span>                  <span class="c1">// 한</span>
+<span class="k">let</span> <span class="nv">decomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1112}\u{1161}\u{11AB}</span><span class="s">"</span>   <span class="c1">// ᄒ, ᅡ, ᆫ</span>
+<span class="k">let</span> <span class="nv">regionalIndicatorForUS</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1F1FA}\u{1F1F8}</span><span class="s">"</span> <span class="c1">//   🇺🇸</span>
+
+
+</code></pre>
+</div>
+
+<h3 id="counting-characters">Counting Characters：字符计数</h3>
+
+<p>.count计数字符数量.
+需要注意的是：Unicode字符的不同表达方式可能需要不同数量的内存空间来存储。所以Swift中字符在一个字符串中并不一定占用相同的内存空间。</p>
+
+<p>如下：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">word</span> <span class="o">=</span> <span class="s">"cafe"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
+
+<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{301}</span><span class="s">"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
+
+<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{1F496}</span><span class="s">"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "5"</span>
+
+</code></pre>
+</div>
+
+<h3 id="accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</h3>
+
+<h5 id="section">索引访问</h5>
+
+<p>String值具有相关联的索引类型,String.Index 索引对应每一个位置的字符。</p>
+
+<ul>
+  <li></li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">greeting</span> <span class="o">=</span> <span class="s">"Guten Tag!"</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">]</span>
+<span class="c1">// G</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)]</span>
+<span class="c1">// !</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">)]</span>
+<span class="c1">// u</span>
+<span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="c1">// t</span>
+
+
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">greeting</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">indices</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="se">)</span><span class="s"> "</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "G u t e n   T a g ! "</span>
+</code></pre>
+</div>
+
+<p>注意：防止索引溢出String的长度</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">]</span> <span class="c1">// 运行时Error</span>
+<span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// 运行时Error</span>
+</code></pre>
+</div>
+
+<h5 id="inserting-and-removing">Inserting and Removing：插入取出</h5>
+
+<ul>
+  <li>插入字符：insert(_:at:)</li>
+  <li>插入字符串：insert(contentsOf:at:)</li>
+  <li>移除字符：remove(at:)</li>
+  <li>移除字符串：removeSubrange(_:)</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">welcome</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"!"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// "hello!"</span>
+ 
+<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span><span class="s">" there"</span><span class="o">.</span><span class="n">characters</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there!"</span>
+
+<span class="n">welcome</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there"</span>
+ 
+<span class="k">let</span> <span class="nv">range</span> <span class="o">=</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">..&lt;</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">removeSubrange</span><span class="p">(</span><span class="n">range</span><span class="p">)</span> <span class="c1">// "hello"</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">相似文章</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_IV_/">Swift_基本运算符
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/01/swift_I_guide/">Swift_I_入门体验
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/01/swift_II_Basic-Operators/">Swift_II_基本运算符
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+        
+            </ul>
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_iii_strings and characters</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2016/12/05/swift_IV_/">Swift_基本运算符</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/12/03/swift_III_Strings-and-Characters/" data-title="Swift_III_字符(串)" data-url="http://localhost:4000/2016/12/03/swift_III_Strings-and-Characters/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

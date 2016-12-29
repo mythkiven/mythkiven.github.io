@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sublime Text基础教程</title>
-    <meta name="description" content="  说明  1、简介说明本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。1、简介Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinne...">
+    <title>Swift_II_基本运算符</title>
+    <meta name="description" content="  Terminology：术语  Assignment Operator：赋值运算符  Arithmetic Operators：算术运算符  Range Operators:区间运算符  Logical Operators：逻辑运算符Swift 支持大多数的标准C语言的运算符，并且改进了不少特性来减少常见的编...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/10/29/useSublime/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/01/swift_II_Basic-Operators/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -140,15 +140,15 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Sublime Text基础教程</h1>
+        <h1>Swift_II_基本运算符</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-10-29
+                <i class="fa fa-calendar"></i>2016-12-01
             </div>
 
             <div class="label-card">
-                <i class="fa fa-user"></i>3Code
+                <i class="fa fa-user"></i>3行代码
                 
             </div>
 
@@ -165,7 +165,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
     
   
 
@@ -182,8 +182,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a-->
-        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+        <!--a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a-->
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
     
   
 
@@ -195,75 +195,112 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">说明</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">1、简介</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">2、安装</a>    <ul>
-      <li><a href="#section-3" id="markdown-toc-section-3">2.1 命令模式</a></li>
-      <li><a href="#goto-anything-cmdp" id="markdown-toc-goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</a></li>
-      <li><a href="#packagecontrol" id="markdown-toc-packagecontrol">2.3 安装PackageControl组件</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">进阶</a></li>
+  <li><a href="#terminology" id="markdown-toc-terminology">Terminology：术语</a></li>
+  <li><a href="#assignment-operator" id="markdown-toc-assignment-operator">Assignment Operator：赋值运算符</a></li>
+  <li><a href="#arithmetic-operators" id="markdown-toc-arithmetic-operators">Arithmetic Operators：算术运算符</a></li>
+  <li><a href="#range-operators" id="markdown-toc-range-operators">Range Operators:区间运算符</a></li>
+  <li><a href="#logical-operators" id="markdown-toc-logical-operators">Logical Operators：逻辑运算符</a></li>
 </ul>
 
-<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+<p>Swift 支持大多数的标准C语言的运算符，并且改进了不少特性来减少常见的编码错误。例如：</p>
+<ul>
+  <li>赋值符 = 不返回值。防止与==弄混；</li>
+  <li>算术运算符：+-*/%会检测防止值溢出；</li>
+  <li>以及C语言没有的表达:（ a..&lt; b和a…b）</li>
+</ul>
 
-<h2 id="section">说明</h2>
-<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
+<h3 id="terminology">Terminology：术语</h3>
 
-<h2 id="section-1">1、简介</h2>
+<p>运算符有一元、二元、三元之分；</p>
+<ul>
+  <li>一元：-、！、++ 如：-1,!b,i++</li>
+  <li>二元：算术运算符，如：2+3</li>
+  <li>三元：Swift中就一个，三目运算符：(a?b:c)</li>
+</ul>
 
-<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
-Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+<h3 id="assignment-operator">Assignment Operator：赋值运算符</h3>
 
-<h2 id="section-2">2、安装</h2>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="c1">// a is now equal to 10</span>
 
-<p>Sublime 的安装比较简单，直接去官网<a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a>，点击Download菜单，进入之后选择自己操作系统的进行下载安装安装即可。</p>
+<span class="c1">// 用元组中：</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">// x is equal to 1, and y is equal to 2</span>
 
-<h5 id="section-3">2.1 命令模式</h5>
-
-<p>习惯了Unix系列操作系统的人往往会觉得过于可视化操作会显得很low。当然Sublime Text 提供的也有命令模式操作，但Sublime Text的命令模式要比VIM的好用的多。</p>
-
-<p>cmd+shift+p来打开命令模式：
-在弹出的输入框里输入我们需要的命令，比如，我想拷贝当前文件的路径，输入copy之后，选择File:copy path选项之后，当前文件的路径就已经复制到了系统的剪切板上。</p>
-
-<p>Sublime Text的命令模式支持模糊匹配，输入cp回车后可以直接实现上面的拷贝当前文件的路径功能（因为cp模糊匹配了File:copy path）。</p>
-
-<h5 id="goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</h5>
-
-<p>1、查找文件：如果项目文件目录很多层，文件查找是一个很头疼的问题，不过Sublime Text里有一个叫做Goto AnyThing的功能，通过快捷键cmd+p打开Goto AnyThing窗口，在输入框中输入我们想要打开的文件模糊名称即可，Sublime Text会为我们查找出符合的文件。</p>
-
-<p>2、快速查看文件内部结构：cmd+p打开Goto AnyThing窗口后，输入@字符，就会出现当前文件的结构，如js文件会列出所有方法，md文件会列出大纲。</p>
-
-<h5 id="packagecontrol">2.3 安装PackageControl组件</h5>
-
-<p>在sublime里面使用快捷键：ctrl+~ 调出控制台，Sublime Text2粘贴如下代码：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>import urllib2,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
+<span class="c1">// 无返回值：</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="p">{</span>
+    <span class="c1">// This is not valid, because x = y does not return a value.</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>Sublime Text3可以粘贴如下代码：</p>
+<h3 id="arithmetic-operators">Arithmetic Operators：算术运算符</h3>
+<p>是不允许值溢出的，如果值溢出，应该使用溢出运算符 a &amp;- b;</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+<ul>
+  <li>+ 求和，也用于string的拼接，”hello, “ + “world”  // equals “hello, world”;</li>
+  <li>- 求差;</li>
+  <li>* 求积;</li>
+  <li>/ 求商、倍数 9/5=1;</li>
+  <li>% 求余、模运算 9%5=4;</li>
+  <li>- 元减运算符 -3(负数3);</li>
+  <li>+=等 符合运算符 var a = 1;a += 2;</li>
+  <li>== != &gt; &lt; &gt;= &lt;= 比较运算符，返回BOOL值；</li>
+  <li>=== 恒等于、 !===不恒等于，用于判断是否引用同一对象；</li>
+  <li>三目运算符：条件?答案1:答案2  条件成立则返回答案1，否则答案2</li>
+  <li>空合运算符：(a ?? b):是对可选类型a的判空处理，如果a包含数值就解析返回值，否则返回b。
+等价于 <code class="highlighter-rouge">a != nil ? a! : b</code> :可选类型a是空就返回b，不是空就强制解析返回a!空合就是这段代码的简短表达
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">defaultColorName</span> <span class="o">=</span> <span class="s">"red"</span>
+<span class="k">var</span> <span class="nv">userDefinedColorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>   <span class="c1">// defaults to nil</span>
+<span class="k">var</span> <span class="nv">colorNameToUse</span> <span class="o">=</span> <span class="n">userDefinedColorName</span> <span class="p">??</span> <span class="n">defaultColorName</span>
 </code></pre>
-</div>
-<p>保险起见最好去官网复制代码。<a href="https://packagecontrol.io/installation#st3">传送门</a>
-粘贴回车就会自动安装。成功安装后，会有如下效果:</p>
+    </div>
+  </li>
+</ul>
 
-<p><img src="https://ooo.0o0.ooo/2016/10/29/58147bf453227.jpg" alt="" /></p>
+<h3 id="range-operators">Range Operators:区间运算符</h3>
 
-<p>使用 cmd + Shift + P 调出面板，然后输入 pci ，选中“Package Control: Install Package”并回车，然后通过输入插件的名字找到插件并回车安装即可。</p>
+<ul>
+  <li>(a…b) 定义一个a、b间的闭区间。可用于for循环；
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// 范围是&gt;=1 &lt;=5</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>（a..&lt;b) 定义一个a、b间的半闭区间。可用于数组区间 // &gt;
+```swift
+let names = [“Anna”, “Alex”, “Brian”, “Jack”]
+let count = names.count
+for i in 0..&lt;count {
+  print(“Person (i + 1) is called (names[i])”)
+}</li>
+</ul>
 
-<p><strong>注意的是，需要本地装有python环境.</strong></p>
+<p>```</p>
 
-<p>有了package control，就可以安装想要的插件了!sublime下面有很多插件，一般编辑器有的，sublime都会以插件的形式出现。之后的操作就类似了，安装某插件xxx:</p>
+<p>~是不是很好用~</p>
 
-<p>cmd+Shift+P调出面板 -&gt; 输pci回车 -&gt; 然后搜索自己需要的插件安装即可.</p>
+<h3 id="logical-operators">Logical Operators：逻辑运算符</h3>
 
-<h2 id="section-4">进阶</h2>
+<ul>
+  <li>! 逻辑非，</li>
+  <li>&amp;&amp; 逻辑与</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>逻辑或</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
 
-<p><a href="http://3code.info/2016/10/30/SublimeUpgrade/">传送门</a></p>
+<p>OK,over~~</p>
 
         </article>
         <hr>
@@ -274,6 +311,64 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
             
                 
                     
+                        
+                        <h2 id="similar_posts">相似文章</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_IV_/">Swift_基本运算符
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/03/swift_III_Strings-and-Characters/">Swift_III_字符(串)
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/01/swift_I_guide/">Swift_I_入门体验
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
                 
             
         
@@ -286,41 +381,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
         
             
             
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
                 
                     
                 
@@ -348,18 +408,27 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                 
             
         
+            
+            
+                
+                    
+                
+            
+        
+        
+            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/04/30/deployEnvironmentVariable/">OS X 部署环境变量</a></p>
+        <p><strong>上一篇</strong> <a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/12/01/swift_I_guide/">Swift_I_入门体验</a></p>
         
     </div>
 </div>
@@ -368,7 +437,7 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/10/29/useSublime/" data-title="Sublime Text基础教程" data-url="http://localhost:4000/2016/10/29/useSublime/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/12/01/swift_II_Basic-Operators/" data-title="Swift_II_基本运算符" data-url="http://localhost:4000/2016/12/01/swift_II_Basic-Operators/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

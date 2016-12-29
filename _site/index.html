@@ -147,6 +147,2642 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/12/05/swift_IV_/">Swift_基本运算符</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-05
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/05/swift_IV_/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-03
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#string-literals" id="markdown-toc-string-literals">String Literals：字面字符串</a></li>
+  <li><a href="#initializing-an-empty-string" id="markdown-toc-initializing-an-empty-string">Initializing an Empty String:初始化空串</a></li>
+  <li><a href="#string-mutability" id="markdown-toc-string-mutability">String Mutability：可变字符串</a></li>
+  <li><a href="#strings-are-value-typesstring" id="markdown-toc-strings-are-value-typesstring">Strings Are Value Types：String是值类型</a></li>
+  <li><a href="#working-with-characters" id="markdown-toc-working-with-characters">Working with Characters:使用字符</a></li>
+  <li><a href="#concatenating-strings-and-characters" id="markdown-toc-concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</a></li>
+  <li><a href="#string-interpolation" id="markdown-toc-string-interpolation">String Interpolation：字符串插值</a></li>
+  <li><a href="#unicode" id="markdown-toc-unicode">Unicode</a></li>
+  <li><a href="#counting-characters" id="markdown-toc-counting-characters">Counting Characters：字符计数</a></li>
+  <li><a href="#accessing-and-modifying-a-string" id="markdown-toc-accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">索引访问</a></li>
+      <li><a href="#inserting-and-removing" id="markdown-toc-inserting-and-removing">Inserting and Removing：插入取出</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Strings and Characters ：字符和字符串</strong></p>
+
+<ul>
+  <li>Swift的String与OC中的NSString可以进行无缝桥接，可以引入Foundation框架的API展开工作；</li>
+  <li>Swift的字符串都是由独立编码的Unicode字符组成；</li>
+  <li>Swift的字符串可以使用+进行操控；</li>
+</ul>
+
+<h3 id="string-literals">String Literals：字面字符串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift会自动推断someString为String类型。</span>
+<span class="k">let</span> <span class="nv">someString</span> <span class="o">=</span> <span class="s">"Some string literal value"</span>
+</code></pre>
+</div>
+
+<h3 id="initializing-an-empty-string">Initializing an Empty String:初始化空串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">emptyString</span> <span class="o">=</span> <span class="s">""</span>               <span class="c1">// empty string literal</span>
+<span class="k">var</span> <span class="nv">anotherEmptyString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">()</span>  <span class="c1">// initializer syntax</span>
+<span class="k">if</span> <span class="n">emptyString</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Nothing to see here"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h3 id="string-mutability">String Mutability：可变字符串</h3>
+<p>在OC中，是否可变是通过NSMutableString类来决定的，但是在此，仅仅是通过定义来决定 var or let</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">variableString</span> <span class="o">=</span> <span class="s">"Horse"</span>
+<span class="n">variableString</span> <span class="o">+=</span> <span class="s">" and carriage"</span>
+</code></pre>
+</div>
+
+<h3 id="strings-are-value-typesstring">Strings Are Value Types：String是值类型</h3>
+
+<p>1、Swift的String是值类型。new一个String之后，进行赋值或者在函数入参都会进行值拷贝。</p>
+
+<p>换句话就是说，Swift的String操作都会对已有String拷贝副本，然后操作副本。而不是传递操作指针。</p>
+
+<p>2、Cocoa中的NSString传递给函数时，传递的其实是他的指针。除非手动copy，否则不会创建副本操作。</p>
+
+<h3 id="working-with-characters">Working with Characters:使用字符</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="s">"Dog!🐶"</span><span class="o">.</span><span class="n">characters</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// D</span>
+<span class="c1">// o</span>
+<span class="c1">// g</span>
+<span class="c1">// !</span>
+<span class="c1">// 🐶</span>
+
+<span class="k">let</span> <span class="nv">catCharacters</span><span class="p">:</span> <span class="p">[</span><span class="kt">Character</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"C"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"!"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">catString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="n">catCharacters</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">catString</span><span class="p">)</span>
+<span class="c1">// Prints "Cat!🐱"</span>
+
+</code></pre>
+</div>
+
+<h3 id="concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">instruction</span> <span class="o">=</span> <span class="s">"look over"</span>
+<span class="n">instruction</span> <span class="o">+=</span> <span class="n">string2</span>
+
+<span class="k">let</span> <span class="nv">exclamationMark</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"!"</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">exclamationMark</span><span class="p">)</span>
+
+</code></pre>
+</div>
+
+<h3 id="string-interpolation">String Interpolation：字符串插值</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">multiplier</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="nv">message</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">multiplier</span><span class="se">)</span><span class="s"> times 2.5 is </span><span class="se">\(</span><span class="kt">Double</span><span class="p">(</span><span class="n">multiplier</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.5</span><span class="se">)</span><span class="s">"</span>
+<span class="c1">// message is "3 times 2.5 is 7.5"</span>
+</code></pre>
+</div>
+
+<p>注意：插值字符串中的括号中的表达式:不能包含在反斜杠\、回车或换行</p>
+
+<h3 id="unicode">Unicode</h3>
+
+<p>Unicode是一套国际文本的编码标准。其中的每一个字符都可以被解释为一个或多个Unicode标量。字符的Unicode标量是一个唯一的21位数字。</p>
+
+<p>例如：U+0061表示小写的拉丁字母A（”a”），或U+1F425表示小鸡表情（”🐥”）。</p>
+
+<p>字符串中还有特殊字符：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- 转义特殊字符\0（空字符）， \\（反斜杠）， \t（水平制表）， \n（换行）， \r（回车）， \"（双引号）和\'（单引号）
+- 任意Unicode标量，都可写成\u{Ñ}，其中Ñ是用一个值等于一个有效的Unicode代码点的1-8位十六进制数
+  
+
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{0061}"        // a,  Unicode scalar U+0061
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+</code></pre>
+</div>
+
+<p>其他诸如：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">eAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{E9}</span><span class="s">"</span>                         <span class="c1">// é</span>
+<span class="k">let</span> <span class="nv">combinedEAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{65}\u{301}</span><span class="s">"</span>          <span class="c1">// e followed by ́</span>
+<span class="k">let</span> <span class="nv">precomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{D55C}</span><span class="s">"</span>                  <span class="c1">// 한</span>
+<span class="k">let</span> <span class="nv">decomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1112}\u{1161}\u{11AB}</span><span class="s">"</span>   <span class="c1">// ᄒ, ᅡ, ᆫ</span>
+<span class="k">let</span> <span class="nv">regionalIndicatorForUS</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1F1FA}\u{1F1F8}</span><span class="s">"</span> <span class="c1">//   🇺🇸</span>
+
+
+</code></pre>
+</div>
+
+<h3 id="counting-characters">Counting Characters：字符计数</h3>
+
+<p>.count计数字符数量.
+需要注意的是：Unicode字符的不同表达方式可能需要不同数量的内存空间来存储。所以Swift中字符在一个字符串中并不一定占用相同的内存空间。</p>
+
+<p>如下：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">word</span> <span class="o">=</span> <span class="s">"cafe"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
+
+<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{301}</span><span class="s">"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
+
+<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{1F496}</span><span class="s">"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "5"</span>
+
+</code></pre>
+</div>
+
+<h3 id="accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</h3>
+
+<h5 id="section">索引访问</h5>
+
+<p>String值具有相关联的索引类型,String.Index 索引对应每一个位置的字符。</p>
+
+<ul>
+  <li></li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">greeting</span> <span class="o">=</span> <span class="s">"Guten Tag!"</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">]</span>
+<span class="c1">// G</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)]</span>
+<span class="c1">// !</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">)]</span>
+<span class="c1">// u</span>
+<span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="c1">// t</span>
+
+
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">greeting</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">indices</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="se">)</span><span class="s"> "</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "G u t e n   T a g ! "</span>
+</code></pre>
+</div>
+
+<p>注意：防止索引溢出String的长度</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">]</span> <span class="c1">// 运行时Error</span>
+<span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// 运行时Error</span>
+</code></pre>
+</div>
+
+<h5 id="inserting-and-removing">Inserting and Removing：插入取出</h5>
+
+<ul>
+  <li>插入字符：insert(_:at:)</li>
+  <li>插入字符串：insert(contentsOf:at:)</li>
+  <li>移除字符：remove(at:)</li>
+  <li>移除字符串：removeSubrange(_:)</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">welcome</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"!"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// "hello!"</span>
+ 
+<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span><span class="s">" there"</span><span class="o">.</span><span class="n">characters</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there!"</span>
+
+<span class="n">welcome</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there"</span>
+ 
+<span class="k">let</span> <span class="nv">range</span> <span class="o">=</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">..&lt;</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span>
+<span class="n">welcome</span><span class="o">.</span><span class="nf">removeSubrange</span><span class="p">(</span><span class="n">range</span><span class="p">)</span> <span class="c1">// "hello"</span>
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/03/swift_III_Strings-and-Characters/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_iii_strings and characters</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-03
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="layout" content="post">
+<meta name="tags" content="Swift">
+<meta name="categories" content="Swift">
+<meta name="author" content="3行代码"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>"Swift_III_字符(串)"</title></head><body><article class="markdown-body"><ul>
+<li toc="toc">content<br /></li>
+</ul>
+<p><strong>Strings and Characters ：字符和字符串</strong></p>
+<ul>
+<li>Swift的String与OC中的NSString可以进行无缝桥接，可以引入Foundation框架的API展开工作；</li>
+<li>Swift的字符串都是由独立编码的Unicode字符组成；</li>
+<li>Swift的字符串可以使用+进行操控；</li>
+</ul>
+<h3 id="string-literals"><a name="user-content-string-literals" href="#string-literals" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>String Literals：字面字符串</h3>
+<pre><code class="swift">// Swift会自动推断someString为String类型。
+let someString = &quot;Some string literal value&quot;
+</code></pre>
+
+<h5 id="initializing-an-empty-string"><a name="user-content-initializing-an-empty-string" href="#initializing-an-empty-string" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Initializing an Empty String:初始化空串</h5>
+<pre><code class="swift">var emptyString = &quot;&quot;               // empty string literal
+var anotherEmptyString = String()  // initializer syntax
+if emptyString.isEmpty {
+    print(&quot;Nothing to see here&quot;)
+}
+
+</code></pre>
+
+<h5 id="string-mutability"><a name="user-content-string-mutability" href="#string-mutability" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>String Mutability：可变字符串</h5>
+<p>在OC中，是否可变是通过NSMutableString类来决定的，但是在此，仅仅是通过定义来决定 var or let<br />
+<pre><code class="swift">var variableString = &quot;Horse&quot;
+variableString += &quot; and carriage&quot;
+</code></pre></p>
+<h5 id="strings-are-value-typesstring"><a name="user-content-strings-are-value-typesstring" href="#strings-are-value-typesstring" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Strings Are Value Types：String是值类型</h5>
+<p>1、Swift的String是值类型。new一个String之后，进行赋值或者在函数入参都会进行值拷贝。</p>
+<p>换句话就是说，Swift的String操作都会对已有String拷贝副本，然后操作副本。而不是传递操作指针。</p>
+<p>2、Cocoa中的NSString传递给函数时，传递的其实是他的指针。除非手动copy，否则不会创建副本操作。</p>
+<h5 id="working-with-characters"><a name="user-content-working-with-characters" href="#working-with-characters" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Working with Characters:使用字符</h5>
+<pre><code class="swift">for character in &quot;Dog!🐶&quot;.characters {
+    print(character)
+}
+// D
+// o
+// g
+// !
+// 🐶
+
+let catCharacters: [Character] = [&quot;C&quot;, &quot;a&quot;, &quot;t&quot;, &quot;!&quot;, &quot;🐱&quot;]
+let catString = String(catCharacters)
+print(catString)
+// Prints &quot;Cat!🐱&quot;
+
+</code></pre>
+
+<h5 id="concatenating-strings-and-characters"><a name="user-content-concatenating-strings-and-characters" href="#concatenating-strings-and-characters" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Concatenating Strings and Characters</h5>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<p><pre><code class="swift">
+</code></pre><br />
+<pre><code class="swift">
+</code></pre></p>
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre>
+
+<pre><code class="swift">
+``````swift
+
+</code></pre>
+
+<pre><code class="swift">
+</code></pre></article></body></html>
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/03/swift_III_Strings-and-Characters/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/01/swift_I_guide/">Swift_I_入门体验</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a>    <ul>
+      <li><a href="#iconstants-and-variables" id="markdown-toc-iconstants-and-variables">I.Constants and Variables:变常量</a>        <ul>
+          <li><a href="#declaring-constants-and-variables" id="markdown-toc-declaring-constants-and-variables">1.Declaring Constants and Variables:声明</a></li>
+          <li><a href="#naming-constants-and-variables" id="markdown-toc-naming-constants-and-variables">2.Naming Constants and Variables：命名</a></li>
+          <li><a href="#printing-constants-and-variables" id="markdown-toc-printing-constants-and-variables">3.Printing Constants and Variables：打印</a></li>
+        </ul>
+      </li>
+      <li><a href="#comments" id="markdown-toc-comments">Comments：注释</a></li>
+      <li><a href="#semicolons" id="markdown-toc-semicolons">Semicolons：分号</a></li>
+      <li><a href="#integers" id="markdown-toc-integers">Integers</a>        <ul>
+          <li><a href="#integer-bounds" id="markdown-toc-integer-bounds">1.Integer Bounds：边界</a></li>
+          <li><a href="#int" id="markdown-toc-int">2.Int</a></li>
+          <li><a href="#uint" id="markdown-toc-uint">3.UInt</a></li>
+        </ul>
+      </li>
+      <li><a href="#floating-point-numbers" id="markdown-toc-floating-point-numbers">Floating-Point Numbers</a></li>
+      <li><a href="#type-safety-and-type-inference" id="markdown-toc-type-safety-and-type-inference">Type Safety and Type Inference：类型安全</a></li>
+      <li><a href="#numeric-literals" id="markdown-toc-numeric-literals">Numeric Literals</a></li>
+      <li><a href="#numeric-type-conversion-" id="markdown-toc-numeric-type-conversion-">Numeric Type Conversion 数字类型转换</a>        <ul>
+          <li><a href="#integer-conversion" id="markdown-toc-integer-conversion">Integer Conversion:整型转换</a></li>
+          <li><a href="#integer-and-floating-point-conversion" id="markdown-toc-integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</a></li>
+        </ul>
+      </li>
+      <li><a href="#type-aliases" id="markdown-toc-type-aliases">Type Aliases：类型别名</a></li>
+      <li><a href="#booleans" id="markdown-toc-booleans">Booleans</a></li>
+      <li><a href="#tuples" id="markdown-toc-tuples">Tuples：元组</a></li>
+      <li><a href="#optionals" id="markdown-toc-optionals">Optionals：可选类型</a>        <ul>
+          <li><a href="#nil" id="markdown-toc-nil">nil</a></li>
+          <li><a href="#if-statements-and-forced-unwrappingif" id="markdown-toc-if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</a></li>
+          <li><a href="#optional-binding" id="markdown-toc-optional-binding">Optional Binding：可选绑定</a></li>
+          <li><a href="#implicitly-unwrapped-optionals" id="markdown-toc-implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</a></li>
+        </ul>
+      </li>
+      <li><a href="#error-handling" id="markdown-toc-error-handling">Error Handling：错误处理</a></li>
+      <li><a href="#assertions" id="markdown-toc-assertions">Assertions：断言</a>        <ul>
+          <li><a href="#debugging-with-assertions" id="markdown-toc-debugging-with-assertions">Debugging with Assertions：使用断言调试</a></li>
+          <li><a href="#when-to-use-assertions" id="markdown-toc-when-to-use-assertions">When to Use Assertions：何时使用断言</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+<ul>
+  <li>必备武器：playground+官方文档；</li>
+  <li>系列章节我会以中英结合的形式展现，不要问为什么；</li>
+  <li>本笔记针对有一定swift或OC基础的；</li>
+  <li>后续相关的文章都基于<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html">The Swift Programming Language (Swift 3.0.1)</a> ，基本上是围绕文档翻译一遍。</li>
+</ul>
+
+<p>先热热身：</p>
+<ul>
+  <li>Swift包含C和OC的所有基础数据类型，再次基础上还引入了OC没有的高级数据类型；</li>
+  <li>constants ：Swift中的常量比C中的更加强大，使用更安全；</li>
+  <li>tuples ：Swift亦引入了OC没有的高级数据类型，元组；</li>
+  <li>optional types：处理未知类型，比nil更加安全；</li>
+  <li>type safety：Swift是类型安全的，代码里值的类型非常明确：需要String类型，你就不能错误地传递Int；</li>
+</ul>
+
+<h3 id="iconstants-and-variables">I.Constants and Variables:变常量</h3>
+
+<h5 id="declaring-constants-and-variables">1.Declaring Constants and Variables:声明</h5>
+<p>let常量不用多说，var变量的需要注意： type是如何定义的。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// type声明的方式1：初始值推断。</span>
+<span class="k">let</span> <span class="nv">maximumNumberOfLoginAttempts</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">currentLoginAttempt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1">// 方式2：Type Annotations 类型标注</span>
+<span class="k">var</span> <span class="nv">welcomeMessage</span><span class="p">:</span> <span class="kt">String</span> <span class="c1">// 定义一个String类型的变量:welcomeMessage</span>
+<span class="n">welcomeMessage</span> <span class="o">=</span> <span class="s">"Hello"</span> 
+<span class="k">var</span> <span class="nv">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span> <span class="c1">// 定义多个同类型变量</span>
+</code></pre>
+</div>
+
+<h5 id="naming-constants-and-variables">2.Naming Constants and Variables：命名</h5>
+
+<p>常量和变量名几乎可以包含任何字符，包括Unicode字符：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、</span>
+<span class="k">let</span> <span class="nv">π</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="k">let</span> <span class="nv">你好</span> <span class="o">=</span> <span class="s">"你好世界"</span>
+<span class="k">let</span> <span class="nv">🐶🐮</span> <span class="o">=</span> <span class="s">"dogcow"</span>
+
+<span class="c1">// 2、</span>
+<span class="cm">/* 
+注意：常量和变量的名字不能包含空格、数学符号、箭头、私用的（非法的）Unicode代码点、连线与制表符。也不能以数字开头。
+*/</span>
+
+<span class="c1">// 3、</span>
+<span class="cm">/*
+如果使用与Swift保留关键字相同的名称作为常量或者变量名，可以使用反引号（`）将关键字包围的方式将其作为名字使用。例子如下：  尽量还是避免使用关键字
+*/</span>
+<span class="kd">let</span> <span class="err">`</span><span class="kd">let</span><span class="err">`</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nf">print</span><span class="p">(</span><span class="err">`</span><span class="kd">let</span><span class="err">`</span><span class="p">)</span>
+
+<span class="c1">// 4、常量的值一旦设定后就不能更改.如果尝试去更改，编译器会报错</span>
+</code></pre>
+</div>
+
+<h5 id="printing-constants-and-variables">3.Printing Constants and Variables：打印</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 默认情况下，print会加一个换行符来结束当前行</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">)</span>                 <span class="c1">// Prints "Bonjour!\n" </span>
+<span class="c1">// 可以给terminator赋一个空字符串，防止换行</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span> <span class="c1">// Prints "Bonjour!"</span>
+
+<span class="cm">/*
+print(_:separator:terminator)函数是一个打印一个或多个值到相应输出区域的全局的函数。separator 和 terminator 参数有默认值，一般可以忽略之
+*/</span>
+
+<span class="c1">// Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，并且去提示Swift 用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义： </span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The current value of friendlyWelcome is </span><span class="se">\(</span><span class="n">friendlyWelcome</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The current value of friendlyWelcome is Bonjour!"</span>
+
+</code></pre>
+</div>
+
+<h3 id="comments">Comments：注释</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">// This is a comment.</span>
+
+<span class="cm">/* This is also a comment
+ but is written over multiple lines. */</span>
+
+<span class="cm">/* 嵌套注释: This is the start of the first multiline comment.
+ /* This is the second, nested multiline comment. */
+ This is the end of the first multiline comment. */</span>
+
+</code></pre>
+</div>
+
+<h3 id="semicolons">Semicolons：分号</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 单行代码可以不用注释，</span>
+<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span>
+<span class="k">let</span> <span class="nv">dog</span> <span class="o">=</span> <span class="s">"🐶"</span>
+<span class="c1">// 多行代码合并到一行，需要分号</span>
+<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span><span class="p">;</span> <span class="nf">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+<span class="c1">// Prints "🐱"</span>
+
+
+</code></pre>
+</div>
+
+<h3 id="integers">Integers</h3>
+<p>Swift提供的有符号和无符号整数由8,16,32和64位组成。8位无符号整数类型是UInt8,32位有符号整数的类型是Int32。</p>
+
+<h5 id="integer-bounds">1.Integer Bounds：边界</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">minValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">min</span>  <span class="c1">// minValue is equal to 0, and is of type UInt8</span>
+<span class="k">let</span> <span class="nv">maxValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">max</span>  <span class="c1">// maxValue is equal to 255, and is of type UInt8</span>
+</code></pre>
+</div>
+
+<h5 id="int">2.Int</h5>
+<p>一般来说，你不需要给整数指定一个特定的长度,Swift会自动处理：</p>
+<ul>
+  <li>在32位平台上，Int和Int32长度相同。</li>
+  <li>在64位平台上，Int和Int64长度相同。</li>
+  <li>32位平台上， Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647。所以一般情况不用担心大小的问题。</li>
+</ul>
+
+<h5 id="uint">3.UInt</h5>
+<p>UInt长度与当前平台的原生字长相同：</p>
+<ul>
+  <li>在32位平台上，UInt和UInt32长度相同。</li>
+  <li>在64位平台上，UInt和UInt64长度相同。</li>
+</ul>
+
+<p>注意：尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换。</p>
+
+<h3 id="floating-point-numbers">Floating-Point Numbers</h3>
+
+<p>浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
+<ul>
+  <li>Double表示64位浮点数。存储很大或者很高精度的浮点数;</li>
+  <li>Float表示32位浮点数。精度要求不高可使用此类型;</li>
+</ul>
+
+<p>注意： Double精确度很高，可以精确到15位小数位数，而Float只能精确到6位小数位数。Swift在推断浮点型数字时，优先使用Double类型。</p>
+
+<h3 id="type-safety-and-type-inference">Type Safety and Type Inference：类型安全</h3>
+
+<p>Swift是一个类型安全的语言。并且可以进行类型推断。</p>
+
+<ul>
+  <li>1、编译代码的时候它执行类型检查，并会将任何类型不匹配类型标注为错误；</li>
+  <li>2、如果没有给值指定一个类型，Swift会通过类型推断去推断出相对应的类型；</li>
+  <li>3、由于有类型推断，Swift相对于C语言和Objective-C来说，只需要更少的类型声明。
+代码如下：
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">meaningOfLife</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1">// meaningOfLife is inferred to be of type Int</span>
+<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>             <span class="c1">// pi is inferred to be of type Double</span>
+<span class="k">let</span> <span class="nv">anotherPi</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.14159</span>  <span class="c1">// anotherPi is also inferred to be of type Double。Swift优先推断Double</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="numeric-literals">Numeric Literals</h3>
+
+<p>1、整数常量可以写为：</p>
+<ul>
+  <li>一个十进制数，无前缀</li>
+  <li>一个二进制数字，用0b前缀</li>
+  <li>一个八进制数，有0o前缀</li>
+  <li>一个十六进制数字，用0x前缀</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalInteger</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="k">let</span> <span class="nv">binaryInteger</span> <span class="o">=</span> <span class="mb">0b10001</span>       <span class="c1">// 17 in binary notation</span>
+<span class="k">let</span> <span class="nv">octalInteger</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o21</span>           <span class="c1">// 17 in octal notation</span>
+<span class="k">let</span> <span class="nv">hexadecimalInteger</span> <span class="o">=</span> <span class="mh">0x11</span>     <span class="c1">// 17 in hexadecimal notation</span>
+</code></pre>
+</div>
+
+<p>2、Numeric Literals还有一个可选的指数(exponent),十进制用e/E指定，十六进制用p/P指定:</p>
+
+<ul>
+  <li>1.25e2 表示1.25 × 10^2，等于125.0</li>
+  <li>
+    <p>1.25e-2 表示1.25 × 10^-2，等于0.0125</p>
+  </li>
+  <li>0xFp2 表示15 × 2^2，等于60.0</li>
+  <li>0xFp-2 表示15 × 2^-2，等于3.75</li>
+</ul>
+
+<p>如下都表示十进制12.1875:</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalDouble</span> <span class="o">=</span> <span class="mf">12.1875</span>
+<span class="k">let</span> <span class="nv">exponentDouble</span> <span class="o">=</span> <span class="mf">1.21875e1</span>
+<span class="k">let</span> <span class="nv">hexadecimalDouble</span> <span class="o">=</span> <span class="mh">0xC</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span>
+</code></pre>
+</div>
+
+<p>3、Numeric Literals可以包含额外的格式，使它们更容易阅读。这两个整数和浮点数可以用额外的零填充并且可以包含下划线，以帮助可读性。无论何种类型的格式不会影响其基本数值：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">paddedDouble</span> <span class="o">=</span> <span class="mf">000123.456</span>
+<span class="k">let</span> <span class="nv">oneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="k">let</span> <span class="nv">justOverOneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="o">.</span><span class="mo">000_000_1</span>
+</code></pre>
+</div>
+
+<h3 id="numeric-type-conversion-">Numeric Type Conversion 数字类型转换</h3>
+
+<p>一句话：一般情况下，整数型常变量都建议使用Int类型。</p>
+
+<h5 id="integer-conversion">Integer Conversion:整型转换</h5>
+
+<ul>
+  <li>SomeType(ofInitialValue)类型转换</li>
+  <li>基本运算符两侧的数字需要是同类型的，
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
+<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">let</span> <span class="nv">twoThousandAndOne</span> <span class="o">=</span> <span class="n">twoThousand</span> <span class="o">+</span> <span class="kt">UInt16</span><span class="p">(</span><span class="n">one</span><span class="p">)</span><span class="c1">// 不能直接相加，需要类型转换</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h5 id="integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</h5>
+<p>必须显式指定类型，否则报错</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">three</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="k">let</span> <span class="nv">pointOneFourOneFiveNine</span> <span class="o">=</span> <span class="mf">0.14159</span>
+<span class="k">let</span> <span class="nv">papi</span> <span class="o">=</span>  <span class="n">three</span><span class="o">+</span><span class="n">pointOneFourOneFiveNine</span> <span class="c1">// 报错</span>
+<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">pointOneFourOneFiveNine</span> <span class="c1">// OK,is inferred to be of type Double</span>
+<span class="k">let</span> <span class="nv">integerPi</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="c1">// integerPi equals 3, and is inferred to be of type Int</span>
+
+</code></pre>
+</div>
+
+<p><strong>注意：如下代码，如果数字没有被明确指定类型，那么他们的类型会在编译需要时被推测。</strong>
+<strong>但是如果已经显式之处了类型，必须先进行类型转换，才能够运算</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
+<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">let</span> <span class="nv">e1</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="mi">10</span> <span class="c1">// ok  类型会在编译需要时被推测</span>
+<span class="k">let</span> <span class="nv">e2</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="n">one</span> <span class="c1">// 报错</span>
+
+</code></pre>
+</div>
+
+<h3 id="type-aliases">Type Aliases：类型别名</h3>
+
+<p>自定义符合自己风格或者更有意义的名字：AudioSample代表UInt16</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">typealias</span> <span class="kt">AudioSample</span> <span class="o">=</span> <span class="kt">UInt16</span>
+<span class="k">var</span> <span class="nv">maxAmplitudeFound</span> <span class="o">=</span> <span class="kt">AudioSample</span><span class="o">.</span><span class="n">min</span>
+</code></pre>
+</div>
+
+<h3 id="booleans">Booleans</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">orangesAreOrange</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="k">let</span> <span class="nv">turnipsAreDelicious</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="k">if</span> <span class="n">turnipsAreDelicious</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Mmm, tasty turnips!"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Eww, turnips are horrible."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "Eww, turnips are horrible."</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">i</span> <span class="p">{</span>
+    <span class="c1">// 报错而不会编译，因为在该使用BOOL的地方使用了非BOOL值</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+    <span class="c1">// compile successfully</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="tuples">Tuples：元组</h3>
+
+<p>把多个值符合组成一个复合值，其中类型没要求，是任意类型。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、http404Error的元组</span>
+<span class="k">let</span> <span class="nv">http404Error</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
+<span class="c1">// http404Error is of type (Int, String), and equals (404, "Not Found")</span>
+
+<span class="c1">// 2、元组的内容可以取出作为单独的常量和变量：</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMessage</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">statusMessage</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is Not Found"</span>
+
+<span class="c1">// 3、可以忽略不需要的元组值，通过使用下滑线_</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">justTheStatusCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">justTheStatusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+
+<span class="c1">// 4、使用索引访问元组</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is Not Found"</span>
+
+<span class="c1">// 5、定义元组时可以分别命名各个元素</span>
+<span class="k">let</span> <span class="nv">http200Status</span> <span class="o">=</span> <span class="p">(</span><span class="nv">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 200"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is OK"</span>
+
+</code></pre>
+</div>
+<p>注意：</p>
+<ul>
+  <li>元组在临时数据中非常有用，但不适合用于创建复杂的数据结构(使用类或者结构体等)。</li>
+  <li>将元组用作函数返回值是不错的选择。</li>
+</ul>
+
+<h3 id="optionals">Optionals：可选类型</h3>
+
+<p>在C或者OC中没有可选类型的概念，譬如下面的代码，可以看出其用处</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 将String转Int：</span>
+<span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">let</span> <span class="nv">possibleNumber2</span> <span class="o">=</span> <span class="s">"www.3code.info"</span>
+<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">//被推测为类型 "Int?", or "optional Int"</span>
+<span class="k">let</span> <span class="nv">convertedNumber2</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber2</span><span class="p">)</span> <span class="c1">//不会报错的，是可选类型</span>
+</code></pre>
+</div>
+<p>那么convertedNumber的类型是：Int?,而不是Int，意即是不明确的。？表示可能是Int，也可能是其他类型宁，或者是不存的。</p>
+
+<h5 id="nil">nil</h5>
+<p>Swift中的nil和OC的不太一样，这里并不是指针，他是指某种类型的缺省值。任意类型都可以被设置为nil，而不仅仅是对象类型。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">serverResponseCode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">404</span>
+<span class="k">var</span> <span class="nv">serverResponseCode2</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">404</span>
+ 
+<span class="n">serverResponseCode</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// OK</span>
+<span class="n">serverResponseCode2</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// 报错</span>
+
+<span class="k">var</span> <span class="nv">surveyAnswer</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="c1">// 缺省的定义，value默认是nil</span>
+
+</code></pre>
+</div>
+<p>注意：nil是不能在不可选类型中使用的。</p>
+
+<h5 id="if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</h5>
+
+<p>强制解析:可以在可选类型后添加!来取出其中的数值，前提是存在数值。这就是强制解析。！表示我知道这个可选类型一定有数值，请使用这个数值。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">// 可选类型</span>
+
+<span class="c1">// 可以通过if来判断上诉可选类型是否有值</span>
+<span class="k">if</span> <span class="n">convertedNumber</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="c1">// 通过!来取出可选类型的值。</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"convertedNumber has an integer value of </span><span class="se">\(</span><span class="n">convertedNumber</span><span class="o">!</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+    <span class="c1">// Prints "convertedNumber has an integer value of 123."</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>注意：只有在确定可选类型有值之后，才可以强制解析值，否则运行时会报错</p>
+
+<h5 id="optional-binding">Optional Binding：可选绑定</h5>
+
+<p>可选绑定用来判断可选类型是否包含值，如果包含就把值赋给临时常变量，可以用在if while 中，如下
+标准格式;</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="kd">let</span> <span class="nx">constantName</span> <span class="o">=</span> <span class="nx">someOptional</span> <span class="p">{</span>
+    <span class="nx">statements</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>如下代码表示：如果可选类型possibleNumber(Int？)包含一个数值，那么就将其值赋给新建的常量actualNumber，</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">actualNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> has an integer value of </span><span class="se">\(</span><span class="n">actualNumber</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> could not be converted to an integer"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints ""123" has an integer value of 123"</span>
+</code></pre>
+</div>
+
+<p>如果一个可选绑定的值是nil或者BOOL计算结果是false。那么整个if的条件都是false的。如下：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">),</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">),</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//【上边代码等价于下边代码】 Prints "4 &lt; 42 &lt; 100"</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h5 id="implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</h5>
+<p>上边介绍的可选类型，可以通过if判断是否有值，然后强制解析取值，或者可选绑定取值。</p>
+
+<p>但也有一种情形:隐式可选类型，定义之后就一直是值的，需要将？改为！。其实隐式可选类型是普通的可选类型，但是可以被当做非可选类型来使用，并不需要每次都是用解析来取值。一般用于类的构造中。</p>
+
+<p>如下可以看出差异:隐式可选类型可以自动解析类型</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 可选类型</span>
+<span class="k">let</span> <span class="nv">possibleString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"An optional string."</span>
+<span class="k">let</span> <span class="nv">forcedString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">possibleString</span><span class="o">!</span> 
+
+
+<span class="c1">// 隐式可选类型</span>
+<span class="k">let</span> <span class="nv">assumedString</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">"An implicitly unwrapped optional string."</span>
+<span class="k">let</span> <span class="nv">implicitString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">assumedString</span>  
+<span class="c1">// 当做普通的可选类型进行判断：</span>
+<span class="k">if</span> <span class="n">assumedString</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">assumedString</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 可选绑定：</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">definiteString</span> <span class="o">=</span> <span class="n">assumedString</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">definiteString</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>注意：</p>
+<ul>
+  <li>在隐式可选类型没有数据的时候尝试取值，会触发运行时错误。</li>
+  <li>如果一个变量可能变成nil的话，请不要使用隐式可选类型，要使用可选类型。</li>
+</ul>
+
+<h3 id="error-handling">Error Handling：错误处理</h3>
+
+<p>可以在函数声明中添加关键字：throws。那么当函数执行遇到错误时，会抛出一个错误。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">canThrowAnError</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
+    <span class="c1">// this function may or may not throw an error</span>
+<span class="p">}</span>
+<span class="c1">// 如果出现错误，在下边会抛出</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="nf">canThrowAnError</span><span class="p">()</span>
+    <span class="c1">// no error was thrown</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="c1">// an error was thrown</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>如下细分了错误的情况，以及相应的措施：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">makeASandwich</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+ 
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="nf">makeASandwich</span><span class="p">()</span>
+    <span class="nf">eatASandwich</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="n">outOfCleanDishes</span> <span class="p">{</span>
+    <span class="nf">washDishes</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="nf">missingIngredients</span><span class="p">(</span><span class="k">let</span> <span class="nv">ingredients</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">buyGroceries</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="assertions">Assertions：断言</h3>
+
+<p>可选类型可以判断值是否存在，处理缺省情况。然而当值缺省时，代码可能就没法继续了。这是需要在代码中植入断言，代码触发断言来结束运行。</p>
+
+<p>格式：assert(<em>:</em>:file:line:) 这是全局函数。</p>
+
+<h5 id="debugging-with-assertions">Debugging with Assertions：使用断言调试</h5>
+<p>在调试环境中的合适位置加入断言，将有助于代码调试。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"A person's age cannot be less than zero"</span><span class="p">)</span>
+<span class="c1">// 或者如下：</span>
+<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>注意：当代码编译时，断言将会被禁用。</p>
+
+<h5 id="when-to-use-assertions">When to Use Assertions：何时使用断言</h5>
+
+<p>当条件可能是假，但是最终一定要保证为真，那么就得使用断言。如下情形：</p>
+<ul>
+  <li>断言是否”数组越界”;</li>
+  <li>断言给函数传递的值，是否合法；</li>
+  <li>可选类型是否为nil；</li>
+</ul>
+
+<p>注意：断言会终止程序运行。</p>
+
+<p>OK.以上是基础部分。花了我整整3.5h，由于速度比较快，不能保证准确度。后续将会加快进度，略去基础的细节，呈现实用的部分。</p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/01/swift_I_guide/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/01/swift_II_Basic-Operators/">Swift_II_基本运算符</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#terminology" id="markdown-toc-terminology">Terminology：术语</a></li>
+  <li><a href="#assignment-operator" id="markdown-toc-assignment-operator">Assignment Operator：赋值运算符</a></li>
+  <li><a href="#arithmetic-operators" id="markdown-toc-arithmetic-operators">Arithmetic Operators：算术运算符</a></li>
+  <li><a href="#range-operators" id="markdown-toc-range-operators">Range Operators:区间运算符</a></li>
+  <li><a href="#logical-operators" id="markdown-toc-logical-operators">Logical Operators：逻辑运算符</a></li>
+</ul>
+
+<p>Swift 支持大多数的标准C语言的运算符，并且改进了不少特性来减少常见的编码错误。例如：</p>
+<ul>
+  <li>赋值符 = 不返回值。防止与==弄混；</li>
+  <li>算术运算符：+-*/%会检测防止值溢出；</li>
+  <li>以及C语言没有的表达:（ a..&lt; b和a…b）</li>
+</ul>
+
+<h3 id="terminology">Terminology：术语</h3>
+
+<p>运算符有一元、二元、三元之分；</p>
+<ul>
+  <li>一元：-、！、++ 如：-1,!b,i++</li>
+  <li>二元：算术运算符，如：2+3</li>
+  <li>三元：Swift中就一个，三目运算符：(a?b:c)</li>
+</ul>
+
+<h3 id="assignment-operator">Assignment Operator：赋值运算符</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="c1">// a is now equal to 10</span>
+
+<span class="c1">// 用元组中：</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">// x is equal to 1, and y is equal to 2</span>
+
+<span class="c1">// 无返回值：</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="p">{</span>
+    <span class="c1">// This is not valid, because x = y does not return a value.</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="arithmetic-operators">Arithmetic Operators：算术运算符</h3>
+<p>是不允许值溢出的，如果值溢出，应该使用溢出运算符 a &amp;- b;</p>
+
+<ul>
+  <li>+ 求和，也用于string的拼接，”hello, “ + “world”  // equals “hello, world”;</li>
+  <li>- 求差;</li>
+  <li>* 求积;</li>
+  <li>/ 求商、倍数 9/5=1;</li>
+  <li>% 求余、模运算 9%5=4;</li>
+  <li>- 元减运算符 -3(负数3);</li>
+  <li>+=等 符合运算符 var a = 1;a += 2;</li>
+  <li>== != &gt; &lt; &gt;= &lt;= 比较运算符，返回BOOL值；</li>
+  <li>=== 恒等于、 !===不恒等于，用于判断是否引用同一对象；</li>
+  <li>三目运算符：条件?答案1:答案2  条件成立则返回答案1，否则答案2</li>
+  <li>空合运算符：(a ?? b):是对可选类型a的判空处理，如果a包含数值就解析返回值，否则返回b。
+等价于 <code class="highlighter-rouge">a != nil ? a! : b</code> :可选类型a是空就返回b，不是空就强制解析返回a!空合就是这段代码的简短表达
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">defaultColorName</span> <span class="o">=</span> <span class="s">"red"</span>
+<span class="k">var</span> <span class="nv">userDefinedColorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>   <span class="c1">// defaults to nil</span>
+<span class="k">var</span> <span class="nv">colorNameToUse</span> <span class="o">=</span> <span class="n">userDefinedColorName</span> <span class="p">??</span> <span class="n">defaultColorName</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="range-operators">Range Operators:区间运算符</h3>
+
+<ul>
+  <li>(a…b) 定义一个a、b间的闭区间。可用于for循环；
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// 范围是&gt;=1 &lt;=5</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>（a..&lt;b) 定义一个a、b间的半闭区间。可用于数组区间 // &gt;
+```swift
+let names = [“Anna”, “Alex”, “Brian”, “Jack”]
+let count = names.count
+for i in 0..&lt;count {
+  print(“Person (i + 1) is called (names[i])”)
+}</li>
+</ul>
+
+<p>```</p>
+
+<p>~是不是很好用~</p>
+
+<h3 id="logical-operators">Logical Operators：逻辑运算符</h3>
+
+<ul>
+  <li>! 逻辑非，</li>
+  <li>&amp;&amp; 逻辑与</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>逻辑或</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>OK,over~~</p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/01/swift_II_Basic-Operators/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
                 </h2>
                 <div class="label">
@@ -417,624 +3053,6 @@ from xlwt import easyxf
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/07/Runtime-theory/">Runtime基础</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Runtime" title="Category: Runtime" rel="category">Runtime</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Runtime" title="Tag: Runtime" rel="tag">Runtime</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<hr />
-
-<p>待写…</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/07/Runtime-theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/06/TaoBao/">淘宝和12306的那些事</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-06
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#杂谈" title="Category: 杂谈" rel="category">杂谈</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#淘宝" title="Tag: 淘宝" rel="tag">淘宝</a>&nbsp;
-    
-        <a href="/tag/#12306" title="Tag: 12306" rel="tag">12306</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>待写…</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/06/TaoBao/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-05
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#IOS基础" title="Category: IOS基础" rel="category">IOS基础</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#IOS代码规范" title="Tag: IOS代码规范" rel="tag">IOS代码规范</a>&nbsp;
-    
-        <a href="/tag/#IOS基础" title="Tag: IOS基础" rel="tag">IOS基础</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前序</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">解析</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1、枚举</a>        <ul>
-          <li><a href="#section-3" id="markdown-toc-section-3">1.1 定义规范的枚举</a></li>
-          <li><a href="#section-4" id="markdown-toc-section-4">1.2 定义规范的枚举内容</a></li>
-          <li><a href="#section-5" id="markdown-toc-section-5">1.3 枚举的深入</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">1.4 优化后的写法</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#section-7" id="markdown-toc-section-7">2、属性</a>    <ul>
-      <li><a href="#section-8" id="markdown-toc-section-8">属性的修饰符</a></li>
-      <li><a href="#age-" id="markdown-toc-age-">2.1、age属性 类型的选择</a></li>
-      <li><a href="#section-9" id="markdown-toc-section-9">2.2、属性的内存管理</a></li>
-      <li><a href="#protocolproperty" id="markdown-toc-protocolproperty">2.3、在@protocol中使用@property：</a></li>
-      <li><a href="#synthesizedynamic" id="markdown-toc-synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/05/581daad679042.png" alt="" /></p>
-
-<p>上边这张图是前段时间网上比较火的一套面试题中的。这套题来源是 目前就职于百度的孙源。</p>
-
-<h2 id="section">前序</h2>
-
-<p>会有开发者，看这道题目时会觉着没有啥太大毛病，实际中他们也可能就是这样写的。</p>
-
-<p>其实在github上会经常看到这样类似的代码，特别是在一些小demo里很常见。之所以忽略其中的问题，主要是因为没有认识到规范的写法，以及这种写法可能引起的问题。扯远点就是，一个人的编码语言认知水平会极大的影响他的编码行为。然而认知水平和学习的途径有莫大的关系。</p>
-
-<p>前几个月，我们公司招聘移动开人员，本人也面试不少android和ios的开发者，发现一个很普遍的问题：代码不规范。不论是刚从培训学校里刚出来的，还是已经5~6年经验的开发者。当提到代码的规范时，大多回答的就是驼峰式命名法，甚至有位”资深的”求职者向我”普及现今业界的普遍形式”:其实代码规范与否并不重要，对多数中小创业公司而言,重要的是快速上线，及时迭代，占有市场。话是不错，也道出了像我们这种在风口创业公司的基本路线，就是及早入场，拿到牌照，占有市场。但最终我也没有通过他的面试。理由是:工作经验丰富(开发过Symbian,android,iOS)但不适合做开发(因android\iOS不资深。我们要招聘资深的android，懂点iOS，创业公司嘛，iOS和android分的不是很清，是活都干)。</p>
-
-<p>上边扯远了，代码的规范与否，最初的学习途径和形式固然重要，更重要的是在后期的工作中，是否较为全面系统的从官方提供的资料中进行相关学习。可能有人觉得不重要，但是在我看来，这是一名合格开发者的必经之路。你所用的语言、规则，都是人家定的,即便能开发出可用的app，那也未必合格，特别是项目逐渐做大之后，简单的模式，不规范的代码所带来的隐患就会逐渐呈现出来。</p>
-
-<p><strong>下边首先会解析问题，并就部分内容深入解析，如有疑问还请留言相告</strong></p>
-
-<h2 id="section-1">解析</h2>
-
-<!-- 这里先推荐官方的写法：[传送门](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html#//apple_ref/doc/uid/TP40014150-CH1-SW4) -->
-
-<h3 id="section-2">1、枚举</h3>
-
-<p>问题点：</p>
-
-<p>1、题目中写枚举是使用C的风格；
-2、枚举定义的不规范；
-3、枚举的内容不严谨。</p>
-
-<h5 id="section-3">1.1 定义规范的枚举</h5>
-
-<p>官方文档中，enum 建议使用 NS_ENUM 和 NS_OPTIONS 宏来定义枚举类型。
-    NS_ENUM枚举项的值为NSInteger，定义通用的枚举；
-    NS_OPTIONS枚举项的值为NSUInteger，定义位移枚举。
-一般开发者可能用不到后者，但如果进入到UIKit的头文件里，就会看到很多这种书写格式。</p>
-
-<p>enum 中驼峰命名法和下划线命名法的使用：枚举类型的命名规则和函数的命名规则相同：命名时使用驼峰命名法，勿同时使用下划线命名法。</p>
-
-<h5 id="section-4">1.2 定义规范的枚举内容</h5>
-
-<p>试题的model实际使用场景不清楚，这里将该枚举场景放宽到生活中：
-那么除了男性，女性，实际上还应该有包括：内心男性的女性，以及内心女性的男性，以及无性，以及其他未知的性别(考虑未知的特殊情况。当然下边的枚举针对不同的行业场景，可能要进行调整)</p>
-
-<h4 id="section-5">1.3 枚举的深入</h4>
-
-<p>这两个宏的定义在Foundation.framework的NSObjCRuntime.h中：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#if (__cplusplus &amp;&amp; __cplusplus &gt;= 201103L &amp;&amp; (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus &amp;&amp; __has_feature(objc_fixed_enum))  
-#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type  
-#if (__cplusplus)  
-#define NS_OPTIONS(_type, _name) _type _name; enum : _type  
-#else  
-#define NS_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type  
-#endif  
-#else  
-#define NS_ENUM(_type, _name) _type _name; enum  
-#define NS_OPTIONS(_type, _name) _type _name; enum  
-#endif  
-</code></pre>
-</div>
-<p>其实上述的写法，等价于：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef enum JUserGender : NSInteger JUserGender;  
-enum JUserGender : NSInteger {  }
-</code></pre>
-</div>
-
-<p>从枚举定义来看，NS_ENUM和NS_OPTIONS本质是一样的，仅仅从字面上来区分其用途。NS_ENUM是通用情况，NS_OPTIONS一般用来定义具有位移或特点的情况。</p>
-
-<h4 id="section-6">1.4 优化后的写法</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSInteger, JUserGender) {
-    JUserGenderUnknown,
-    JUserGenderMale,
-    JUserGenderGay,
-    JUserGenderFemale,
-    JUserGenderLesbian,
-    JUserGenderNeuter
-};
-</code></pre>
-</div>
-
-<h2 id="section-7">2、属性</h2>
-
-<p>** @property本质是: @property = ivar + getter + setter;**</p>
-
-<p>也就是说，属性=ivar（实例变量）+ 存取方法。它作为 OC的一项特性，主要的作用就在于封装对象中的数据。 OC 对象通常会把其所需要的数据保存为各种实例变量。</p>
-
-<h4 id="section-8">属性的修饰符</h4>
-
-<p>原子性 — nonatomic 特质
-(不声明nonatomic，编译器就默认使用同步锁保证其原子性atomic，从而保证其线程安全。但如果真的是多个线程同时操作该属性，最好采用其它手段保证属性thread safety)</p>
-
-<p>读/写权限 — readwrite(读写)、readonly (只读)</p>
-
-<p>内存管理语义—assign、strong、 weak、unsafe_unretained、copy</p>
-
-<p>方法名—getter=<name> 、setter=<name></name></name></p>
-
-<p><strong>下边分别解说</strong></p>
-
-<h4 id="age-">2.1、age属性 类型的选择</h4>
-
-<p>age 属性的类型：应避免使用基本类型，建议使用 Foundation 数据类型，对应关系如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>int -&gt; NSInteger
-unsigned -&gt; NSUInteger
-float -&gt; CGFloat 同时考虑到 age 的特点，以及出于32/64 bit的考虑应使用 NSUInteger。
-</code></pre>
-</div>
-
-<h4 id="section-9">2.2、属性的内存管理</h4>
-
-<p>详见官方文档 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a></p>
-
-<p><strong>1、weak VS assign</strong></p>
-
-<p>使用weak的情形：
-1、在 ARC 中,可能出现循环引用时,往往要通过weak来解决,比如: delegate代理属性
-2、自身已经强引用,此时也会使用weak,比如:自定义IBOutlet控件属性一般使用 weak；(也可使用strong)
-..
-相同：
-weak义为“非拥有关系”，设置方法既不保留新值，也不释放旧值(此同assign)， 然而对象销毁时，属性值也会清空(assign 的set只会执行针对CGFloat、NSlnteger等简单的赋值操作），
-weak必须用于OC对象(assigin可以用非OC对象)。</p>
-
-<p><strong>2、runtime中的weak原理：</strong>
-runtime中实现weak的原理是：runtime对注册的类进行布局，weak对象会放入一个hash表中。把weak指的对象内存地址作为key，当此对象的引用计数为0时dealloc，假如weak指向的对象内存地址是a，那么就会以a为键，在这个weak表中搜索，找到所有以a为键的weak对象，从而设置为nil。</p>
-
-<p><strong>3、copy</strong></p>
-
-<p>3.1、copy复制出来是不可变的,所以可变属性不建议用copy:</p>
-
-<p>@property (copy) NSMutableArray *array;
-这里使用copy结果导致属性是不可变的。同时这里使用了atomic会影响性能</p>
-
-<p>3.2、NSArray等经常使用copy关键字:
-因为他们有对应的可变类型：NSMutableArray，他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。</p>
-
-<p>3.3、block 也经常使用 copy 关键字
-具体原因见官方文档：<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a>
-block 使用copy是从MRC遗留下来的“传统”,在MRC中,方法内部的block是在栈区的,使用copy 可以把它放到堆区。在 ARC中不强制。</p>
-
-<p>3.4、copy修饰自定义类
-如果自定义的对象分为可变与不可变版本，那么就要同时实现 NSCopying 与 NSMutableCopying 协议。针对实际可能出现的复杂情况，实现主要代码如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// .h文件
-</span>   <span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">JUserGender</span><span class="p">)</span> <span class="p">{</span>
-       <span class="n">JUserGenderUnknown</span><span class="p">,</span>
-       <span class="n">JUserGenderMale</span><span class="p">,</span>
-       <span class="n">JUserGenderGay</span><span class="p">,</span>
-       <span class="n">JUserGenderFemale</span><span class="p">,</span>
-       <span class="n">JUserGenderLesbian</span><span class="p">,</span>
-       <span class="n">JUserGenderNeuter</span>
-   <span class="p">};</span>
-
-  <span class="k">@interface</span> <span class="nc">JUser</span> <span class="p">:</span> <span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span>
-
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span>      <span class="n">NSString</span>    <span class="o">*</span><span class="n">name</span><span class="p">;</span>
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>    <span class="n">NSUInteger</span>  <span class="n">age</span><span class="p">;</span>
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>   <span class="n">JUserGender</span> <span class="n">sex</span><span class="p">;</span>
-
-  <span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
-  <span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">userWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">removeFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
-<span class="k">@end</span>
-
-<span class="c1">// .m文件
-</span>
-<span class="k">@implementation</span> <span class="nc">JUser</span> <span class="p">{</span>
-    <span class="n">NSMutableSet</span> <span class="o">*</span><span class="n">_friends</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span> <span class="p">{</span>
-    <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span>
-                         <span class="n">age</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">age</span>
-                         <span class="n">sex</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span><span class="p">)</span><span class="n">sex</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
-        <span class="n">_age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
-        <span class="n">_sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
-        <span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">addFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">_friends</span> <span class="nf">addObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">removeFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">_friends</span> <span class="nf">removeObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">copyWithZone</span><span class="o">:</span><span class="p">(</span><span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span><span class="n">zone</span> <span class="p">{</span>
-    <span class="n">CYLUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
-                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
-                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
-                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
-    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[</span><span class="n">_friends</span> <span class="nf">mutableCopy</span><span class="p">];</span>
-    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">deepCopy</span> <span class="p">{</span>
-    <span class="n">JUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
-                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
-                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
-                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
-    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSet</span><span class="p">:</span><span class="n">_friends</span>
-                                             <span class="nf">copyItems</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">@end</span>
-</code></pre>
-</div>
-
-<h4 id="protocolproperty">2.3、在@protocol中使用@property：</h4>
-
-<p>需要借助运行时：
-objc_setAssociatedObject
-objc_getAssociatedObject</p>
-
-<h4 id="synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</h4>
-
-<p>如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;</p>
-
-<p>@synthesize：没有手动实现setter、getter，编译器会自动为你加上这两个方法。除此之外，可以在类的.m文件中，通过@synthesize指定实例变量的名字:
-@implementation Juser
-@synthesize name = _myName; 
-@end 
-那么就使用了别名_myName来代替name</p>
-
-<p>@dynamic：告诉编译器属性的setter与getter方法由用户自己实现，不自动生成。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/05/IOS_Adopt/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#iOS逆向理论基础" title="Tag: iOS逆向理论基础" rel="tag">iOS逆向理论基础</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件</p>
-
-<p>待续…</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/7_IOS_Theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#iOS逆向工具集" title="Tag: iOS逆向工具集" rel="tag">iOS逆向工具集</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-  <li><a href="#cydiasubstrate" id="markdown-toc-cydiasubstrate">2、CydiaSubstrate</a>    <ul>
-      <li><a href="#mobilehooker" id="markdown-toc-mobilehooker">2.1 MobileHooker</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="section">1、简介</h2>
-
-<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
-
-<p>相关链接：
-Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
-
-<h2 id="cydiasubstrate">2、CydiaSubstrate</h2>
-
-<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
-
-<h5 id="mobilehooker">2.1 MobileHooker</h5>
-
-<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
-	void MSHookFunction(void* function, void* replacement, void** p_original);
-</code></pre>
-</div>
-
-<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
-
-<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
-
-<p><strong>MSHookFunction</strong> 
-MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
-它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
-
-<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
-
-<p><strong>symbol</strong>
-在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
-
-<p>可参阅资料：
-<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
-
-<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
-
-<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/6_IOS_Tools/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1062,6 +3080,16 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2016/12/05/swift_IV_/">Swift_基本运算符</a></li>
+                    
+                        <li><a href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></li>
+                    
+                        <li><a href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_iii_strings and characters</a></li>
+                    
+                        <li><a href="/2016/12/01/swift_I_guide/">Swift_I_入门体验</a></li>
+                    
+                        <li><a href="/2016/12/01/swift_II_Basic-Operators/">Swift_II_基本运算符</a></li>
+                    
                         <li><a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
                     
                         <li><a href="/2016/11/07/Runtime-theory/">Runtime基础</a></li>
@@ -1071,16 +3099,6 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                         <li><a href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a></li>
                     
                         <li><a href="/2016/11/01/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a></li>
-                    
-                        <li><a href="/2016/11/01/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a></li>
-                    
-                        <li><a href="/2016/11/01/5_IDA-iFunBox-other/">iOS逆向系列5_IDA/iFunBox/other</a></li>
-                    
-                        <li><a href="/2016/11/01/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a></li>
-                    
-                        <li><a href="/2016/11/01/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a></li>
-                    
-                        <li><a href="/2016/11/01/1_Class_dump/">iOS逆向系列1_Class_dump</a></li>
                     
                 </ul>
             </div>
@@ -1264,6 +3282,15 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#Swift" class="categories-list-item" cate="Swift">
+                            <span class="name">
+                                Swift
+                            </span>
+                            <span class="badge">4</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1293,7 +3320,7 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       
-                      <a href="/tag/#iOS动画" style="font-size: 18pt; color: #000;">iOS动画</a>
+                      <a href="/tag/#iOS动画" style="font-size: 12pt; color: #666;">iOS动画</a>
                     
                       
                       
@@ -1356,7 +3383,7 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       
-                      <a href="/tag/#缓存" style="font-size: 18pt; color: #000;">缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 12pt; color: #666;">缓存</a>
                     
                       
                       
@@ -1405,7 +3432,7 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       
-                      <a href="/tag/#Sublime" style="font-size: 18pt; color: #000;">Sublime</a>
+                      <a href="/tag/#Sublime" style="font-size: 12pt; color: #666;">Sublime</a>
                     
                       
                       
@@ -1426,7 +3453,7 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       
-                      <a href="/tag/#Theos" style="font-size: 18pt; color: #000;">Theos</a>
+                      <a href="/tag/#Theos" style="font-size: 12pt; color: #666;">Theos</a>
                     
                       
                       
@@ -1504,6 +3531,13 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       <a href="/tag/#脚本" style="font-size: 9pt; color: #999;">脚本</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Swift" style="font-size: 18pt; color: #000;">Swift</a>
                     
                 </div>
             </div>
