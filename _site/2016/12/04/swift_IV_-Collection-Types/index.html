@@ -13,7 +13,7 @@
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/12/01/swift_IV_Collection-Types/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/04/swift_IV_-Collection-Types/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -146,7 +146,7 @@
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-12-01
+                <i class="fa fa-calendar"></i>2016-12-04
             </div>
 
             <div class="label-card">
@@ -205,7 +205,6 @@
       <li><a href="#creating-an-array-by-adding-two-arrays-together" id="markdown-toc-creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</a></li>
       <li><a href="#creating-an-array-with-an-array-literal" id="markdown-toc-creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</a></li>
       <li><a href="#accessing-and-modifying-an-array" id="markdown-toc-accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</a></li>
-      <li><a href="#iterating-over-an-array" id="markdown-toc-iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</a></li>
     </ul>
   </li>
   <li><a href="#sets" id="markdown-toc-sets">3、Sets:集合</a>    <ul>
@@ -219,8 +218,6 @@
   </li>
   <li><a href="#dictionaries" id="markdown-toc-dictionaries">4、Dictionaries：字典</a>    <ul>
       <li><a href="#section" id="markdown-toc-section">4.1 创建</a></li>
-      <li><a href="#accessing-and-modifying-a-dictionary" id="markdown-toc-accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</a></li>
-      <li><a href="#iterating-over-a-dictionary" id="markdown-toc-iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</a></li>
     </ul>
   </li>
 </ul>
@@ -313,35 +310,34 @@
   <li>索引插入：<code class="highlighter-rouge">shoppingList.insert("Maple Syrup", at: 0)</code>；</li>
   <li>索引删除：<code class="highlighter-rouge">let mapleSyrup = shoppingList.remove(at: 0)</code>；</li>
   <li>删除最后一个元素：<code class="highlighter-rouge">let apples = shoppingList.removeLast()</code></li>
-  <li>注意：越界会造成运行时错误；</li>
+  <li>注意：越界会造成运行时错误；
+```swift
+var shoppingList: [String] = [“Eggs”, “Milk”] // 
+shoppingList.append(“Flour”) // 
+shoppingList += [“Baking Powder”] // 
+shoppingList += [“Chocolate Spread”, “Cheese”, “Butter”] //</li>
 </ul>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Flour"</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Baking Powder"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Chocolate Spread"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">,</span> <span class="s">"Butter"</span><span class="p">]</span> <span class="c1">// </span>
+<p>var firstItem = shoppingList[0] // 
+shoppingList[0] = “Six eggs” // 
+shoppingList[4…6] = [“Bananas”, “Apples”] // 
+shoppingList.insert(“Maple Syrup”, at: 0) // 
+let mapleSyrup = shoppingList.remove(at: 0) // 
+firstItem = shoppingList[0] // 
+firstItem = shoppingList[0] //</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+##### 2.7 Iterating Over an Array：数组遍历
 
-<span class="k">var</span> <span class="nv">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Six eggs"</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="s">"Apples"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Maple Syrup"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="k">let</span> <span class="nv">mapleSyrup</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-</code></pre>
-</div>
-
-<h5 id="iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</h5>
-
-<p>1、for -in：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Six eggs</span>
-<span class="c1">// Milk</span>
-<span class="c1">// Flour</span>
-<span class="c1">// Baking Powder</span>
-<span class="c1">// Bananas</span>
+1、for -in：
+```swift
+for item in shoppingList {
+    print(item)
+}
+// Six eggs
+// Milk
+// Flour
+// Baking Powder
+// Bananas
 </code></pre>
 </div>
 
@@ -403,7 +399,6 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
 
 <h5 id="creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</h5>
 <p>注意的是，创建集合时，必须带上关键字Set。</p>
-
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// favoriteGenres是字符串集合，即:Set&lt;String&gt; 类型，仅仅储存String，而且是可变的。其余类似</span>
 <span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
 <span class="c1">// 简写：</span>
@@ -509,13 +504,11 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
 <h5 id="section">4.1 创建</h5>
 
 <p>1、创建[Int: String]类型的空字典：</p>
-
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt">String</span><span class="p">]()</span>
 </code></pre>
 </div>
 
 <p>2、操作</p>
-
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 插入元素：[16:"sixteen"]</span>
 <span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span> 
 
@@ -525,86 +518,539 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
 </div>
 
 <p>3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
-<p>4、简写：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
-<h5 id="accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</h5>
-
-<p>使用下标访问修改</p>
-
-<ul>
-  <li>.count属性：<code class="highlighter-rouge">airports.count</code>；</li>
-  <li>.isEmpty属性：<code class="highlighter-rouge">if airports.isEmpty {</code>；</li>
-  <li>添加/更改元素：<code class="highlighter-rouge">airports["LHR"] = "London"</code>；</li>
-  <li>修改元素：updateValue(_:forKey:) 返回可选类型；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="s">"Dublin Airport"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The old value for DUB was </span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 可选</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">airportName</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="s">"DUB"</span><span class="p">]</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The name of the airport is </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"That airport is not in the airports dictionary."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The name of the airport is Dublin Airport."</span>
-</code></pre>
-</div>
-<ul>
-  <li>下标置空：airports[“APL”] = nil；</li>
-  <li>removeValue(forKey:)</li>
-</ul>
-
-<p>返回可选类型：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The removed airport's name is </span><span class="se">\(</span><span class="n">removedValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The removed airport's name is Dublin Airport."</span>
-
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
-<h5 id="iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</h5>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、遍历键值对</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// YYZ: Toronto Pearson</span>
-<span class="c1">// LHR: London Heathrow</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
 
-<span class="c1">// 2、遍历key</span>
-<span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport code: </span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport code: YYZ</span>
-<span class="c1">// Airport code: LHR</span>
-<span class="c1">// 3、遍历value</span>
-<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">values</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport name: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport name: Toronto Pearson</span>
-<span class="c1">// Airport name: London Heathrow</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
 
-<span class="c1">// 4、获取key value</span>
-<span class="k">let</span> <span class="nv">airportCodes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
-<span class="c1">// airportCodes is ["YYZ", "LHR"]</span>
- 
-<span class="k">let</span> <span class="nv">airportNames</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="c1">// airportNames is ["Toronto Pearson", "London Heathrow"]</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
 
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
@@ -617,18 +1063,6 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
             
                 
                     
-                        
-                        <h2 id="similar_posts">相似文章</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
                 
             
         
@@ -656,15 +1090,6 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
             
             
                 
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流
-                            
-                            </a>
-                        </li>
-                        
-                        
                     
                 
             
@@ -708,20 +1133,18 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
                 
             
         
-        
-            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></p>
+        <p><strong>上一篇</strong> <a href="/2016/12/03/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/12/05/swift_IV_-%E5%89%AF%E6%9C%AC-2/">Swift_基本运算符</a></p>
         
     </div>
 </div>
@@ -730,7 +1153,7 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/12/01/swift_IV_Collection-Types/" data-title="Swift3.0_IV_集合" data-url="http://localhost:4000/2016/12/01/swift_IV_Collection-Types/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/12/04/swift_IV_-Collection-Types/" data-title="Swift3.0_IV_集合" data-url="http://localhost:4000/2016/12/04/swift_IV_-Collection-Types/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
