@@ -58,3 +58,8 @@ excerpt_separator: "\n\n\n\n"
 # paginate
 gems: [jekyll-paginate]
 paginate: 6
+
+description: 
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
