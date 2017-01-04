@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Swift3.0_VIII_枚举、类、结构体、属性</title>
-    <meta name="description" content="  枚举          枚举语法：      原始值      递归枚举        类          类和结构体的对比      结构和枚举是值类型      类是引用类型      恒等运算符      指针      选择类还是结构体      字符串、数组、和字典类型的赋值与复制        ...">
+    <meta name="description" content="  枚举          枚举语法：      原始值      递归枚举        类和结构体          类和结构体的对比      结构和枚举是值类型      类是引用类型      恒等运算符      指针      选择类还是结构体      字符串、数组、和字典类型的赋值与复制    ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -203,7 +203,7 @@
       <li><a href="#section-3" id="markdown-toc-section-3">递归枚举</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">类</a>    <ul>
+  <li><a href="#section-4" id="markdown-toc-section-4">类和结构体</a>    <ul>
       <li><a href="#section-5" id="markdown-toc-section-5">类和结构体的对比</a></li>
       <li><a href="#section-6" id="markdown-toc-section-6">结构和枚举是值类型</a></li>
       <li><a href="#section-7" id="markdown-toc-section-7">类是引用类型</a></li>
@@ -429,7 +429,7 @@
 </code></pre>
 </div>
 
-<h1 id="section-4">类</h1>
+<h1 id="section-4">类和结构体</h1>
 
 <p>与其他编程语言所不同的是，Swift 并不要求为自定义类和结构去创建独立的接口和实现文件。只需要在单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。</p>
 
@@ -519,8 +519,8 @@
 </div>
 
 <h3 id="section-6">结构和枚举是值类型</h3>
-
 <ul>
+  <li>默认情况下，值类型的属性不能在它的实例方法中被修改；</li>
   <li>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝；</li>
   <li>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制；</li>
   <li>在 Swift 中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现；</li>
@@ -1020,7 +1020,39 @@
                         <ul>
                         
                         <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/12/10/swift_VIII_Methods_Subscripts_Inheritance/">Swift3.0_VIII_ 
+                            <a href="http://localhost:4000/2016/12/12/swift_XI_Methods_Subscripts_Inheritance%E5%89%AF%E6%9C%AC-3/">Swift3.0_VIII_ 
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 
                             
                             </a>
                         </li>
@@ -1082,15 +1114,6 @@
             
                 
                     
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
                 
             
         
@@ -1102,24 +1125,6 @@
             
         
             
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
             
                 
                     
@@ -1146,7 +1151,7 @@
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/12/10/swift_VIII_Methods_Subscripts_Inheritance/">Swift3.0_VIII_ </a></p>
+        <p><strong>下一篇</strong> <a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></p>
         
     </div>
 </div>

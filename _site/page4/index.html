@@ -149,6 +149,322 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/11/01/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>&nbsp;
+    
+        <a href="/tag/#Logos" title="Tag: Logos" rel="tag">Logos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#makefile" id="markdown-toc-makefile">2、Makefile</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">2.1 基本配置</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.2 指定处理器架构</a></li>
+      <li><a href="#sdk" id="markdown-toc-sdk">2.3 指定SDK版本</a></li>
+      <li><a href="#framework" id="markdown-toc-framework">2.4 导入framework</a></li>
+      <li><a href="#mach-omach-o-object" id="markdown-toc-mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<h2 id="makefile">2、Makefile</h2>
+
+<h5 id="section-1">2.1 基本配置</h5>
+
+<p>Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#固定写法:系统变量，不要更改。
+#告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
+include $(THEOS)/makefiles/common.mk
+
+#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
+TWEAK_NAME = projectBy3code
+
+#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
+#这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
+projectBy3code_FILES = Tweak.xm
+
+#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
+after-install::
+		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
+</code></pre>
+</div>
+
+<p>是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：</p>
+
+<h5 id="section-2">2.2 指定处理器架构</h5>
+
+<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+</code></pre>
+</div>
+
+<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
+You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
+
+<h5 id="sdk">2.3 指定SDK版本</h5>
+
+<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
+
+<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
+方法如下：
+ you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
+
+<p>SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
+
+<p>TARGET = iphone::9.2:9.0</p>
+
+<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
+</code></pre>
+</div>
+
+<p>比如：TARGET = iphone:8.1:8.0
+   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0</p>
+
+<h5 id="framework">2.4 导入framework</h5>
+<p>这里包括你想用到框架的名称</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
+</code></pre>
+</div>
+
+<p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
+上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+</code></pre>
+</div>
+
+<p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+TARGET = iphone:latest:7.0
+include theos/makefiles/common.mk
+TWEAK_NAME = projectBy3code
+projectBy3code_FILES = Tweak.xm
+projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
+include $(THEOS_MAKE_PATH)/tweak.mk
+after-install::
+      install.exec "killall -9 SpringBoard"
+</code></pre>
+</div>
+<p>上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。</p>
+
+<h5 id="mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lx
+</code></pre>
+</div>
+
+<p>Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
+</code></pre>
+</div>
+
+<p>大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
+</code></pre>
+</div>
+
+<p>稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/01/3_Theos_-fourFile/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/01/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#theos" id="markdown-toc-theos">2、Theos简介</a></li>
+  <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
+</ul>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<p>debian:
+<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a></p>
+
+<p>Theos安装:
+<a href="https://github.com/theos/theos/wiki/Installation">https://github.com/theos/theos/wiki/Installation</a></p>
+
+<h2 id="theos">2、Theos简介</h2>
+
+<p>Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。</p>
+
+<p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
+
+<p><strong>下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation</strong></p>
+
+<p><strong>其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案</strong></p>
+
+<h2 id="theos-1">3、安装Theos</h2>
+
+<p>首先需要的环境和工具如下：</p>
+
+<ul>
+  <li>curl</li>
+  <li>git</li>
+  <li>make</li>
+  <li>openssh</li>
+  <li>perl</li>
+  <li>rsync</li>
+  <li>dpkg (port or homebrew install on Mac OS X)</li>
+  <li>python (if on Windows)</li>
+</ul>
+
+<p>没有的就用 brew install **</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/01/2_Theos_-install&run/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/01/1_Class_dump/">iOS逆向系列1_Class_dump</a>
                 </h2>
                 <div class="label">
@@ -730,245 +1046,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/04/30/deployEnvironmentVariable/">OS X 部署环境变量</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-04-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a>&nbsp;
-    
-        <a href="/tag/#环境变量" title="Tag: 环境变量" rel="tag">环境变量</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、设置环境变量</a>    <ul>
-      <li><a href="#shell" id="markdown-toc-shell">1.1 查看本机使用的Shell</a></li>
-      <li><a href="#mac" id="markdown-toc-mac">1.2 Mac可配置环境变量的位置</a></li>
-      <li><a href="#path" id="markdown-toc-path">1.3 设置PATH的语法：</a></li>
-    </ul>
-  </li>
-  <li><a href="#sublime" id="markdown-toc-sublime">2、实战 配置sublime的环境变量</a></li>
-</ul>
-
-<h2 id="section">1、设置环境变量</h2>
-
-<h5 id="shell">1.1 查看本机使用的Shell</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ echo $SHELL
-# 输出的是：csh或者是tcsh，就是C Shell。
-# 输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
-</code></pre>
-</div>
-<p>如果是Bourne Shell。
-那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
-
-<h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
-
-<p>Mac系统的环境变量，加载顺序为：</p>
-
-<ul>
-  <li>1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】</li>
-  <li>2、/etc/paths 可以全局修改配置，系统级别启动加载。添加path一行一个路径</li>
-</ul>
-
-<p>以上不管是哪个用户，登录时都会读取该文件。下面几个是当前用户级的环境变量，按照从前往后的顺序读取。如果~/.bash_profile文件存在，则后面的几个文件就会被忽略不读了，如果~/.bash_profile文件不存在，才会以此类推读取后面的文件</p>
-
-<ul>
-  <li>3、~/.bash_profile  一般在这个文件中添加用户级环境变量。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!</li>
-  <li>4、~/.bash_login</li>
-  <li>5、~/.profile</li>
-</ul>
-
-<p>其他：</p>
-
-<ul>
-  <li>~/.bashrc没有上述规则，它是bash shell打开的时候载入的。</li>
-  <li>/etc/bashrc 一般在这个文件中添加系统级环境变量，全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</li>
-</ul>
-
-<h5 id="path">1.3 设置PATH的语法：</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;
-</code></pre>
-</div>
-
-<h2 id="sublime">2、实战 配置sublime的环境变量</h2>
-
-<p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
-</code></pre>
-</div>
-
-<p>然后我们在/usr/local/bin 里面做一个软连接：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
-</code></pre>
-</div>
-
-<p>最后加入环境变量：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
-# 添加如下代码：
-export PATH=/usr/local/bin:$PATH
-</code></pre>
-</div>
-
-<p>想立即生效请运行：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ source ~/.bash_profile
-</code></pre>
-</div>
-<p>OK，可以通过终端操控subl了！</p>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/04/30/deployEnvironmentVariable/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/04/16/CreateAGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-04-16
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#博客" title="Category: 博客" rel="category">博客</a>&nbsp;
-    
-        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#博客" title="Tag: 博客" rel="tag">博客</a>&nbsp;
-    
-        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">说明</a></li>
-  <li><a href="#gitgithub" id="markdown-toc-gitgithub">1、git\github</a>    <ul>
-      <li><a href="#github" id="markdown-toc-github">1.1 github知识普及：</a></li>
-      <li><a href="#git" id="markdown-toc-git">1.2  注册下载Git客户端</a></li>
-      <li><a href="#githubpages" id="markdown-toc-githubpages">1.3 在github上创建Pages：</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>前段时间一朋友想开个独立博客，问我有没有好的教程参考，以前弄博客时写过流程，这又重新整理了下发上来。Mac上想建博客的可以参考下。</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
-
-<h2 id="section">说明</h2>
-<p>1、以下系统基于OS X EI;</p>
-
-<p>2、免费主机：github + 静态制作：jekyll</p>
-
-<h2 id="gitgithub">1、git\github</h2>
-
-<h4 id="github">1.1 github知识普及：</h4>
-
-<p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
-
-<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。</p>
-
-<h4 id="git">1.2  注册下载Git客户端</h4>
-
-<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者用github自带的客户端。</p>
-
-<h4 id="githubpages">1.3 在github上创建Pages：</h4>
-
-<p><a href="https://pages.github.com/">参考官方页面提示</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/04/16/CreateAGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -996,7 +1073,11 @@ export PATH=/usr/local/bin:$PATH
                 </div>
                 <ul class="content-ul" recent>
                     
-                        <li><a href="/2016/12/10/swift_VIII_Methods_Subscripts_Inheritance/">Swift3.0_VIII_ </a></li>
+                        <li><a href="/2016/12/12/swift_XI_Methods_Subscripts_Inheritance%E5%89%AF%E6%9C%AC-3/">Swift3.0_VIII_ </a></li>
+                    
+                        <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
+                    
+                        <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                         <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
                     
@@ -1011,10 +1092,6 @@ export PATH=/usr/local/bin:$PATH
                         <li><a href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></li>
                     
                         <li><a href="/2016/11/22/swift_II_Basic-Operators/">Swift_II_基本运算符</a></li>
-                    
-                        <li><a href="/2016/11/20/swift_I_guide/">Swift_I_入门体验</a></li>
-                    
-                        <li><a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
                     
                 </ul>
             </div>
@@ -1212,7 +1289,7 @@ export PATH=/usr/local/bin:$PATH
                             <span class="name">
                                 Swift3.0
                             </span>
-                            <span class="badge">6</span>
+                            <span class="badge">8</span>
                         </a>
                     </li>
                     
@@ -1245,7 +1322,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#iOS动画" style="font-size: 11pt; color: #777;">iOS动画</a>
+                      <a href="/tag/#iOS动画" style="font-size: 10.5pt; color: #888;">iOS动画</a>
                     
                       
                       
@@ -1308,7 +1385,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#缓存" style="font-size: 11pt; color: #777;">缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 10.5pt; color: #888;">缓存</a>
                     
                       
                       
@@ -1357,7 +1434,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#Sublime" style="font-size: 11pt; color: #777;">Sublime</a>
+                      <a href="/tag/#Sublime" style="font-size: 10.5pt; color: #888;">Sublime</a>
                     
                       
                       
@@ -1378,7 +1455,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#Theos" style="font-size: 11pt; color: #777;">Theos</a>
+                      <a href="/tag/#Theos" style="font-size: 10.5pt; color: #888;">Theos</a>
                     
                       
                       
@@ -1462,7 +1539,7 @@ export PATH=/usr/local/bin:$PATH
                       
                       
                       
-                      <a href="/tag/#Swift" style="font-size: 12.5pt; color: #555;">Swift</a>
+                      <a href="/tag/#Swift" style="font-size: 11.5pt; color: #666;">Swift</a>
                     
                       
                       
