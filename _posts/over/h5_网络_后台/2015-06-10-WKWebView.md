@@ -11,7 +11,7 @@ author: 3行代码
 
 ## 前言
 
-WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。于是我们开始使用WKWebView，下边总结了之前学习的笔记，如果需要demo的还请留言。
+WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。下边总结了之前学习的笔记，如果需要demo的还请留言。
 早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。
 
 就这段时间的使用体验来看，变化集中在：
@@ -574,6 +574,19 @@ folder只能作为资源，整个引用进项目，不能编译代码，也就�
 
 从外部拖入JS CSS文件时，选择Creat Floder：就会以folder的形式引用文件夹了。
 
+#### 3、跨域问题
 
+WebKit框架对跨域进行了安全性检查限制，不允许跨域，比如从一个 HTTP 页对 HTTPS 发起请求是无效的。解决办法是在`-(void)webView: decidePolicyForNavigationAction: `方法内拦截请求，如果是HTTPS，就手动打开。
+
+```java
+//跨域
+    WKNavigationActionPolicy policy = WKNavigationActionPolicyAllow;
+    NSURL *url = navigationAction.request.URL;
+    if (WKNavigationTypeLinkActivated == navigationAction.navigationType && [url.scheme isEqualToString:@"https"]) {
+        [[UIApplication sharedApplication] openURL:url];
+        policy = WKNavigationActionPolicyCancel;
+    }
+    decisionHandler(policy);
+```
 
  

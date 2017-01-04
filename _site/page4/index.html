@@ -134,8 +134,6 @@
                 
                     
                 
-                    
-                
             </ul>
         </nav>
     </div>
@@ -151,326 +149,7 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-05
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#IOS基础" title="Category: IOS基础" rel="category">IOS基础</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#IOS代码规范" title="Tag: IOS代码规范" rel="tag">IOS代码规范</a>&nbsp;
-    
-        <a href="/tag/#IOS基础" title="Tag: IOS基础" rel="tag">IOS基础</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前序</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">解析</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1、枚举</a>        <ul>
-          <li><a href="#section-3" id="markdown-toc-section-3">1.1 定义规范的枚举</a></li>
-          <li><a href="#section-4" id="markdown-toc-section-4">1.2 定义规范的枚举内容</a></li>
-          <li><a href="#section-5" id="markdown-toc-section-5">1.3 枚举的深入</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">1.4 优化后的写法</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#section-7" id="markdown-toc-section-7">2、属性</a>    <ul>
-      <li><a href="#section-8" id="markdown-toc-section-8">属性的修饰符</a></li>
-      <li><a href="#age-" id="markdown-toc-age-">2.1、age属性 类型的选择</a></li>
-      <li><a href="#section-9" id="markdown-toc-section-9">2.2、属性的内存管理</a></li>
-      <li><a href="#protocolproperty" id="markdown-toc-protocolproperty">2.3、在@protocol中使用@property：</a></li>
-      <li><a href="#synthesizedynamic" id="markdown-toc-synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/05/581daad679042.png" alt="" /></p>
-
-<p>上边这张图是前段时间网上比较火的一套面试题中的。这套题来源是 目前就职于百度的孙源。</p>
-
-<h2 id="section">前序</h2>
-
-<p>会有开发者，看这道题目时会觉着没有啥太大毛病，实际中他们也可能就是这样写的。</p>
-
-<p>其实在github上会经常看到这样类似的代码，特别是在一些小demo里很常见。之所以忽略其中的问题，主要是因为没有认识到规范的写法，以及这种写法可能引起的问题。扯远点就是，一个人的编码语言认知水平会极大的影响他的编码行为。然而认知水平和学习的途径有莫大的关系。</p>
-
-<p>前几个月，我们公司招聘移动开人员，本人也面试不少android和ios的开发者，发现一个很普遍的问题：代码不规范。不论是刚从培训学校里刚出来的，还是已经5~6年经验的开发者。当提到代码的规范时，大多回答的就是驼峰式命名法，甚至有位”资深的”求职者向我”普及现今业界的普遍形式”:其实代码规范与否并不重要，对多数中小创业公司而言,重要的是快速上线，及时迭代，占有市场。话是不错，也道出了像我们这种在风口创业公司的基本路线，就是及早入场，拿到牌照，占有市场。但最终我也没有通过他的面试。理由是:工作经验丰富(开发过Symbian,android,iOS)但不适合做开发(因android\iOS不资深。我们要招聘资深的android，懂点iOS，创业公司嘛，iOS和android分的不是很清，是活都干)。</p>
-
-<p>上边扯远了，代码的规范与否，最初的学习途径和形式固然重要，更重要的是在后期的工作中，是否较为全面系统的从官方提供的资料中进行相关学习。可能有人觉得不重要，但是在我看来，这是一名合格开发者的必经之路。你所用的语言、规则，都是人家定的,即便能开发出可用的app，那也未必合格，特别是项目逐渐做大之后，简单的模式，不规范的代码所带来的隐患就会逐渐呈现出来。</p>
-
-<p><strong>下边首先会解析问题，并就部分内容深入解析，如有疑问还请留言相告</strong></p>
-
-<h2 id="section-1">解析</h2>
-
-<!-- 这里先推荐官方的写法：[传送门](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html#//apple_ref/doc/uid/TP40014150-CH1-SW4) -->
-
-<h3 id="section-2">1、枚举</h3>
-
-<p>问题点：</p>
-
-<p>1、题目中写枚举是使用C的风格；
-2、枚举定义的不规范；
-3、枚举的内容不严谨。</p>
-
-<h5 id="section-3">1.1 定义规范的枚举</h5>
-
-<p>官方文档中，enum 建议使用 NS_ENUM 和 NS_OPTIONS 宏来定义枚举类型。
-    NS_ENUM枚举项的值为NSInteger，定义通用的枚举；
-    NS_OPTIONS枚举项的值为NSUInteger，定义位移枚举。
-一般开发者可能用不到后者，但如果进入到UIKit的头文件里，就会看到很多这种书写格式。</p>
-
-<p>enum 中驼峰命名法和下划线命名法的使用：枚举类型的命名规则和函数的命名规则相同：命名时使用驼峰命名法，勿同时使用下划线命名法。</p>
-
-<h5 id="section-4">1.2 定义规范的枚举内容</h5>
-
-<p>试题的model实际使用场景不清楚，这里将该枚举场景放宽到生活中：
-那么除了男性，女性，实际上还应该有包括：内心男性的女性，以及内心女性的男性，以及无性，以及其他未知的性别(考虑未知的特殊情况。当然下边的枚举针对不同的行业场景，可能要进行调整)</p>
-
-<h4 id="section-5">1.3 枚举的深入</h4>
-
-<p>这两个宏的定义在Foundation.framework的NSObjCRuntime.h中：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#if (__cplusplus &amp;&amp; __cplusplus &gt;= 201103L &amp;&amp; (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus &amp;&amp; __has_feature(objc_fixed_enum))  
-#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type  
-#if (__cplusplus)  
-#define NS_OPTIONS(_type, _name) _type _name; enum : _type  
-#else  
-#define NS_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type  
-#endif  
-#else  
-#define NS_ENUM(_type, _name) _type _name; enum  
-#define NS_OPTIONS(_type, _name) _type _name; enum  
-#endif  
-</code></pre>
-</div>
-<p>其实上述的写法，等价于：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef enum JUserGender : NSInteger JUserGender;  
-enum JUserGender : NSInteger {  }
-</code></pre>
-</div>
-
-<p>从枚举定义来看，NS_ENUM和NS_OPTIONS本质是一样的，仅仅从字面上来区分其用途。NS_ENUM是通用情况，NS_OPTIONS一般用来定义具有位移或特点的情况。</p>
-
-<h4 id="section-6">1.4 优化后的写法</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSInteger, JUserGender) {
-    JUserGenderUnknown,
-    JUserGenderMale,
-    JUserGenderGay,
-    JUserGenderFemale,
-    JUserGenderLesbian,
-    JUserGenderNeuter
-};
-</code></pre>
-</div>
-
-<h2 id="section-7">2、属性</h2>
-
-<p>** @property本质是: @property = ivar + getter + setter;**</p>
-
-<p>也就是说，属性=ivar（实例变量）+ 存取方法。它作为 OC的一项特性，主要的作用就在于封装对象中的数据。 OC 对象通常会把其所需要的数据保存为各种实例变量。</p>
-
-<h4 id="section-8">属性的修饰符</h4>
-
-<p>原子性 — nonatomic 特质
-(不声明nonatomic，编译器就默认使用同步锁保证其原子性atomic，从而保证其线程安全。但如果真的是多个线程同时操作该属性，最好采用其它手段保证属性thread safety)</p>
-
-<p>读/写权限 — readwrite(读写)、readonly (只读)</p>
-
-<p>内存管理语义—assign、strong、 weak、unsafe_unretained、copy</p>
-
-<p>方法名—getter=<name> 、setter=<name></name></name></p>
-
-<p><strong>下边分别解说</strong></p>
-
-<h4 id="age-">2.1、age属性 类型的选择</h4>
-
-<p>age 属性的类型：应避免使用基本类型，建议使用 Foundation 数据类型，对应关系如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>int -&gt; NSInteger
-unsigned -&gt; NSUInteger
-float -&gt; CGFloat 同时考虑到 age 的特点，以及出于32/64 bit的考虑应使用 NSUInteger。
-</code></pre>
-</div>
-
-<h4 id="section-9">2.2、属性的内存管理</h4>
-
-<p>详见官方文档 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a></p>
-
-<p><strong>1、weak VS assign</strong></p>
-
-<p>使用weak的情形：
-1、在 ARC 中,可能出现循环引用时,往往要通过weak来解决,比如: delegate代理属性
-2、自身已经强引用,此时也会使用weak,比如:自定义IBOutlet控件属性一般使用 weak；(也可使用strong)
-..
-相同：
-weak义为“非拥有关系”，设置方法既不保留新值，也不释放旧值(此同assign)， 然而对象销毁时，属性值也会清空(assign 的set只会执行针对CGFloat、NSlnteger等简单的赋值操作），
-weak必须用于OC对象(assigin可以用非OC对象)。</p>
-
-<p><strong>2、runtime中的weak原理：</strong>
-runtime中实现weak的原理是：runtime对注册的类进行布局，weak对象会放入一个hash表中。把weak指的对象内存地址作为key，当此对象的引用计数为0时dealloc，假如weak指向的对象内存地址是a，那么就会以a为键，在这个weak表中搜索，找到所有以a为键的weak对象，从而设置为nil。</p>
-
-<p><strong>3、copy</strong></p>
-
-<p>3.1、copy复制出来是不可变的,所以可变属性不建议用copy:</p>
-
-<p>@property (copy) NSMutableArray *array;
-这里使用copy结果导致属性是不可变的。同时这里使用了atomic会影响性能</p>
-
-<p>3.2、NSArray等经常使用copy关键字:
-因为他们有对应的可变类型：NSMutableArray，他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。</p>
-
-<p>3.3、block 也经常使用 copy 关键字
-具体原因见官方文档：<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a>
-block 使用copy是从MRC遗留下来的“传统”,在MRC中,方法内部的block是在栈区的,使用copy 可以把它放到堆区。在 ARC中不强制。</p>
-
-<p>3.4、copy修饰自定义类
-如果自定义的对象分为可变与不可变版本，那么就要同时实现 NSCopying 与 NSMutableCopying 协议。针对实际可能出现的复杂情况，实现主要代码如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// .h文件
-</span>   <span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">JUserGender</span><span class="p">)</span> <span class="p">{</span>
-       <span class="n">JUserGenderUnknown</span><span class="p">,</span>
-       <span class="n">JUserGenderMale</span><span class="p">,</span>
-       <span class="n">JUserGenderGay</span><span class="p">,</span>
-       <span class="n">JUserGenderFemale</span><span class="p">,</span>
-       <span class="n">JUserGenderLesbian</span><span class="p">,</span>
-       <span class="n">JUserGenderNeuter</span>
-   <span class="p">};</span>
-
-  <span class="k">@interface</span> <span class="nc">JUser</span> <span class="p">:</span> <span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span>
-
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span>      <span class="n">NSString</span>    <span class="o">*</span><span class="n">name</span><span class="p">;</span>
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>    <span class="n">NSUInteger</span>  <span class="n">age</span><span class="p">;</span>
-  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>   <span class="n">JUserGender</span> <span class="n">sex</span><span class="p">;</span>
-
-  <span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
-  <span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">userWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">removeFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
-<span class="k">@end</span>
-
-<span class="c1">// .m文件
-</span>
-<span class="k">@implementation</span> <span class="nc">JUser</span> <span class="p">{</span>
-    <span class="n">NSMutableSet</span> <span class="o">*</span><span class="n">_friends</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span> <span class="p">{</span>
-    <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span>
-                         <span class="n">age</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">age</span>
-                         <span class="n">sex</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span><span class="p">)</span><span class="n">sex</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
-        <span class="n">_age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
-        <span class="n">_sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
-        <span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">addFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">_friends</span> <span class="nf">addObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">removeFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">_friends</span> <span class="nf">removeObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">copyWithZone</span><span class="o">:</span><span class="p">(</span><span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span><span class="n">zone</span> <span class="p">{</span>
-    <span class="n">CYLUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
-                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
-                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
-                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
-    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[</span><span class="n">_friends</span> <span class="nf">mutableCopy</span><span class="p">];</span>
-    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">deepCopy</span> <span class="p">{</span>
-    <span class="n">JUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
-                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
-                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
-                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
-    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSet</span><span class="p">:</span><span class="n">_friends</span>
-                                             <span class="nf">copyItems</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">@end</span>
-</code></pre>
-</div>
-
-<h4 id="protocolproperty">2.3、在@protocol中使用@property：</h4>
-
-<p>需要借助运行时：
-objc_setAssociatedObject
-objc_getAssociatedObject</p>
-
-<h4 id="synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</h4>
-
-<p>如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;</p>
-
-<p>@synthesize：没有手动实现setter、getter，编译器会自动为你加上这两个方法。除此之外，可以在类的.m文件中，通过@synthesize指定实例变量的名字:
-@implementation Juser
-@synthesize name = _myName; 
-@end 
-那么就使用了别名_myName来代替name</p>
-
-<p>@dynamic：告诉编译器属性的setter与getter方法由用户自己实现，不自动生成。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/05/IOS_Adopt/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a>
+                  <a class="post-link" href="/2016/11/01/1_Class_dump/">iOS逆向系列1_Class_dump</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -510,7 +189,7 @@ objc_getAssociatedObject</p>
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#iOS逆向理论基础" title="Tag: iOS逆向理论基础" rel="tag">iOS逆向理论基础</a>
+        <a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a>
     
   
 
@@ -520,21 +199,17 @@ objc_getAssociatedObject</p>
                 </div>
                 <div class="excerpt">
                     
-<p>iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件</p>
-
-<p>待续…</p>
-
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/01/7_IOS_Theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/11/01/1_Class_dump/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/01/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a>
+                  <a class="post-link" href="/2016/11/01/0_Reverse_Enginner/">iOS逆向系列_综述</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -574,7 +249,7 @@ objc_getAssociatedObject</p>
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#iOS逆向工具集" title="Tag: iOS逆向工具集" rel="tag">iOS逆向工具集</a>
+        <a href="/tag/#iOS逆向" title="Tag: iOS逆向" rel="tag">iOS逆向</a>
     
   
 
@@ -584,510 +259,712 @@ objc_getAssociatedObject</p>
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-  <li><a href="#cydiasubstrate" id="markdown-toc-cydiasubstrate">2、CydiaSubstrate</a>    <ul>
-      <li><a href="#mobilehooker" id="markdown-toc-mobilehooker">2.1 MobileHooker</a></li>
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/01/0_Reverse_Enginner/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/10/30/SublimeUpgrade/">Sublime Text进阶教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-10-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、终端模式</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">2、快捷键</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">2.1选择类</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">2.2 编辑类</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">2.3 搜索类</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2.4显示类</a></li>
+      <li><a href="#multi-selection" id="markdown-toc-multi-selection">2.5 多重选择（Multi-Selection）</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">3、无插件不神器</a>    <ul>
+      <li><a href="#advancednewfile" id="markdown-toc-advancednewfile">3.1 AdvancedNewFile:创建文件</a></li>
+      <li><a href="#sidebarenhancementssidebar" id="markdown-toc-sidebarenhancementssidebar">3.2 SideBarEnhancements:增强的sidebar</a></li>
+      <li><a href="#emmet" id="markdown-toc-emmet">3.3 Emmet</a></li>
+      <li><a href="#sublimecodeintel" id="markdown-toc-sublimecodeintel">3.4 Sublime​Code​Intel</a></li>
+      <li><a href="#browser-refresh" id="markdown-toc-browser-refresh">3.5 Browser Refresh</a></li>
+      <li><a href="#converttoutf8" id="markdown-toc-converttoutf8">3.6 ConvertToUTF8</a></li>
+      <li><a href="#alignment" id="markdown-toc-alignment">3.7 Alignment</a></li>
+      <li><a href="#theme--soda" id="markdown-toc-theme--soda">3.8 Theme – Soda:</a></li>
+    </ul>
+  </li>
+  <li><a href="#markdown" id="markdown-toc-markdown">4、Markdown</a>    <ul>
+      <li><a href="#section-8" id="markdown-toc-section-8">4.1 设置目录</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">4.2 编辑：</a></li>
+      <li><a href="#markdown-1" id="markdown-toc-markdown-1">4.3 在浏览器预览Markdown文档</a></li>
+      <li><a href="#pdf" id="markdown-toc-pdf">4.4 打印成pdf</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">4.5 关于快捷键</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-11" id="markdown-toc-section-11">5、主题</a></li>
+  <li><a href="#git" id="markdown-toc-git">6、Git</a></li>
+  <li><a href="#evernote" id="markdown-toc-evernote">7、Evernote</a>    <ul>
+      <li><a href="#section-12" id="markdown-toc-section-12">7.1 相关插件</a></li>
+      <li><a href="#evernote-1" id="markdown-toc-evernote-1">7.2关联Evernote</a></li>
+      <li><a href="#section-13" id="markdown-toc-section-13">7.3测试是否授权成功</a></li>
+      <li><a href="#section-14" id="markdown-toc-section-14">7.4 修改模板</a></li>
+      <li><a href="#section-15" id="markdown-toc-section-15">7.5 储存到印象笔记</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="section">1、简介</h2>
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
 
-<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
+<h2 id="section">说明</h2>
 
-<p>相关链接：
-Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
+<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong>
+如有问题，请参考<a href="http://3code.info/2016/10/29/useSublime/">基础教程</a></p>
 
-<h2 id="cydiasubstrate">2、CydiaSubstrate</h2>
+<h2 id="section-1">1、终端模式</h2>
 
-<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
+<p>Sublime Text提供了终端打开文件的功能：Sublime Text 2的终端命令为sublime,但需要注意的是subl命令默认不在环境变量里，所以我们需要将其添加到环境变量，subl的位置为/Applications/Sublime Text 2.app/Contents/SharedSupport/bin(区分 2 3)),我们需要将这个路径添加到.bash_profile文件里。。</p>
 
-<h5 id="mobilehooker">2.1 MobileHooker</h5>
-
-<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
-	void MSHookFunction(void* function, void* replacement, void** p_original);
-</code></pre>
-</div>
-
-<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
-
-<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
-
-<p><strong>MSHookFunction</strong> 
-MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
-它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
-
-<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
-
-<p><strong>symbol</strong>
-在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
-
-<p>可参阅资料：
-<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
-
-<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
-
-<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/6_IOS_Tools/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/5_IDA-iFunBox-other/">iOS逆向系列5_IDA/iFunBox/other</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#IDA、iFunBox、dyld_decache" title="Tag: IDA、iFunBox、dyld_decache" rel="tag">IDA、iFunBox、dyld_decache</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.1 安装</a></li>
-      <li><a href="#ida" id="markdown-toc-ida">2.2 IDA使用说明</a></li>
-      <li><a href="#main-window" id="markdown-toc-main-window">2.3 Main window</a></li>
-    </ul>
-  </li>
-  <li><a href="#ifunbox" id="markdown-toc-ifunbox">3、iFunBox</a></li>
-  <li><a href="#dylddecache" id="markdown-toc-dylddecache">4 dyld_decache</a></li>
-</ul>
-
-<h2 id="section">1、简介</h2>
-
-<p>即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。</p>
-
-<p>笼统地说，IDA是一个支持Windows、Linux和Mac OS X的多平台反汇编器/调试器，它的功能非常强大，以至于连官方都不能给出一个详尽的功能列表。</p>
-
-<p>IDA的正式版是收费的，但其作者也是程序员出身，深知我们生活不易，所以慷慨地提供了一个免费的试用版，对于逆向工程初学者来说，已完全够用了。</p>
-
-<h2 id="section-1">2、安装</h2>
-
-<h5 id="section-2">2.1 安装</h5>
-
-<p>IDA的下载和安装十分方便，具体可参考：<a href="https://www.hex-rays.com/products/ida/support/download.shtml">https://www.hex-rays.com/products/ida/support/download.shtml</a></p>
-
-<h5 id="ida">2.2 IDA使用说明</h5>
-
-<p>启动之后，在该界面中，不用繁琐地在菜单里点击“打开文件”，然后一个目录一个目录地去翻找，只需把要分析的文件拖进IDA的灰色区域就行了。</p>
-
-<p>有一个地方需要注意：对于一些fat binary（指的是为了兼容不同架构的处理器，而把多种指令集糅合到一个binary）来说
-<img src="https://ooo.0o0.ooo/2016/11/01/581869117b6b0.jpeg" alt="" /></p>
-
-<p>上图最上面的白框内会出现多个Mach-O文件供我们选择。需要我们识别设备对应的ARM信息，例如笔者的iPhone 5对应的是ARMv7s。如果设备的ARM没有出现在这些选项中，就选那个向下兼容的选项，即如果选项里有ARMv7S，就选它；否则选ARMv7。
-这里笔者选择了ARMv7S，然后点击“OK”，此时 会连续弹出好几个窗口，一路点击“Yes”和“OK”就可以了。
-之后就进入如下界面：
-<img src="https://ooo.0o0.ooo/2016/11/01/58186a17dab43.jpeg" alt="" /></p>
-
-<p>在上边的界面中，你会看到上方的进度条不断滚动，下方的Output window也会打印出对文件的分析进度。当进度条的主色调变成蓝色（IDA界面上的颜色在黑白印刷页上看不出来，请谅解），Output window中显示“The initial autoanalysis has been finished.”时，表示IDA的初始分析已完成。</p>
-
-<p>在初学阶段，由于主要用IDA作静态分析，基本用不上Output window，所以在开始分析之前，可以先关掉“Output window。</p>
-
-<p>Functions window中的Objective-C函数与class-dump导出的内容吻合。除了Objective-C函数外，IDA还将所有subroutine罗列了出来，这是class-dump做不到的。class-dump导出的内容都是Objective-C函数名，可读性高，容易上手，是iOS逆向工程初学者的乐园；subroutine的名称只是一个代号，没有明显含义，分析难度大，大多数初学者看到这里就打了退堂鼓。但是，iOS的底层是用C和C++实现的，编译之后生成的大都是subroutine，class-dump拿它没辙，只能使用IDA这样的工具。要想深层次挖掘iOS中最有趣的部分，掌握IDA的用法是必经之路。</p>
-
-<h5 id="main-window">2.3 Main window</h5>
-
-<p>绝大多数没有用过IDA的iOS开发者，包括笔者，在第一次看见初始分析完成后的Main window时都懵了——这都是些什么玩意儿？这是人类文字吗？还是把IDA关了，刷会儿微博压压惊吧。这跟很多工程师在写第一行代码时不知如何下手的感觉很类似。其实，跟写代码时需要定义一个入口函数一样，在逆向工程里，也需要找到自己感兴趣的入口函数。在Functions window中双击这个入口函数，使得Main window跳转到函数体，然后用鼠标选中Main window，按一下空格，界面会瞬间变清爽，可读性一下就强了起来。</p>
-
-<p>。。。</p>
-
-<h2 id="ifunbox">3、iFunBox</h2>
-
-<p>iFunBox 是一款老牌iOS文件管理工具，可以非常方便地操作iOS中的文件。 iFunBox的使用并不复杂，我们主要用到的是它的文件传输功能。有一点需要注意的是，越狱iOS必须安装“Apple File Conduit 2” ，简称AFC2，这样iFunBox才能够浏览iOS全系统文件，而且这也是接下来大部分操作的先决条件。</p>
-
-<h2 id="dylddecache">4 dyld_decache</h2>
-
-<p>安装了iFunBox和AFC2之后，不少读者会迫不及待地开始浏览iOS文件系统，看看这个封闭平台的表面下到底暗藏了多少玄机。相信大家很快就会发现一个问题：“/System/Library/Frameworks/”、“/System/Library/PrivateFrameworks/”等目录下，怎么没有库文件？</p>
-
-<p>从iOS 3.1开始，包括frameworks在内的许多库文件被存进了一个大cache里，这个cache文件位于“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”（名为dyld_shared_cache_armv7、dyld_shared_cache_armv7s或dyld_shared_cache_arm64），可以使用KennyTM开发的dyld_decache将其中的二进制文件提取出来。这样做的好处是确保分析的文件来自本机，在使用Mac工具集与iOS工具集分析同一目标时，OSX与iOS上分析出的指令和地址等数据是完全吻合的，避免了出现驴唇不对马嘴的低级错误。有关这个cache的进一步介绍，可以参阅DHowett的博客http://blog.howett.net/).</p>
-
-<p>使用dyld_decache之前，要将“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”用iFunBox（不能用scp）从iOS拷贝到OSX中。然后从https://github.com/downloads/kennytm/Miscellaneous/dyld_decache[v0.1c].bz2下载dyld_decache。解压之后赋予其可执行权限，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ chmod +x /path/to/dyld_decache\[v0.1c\]
-</code></pre>
-</div>
-
-<p>然后开始提取二进制文件，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ /path/to/dyld_decache\[v0.1c\] -o /where/to/store/decached/binaries/ /path/to/dyld_shared_cache_armx
-  0/877: Dumping '/System/Library/AccessibilityBundles/AXSpeechImplementation.bundle/AXSpeechImplementation'...
-  1/877: Dumping '/System/Library/AccessibilityBundles/AccessibilitySettingsLoader.bundle/AccessibilitySettingsLoader'...
-  2/877: Dumping '/System/Library/AccessibilityBundles/AccountsUI.axbundle/AccountsUI'...
-……
-</code></pre>
-</div>
-
-<p>提取出的所有二进制文件都存放在了“/where/to/store/decached/binaries/”下。值得一提的是，逆向工程需要分析的二进制文件现在散落在OSX和iOS两个系统中，不方便查找，建议利用下一章提到的scp工具把iOS文件系统拷贝一份存在OSX里。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/5_IDA-iFunBox-other/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>&nbsp;
-    
-        <a href="/tag/#Logos" title="Tag: Logos" rel="tag">Logos</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
-  <li><a href="#makefile" id="markdown-toc-makefile">2、Makefile</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">2.1 基本配置</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.2 指定处理器架构</a></li>
-      <li><a href="#sdk" id="markdown-toc-sdk">2.3 指定SDK版本</a></li>
-      <li><a href="#framework" id="markdown-toc-framework">2.4 导入framework</a></li>
-      <li><a href="#mach-omach-o-object" id="markdown-toc-mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
-
-<h2 id="section">1、说明</h2>
-<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
-projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
-
-<p>参考教程：</p>
-
-<p>Logos 语法
-<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
-
-<p>Makefile
-<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-<p>debian的官网
-<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
-
-<h2 id="makefile">2、Makefile</h2>
-
-<h5 id="section-1">2.1 基本配置</h5>
-
-<p>Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>#固定写法:系统变量，不要更改。
-#告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
-include $(THEOS)/makefiles/common.mk
-
-#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
-TWEAK_NAME = projectBy3code
-
-#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
-#这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
-projectBy3code_FILES = Tweak.xm
-
-#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
-include $(THEOS_MAKE_PATH)/tweak.mk
-
-#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
-after-install::
-		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
-</code></pre>
-</div>
-
-<p>是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：</p>
-
-<h5 id="section-2">2.2 指定处理器架构</h5>
-
-<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
-</code></pre>
-</div>
-
-<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
-You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
-
-<h5 id="sdk">2.3 指定SDK版本</h5>
-
-<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
-
-<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
-方法如下：
- you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
-
-<p>SDKVERSION = 9.3
-SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
-
-<p>TARGET = iphone::9.2:9.0</p>
-
-<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
-</code></pre>
-</div>
-
-<p>比如：TARGET = iphone:8.1:8.0
-   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0</p>
-
-<h5 id="framework">2.4 导入framework</h5>
-<p>这里包括你想用到框架的名称</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
-</code></pre>
-</div>
-
-<p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
-上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
-</code></pre>
-</div>
-
-<p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
-TARGET = iphone:latest:7.0
-include theos/makefiles/common.mk
-TWEAK_NAME = projectBy3code
-projectBy3code_FILES = Tweak.xm
-projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
-include $(THEOS_MAKE_PATH)/tweak.mk
-after-install::
-      install.exec "killall -9 SpringBoard"
-</code></pre>
-</div>
-<p>上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。</p>
-
-<h5 id="mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lx
-</code></pre>
-</div>
-
-<p>Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
-</code></pre>
-</div>
-
-<p>大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
-</code></pre>
-</div>
-
-<p>稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/01/3_Theos_-fourFile/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/01/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
-  <li><a href="#theos" id="markdown-toc-theos">2、Theos简介</a></li>
-  <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
-</ul>
-
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
-
-<h2 id="section">1、说明</h2>
-<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
-projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
-
-<p>参考教程：</p>
-
-<p>Logos 语法
-<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
-
-<p>Makefile
-<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-<p>debian的官网
-<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
-
-<p>debian:
-<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a></p>
-
-<p>Theos安装:
-<a href="https://github.com/theos/theos/wiki/Installation">https://github.com/theos/theos/wiki/Installation</a></p>
-
-<h2 id="theos">2、Theos简介</h2>
-
-<p>Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。</p>
-
-<p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
-
-<p><strong>下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation</strong></p>
-
-<p><strong>其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案</strong></p>
-
-<h2 id="theos-1">3、安装Theos</h2>
-
-<p>首先需要的环境和工具如下：</p>
+<p>参考文章：<a href="http://3code.info/2016/10/28/deployEnvironmentVariable/">配置环境变量</a>
+完成上述操作后，我们就可以在终端使用Sublime Text 打开文件了：</p>
 
 <ul>
-  <li>curl</li>
-  <li>git</li>
-  <li>make</li>
-  <li>openssh</li>
-  <li>perl</li>
-  <li>rsync</li>
-  <li>dpkg (port or homebrew install on Mac OS X)</li>
-  <li>python (if on Windows)</li>
+  <li>sublime fileName      //创建文件</li>
+  <li>sublime folderName	 //打开文件夹</li>
+  <li>sublime .				 //打开当前目录</li>
 </ul>
 
-<p>没有的就用 brew install **</p>
+<h2 id="section-2">2、快捷键</h2>
+<p>如果有冲突或者自定义快捷键，请打开：
+preference../Key Bindings 在这里可以修改快捷键设置</p>
+
+<h5 id="section-3">2.1选择类</h5>
+
+<ul>
+  <li>cmd+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</li>
+  <li>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</li>
+  <li>cmd+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</li>
+  <li>cmd+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</li>
+  <li>cmd+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。</li>
+  <li>cmd+M 光标移动至括号内结束或开始的位置。</li>
+  <li>cmd+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</li>
+  <li>cmd+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</li>
+  <li>cmd+Shift+[ 选中代码，按下快捷键，折叠代码。</li>
+  <li>cmd+Shift+] 选中代码，按下快捷键，展开代码。</li>
+  <li>cmd+K+0 展开所有折叠代码。</li>
+  <li>cmd+← 向左单位性地移动光标，快速移动光标。</li>
+  <li>cmd+→ 向右单位性地移动光标，快速移动光标。</li>
+  <li>shift+↑ 向上选中多行。</li>
+  <li>shift+↓ 向下选中多行。</li>
+  <li>Shift+← 向左选中文本。</li>
+  <li>Shift+→ 向右选中文本。</li>
+  <li>cmd+Shift+← 向左单位性地选中文本。</li>
+  <li>cmd+Shift+→ 向右单位性地选中文本。</li>
+  <li>cmd+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</li>
+  <li>cmd+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</li>
+  <li>cmd+Alt+↑ 向上添加多行光标，可同时编辑多行。</li>
+  <li>cmd+Alt+↓ 向下添加多行光标，可同时编辑多行。</li>
+</ul>
+
+<h5 id="section-4">2.2 编辑类</h5>
+
+<ul>
+  <li>cmd+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</li>
+  <li>cmd+Shift+D 复制光标所在整行，插入到下一行。</li>
+  <li>Tab 向右缩进。只对光标后（或者选中的）的代码有效</li>
+  <li>Shift+Tab 向左缩进。</li>
+  <li>cmd+[ 向左缩进。对整行有效</li>
+  <li>cmd+] 向右缩进。对整行有效</li>
+  <li>cmd+K+K 从光标处开始删除代码至行尾。按住cmd，按两次K。</li>
+  <li>cmd+Shift+K 删除整行。</li>
+  <li>cmd+/ 注释单行。</li>
+  <li>cmd+Shift+/ 注释多行。</li>
+  <li>cmd+K+U 转换大写。</li>
+  <li>cmd+K+L 转换小写。</li>
+  <li>cmd+Z 撤销。</li>
+  <li>cmd+Y 恢复撤销。</li>
+  <li>cmd+U 软撤销，感觉和 Gtrl+Z 一样。</li>
+  <li>cmd+F2 设置书签，F2切换书签</li>
+  <li>cmd+T 左右字母互换。
+F6 单词检测拼写</li>
+</ul>
+
+<h5 id="section-5">2.3 搜索类</h5>
+
+<ul>
+  <li>cmd+F 打开底部搜索框，查找关键字。</li>
+  <li>cmd+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</li>
+  <li>cmd+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</li>
+  <li>cmd+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</li>
+  <li>cmd+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</li>
+  <li>cmd+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</li>
+  <li>Esc 退出光标多行选择，退出搜索框，命令框等。</li>
+  <li>cmd+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。</li>
+</ul>
+
+<h5 id="section-6">2.4显示类</h5>
+
+<ul>
+  <li>cmd+Tab 按文件浏览过的顺序，切换当前窗口的标签页。</li>
+  <li>cmd+PageDown 向左切换当前窗口的标签页。</li>
+  <li>cmd+PageUp 向右切换当前窗口的标签页。</li>
+  <li>Alt+cmd+1 窗口分屏，恢复默认1屏（非小键盘的数字）</li>
+  <li>Alt+ cmd +2 左右分屏-2列</li>
+  <li>Alt+ cmd +3 左右分屏-3列</li>
+  <li>Alt+ cmd +4 左右分屏-4列</li>
+  <li>Alt+ cmd +5 等分4屏</li>
+  <li>Alt+ cmd +8 垂直分屏-2屏</li>
+  <li>Alt+ cmd +9 垂直分屏-3屏</li>
+  <li>cmd+K+B 开启/关闭侧边栏。</li>
+  <li>F11 全屏模式</li>
+  <li>Shift+F11 免打扰模式</li>
+</ul>
+
+<h5 id="multi-selection">2.5 多重选择（Multi-Selection）</h5>
+
+<p>多重选择功能允许在页面中同时存在多个光标，让很多本来需要正则表达式、高级搜索和替换才能完成的任务也变得游刃有余了。
+激活多重选择的方法有两几种：</p>
+
+<p>按住 cmd 然后在页面中希望中现光标的位置点击。
+选择数行文本，然后按下 Shift + cmd + L。
+通过反复按下 cmd + D 即可将全文中与光标当前所在位置的词相同的词逐一加入选择，而直接按下 Alt+F3即可一次性选择所有相同的词。
+按下鼠标中键来进行垂直方向的纵列选择，也可以进入多重编辑状态。</p>
+
+<h2 id="section-7">3、无插件不神器</h2>
+
+<h5 id="advancednewfile">3.1 AdvancedNewFile:创建文件</h5>
+
+<p>可以使用快捷键cmd+alt+n,Sublime Text底部会弹出输入框:
+只需在这个输入框里输入需要新建的文件名回车即可（可以带路径）。默认情况下文件会存储在当前目录，如果当前没有目录，会存储在用户的home目录。</p>
+
+<h5 id="sidebarenhancementssidebar">3.2 SideBarEnhancements:增强的sidebar</h5>
+
+<p>当我们用sublime打开一个文件夹时，会在sublime的左侧出现一个sidebar，以此方便我们可以通过点击的方式快速打开文件。但这个sidebar功能很少。SideBarEnhancements的插件可以增强sidebar的功能。打开命令模式－&gt;进入pci界面-&gt;输入SideBarEnhancements回车安装即可。</p>
+
+<h5 id="emmet">3.3 Emmet</h5>
+<p>前身是大名鼎鼎的Zen coding,它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。</p>
+
+<p>调用方法：cmd+E 或者 !</p>
+
+<h5 id="sublimecodeintel">3.4 Sublime​Code​Intel</h5>
+<p>支持所有 Komode Editor 支持的代码语言，如：JavaScript, Mason, XBL, XUL,..</p>
+
+<p>调用方法：跳转到定义位置（Alt+Click 或 Control+Windows+Alt+Up）、返回（Control+Windows+Alt+Left）</p>
+
+<h5 id="browser-refresh">3.5 Browser Refresh</h5>
+<p>通过一个快捷键可以实现保存文件，切换到浏览器并自动刷新浏览器来查看更改结果。</p>
+
+<p>调用方法：默认为cmd+Shift+R，可自行修改</p>
+
+<h5 id="converttoutf8">3.6 ConvertToUTF8</h5>
+<p>解决编码问题，直接在菜单栏中可以转了，专为中文设计</p>
+
+<h5 id="alignment">3.7 Alignment</h5>
+<p>代码对齐，如写几个变量，选中这几行，cmd+Alt+A，对齐</p>
+
+<h5 id="theme--soda">3.8 Theme – Soda:</h5>
+<p>完美的编码主题，用过的都说好，Setting user里面添加”theme”: “Soda Dark.sublime-theme”</p>
+
+<h2 id="markdown">4、Markdown</h2>
+<p>所需插件：</p>
+
+<ul>
+  <li>MarkDownEditing:在Sublime中编辑MarkDown文件。</li>
+  <li>MarkDownPreview:在浏览器中预览MarkDown文件效果。</li>
+  <li>Markdown Extended + Extends Monokai：不错的Markdown主题，支持对多种语言的高亮</li>
+</ul>
+
+<h5 id="section-8">4.1 设置目录</h5>
+
+<p>在文档最前面添加[TOC]，在左侧自动生成目录。</p>
+
+<h5 id="section-9">4.2 编辑：</h5>
+
+<p>新建一个文档:cmd + N 
+语法高亮:cmd + Shift + P:输入ssm 后回车(Set Syntax: Markdown)</p>
+
+<h5 id="markdown-1">4.3 在浏览器预览Markdown文档</h5>
+
+<p>Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。
+按cmd + Shift + P
+输入mp 后回车(Markdown Preview: current file in browser)
+此时就可以在浏览器里看到刚才编辑的文档了;</p>
+
+<h5 id="pdf">4.4 打印成pdf</h5>
+
+<p>将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。
+利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键-&gt;打印-&gt;另存为pdf-&gt;调节页边距即可将pdf文件下载下来。</p>
+
+<h5 id="section-10">4.5 关于快捷键</h5>
+
+<ul>
+  <li>cmd+B 生成本地html文档</li>
+</ul>
+
+<p>st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。
+方法是在Preferences -&gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+m"</span><span class="p">],</span><span class="w"> </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown_preview"</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"browser"</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>“alt+m”可设置为您自己喜欢的按键。</p>
+
+<h2 id="section-11">5、主题</h2>
+
+<p>在设置一个新的主题时，需要设置theme和color_scheme两个方面，前者决定了打开不同类型文件的配色，后者决定了Tab栏，SideBar大小和图标，以及相应字体的大小设置。</p>
+
+<p>软件自带：在Preferences-&gt;Color Theme中可以任意选择，选择完即可查看主题风格。并且会在Preferebces.sublime-seetings中自动保存设定。</p>
+
+<ul>
+  <li>ColorSublime：
+一个Sublime主题的网站</li>
+  <li>Predawn：
+一款为Sublime和Atom打造的暗色主题，可以定义Tab的大小，SideBar大小，Find栏大小，为Markdown高亮着色，并提供主题同款的ICON。</li>
+  <li>SpaceGray</li>
+</ul>
+
+<h2 id="git">6、Git</h2>
+
+<ul>
+  <li>SublimeGit：Git必备</li>
+  <li>Gitignore：
+一键生成the collection of gitignore boilerplates by Github，多种文件类型任你选，以下用Gitignore新建C语言的忽略文件模板。</li>
+  <li>Git Config
+设置.gitignore和.gitconfig等文件语法高亮。</li>
+  <li>Github Tools / Sublime GitHub：与GitHub网站紧密联系，可以直接在Sublime中打开与GitHub关联的网址</li>
+  <li>Git Conflict Resolver：用以解决在Merge过程中产生的冲突用</li>
+</ul>
+
+<h2 id="evernote">7、Evernote</h2>
+
+<h5 id="section-12">7.1 相关插件</h5>
+
+<ul>
+  <li>Git:方便我们在Sublime中提交博客。</li>
+  <li>MarkDownEditing:在Sublime中编辑MarkDown文件。</li>
+  <li>MarkDownPreview:在浏览器中预览MarkDown文件效果。</li>
+  <li>SublimeTmpl:可以生成MarkDown文件模板。</li>
+  <li>Evernote:保存文件到印象笔记.</li>
+</ul>
+
+<h5 id="evernote-1">7.2关联Evernote</h5>
+
+<p>在安装好上述插件后，需要将Sublime与我们的印象笔记关联，步骤如下：</p>
+
+<p>1、国内用户打开 <a href="https://app.yinxiang.com/api/DeveloperToken.action">https://app.yinxiang.com/api/DeveloperToken.action</a></p>
+
+<p>国际用户打开 <a href="https://www.evernote.com/api/DeveloperToken.action">https://www.evernote.com/api/DeveloperToken.action</a> 。</p>
+
+<p>点击Revoke your developer token 授权应用</p>
+
+<p>2、打开 Preferences &gt; Package Settings &gt; Evernote &gt;Settings - User</p>
+
+<p>3、粘贴即可(格式英文)：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nt">"noteStoreUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你自己的URL"</span><span class="p">,</span><span class="w"> </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"你的Token"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="section-13">7.3测试是否授权成功</h5>
+
+<p>接下来我们可以尝试是否授权成功，通过shift+cmd+p打开命令窗口,输入Evernote，就会看见Evernote的许多命令。
+可以点击Evernote:list recent notes,如果看到罗列出最新的笔记，则说明授权成功。</p>
+
+<h5 id="section-14">7.4 修改模板</h5>
+
+<p>SublimeTmpl插件为多种文件格式提供了模板,但很可惜它没有提供md格式的模板，这就需要我们来自定义模板，首先在Users/用户名/Library/Application\ Support/Sublime\ Text\ 3/Packages/SublimeTmpl\templates目录下新建md.tmpl文件，里面填写自己的模板。参考：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+---
+layout: post
+keywords: k
+description: d
+title: t
+categories: [笔记]
+tags: [笔记]
+group: archive
+icon: globe
+---
+
+</code></pre>
+</div>
+
+<h5 id="section-15">7.5 储存到印象笔记</h5>
+
+<p>打开命令模式，搜索ese,就会找到Evernote send to Evernote as new note命令。</p>
+
+<p>点击后会显示让我们选择存放在哪个笔记本，我们选择后就会自动存放到我们的印象笔记中。</p>
+
+<p>我们再去我们的印象笔记看一下，你会发现存储在印象笔记中的格式已经是排版过的效果。</p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/01/2_Theos_-install&run/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/10/30/SublimeUpgrade/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/10/29/useSublime/">Sublime Text基础教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-10-29
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3Code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Sublime" title="Category: Sublime" rel="category">Sublime</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Sublime" title="Tag: Sublime" rel="tag">Sublime</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、简介</a></li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+
+<h2 id="section">说明</h2>
+<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
+
+<h2 id="section-1">1、简介</h2>
+
+<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
+Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/10/29/useSublime/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/04/30/deployEnvironmentVariable/">OS X 部署环境变量</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-04-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#sublime" title="Tag: sublime" rel="tag">sublime</a>&nbsp;
+    
+        <a href="/tag/#环境变量" title="Tag: 环境变量" rel="tag">环境变量</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、设置环境变量</a>    <ul>
+      <li><a href="#shell" id="markdown-toc-shell">1.1 查看本机使用的Shell</a></li>
+      <li><a href="#mac" id="markdown-toc-mac">1.2 Mac可配置环境变量的位置</a></li>
+      <li><a href="#path" id="markdown-toc-path">1.3 设置PATH的语法：</a></li>
+    </ul>
+  </li>
+  <li><a href="#sublime" id="markdown-toc-sublime">2、实战 配置sublime的环境变量</a></li>
+</ul>
+
+<h2 id="section">1、设置环境变量</h2>
+
+<h5 id="shell">1.1 查看本机使用的Shell</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ echo $SHELL
+# 输出的是：csh或者是tcsh，就是C Shell。
+# 输出的是：bash，sh，zsh，就是Bourne Shell的一个变种。
+</code></pre>
+</div>
+<p>如果是Bourne Shell。
+那么你可以把你要添加的环境变量添加到你主目录下面的.profile或者.bash_profile，如果存在没有关系添加进去即可，如果没有生成一个。</p>
+
+<h5 id="mac">1.2 Mac可配置环境变量的位置</h5>
+
+<p>Mac系统的环境变量，加载顺序为：</p>
+
+<ul>
+  <li>1、/etc/profile 全局公有配置，系统级别启动加载。【不建议修改】</li>
+  <li>2、/etc/paths 可以全局修改配置，系统级别启动加载。添加path一行一个路径</li>
+</ul>
+
+<p>以上不管是哪个用户，登录时都会读取该文件。下面几个是当前用户级的环境变量，按照从前往后的顺序读取。如果~/.bash_profile文件存在，则后面的几个文件就会被忽略不读了，如果~/.bash_profile文件不存在，才会以此类推读取后面的文件</p>
+
+<ul>
+  <li>3、~/.bash_profile  一般在这个文件中添加用户级环境变量。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!</li>
+  <li>4、~/.bash_login</li>
+  <li>5、~/.profile</li>
+</ul>
+
+<p>其他：</p>
+
+<ul>
+  <li>~/.bashrc没有上述规则，它是bash shell打开的时候载入的。</li>
+  <li>/etc/bashrc 一般在这个文件中添加系统级环境变量，全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</li>
+</ul>
+
+<h5 id="path">1.3 设置PATH的语法：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;
+</code></pre>
+</div>
+
+<h2 id="sublime">2、实战 配置sublime的环境变量</h2>
+
+<p>如果是sublime 2 则应该通过下面命令可以打开subl:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ open /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl
+</code></pre>
+</div>
+
+<p>然后我们在/usr/local/bin 里面做一个软连接：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+</code></pre>
+</div>
+
+<p>最后加入环境变量：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ open ~/.bash_profile
+# 添加如下代码：
+export PATH=/usr/local/bin:$PATH
+</code></pre>
+</div>
+
+<p>想立即生效请运行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ source ~/.bash_profile
+</code></pre>
+</div>
+<p>OK，可以通过终端操控subl了！</p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/04/30/deployEnvironmentVariable/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/04/16/CreateAGithubBlog/">静态页面博客:jekyll+GitHubPages</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-04-16
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#博客" title="Category: 博客" rel="category">博客</a>&nbsp;
+    
+        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#博客" title="Tag: 博客" rel="tag">博客</a>&nbsp;
+    
+        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">说明</a></li>
+  <li><a href="#gitgithub" id="markdown-toc-gitgithub">1、git\github</a>    <ul>
+      <li><a href="#github" id="markdown-toc-github">1.1 github知识普及：</a></li>
+      <li><a href="#git" id="markdown-toc-git">1.2  注册下载Git客户端</a></li>
+      <li><a href="#githubpages" id="markdown-toc-githubpages">1.3 在github上创建Pages：</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>前段时间一朋友想开个独立博客，问我有没有好的教程参考，以前弄博客时写过流程，这又重新整理了下发上来。Mac上想建博客的可以参考下。</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/21/5809801186a24.jpg" alt="" /></p>
+
+<h2 id="section">说明</h2>
+<p>1、以下系统基于OS X EI;</p>
+
+<p>2、免费主机：github + 静态制作：jekyll</p>
+
+<h2 id="gitgithub">1、git\github</h2>
+
+<h4 id="github">1.1 github知识普及：</h4>
+
+<p>githubPages 是基于github开源库的，所有博客的内容源码都是可以被其他人看到的，敏感数据不能放在pages上。在提交github时需要注意。</p>
+
+<p>个人Pages页面 实际上是存在GitHubPages的开源库中，需要使用用户名来命名这个库，比如 mythkiven.github.io。可以在master分支上构建和发布你的 GitHub Pages 网页。通过Automatic Page Generator 可以自动的构建一个页面。当用户 Pages 构建完之后，打开http(s)://mythkiven.github.io就可以正常使用了。</p>
+
+<h4 id="git">1.2  注册下载Git客户端</h4>
+
+<p>注册Github账号；由于需要一个本地端来进行git操作，最好使用命令行，客户端的话推荐：SourceTree。或者用github自带的客户端。</p>
+
+<h4 id="githubpages">1.3 在github上创建Pages：</h4>
+
+<p><a href="https://pages.github.com/">参考官方页面提示</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/04/16/CreateAGithubBlog/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1102,10 +979,10 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page3" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">4/7</span>
+          <span class="page_number ">4/6</span>
           
             <a href="/page5" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -1119,25 +996,25 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                 </div>
                 <ul class="content-ul" recent>
                     
-                        <li><a href="/2016/12/10/swift_VIII_Enumerations_Classes_Structures/">Swift3.0_VIII_枚举、类和结构</a></li>
+                        <li><a href="/2016/12/10/swift_VIII_Methods_Subscripts_Inheritance/">Swift3.0_VIII_ </a></li>
+                    
+                        <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
                     
                         <li><a href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a></li>
                     
                         <li><a href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC/">Swift3.0_</a></li>
+                        <li><a href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-7/">Swift3.0_</a></li>
+                        <li><a href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-6/">Swift3.0_</a></li>
+                        <li><a href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-5/">Swift3.0_</a></li>
+                        <li><a href="/2016/11/22/swift_II_Basic-Operators/">Swift_II_基本运算符</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-4/">Swift3.0_</a></li>
+                        <li><a href="/2016/11/20/swift_I_guide/">Swift_I_入门体验</a></li>
                     
-                        <li><a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-3/">Swift3.0_</a></li>
-                    
-                        <li><a href="/2016/12/05/swift_VIII_Enumerations_Classes_Structures/">Swift3.0_VIII_枚举、类和结构</a></li>
+                        <li><a href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a></li>
                     
                 </ul>
             </div>
@@ -1335,7 +1212,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                             <span class="name">
                                 Swift3.0
                             </span>
-                            <span class="badge">12</span>
+                            <span class="badge">6</span>
                         </a>
                     </li>
                     
@@ -1368,7 +1245,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       
-                      <a href="/tag/#iOS动画" style="font-size: 10pt; color: #888;">iOS动画</a>
+                      <a href="/tag/#iOS动画" style="font-size: 11pt; color: #777;">iOS动画</a>
                     
                       
                       
@@ -1431,7 +1308,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       
-                      <a href="/tag/#缓存" style="font-size: 10pt; color: #888;">缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 11pt; color: #777;">缓存</a>
                     
                       
                       
@@ -1480,7 +1357,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       
-                      <a href="/tag/#Sublime" style="font-size: 10pt; color: #888;">Sublime</a>
+                      <a href="/tag/#Sublime" style="font-size: 11pt; color: #777;">Sublime</a>
                     
                       
                       
@@ -1501,7 +1378,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       
-                      <a href="/tag/#Theos" style="font-size: 10pt; color: #888;">Theos</a>
+                      <a href="/tag/#Theos" style="font-size: 11pt; color: #777;">Theos</a>
                     
                       
                       
@@ -1585,7 +1462,7 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       
-                      <a href="/tag/#Swift" style="font-size: 10.5pt; color: #777;">Swift</a>
+                      <a href="/tag/#Swift" style="font-size: 12.5pt; color: #555;">Swift</a>
                     
                       
                       
