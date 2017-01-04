@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Swift3.0_VIII_枚举、类和结构</title>
+    <meta name="description" content="  枚举          枚举语法：      原始值      递归枚举      枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。在 Swift 中，枚举类型是一等（first-class）类型。它们采用了很多在传统上只被类（class）所支持的特性，例如计算属性（...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2016/12/05/swift_VIII_Enumerations_Classes_Structures/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>Swift3.0_VIII_枚举、类和结构</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2016-12-05
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a-->
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">枚举</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">枚举语法：</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">原始值</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">递归枚举</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。</p>
+
+<p>在 Swift 中，枚举类型是一等（first-class）类型。它们采用了很多在传统上只被类（class）所支持的特性，例如计算属性（computed properties），用于提供枚举值的附加信息，实例方法（instance methods），用于提供和枚举值相关联的功能。枚举也可以定义构造函数（initializers）来提供一个初始值；可以在原始实现的基础上扩展它们的功能；还可以遵循协议（protocols）来提供标准的功能。</p>
+
+<h1 id="section">枚举</h1>
+
+<h3 id="section-1">枚举语法：</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">SomeEnumeration</span> <span class="p">{</span>
+    <span class="c1">// enumeration definition goes here</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>指南针案例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">CompassPoint</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">north</span>
+    <span class="k">case</span> <span class="n">south</span>
+    <span class="k">case</span> <span class="n">east</span>
+    <span class="k">case</span> <span class="n">west</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>注意
+与 C 和 Objective-C 不同，Swift 的枚举成员在被创建时不会被赋予一个默认的整型值。在上面的CompassPoint例子中，north，south，east和west不会被隐式地赋值为0，1，2和3。相反，这些枚举成员本身就是完备的值，这些值的类型是已经明确定义好的CompassPoint类型。</p>
+
+<p>多个成员值可以出现在同一行上，用逗号隔开：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Planet</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">mercury</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">earth</span><span class="p">,</span> <span class="n">mars</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturn</span><span class="p">,</span> <span class="n">uranus</span><span class="p">,</span> <span class="n">neptune</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>可以这样使用：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">directionToHead</span> <span class="o">=</span> <span class="kt">CompassPoint</span><span class="o">.</span><span class="n">west</span>
+</code></pre>
+</div>
+
+<p>当directionToHead的类型已知时，再次为其赋值可以使用更简短的点语法：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">directionToHead</span> <span class="o">=</span> <span class="o">.</span><span class="n">east</span>
+</code></pre>
+</div>
+
+<p>使用 Switch 语句匹配枚举值</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">directionToHead</span> <span class="o">=</span> <span class="o">.</span><span class="n">south</span>
+<span class="k">switch</span> <span class="n">directionToHead</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">.</span><span class="nv">north</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Lots of planets have a north"</span><span class="p">)</span>
+<span class="k">case</span> <span class="o">.</span><span class="nv">south</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Watch out for penguins"</span><span class="p">)</span>
+<span class="k">case</span> <span class="o">.</span><span class="nv">east</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Where the sun rises"</span><span class="p">)</span>
+<span class="k">case</span> <span class="o">.</span><span class="nv">west</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Where the skies are blue"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "Watch out for penguins"</span>
+</code></pre>
+</div>
+
+<p>当不需要匹配每个枚举成员的时候，你可以提供一个default分支来涵盖所有未明确处理的枚举成员：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">somePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="o">.</span><span class="n">earth</span>
+<span class="k">switch</span> <span class="n">somePlanet</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">.</span><span class="nv">earth</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Mostly harmless"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 打印 "Mostly harmless”</span>
+</code></pre>
+</div>
+
+<p>在 Swift 中，使用如下方式定义表示两种商品条形码(条形码、QR码)的枚举：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Barcode</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">upc</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">qrCode</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// “定义一个名为Barcode的枚举类型，它的一个成员值是具有(Int，Int，Int，Int)类型关联值的upc，另一个成员值是具有String类型关联值的qrCode。”</span>
+</code></pre>
+</div>
+
+<p>然后可以使用任意一种条形码类型创建新的条形码，例如：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">productBarcode</span> <span class="o">=</span> <span class="kt">Barcode</span><span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="p">,</span> <span class="mi">51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// 创建了一个名为productBarcode的变量，并将Barcode.upc赋值给它，关联的元组值为(8, 85909, 51226, 3)。</span>
+
+<span class="c1">// 同一个商品可以被分配一个不同类型的条形码，例如：</span>
+<span class="n">productBarcode</span> <span class="o">=</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="s">"ABCDEFGHIJKLMNOP"</span><span class="p">)</span>
+
+<span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="k">let</span> <span class="nv">numberSystem</span><span class="p">,</span> <span class="k">let</span> <span class="nv">manufacturer</span><span class="p">,</span> <span class="k">let</span> <span class="nv">product</span><span class="p">,</span> <span class="k">let</span> <span class="nv">check</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"UPC: </span><span class="se">\(</span><span class="n">numberSystem</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">manufacturer</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">product</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">check</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="k">case</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="k">let</span> <span class="nv">productCode</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"QR code: </span><span class="se">\(</span><span class="n">productCode</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "QR code: ABCDEFGHIJKLMNOP."</span>
+
+<span class="c1">// 如果一个枚举成员的所有关联值都被提取为常量，或者都被提取为变量，为了简洁，你可以只在成员名称前标注一个let或者var：</span>
+<span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">manufacturer</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">check</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"UPC: </span><span class="se">\(</span><span class="n">numberSystem</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">manufacturer</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">product</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">check</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"QR code: </span><span class="se">\(</span><span class="n">productCode</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 输出 "QR code: ABCDEFGHIJKLMNOP."</span>
+</code></pre>
+</div>
+
+<h3 id="section-2">原始值</h3>
+
+<p>枚举成员可以被默认值（称为原始值）预填充，这些原始值的类型必须相同。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">ASCIIControlCharacter</span><span class="p">:</span> <span class="kt">Character</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">tab</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span>
+    <span class="k">case</span> <span class="n">lineFeed</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span>
+    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="o">=</span> <span class="s">"</span><span class="se">\r</span><span class="s">"</span>
+<span class="p">}</span>
+<span class="c1">// 枚举类型ASCIIControlCharacter的原始值类型被定义为Character，并设置了一些比较常见的 ASCII 控制字符</span>
+</code></pre>
+</div>
+
+<p>原始值的隐式赋值</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Planet</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">mercury</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">earth</span><span class="p">,</span> <span class="n">mars</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturn</span><span class="p">,</span> <span class="n">uranus</span><span class="p">,</span> <span class="n">neptune</span>
+<span class="p">}</span>
+<span class="c1">//  venus == 2  earth ==3...</span>
+</code></pre>
+</div>
+
+<p>使用枚举成员的rawValue属性可以访问该枚举成员的原始值：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">earthsOrder</span> <span class="o">=</span> <span class="kt">Planet</span><span class="o">.</span><span class="n">earth</span><span class="o">.</span><span class="n">rawValue</span>
+<span class="c1">// earthsOrder is 3</span>
+ 
+<span class="k">let</span> <span class="nv">sunsetDirection</span> <span class="o">=</span> <span class="kt">CompassPoint</span><span class="o">.</span><span class="n">west</span><span class="o">.</span><span class="n">rawValue</span>
+<span class="c1">// sunsetDirection is "west"</span>
+</code></pre>
+</div>
+
+<p>使用原始值初始化枚举实例</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possiblePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="c1">// possiblePlanet is of type Planet? and equals Planet.uranus</span>
+<span class="c1">// possiblePlanet是Planet?类型，或者说“可选的Planet”。</span>
+</code></pre>
+</div>
+
+<p>原始值构造器是一个可失败构造器，因为并不是每一个原始值都有与之对应的枚举成员</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如果你试图寻找一个位置为11的行星，通过原始值构造器返回的可选Planet值将是nil：</span>
+
+<span class="k">let</span> <span class="nv">positionToFind</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">somePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="n">positionToFind</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">somePlanet</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">earth</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Mostly harmless"</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"There isn't a planet at position </span><span class="se">\(</span><span class="n">positionToFind</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "There isn't a planet at position 11"</span>
+</code></pre>
+</div>
+
+<h3 id="section-3">递归枚举</h3>
+
+<p>递归枚举是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值。使用递归枚举时，编译器会插入一个间接层。你可以在枚举成员前加上indirect来表示该成员可递归。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 在枚举成员前加上indirect来表示该成员可递归。</span>
+<span class="kd">enum</span> <span class="kt">ArithmeticExpression</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">number</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="kd">indirect</span> <span class="k">case</span> <span class="nf">addition</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
+    <span class="kd">indirect</span> <span class="k">case</span> <span class="nf">multiplication</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 在枚举类型开头加上indirect关键字来表明它的所有成员都是可递归的：</span>
+<span class="kd">indirect</span> <span class="kd">enum</span> <span class="kt">ArithmeticExpression</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">number</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">addition</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">multiplication</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 应用：</span>
+<span class="k">let</span> <span class="nv">five</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">four</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">sum</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">addition</span><span class="p">(</span><span class="n">five</span><span class="p">,</span> <span class="n">four</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">product</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">multiplication</span><span class="p">(</span><span class="n">sum</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1">// 要操作具有递归性质的数据结构，使用递归函数是一种直截了当的方式</span>
+<span class="kd">func</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">_</span> <span class="nv">expression</span><span class="p">:</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">expression</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">addition</span><span class="p">(</span><span class="k">left</span><span class="p">,</span> <span class="k">right</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">left</span><span class="p">)</span> <span class="o">+</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">right</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">multiplication</span><span class="p">(</span><span class="k">left</span><span class="p">,</span> <span class="k">right</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">left</span><span class="p">)</span> <span class="o">*</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">right</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">evaluate</span><span class="p">(</span><span class="n">product</span><span class="p">))</span>
+<span class="c1">// 打印 "18"</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="err">``````</span><span class="n">swift</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">相似文章</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/10/swift_VIII_Enumerations_Classes_Structures/">Swift3.0_VIII_枚举、类和结构
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC/">Swift3.0_
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-7/">Swift3.0_
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-6/">Swift3.0_
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+        
+            </ul>
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2016/12/05/swift_VII_Closures%E5%89%AF%E6%9C%AC-3/">Swift3.0_</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2016/12/05/swift_VIII_Enumerations_Classes_Structures/" data-title="Swift3.0_VIII_枚举、类和结构" data-url="http://localhost:4000/2016/12/05/swift_VIII_Enumerations_Classes_Structures/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>
