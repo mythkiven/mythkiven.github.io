@@ -987,6 +987,204 @@ http_h5.m.taobao.com_0.localstorage
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2015/09/12/performSEL&dispatchAfter/">Cancel performSelector & dispatch_after</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-09-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#block" title="Category: block" rel="category">block</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#block" title="Tag: block" rel="tag">block</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#performselector" id="markdown-toc-performselector">performSelector</a></li>
+  <li><a href="#block" id="markdown-toc-block">取消一个待执行的Block</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">1、方案1</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、方案2</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>前几天项目里有个需求，要延时执行一个SEL，同时这个SEL在没有被执行前也可以被cancel。
+最先想到的是performSelector…afterDelay…，因为其有cancel方法：</p>
+
+<h2 id="performselector">performSelector</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (id)performSelector:(SEL)aSelector;  
+- (id)performSelector:(SEL)aSelector withObject:(id)object;  
+- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;
+</code></pre>
+</div>
+<p>这三个方法，均为同步执行，与线程无关，主线程和子线程中均可调用。等同于直接调用该方法。在需要动态的去调用方法的时候去使用。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay inModes:(NSArray *)modes;
+- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay;
+</code></pre>
+</div>
+<p>这两个方法为异步执行,且只能在主线程中执行，其它线程不执行，即使delay传参为0，也不会立即执行，而是在next runloop执行。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget selector:(SEL)aSelector object:(id)anArgument;
++ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget;
+</code></pre>
+</div>
+<p>在方法未执行之前，可以使用以上方法进行取消。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait modes:(NSArray *)array;
+- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;
+</code></pre>
+</div>
+<p>1、这两个方法，在主线程和子线程中均可执行，均会在主线程中调aSelector方法,
+2、设置wait为NO:等待当前线程执行完以后，主线程才会执行aSelector方法，
+3、设置为YES：不等待当前线程执行完，就在主线程上执行aSelector方法。</p>
+
+<h2 id="block">取消一个待执行的Block</h2>
+
+<h4 id="section">1、方案1</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>-(void)run{
+    [self performSelector:@selector(TEST) withObject:@"12" afterDelay:2];  
+}
+-(void)cancelRun{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(TEST) object:@"12"];
+}
+</code></pre>
+</div>
+<p>但是操作需要添加到主线程才行，子线程不会执行延时的TEST:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_async(dispatch_get_main_queue(), ^{ [self run]  });
+</code></pre>
+</div>
+
+<p>原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有runloop(需要手动添加)，没法delay执行SEL，so添加到主线程操作。</p>
+
+<h4 id="section-1">2、方案2</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.2*NSEC_PER_SEC);
+dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [weakSelf TEST];
+    });
+</code></pre>
+</div>
+
+<p>注意，这里也需要取消操作。我并没有找到GCD直接取消block的操作，需要自己进行构造的，在github上找到一个方案，实际操作也OK。paste如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#import &lt;Foundation/Foundation.h&gt;
+typedef void(^SMDelayedBlockHandle)(BOOL cancel);
+static SMDelayedBlockHandle perform_block_after_delay(CGFloat seconds, dispatch_block_t block) {
+    
+    if (nil == block) {
+        return nil;
+    }
+    
+    // block定义在栈上，可以使用__block修改变量，需将其copy到堆上。
+    __block dispatch_block_t blockToExecute = [block copy];
+    __block SMDelayedBlockHandle delayHandleCopy = nil;
+
+    // 【这里，block被包裹进 一个取消的handle中：】
+    SMDelayedBlockHandle delayHandle = ^(BOOL cancel){      
+        if (NO == cancel &amp;&amp; nil != blockToExecute) {
+            dispatch_async(dispatch_get_main_queue(), blockToExecute);
+        }
+#if !__has_feature(objc_arc)
+        [blockToExecute release];
+        [delayHandleCopy release];
+#endif
+        blockToExecute = nil;
+        delayHandleCopy = nil;
+    };
+    // delayHandle copy到堆上.
+    delayHandleCopy = [delayHandle copy];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (nil != delayHandleCopy) {
+            delayHandleCopy(NO);
+        }
+    });
+    return delayHandleCopy;
+};
+
+static void cancel_delayed_block(SMDelayedBlockHandle delayedHandle) {
+    if (nil == delayedHandle) {
+        return;
+    }
+    delayedHandle(YES);
+}
+</code></pre>
+</div>
+
+<p>方法奇妙之处就在于block copy到heap上执行，当需要中途取消时候，直接置空heap上的copy。</p>
+
+<p>实际可以这样使用：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)delayBlock {
+    SMDelayedBlockHandle handle = perform_block_after_delay(2.0f, ^{
+                [_delayedBlockHandle release];
+                _delayedBlockHandle = nil;
+            });
+    _delayedBlockHandle = [handle retain];
+}
+ 
+- (void)cancelBlock {
+    if (nil == _delayedBlockHandle) {
+        return;
+    }
+    _delayedBlockHandle(YES);
+    [_delayedBlockHandle release];
+    _delayedBlockHandle = nil;
+}
+
+</code></pre>
+</div>
+
+<p>参考博客：<a href="https://blog.spacemanlabs.com/2011/12/cancel-dispatch_after/">博客</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/09/12/performSEL&dispatchAfter/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2015/08/07/REVERSE4_Reveal/">IOS逆向系列_Reveal_解码任意APP的UI界面</a>
                 </h2>
                 <div class="label">
@@ -1298,197 +1496,6 @@ http_h5.m.taobao.com_0.localstorage
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2015/06/10/WKWebView/">WKWebView小教程</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2015-06-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#WKWebView" title="Category: WKWebView" rel="category">WKWebView</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" title="Tag: WKWebView、Native与JS、缓存、NSURLProtocol" rel="tag">WKWebView、Native与JS、缓存、NSURLProtocol</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前言</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">1、基础</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1.1 初始化</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">1.2 加载页面</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">1.3 代理方法</a>        <ul>
-          <li><a href="#section-5" id="markdown-toc-section-5">1.3.1  需要注意的几个代理方法：</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">1.3.2 其它代理方法汇总</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="section">前言</h2>
-
-<p>WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。下边总结了之前学习的笔记，如果需要demo的还请留言。
-早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。</p>
-
-<p>就这段时间的使用体验来看，变化集中在：</p>
-<ul>
-  <li>1、内存消耗少，性能提升；</li>
-  <li>2、协议接口更细化，更丰富；</li>
-  <li>3、GPU硬件加速、KVO、cookie不自动携带…</li>
-</ul>
-
-<p>福利资源：<a href="https://github.com/WebKit/webkit">WebKit源码</a></p>
-
-<h2 id="section-1">1、基础</h2>
-
-<p>基本属性</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="kn">import</span> <span class="err">&lt;</span><span class="nn">WebKit</span><span class="o">/</span><span class="n">WebKit</span><span class="o">.</span><span class="na">h</span><span class="o">&gt;</span>
-
-
-<span class="n">WKWebView</span> <span class="o">*</span><span class="n">webView</span> <span class="o">=</span> <span class="o">[[</span><span class="n">WKWebView</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithFrame:</span><span class="n">self</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">frame</span><span class="o">];</span>
-<span class="c1">// 代理</span>
-<span class="n">webView</span><span class="o">.</span><span class="na">navigationDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="o">;</span>
-<span class="n">webView</span><span class="o">.</span><span class="na">UIDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="o">;</span>
-<span class="c1">// opaque不透明的。</span>
-<span class="n">webView</span><span class="o">.</span><span class="na">opaque</span> <span class="o">=</span> <span class="n">NO</span><span class="o">;</span>  
-<span class="c1">// web内手势左右滑动导航</span>
-<span class="n">webView</span><span class="o">.</span><span class="na">allowsBackForwardNavigationGestures</span> <span class="o">=</span><span class="n">YES</span><span class="o">;</span>
-<span class="c1">// 加载数据</span>
-<span class="o">[</span><span class="n">webView</span> <span class="nl">loadRequest:</span><span class="o">[</span><span class="n">NSURLRequest</span> <span class="nl">requestWithURL:</span><span class="o">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="err">@</span><span class="s">"http://www.3code.info"</span><span class="o">]]];</span>
-</code></pre>
-</div>
-
-<h4 id="section-2">1.1 初始化</h4>
-
-<p>初始化方法，两种：</p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 默认初始化</span>
-<span class="o">-</span> <span class="p">(</span><span class="nx">instancetype</span><span class="p">)</span><span class="nx">initWithFrame</span><span class="err">:</span> 
-<span class="c1">// 根据对webview的相关配置，进行初始化 【【此种方法参见下方的cookie小节，里面有详细的使用介绍】】</span>
-<span class="o">-</span> <span class="p">(</span><span class="nx">instancetype</span><span class="p">)</span><span class="nx">initWithFrame</span><span class="err">:</span> <span class="nx">configuration</span><span class="err">:</span> 
-
-</code></pre>
-</div>
-
-<h4 id="section-3">1.2 加载页面</h4>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 通过一个网页URL来加载一个WKWebView</span>
-<span class="o">-</span><span class="nx">loadRequest</span><span class="err">:</span> 
-<span class="c1">// 根据一个文件,加载一个WKWebView，后边是资源路径 【IOS9】</span>
-<span class="o">-</span><span class="nx">loadFileURL</span><span class="err">:</span> <span class="nx">allowingReadAccessToURL</span><span class="err">:</span> 
-<span class="c1">// 将html文件读取为字符串从而加载为WKWebView，baseURL是我们自己设置的资源路径(主目录)</span>
-<span class="o">-</span><span class="nx">loadHTMLString</span><span class="err">:</span> <span class="nx">baseURL</span><span class="err">:</span> 
-<span class="c1">// 下边方法使用的比较少，但更加自由，其中data是文件数据，MIMEType是文件类型，characterEncodingName是编码类型，baseURL是素材资源路径</span>
-<span class="o">-</span><span class="nx">loadData</span><span class="err">:</span> <span class="nx">MIMEType</span><span class="err">:</span> <span class="nx">characterEncodingName</span><span class="err">:</span>  <span class="nx">baseURL</span><span class="err">:</span>  <span class="nx">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="nx">_11</span><span class="p">,</span> <span class="mi">9</span><span class="nx">_0</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<h4 id="section-4">1.3 代理方法</h4>
-
-<h5 id="section-5">1.3.1  需要注意的几个代理方法：</h5>
-
-<p>1、<code class="highlighter-rouge">-(void)webView: decidePolicyForNavigationAction: </code></p>
-
-<p>注意的是：</p>
-<ul>
-  <li>需要call decisionHandler，允许or不允许加载，否则报错。</li>
-  <li>
-    <p>当点击link时，如果有标签_blank,在webview中不会新开窗口，但是在WKWeb中，可以控制新开一个WKWebview。这时可以通过该方法的第一个参数WKNavigationAction的属性，来判断是否需要开新的view:</p>
-
-    <p>if(!navigationAction.targetFrame.mainFrame){
-      开新窗口
-  }</p>
-  </li>
-</ul>
-
-<p>这时就会调用 createWebViewWithConfiguration方法return的wkwebview，来加载新的页面。但如果没有实现这个协议，那么操作link就不会有反应了。</p>
-
-<p>2、<code class="highlighter-rouge">-(void) webView: decidePolicyForNavigationResponse: </code>
-这个也需要call decisionHandler,允许or不允许加载。</p>
-
-<h5 id="section-6">1.3.2 其它代理方法汇总</h5>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="cm">/* WKNavigationDelegate  */</span>
-
-<span class="c1">//1、【即将发送request请求】 可以决定是否请求，拦截request、cookie等。call decisionHandler</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">decidePolicyForNavigationAction</span><span class="err">:</span> 
-<span class="c1">//2、【开始请求页面】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didStartProvisionalNavigation</span><span class="err">:</span> 
-<span class="c1">//3、【收到response】 根据response决定要不要继续加载。call decisionHandler</span>
-<span class="o">-</span><span class="p">(</span><span class="k">void</span><span class="p">)</span> <span class="nx">webView</span><span class="err">:</span> <span class="nx">decidePolicyForNavigationResponse</span><span class="err">:</span> 
-<span class="c1">//4、【收到web内容，开始渲染】 可以注入JS</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didCommitNavigation</span><span class="err">:</span> 
-<span class="c1">//5、【页面渲染完成】可以注入JS</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFinishNavigation</span><span class="err">:</span> 
-
-<span class="c1">// 【网页内容被终止】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webViewWebContentProcessDidTerminate</span><span class="err">:</span>
-<span class="c1">// 【错误：页面跳转失败】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFailNavigation</span><span class="err">:</span> 
-<span class="c1">// 【错误：启动加载数据失败】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFailProvisionalNavigation</span><span class="err">:</span> 
-<span class="c1">// 【页面校验身份】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didReceiveAuthenticationChallenge</span><span class="err">:</span> 
-<span class="c1">// 【重定向】</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didReceiveServerRedirectForProvisionalNavigation</span>
-
-<span class="cm">/* UIDelegate  */</span>
-<span class="c1">// 当页面中有调用了js的alert、confirm、prompt方法就会触发以下方法</span>
-<span class="c1">// 页面中有输入框弹出警告框时调用</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptTextInputPanelWithPrompt</span><span class="err">:</span> 
-<span class="c1">// 页面中有确认框弹出警告框时调用</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptConfirmPanelWithMessage</span><span class="err">:</span><span class="p">(</span> 
-<span class="c1">// 警告框页面中有警告框弹出警告框时调用</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptAlertPanelWithMessage</span><span class="err">:</span> 
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2015/06/10/WKWebView/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1548,15 +1555,6 @@ http_h5.m.taobao.com_0.localstorage
                 <ul class="content-ul" cate>
                     
                     <li>
-                        <a href="/category/#block" class="categories-list-item" cate="block">
-                            <span class="name">
-                                block
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
                         <a href="/category/#apache" class="categories-list-item" cate="apache">
                             <span class="name">
                                 apache
@@ -1580,6 +1578,15 @@ http_h5.m.taobao.com_0.localstorage
                                 IOS逆向
                             </span>
                             <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#block" class="categories-list-item" cate="block">
+                            <span class="name">
+                                block
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1722,13 +1729,6 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       
-                      <a href="/tag/#block" style="font-size: 9pt; color: #999;">block</a>
-                    
-                      
-                      
-                      
-                      
-                      
                       <a href="/tag/#apache" style="font-size: 9pt; color: #999;">apache</a>
                     
                       
@@ -1758,6 +1758,13 @@ http_h5.m.taobao.com_0.localstorage
                       
                       
                       <a href="/tag/#iOSOpenDev" style="font-size: 9pt; color: #999;">iOSOpenDev</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#block" style="font-size: 9pt; color: #999;">block</a>
                     
                       
                       
