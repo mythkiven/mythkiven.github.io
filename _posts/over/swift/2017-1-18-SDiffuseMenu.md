@@ -19,8 +19,7 @@ author: 3行代码
 
 实际效果如下：
 
-<iframe src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif">
-
+![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif)
 
 ## 一、使用方法：
 
@@ -154,7 +153,7 @@ func SDiffuseMenuWillClose(_ menu: SDiffuseMenu) {
 
 不论多么复杂的动画，都是由简单的动画组成的，大家先看看SDiffuseMenu中单选项动画：
 
-<iframe src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif">
+![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif)
 
 仔细分析发现可以将整个动画可以拆分为三大部分：
 
