@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Jan 2017 18:03:05 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2017 18:03:05 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Jan 2017 18:34:58 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Jan 2017 18:34:58 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -43,7 +43,7 @@
 
 &lt;p&gt;实际效果如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/01/18/587f44801a752.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;一、使用方法：&lt;/h2&gt;
 
@@ -196,7 +196,7 @@
 
 &lt;p&gt;不论多么复杂的动画，都是由简单的动画组成的，大家先看看SDiffuseMenu中单选项动画：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/01/18/587f44ab228bc.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;仔细分析发现可以将整个动画可以拆分为三大部分：&lt;/p&gt;
 

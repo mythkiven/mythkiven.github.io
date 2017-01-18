@@ -19,7 +19,7 @@ author: 3行代码
 
 实际效果如下：
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif)
+![](https://ooo.0o0.ooo/2017/01/18/587f44801a752.gif)
 
 ## 一、使用方法：
 
@@ -154,7 +154,7 @@ func SDiffuseMenuWillClose(_ menu: SDiffuseMenu) {
 
 不论多么复杂的动画，都是由简单的动画组成的，大家先看看SDiffuseMenu中单选项动画：
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif)
+![](https://ooo.0o0.ooo/2017/01/18/587f44ab228bc.gif)
 
 仔细分析发现可以将整个动画可以拆分为三大部分：
 
