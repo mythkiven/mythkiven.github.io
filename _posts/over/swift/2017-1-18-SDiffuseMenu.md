@@ -9,7 +9,6 @@ author: 3行代码
 * content
 {:toc}
 
-# AwesomeMenu的Swift版改写之旅:SDiffuseMenu
 
 
 >本动画是Swift版的AwesomeMenu,如需OC版还请移步[这里](https://github.com/levey/AwesomeMenu)。
@@ -20,19 +19,22 @@ author: 3行代码
 
 实际效果如下：
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif)
+<iframe src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/SDiffuseMenu.gif">
+
 
 ## 一、使用方法：
 
 添加协议(动画状态回调) -> 设置选项数组 -> 设置菜单按钮 -> 动画属性配置 -> .addSubview(menu)
 
 #### 1、添加协议
+
 ``` swift
 class ViewController: UIViewController, SDiffuseMenuDelegate {
     var menu: SDiffuseMenu!
 }
 ```
 #### 2、设置菜单的选项按钮数据
+
 ``` swift
 guard let storyMenuItemImage            =  UIImage(named:"menuitem-normal.png")         else { fatalError("图片加载失败") }
 guard let storyMenuItemImagePressed     =  UIImage(named:"menuitem-highlighted.png")    else { fatalError("图片加载失败") }
@@ -50,14 +52,18 @@ for _ in 0 ..< 9 {
     menus.append(starMenuItem)
 }
 ```
+
 #### 3、设置菜单按钮
+
 ``` swift
 let startItem = SDiffuseMenuItem(image: starItemNormalImage,
                                  highlightedImage: starItemLightedImage,
                                  contentImage: starItemContentImage,
                                  highlightedContentImage: starItemContentLightedImage)
 ```
+
 #### 4、添加SDiffuseMenu
+
 ``` swift
 let menuRect = CGRect.init(x: self.menuView.bounds.size.width/2,
                            y: self.menuView.bounds.size.width/2,
@@ -69,9 +75,11 @@ menu.center = self.menuView.center
 menu.delegate = self
 self.menuView.addSubview(menu)
 ```
+
 #### 5、动画配置
 
 动画中半径的变化:0--> 最大farRadius--> 最小nearRadius--> 结束endRadius
+
 ``` swift
 // 动画时长
 menu.animationDuration  = CFTimeInterval(animationDrationValue.text!)
@@ -97,7 +105,9 @@ menu.rotateAddButton    = rotateAddButton.isOn
 menu.rotateAddButtonAngle = CGFloat((rotateAddButtonAngleValue.text! as NSString).floatValue)
 // ..
 ```
+
 #### 6、动画过程监听
+
 ``` swift
 func SDiffuseMenuDidSelectMenuItem(_ menu: SDiffuseMenu, didSelectIndex index: Int) {
     print("选中按钮at index:\(index) is: \(menu.menuItemAtIndex(index)) ")
@@ -144,7 +154,7 @@ func SDiffuseMenuWillClose(_ menu: SDiffuseMenu) {
 
 不论多么复杂的动画，都是由简单的动画组成的，大家先看看SDiffuseMenu中单选项动画：
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif)
+<iframe src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/singleItemAnimation.gif">
 
 仔细分析发现可以将整个动画可以拆分为三大部分：
 
@@ -161,12 +171,14 @@ func SDiffuseMenuWillClose(_ menu: SDiffuseMenu) {
 大家仔细看会发现展开动画和结束动画的自旋转是有差异的，因为关键帧设置的不同。
 
 展开动画中设置的关键帧如下，0.3对应expandRotation展开自选角度，0.4对应0°，所以在0.3 -> 0.4的时间会出现快速的自旋。
+
 ``` swift
 rotateAnimation.values   = [CGFloat(expandRotation),CGFloat(0.0)]
 rotateAnimation.keyTimes = [NSNumber(value: 0.3 as Float),  NSNumber(value: 0.4 as Float)]
 ```
 
 而关闭的动画中，我设置如下，细化了关键帧，可以看出自旋的动画细节丰富一些，0 -> 0.4 慢速自旋，0.4 -> 0.5 快速自旋。
+
 ``` swift
 rotateAnimation.values   = [CGFloat(0.0),CGFloat(closeRotation),CGFloat(0.0)]
 rotateAnimation.keyTimes = [NSNumber(value: 0.0 as Float),NSNumber(value: 0.4 as Float), NSNumber(value: 0.5 as Float)]
@@ -180,7 +192,9 @@ rotateAnimation.keyTimes = [NSNumber(value: 0.0 as Float),NSNumber(value: 0.4 as
 let positionAnimation      =  CAKeyframeAnimation(keyPath: "position")
 positionAnimation.duration = animationDuration
 ```
+
 1)\使用贝塞尔曲线作为path,从代码中可以明显的看出移动的路径：endPoint -> farPoint -> startPoint
+
 ``` swift
 let path = UIBezierPath.init()
 path.move(to: CGPoint(x: item.endPoint.x, y: item.endPoint.y))
@@ -188,7 +202,9 @@ path.addLine(to: CGPoint(x: item.farPoint.x, y: item.farPoint.y))
 path.addLine(to: CGPoint(x: item.startPoint.x, y: item.startPoint.y))
 positionAnimation.path = path.cgPath
 ```
+
 2)\使用CGPathRef或GCMutablePathRef设置路径
+
 ``` swift
 let path =  CGMutablePath()
 path.move(to: CGPoint(x: item.endPoint.x, y: item.endPoint.y))
@@ -198,6 +214,7 @@ positionAnimation.path = path
 ```
 
 自旋和平移都有了，接下来要加入到动画组中：
+
 ``` swift
 let animationgroup              =  CAAnimationGroup()
 animationgroup.animations       = [positionAnimation, rotateAnimation]
@@ -211,6 +228,7 @@ animationgroup.delegate         = self
 ```
 
 最添加进layer即可
+
 ``` swift
 item.layer.add(animationgroup,forKey: "Close")
 ```
@@ -335,6 +353,7 @@ class func ScaleRect( _ rect:CGRect, n:CGFloat) -> CGRect {
 
 // 增大点击范围，还可以在point方法中判断，不过就需要SDiffuseMenu.swift跟着调整了，这一期先不采用第二种方法，下期再尝试。
 ```
+
 下图是ScaleRect方法小测试，看着是不是很好用啊😁😁
 
 ![](https://ooo.0o0.ooo/2017/01/18/587f06c314ded.png)
