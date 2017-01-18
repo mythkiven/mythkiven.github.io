@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Jan 2017 17:39:00 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2017 17:39:00 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Jan 2017 17:48:19 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Jan 2017 17:48:19 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -56,6 +56,7 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 &lt;h4 id=&quot;section-2&quot;&gt;2、设置菜单的选项按钮数据&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;storyMenuItemImage&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;kt&quot;&gt;UIImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;named&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menuitem-normal.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fatalError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;图片加载失败&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -301,6 +302,7 @@
 提醒：下文所述的坐标计算都是基于笛卡儿坐标系，注意与UIKit中坐标系的异同。&lt;/p&gt;
 
 &lt;p&gt;关于上图，说明如下：&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;1、图中有5个选项按钮和一个菜单按钮，整体角度是menuWholeAngle，选项中心夹角β；&lt;/li&gt;
   &lt;li&gt;2、假设偏移角度rotateAngle=0，则以红色线为坐标轴XY，下文先以此为准进行坐标计算；&lt;/li&gt;
@@ -405,8 +407,6 @@
 
 &lt;blockquote&gt;
   &lt;p&gt;这一版的SDiffuseMenu和AwesomeMenu基本是一样的，接下来的一版我会增加多方向的直线弹出排列动画，喜欢的朋友还请给个star哦，我会努力优化的~&lt;/p&gt;
-
-  &lt;p&gt;还有上边问题的答案，我猜测是Core Animation Layer。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;最后分享下Swift学习心得：&lt;/p&gt;
@@ -414,7 +414,7 @@
 &lt;ul&gt;
   &lt;li&gt;我基本是以官方文档为主的，有疑问就google；&lt;/li&gt;
   &lt;li&gt;参照官方给出的demo，以及修订blog;&lt;/li&gt;
-  &lt;li&gt;使用Playground，这个真好用，下边附图;&lt;/li&gt;
+  &lt;li&gt;使用Playground，这个挺给力的；&lt;/li&gt;
   &lt;li&gt;参考资料我也总结了下，&lt;a href=&quot;https://github.com/mythkiven/SourceOfSwift&quot;&gt;请戳此处&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

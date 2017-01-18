@@ -32,6 +32,7 @@ class ViewController: UIViewController, SDiffuseMenuDelegate {
     var menu: SDiffuseMenu!
 }
 ```
+
 #### 2、设置菜单的选项按钮数据
 
 ``` swift
@@ -257,6 +258,7 @@ item.layer.add(animationgroup,forKey: "Close")
 提醒：下文所述的坐标计算都是基于笛卡儿坐标系，注意与UIKit中坐标系的异同。
 
 关于上图，说明如下：
+
 - 1、图中有5个选项按钮和一个菜单按钮，整体角度是menuWholeAngle，选项中心夹角β；
 - 2、假设偏移角度rotateAngle=0，则以红色线为坐标轴XY，下文先以此为准进行坐标计算；
 - 3、假设整体偏移角度rotateAngle!=0，那么以蓝色为坐标轴XY，其中偏移角度就是rotateAngle。
@@ -358,15 +360,13 @@ class func ScaleRect( _ rect:CGRect, n:CGFloat) -> CGRect {
 ![](https://ooo.0o0.ooo/2017/01/18/587f06c314ded.png)
 
 >这一版的SDiffuseMenu和AwesomeMenu基本是一样的，接下来的一版我会增加多方向的直线弹出排列动画，喜欢的朋友还请给个star哦，我会努力优化的~
->
->还有上边问题的答案，我猜测是Core Animation Layer。
 
 
 最后分享下Swift学习心得：
 
 - 我基本是以官方文档为主的，有疑问就google；
 - 参照官方给出的demo，以及修订blog;
-- 使用Playground，这个真好用，下边附图;
+- 使用Playground，这个挺给力的；
 - 参考资料我也总结了下，[请戳此处](https://github.com/mythkiven/SourceOfSwift)
 
 

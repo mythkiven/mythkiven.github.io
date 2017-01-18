@@ -241,6 +241,7 @@
 <span class="p">}</span>
 </code></pre>
 </div>
+
 <h4 id="section-2">2、设置菜单的选项按钮数据</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
@@ -486,6 +487,7 @@
 提醒：下文所述的坐标计算都是基于笛卡儿坐标系，注意与UIKit中坐标系的异同。</p>
 
 <p>关于上图，说明如下：</p>
+
 <ul>
   <li>1、图中有5个选项按钮和一个菜单按钮，整体角度是menuWholeAngle，选项中心夹角β；</li>
   <li>2、假设偏移角度rotateAngle=0，则以红色线为坐标轴XY，下文先以此为准进行坐标计算；</li>
@@ -590,8 +592,6 @@
 
 <blockquote>
   <p>这一版的SDiffuseMenu和AwesomeMenu基本是一样的，接下来的一版我会增加多方向的直线弹出排列动画，喜欢的朋友还请给个star哦，我会努力优化的~</p>
-
-  <p>还有上边问题的答案，我猜测是Core Animation Layer。</p>
 </blockquote>
 
 <p>最后分享下Swift学习心得：</p>
@@ -599,7 +599,7 @@
 <ul>
   <li>我基本是以官方文档为主的，有疑问就google；</li>
   <li>参照官方给出的demo，以及修订blog;</li>
-  <li>使用Playground，这个真好用，下边附图;</li>
+  <li>使用Playground，这个挺给力的；</li>
   <li>参考资料我也总结了下，<a href="https://github.com/mythkiven/SourceOfSwift">请戳此处</a></li>
 </ul>
 
