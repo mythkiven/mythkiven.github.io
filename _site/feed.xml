@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Jan 2017 17:03:17 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2017 17:03:17 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Jan 2017 17:27:25 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Jan 2017 17:27:25 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -410,10 +410,6 @@
         <guid isPermaLink="true">http://localhost:4000/2017/01/18/SDiffuseMenu/</guid>
         
         <category>Swift3.0</category>
-        
-        <category>,</category>
-        
-        <category>SDiffuseMenu</category>
         
         
         <category>Swift3.0</category>

@@ -2,7 +2,7 @@
 layout: post
 title:  "AwesomeMenu的Swift版改写之旅:SDiffuseMenu"
 categories: Swift3.0
-tags: Swift3.0 , SDiffuseMenu
+tags: Swift3.0
 author: 3行代码
 ---
 
