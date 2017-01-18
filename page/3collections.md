@@ -8,17 +8,13 @@ icon: bookmark
 * content
 {:toc}
 
-以下内容部分链接可能被Qiang
-
 		
 ## 主题资源
-不错的主题：
-
-* [主题1](http://pizn.github.io/kunka/links.html)
 
 * [jekyll主题集合](http://jekyllthemes.org/)
 
 ## 电子书期刊论文资源
+
 ##### 电子书搜索 - En
 
 ------------ | -------------  
@@ -47,8 +43,6 @@ icon: bookmark
 <li><a href="http://www.sciencedaily.com/news/mind_brain/">Mind &amp; Brain News -- ScienceDaily</a></li>
 </ul>
 
-
-
 ## 开放教育
 
 ------------ | ------------- 
@@ -60,15 +54,14 @@ icon: bookmark
 
 ## 工具
 
-##### 前端工具
+##### 前端工具、插件
+
 * [box-shadow生成工具](http://www.cssmatic.com/box-shadow)
 * [渐变生成器](http://www.cssmatic.com/gradient-generator)
 * [CSS3 生成器](http://www.cssreflex.com/css-generators/)
 * [在线压缩图片](https://tinypng.com/)
 * [图床：图片存到网络](https://sm.ms/)
 * [时间戳在线](http://tool.chinaz.com/Tools/unixtime.aspx)
-
-## 框架插件
 
 * [Masonry](http://masonry.desandro.com/)
 * [jssor](http://www.jssor.com/)
