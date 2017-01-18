@@ -134,8 +134,6 @@
                 
                     
                 
-                    
-                
             </ul>
         </nav>
     </div>
@@ -151,11 +149,11 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a>
+                  <a class="post-link" href="/2016/11/09/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-01
+                        <i class="fa fa-calendar"></i>2016-11-09
                     </div>
                     <div class="label-card">
                         <i class="fa fa-user"></i>3行代码
@@ -174,7 +172,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
     
   
 
@@ -191,7 +189,7 @@
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+        <a href="/tag/#iOS逆向理论基础" title="Tag: iOS逆向理论基础" rel="tag">iOS逆向理论基础</a>
     
   
 
@@ -200,1851 +198,24 @@
                     </div>
                 </div>
                 <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#mutability-of-collections" id="markdown-toc-mutability-of-collections">1、Mutability of Collections：可变集合</a></li>
-  <li><a href="#arrays" id="markdown-toc-arrays">2、Arrays：数组</a>    <ul>
-      <li><a href="#array-type-shorthand-syntax" id="markdown-toc-array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</a></li>
-      <li><a href="#creating-an-empty-array" id="markdown-toc-creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</a></li>
-      <li><a href="#creating-an-array-with-a-default-value" id="markdown-toc-creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</a></li>
-      <li><a href="#creating-an-array-by-adding-two-arrays-together" id="markdown-toc-creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</a></li>
-      <li><a href="#creating-an-array-with-an-array-literal" id="markdown-toc-creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</a></li>
-      <li><a href="#accessing-and-modifying-an-array" id="markdown-toc-accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</a></li>
-      <li><a href="#iterating-over-an-array" id="markdown-toc-iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</a></li>
-    </ul>
-  </li>
-  <li><a href="#sets" id="markdown-toc-sets">3、Sets:集合</a>    <ul>
-      <li><a href="#set-type-syntax" id="markdown-toc-set-type-syntax">3.1 Set Type Syntax:集合类型语法</a></li>
-      <li><a href="#creating-and-initializing-an-empty-set" id="markdown-toc-creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</a></li>
-      <li><a href="#creating-a-set-with-an-array-literal" id="markdown-toc-creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</a></li>
-      <li><a href="#accessing-and-modifying-a-set" id="markdown-toc-accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</a></li>
-      <li><a href="#iterating-over-a-set" id="markdown-toc-iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</a></li>
-      <li><a href="#performing-set-operations" id="markdown-toc-performing-set-operations">3.6 Performing Set Operations：集合运算</a></li>
-    </ul>
-  </li>
-  <li><a href="#dictionaries" id="markdown-toc-dictionaries">4、Dictionaries：字典</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">4.1 创建</a></li>
-      <li><a href="#accessing-and-modifying-a-dictionary" id="markdown-toc-accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</a></li>
-      <li><a href="#iterating-over-a-dictionary" id="markdown-toc-iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</a></li>
-    </ul>
-  </li>
-</ul>
+                    
+<p><strong>待整理</strong></p>
 
-<p>Swift 提供了三种集合类：</p>
-<ul>
-  <li>数组 arrays 值有序的集合；</li>
-  <li>集合 sets 值唯一而无序的集合;</li>
-  <li>字典 dictionaries 键值对且无序的集合；</li>
-  <li>这三种集合是泛型集合，集合中储存的数值必须是明确的</li>
-</ul>
+<p>iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件</p>
 
-<p>如下示意：</p>
+<p>待续…</p>
 
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt="" /></p>
-
-<h3 id="mutability-of-collections">1、Mutability of Collections：可变集合</h3>
-
-<ul>
-  <li>如果你创建了一个数组,set或者字典，并且申明他为变量，那么该集合就是可变的。</li>
-  <li>如果你申明了数组，set或者字典为常量，那么他就没办法修改。他的内容和大小都没法修改。</li>
-  <li>如果集合不需要修改，尽量申明成常量。这样编译器会优化集合性能。</li>
-</ul>
-
-<h3 id="arrays">2、Arrays：数组</h3>
-
-<ul>
-  <li>数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中；</li>
-  <li>swift中的Array 是桥接自Foundation的NSArray；</li>
-</ul>
-
-<h5 id="array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</h5>
-
-<ul>
-  <li>Swift数组应遵循Array<SomeType>这样的形式，其中SomeType是这个数组中唯一允许存在的数据类型；</SomeType></li>
-  <li>简写方式：[SomeType]这样的简单语法；</li>
-  <li>两种形式在功能上是一样的，一般都用简写形式</li>
-</ul>
-
-<h5 id="creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Int类型的空数组：</span>
-<span class="k">var</span> <span class="nv">someInts</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"someInts is of type [Int] with </span><span class="se">\(</span><span class="n">someInts</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
-<span class="c1">// 追加元素：</span>
-<span class="n">someInts</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1">// someInts now contains 1 value of type Int</span>
-<span class="c1">// 置空：</span>
-<span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">// someInts is now an empty array, but is still of type [Int]</span>
-</code></pre>
-</div>
-
-<h5 id="creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</h5>
-<p>数组的类型从默认值推断，例如下方的 Double数组</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">threeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span>
-</code></pre>
-</div>
-<h5 id="creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</h5>
-<p>只有类型相同的数组，才能叠加</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">anotherThreeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]</span>
-<span class="c1">// 都是double类型</span>
-<span class="k">var</span> <span class="nv">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
-<span class="c1">// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
-</code></pre>
-</div>
-<h5 id="creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</h5>
-<p>形如：[ 值1，值2，值3 ]</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如下创建[String]类型数组：</span>
-<span class="c1">// 1、</span>
-<span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
-<span class="c1">// 2、</span>
-<span class="k">var</span> <span class="nv">shoppingList2</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
-</code></pre>
-</div>
-<h5 id="accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</h5>
-
-<p><strong>通过下标访问\修改:</strong></p>
-
-<ul>
-  <li>count属性:确定元素个数；</li>
-  <li>isEmpty属性：是否为空；</li>
-  <li>append(_ newElement: Element)方法：添加新元素；</li>
-  <li>数组加法：<code class="highlighter-rouge">shoppingList += ["Baking Powder"]</code>；</li>
-  <li>索引：<code class="highlighter-rouge">var firstItem = shoppingList[0]</code> 索引的第一项，是0；</li>
-  <li>索引单个修改：<code class="highlighter-rouge">shoppingList[0] = "Six eggs"</code>；</li>
-  <li>索引范围修改：<code class="highlighter-rouge">shoppingList[4...6] = ["Bananas", "Apples"]</code>；</li>
-  <li>索引插入：<code class="highlighter-rouge">shoppingList.insert("Maple Syrup", at: 0)</code>；</li>
-  <li>索引删除：<code class="highlighter-rouge">let mapleSyrup = shoppingList.remove(at: 0)</code>；</li>
-  <li>删除最后一个元素：<code class="highlighter-rouge">let apples = shoppingList.removeLast()</code></li>
-  <li>注意：越界会造成运行时错误；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Flour"</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Baking Powder"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Chocolate Spread"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">,</span> <span class="s">"Butter"</span><span class="p">]</span> <span class="c1">// </span>
-
-<span class="k">var</span> <span class="nv">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Six eggs"</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="s">"Apples"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Maple Syrup"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="k">let</span> <span class="nv">mapleSyrup</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-</code></pre>
-</div>
-
-<h5 id="iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</h5>
-
-<p>1、for -in：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Six eggs</span>
-<span class="c1">// Milk</span>
-<span class="c1">// Flour</span>
-<span class="c1">// Baking Powder</span>
-<span class="c1">// Bananas</span>
-</code></pre>
-</div>
-
-<p>2、使用全局enumerate函数来进行数组遍历,返回一个由每一个数据项索引值和数据值组成的元组:</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Item </span><span class="se">\(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Item 1: Six eggs</span>
-<span class="c1">// Item 2: Milk</span>
-<span class="c1">// Item 3: Flour</span>
-<span class="c1">// Item 4: Baking Powder</span>
-<span class="c1">// Item 5: Bananas</span>
-</code></pre>
-</div>
-
-<h3 id="sets">3、Sets:集合</h3>
-
-<ul>
-  <li>一个集合存储了一串无序的相同类型的数据；</li>
-  <li>swift set类型桥接自Foundation中的NSSet类；</li>
-  <li>存进一个集合的类型必须是可以哈希化的。</li>
-</ul>
-
-<p><strong>哈希值</strong></p>
-
-<ul>
-  <li>哈希值是一个int值，所有相同的对象的哈希值是一样的。例如：a == b，就可以推导出：a.hashValue == b.hashValue；</li>
-  <li>Swift所有的基本类型（String,Int,Double,Bool）默认是可以哈希化的。可以作为Sets的值或者字典的key；</li>
-  <li>没有关联值得枚举值也是默认可以哈希化的；</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>可用使用自定义类型来设置值类型或字典类型，自定义类型需要从swift标准库遵守哈希化协议。遵守哈希化协议的类型必须提供一个叫做hashValue的方法（返回类型为Int）。hashValue的值在不同的程序或相同的程序中返回不要求相同。因为哈希化协议是可变的。遵守协议的类型必须实现运算符（== or ‘is equal’）。Equatable协议要求必须实现“==”成一个等价关系。见下面的例子：
-
-a == a （自反性）
-a == b 相当于 b == a（对称性）
-a == b &amp;&amp; b == c 相当于 a == c (传递性)
-</code></pre>
-</div>
-
-<h5 id="set-type-syntax">3.1 Set Type Syntax:集合类型语法</h5>
-
-<p>集合类型的语法是Set<Element>，Element是允许存入集合中的类型。
-和数组不同的是，集合没有简写方法。</Element></p>
-
-<h5 id="creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// letters变量被推断为Set&lt;Character&gt;</span>
-<span class="k">var</span> <span class="nv">letters</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"letters is of type Set&lt;Character&gt; with </span><span class="se">\(</span><span class="n">letters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
-<span class="c1">// Prints "letters is of type Set&lt;Character&gt; with 0 items."</span>
-
-<span class="n">letters</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
-<span class="c1">// letters now contains 1 value of type Character</span>
-<span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">// letters is now an empty set, but is still of type Set&lt;Character&gt;</span>
-
-</code></pre>
-</div>
-
-<h5 id="creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</h5>
-<p>注意的是，创建集合时，必须带上关键字Set。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// favoriteGenres是字符串集合，即:Set&lt;String&gt; 类型，仅仅储存String，而且是可变的。其余类似</span>
-<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
-<span class="c1">// 简写：</span>
-<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<h5 id="accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</h5>
-
-<ul>
-  <li>count属性：<code class="highlighter-rouge">favoriteGenres.count</code>；</li>
-  <li>.isEmpty属性: <code class="highlighter-rouge">if favoriteGenres.isEmpty {}</code></li>
-  <li>insert(_:)方法：<code class="highlighter-rouge">favoriteGenres.insert("www.3code.info")</code></li>
-  <li>remove(_:)方法：<code class="highlighter-rouge">let removedGenre = favoriteGenres.remove("Rock")</code></li>
-  <li>contains(_:)方法：是否包含item，<code class="highlighter-rouge">if favoriteGenres.contains("Funk") {</code></li>
-</ul>
-
-<h5 id="iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</h5>
-<ul>
-  <li>for-in;</li>
-  <li>sorted():返回一个value的集合</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Jazz</span>
-<span class="c1">// Hip hop</span>
-<span class="c1">// Classical</span>
-
-
-<span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Classical</span>
-<span class="c1">// Hip hop</span>
-<span class="c1">// Jazz</span>
-</code></pre>
-</div>
-
-<h5 id="performing-set-operations">3.6 Performing Set Operations：集合运算</h5>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png" alt="" /></p>
-
-<ul>
-  <li>intersection(_:) 交集</li>
-  <li>symmetricDifference(_:) 对称差</li>
-  <li>union(_:) 并集</li>
-  <li>subtracting(_:) 差集</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">oddDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">evenDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">singleDigitPrimeNumbers</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">union</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">subtracting</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1, 9]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">symmetricDifference</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1, 2, 9]</span>
-</code></pre>
-</div>
-
-<p>Set Membership and Equality</p>
-
-<p>a是b的一个超集，因为a包含了所有元素b。相反地，b是a子集，因为在所有的元素b也被包含a。bc彼此没有相同的元素。
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png" alt="" />
-运算方法：</p>
-
-<ul>
-  <li>”==”(is equal)方法:判断两个集合是否拥有相同的元素,相同返回true，反之false</li>
-  <li>isSubsetOf(_:)方法：判断目标集合是是否为参数集合的子集，是则返回true，反之false</li>
-  <li>isSupersetOf(_:)方法：判断目标集合是否为参数集合的超集，是则返回true，反之false</li>
-  <li>isStrictSubsetOf(<em>:)和isStrictSupersetOf(</em>:)方法：判断目标是否是子集和超集，但是必须是两个集合不相等，满足以上条件返回true，反之false</li>
-  <li>isDisjointWith(_:)方法：判断两个集合有无相同元素，有相同元素则返回false，反之true。</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">houseAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">farmAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐮"</span><span class="p">,</span> <span class="s">"🐔"</span><span class="p">,</span> <span class="s">"🐑"</span><span class="p">,</span> <span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">cityAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐦"</span><span class="p">,</span> <span class="s">"🐭"</span><span class="p">]</span>
- 
-<span class="n">houseAnimals</span><span class="o">.</span><span class="nf">isSubset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">farmAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isSuperset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">houseAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isDisjoint</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">cityAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-</code></pre>
-</div>
-
-<h3 id="dictionaries">4、Dictionaries：字典</h3>
-
-<ul>
-  <li>Swift的Dictionary类桥接自Foundation的NSDictionary类</li>
-  <li>字典Key类型必须符合Hashable协议</li>
-  <li>写法：Dictionary&lt;Key, Value&gt;</li>
-  <li>简写：[Key: Value]</li>
-</ul>
-
-<h5 id="section">4.1 创建</h5>
-
-<p>1、创建[Int: String]类型的空字典：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt">String</span><span class="p">]()</span>
-</code></pre>
-</div>
-
-<p>2、操作</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 插入元素：[16:"sixteen"]</span>
-<span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span> 
-
-<span class="c1">// 置空，类型不变：[Int: String]</span>
-<span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="p">[:]</span>
-</code></pre>
-</div>
-
-<p>3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<p>4、简写：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<h5 id="accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</h5>
-
-<p>使用下标访问修改</p>
-
-<ul>
-  <li>.count属性：<code class="highlighter-rouge">airports.count</code>；</li>
-  <li>.isEmpty属性：<code class="highlighter-rouge">if airports.isEmpty {</code>；</li>
-  <li>添加/更改元素：<code class="highlighter-rouge">airports["LHR"] = "London"</code>；</li>
-  <li>修改元素：updateValue(_:forKey:) 返回可选类型；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="s">"Dublin Airport"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The old value for DUB was </span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 可选</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">airportName</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="s">"DUB"</span><span class="p">]</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The name of the airport is </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"That airport is not in the airports dictionary."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The name of the airport is Dublin Airport."</span>
-</code></pre>
-</div>
-<ul>
-  <li>下标置空：airports[“APL”] = nil；</li>
-  <li>removeValue(forKey:)</li>
-</ul>
-
-<p>返回可选类型：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The removed airport's name is </span><span class="se">\(</span><span class="n">removedValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The removed airport's name is Dublin Airport."</span>
-
-</code></pre>
-</div>
-
-<h5 id="iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、遍历键值对</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// YYZ: Toronto Pearson</span>
-<span class="c1">// LHR: London Heathrow</span>
-
-<span class="c1">// 2、遍历key</span>
-<span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport code: </span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport code: YYZ</span>
-<span class="c1">// Airport code: LHR</span>
-<span class="c1">// 3、遍历value</span>
-<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">values</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport name: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport name: Toronto Pearson</span>
-<span class="c1">// Airport name: London Heathrow</span>
-
-<span class="c1">// 4、获取key value</span>
-<span class="k">let</span> <span class="nv">airportCodes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
-<span class="c1">// airportCodes is ["YYZ", "LHR"]</span>
- 
-<span class="k">let</span> <span class="nv">airportNames</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="c1">// airportNames is ["Toronto Pearson", "London Heathrow"]</span>
-
-</code></pre>
-</div>
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/12/01/swift_IV_Collection-Types/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/11/09/7_IOS_Theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-26
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#unicode" id="markdown-toc-unicode">Unicode</a></li>
-  <li><a href="#string-literals" id="markdown-toc-string-literals">String Literals：字面字符串</a></li>
-  <li><a href="#initializing-an-empty-string" id="markdown-toc-initializing-an-empty-string">Initializing an Empty String:初始化空串</a></li>
-  <li><a href="#string-mutability" id="markdown-toc-string-mutability">String Mutability：可变字符串</a></li>
-  <li><a href="#strings-are-value-typesstring" id="markdown-toc-strings-are-value-typesstring">Strings Are Value Types：String是值类型</a></li>
-  <li><a href="#working-with-characters" id="markdown-toc-working-with-characters">Working with Characters:使用字符</a></li>
-  <li><a href="#concatenating-strings-and-characters" id="markdown-toc-concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</a></li>
-  <li><a href="#string-interpolation" id="markdown-toc-string-interpolation">String Interpolation：字符串插值</a></li>
-  <li><a href="#counting-characters" id="markdown-toc-counting-characters">Counting Characters：字符计数</a></li>
-  <li><a href="#accessing-and-modifying-a-string" id="markdown-toc-accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">索引访问</a></li>
-      <li><a href="#inserting-and-removing" id="markdown-toc-inserting-and-removing">Inserting and Removing：插入取出</a></li>
-    </ul>
-  </li>
-  <li><a href="#comparing-strings" id="markdown-toc-comparing-strings">Comparing Strings：比较字符串</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">大小写</a></li>
-  <li><a href="#unicode-representations-of-stringsunicode" id="markdown-toc-unicode-representations-of-stringsunicode">Unicode Representations of Strings：字符串的Unicode交涉</a>    <ul>
-      <li><a href="#utf-8" id="markdown-toc-utf-8">UTF-8</a></li>
-      <li><a href="#utf-16" id="markdown-toc-utf-16">UTF-16</a></li>
-      <li><a href="#unicode-scalar-representationunicode" id="markdown-toc-unicode-scalar-representationunicode">Unicode Scalar Representation：Unicode标量表示</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Strings and Characters ：字符和字符串</strong></p>
-
-<ul>
-  <li>Swift的String与OC中的NSString可以进行无缝桥接；</li>
-  <li>Swift的字符串都是由独立编码的Unicode字符组成；</li>
-  <li>Swift的字符串可以使用+进行连接；</li>
-  <li>…</li>
-</ul>
-
-<h3 id="unicode">Unicode</h3>
-
-<p>Unicode是一套国际文本的编码标准。其中的每一个字符都可以被解释为一个或多个Unicode标量。字符的Unicode标量是一个唯一的21位数字。</p>
-
-<p>例如：U+0061表示小写的拉丁字母A（”a”），或U+1F425表示小鸡表情（”🐥”）。</p>
-
-<p>特殊字符：</p>
-
-<ul>
-  <li>转义特殊字符\0（空字符）， \（反斜杠）， \t（水平制表）， \n（换行）， \r（回车），"（双引号）和'（单引号）</li>
-  <li>任意Unicode标量，都可写成\u{Ñ}，其中Ñ是用一个值等于一个有效的Unicode代码点的1-8位十六进制数</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">wiseWords</span> <span class="o">=</span> <span class="s">"</span><span class="se">\"</span><span class="s">Imagination is more important than knowledge</span><span class="se">\"</span><span class="s"> - Einstein"</span>
-<span class="c1">// "Imagination is more important than knowledge" - Einstein</span>
-<span class="k">let</span> <span class="nv">dollarSign</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{0061}</span><span class="s">"</span>        <span class="c1">// a,  Unicode scalar U+0061</span>
-<span class="k">let</span> <span class="nv">blackHeart</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{2665}</span><span class="s">"</span>      <span class="c1">// ♥,  Unicode scalar U+2665</span>
-<span class="k">let</span> <span class="nv">sparklingHeart</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1F496}</span><span class="s">"</span> <span class="c1">// 💖, Unicode scalar U+1F496</span>
-</code></pre>
-</div>
-
-<p>其他诸如：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">eAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{E9}</span><span class="s">"</span>                         <span class="c1">// é</span>
-<span class="k">let</span> <span class="nv">combinedEAcute</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{65}\u{301}</span><span class="s">"</span>          <span class="c1">// e followed by ́</span>
-<span class="k">let</span> <span class="nv">precomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{D55C}</span><span class="s">"</span>                  <span class="c1">// 한</span>
-<span class="k">let</span> <span class="nv">decomposed</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1112}\u{1161}\u{11AB}</span><span class="s">"</span>   <span class="c1">// ᄒ, ᅡ, ᆫ</span>
-<span class="k">let</span> <span class="nv">regionalIndicatorForUS</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{1F1FA}\u{1F1F8}</span><span class="s">"</span> <span class="c1">//   🇺🇸</span>
-</code></pre>
-</div>
-
-<h3 id="string-literals">String Literals：字面字符串</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift会自动推断someString为String类型。</span>
-<span class="k">let</span> <span class="nv">someString</span> <span class="o">=</span> <span class="s">"Some string literal value"</span>
-</code></pre>
-</div>
-
-<h3 id="initializing-an-empty-string">Initializing an Empty String:初始化空串</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">emptyString</span> <span class="o">=</span> <span class="s">""</span>               <span class="c1">// empty string literal</span>
-<span class="k">var</span> <span class="nv">anotherEmptyString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">()</span>  <span class="c1">// initializer syntax</span>
-<span class="c1">// .isEmpty 属性</span>
-<span class="k">if</span> <span class="n">emptyString</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Nothing to see here"</span><span class="p">)</span>
-<span class="p">}</span>
-
-</code></pre>
-</div>
-
-<h3 id="string-mutability">String Mutability：可变字符串</h3>
-<p>在OC中，是否可变是通过NSMutableString类来决定的，但是在此，仅仅是通过定义来决定: var or let</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">variableString</span> <span class="o">=</span> <span class="s">"Horse"</span>
-<span class="n">variableString</span> <span class="o">+=</span> <span class="s">" and carriage"</span>
-</code></pre>
-</div>
-
-<h3 id="strings-are-value-typesstring">Strings Are Value Types：String是值类型</h3>
-
-<p>1、Swift的String是值类型。Swift的String进行赋值或者在函数入参都会进行值拷贝,使用的是副本而不是传递指针。</p>
-
-<p>2、Cocoa中的NSString作为参数传递给函数时，传递的其实是他的指针。除非手动copy，否则不会创建副本操作。</p>
-
-<h3 id="working-with-characters">Working with Characters:使用字符</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="s">"Dog!🐶"</span><span class="o">.</span><span class="n">characters</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// D</span>
-<span class="c1">// o</span>
-<span class="c1">// g</span>
-<span class="c1">// !</span>
-<span class="c1">// 🐶</span>
-
-<span class="k">let</span> <span class="nv">catCharacters</span><span class="p">:</span> <span class="p">[</span><span class="kt">Character</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"C"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"!"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">catString</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="n">catCharacters</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">catString</span><span class="p">)</span>
-<span class="c1">// Prints "Cat!🐱"</span>
-</code></pre>
-</div>
-
-<h3 id="concatenating-strings-and-characters">Concatenating Strings and Characters：连接字符和字符串</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">instruction</span> <span class="o">=</span> <span class="s">"look over"</span>
-<span class="n">instruction</span> <span class="o">+=</span> <span class="n">string2</span>
-
-<span class="k">let</span> <span class="nv">exclamationMark</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"!"</span>
-<span class="n">welcome</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">exclamationMark</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<h3 id="string-interpolation">String Interpolation：字符串插值</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">multiplier</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="k">let</span> <span class="nv">message</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">multiplier</span><span class="se">)</span><span class="s"> times 2.5 is </span><span class="se">\(</span><span class="kt">Double</span><span class="p">(</span><span class="n">multiplier</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.5</span><span class="se">)</span><span class="s">"</span>
-<span class="c1">// message is "3 times 2.5 is 7.5"</span>
-</code></pre>
-</div>
-
-<p>注意：插值字符串中的括号中的表达式:不能包含在反斜杠\、回车或换行</p>
-
-<h3 id="counting-characters">Counting Characters：字符计数</h3>
-
-<p>.characters.count 计数字符数量；countElements()弃用。</p>
-
-<p>需要注意的是：Unicode字符的不同表达方式可能需要不同数量的内存空间来存储。所以Swift中字符在一个字符串中并不一定占用相同的内存空间。</p>
-
-<p>如下：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">word</span> <span class="o">=</span> <span class="s">"cafe"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
-
-<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{301}</span><span class="s">"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "4"</span>
-
-<span class="n">word</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\u{1F496}</span><span class="s">"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">word</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="c1">// Prints "5"</span>
-
-</code></pre>
-</div>
-
-<h3 id="accessing-and-modifying-a-string">Accessing and Modifying a String：访问修改字符串</h3>
-
-<h5 id="section">索引访问</h5>
-
-<p>String值具有相关联的索引类型,String.Index 索引对应每一个位置的字符。
-方法如下：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
-    <span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Index</span> <span class="o">=</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CharacterView</span><span class="o">.</span><span class="kt">Index</span>
-    <span class="kd">public</span> <span class="k">var</span> <span class="nv">startIndex</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
-    <span class="kd">public</span> <span class="k">var</span> <span class="nv">endIndex</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
-    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">after</span> <span class="nv">i</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span>
-    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">before</span> <span class="nv">i</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span>
-<span class="c1">// 从起始位置：String.Index算起，第String.IndexDistance个位置</span>
-    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">_</span> <span class="nv">i</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="p">,</span> <span class="n">offsetBy</span> <span class="nv">n</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">IndexDistance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span>
-
-    <span class="k">let</span> <span class="nv">s</span> <span class="o">=</span> <span class="s">"Swift"</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">startIndex</span> <span class="c1">// 0</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">endIndex</span> <span class="c1">// 5</span>
-    <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">startIndex</span><span class="p">)</span> <span class="c1">// 1</span>
-    <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// Error</span>
-    <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">startIndex</span><span class="p">)</span> <span class="c1">// Error</span>
-    <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// 4</span>
-    <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">endIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1">//从最后向前 -2的位置 3</span>
-
-    <span class="k">let</span> <span class="nv">i</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="c1">// Prints "t"</span>
-</code></pre>
-</div>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">greeting</span> <span class="o">=</span> <span class="s">"Guten Tag!"</span>
-<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">]</span>
-<span class="c1">// G</span>
-<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)]</span>
-<span class="c1">// !</span>
-<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">)]</span>
-<span class="c1">// u</span>
-<span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">greeting</span><span class="o">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-<span class="c1">// t</span>
-<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">greeting</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">indices</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">greeting</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="se">)</span><span class="s"> "</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "G u t e n   T a g ! "</span>
-
-<span class="c1">// 注意：防止索引溢出String的长度</span>
-<span class="n">greeting</span><span class="p">[</span><span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">]</span> <span class="c1">// 运行时Error</span>
-<span class="n">greeting</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">after</span><span class="p">:</span> <span class="n">greeting</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// 运行时Error</span>
-</code></pre>
-</div>
-
-<h5 id="inserting-and-removing">Inserting and Removing：插入取出</h5>
-
-<ul>
-  <li>插入字符：insert(_:at:)</li>
-  <li>插入字符串：insert(contentsOf:at:)</li>
-  <li>移除字符：remove(at:)</li>
-  <li>移除字符串：removeSubrange(_:)</li>
-  <li>拼接字符串：append(_ c: Character)、append(other: String)</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">welcome</span> <span class="o">=</span> <span class="s">"hello"</span>
-<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"!"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">)</span> <span class="c1">// "hello!"</span>
-<span class="n">welcome</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span><span class="s">" there"</span><span class="o">.</span><span class="n">characters</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there!"</span>
-<span class="n">welcome</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="nv">before</span><span class="p">:</span> <span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">))</span> <span class="c1">// "hello there"</span>
-<span class="k">let</span> <span class="nv">range</span> <span class="o">=</span> <span class="n">welcome</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">..&lt;</span><span class="n">welcome</span><span class="o">.</span><span class="n">endIndex</span>
-<span class="n">welcome</span><span class="o">.</span><span class="nf">removeSubrange</span><span class="p">(</span><span class="n">range</span><span class="p">)</span> <span class="c1">// "hello"</span>
-
-<span class="k">var</span> <span class="nv">jj</span> <span class="o">=</span> <span class="s">"1"</span>
-<span class="n">jj</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"_+🐂"</span><span class="p">)</span> <span class="c1">// "1_+🐂"</span>
-<span class="n">jj</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"s"</span><span class="p">)</span> <span class="c1">// "1_+🐂s"</span>
-</code></pre>
-</div>
-
-<h3 id="comparing-strings">Comparing Strings：比较字符串</h3>
-
-<ul>
-  <li>Swift 提供了三种方式来比较字符串的值：字符串相等、前缀相等和后缀相等</li>
-  <li>Swift 中字符串的比较不区分语言环境</li>
-</ul>
-
-<p>字符串相等：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">quotation</span>     <span class="o">=</span> <span class="s">"We're a lot alike, you and I."</span>
-<span class="k">let</span> <span class="nv">sameQuotation</span> <span class="o">=</span> <span class="s">"We're a lot alike, you and I."</span>
-<span class="k">if</span> <span class="n">quotation</span> <span class="o">==</span> <span class="n">sameQuotation</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"These two strings are considered equal"</span><span class="p">)</span> <span class="c1">// 会打印</span>
-<span class="p">}</span>
-
-<span class="c1">// 2、相等会涉及到 Unicode标量的问题：</span>
-
-<span class="c1">// 比如：</span>
-<span class="k">let</span> <span class="nv">eAcuteQuestion</span> <span class="o">=</span> <span class="s">"Voulez-vous un caf</span><span class="se">\u{E9}</span><span class="s">?"</span>
-<span class="k">let</span> <span class="nv">combinedEAcuteQuestion</span> <span class="o">=</span> <span class="s">"Voulez-vous un caf</span><span class="se">\u{65}\u{301}</span><span class="s">?"</span>
-<span class="k">if</span> <span class="n">eAcuteQuestion</span> <span class="o">==</span> <span class="n">combinedEAcuteQuestion</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"These two strings are considered equal"</span><span class="p">)</span> <span class="c1">// 会打印</span>
-<span class="p">}</span>
-<span class="c1">// 又例如：</span>
-<span class="k">let</span> <span class="nv">latinCapitalLetterA</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{41}</span><span class="s">"</span>
-<span class="k">let</span> <span class="nv">cyrillicCapitalLetterA</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"</span><span class="se">\u{0410}</span><span class="s">"</span>
-<span class="k">if</span> <span class="n">latinCapitalLetterA</span> <span class="o">!=</span> <span class="n">cyrillicCapitalLetterA</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"These two characters are not equivalent."</span><span class="p">)</span> <span class="c1">// 会打印</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>前后缀相等：</p>
-
-<p>通过调用字符串的hasPrefix/hasSuffix方法来检查字符串是否拥有特定前缀/后缀。 两个方法均需要以字符串作为参数传入并传出Boolean值。 两个方法均执行基本字符串和前缀/后缀字符串之间逐个字符的比较操作</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">xz</span> <span class="o">=</span> <span class="s">"qqqq-2222-++++"</span>
-<span class="k">if</span> <span class="n">xz</span><span class="o">.</span><span class="nf">hasPrefix</span><span class="p">(</span><span class="s">"qqq"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"qqq"</span><span class="p">)</span> <span class="c1">// qqq</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="n">xz</span><span class="o">.</span><span class="nf">hasSuffix</span><span class="p">(</span><span class="s">"-+"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"YES"</span><span class="p">)</span>
-<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"NO"</span><span class="p">)</span> <span class="c1">// NO</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="section-1">大小写</h3>
-
-<p>使用方法：</p>
-<ul>
-  <li>.uppercased() 弃用.uppercaseString</li>
-  <li>.lowercased() 弃用.lowercaseString</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">normal</span> <span class="o">=</span> <span class="s">"Could you help me, please?"</span>
-<span class="k">let</span> <span class="nv">shouty</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="nf">uppercased</span><span class="p">()</span>
-<span class="c1">// shouty 值为 "COULD YOU HELP ME, PLEASE?"</span>
-<span class="k">let</span> <span class="nv">whispered</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="nf">lowercased</span><span class="p">()</span>
-<span class="c1">// whispered 值为 "could you help me, please?"</span>
-</code></pre>
-</div>
-
-<h3 id="unicode-representations-of-stringsunicode">Unicode Representations of Strings：字符串的Unicode交涉</h3>
-
-<ul>
-  <li>一个Unicode字符串被写入文本或进行储存时，会使用Unicode标量进行编码；</li>
-  <li>每种编码形式都有小的编码单元组成；</li>
-  <li>编码形式包括UTF-8编码的形式、UTF-16编码形式和UTF-32的编码形式；</li>
-  <li>编码单元是各个编码形式中的单个单元：UTF-8编码串为8位码单位、UTF-16编码串为16位代码单位、UTF-32编码串为32位代码单位。</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 它是由D，o，g，‼，以及🐶字符（DOG FACE或Unicode标U+1F436）组成</span>
-<span class="k">let</span> <span class="nv">dogString</span> <span class="o">=</span> <span class="s">"Dog‼🐶"</span>
-</code></pre>
-</div>
-
-<h5 id="utf-8">UTF-8</h5>
-
-<p>可以通过遍历字符串的utf8属性来访问它的UTF-8表示。 其为UTF8View类型的属性，UTF8View是无符号8位 (UInt8) 值的集合，每一个UInt8值都是一个字符的 UTF-8 表示：
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png" alt="" /></p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">dogString</span> <span class="o">=</span> <span class="s">"Dog‼🐶"</span>
-<span class="k">for</span> <span class="n">codeUnit</span> <span class="k">in</span> <span class="n">dogString</span><span class="o">.</span><span class="n">utf8</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">codeUnit</span><span class="se">)</span><span class="s"> "</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
-<span class="c1">// 68 111 103 226 128 188 240 159 144 182</span>
-</code></pre>
-</div>
-<p>上面的例子中，前四个10进制代码单元值 (68, 111, 103, 33) 代表了字符D o g和!，它们的 UTF-8 表示与 ASCII 表示相同。 后四个代码单元值 (240, 159, 144, 182) 是DOG FACE的4字节 UTF-8 表示。</p>
-
-<h5 id="utf-16">UTF-16</h5>
-
-<p>可以通过遍历字符串的utf16属性来访问它的UTF-16表示。 其为UTF16View类型的属性，UTF16View是无符号16位(UInt16) 值的集合，每一个UInt16都是一个字符的 UTF-16 表示：
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png" alt="" /></p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">for</span> <span class="n">codeUnit</span> <span class="k">in</span> <span class="n">dogString</span><span class="o">.</span><span class="n">utf16</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">codeUnit</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-    <span class="c1">// 68 111 103 33 55357 56374</span>
-</code></pre>
-</div>
-<p>同样，前四个代码单元值(68, 111, 103, 33)代表了字符D o g和!，它们的UTF-16代码单元和 UTF-8 完全相同。
-第五和第六个代码单元值(55357 和 56374)是DOG FACE字符的UTF-16表示。 第一个值为U+D83D(十进制值为 55357)，第二个值为U+DC36(十进制值为 56374)。</p>
-
-<h5 id="unicode-scalar-representationunicode">Unicode Scalar Representation：Unicode标量表示</h5>
-
-<p>可以通过遍历字符串的unicodeScalars属性来访问它的Unicode标量表示。其为UnicodeScalarView类型的属性，UnicodeScalarView是UnicodeScalar的集合。</p>
-
-<p>每一个UnicodeScalar拥有一个值属性，可以返回对应的21位数值，用UInt32来表示。
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png" alt="" /></p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">scalar</span> <span class="k">in</span> <span class="n">dogString</span><span class="o">.</span><span class="n">unicodeScalars</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">scalar</span><span class="o">.</span><span class="n">value</span><span class="se">)</span><span class="s"> "</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
-<span class="c1">// Prints "68 111 103 8252 128054 "</span>
-</code></pre>
-</div>
-<p>同样，前四个代码单元值 (68, 111, 103, 33) 代表了字符D o g和!。 第五位数值，128054，是一个十六进制1F436的十进制表示。 其等同于DOG FACE的Unicode 标量 U+1F436。</p>
-
-<p>作为查询字符值属性的一种替代方法，每个UnicodeScalar值也可以用来构建一个新的字符串值，比如在字符串插值中使用：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">scalar</span> <span class="k">in</span> <span class="n">dogString</span><span class="o">.</span><span class="n">unicodeScalars</span> <span class="p">{</span>
-    <span class="nf">println</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">scalar</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// D</span>
-<span class="c1">// o</span>
-<span class="c1">// g</span>
-<span class="c1">// !</span>
-<span class="c1">// 🐶</span>
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/26/swift_III_Strings-and-Characters/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/22/swift_II_Basic-Operators/">Swift_II_基本运算符</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-22
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">概述</a></li>
-  <li><a href="#terminology" id="markdown-toc-terminology">Terminology：术语</a></li>
-  <li><a href="#assignment-operator" id="markdown-toc-assignment-operator">Assignment Operator：赋值运算符</a></li>
-  <li><a href="#arithmetic-operators" id="markdown-toc-arithmetic-operators">Arithmetic Operators：算术运算符</a></li>
-</ul>
-
-<h3 id="section">概述</h3>
-<p>Swift 支持大多数的标准C语言的运算符，并且改进了不少特性来减少常见的编码错误。例如：</p>
-<ul>
-  <li>赋值符 = 不返回值。防止与==弄混；</li>
-  <li>算术运算符：+-*/%会检测防止值溢出；</li>
-  <li>以及C语言没有的表达:（ a..&lt; b和a…b）</li>
-</ul>
-
-<p><strong>Swift3更新：移除了自增自减(++、–)等运算。详见下文：</strong></p>
-
-<h3 id="terminology">Terminology：术语</h3>
-
-<p>运算符有一元、二元和三元运算符：</p>
-
-<ul>
-  <li>一元运算符对单一操作对象操作（如-a）。前置运算符需紧排操作对象之前（如!b），后置运算符需紧跟操作对象之后（如i++）</li>
-  <li>二元运算符操作两个操作对象（如2 + 3）</li>
-  <li>三元运算符操作三个操作对象，和C语言一样，Swift只有一个，就是三目运算符（a ? b : c）</li>
-  <li>注意：受运算符影响的值叫操作数，在表达式1 + 2中，加号+是二元运算符，它的两个操作数是值1和2。</li>
-</ul>
-
-<h3 id="assignment-operator">Assignment Operator：赋值运算符</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 赋值运算（a = b），表示用b的值来初始化或更新a的值：</span>
-<span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">var</span> <span class="nv">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
-
-<span class="c1">// 用元组中：</span>
-<span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="c1">// x is equal to 1, and y is equal to 2</span>
-
-<span class="c1">// 无返回值：</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="p">{</span>
-    <span class="c1">// 这个特性使你无法把（==）错写成（=），所以：if x = y是错误代码</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="arithmetic-operators">Arithmetic Operators：算术运算符</h3>
-
-<p><strong>注意：</strong></p>
-<ul>
-  <li>Swift3 移除了++、–自增自减运算；</li>
-  <li>Swift3 不支持浮点的求余运算；</li>
-  <li>
-    <p>与C语言和OC不同的是，Swift 默认情况下不允许在数值运算中出现溢出情况。但是你可以使用 Swift 的溢出运算符来实现溢出运算（如a &amp;+ b）</p>
-  </li>
-  <li>求和：+ ，也用于string的拼接：<code class="highlighter-rouge">"hello, " + "world"  // equals "hello, world";</code></li>
-  <li>求差：- ;</li>
-  <li>求积：* ;</li>
-  <li>求商：/ ，9/5=1;</li>
-  <li>求余：% ，9%5=4;【非模运算！】</li>
-  <li>元减运算符:- ，-3(负数3);</li>
-  <li>复合运算符：+= -= *= /= %=  ， var a = 1;a += 2;</li>
-  <li>比较运算符：== != &gt; &lt; &gt;= &lt;= ，返回BOOL值；</li>
-  <li>恒等: === 恒等于、 !===不恒等于，用于判断是否引用同一对象；</li>
-  <li>三目运算符：条件?答案1:答案2  条件成立则返回答案1，否则答案2</li>
-  <li>空合运算符：(a ?? b):是对可选类型a的判空处理，如果a包含数值就解析返回值，否则返回b。
-等价于 <code class="highlighter-rouge">a != nil ? a! : b</code> :可选类型a是空就返回b，不是空就强制解析返回a!空合就是这段代码的简短表达</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">defaultColorName</span> <span class="o">=</span> <span class="s">"red"</span>
-<span class="k">var</span> <span class="nv">userDefinedColorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>   <span class="c1">// defaults to nil</span>
-<span class="k">var</span> <span class="nv">colorNameToUse</span> <span class="o">=</span> <span class="n">userDefinedColorName</span> <span class="p">??</span> <span class="n">defaultColorName</span>
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/22/swift_II_Basic-Operators/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/20/swift_I_guide/">Swift_I_入门体验</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift" title="Category: Swift" rel="category">Swift</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift" title="Tag: Swift" rel="tag">Swift</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前言</a>    <ul>
-      <li><a href="#iconstants-and-variables" id="markdown-toc-iconstants-and-variables">I.Constants and Variables:变常量</a>        <ul>
-          <li><a href="#declaring-constants-and-variables" id="markdown-toc-declaring-constants-and-variables">1.Declaring Constants and Variables:声明</a></li>
-          <li><a href="#naming-constants-and-variables" id="markdown-toc-naming-constants-and-variables">2.Naming Constants and Variables：命名</a></li>
-          <li><a href="#printing-constants-and-variables" id="markdown-toc-printing-constants-and-variables">3.Printing Constants and Variables：打印</a></li>
-        </ul>
-      </li>
-      <li><a href="#comments" id="markdown-toc-comments">Comments：注释</a></li>
-      <li><a href="#semicolons" id="markdown-toc-semicolons">Semicolons：分号</a></li>
-      <li><a href="#integers" id="markdown-toc-integers">Integers</a>        <ul>
-          <li><a href="#integer-bounds" id="markdown-toc-integer-bounds">1.Integer Bounds：边界</a></li>
-          <li><a href="#int" id="markdown-toc-int">2.Int</a></li>
-          <li><a href="#uint" id="markdown-toc-uint">3.UInt</a></li>
-        </ul>
-      </li>
-      <li><a href="#floating-point-numbers" id="markdown-toc-floating-point-numbers">Floating-Point Numbers</a></li>
-      <li><a href="#type-safety-and-type-inference" id="markdown-toc-type-safety-and-type-inference">Type Safety and Type Inference：类型安全</a></li>
-      <li><a href="#numeric-literals" id="markdown-toc-numeric-literals">Numeric Literals</a></li>
-      <li><a href="#numeric-type-conversion-" id="markdown-toc-numeric-type-conversion-">Numeric Type Conversion 数字类型转换</a>        <ul>
-          <li><a href="#integer-conversion" id="markdown-toc-integer-conversion">Integer Conversion:整型转换</a></li>
-          <li><a href="#integer-and-floating-point-conversion" id="markdown-toc-integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</a></li>
-        </ul>
-      </li>
-      <li><a href="#type-aliases" id="markdown-toc-type-aliases">Type Aliases：类型别名</a></li>
-      <li><a href="#booleans" id="markdown-toc-booleans">Booleans</a></li>
-      <li><a href="#tuples" id="markdown-toc-tuples">Tuples：元组</a></li>
-      <li><a href="#optionals" id="markdown-toc-optionals">Optionals：可选类型</a>        <ul>
-          <li><a href="#nil" id="markdown-toc-nil">nil</a></li>
-          <li><a href="#if-statements-and-forced-unwrappingif" id="markdown-toc-if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</a></li>
-          <li><a href="#optional-binding" id="markdown-toc-optional-binding">Optional Binding：可选绑定</a></li>
-          <li><a href="#implicitly-unwrapped-optionals" id="markdown-toc-implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</a></li>
-        </ul>
-      </li>
-      <li><a href="#error-handling" id="markdown-toc-error-handling">Error Handling：错误处理</a></li>
-      <li><a href="#assertions" id="markdown-toc-assertions">Assertions：断言</a>        <ul>
-          <li><a href="#debugging-with-assertions" id="markdown-toc-debugging-with-assertions">Debugging with Assertions：使用断言调试</a></li>
-          <li><a href="#when-to-use-assertions" id="markdown-toc-when-to-use-assertions">When to Use Assertions：何时使用断言</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="section">前言</h2>
-
-<ul>
-  <li>必备武器：playground+官方文档；</li>
-  <li>系列章节我会以中英结合的形式展现，不要问为什么；</li>
-  <li>本笔记针对有一定swift或OC基础的；</li>
-  <li>后续相关的文章都基于<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html">The Swift Programming Language (Swift 3.0.1)</a> ，基本上是围绕文档翻译一遍。</li>
-</ul>
-
-<p>先热热身：</p>
-<ul>
-  <li>Swift包含C和OC的所有基础数据类型，再次基础上还引入了OC没有的高级数据类型；</li>
-  <li>constants ：Swift中的常量比C中的更加强大，使用更安全；</li>
-  <li>tuples ：Swift亦引入了OC没有的高级数据类型，元组；</li>
-  <li>optional types：处理未知类型，比nil更加安全；</li>
-  <li>type safety：Swift是类型安全的，代码里值的类型非常明确：需要String类型，你就不能错误地传递Int；</li>
-</ul>
-
-<h3 id="iconstants-and-variables">I.Constants and Variables:变常量</h3>
-
-<h5 id="declaring-constants-and-variables">1.Declaring Constants and Variables:声明</h5>
-<p>let常量不用多说，var变量的需要注意： type是如何定义的。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// type声明的方式1：初始值推断。</span>
-<span class="k">let</span> <span class="nv">maximumNumberOfLoginAttempts</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">var</span> <span class="nv">currentLoginAttempt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-<span class="c1">// 方式2：Type Annotations 类型标注</span>
-<span class="k">var</span> <span class="nv">welcomeMessage</span><span class="p">:</span> <span class="kt">String</span> <span class="c1">// 定义一个String类型的变量:welcomeMessage</span>
-<span class="n">welcomeMessage</span> <span class="o">=</span> <span class="s">"Hello"</span> 
-<span class="k">var</span> <span class="nv">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span> <span class="c1">// 定义多个同类型变量</span>
-</code></pre>
-</div>
-
-<h5 id="naming-constants-and-variables">2.Naming Constants and Variables：命名</h5>
-
-<p>常量和变量名几乎可以包含任何字符，包括Unicode字符：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、</span>
-<span class="k">let</span> <span class="nv">π</span> <span class="o">=</span> <span class="mf">3.14159</span>
-<span class="k">let</span> <span class="nv">你好</span> <span class="o">=</span> <span class="s">"你好世界"</span>
-<span class="k">let</span> <span class="nv">🐶🐮</span> <span class="o">=</span> <span class="s">"dogcow"</span>
-
-<span class="c1">// 2、</span>
-<span class="cm">/* 
-注意：常量和变量的名字不能包含空格、数学符号、箭头、私用的（非法的）Unicode代码点、连线与制表符。也不能以数字开头。
-*/</span>
-
-<span class="c1">// 3、</span>
-<span class="cm">/*
-如果使用与Swift保留关键字相同的名称作为常量或者变量名，可以使用反引号（`）将关键字包围的方式将其作为名字使用。例子如下：  尽量还是避免使用关键字
-*/</span>
-<span class="kd">let</span> <span class="err">`</span><span class="kd">let</span><span class="err">`</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="nf">print</span><span class="p">(</span><span class="err">`</span><span class="kd">let</span><span class="err">`</span><span class="p">)</span>
-
-<span class="c1">// 4、常量的值一旦设定后就不能更改.如果尝试去更改，编译器会报错</span>
-</code></pre>
-</div>
-
-<h5 id="printing-constants-and-variables">3.Printing Constants and Variables：打印</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 默认情况下，print会加一个换行符来结束当前行</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">)</span>                 <span class="c1">// Prints "Bonjour!\n" </span>
-<span class="c1">// 可以给terminator赋一个空字符串，防止换行</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span> <span class="c1">// Prints "Bonjour!"</span>
-
-<span class="cm">/*
-print(_:separator:terminator)函数是一个打印一个或多个值到相应输出区域的全局的函数。separator 和 terminator 参数有默认值，一般可以忽略之
-*/</span>
-
-<span class="c1">// Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，并且去提示Swift 用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义： </span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The current value of friendlyWelcome is </span><span class="se">\(</span><span class="n">friendlyWelcome</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The current value of friendlyWelcome is Bonjour!"</span>
-
-</code></pre>
-</div>
-
-<h3 id="comments">Comments：注释</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
-<span class="c1">// This is a comment.</span>
-
-<span class="cm">/* This is also a comment
- but is written over multiple lines. */</span>
-
-<span class="cm">/* 嵌套注释: This is the start of the first multiline comment.
- /* This is the second, nested multiline comment. */
- This is the end of the first multiline comment. */</span>
-
-</code></pre>
-</div>
-
-<h3 id="semicolons">Semicolons：分号</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 单行代码可以不用注释，</span>
-<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span>
-<span class="k">let</span> <span class="nv">dog</span> <span class="o">=</span> <span class="s">"🐶"</span>
-<span class="c1">// 多行代码合并到一行，需要分号</span>
-<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span><span class="p">;</span> <span class="nf">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="c1">// Prints "🐱"</span>
-
-
-</code></pre>
-</div>
-
-<h3 id="integers">Integers</h3>
-<p>Swift提供的有符号和无符号整数由8,16,32和64位组成。8位无符号整数类型是UInt8,32位有符号整数的类型是Int32。</p>
-
-<h5 id="integer-bounds">1.Integer Bounds：边界</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">minValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">min</span>  <span class="c1">// minValue is equal to 0, and is of type UInt8</span>
-<span class="k">let</span> <span class="nv">maxValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">max</span>  <span class="c1">// maxValue is equal to 255, and is of type UInt8</span>
-</code></pre>
-</div>
-
-<h5 id="int">2.Int</h5>
-<p>一般来说，你不需要给整数指定一个特定的长度,Swift会自动处理：</p>
-<ul>
-  <li>在32位平台上，Int和Int32长度相同。</li>
-  <li>在64位平台上，Int和Int64长度相同。</li>
-  <li>32位平台上， Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647。所以一般情况不用担心大小的问题。</li>
-</ul>
-
-<h5 id="uint">3.UInt</h5>
-<p>UInt长度与当前平台的原生字长相同：</p>
-<ul>
-  <li>在32位平台上，UInt和UInt32长度相同。</li>
-  <li>在64位平台上，UInt和UInt64长度相同。</li>
-</ul>
-
-<p>注意：尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换。</p>
-
-<h3 id="floating-point-numbers">Floating-Point Numbers</h3>
-
-<p>浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
-<ul>
-  <li>Double表示64位浮点数。存储很大或者很高精度的浮点数;</li>
-  <li>Float表示32位浮点数。精度要求不高可使用此类型;</li>
-</ul>
-
-<p>注意： Double精确度很高，可以精确到15位小数位数，而Float只能精确到6位小数位数。Swift在推断浮点型数字时，优先使用Double类型。</p>
-
-<h3 id="type-safety-and-type-inference">Type Safety and Type Inference：类型安全</h3>
-
-<p>Swift是一个类型安全的语言。并且可以进行类型推断。</p>
-
-<ul>
-  <li>1、编译代码的时候它执行类型检查，并会将任何类型不匹配类型标注为错误；</li>
-  <li>2、如果没有给值指定一个类型，Swift会通过类型推断去推断出相对应的类型；</li>
-  <li>3、由于有类型推断，Swift相对于C语言和Objective-C来说，只需要更少的类型声明。
-代码如下：
-    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">meaningOfLife</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1">// meaningOfLife is inferred to be of type Int</span>
-<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>             <span class="c1">// pi is inferred to be of type Double</span>
-<span class="k">let</span> <span class="nv">anotherPi</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.14159</span>  <span class="c1">// anotherPi is also inferred to be of type Double。Swift优先推断Double</span>
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-<h3 id="numeric-literals">Numeric Literals</h3>
-
-<p>1、整数常量可以写为：</p>
-<ul>
-  <li>一个十进制数，无前缀</li>
-  <li>一个二进制数字，用0b前缀</li>
-  <li>一个八进制数，有0o前缀</li>
-  <li>一个十六进制数字，用0x前缀</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalInteger</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="k">let</span> <span class="nv">binaryInteger</span> <span class="o">=</span> <span class="mb">0b10001</span>       <span class="c1">// 17 in binary notation</span>
-<span class="k">let</span> <span class="nv">octalInteger</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o21</span>           <span class="c1">// 17 in octal notation</span>
-<span class="k">let</span> <span class="nv">hexadecimalInteger</span> <span class="o">=</span> <span class="mh">0x11</span>     <span class="c1">// 17 in hexadecimal notation</span>
-</code></pre>
-</div>
-
-<p>2、Numeric Literals还有一个可选的指数(exponent),十进制用e/E指定，十六进制用p/P指定:</p>
-
-<ul>
-  <li>1.25e2 表示1.25 × 10^2，等于125.0</li>
-  <li>
-    <p>1.25e-2 表示1.25 × 10^-2，等于0.0125</p>
-  </li>
-  <li>0xFp2 表示15 × 2^2，等于60.0</li>
-  <li>0xFp-2 表示15 × 2^-2，等于3.75</li>
-</ul>
-
-<p>如下都表示十进制12.1875:</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalDouble</span> <span class="o">=</span> <span class="mf">12.1875</span>
-<span class="k">let</span> <span class="nv">exponentDouble</span> <span class="o">=</span> <span class="mf">1.21875e1</span>
-<span class="k">let</span> <span class="nv">hexadecimalDouble</span> <span class="o">=</span> <span class="mh">0xC</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span>
-</code></pre>
-</div>
-
-<p>3、Numeric Literals可以包含额外的格式，使它们更容易阅读。这两个整数和浮点数可以用额外的零填充并且可以包含下划线，以帮助可读性。无论何种类型的格式不会影响其基本数值：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">paddedDouble</span> <span class="o">=</span> <span class="mf">000123.456</span>
-<span class="k">let</span> <span class="nv">oneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span>
-<span class="k">let</span> <span class="nv">justOverOneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="o">.</span><span class="mo">000_000_1</span>
-</code></pre>
-</div>
-
-<h3 id="numeric-type-conversion-">Numeric Type Conversion 数字类型转换</h3>
-
-<p>一句话：一般情况下，整数型常变量都建议使用Int类型。</p>
-
-<h5 id="integer-conversion">Integer Conversion:整型转换</h5>
-
-<ul>
-  <li>SomeType(ofInitialValue)类型转换</li>
-  <li>基本运算符两侧的数字需要是同类型的，
-    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
-<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">let</span> <span class="nv">twoThousandAndOne</span> <span class="o">=</span> <span class="n">twoThousand</span> <span class="o">+</span> <span class="kt">UInt16</span><span class="p">(</span><span class="n">one</span><span class="p">)</span><span class="c1">// 不能直接相加，需要类型转换</span>
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-<h5 id="integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</h5>
-<p>必须显式指定类型，否则报错</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">three</span> <span class="o">=</span> <span class="mi">3</span> 
-<span class="k">let</span> <span class="nv">pointOneFourOneFiveNine</span> <span class="o">=</span> <span class="mf">0.14159</span>
-<span class="k">let</span> <span class="nv">papi</span> <span class="o">=</span>  <span class="n">three</span><span class="o">+</span><span class="n">pointOneFourOneFiveNine</span> <span class="c1">// 报错</span>
-<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">pointOneFourOneFiveNine</span> <span class="c1">// OK,is inferred to be of type Double</span>
-<span class="k">let</span> <span class="nv">integerPi</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
-<span class="c1">// integerPi equals 3, and is inferred to be of type Int</span>
-
-</code></pre>
-</div>
-
-<p><strong>注意：如下代码，如果数字没有被明确指定类型，那么他们的类型会在编译需要时被推测。</strong>
-<strong>但是如果已经显式之处了类型，必须先进行类型转换，才能够运算</strong></p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
-<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">let</span> <span class="nv">e1</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="mi">10</span> <span class="c1">// ok  类型会在编译需要时被推测</span>
-<span class="k">let</span> <span class="nv">e2</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="n">one</span> <span class="c1">// 报错</span>
-
-</code></pre>
-</div>
-
-<h3 id="type-aliases">Type Aliases：类型别名</h3>
-
-<p>自定义符合自己风格或者更有意义的名字：AudioSample代表UInt16</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">typealias</span> <span class="kt">AudioSample</span> <span class="o">=</span> <span class="kt">UInt16</span>
-<span class="k">var</span> <span class="nv">maxAmplitudeFound</span> <span class="o">=</span> <span class="kt">AudioSample</span><span class="o">.</span><span class="n">min</span>
-</code></pre>
-</div>
-
-<h3 id="booleans">Booleans</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">orangesAreOrange</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="k">let</span> <span class="nv">turnipsAreDelicious</span> <span class="o">=</span> <span class="kc">false</span>
-<span class="k">if</span> <span class="n">turnipsAreDelicious</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Mmm, tasty turnips!"</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Eww, turnips are horrible."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "Eww, turnips are horrible."</span>
-
-</code></pre>
-</div>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">i</span> <span class="p">{</span>
-    <span class="c1">// 报错而不会编译，因为在该使用BOOL的地方使用了非BOOL值</span>
-<span class="p">}</span>
-
-<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
-    <span class="c1">// compile successfully</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="tuples">Tuples：元组</h3>
-
-<p>把多个值符合组成一个复合值，其中类型没要求，是任意类型。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、http404Error的元组</span>
-<span class="k">let</span> <span class="nv">http404Error</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
-<span class="c1">// http404Error is of type (Int, String), and equals (404, "Not Found")</span>
-
-<span class="c1">// 2、元组的内容可以取出作为单独的常量和变量：</span>
-<span class="nf">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMessage</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status code is 404"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">statusMessage</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status message is Not Found"</span>
-
-<span class="c1">// 3、可以忽略不需要的元组值，通过使用下滑线_</span>
-<span class="nf">let</span> <span class="p">(</span><span class="n">justTheStatusCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">justTheStatusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status code is 404"</span>
-
-<span class="c1">// 4、使用索引访问元组</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status code is 404"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status message is Not Found"</span>
-
-<span class="c1">// 5、定义元组时可以分别命名各个元素</span>
-<span class="k">let</span> <span class="nv">http200Status</span> <span class="o">=</span> <span class="p">(</span><span class="nv">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"OK"</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status code is 200"</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The status message is OK"</span>
-
-</code></pre>
-</div>
-<p>注意：</p>
-<ul>
-  <li>元组在临时数据中非常有用，但不适合用于创建复杂的数据结构(使用类或者结构体等)。</li>
-  <li>将元组用作函数返回值是不错的选择。</li>
-</ul>
-
-<h3 id="optionals">Optionals：可选类型</h3>
-
-<p>在C或者OC中没有可选类型的概念，譬如下面的代码，可以看出其用处</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 将String转Int：</span>
-<span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
-<span class="k">let</span> <span class="nv">possibleNumber2</span> <span class="o">=</span> <span class="s">"www.3code.info"</span>
-<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">//被推测为类型 "Int?", or "optional Int"</span>
-<span class="k">let</span> <span class="nv">convertedNumber2</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber2</span><span class="p">)</span> <span class="c1">//不会报错的，是可选类型</span>
-</code></pre>
-</div>
-<p>那么convertedNumber的类型是：Int?,而不是Int，意即是不明确的。？表示可能是Int，也可能是其他类型宁，或者是不存的。</p>
-
-<h5 id="nil">nil</h5>
-<p>Swift中的nil和OC的不太一样，这里并不是指针，他是指某种类型的缺省值。任意类型都可以被设置为nil，而不仅仅是对象类型。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">serverResponseCode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">404</span>
-<span class="k">var</span> <span class="nv">serverResponseCode2</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">404</span>
- 
-<span class="n">serverResponseCode</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// OK</span>
-<span class="n">serverResponseCode2</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// 报错</span>
-
-<span class="k">var</span> <span class="nv">surveyAnswer</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
-<span class="c1">// 缺省的定义，value默认是nil</span>
-
-</code></pre>
-</div>
-<p>注意：nil是不能在不可选类型中使用的。</p>
-
-<h5 id="if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</h5>
-
-<p>强制解析:可以在可选类型后添加!来取出其中的数值，前提是存在数值。这就是强制解析。！表示我知道这个可选类型一定有数值，请使用这个数值。</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
-<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">// 可选类型</span>
-
-<span class="c1">// 可以通过if来判断上诉可选类型是否有值</span>
-<span class="k">if</span> <span class="n">convertedNumber</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="c1">// 通过!来取出可选类型的值。</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"convertedNumber has an integer value of </span><span class="se">\(</span><span class="n">convertedNumber</span><span class="o">!</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-    <span class="c1">// Prints "convertedNumber has an integer value of 123."</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>注意：只有在确定可选类型有值之后，才可以强制解析值，否则运行时会报错</p>
-
-<h5 id="optional-binding">Optional Binding：可选绑定</h5>
-
-<p>可选绑定用来判断可选类型是否包含值，如果包含就把值赋给临时常变量，可以用在if while 中，如下
-标准格式;</p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="kd">let</span> <span class="nx">constantName</span> <span class="o">=</span> <span class="nx">someOptional</span> <span class="p">{</span>
-    <span class="nx">statements</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>如下代码表示：如果可选类型possibleNumber(Int？)包含一个数值，那么就将其值赋给新建的常量actualNumber，</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">actualNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> has an integer value of </span><span class="se">\(</span><span class="n">actualNumber</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> could not be converted to an integer"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints ""123" has an integer value of 123"</span>
-</code></pre>
-</div>
-
-<p>如果一个可选绑定的值是nil或者BOOL计算结果是false。那么整个if的条件都是false的。如下：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">),</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">),</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">//【上边代码等价于下边代码】 Prints "4 &lt; 42 &lt; 100"</span>
-
-<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
-            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre>
-</div>
-
-<h5 id="implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</h5>
-<p>上边介绍的可选类型，可以通过if判断是否有值，然后强制解析取值，或者可选绑定取值。</p>
-
-<p>但也有一种情形:隐式可选类型，定义之后就一直是值的，需要将？改为！。其实隐式可选类型是普通的可选类型，但是可以被当做非可选类型来使用，并不需要每次都是用解析来取值。一般用于类的构造中。</p>
-
-<p>如下可以看出差异:隐式可选类型可以自动解析类型</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 可选类型</span>
-<span class="k">let</span> <span class="nv">possibleString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"An optional string."</span>
-<span class="k">let</span> <span class="nv">forcedString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">possibleString</span><span class="o">!</span> 
-
-
-<span class="c1">// 隐式可选类型</span>
-<span class="k">let</span> <span class="nv">assumedString</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">"An implicitly unwrapped optional string."</span>
-<span class="k">let</span> <span class="nv">implicitString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">assumedString</span>  
-<span class="c1">// 当做普通的可选类型进行判断：</span>
-<span class="k">if</span> <span class="n">assumedString</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">assumedString</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 可选绑定：</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">definiteString</span> <span class="o">=</span> <span class="n">assumedString</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">definiteString</span><span class="p">)</span>
-<span class="p">}</span>
-
-</code></pre>
-</div>
-
-<p>注意：</p>
-<ul>
-  <li>在隐式可选类型没有数据的时候尝试取值，会触发运行时错误。</li>
-  <li>如果一个变量可能变成nil的话，请不要使用隐式可选类型，要使用可选类型。</li>
-</ul>
-
-<h3 id="error-handling">Error Handling：错误处理</h3>
-
-<p>可以在函数声明中添加关键字：throws。那么当函数执行遇到错误时，会抛出一个错误。</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">canThrowAnError</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
-    <span class="c1">// this function may or may not throw an error</span>
-<span class="p">}</span>
-<span class="c1">// 如果出现错误，在下边会抛出</span>
-<span class="k">do</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="nf">canThrowAnError</span><span class="p">()</span>
-    <span class="c1">// no error was thrown</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
-    <span class="c1">// an error was thrown</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>如下细分了错误的情况，以及相应的措施：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">makeASandwich</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
-    <span class="c1">// ...</span>
-<span class="p">}</span>
- 
-<span class="k">do</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="nf">makeASandwich</span><span class="p">()</span>
-    <span class="nf">eatASandwich</span><span class="p">()</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="n">outOfCleanDishes</span> <span class="p">{</span>
-    <span class="nf">washDishes</span><span class="p">()</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="nf">missingIngredients</span><span class="p">(</span><span class="k">let</span> <span class="nv">ingredients</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">buyGroceries</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="assertions">Assertions：断言</h3>
-
-<p>可选类型可以判断值是否存在，处理缺省情况。然而当值缺省时，代码可能就没法继续了。这是需要在代码中植入断言，代码触发断言来结束运行。</p>
-
-<p>格式：assert(<em>:</em>:file:line:) 这是全局函数。</p>
-
-<h5 id="debugging-with-assertions">Debugging with Assertions：使用断言调试</h5>
-<p>在调试环境中的合适位置加入断言，将有助于代码调试。</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
-<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"A person's age cannot be less than zero"</span><span class="p">)</span>
-<span class="c1">// 或者如下：</span>
-<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>注意：当代码编译时，断言将会被禁用。</p>
-
-<h5 id="when-to-use-assertions">When to Use Assertions：何时使用断言</h5>
-
-<p>当条件可能是假，但是最终一定要保证为真，那么就得使用断言。如下情形：</p>
-<ul>
-  <li>断言是否”数组越界”;</li>
-  <li>断言给函数传递的值，是否合法；</li>
-  <li>可选类型是否为nil；</li>
-</ul>
-
-<p>注意：断言会终止程序运行。</p>
-
-<p>OK.以上是基础部分。花了我整整3.5h，由于速度比较快，不能保证准确度。后续将会加快进度，略去基础的细节，呈现实用的部分。</p>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/20/swift_I_guide/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#python" title="Category: python" rel="category">python</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#爬基金数据" title="Tag: 爬基金数据" rel="tag">爬基金数据</a>&nbsp;
-    
-        <a href="/tag/#脚本" title="Tag: 脚本" rel="tag">脚本</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#python" id="markdown-toc-python">1、python爬取原理及代码</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">1.1 引入需要的库</a></li>
-      <li><a href="#html" id="markdown-toc-html">1.2 获取html</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">1.3 获取内容</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">1.4 获取每条信息</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">1.5 写入文件</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">1.6 防止数据重复写入</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">1.7 按日期爬取数据</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">2、开机自动爬取数据的脚本</a></li>
-</ul>
-
-<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
-不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
-但是网站上也只展示在单个基金里，多基金对比就没
-成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
-
-<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
-
-<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
-，不论是pyCharm还是pip还是直接托安装包，
-后来改用excel，数据直接写入excel中。</p>
-
-<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
-
-<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
-代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
-
-<p>实际展示：</p>
-
-<p>控制台打印：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
-
-<p>写入txt：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
-
-<p>写入xls：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
-
-<h2 id="python">1、python爬取原理及代码</h2>
-
-<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
-
-<h5 id="section">1.1 引入需要的库</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
-import xlwt
-import time, datetime
-from xlutils.copy import copy
-from xlrd import open_workbook
-from xlwt import easyxf
-</code></pre>
-</div>
-
-<h5 id="html">1.2 获取html</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
-        html = requests.get(url)
-        return html.text
-
-</code></pre>
-</div>
-
-<h5 id="section-1">1.3 获取内容</h5>
-
-<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
-。区别在于:</p>
-
-<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
-
-<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
-        everyclass = re.search(
-            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
-            source, re.S).group(1)
-        return everyclass
-</code></pre>
-</div>
-
-<h5 id="section-2">1.4 获取每条信息</h5>
-
-<p>将自己需要的信息单独抽取出来：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
-        info = {}
-        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
-        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
-        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
-        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
-
-        return info
-</code></pre>
-</div>
-
-<h5 id="section-3">1.5 写入文件</h5>
-
-<p>创建txt：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
-        for each in classinfo:
-            f.writelines('xuhao:' + each['num'] + '\n')
-            f.writelines('daima:' + each['id'] + '\n')
-            f.writelines('name:' + each['name'] + '\n')
-            f.writelines('time:' + each['time'] + '\n')
-            f.writelines('price1:' + each['price1'] + '\n')
-            f.writelines('price2:' + each['price2'] + '\n')
-            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
-        f.close()
-</code></pre>
-</div>
-
-<p>打开xls,开始写入内容</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
-        rb = open_workbook(path, formatting_info=True)
-        r_sheet = rb.sheet_by_index(0)
-        wb = copy(rb)
-        sheet = wb.get_sheet(0)
-        j = r_sheet.ncols
-        i = 1
-        timeShould = timePrevious
-        timeQ = timePrevious
-        tListB = []
-        tListS = []
-        print sheet
-
-        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
-#写入列信息
-        for each in classinfo:
-            sheet.write(i, j + 0, each['id'])
-            sheet.write(i, j + 1, each['time'])
-            sheet.write(i, j + 2, each['price1'])
-            sheet.write(i, j + 3, each['price2'])
-            i += 1
-            timeQ = each['time']
-            if timeQ &gt; timeShould:
-                tListB.append(each['id']+' '+timeQ)
-            elif timeQ &lt; timeShould:
-                tListS.append(each['id']+' '+timeQ)
-
-        for k in range(j, j + 5):
-            sheet.write(0, k, fir[k - j])
-            print k
-            if k == j + 4:
-                sheet.write(1, k, timeNow.decode('utf-8'))
-                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
-
-</code></pre>
-</div>
-
-<h5 id="section-4">1.6 防止数据重复写入</h5>
-
-<p>按时间判断是否需要写入数据</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
-    rb = open_workbook(path, formatting_info=True)
-    r_sheet = rb.sheet_by_index(0)
-    # 遍历第2行所有列,是否有时间数据c
-    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
-    for c in range(0, r_sheet.ncols):
-        age_nov = r_sheet.cell(1, c).value
-        print age_nov
-        if ((c + 1) % 5 == 0) and (c != 0):
-            print "\n"
-        if age_nov == timeNow:
-            return 1
-    else:
-        return 0
-
-</code></pre>
-</div>
-
-<h5 id="section-5">1.7 按日期爬取数据</h5>
-
-<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
-
-<p>注意weekday() 返回的是0-6是星期一到星期日</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
-    timeT = datetime.date.today()
-    zhouji = timeT.weekday()
-    print zhouji
-    if zhouji &gt;= 1 and zhouji &lt;= 5:
-        return timeToday  
-    else:
-        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
-        return 0
-
-</code></pre>
-</div>
-
-<h2 id="section-6">2、开机自动爬取数据的脚本</h2>
-
-<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
-
-<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
-
-<p>plist脚本存放路径为:</p>
-
-<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
-
-<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/10/pythonGetFund/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/07/Runtime-theory/">Runtime基础</a>
+                  <a class="post-link" href="/2016/11/07/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -2067,7 +238,7 @@ from xlwt import easyxf
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Runtime" title="Category: Runtime" rel="category">Runtime</a>
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
     
   
 
@@ -2084,7 +255,7 @@ from xlwt import easyxf
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#Runtime" title="Tag: Runtime" rel="tag">Runtime</a>
+        <a href="/tag/#iOS逆向工具集" title="Tag: iOS逆向工具集" rel="tag">iOS逆向工具集</a>
     
   
 
@@ -2093,15 +264,838 @@ from xlwt import easyxf
                     </div>
                 </div>
                 <div class="excerpt">
-                    
-<hr />
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
+  <li><a href="#cydiasubstrate" id="markdown-toc-cydiasubstrate">2、CydiaSubstrate</a>    <ul>
+      <li><a href="#mobilehooker" id="markdown-toc-mobilehooker">2.1 MobileHooker</a></li>
+    </ul>
+  </li>
+</ul>
 
-<p>待写…</p>
+<p><strong>待整理</strong></p>
+
+<h2 id="section">1、简介</h2>
+
+<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
+
+<p>相关链接：
+Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
+
+<h2 id="cydiasubstrate">2、CydiaSubstrate</h2>
+
+<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
+
+<h5 id="mobilehooker">2.1 MobileHooker</h5>
+
+<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
+	void MSHookFunction(void* function, void* replacement, void** p_original);
+</code></pre>
+</div>
+
+<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
+
+<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
+
+<p><strong>MSHookFunction</strong> 
+MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
+它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
+
+<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
+
+<p><strong>symbol</strong>
+在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
+
+<p>可参阅资料：
+<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
+
+<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2016/11/07/Runtime-theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2016/11/07/6_IOS_Tools/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/06/5_IDA-iFunBox-other/">iOS逆向系列5_IDA/iFunBox/other</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-06
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#IDA、iFunBox、dyld_decache" title="Tag: IDA、iFunBox、dyld_decache" rel="tag">IDA、iFunBox、dyld_decache</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.1 安装</a></li>
+      <li><a href="#ida" id="markdown-toc-ida">2.2 IDA使用说明</a></li>
+      <li><a href="#main-window" id="markdown-toc-main-window">2.3 Main window</a></li>
+    </ul>
+  </li>
+  <li><a href="#ifunbox" id="markdown-toc-ifunbox">3、iFunBox</a></li>
+  <li><a href="#dylddecache" id="markdown-toc-dylddecache">4 dyld_decache</a></li>
+</ul>
+
+<p><strong>待整理</strong></p>
+
+<h2 id="section">1、简介</h2>
+
+<p>即使你以前没有从事过iOS逆向工程相关的工作，也一定听说过IDA（The Interactive Disassembler）的鼎鼎大名。而对于绝大多数接触过逆向工程的人来说，IDA三个字则是如雷贯耳，它乃逆向工程中最负盛名的神器之一。如果说class-dump能够帮我们罗列出要分析的点，那IDA就能进一步帮我们把这些点铺成面。</p>
+
+<p>笼统地说，IDA是一个支持Windows、Linux和Mac OS X的多平台反汇编器/调试器，它的功能非常强大，以至于连官方都不能给出一个详尽的功能列表。</p>
+
+<p>IDA的正式版是收费的，但其作者也是程序员出身，深知我们生活不易，所以慷慨地提供了一个免费的试用版，对于逆向工程初学者来说，已完全够用了。</p>
+
+<h2 id="section-1">2、安装</h2>
+
+<h5 id="section-2">2.1 安装</h5>
+
+<p>IDA的下载和安装十分方便，具体可参考：<a href="https://www.hex-rays.com/products/ida/support/download.shtml">https://www.hex-rays.com/products/ida/support/download.shtml</a></p>
+
+<h5 id="ida">2.2 IDA使用说明</h5>
+
+<p>启动之后，在该界面中，不用繁琐地在菜单里点击“打开文件”，然后一个目录一个目录地去翻找，只需把要分析的文件拖进IDA的灰色区域就行了。</p>
+
+<p>有一个地方需要注意：对于一些fat binary（指的是为了兼容不同架构的处理器，而把多种指令集糅合到一个binary）来说
+<img src="https://ooo.0o0.ooo/2016/11/01/581869117b6b0.jpeg" alt="" /></p>
+
+<p>上图最上面的白框内会出现多个Mach-O文件供我们选择。需要我们识别设备对应的ARM信息，例如笔者的iPhone 5对应的是ARMv7s。如果设备的ARM没有出现在这些选项中，就选那个向下兼容的选项，即如果选项里有ARMv7S，就选它；否则选ARMv7。
+这里笔者选择了ARMv7S，然后点击“OK”，此时 会连续弹出好几个窗口，一路点击“Yes”和“OK”就可以了。
+之后就进入如下界面：
+<img src="https://ooo.0o0.ooo/2016/11/01/58186a17dab43.jpeg" alt="" /></p>
+
+<p>在上边的界面中，你会看到上方的进度条不断滚动，下方的Output window也会打印出对文件的分析进度。当进度条的主色调变成蓝色（IDA界面上的颜色在黑白印刷页上看不出来，请谅解），Output window中显示“The initial autoanalysis has been finished.”时，表示IDA的初始分析已完成。</p>
+
+<p>在初学阶段，由于主要用IDA作静态分析，基本用不上Output window，所以在开始分析之前，可以先关掉“Output window。</p>
+
+<p>Functions window中的Objective-C函数与class-dump导出的内容吻合。除了Objective-C函数外，IDA还将所有subroutine罗列了出来，这是class-dump做不到的。class-dump导出的内容都是Objective-C函数名，可读性高，容易上手，是iOS逆向工程初学者的乐园；subroutine的名称只是一个代号，没有明显含义，分析难度大，大多数初学者看到这里就打了退堂鼓。但是，iOS的底层是用C和C++实现的，编译之后生成的大都是subroutine，class-dump拿它没辙，只能使用IDA这样的工具。要想深层次挖掘iOS中最有趣的部分，掌握IDA的用法是必经之路。</p>
+
+<h5 id="main-window">2.3 Main window</h5>
+
+<p>绝大多数没有用过IDA的iOS开发者，包括笔者，在第一次看见初始分析完成后的Main window时都懵了——这都是些什么玩意儿？这是人类文字吗？还是把IDA关了，刷会儿微博压压惊吧。这跟很多工程师在写第一行代码时不知如何下手的感觉很类似。其实，跟写代码时需要定义一个入口函数一样，在逆向工程里，也需要找到自己感兴趣的入口函数。在Functions window中双击这个入口函数，使得Main window跳转到函数体，然后用鼠标选中Main window，按一下空格，界面会瞬间变清爽，可读性一下就强了起来。</p>
+
+<p>。。。</p>
+
+<h2 id="ifunbox">3、iFunBox</h2>
+
+<p>iFunBox 是一款老牌iOS文件管理工具，可以非常方便地操作iOS中的文件。 iFunBox的使用并不复杂，我们主要用到的是它的文件传输功能。有一点需要注意的是，越狱iOS必须安装“Apple File Conduit 2” ，简称AFC2，这样iFunBox才能够浏览iOS全系统文件，而且这也是接下来大部分操作的先决条件。</p>
+
+<h2 id="dylddecache">4 dyld_decache</h2>
+
+<p>安装了iFunBox和AFC2之后，不少读者会迫不及待地开始浏览iOS文件系统，看看这个封闭平台的表面下到底暗藏了多少玄机。相信大家很快就会发现一个问题：“/System/Library/Frameworks/”、“/System/Library/PrivateFrameworks/”等目录下，怎么没有库文件？</p>
+
+<p>从iOS 3.1开始，包括frameworks在内的许多库文件被存进了一个大cache里，这个cache文件位于“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”（名为dyld_shared_cache_armv7、dyld_shared_cache_armv7s或dyld_shared_cache_arm64），可以使用KennyTM开发的dyld_decache将其中的二进制文件提取出来。这样做的好处是确保分析的文件来自本机，在使用Mac工具集与iOS工具集分析同一目标时，OSX与iOS上分析出的指令和地址等数据是完全吻合的，避免了出现驴唇不对马嘴的低级错误。有关这个cache的进一步介绍，可以参阅DHowett的博客http://blog.howett.net/).</p>
+
+<p>使用dyld_decache之前，要将“/System/Library/Caches/com.apple.dyld/dyld_shared_cache_armx”用iFunBox（不能用scp）从iOS拷贝到OSX中。然后从https://github.com/downloads/kennytm/Miscellaneous/dyld_decache[v0.1c].bz2下载dyld_decache。解压之后赋予其可执行权限，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ chmod +x /path/to/dyld_decache\[v0.1c\]
+</code></pre>
+</div>
+
+<p>然后开始提取二进制文件，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>snakeninnysiMac:~ snakeninny$ /path/to/dyld_decache\[v0.1c\] -o /where/to/store/decached/binaries/ /path/to/dyld_shared_cache_armx
+  0/877: Dumping '/System/Library/AccessibilityBundles/AXSpeechImplementation.bundle/AXSpeechImplementation'...
+  1/877: Dumping '/System/Library/AccessibilityBundles/AccessibilitySettingsLoader.bundle/AccessibilitySettingsLoader'...
+  2/877: Dumping '/System/Library/AccessibilityBundles/AccountsUI.axbundle/AccountsUI'...
+……
+</code></pre>
+</div>
+
+<p>提取出的所有二进制文件都存放在了“/where/to/store/decached/binaries/”下。值得一提的是，逆向工程需要分析的二进制文件现在散落在OSX和iOS两个系统中，不方便查找，建议利用下一章提到的scp工具把iOS文件系统拷贝一份存在OSX里。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/06/5_IDA-iFunBox-other/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/05/IOS_Adopt/"> 一道面试题里藏的IOS世界</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-05
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#IOS基础" title="Category: IOS基础" rel="category">IOS基础</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#IOS代码规范" title="Tag: IOS代码规范" rel="tag">IOS代码规范</a>&nbsp;
+    
+        <a href="/tag/#IOS基础" title="Tag: IOS基础" rel="tag">IOS基础</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前序</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">解析</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">1、枚举</a>        <ul>
+          <li><a href="#section-3" id="markdown-toc-section-3">1.1 定义规范的枚举</a></li>
+          <li><a href="#section-4" id="markdown-toc-section-4">1.2 定义规范的枚举内容</a></li>
+          <li><a href="#section-5" id="markdown-toc-section-5">1.3 枚举的深入</a></li>
+          <li><a href="#section-6" id="markdown-toc-section-6">1.4 优化后的写法</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">2、属性</a>    <ul>
+      <li><a href="#section-8" id="markdown-toc-section-8">属性的修饰符</a></li>
+      <li><a href="#age-" id="markdown-toc-age-">2.1、age属性 类型的选择</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">2.2、属性的内存管理</a></li>
+      <li><a href="#protocolproperty" id="markdown-toc-protocolproperty">2.3、在@protocol中使用@property：</a></li>
+      <li><a href="#synthesizedynamic" id="markdown-toc-synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/05/581daad679042.png" alt="" /></p>
+
+<p>上边这张图是前段时间网上比较火的一套面试题中的。这套题来源是 目前就职于百度的孙源。</p>
+
+<h2 id="section">前序</h2>
+
+<p>会有开发者，看这道题目时会觉着没有啥太大毛病，实际中他们也可能就是这样写的。</p>
+
+<p>其实在github上会经常看到这样类似的代码，特别是在一些小demo里很常见。之所以忽略其中的问题，主要是因为没有认识到规范的写法，以及这种写法可能引起的问题。扯远点就是，一个人的编码语言认知水平会极大的影响他的编码行为。然而认知水平和学习的途径有莫大的关系。</p>
+
+<p>前几个月，我们公司招聘移动开人员，本人也面试不少android和ios的开发者，发现一个很普遍的问题：代码不规范。不论是刚从培训学校里刚出来的，还是已经5~6年经验的开发者。当提到代码的规范时，大多回答的就是驼峰式命名法，甚至有位”资深的”求职者向我”普及现今业界的普遍形式”:其实代码规范与否并不重要，对多数中小创业公司而言,重要的是快速上线，及时迭代，占有市场。话是不错，也道出了像我们这种在风口创业公司的基本路线，就是及早入场，拿到牌照，占有市场。但最终我也没有通过他的面试。理由是:工作经验丰富(开发过Symbian,android,iOS)但不适合做开发(因android\iOS不资深。我们要招聘资深的android，懂点iOS，创业公司嘛，iOS和android分的不是很清，是活都干)。</p>
+
+<p>上边扯远了，代码的规范与否，最初的学习途径和形式固然重要，更重要的是在后期的工作中，是否较为全面系统的从官方提供的资料中进行相关学习。可能有人觉得不重要，但是在我看来，这是一名合格开发者的必经之路。你所用的语言、规则，都是人家定的,即便能开发出可用的app，那也未必合格，特别是项目逐渐做大之后，简单的模式，不规范的代码所带来的隐患就会逐渐呈现出来。</p>
+
+<p><strong>下边首先会解析问题，并就部分内容深入解析，如有疑问还请留言相告</strong></p>
+
+<h2 id="section-1">解析</h2>
+
+<!-- 这里先推荐官方的写法：[传送门](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html#//apple_ref/doc/uid/TP40014150-CH1-SW4) -->
+
+<h3 id="section-2">1、枚举</h3>
+
+<p>问题点：</p>
+
+<p>1、题目中写枚举是使用C的风格；
+2、枚举定义的不规范；
+3、枚举的内容不严谨。</p>
+
+<h5 id="section-3">1.1 定义规范的枚举</h5>
+
+<p>官方文档中，enum 建议使用 NS_ENUM 和 NS_OPTIONS 宏来定义枚举类型。
+    NS_ENUM枚举项的值为NSInteger，定义通用的枚举；
+    NS_OPTIONS枚举项的值为NSUInteger，定义位移枚举。
+一般开发者可能用不到后者，但如果进入到UIKit的头文件里，就会看到很多这种书写格式。</p>
+
+<p>enum 中驼峰命名法和下划线命名法的使用：枚举类型的命名规则和函数的命名规则相同：命名时使用驼峰命名法，勿同时使用下划线命名法。</p>
+
+<h5 id="section-4">1.2 定义规范的枚举内容</h5>
+
+<p>试题的model实际使用场景不清楚，这里将该枚举场景放宽到生活中：
+那么除了男性，女性，实际上还应该有包括：内心男性的女性，以及内心女性的男性，以及无性，以及其他未知的性别(考虑未知的特殊情况。当然下边的枚举针对不同的行业场景，可能要进行调整)</p>
+
+<h4 id="section-5">1.3 枚举的深入</h4>
+
+<p>这两个宏的定义在Foundation.framework的NSObjCRuntime.h中：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>#if (__cplusplus &amp;&amp; __cplusplus &gt;= 201103L &amp;&amp; (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus &amp;&amp; __has_feature(objc_fixed_enum))  
+#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type  
+#if (__cplusplus)  
+#define NS_OPTIONS(_type, _name) _type _name; enum : _type  
+#else  
+#define NS_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type  
+#endif  
+#else  
+#define NS_ENUM(_type, _name) _type _name; enum  
+#define NS_OPTIONS(_type, _name) _type _name; enum  
+#endif  
+</code></pre>
+</div>
+<p>其实上述的写法，等价于：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>typedef enum JUserGender : NSInteger JUserGender;  
+enum JUserGender : NSInteger {  }
+</code></pre>
+</div>
+
+<p>从枚举定义来看，NS_ENUM和NS_OPTIONS本质是一样的，仅仅从字面上来区分其用途。NS_ENUM是通用情况，NS_OPTIONS一般用来定义具有位移或特点的情况。</p>
+
+<h4 id="section-6">1.4 优化后的写法</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSInteger, JUserGender) {
+    JUserGenderUnknown,
+    JUserGenderMale,
+    JUserGenderGay,
+    JUserGenderFemale,
+    JUserGenderLesbian,
+    JUserGenderNeuter
+};
+</code></pre>
+</div>
+
+<h2 id="section-7">2、属性</h2>
+
+<p>** @property本质是: @property = ivar + getter + setter;**</p>
+
+<p>也就是说，属性=ivar（实例变量）+ 存取方法。它作为 OC的一项特性，主要的作用就在于封装对象中的数据。 OC 对象通常会把其所需要的数据保存为各种实例变量。</p>
+
+<h4 id="section-8">属性的修饰符</h4>
+
+<p>原子性 — nonatomic 特质
+(不声明nonatomic，编译器就默认使用同步锁保证其原子性atomic，从而保证其线程安全。但如果真的是多个线程同时操作该属性，最好采用其它手段保证属性thread safety)</p>
+
+<p>读/写权限 — readwrite(读写)、readonly (只读)</p>
+
+<p>内存管理语义—assign、strong、 weak、unsafe_unretained、copy</p>
+
+<p>方法名—getter=<name> 、setter=<name></name></name></p>
+
+<p><strong>下边分别解说</strong></p>
+
+<h4 id="age-">2.1、age属性 类型的选择</h4>
+
+<p>age 属性的类型：应避免使用基本类型，建议使用 Foundation 数据类型，对应关系如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>int -&gt; NSInteger
+unsigned -&gt; NSUInteger
+float -&gt; CGFloat 同时考虑到 age 的特点，以及出于32/64 bit的考虑应使用 NSUInteger。
+</code></pre>
+</div>
+
+<h4 id="section-9">2.2、属性的内存管理</h4>
+
+<p>详见官方文档 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a></p>
+
+<p><strong>1、weak VS assign</strong></p>
+
+<p>使用weak的情形：
+1、在 ARC 中,可能出现循环引用时,往往要通过weak来解决,比如: delegate代理属性
+2、自身已经强引用,此时也会使用weak,比如:自定义IBOutlet控件属性一般使用 weak；(也可使用strong)
+..
+相同：
+weak义为“非拥有关系”，设置方法既不保留新值，也不释放旧值(此同assign)， 然而对象销毁时，属性值也会清空(assign 的set只会执行针对CGFloat、NSlnteger等简单的赋值操作），
+weak必须用于OC对象(assigin可以用非OC对象)。</p>
+
+<p><strong>2、runtime中的weak原理：</strong>
+runtime中实现weak的原理是：runtime对注册的类进行布局，weak对象会放入一个hash表中。把weak指的对象内存地址作为key，当此对象的引用计数为0时dealloc，假如weak指向的对象内存地址是a，那么就会以a为键，在这个weak表中搜索，找到所有以a为键的weak对象，从而设置为nil。</p>
+
+<p><strong>3、copy</strong></p>
+
+<p>3.1、copy复制出来是不可变的,所以可变属性不建议用copy:</p>
+
+<p>@property (copy) NSMutableArray *array;
+这里使用copy结果导致属性是不可变的。同时这里使用了atomic会影响性能</p>
+
+<p>3.2、NSArray等经常使用copy关键字:
+因为他们有对应的可变类型：NSMutableArray，他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。</p>
+
+<p>3.3、block 也经常使用 copy 关键字
+具体原因见官方文档：<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW12">传送门</a>
+block 使用copy是从MRC遗留下来的“传统”,在MRC中,方法内部的block是在栈区的,使用copy 可以把它放到堆区。在 ARC中不强制。</p>
+
+<p>3.4、copy修饰自定义类
+如果自定义的对象分为可变与不可变版本，那么就要同时实现 NSCopying 与 NSMutableCopying 协议。针对实际可能出现的复杂情况，实现主要代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// .h文件
+</span>   <span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">JUserGender</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">JUserGenderUnknown</span><span class="p">,</span>
+       <span class="n">JUserGenderMale</span><span class="p">,</span>
+       <span class="n">JUserGenderGay</span><span class="p">,</span>
+       <span class="n">JUserGenderFemale</span><span class="p">,</span>
+       <span class="n">JUserGenderLesbian</span><span class="p">,</span>
+       <span class="n">JUserGenderNeuter</span>
+   <span class="p">};</span>
+
+  <span class="k">@interface</span> <span class="nc">JUser</span> <span class="p">:</span> <span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span>
+
+  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span>      <span class="n">NSString</span>    <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>    <span class="n">NSUInteger</span>  <span class="n">age</span><span class="p">;</span>
+  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span>   <span class="n">JUserGender</span> <span class="n">sex</span><span class="p">;</span>
+
+  <span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
+  <span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">userWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">age</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">age</span> <span class="nf">sex</span><span class="p">:(</span><span class="n">JUserGender</span><span class="p">)</span><span class="nv">sex</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">removeFriend</span><span class="p">:(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="nv">user</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="c1">// .m文件
+</span>
+<span class="k">@implementation</span> <span class="nc">JUser</span> <span class="p">{</span>
+    <span class="n">NSMutableSet</span> <span class="o">*</span><span class="n">_friends</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span> <span class="p">{</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithName</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span>
+                         <span class="n">age</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">age</span>
+                         <span class="n">sex</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span><span class="p">)</span><span class="n">sex</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
+        <span class="n">_age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+        <span class="n">_sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">addFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">_friends</span> <span class="nf">addObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">removeFriend</span><span class="o">:</span><span class="p">(</span><span class="n">JUserGender</span> <span class="o">*</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">_friends</span> <span class="nf">removeObject</span><span class="p">:</span><span class="n">user</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">copyWithZone</span><span class="o">:</span><span class="p">(</span><span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span><span class="n">zone</span> <span class="p">{</span>
+    <span class="n">CYLUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
+                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
+                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
+                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
+    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[</span><span class="n">_friends</span> <span class="nf">mutableCopy</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">deepCopy</span> <span class="p">{</span>
+    <span class="n">JUser</span> <span class="o">*</span><span class="n">copy</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span>
+                     <span class="nf">initWithName</span><span class="p">:</span><span class="n">_name</span>
+                     <span class="nf">age</span><span class="p">:</span><span class="n">_age</span>
+                     <span class="n">sex</span><span class="o">:</span><span class="n">_sex</span><span class="p">];</span>
+    <span class="n">copy</span><span class="o">-&gt;</span><span class="n">_friends</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableSet</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSet</span><span class="p">:</span><span class="n">_friends</span>
+                                             <span class="nf">copyItems</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+
+<h4 id="protocolproperty">2.3、在@protocol中使用@property：</h4>
+
+<p>需要借助运行时：
+objc_setAssociatedObject
+objc_getAssociatedObject</p>
+
+<h4 id="synthesizedynamic">2.5、属性相关的@synthesize和@dynamic</h4>
+
+<p>如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;</p>
+
+<p>@synthesize：没有手动实现setter、getter，编译器会自动为你加上这两个方法。除此之外，可以在类的.m文件中，通过@synthesize指定实例变量的名字:
+@implementation Juser
+@synthesize name = _myName; 
+@end 
+那么就使用了别名_myName来代替name</p>
+
+<p>@dynamic：告诉编译器属性的setter与getter方法由用户自己实现，不自动生成。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/05/IOS_Adopt/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/04/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-04
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>&nbsp;
+    
+        <a href="/tag/#Logos" title="Tag: Logos" rel="tag">Logos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#makefile" id="markdown-toc-makefile">2、Makefile</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">2.1 基本配置</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.2 指定处理器架构</a></li>
+      <li><a href="#sdk" id="markdown-toc-sdk">2.3 指定SDK版本</a></li>
+      <li><a href="#framework" id="markdown-toc-framework">2.4 导入framework</a></li>
+      <li><a href="#mach-omach-o-object" id="markdown-toc-mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>待整理</strong></p>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<h2 id="makefile">2、Makefile</h2>
+
+<h5 id="section-1">2.1 基本配置</h5>
+
+<p>Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#固定写法:系统变量，不要更改。
+#告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
+include $(THEOS)/makefiles/common.mk
+
+#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
+TWEAK_NAME = projectBy3code
+
+#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
+#这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
+projectBy3code_FILES = Tweak.xm
+
+#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
+after-install::
+		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
+</code></pre>
+</div>
+
+<p>是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：</p>
+
+<h5 id="section-2">2.2 指定处理器架构</h5>
+
+<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+</code></pre>
+</div>
+
+<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
+You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
+
+<h5 id="sdk">2.3 指定SDK版本</h5>
+
+<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
+
+<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
+方法如下：
+ you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
+
+<p>SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
+
+<p>TARGET = iphone::9.2:9.0</p>
+
+<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
+</code></pre>
+</div>
+
+<p>比如：TARGET = iphone:8.1:8.0
+   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0</p>
+
+<h5 id="framework">2.4 导入framework</h5>
+<p>这里包括你想用到框架的名称</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
+</code></pre>
+</div>
+
+<p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
+上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+</code></pre>
+</div>
+
+<p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+TARGET = iphone:latest:7.0
+include theos/makefiles/common.mk
+TWEAK_NAME = projectBy3code
+projectBy3code_FILES = Tweak.xm
+projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
+include $(THEOS_MAKE_PATH)/tweak.mk
+after-install::
+      install.exec "killall -9 SpringBoard"
+</code></pre>
+</div>
+<p>上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。</p>
+
+<h5 id="mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lx
+</code></pre>
+</div>
+
+<p>Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
+</code></pre>
+</div>
+
+<p>大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
+</code></pre>
+</div>
+
+<p>稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/04/3_Theos_-fourFile/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/11/02/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-02
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#iOS逆向" title="Category: iOS逆向" rel="category">iOS逆向</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#theos" id="markdown-toc-theos">2、Theos简介</a></li>
+  <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
+</ul>
+
+<p><strong>待整理</strong></p>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<p>debian:
+<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a></p>
+
+<p>Theos安装:
+<a href="https://github.com/theos/theos/wiki/Installation">https://github.com/theos/theos/wiki/Installation</a></p>
+
+<h2 id="theos">2、Theos简介</h2>
+
+<p>Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。</p>
+
+<p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
+
+<p><strong>下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation</strong></p>
+
+<p><strong>其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案</strong></p>
+
+<h2 id="theos-1">3、安装Theos</h2>
+
+<p>首先需要的环境和工具如下：</p>
+
+<ul>
+  <li>curl</li>
+  <li>git</li>
+  <li>make</li>
+  <li>openssh</li>
+  <li>perl</li>
+  <li>rsync</li>
+  <li>dpkg (port or homebrew install on Mac OS X)</li>
+  <li>python (if on Windows)</li>
+</ul>
+
+<p>没有的就用 brew install **</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/02/2_Theos_-install&run/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -2116,10 +1110,10 @@ from xlwt import easyxf
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page2" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">3/7</span>
+          <span class="page_number ">3/6</span>
           
             <a href="/page4" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -2133,17 +1127,7 @@ from xlwt import easyxf
                 </div>
                 <ul class="content-ul" recent>
                     
-                        <li><a href="/2017/01/01/internet-finacial/">2016年互金行业那些事 -- 互联网保险</a></li>
-                    
-                        <li><a href="/2016/12/17/swift_XV_Advanced-Operators/">Swift3.0_VIII_ </a></li>
-                    
-                        <li><a href="/2016/12/16/swift_XIV_Generics_Access-Control/">Swift3.0_VIII_ </a></li>
-                    
-                        <li><a href="/2016/12/15/swift_XIII_Protocols/">Swift3.0_VIII_ </a></li>
-                    
-                        <li><a href="/2016/12/14/swift_XII_Type-Casting_Nested-Types_Extensions/">Swift3.0_VIII_ </a></li>
-                    
-                        <li><a href="/2016/12/12/swift_XI_ARC_Optional-Chaining_Error-Handling/">Swift3.0_VIII_ </a></li>
+                        <li><a href="/2017/01/18/SDiffuseMenu/">AwesomeMenu的Swift版改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
                     
@@ -2152,6 +1136,16 @@ from xlwt import easyxf
                         <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
                     
                         <li><a href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a></li>
+                    
+                        <li><a href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a></li>
+                    
+                        <li><a href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a></li>
+                    
+                        <li><a href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a></li>
+                    
+                        <li><a href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a></li>
+                    
+                        <li><a href="/2016/11/22/swift_II_Basic-Operators/">Swift_II_基本运算符</a></li>
                     
                 </ul>
             </div>
@@ -2168,24 +1162,6 @@ from xlwt import easyxf
                         <a href="/category/#block" class="categories-list-item" cate="block">
                             <span class="name">
                                 block
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#iOS动画" class="categories-list-item" cate="iOS动画">
-                            <span class="name">
-                                iOS动画
-                            </span>
-                            <span class="badge">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#CALayer" class="categories-list-item" cate="CALayer">
-                            <span class="name">
-                                CALayer
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -2309,24 +1285,6 @@ from xlwt import easyxf
                     </li>
                     
                     <li>
-                        <a href="/category/#杂谈" class="categories-list-item" cate="杂谈">
-                            <span class="name">
-                                杂谈
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#Runtime" class="categories-list-item" cate="Runtime">
-                            <span class="name">
-                                Runtime
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
                         <a href="/category/#python" class="categories-list-item" cate="python">
                             <span class="name">
                                 python
@@ -2349,16 +1307,7 @@ from xlwt import easyxf
                             <span class="name">
                                 Swift3.0
                             </span>
-                            <span class="badge">12</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#互联网金融" class="categories-list-item" cate="互联网金融">
-                            <span class="name">
-                                互联网金融
-                            </span>
-                            <span class="badge">1</span>
+                            <span class="badge">8</span>
                         </a>
                     </li>
                     
@@ -2385,27 +1334,6 @@ from xlwt import easyxf
                       
                       
                       <a href="/tag/#block" style="font-size: 9pt; color: #999;">block</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#iOS动画" style="font-size: 10pt; color: #888;">iOS动画</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#CADisplayLink" style="font-size: 9pt; color: #999;">CADisplayLink</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#CALayer" style="font-size: 9pt; color: #999;">CALayer</a>
                     
                       
                       
@@ -2454,7 +1382,7 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#缓存" style="font-size: 10pt; color: #888;">缓存</a>
+                      <a href="/tag/#缓存" style="font-size: 10.5pt; color: #888;">缓存</a>
                     
                       
                       
@@ -2503,7 +1431,7 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#Sublime" style="font-size: 10pt; color: #888;">Sublime</a>
+                      <a href="/tag/#Sublime" style="font-size: 10.5pt; color: #888;">Sublime</a>
                     
                       
                       
@@ -2524,7 +1452,7 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#Theos" style="font-size: 10pt; color: #888;">Theos</a>
+                      <a href="/tag/#Theos" style="font-size: 10.5pt; color: #888;">Theos</a>
                     
                       
                       
@@ -2532,6 +1460,20 @@ from xlwt import easyxf
                       
                       
                       <a href="/tag/#Logos" style="font-size: 9pt; color: #999;">Logos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS代码规范" style="font-size: 9pt; color: #999;">IOS代码规范</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS基础" style="font-size: 9pt; color: #999;">IOS基础</a>
                     
                       
                       
@@ -2559,41 +1501,6 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#IOS代码规范" style="font-size: 9pt; color: #999;">IOS代码规范</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#IOS基础" style="font-size: 9pt; color: #999;">IOS基础</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#淘宝" style="font-size: 9pt; color: #999;">淘宝</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#12306" style="font-size: 9pt; color: #999;">12306</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#Runtime" style="font-size: 9pt; color: #999;">Runtime</a>
-                    
-                      
-                      
-                      
-                      
-                      
                       <a href="/tag/#爬基金数据" style="font-size: 9pt; color: #999;">爬基金数据</a>
                     
                       
@@ -2608,7 +1515,7 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#Swift" style="font-size: 10.5pt; color: #777;">Swift</a>
+                      <a href="/tag/#Swift" style="font-size: 11.5pt; color: #666;">Swift</a>
                     
                       
                       
@@ -2622,7 +1529,14 @@ from xlwt import easyxf
                       
                       
                       
-                      <a href="/tag/#互联网保险" style="font-size: 9pt; color: #999;">互联网保险</a>
+                      <a href="/tag/#," style="font-size: 9pt; color: #999;">,</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SDiffuseMenu" style="font-size: 9pt; color: #999;">SDiffuseMenu</a>
                     
                 </div>
             </div>
