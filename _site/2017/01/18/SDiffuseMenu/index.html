@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>AwesomeMenu的Swift版改写之旅:SDiffuseMenu</title>
-    <meta name="description" content="">
+    <title>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</title>
+    <meta name="description" content="  Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu  版本记录  一、使用方法：          1、添加协议      2、设置菜单的选项按钮数据      3、设置菜单按钮      4、添加 SDiffuseMenu      5、动画配置      6、动画过程监听    ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -142,7 +142,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>AwesomeMenu的Swift版改写之旅:SDiffuseMenu</h1>
+        <h1>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</h1>
         <div class="label">
 
             <div class="label-card">
@@ -197,44 +197,56 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">一、使用方法：</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">1、添加协议</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2、设置菜单的选项按钮数据</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">3、设置菜单按钮</a></li>
-      <li><a href="#sdiffusemenu" id="markdown-toc-sdiffusemenu">4、添加SDiffuseMenu</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">5、动画配置</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">6、动画过程监听</a></li>
+  <li><a href="#swift--awesomemenu-sdiffusemenu" id="markdown-toc-swift--awesomemenu-sdiffusemenu">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
+  <li><a href="#section" id="markdown-toc-section">版本记录</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">一、使用方法：</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">1、添加协议</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">2、设置菜单的选项按钮数据</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">3、设置菜单按钮</a></li>
+      <li><a href="#sdiffusemenu" id="markdown-toc-sdiffusemenu">4、添加 SDiffuseMenu</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">5、动画配置</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">6、动画过程监听</a></li>
     </ul>
   </li>
   <li><a href="#swift" id="markdown-toc-swift">二、Swift转写之旅</a>    <ul>
       <li><a href="#capropertyanimation" id="markdown-toc-capropertyanimation">1、CAPropertyAnimation动画</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">2、动画分析</a>        <ul>
-          <li><a href="#section-7" id="markdown-toc-section-7">2.1、单个选项关闭动画分析：</a></li>
-          <li><a href="#section-8" id="markdown-toc-section-8">2.2、整体动画的控制</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">2、动画分析</a>        <ul>
+          <li><a href="#section-8" id="markdown-toc-section-8">2.1、单个选项关闭动画分析：</a></li>
+          <li><a href="#section-9" id="markdown-toc-section-9">2.2、整体动画的控制</a></li>
         </ul>
       </li>
-      <li><a href="#section-9" id="markdown-toc-section-9">3、事件响应链</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">3、事件响应链</a></li>
     </ul>
   </li>
 </ul>
 
-<blockquote>
-  <p>本动画是Swift版的AwesomeMenu,如需OC版还请移步<a href="https://github.com/levey/AwesomeMenu">这里</a>。</p>
+<h2 id="swift--awesomemenu-sdiffusemenu">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</h2>
 
-  <p>Swift Diffuse Menu 简写为: SDiffuseMenu,
-我是刚从OC转Swift不久，还请大神多多指教😁😁
-<a href="https://github.com/mythkiven/DiffuseMenu_Swift">代码链接</a></p>
+<blockquote>
+  <p>本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步<a href="https://github.com/levey/AwesomeMenu">这里</a>。</p>
+
+  <p>SDiffuseMenu 当前版本 V1.1.0,代码<a href="https://github.com/mythkiven/DiffuseMenu_Swift">请戳这里</a></p>
+
+  <p>我是刚转 Swift 不久,代码不足之处还请大神多多指教😁😁</p>
 </blockquote>
 
-<p>实际效果如下：</p>
+<p><strong>动画效果如下:</strong></p>
 
-<p><img src="https://ooo.0o0.ooo/2017/01/18/587f44801a752.gif" alt="" /></p>
+<p><img src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/SDiffuseMenu.gif" alt="" /></p>
 
-<h2 id="section">一、使用方法：</h2>
+<p><strong>配置图如下:</strong></p>
+
+<p><img src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/settingAngle.png" alt="" /></p>
+
+<h2 id="section">版本记录</h2>
+
+<p>SDiffuseMenu 当前为 V1.1.0 版本,历史版本详情<a href="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/Revision History.md">请戳一下</a></p>
+
+<h2 id="section-1">一、使用方法：</h2>
 
 <p>添加协议(动画状态回调) -&gt; 设置选项数组 -&gt; 设置菜单按钮 -&gt; 动画属性配置 -&gt; .addSubview(menu)</p>
 
-<h4 id="section-1">1、添加协议</h4>
+<h4 id="section-2">1、添加协议</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SDiffuseMenuDelegate</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">!</span>
@@ -242,9 +254,10 @@
 </code></pre>
 </div>
 
-<h4 id="section-2">2、设置菜单的选项按钮数据</h4>
+<h4 id="section-3">2、设置菜单的选项按钮数据</h4>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 加载图片</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
 <span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImagePressed</span>     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-highlighted.png"</span><span class="p">)</span>    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
 <span class="k">guard</span> <span class="k">let</span> <span class="nv">starImage</span>                     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"star.png"</span><span class="p">)</span>                    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
 <span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemNormalImage</span>           <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"addbutton-normal.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
@@ -253,16 +266,18 @@
 <span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemContentLightedImage</span>   <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"plus-highlighted.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
 
 <span class="k">var</span> <span class="nv">menus</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SDiffuseMenuItem</span><span class="p">]()</span>
-<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="mi">9</span> <span class="p">{</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="mi">6</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">starMenuItem</span> <span class="o">=</span>  <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">storyMenuItemImage</span><span class="p">,</span>
-                                         <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">storyMenuItemImagePressed</span><span class="p">,</span> <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starImage</span><span class="p">,</span>
+                                         <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">storyMenuItemImagePressed</span><span class="p">,</span> 
+                                         <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starImage</span><span class="p">,</span>
                                          <span class="nv">highlightedContentImage</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
     <span class="n">menus</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">starMenuItem</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 </div>
 
-<h4 id="section-3">3、设置菜单按钮</h4>
+<h4 id="section-4">3、设置菜单按钮</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">startItem</span> <span class="o">=</span> <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">starItemNormalImage</span><span class="p">,</span>
                                  <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">starItemLightedImage</span><span class="p">,</span>
@@ -271,23 +286,28 @@
 </code></pre>
 </div>
 
-<h4 id="sdiffusemenu">4、添加SDiffuseMenu</h4>
+<h4 id="sdiffusemenu">4、添加 SDiffuseMenu</h4>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">menuRect</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">menuRect</span>  <span class="o">=</span> <span class="kt">CGRect</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
                            <span class="nv">y</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
                            <span class="nv">width</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
                            <span class="nv">height</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
-<span class="n">menu</span> <span class="o">=</span>  <span class="kt">SDiffuseMenu</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span><span class="n">menuRect</span><span class="p">,</span> <span class="nv">startItem</span><span class="p">:</span><span class="n">startItem</span><span class="p">,</span>
-                         <span class="nv">menusArray</span><span class="p">:</span><span class="n">menus</span> <span class="k">as</span> <span class="kt">NSArray</span><span class="p">)</span>
-<span class="n">menu</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">center</span>
+<span class="n">menu</span>          <span class="o">=</span>  <span class="kt">SDiffuseMenu</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">menuRect</span><span class="p">,</span>
+                          <span class="nv">startItem</span><span class="p">:</span> <span class="n">startItem</span><span class="p">,</span>
+                         <span class="nv">menusArray</span><span class="p">:</span> <span class="n">menus</span> <span class="k">as</span> <span class="kt">NSArray</span><span class="p">,</span>
+                          <span class="nv">grapyType</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">.</span><span class="kt">SDiffuseMenuGrapyType</span><span class="o">.</span><span class="n">arc</span><span class="p">)</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">center</span>   <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">center</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
 <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<h4 id="section-4">5、动画配置</h4>
+<h4 id="section-5">5、动画配置</h4>
 
-<p>动画中半径的变化:0–&gt; 最大farRadius–&gt; 最小nearRadius–&gt; 结束endRadius</p>
+<ul>
+  <li>如果配置弧线形动画,则动画中弧线半径变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt; 结束 endRadius</li>
+  <li>如果配置直线形动画,则动画中半径就是直线段的长度,变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt;结束 endRadius</li>
+</ul>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 动画时长</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">animationDuration</span>  <span class="o">=</span> <span class="kt">CFTimeInterval</span><span class="p">(</span><span class="n">animationDrationValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span>
@@ -302,7 +322,7 @@
 <span class="c1">// 整体角度</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">menuWholeAngle</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">menuWholeAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
 <span class="c1">// 整体偏移角度</span>
-<span class="n">menu</span><span class="o">.</span><span class="n">rotateAngle</span>        <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAngle</span>        <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
 <span class="c1">// 展开时自旋角度</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">expandRotation</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span><span class="p">)</span>
 <span class="c1">// 结束时自旋角度</span>
@@ -311,14 +331,26 @@
 <span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButton</span>    <span class="o">=</span> <span class="n">rotateAddButton</span><span class="o">.</span><span class="n">isOn</span>
 <span class="c1">// 菜单按钮旋转角度</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButtonAngle</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAddButtonAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
-<span class="c1">// ..</span>
+<span class="c1">// 菜单展示的形状:直线 or 弧形</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuGrapyType</span> <span class="o">=</span> <span class="n">isLineGrapyType</span><span class="o">.</span><span class="n">isOn</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">?</span> <span class="o">.</span><span class="nv">line</span> <span class="p">:</span> <span class="o">.</span><span class="n">arc</span>
+
+<span class="c1">// 为方便使用,V1.1.0版本已枚举常见方位,可直接使用,无需再次设置 rotateAngle &amp;&amp; menuWholeAngle</span>
+<span class="c1">// 若对于 rotateAngle\menuWholeAngle 不熟悉,建议查看 source 目录下的配置图片</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">above</span> <span class="c1">// 上方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .left // 左方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .below // 下方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .right // 右方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperRight // 右上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerRight // 右下方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperLeft // 左上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerLeft // 左下方90°</span>
 </code></pre>
 </div>
 
-<h4 id="section-5">6、动画过程监听</h4>
+<h4 id="section-6">6、动画过程监听</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="kt">SDiffuseMenuDidSelectMenuItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">,</span> <span class="n">didSelectIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"选中按钮at index:</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> is: </span><span class="se">\(</span><span class="n">menu</span><span class="o">.</span><span class="nf">menuItemAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"选中按钮 at index:</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> is: </span><span class="se">\(</span><span class="n">menu</span><span class="o">.</span><span class="nf">menuItemAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="kt">SDiffuseMenuDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
@@ -341,25 +373,25 @@
 
 <h2 id="swift">二、Swift转写之旅</h2>
 
-<p>总的来说，动画的原理还是比较简单的，主要涉及到的内容是CABasicAnimation、CAKeyframeAnimation以及事件响应链相关知识，下边分两部分介绍之。</p>
+<p>总的来说,动画的原理还是比较简单的,主要涉及到的知识点是 CABasicAnimation、CAKeyframeAnimation 以及事件响应链相关知识,下边分两部分介绍</p>
 
 <h3 id="capropertyanimation">1、CAPropertyAnimation动画</h3>
 
 <p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Animation_Types_Timing/Art/animations_info_2x.png" alt="" /></p>
 
-<p>在SDiffuseMenu中动画用CAPropertyAnimation的子类CABasicAnimation和CAKeyframeAnimation来实现，关于这两个子类简述如下：</p>
+<p>在 SDiffuseMenu 中动画用 CAPropertyAnimation 的子类 CABasicAnimation 和 CAKeyframeAnimation 来实现,关于这两个子类简述如下:</p>
 
 <ul>
-  <li>CABasicAnimation其实可以看作是一种特殊的关键帧动画,只有头尾两个关键帧,可实现移动、旋转、缩放等基本动画;</li>
-  <li>CAKeyframeAnimation则可以支持任意多个关键帧,关键帧有两种方式来指定,使用path或values;</li>
+  <li>CABasicAnimation 其实可以看作是一种特殊的关键帧动画,只有头尾两个关键帧,可实现移动、旋转、缩放等基本动画;</li>
+  <li>CAKeyframeAnimation 则可以支持任意多个关键帧,关键帧有两种方式来指定,使用path或values;</li>
   <li>
     <ul>
-      <li>path可以是CGPathRef、CGMutablePathRef或者贝塞尔曲线,注意的是：设置了path之后values就无效了;values则相对灵活, 可以指定任意关键帧帧值;</li>
+      <li>path 可以是 CGPathRef、CGMutablePathRef 或者贝塞尔曲线,注意的是:设置了 path 之后 values 就无效了;values 则相对灵活, 可以指定任意关键帧帧值;</li>
     </ul>
   </li>
   <li>
     <ul>
-      <li>keyTimes可以为values中的关键帧设置一一对应对应的时间点,其取值范围为0到1.0,keyTimes没有设置的时候,各个关键帧的时间是平分的;</li>
+      <li>keyTimes 可以为 values 中的关键帧设置一一对应对应的时间点,其取值范围为0到1.0,keyTimes 没有设置的时候,各个关键帧的时间是平分的;</li>
     </ul>
   </li>
   <li>
@@ -373,56 +405,70 @@
   <p>更多的动画知识请戳此处 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514">CoreAnimation_guide</a></p>
   <blockquote>
 
-    <p>相关的指南、示例代码可以通过点击页面右上角搜索按钮进行搜索，官方文档大多点到为止，挺适合入门学习的，更深的还是需要在实践中摸索总结。</p>
+    <p>相关的指南、示例代码可以通过点击页面右上角搜索按钮进行搜索,官方文档大多点到为止,挺适合入门学习的,更深的还需要在实践中摸索总结</p>
   </blockquote>
 </blockquote>
 
-<h3 id="section-6">2、动画分析</h3>
+<h3 id="section-7">2、动画分析</h3>
 
-<p>不论多么复杂的动画，都是由简单的动画组成的，大家先看看SDiffuseMenu中单选项动画：</p>
+<p>在 V1.1.0 版本中,已扩展动画的形状:新加入直线型,其原理及计算方法同弧线形,下文不做过多介绍,详情参见版本记录</p>
 
-<p><img src="https://ooo.0o0.ooo/2017/01/18/587f44ab228bc.gif" alt="" /></p>
+<p>不论多么复杂的动画,都是由简单的动画组成的,大家先看下 SDiffuseMenu 中单选项动画：</p>
 
-<p>仔细分析发现可以将整个动画可以拆分为三大部分：</p>
+<p><img src="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/singleItemAnimation.gif" alt="" /></p>
+
+<p>仔细分析发现可以将整个动画可以拆分为三大部分:</p>
 
 <ul>
-  <li>菜单按钮的自旋转，通过transform属性即可实现；</li>
-  <li>选项按钮的整体展开动画，实际是在定时器中依次添加单个选项按钮的动画组，控制timeInterval来实现动画的先后执行顺序；</li>
-  <li>单个选项按钮的动画则拆分为3部分：展开动画、结束动画和点击动画，都是动画组，下边以结束动画为例，简单介绍其实现过程。</li>
+  <li>菜单按钮的自旋转,通过 transform 属性即可实现;</li>
+  <li>选项按钮的整体展开动画,实际是在定时器中依次添加单个选项按钮的动画组,控制 timeInterval 来实现动画的先后执行顺序;</li>
+  <li>单个选项按钮的动画则拆分为3部分:展开动画、结束动画和点击动画,都是动画组,下边以结束动画为例,简单介绍其实现过程</li>
 </ul>
 
-<h4 id="section-7">2.1、单个选项关闭动画分析：</h4>
+<h4 id="section-8">2.1、单个选项关闭动画分析：</h4>
 
-<p>动画过程：点击菜单关闭动画 -&gt; 菜单旋转复位；选项按钮自旋+从endRadius移动到farRadius -&gt;选项按钮到达farRadius之后：开始返回+同时自旋转 -&gt; 然后回到起始点。</p>
+<p>单选项按钮关闭动画过程如下:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/01/20/58817b4e6ba40.png" alt="" /></p>
 
 <p><strong>1、自旋</strong></p>
 
-<p>大家仔细看会发现展开动画和结束动画的自旋转是有差异的，因为关键帧设置的不同。</p>
+<p>大家仔细看会发现展开动画和结束动画的自旋转是有差异的,因为关键帧设置的不同</p>
 
-<p>展开动画中设置的关键帧如下，0.3对应expandRotation展开自选角度，0.4对应0°，所以在0.3 -&gt; 0.4的时间会出现快速的自旋。</p>
+<p>展开动画中设置的关键帧如下,0.1对应展开角度0°,0.3对应 expandRotation 自旋角度,0.4对应0°,所以在0.3 -&gt; 0.4的时间会出现较快速的自旋</p>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="n">expandRotation</span><span class="p">),</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
-<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.3</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>  <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">expandRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.1</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.3</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
 </code></pre>
 </div>
 
-<p>而关闭的动画中，我设置如下，细化了关键帧，可以看出自旋的动画细节丰富一些，0 -&gt; 0.4 慢速自旋，0.4 -&gt; 0.5 快速自旋。</p>
+<p>而关闭的动画中,设置为0 -&gt; 0.4 慢速自旋,0.4 -&gt; 0.5 快速自旋</p>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="kt">CGFloat</span><span class="p">(</span><span class="n">closeRotation</span><span class="p">),</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
-<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span> <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.5</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">closeRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.5</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
 </code></pre>
 </div>
 
 <p><strong>2、移动</strong></p>
 
-<p>移动的控制源于path是怎样设定的，代码中我写了两种方法，其中一种是注释掉了。</p>
+<p>移动的控制在于 path 是怎样设定的,代码中我写了两种方法,其中一种被注释掉</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">positionAnimation</span>      <span class="o">=</span>  <span class="kt">CAKeyframeAnimation</span><span class="p">(</span><span class="nv">keyPath</span><span class="p">:</span> <span class="s">"position"</span><span class="p">)</span>
 <span class="n">positionAnimation</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">animationDuration</span>
 </code></pre>
 </div>
 
-<p>1)\使用贝塞尔曲线作为path,从代码中可以明显的看出移动的路径：endPoint -&gt; farPoint -&gt; startPoint</p>
+<p>1)\使用贝塞尔曲线作为 path,从代码中可以明显的看出移动的路径: endPoint -&gt; farPoint -&gt; startPoint</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="kt">UIBezierPath</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
 <span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
@@ -432,7 +478,7 @@
 </code></pre>
 </div>
 
-<p>2)\使用CGPathRef或GCMutablePathRef设置路径</p>
+<p>2)\使用 CGPathRef 或 GCMutablePathRef 设置路径</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span>  <span class="kt">CGMutablePath</span><span class="p">()</span>
 <span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
@@ -442,89 +488,83 @@
 </code></pre>
 </div>
 
-<p>自旋和平移都有了，接下来要加入到动画组中：</p>
+<p>自旋和平移都有了,接下来要加入到动画组中：</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">animationgroup</span>              <span class="o">=</span>  <span class="kt">CAAnimationGroup</span><span class="p">()</span>
 <span class="n">animationgroup</span><span class="o">.</span><span class="n">animations</span>       <span class="o">=</span> <span class="p">[</span><span class="n">positionAnimation</span><span class="p">,</span> <span class="n">rotateAnimation</span><span class="p">]</span>
 <span class="n">animationgroup</span><span class="o">.</span><span class="n">duration</span>         <span class="o">=</span> <span class="n">animationDuration</span>
-<span class="c1">// 动画结束后，layer保持最终的状态</span>
+<span class="c1">// 动画结束后,layer保持最终的状态</span>
 <span class="n">animationgroup</span><span class="o">.</span><span class="n">fillMode</span>         <span class="o">=</span> <span class="n">kCAFillModeForwards</span>
-<span class="c1">// 速度控制我设置的如此，大家根据需要自行修改即可</span>
+<span class="c1">// 速度控制我设置的如此,大家根据需要自行修改即可</span>
 <span class="n">animationgroup</span><span class="o">.</span><span class="n">timingFunction</span>   <span class="o">=</span> <span class="kt">CAMediaTimingFunction</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="n">kCAMediaTimingFunctionEaseIn</span><span class="p">)</span>
 <span class="c1">// 代理是为了获取到动画结束的信号</span>
 <span class="n">animationgroup</span><span class="o">.</span><span class="n">delegate</span>         <span class="o">=</span> <span class="k">self</span>
 </code></pre>
 </div>
 
-<p>最添加进layer即可</p>
-
+<p>最添加进 layer 即可</p>
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="n">animationgroup</span><span class="p">,</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"Close"</span><span class="p">)</span>
 </code></pre>
 </div>
-<p>其余的动画原理和上述的关闭动画其实是一样的，基于属性的动画，通过操作帧来实现我们想要的效果，小伙伴们直接看代码吧~</p>
+<p>其余的动画原理和上述的关闭动画其实是一样的,基于属性的动画,通过操作帧来实现我们想要的效果,小伙伴们直接看代码吧~</p>
 
-<blockquote>
-  <p>这里插一句，不知道小伙伴们有没有注意到一点，就是layer为什么叫CALayer，而且和动画的关系还这么紧密？</p>
-</blockquote>
+<h4 id="section-9">2.2、整体动画的控制</h4>
 
-<h4 id="section-8">2.2、整体动画的控制</h4>
-
-<p>注意，整体动画的控制以上并未表述，在这个地方也需要注意下，为了让整体动画在一个合适的角度展示出来，就需要从整体上控制角度。</p>
+<p>注意,整体动画的控制以上并未表述,在这个地方也需要注意下,为了让整体动画在一个合适的角度展示出来,就需要从整体上控制角度</p>
 
 <p><img src="https://ooo.0o0.ooo/2017/01/16/587c8c512c911.png" alt="" />
 <img src="https://ooo.0o0.ooo/2017/01/16/587c8c7530072.png" alt="" />
 <img src="https://ooo.0o0.ooo/2017/01/16/587c8c8635998.png" alt="" /></p>
 
-<p>从上图中可以看出，整体的角度是由menuWholeAngle和rotateAngle共同控制的。</p>
+<p>从上图中可以看出,整体的角度是由 menuWholeAngle 和 rotateAngle 共同控制的</p>
 
 <ul>
-  <li>menuWholeAngle: 控制整体动画的范围角度；</li>
+  <li>menuWholeAngle: 控制整体动画的范围角度;</li>
   <li>rotateAngle: 用于控制整体的偏移角度</li>
 </ul>
 
-<p>为了方便理解整体角度的控制，我以结束位置为例画了CAD图，如下：
+<p>为了方便理解整体角度的控制,我以结束位置为例画了CAD图,如下:
 <img src="https://ooo.0o0.ooo/2017/01/18/587ed1cc7e674.png" alt="" />
-提醒：下文所述的坐标计算都是基于笛卡儿坐标系，注意与UIKit中坐标系的异同。</p>
+提醒:下文所述的坐标计算都是基于笛卡儿坐标系,注意与UIKit中坐标系的异同。</p>
 
-<p>关于上图，说明如下：</p>
-
+<p>关于上图,说明如下:</p>
 <ul>
-  <li>1、图中有5个选项按钮和一个菜单按钮，整体角度是menuWholeAngle，选项中心夹角β；</li>
-  <li>2、假设偏移角度rotateAngle=0，则以红色线为坐标轴XY，下文先以此为准进行坐标计算；</li>
-  <li>3、假设整体偏移角度rotateAngle!=0，那么以蓝色为坐标轴XY，其中偏移角度就是rotateAngle。</li>
+  <li>1、图中有5个选项按钮和一个菜单按钮,整体角度是 menuWholeAngle,选项中心夹角β(见代码注释);</li>
+  <li>2、假设偏移角度 rotateAngle=0,则以红色线为坐标轴XY,下文先以此为准进行坐标计算;</li>
+  <li>3、假设整体偏移角度 rotateAngle!=0,那么以绿为坐标轴XY,其中偏移角度就是 rotateAngle</li>
 </ul>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// </span>
 <span class="c1">// β = ti * menuWholeAngle / icount - CGFloat(1.0)</span>
-<span class="c1">// β是两个选项按钮的中心夹角；</span>
-<span class="c1">// 计算β正弦余弦值：</span>
+<span class="c1">// β 是两个选项按钮的中心夹角</span>
+<span class="c1">// 计算 β 正弦余弦值</span>
 <span class="k">let</span> <span class="nv">sinValue</span>  <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="nf">sinf</span><span class="p">(</span><span class="kt">Float</span><span class="p">(</span><span class="n">ti</span> <span class="o">*</span> <span class="n">menuWholeAngle</span> <span class="o">/</span> <span class="n">icount</span> <span class="o">-</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))))</span>
 <span class="k">let</span> <span class="nv">cosValue</span>  <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="nf">cosf</span><span class="p">(</span><span class="kt">Float</span><span class="p">(</span><span class="n">ti</span> <span class="o">*</span> <span class="n">menuWholeAngle</span> <span class="o">/</span> <span class="n">icount</span> <span class="o">-</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">)))</span>
 
-<span class="c1">// 结束点坐标：</span>
+<span class="c1">// 结束点坐标</span>
 <span class="k">var</span> <span class="nv">x</span>         <span class="o">=</span> <span class="n">startPoint</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="n">endRadius</span><span class="p">)</span> <span class="o">*</span> <span class="n">sinValue</span>
 <span class="k">var</span> <span class="nv">y</span>         <span class="o">=</span> <span class="p">(</span><span class="kt">CGFloat</span><span class="p">(</span><span class="n">startPoint</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">endRadius</span> <span class="o">*</span> <span class="n">cosValue</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">endPoint</span>  <span class="o">=</span>  <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span><span class="nv">y</span><span class="p">:</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span> <span class="o">=</span> <span class="n">endPoint</span> <span class="c1">// _rotateCGPointAroundCenter(endPoint, center: startPoint, angle: rotateAngle)</span>
 
-<span class="c1">// 最近点坐标，计算方法同CAD图中的结束点坐标</span>
+<span class="c1">// 最近点坐标,计算方法同CAD图中的结束点坐标</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">startPoint</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">nearRadius</span> <span class="o">*</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="n">sinValue</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">startPoint</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">nearRadius</span> <span class="o">*</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="n">cosValue</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">nearPoint</span>  <span class="o">=</span>  <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">nearPoint</span> <span class="o">=</span> <span class="n">nearPoint</span> <span class="c1">// _rotateCGPointAroundCenter(nearPoint, center: startPoint, angle: rotateAngle)</span>
 
-<span class="c1">// 最远点坐标，计算方法同CAD图中的结束点坐标</span>
+<span class="c1">// 最远点坐标,计算方法同CAD图中的结束点坐标</span>
 <span class="k">let</span> <span class="nv">farPoint</span>   <span class="o">=</span>  <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">startPoint</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">farRadius</span> <span class="o">*</span> <span class="n">sinValue</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">startPoint</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">farRadius</span> <span class="o">*</span> <span class="n">cosValue</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span>  <span class="o">=</span> <span class="n">farPoint</span> <span class="c1">//  _rotateCGPointAroundCenter(farPoint, center: startPoint, angle: rotateAngle)</span>
 </code></pre>
 </div>
 
-<p>OK，上边计算了每个选项的坐标，从而确定了每个选项的end坐标，可以实现一个整体的动画效果。但是，请注意，上边我注释了对 ‘_rotateCGPointAroundCenter ‘的调用，使得动画的整体偏移角度为0。如果放开注释，结果会怎样？</p>
+<p>OK,上边计算了每个选项的坐标,从而确定了每个选项的 end 坐标,可以实现一个整体的动画效果。但是,请注意,上边我注释了对 ‘_rotateCGPointAroundCenter ‘的调用,使得动画的整体偏移角度为0。如果放开注释,结果会怎样？</p>
 
-<p>最终我们要实现的效果是可以围绕菜单选项展开任意角度的整体动画，那么只需要在以上的基础，加上坐标轴系的旋转即可。请看上图的绿色线，假设其为新的坐标系，让红色坐标系绕其旋转rotateAngle，就相当于选项按钮整体偏移rotateAngle，这样就可以做到任意方向的动画，如下图:</p>
+<p>最终我们要实现的效果是可以围绕菜单选项展开任意角度的整体动画,那么只需要在以上的基础,加上坐标轴系的旋转即可。请看上图的绿色线,假设其为新的坐标系,让红色坐标系绕其旋转 rotateAngle,就相当于选项按钮整体偏移 rotateAngle,这样就可以做到任意方向的动画,如下图:</p>
 
 <p><img src="https://ooo.0o0.ooo/2017/01/18/587ed9a01719d.png" alt="" />
-偏移代码如下：</p>
+偏移代码如下:</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">_rotateCGPointAroundCenter</span><span class="p">(</span> <span class="n">_</span> <span class="nv">point</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">,</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">,</span> <span class="nv">angle</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGPoint</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">translation</span>     <span class="o">=</span> <span class="kt">CGAffineTransform</span><span class="p">(</span><span class="nv">translationX</span><span class="p">:</span> <span class="n">center</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">center</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
@@ -535,24 +575,24 @@
 </code></pre>
 </div>
 
-<p>那些看似复杂的动画，但如果细细分析，其实也不难哦~</p>
+<p>那些看似复杂的动画,但如果细细分析,其实也不难哦~</p>
 
-<h3 id="section-9">3、事件响应链</h3>
+<h3 id="section-10">3、事件响应链</h3>
 
-<p>其实这里并没有直接使用hitTest寻找响应View，而是在两处使用相关的知识</p>
+<p>其实这里并没有直接使用 hitTest 寻找响应 View,而是在两处使用相关的知识</p>
 
-<p><strong>3.1、利用’point(inside point: CGPoint, with event: UIEvent?) -&gt; Bool’来控制touch事件的分发</strong></p>
+<p><strong>3.1、利用’point(inside point: CGPoint, with event: UIEvent?) -&gt; Bool’来控制 touch 事件的分发</strong></p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">point</span><span class="p">(</span><span class="n">inside</span> <span class="nv">point</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">,</span> <span class="n">with</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIEvent</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="c1">// 动画中禁止touch</span>
+    <span class="c1">// 动画中禁止 touch</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">_isAnimating</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">false</span>
     <span class="p">}</span>
-    <span class="c1">// 展开时可以touch任意按钮</span>
+    <span class="c1">// 展开时可以 touch 任意按钮</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="kc">true</span> <span class="o">==</span> <span class="n">expanding</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span> 
-    <span class="c1">// 除上述情况外，仅菜单按钮可点击</span>
+    <span class="c1">// 除上述情况外,仅菜单按钮可点击</span>
     <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">_startButton</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
     <span class="p">}</span>
@@ -562,7 +602,7 @@
 
 <p><strong>3.2、增大按钮的点击区域</strong></p>
 
-<p>在OC中，经常遇到放大按钮点击区域或者限制touch区域的问题，一般可以通过设置frame或者利用hitTest处理，在Swift中也是一样的。在SDiffuseMenu中，对于点击范围的处理如下：</p>
+<p>在OC中,经常遇到放大按钮点击区域或者限制 touch 区域的问题,一般可以通过设置 frame 或者利用 hitTest 处理,在 Swift 中也是一样的。在 SDiffuseMenu 中,对于点击范围的处理如下:</p>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="kd">func</span> <span class="nf">touchesEnded</span><span class="p">(</span><span class="n">_</span> <span class="nv">touches</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UITouch</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">with</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIEvent</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">self</span><span class="o">.</span><span class="n">isHighlighted</span> <span class="o">=</span> <span class="kc">false</span>
@@ -582,26 +622,12 @@
 <span class="p">}</span>
 <span class="c1">// 其中ScaleRect方法的playground版见下图</span>
 
-<span class="c1">// 增大点击范围，还可以在point方法中判断，不过就需要SDiffuseMenu.swift跟着调整了，这一期先不采用第二种方法，下期再尝试。</span>
+<span class="c1">// 增大点击范围,还可以在point方法中判断,不过就需要SDiffuseMenu.swift跟着调整了</span>
 </code></pre>
 </div>
-
-<p>下图是ScaleRect方法小测试，看着是不是很好用啊😁😁</p>
+<p>下图是ScaleRect方法小测试,看着是不是很好用啊😁😁</p>
 
 <p><img src="https://ooo.0o0.ooo/2017/01/18/587f06c314ded.png" alt="" /></p>
-
-<blockquote>
-  <p>这一版的SDiffuseMenu和AwesomeMenu基本是一样的，接下来的一版我会增加多方向的直线弹出排列动画，喜欢的朋友还请给个star哦，我会努力优化的~</p>
-</blockquote>
-
-<p>最后分享下Swift学习心得：</p>
-
-<ul>
-  <li>我基本是以官方文档为主的，有疑问就google；</li>
-  <li>参照官方给出的demo，以及修订blog;</li>
-  <li>使用Playground，这个挺给力的；</li>
-  <li>参考资料我也总结了下，<a href="https://github.com/mythkiven/SourceOfSwift">请戳此处</a></li>
-</ul>
 
 
         </article>
@@ -756,7 +782,7 @@
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/18/SDiffuseMenu/" data-title="AwesomeMenu的Swift版改写之旅:SDiffuseMenu" data-url="http://localhost:4000/2017/01/18/SDiffuseMenu/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/18/SDiffuseMenu/" data-title="Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu" data-url="http://localhost:4000/2017/01/18/SDiffuseMenu/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
