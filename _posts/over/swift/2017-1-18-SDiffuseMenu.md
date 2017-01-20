@@ -10,8 +10,6 @@ author: 3行代码
 {:toc}
 
 
-## Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu
-
 
 >本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步[这里](https://github.com/levey/AwesomeMenu)。
 >
@@ -22,11 +20,11 @@ author: 3行代码
 
 **动画效果如下:**
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/SDiffuseMenu.gif)
+![](https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/SDiffuseMenu.gif)
 
 **配置图如下:**
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/settingAngle.png)
+![](https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png)
 
 ## 版本记录
 
@@ -185,7 +183,7 @@ func SDiffuseMenuWillClose(_ menu: SDiffuseMenu) {
 
 不论多么复杂的动画,都是由简单的动画组成的,大家先看下 SDiffuseMenu 中单选项动画：
 
-![](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/singleItemAnimation.gif)
+![](https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/singleItemAnimation.gif)
 
 仔细分析发现可以将整个动画可以拆分为三大部分:
 

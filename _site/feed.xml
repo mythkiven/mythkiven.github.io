@@ -5,14 +5,13 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 15:02:33 +0800</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 15:02:33 +0800</lastBuildDate>
+    <pubDate>Fri, 20 Jan 2017 15:09:38 +0800</pubDate>
+    <lastBuildDate>Fri, 20 Jan 2017 15:09:38 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
         <title>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#swift--awesomemenu-sdiffusemenu&quot; id=&quot;markdown-toc-swift--awesomemenu-sdiffusemenu&quot;&gt;Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;版本记录&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;一、使用方法：&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1、添加协议&lt;/a&gt;&lt;/li&gt;
@@ -35,8 +34,6 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;swift--awesomemenu-sdiffusemenu&quot;&gt;Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu&lt;/h2&gt;
-
 &lt;blockquote&gt;
   &lt;p&gt;本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步&lt;a href=&quot;https://github.com/levey/AwesomeMenu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 
@@ -47,11 +44,11 @@
 
 &lt;p&gt;&lt;strong&gt;动画效果如下:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/SDiffuseMenu.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/SDiffuseMenu.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;配置图如下:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/settingAngle.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;版本记录&lt;/h2&gt;
 
@@ -230,7 +227,7 @@
 
 &lt;p&gt;不论多么复杂的动画,都是由简单的动画组成的,大家先看下 SDiffuseMenu 中单选项动画：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/singleItemAnimation.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/singleItemAnimation.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;仔细分析发现可以将整个动画可以拆分为三大部分:&lt;/p&gt;
 
