@@ -10,12 +10,12 @@ author: 3行代码
 {:toc}
 
 
-
 >本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步[这里](https://github.com/levey/AwesomeMenu)。
 >
->SDiffuseMenu 当前版本 V1.1.0,代码[请戳这里](https://github.com/mythkiven/DiffuseMenu_Swift)
+>SDiffuseMenu 当前版本 V1.2.1,代码[请戳这里](https://github.com/mythkiven/DiffuseMenu_Swift)
 >
->我是刚转 Swift 不久,代码不足之处还请大神多多指教😁😁
+>SDiffuseMenu 嵌入 pod 'SDiffuseMenu', '~> 1.2.1'
+>
 
 
 **动画效果如下:**
@@ -26,9 +26,6 @@ author: 3行代码
 
 ![](https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png)
 
-## 版本记录
-
-SDiffuseMenu 当前为 V1.1.0 版本,历史版本详情[请戳一下](https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/Revision History.md)
 
 ## 一、使用方法：
 

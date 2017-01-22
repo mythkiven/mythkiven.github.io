@@ -5,31 +5,30 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 15:09:38 +0800</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 15:09:38 +0800</lastBuildDate>
+    <pubDate>Sun, 22 Jan 2017 18:32:09 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Jan 2017 18:32:09 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
         <title>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;版本记录&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;一、使用方法：&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1、添加协议&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2、设置菜单的选项按钮数据&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;3、设置菜单按钮&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;一、使用方法：&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;1、添加协议&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2、设置菜单的选项按钮数据&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;3、设置菜单按钮&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#sdiffusemenu&quot; id=&quot;markdown-toc-sdiffusemenu&quot;&gt;4、添加 SDiffuseMenu&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;5、动画配置&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;6、动画过程监听&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;5、动画配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;6、动画过程监听&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#swift&quot; id=&quot;markdown-toc-swift&quot;&gt;二、Swift转写之旅&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#capropertyanimation&quot; id=&quot;markdown-toc-capropertyanimation&quot;&gt;1、CAPropertyAnimation动画&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;2、动画分析&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;2.1、单个选项关闭动画分析：&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;2.2、整体动画的控制&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;2、动画分析&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;2.1、单个选项关闭动画分析：&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;2.2、整体动画的控制&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;3、事件响应链&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;3、事件响应链&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -37,9 +36,10 @@
 &lt;blockquote&gt;
   &lt;p&gt;本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步&lt;a href=&quot;https://github.com/levey/AwesomeMenu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 
-  &lt;p&gt;SDiffuseMenu 当前版本 V1.1.0,代码&lt;a href=&quot;https://github.com/mythkiven/DiffuseMenu_Swift&quot;&gt;请戳这里&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;SDiffuseMenu 当前版本 V1.2.1,代码&lt;a href=&quot;https://github.com/mythkiven/DiffuseMenu_Swift&quot;&gt;请戳这里&lt;/a&gt;&lt;/p&gt;
 
-  &lt;p&gt;我是刚转 Swift 不久,代码不足之处还请大神多多指教😁😁&lt;/p&gt;
+  &lt;p&gt;SDiffuseMenu 嵌入 pod ‘SDiffuseMenu’, ‘~&amp;gt; 1.2.1’&lt;/p&gt;
+
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;动画效果如下:&lt;/strong&gt;&lt;/p&gt;
@@ -50,15 +50,11 @@
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;版本记录&lt;/h2&gt;
-
-&lt;p&gt;SDiffuseMenu 当前为 V1.1.0 版本,历史版本详情&lt;a href=&quot;https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/Revision History.md&quot;&gt;请戳一下&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;一、使用方法：&lt;/h2&gt;
+&lt;h2 id=&quot;section&quot;&gt;一、使用方法：&lt;/h2&gt;
 
 &lt;p&gt;添加协议(动画状态回调) -&amp;gt; 设置选项数组 -&amp;gt; 设置菜单按钮 -&amp;gt; 动画属性配置 -&amp;gt; .addSubview(menu)&lt;/p&gt;
 
-&lt;h4 id=&quot;section-2&quot;&gt;1、添加协议&lt;/h4&gt;
+&lt;h4 id=&quot;section-1&quot;&gt;1、添加协议&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UIViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SDiffuseMenuDelegate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;menu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SDiffuseMenu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
@@ -66,7 +62,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;section-3&quot;&gt;2、设置菜单的选项按钮数据&lt;/h4&gt;
+&lt;h4 id=&quot;section-2&quot;&gt;2、设置菜单的选项按钮数据&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 加载图片&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;storyMenuItemImage&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;kt&quot;&gt;UIImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;named&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menuitem-normal.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fatalError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;图片加载失败&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -89,7 +85,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;section-4&quot;&gt;3、设置菜单按钮&lt;/h4&gt;
+&lt;h4 id=&quot;section-3&quot;&gt;3、设置菜单按钮&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;startItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SDiffuseMenuItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;starItemNormalImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                                  &lt;span class=&quot;nv&quot;&gt;highlightedImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;starItemLightedImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -114,7 +110,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;section-5&quot;&gt;5、动画配置&lt;/h4&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;5、动画配置&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;如果配置弧线形动画,则动画中弧线半径变化为:0–&amp;gt; 最大 farRadius–&amp;gt; 最小 nearRadius–&amp;gt; 结束 endRadius&lt;/li&gt;
@@ -159,7 +155,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;section-6&quot;&gt;6、动画过程监听&lt;/h4&gt;
+&lt;h4 id=&quot;section-5&quot;&gt;6、动画过程监听&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SDiffuseMenuDidSelectMenuItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;menu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SDiffuseMenu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didSelectIndex&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;选中按钮 at index:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;menu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;menuItemAtIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -221,7 +217,7 @@
   &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;2、动画分析&lt;/h3&gt;
+&lt;h3 id=&quot;section-6&quot;&gt;2、动画分析&lt;/h3&gt;
 
 &lt;p&gt;在 V1.1.0 版本中,已扩展动画的形状:新加入直线型,其原理及计算方法同弧线形,下文不做过多介绍,详情参见版本记录&lt;/p&gt;
 
@@ -237,7 +233,7 @@
   &lt;li&gt;单个选项按钮的动画则拆分为3部分:展开动画、结束动画和点击动画,都是动画组,下边以结束动画为例,简单介绍其实现过程&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;section-8&quot;&gt;2.1、单个选项关闭动画分析：&lt;/h4&gt;
+&lt;h4 id=&quot;section-7&quot;&gt;2.1、单个选项关闭动画分析：&lt;/h4&gt;
 
 &lt;p&gt;单选项按钮关闭动画过程如下:&lt;/p&gt;
 
@@ -320,7 +316,7 @@
 &lt;/div&gt;
 &lt;p&gt;其余的动画原理和上述的关闭动画其实是一样的,基于属性的动画,通过操作帧来实现我们想要的效果,小伙伴们直接看代码吧~&lt;/p&gt;
 
-&lt;h4 id=&quot;section-9&quot;&gt;2.2、整体动画的控制&lt;/h4&gt;
+&lt;h4 id=&quot;section-8&quot;&gt;2.2、整体动画的控制&lt;/h4&gt;
 
 &lt;p&gt;注意,整体动画的控制以上并未表述,在这个地方也需要注意下,为了让整体动画在一个合适的角度展示出来,就需要从整体上控制角度&lt;/p&gt;
 
@@ -389,7 +385,7 @@
 
 &lt;p&gt;那些看似复杂的动画,但如果细细分析,其实也不难哦~&lt;/p&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;3、事件响应链&lt;/h3&gt;
+&lt;h3 id=&quot;section-9&quot;&gt;3、事件响应链&lt;/h3&gt;
 
 &lt;p&gt;其实这里并没有直接使用 hitTest 寻找响应 View,而是在两处使用相关的知识&lt;/p&gt;
 

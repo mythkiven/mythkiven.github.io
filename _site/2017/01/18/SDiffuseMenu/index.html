@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</title>
-    <meta name="description" content="">
+    <meta name="description" content="  一、使用方法：          1、添加协议      2、设置菜单的选项按钮数据      3、设置菜单按钮      4、添加 SDiffuseMenu      5、动画配置      6、动画过程监听        二、Swift转写之旅          1、CAPropertyAnimation...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -197,24 +197,23 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">版本记录</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">一、使用方法：</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">1、添加协议</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">2、设置菜单的选项按钮数据</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">3、设置菜单按钮</a></li>
+  <li><a href="#section" id="markdown-toc-section">一、使用方法：</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、添加协议</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、设置菜单的选项按钮数据</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3、设置菜单按钮</a></li>
       <li><a href="#sdiffusemenu" id="markdown-toc-sdiffusemenu">4、添加 SDiffuseMenu</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">5、动画配置</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">6、动画过程监听</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">5、动画配置</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">6、动画过程监听</a></li>
     </ul>
   </li>
   <li><a href="#swift" id="markdown-toc-swift">二、Swift转写之旅</a>    <ul>
       <li><a href="#capropertyanimation" id="markdown-toc-capropertyanimation">1、CAPropertyAnimation动画</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">2、动画分析</a>        <ul>
-          <li><a href="#section-8" id="markdown-toc-section-8">2.1、单个选项关闭动画分析：</a></li>
-          <li><a href="#section-9" id="markdown-toc-section-9">2.2、整体动画的控制</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2、动画分析</a>        <ul>
+          <li><a href="#section-7" id="markdown-toc-section-7">2.1、单个选项关闭动画分析：</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">2.2、整体动画的控制</a></li>
         </ul>
       </li>
-      <li><a href="#section-10" id="markdown-toc-section-10">3、事件响应链</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">3、事件响应链</a></li>
     </ul>
   </li>
 </ul>
@@ -222,9 +221,10 @@
 <blockquote>
   <p>本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步<a href="https://github.com/levey/AwesomeMenu">这里</a>。</p>
 
-  <p>SDiffuseMenu 当前版本 V1.1.0,代码<a href="https://github.com/mythkiven/DiffuseMenu_Swift">请戳这里</a></p>
+  <p>SDiffuseMenu 当前版本 V1.2.1,代码<a href="https://github.com/mythkiven/DiffuseMenu_Swift">请戳这里</a></p>
 
-  <p>我是刚转 Swift 不久,代码不足之处还请大神多多指教😁😁</p>
+  <p>SDiffuseMenu 嵌入 pod ‘SDiffuseMenu’, ‘~&gt; 1.2.1’</p>
+
 </blockquote>
 
 <p><strong>动画效果如下:</strong></p>
@@ -235,15 +235,11 @@
 
 <p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png" alt="" /></p>
 
-<h2 id="section">版本记录</h2>
-
-<p>SDiffuseMenu 当前为 V1.1.0 版本,历史版本详情<a href="https://github.com/mythkiven/DiffuseMenu_Swift/blob/master/Source/Revision History.md">请戳一下</a></p>
-
-<h2 id="section-1">一、使用方法：</h2>
+<h2 id="section">一、使用方法：</h2>
 
 <p>添加协议(动画状态回调) -&gt; 设置选项数组 -&gt; 设置菜单按钮 -&gt; 动画属性配置 -&gt; .addSubview(menu)</p>
 
-<h4 id="section-2">1、添加协议</h4>
+<h4 id="section-1">1、添加协议</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SDiffuseMenuDelegate</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">!</span>
@@ -251,7 +247,7 @@
 </code></pre>
 </div>
 
-<h4 id="section-3">2、设置菜单的选项按钮数据</h4>
+<h4 id="section-2">2、设置菜单的选项按钮数据</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 加载图片</span>
 <span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
@@ -274,7 +270,7 @@
 </code></pre>
 </div>
 
-<h4 id="section-4">3、设置菜单按钮</h4>
+<h4 id="section-3">3、设置菜单按钮</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">startItem</span> <span class="o">=</span> <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">starItemNormalImage</span><span class="p">,</span>
                                  <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">starItemLightedImage</span><span class="p">,</span>
@@ -299,7 +295,7 @@
 </code></pre>
 </div>
 
-<h4 id="section-5">5、动画配置</h4>
+<h4 id="section-4">5、动画配置</h4>
 
 <ul>
   <li>如果配置弧线形动画,则动画中弧线半径变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt; 结束 endRadius</li>
@@ -344,7 +340,7 @@
 </code></pre>
 </div>
 
-<h4 id="section-6">6、动画过程监听</h4>
+<h4 id="section-5">6、动画过程监听</h4>
 
 <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="kt">SDiffuseMenuDidSelectMenuItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">,</span> <span class="n">didSelectIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
     <span class="nf">print</span><span class="p">(</span><span class="s">"选中按钮 at index:</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> is: </span><span class="se">\(</span><span class="n">menu</span><span class="o">.</span><span class="nf">menuItemAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
@@ -406,7 +402,7 @@
   </blockquote>
 </blockquote>
 
-<h3 id="section-7">2、动画分析</h3>
+<h3 id="section-6">2、动画分析</h3>
 
 <p>在 V1.1.0 版本中,已扩展动画的形状:新加入直线型,其原理及计算方法同弧线形,下文不做过多介绍,详情参见版本记录</p>
 
@@ -422,7 +418,7 @@
   <li>单个选项按钮的动画则拆分为3部分:展开动画、结束动画和点击动画,都是动画组,下边以结束动画为例,简单介绍其实现过程</li>
 </ul>
 
-<h4 id="section-8">2.1、单个选项关闭动画分析：</h4>
+<h4 id="section-7">2.1、单个选项关闭动画分析：</h4>
 
 <p>单选项按钮关闭动画过程如下:</p>
 
@@ -505,7 +501,7 @@
 </div>
 <p>其余的动画原理和上述的关闭动画其实是一样的,基于属性的动画,通过操作帧来实现我们想要的效果,小伙伴们直接看代码吧~</p>
 
-<h4 id="section-9">2.2、整体动画的控制</h4>
+<h4 id="section-8">2.2、整体动画的控制</h4>
 
 <p>注意,整体动画的控制以上并未表述,在这个地方也需要注意下,为了让整体动画在一个合适的角度展示出来,就需要从整体上控制角度</p>
 
@@ -574,7 +570,7 @@
 
 <p>那些看似复杂的动画,但如果细细分析,其实也不难哦~</p>
 
-<h3 id="section-10">3、事件响应链</h3>
+<h3 id="section-9">3、事件响应链</h3>
 
 <p>其实这里并没有直接使用 hitTest 寻找响应 View,而是在两处使用相关的知识</p>
 
