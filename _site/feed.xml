@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Jan 2017 18:32:09 +0800</pubDate>
-    <lastBuildDate>Sun, 22 Jan 2017 18:32:09 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Jan 2017 18:14:31 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Jan 2017 18:14:31 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -442,7 +442,9 @@
         <link>http://localhost:4000/2017/01/18/SDiffuseMenu/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/18/SDiffuseMenu/</guid>
         
-        <category>Swift3.0</category>
+        <category>SDiffuseMenu</category>
+        
+        <category>Animation</category>
         
         
         <category>Swift3.0</category>
@@ -4376,10 +4378,10 @@ a == b &amp;amp;&amp;amp; b == c 相当于 a == c (传递性)
         <link>http://localhost:4000/2016/11/26/swift_III_Strings-and-Characters/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/11/26/swift_III_Strings-and-Characters/</guid>
         
-        <category>Swift</category>
+        <category>Swift3.0</category>
         
         
-        <category>Swift</category>
+        <category>Swift3.0</category>
         
       </item>
     
@@ -4505,10 +4507,10 @@ OK,over~~&lt;/p&gt;
         <link>http://localhost:4000/2016/11/22/swift_II_Basic-Operators/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/11/22/swift_II_Basic-Operators/</guid>
         
-        <category>Swift</category>
+        <category>Swift3.0</category>
         
         
-        <category>Swift</category>
+        <category>Swift3.0</category>
         
       </item>
     

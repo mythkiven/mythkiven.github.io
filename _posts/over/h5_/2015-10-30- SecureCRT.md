@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "SecureCRT小教程"
-categories: SecureCRT
+categories: AD
 tags:  SecureCRT 
 author: 3行代码
 ---

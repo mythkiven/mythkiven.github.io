@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cancel performSelector & dispatch_after"
-categories: block  
+categories: Objective-C  
 tags: block
 author: 3行代码
 ---

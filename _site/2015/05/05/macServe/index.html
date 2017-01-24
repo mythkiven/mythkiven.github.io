@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>在mac上开启http服务</title>
-    <meta name="description" content="">
+    <meta name="description" content="介绍一种简便的方式,使用 Mac 自带 apache,无需手动配置,直接开启即可  启动 apache 服务$ sudo apachectl start  apache所在的路径是:$ open /Library/WebServer/Documents      对外的URL:电脑 IP + Documents下...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -167,7 +167,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#apache" title="Category: apache" rel="category">apache</a>
+        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
     
   
 
@@ -197,6 +197,38 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         
+<p>介绍一种简便的方式,使用 Mac 自带 apache,无需手动配置,直接开启即可</p>
+
+<ul>
+  <li>启动 apache 服务</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">start</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>apache所在的路径是:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">open</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">WebServer</span><span class="o">/</span><span class="n">Documents</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>对外的URL:电脑 IP + Documents下的路径.</p>
+  </li>
+  <li>
+    <p>实例:</p>
+  </li>
+</ul>
+
+<p>路径文件:/Library/WebServer/Documents/TEST/%E5%A6%0%A7.html
+对应 URL:http://192.电脑 IP.222/TEST/%E5%A6%0%A7.html</p>
+
+<p><strong>这样局域网的伙伴们就可以轻松访问你的共享文件喽</strong></p>
+
 
         </article>
         <hr>
@@ -204,6 +236,10 @@
         
         
             
+            
+                
+                    
+                
             
                 
                     

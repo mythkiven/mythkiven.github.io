@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "iOS逆向系列2_Theos_安装编译打包运行"
-categories: iOS逆向
+categories: Reverse
 tags:  Theos
 author: 3行代码
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "静态页面博客:jekyll+GitHubPages"
-categories: 博客 jekyll 
+categories: AD 
 tags:  博客 jekyll 
 author: 3code
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Swift_II_基本运算符"
-categories: Swift
-tags: Swift
+categories: Swift3.0
+tags: Swift3.0
 author: 3行代码
 ---
 

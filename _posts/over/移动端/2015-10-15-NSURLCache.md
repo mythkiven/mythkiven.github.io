@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "NSURLCache缓存的那些事"
-categories: NSURLCache 缓存
+categories: Objective-C
 tags: NSURLCache 缓存
 author: 3行代码
 ---

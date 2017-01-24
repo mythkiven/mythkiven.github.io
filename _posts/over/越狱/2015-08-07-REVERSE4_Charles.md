@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "IOS逆向系列_Charles_iPhone网络抓包"
-categories:  IOS逆向
-tags:     Charles
+categories:  Reverse
+tags: Charles
 author: 3行代码
 ---
 

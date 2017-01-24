@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "iOS逆向系列_综述"
-categories:  iOS逆向
-tags:     iOS逆向
+categories:  Reverse
+tags:  iOS逆向
 author: 3行代码
 ---
 
