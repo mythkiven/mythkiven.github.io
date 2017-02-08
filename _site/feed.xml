@@ -5,9 +5,696 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 18:14:31 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 18:14:31 +0800</lastBuildDate>
+    <pubDate>Wed, 08 Feb 2017 16:38:59 +0800</pubDate>
+    <lastBuildDate>Wed, 08 Feb 2017 16:38:59 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#fastlane-&quot; id=&quot;markdown-toc-fastlane-&quot;&gt;Fastlane 简介&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1.主要使用场:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.工具集&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;3.常见命令&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#fastlane--1&quot; id=&quot;markdown-toc-fastlane--1&quot;&gt;fastlane 入门实战&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#fastlane&quot; id=&quot;markdown-toc-fastlane&quot;&gt;1.安装 fastlane&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#app-id&quot; id=&quot;markdown-toc-app-id&quot;&gt;1.1 创建App ID\描述文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;1.2 安装&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#fastlane-1&quot; id=&quot;markdown-toc-fastlane-1&quot;&gt;1.3 为项目配置 fastlane&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#fastlane--2&quot; id=&quot;markdown-toc-fastlane--2&quot;&gt;2.fastlane 文件配置&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#metadata-&quot; id=&quot;markdown-toc-metadata-&quot;&gt;2.1 配置 metadata 文件夹&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.2 配置证书&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#fastlane--itc&quot; id=&quot;markdown-toc-fastlane--itc&quot;&gt;2.3 将 fastlane 本地配置上传至 ITC&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#xcode-&quot; id=&quot;markdown-toc-xcode-&quot;&gt;3.Xcode 配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#snapshot--xctest&quot; id=&quot;markdown-toc-snapshot--xctest&quot;&gt;4.Snapshot 截图和 XCTest&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ipa-&quot; id=&quot;markdown-toc-ipa-&quot;&gt;5.创建 IPA 文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ipa--itc&quot; id=&quot;markdown-toc-ipa--itc&quot;&gt;6.上传 IPA 文件到 ITC&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#deliverfile&quot; id=&quot;markdown-toc-deliverfile&quot;&gt;7.配置 Deliverfile&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appstore-&quot; id=&quot;markdown-toc-appstore-&quot;&gt;8.提交 AppStore 审核&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;9.使用一键命令&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;10.参考&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;有关神器 Fastlane 持续集成\部署的文章网上挺多,本文定位是入门教程,针对 iOS 应用的持续部署,&lt;strong&gt;只需一条命令就可实现从 Xcode 项目到 编译\打包\构建\提交审核&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;文章稍微有点长,涵盖内容为:fastlane 简介\安装\配置 + Snapshot 截图 + XCTest + 一键上传App Store&lt;/p&gt;
+
+  &lt;p&gt;说明:本文将 Apple Dev Center 简称为 ADC; iTunes Connect 简称为 ITC&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首发文章及代码请&lt;a href=&quot;https://github.com/mythkiven/AD_Fastlane&quot;&gt;戳一下&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;先放图看 fastlane 实现自动上传功能:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;进度:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589a9ef7823dc.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;提交成功,等待审核
+&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589aaed07d991.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;fastlane-&quot;&gt;Fastlane 简介&lt;/h2&gt;
+
+&lt;p&gt;fastlane 是一个完全开源的项目,包含一组 Ruby 实现的工具集,能完成 iOS 和 Android 工程 的自动化构建\测试和发布等功能,&lt;a href=&quot;https://krausefx.com/blog/fastlane-is-now-part-of-fabric&quot;&gt;现被Twitter收购,是Fabric的一部分&lt;/a&gt;.fastlane 强大之处就在于其提供的工具全,基本可以覆盖打包测试发布的所有流程,如下图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589ace59a6210.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;fastlane 的每一个工具都对应一个 Ruby 脚本,用来执行某一特定的任务,而最妙的是可以通过配置文件将不同的工具灵活的结合在一起,从而形成一个完整的自动化流程,实现一键上传 ITC,从而缩短用于构建发布的时间.&lt;/p&gt;
+
+&lt;h5 id=&quot;section&quot;&gt;1.主要使用场:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;提交时执行测试（包括单元测试和集成测试）&lt;/li&gt;
+  &lt;li&gt;构建并分发内部测试\公开测试版本&lt;/li&gt;
+  &lt;li&gt;构建生产版本并上传至 ITC（包括更新配置文件,创建新的屏幕截图,上传应用并提交审核）&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;2.工具集&lt;/h5&gt;
+
+&lt;p&gt;fastlane 将如下的工具套件有机地结合起来,从管理证书到单元测试,从编译打包到上传发布,都能通过命令行轻松完成.该套件支持与 Jenkins 和 CocoaPods,xctools 等其他第三方工具的集成,并且能够定义多个通道（lanes）以支持不同的部署目标.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;deliver: 将应用在 ITC 上所需数据提交至 ITC (包括:截图,配置文件,ipa包)&lt;/li&gt;
+  &lt;li&gt;snapshot: 依靠 UI Test 完成截图&lt;/li&gt;
+  &lt;li&gt;frameit: 快速地把应用截图放入设备框里&lt;/li&gt;
+  &lt;li&gt;pem: 可以自动化地生成和更新应用推送通知描述文件&lt;/li&gt;
+  &lt;li&gt;sigh: 创建\更新\下载和修复 provisioning profiles,支持App Store, Ad Hoc, Development和企业profiles&lt;/li&gt;
+  &lt;li&gt;gym: 编译\打包iOS app,生成签名的ipa文件&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;3.常见命令&lt;/h5&gt;
+
+&lt;p&gt;fastlane 命令中,个人觉得下面两个较为常用:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;列出所有的 fastlane 的 actions:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane actions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fastlane action [action_name]: 显示某一个 action 的详细配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$  fastlane action match
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;fastlane--1&quot;&gt;fastlane 入门实战&lt;/h2&gt;
+
+&lt;h3 id=&quot;fastlane&quot;&gt;1.安装 fastlane&lt;/h3&gt;
+
+&lt;h5 id=&quot;app-id&quot;&gt;1.1 创建App ID\描述文件&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;本教程目标是上传 ITC ,因此需要提前在 ADC 和 ITC 中创建 App ID\描述文件\App&lt;/li&gt;
+  &lt;li&gt;这里使用的项目是 AD Demo,代码见 &lt;a href=&quot;https://github.com/mythkiven/AD_Fastlane&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/06/589845eaa299d.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/06/589847204b77a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;1.2 安装&lt;/h5&gt;
+
+&lt;p&gt;查看 Ruby 版本,低于2.0最好升级&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ruby -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;检查 Xcode CLT 是否安装&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;安装 fastlane&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install -n /usr/local/bin fastlane
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;检查版本 fastlane&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane --version
+fastlane installation at path:
+/Library/Ruby/Gems/2.0.0/gems/fastlane-2.14.2/bin/fastlane
+-----------------------------
+fastlane 2.14.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;OK,安装完成&lt;/p&gt;
+
+&lt;h5 id=&quot;fastlane-1&quot;&gt;1.3 为项目配置 fastlane&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd 项目目录
+$ fastlane init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果期间报错 &lt;code class=&quot;highlighter-rouge&quot;&gt;Connection reset by peer - SSL_Connect&lt;/code&gt;,就需要执行:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew update &amp;amp;&amp;amp; brew install ruby
+// 重装
+$ sudo gem install -n /usr/local/bin fastlane
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后重新执行&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;期间会让你输入 Apple ID 账号密码(这个信息会存在钥匙串中,后续使用无需再输入密码)&lt;/li&gt;
+  &lt;li&gt;会检测当前的 app identifier 是否在  ADC 中&lt;/li&gt;
+  &lt;li&gt;会检测当前 app 是否在 ITC 中&lt;/li&gt;
+  &lt;li&gt;如果已经在 ADC 和 ITC 中创建相应的信息,那么过程会很顺利,如下图:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/07/58992aea708c6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;并在 Xcode 项目目录中生成如下文件:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/07/58992b1016443.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意:如果没有在 ITC 中创建 App ,也就不会创建上述两个文件夹;当然也可以后续创建,执行如下操作即可:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane produce init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;fastlane--2&quot;&gt;2.fastlane 文件配置&lt;/h3&gt;
+
+&lt;p&gt;fastlane 的各文件解释如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Appfile:用于存储应用程序标识符和Apple ID 等信息&lt;/li&gt;
+  &lt;li&gt;Fastfile:配置管理 lane&lt;/li&gt;
+  &lt;li&gt;Deliverfile:配置应用在 ITC 中的各种信息,和 ICC 中的数据是一一对应的&lt;/li&gt;
+  &lt;li&gt;metadata:包含应用在 ITC 中的各种信息&lt;/li&gt;
+  &lt;li&gt;screenshots:包含截图数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;需要注意的是,metadata 和 Deliverfile,都可以配置 ITC 的数据,但后者优先级高.正如下图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589aba7c0b998.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589aba7c1d252.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;下文先在 metadata 文件夹中进行配置用于演示,在文末会删除 metadata 中的配置文本,全部配置在 Deliverfile 中.&lt;/p&gt;
+
+&lt;h5 id=&quot;metadata-&quot;&gt;2.1 配置 metadata 文件夹&lt;/h5&gt;
+
+&lt;p&gt;修改 App 描述:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd metadata 
+$ cd zh-Hans
+$ vim description.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修改关键字:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim keywords.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修改 support_url:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim support_url.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修改 copyright:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim copyright.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;等等,其他信息的修改类似.&lt;/p&gt;
+
+&lt;p&gt;然后创建分级文件:itunes_rating_config.json,这个和 ICC 中的分级是对应的.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;CARTOON_FANTASY_VIOLENCE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;REALISTIC_VIOLENCE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;PROLONGED_GRAPHIC_SADISTIC_REALISTIC_VIOLENCE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;PROFANITY_CRUDE_HUMOR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;MATURE_SUGGESTIVE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;HORROR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;MEDICAL_TREATMENT_INFO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;ALCOHOL_TOBACCO_DRUGS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;GAMBLING&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;SEXUAL_CONTENT_NUDITY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;GRAPHIC_SEXUAL_CONTENT_NUDITY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;UNRESTRICTED_WEB_ACCESS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;GAMBLING_CONTESTS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;此处配置参见&lt;a href=&quot;https://github.com/fastlane/fastlane/blob/master/deliver/Reference.md&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;然后将 App 图标添加至文件夹中,接下来要创建证书:&lt;/p&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;2.2 配置证书&lt;/h5&gt;
+
+&lt;p&gt;修改 Fastfile:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim Fastfile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修改内容如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fastlane_version &quot;2.14.2&quot;
+
+default_platform :ios
+
+platform :ios do
+ 
+  # 当前任务的描述
+  desc &quot;Creating a code signing certificate and provisioning profile&quot;
+  # 任务名称
+  lane :provision do
+    # 创建 ITC 中的 App 信息
+    produce(
+      app_name: 'AD_Demo',
+      language: 'zh-Hans',
+      app_version: '1.0',
+      sku: 'com.3code.ADDemo.Test'
+    )
+    # 使用证书创建私钥及签名
+    cert
+    # 每次运行时创建新的配置文件
+    sigh(force: true)
+  end
+ 
+  error do |lane, exception|
+  
+  end
+  
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果想创建 ad hoc 配置文件,需要指定sigh(adhoc: true).更多的信息参见:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/fastlane/fastlane/tree/master/fastlane/docs&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.fastlane.tools/actions/&quot;&gt;fastlane actions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;fastlane--itc&quot;&gt;2.3 将 fastlane 本地配置上传至 ITC&lt;/h5&gt;
+
+&lt;p&gt;重新进入项目目录,执行如下操作:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane provision
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;等待一小会儿,终端提示成功创建证书配置:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fastlane.tools finished successfully 🎉
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;打开 ICC 网页,会发现本地的配置,已经成功上传.&lt;/p&gt;
+
+&lt;h3 id=&quot;xcode-&quot;&gt;3.Xcode 配置&lt;/h3&gt;
+
+&lt;p&gt;xcode 配置也简单,只需要将项目修改至生产状态即可(描述文件).其它像构建版本号之类的不用理会, fastlane 会处理的.&lt;/p&gt;
+
+&lt;h3 id=&quot;snapshot--xctest&quot;&gt;4.Snapshot 截图和 XCTest&lt;/h3&gt;
+
+&lt;p&gt;snapshot 需要和 XCTest 配合使用,关于 XCTest,我的博客中&lt;a href=&quot;www.3code.info/2017/01/23/AD-XCTest/&quot;&gt;有一篇文章&lt;/a&gt;做了简单介绍.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane snapshot init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;目录中会生成一个 Snapfile 文件,用于配置截图信息,修改内容如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 图片尺寸
+devices([
+  &quot;iPhone 5&quot;,
+  &quot;iPhone 6&quot;,
+  &quot;iPhone 6 Plus&quot;
+])
+ 
+# 支持语言
+languages([
+  'zh-Hans'
+])
+ 
+# 储存位置
+output_directory &quot;./fastlane/screenshots&quot;
+ 
+# 删除之前图片
+clear_previous_screenshots true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后打开 Xcode 工程,添加截图设置(需要增加 UI Test, 因为截图是在 UI Test 时截取的):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\\ 1）在项目添加UI测试,已经添加略过
+\\ 2）将./fastlane/SnapshotHelper.swift 添加到UI测试中
+\\ 3）打开 AD_DemoUITests.swift ,删除setUp和tearDown方法，然后在其中添加以下代码testExample：
+ 
+  let app = XCUIApplication()
+  setupSnapshot(app)
+  app.launch()
+  
+  app.buttons[&quot;next&quot;].tap()
+  snapshot(&quot;01firstPage&quot;) // 此处截图
+  
+  app.buttons[&quot;back&quot;].tap()
+  snapshot(&quot;02secondPage&quot;) // 此处截图
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;打开 Fastfile ,并添加如下信息,用于配置截图&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  desc &quot;Take screenshots&quot;
+  lane :screenshot do
+    snapshot
+  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ fastlane screenshot&lt;/code&gt;, fastlane 会自动调用模拟器,执行测试并生成快照,可能会由于模拟器启动慢而导致时间稍微有点长.&lt;/p&gt;
+
+&lt;p&gt;成功截图的提示:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/07/58995745a83cd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ipa-&quot;&gt;5.创建 IPA 文件&lt;/h3&gt;
+
+&lt;p&gt;打开 fastfile,加入如下代码,配置创建 ipa&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;desc &quot;Create ipa&quot;
+  lane :build do
+    increment_build_number
+    gym
+  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;保存并执行如下操作,将自动创建 IPA 包&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果出现错误: &lt;code class=&quot;highlighter-rouge&quot;&gt;There does not seem to be a CURRENT_PROJECT_VERSION key set for this project.  Add this key to your target's expert build settings.&lt;/code&gt;
+&lt;a href=&quot;https://developer.apple.com/library/content/qa/qa1827/_index.html&quot;&gt;请查阅此处&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个自动增加构建版本号的设置,需要手动修改.&lt;/p&gt;
+
+&lt;h3 id=&quot;ipa--itc&quot;&gt;6.上传 IPA 文件到 ITC&lt;/h3&gt;
+
+&lt;p&gt;打开 Fastfile ,添加如下代码:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;desc &quot;Upload to App Store&quot;
+  lane :upload do
+    deliver
+  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后执行命令,上传到 ITC :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane upload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;期间,会创建一个 html 形式的预览文件,确认没问题输入 y;&lt;/p&gt;
+
+&lt;p&gt;当然最有可能的错误就是网络链接的问题: &lt;code class=&quot;highlighter-rouge&quot;&gt;Please use diagnostic mode to check connectivity. You need to have outbound access to TCP port 443.&lt;/code&gt; 重新配置代理即可.&lt;/p&gt;
+
+&lt;h3 id=&quot;deliverfile&quot;&gt;7.配置 Deliverfile&lt;/h3&gt;
+
+&lt;p&gt;其实上传 ITC 最主要的文件是 Deliverfile,配置好 Deliverfile 后,可以删除 metadata 文件夹中的文本配置.最终配置如下图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/08/589ac0ac8d172.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以下是主要的配置,更多更详细的&lt;a href=&quot;https://github.com/mythkiven/AD_Fastlane/blob/master/AD_Demo/fastlane/Deliverfile&quot;&gt;请戳文件&lt;/a&gt;,里面有详细的注释,拿来即可使用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+# 1 app_identifier
+app_identifier &quot;com.3code.ADDemo&quot;
+
+# 2 用户名,Apple ID电子邮件地址
+username &quot;Apple ID电子邮件地址&quot;  
+
+# 3 支持语言
+supportedLanguages = {
+  &quot;cmn-Hans&quot; =&amp;gt; &quot;zh-Hans&quot;
+}
+
+# 4 app 名称
+name({
+'zh-Hans' =&amp;gt; &quot;ADDemo&quot;
+})
+
+# 5 描述
+description({
+  'zh-Hans' =&amp;gt; &quot;简体中文版&quot;
+})
+
+# 6 提交审核信息
+submission_information({    
+    export_compliance_encryption_updated: false,
+    export_compliance_uses_encryption: false,
+    content_rights_contains_third_party_content: false,
+    add_id_info_uses_idfa: false
+})
+
+# 7 应用审核小组的联系信息 app 审核信息
+app_review_information(
+  first_name: &quot;name&quot;,
+  last_name: &quot;name&quot;,
+  phone_number: &quot;手机号&quot;,
+  email_address: &quot;email&quot;,
+  demo_user: &quot;测试账号用户名&quot;,
+  demo_password: &quot;测试账号密码&quot;,
+  notes: &quot;noting&quot;
+)
+
+# 8 copyright 
+copyright &quot;#{Time.now.year} 3code&quot;
+
+# 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;appstore-&quot;&gt;8.提交 AppStore 审核&lt;/h3&gt;
+
+&lt;p&gt;继续打开 Fastfile,修改如下代码:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;desc &quot;Upload to App Store and submit for review&quot;
+  lane :upload do
+    deliver(
+      submit_for_review: true
+    )
+  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后执行命令,提交审核 :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane upload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;9.使用一键命令&lt;/h3&gt;
+
+&lt;p&gt;添加如下的代码,可以一步搞定所有的操作:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;desc &quot;Provision, take screenshots, build and upload to App Store&quot;
+  lane :do_everything do
+    provision
+    screenshot
+    build
+    upload
+  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;对应的命令是:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ fastlane do_everything
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;本文只是简单的介绍了 fastlane 的使用,更多的资料还请参考文末的链接&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果你对 ITC 不了解,或者很少发布 App ,建议看看官方文档,要知道发布 App 也有&lt;a href=&quot;https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_SCh/Appendices/Properties.html&quot;&gt;官方指南哦&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;本文是系列文章,后续文章会陆续在这里以及我的&lt;a href=&quot;www.3code.info&quot;&gt;博客&lt;/a&gt;中发布,喜欢请给个✨吧&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;10.参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fastlane.tools/&quot;&gt;官网&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/fastlane/fastlane&quot;&gt;github&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.fastlane.tools/getting-started/ios/setup/&quot;&gt;文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最后给点小建议:如果遇到错误首选就是查 issues,你遇到的问题,基本前人都遇到过了.我能在2天里快速入门 fastlane 全靠看 issues 😁😁&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 07 Feb 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/07/AD-Fastlane/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/07/AD-Fastlane/</guid>
+        
+        <category>fastlane</category>
+        
+        
+        <category>AD</category>
+        
+      </item>
+    
+      <item>
+        <title>自动化测试部署系列 - XCTest入门</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;简述&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ui-testing--accessibility&quot; id=&quot;markdown-toc-ui-testing--accessibility&quot;&gt;UI Testing 和 Accessibility&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#demo&quot; id=&quot;markdown-toc-demo&quot;&gt;demo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;参考及延伸阅读&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;简述&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本文是自动化测试部署系列的文章,后续会有更多相关文章&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.&lt;/p&gt;
+
+&lt;p&gt;Apple 在 Xcode 7 中新加入了一套 UI Testing 的工具,其目的就是解决这个问题.新的 UI Testing 比以往的解决方案要简单不少,特别是在创建测试用例的时候更集成了录制的功能,这有希望让 UI Testing 变得更为普及.&lt;/p&gt;
+
+&lt;h3 id=&quot;ui-testing--accessibility&quot;&gt;UI Testing 和 Accessibility&lt;/h3&gt;
+
+&lt;p&gt;在 iOS 中使用 XCTest, 就必须要了解 Accessibility. UI Accessibility 早在 iOS 3.0 就被引入了,用来辅助身体不便的人士使用 app.VoiceOver 是 Apple 的屏幕阅读技术,而 UI Accessibility 的基本原则就是对屏幕上的 UI 元素进行分类和标记.两者配合,通过阅读或者聆听这些元素,用户就可以在不接触屏幕的情况下通过声音来使用 app.&lt;/p&gt;
+
+&lt;p&gt;Accessibility 的核心思想是对 UI 元素进行分类和标记 – 将屏幕上的 UI 分类为像是按钮,文本框,cell 或者是静态文本 (也就是 label) 这样的类型,然后使用 identifier 来区分不同的 UI 元素.用户可以通过语音控制 app 的按钮点击,或是询问某个 label 的内容等等,十分方便.iOS SDK 中的控件都实现了默认的 Accessibility 支持,而我们如果使用自定义的控件的话,则需要自行使用 Accessibility 的 API 来进行添加.&lt;/p&gt;
+
+&lt;p&gt;UI 测试的本质就是定位在屏幕上的元素,实现一些像是点击或者拖动这样的操作交互,然后获取 UI 的状态进行断言来判断是否符合我们的预期.这个过程及其需求与 Accessibility 的功能是高度吻合的.这也是为什么 iOS 中大部分的 UI 测试框架都是基于 UI Accessibility 的原因, UI Testing 也不例外.&lt;/p&gt;
+
+&lt;h3 id=&quot;demo&quot;&gt;demo&lt;/h3&gt;
+
+&lt;p&gt;demo 比较简单,主要用于演示基本的流程,代码在 GitHub 中.&lt;/p&gt;
+
+&lt;p&gt;相比起其他一些 UI 测试框架,Xcode 的 UI Testing 最为诱人的优点在于可以直接录制操作.新建一个 XCTest,默认实现如下:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;XCTest&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UITESTUITests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;XCTestCase&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;continueAfterFailure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;// launch 方法来启动测试 app&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// XCUIApplication 是 UIApplication 在测试进程中的代理 (proxy)&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;XCUIApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tearDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tearDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testExample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;使用的方法是,先创建一个测试方法,然后将光标停留在方法中,然后点击录制.和 app 的交互就会被自动转写成代码.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/06/5898158326f72.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;操作是:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;2次点击 “color” 按钮 ,改变背景色&lt;/li&gt;
+  &lt;li&gt;点击”下一页”按钮 push 到第二页&lt;/li&gt;
+  &lt;li&gt;点击”back” 按钮 pop 回第一页&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/06/589817a5d03a6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testMyApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;XCUIApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// &quot;color&quot; 按钮设置 Accessibility id 为 changeColor&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;changecolorButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buttons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;changeColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;changecolorButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;changecolorButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// &quot;下一页&quot;按钮没有设置 Accessibility id&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buttons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;下一页&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// &quot;back&quot; 按钮设置 Accessibility id 为 back&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buttons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;back&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;编写完成之后可以 cmd+U 运行试试吧.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;参考及延伸阅读&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&quot;&gt;Xcode 7 UI 测试初窥&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://masilotti.com/ui-testing-cheat-sheet/&quot;&gt;UITest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nshipster.com/xctestcase/&quot;&gt;XCTest​Case&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://objccn.io/issue-15-6/&quot;&gt;UI 测试&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://objccn.io/issue-15-7/&quot;&gt;截图测试&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 23 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/23/AD-XCTest/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/23/AD-XCTest/</guid>
+        
+        <category>XCTest</category>
+        
+        
+        <category>AD</category>
+        
+      </item>
     
       <item>
         <title>Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</title>
@@ -4003,509 +4690,6 @@ a == b &amp;amp;&amp;amp; b == c 相当于 a == c (传递性)
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/01/swift_IV_Collection-Types/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/01/swift_IV_Collection-Types/</guid>
-        
-        <category>Swift3.0</category>
-        
-        
-        <category>Swift3.0</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift_III_字符(串)</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#unicode&quot; id=&quot;markdown-toc-unicode&quot;&gt;Unicode&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#string-literals&quot; id=&quot;markdown-toc-string-literals&quot;&gt;String Literals：字面字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#initializing-an-empty-string&quot; id=&quot;markdown-toc-initializing-an-empty-string&quot;&gt;Initializing an Empty String:初始化空串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#string-mutability&quot; id=&quot;markdown-toc-string-mutability&quot;&gt;String Mutability：可变字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#strings-are-value-typesstring&quot; id=&quot;markdown-toc-strings-are-value-typesstring&quot;&gt;Strings Are Value Types：String是值类型&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#working-with-characters&quot; id=&quot;markdown-toc-working-with-characters&quot;&gt;Working with Characters:使用字符&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#concatenating-strings-and-characters&quot; id=&quot;markdown-toc-concatenating-strings-and-characters&quot;&gt;Concatenating Strings and Characters：连接字符和字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#string-interpolation&quot; id=&quot;markdown-toc-string-interpolation&quot;&gt;String Interpolation：字符串插值&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#counting-characters&quot; id=&quot;markdown-toc-counting-characters&quot;&gt;Counting Characters：字符计数&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#accessing-and-modifying-a-string&quot; id=&quot;markdown-toc-accessing-and-modifying-a-string&quot;&gt;Accessing and Modifying a String：访问修改字符串&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;索引访问&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#inserting-and-removing&quot; id=&quot;markdown-toc-inserting-and-removing&quot;&gt;Inserting and Removing：插入取出&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#comparing-strings&quot; id=&quot;markdown-toc-comparing-strings&quot;&gt;Comparing Strings：比较字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;大小写&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#unicode-representations-of-stringsunicode&quot; id=&quot;markdown-toc-unicode-representations-of-stringsunicode&quot;&gt;Unicode Representations of Strings：字符串的Unicode交涉&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#utf-8&quot; id=&quot;markdown-toc-utf-8&quot;&gt;UTF-8&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#utf-16&quot; id=&quot;markdown-toc-utf-16&quot;&gt;UTF-16&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#unicode-scalar-representationunicode&quot; id=&quot;markdown-toc-unicode-scalar-representationunicode&quot;&gt;Unicode Scalar Representation：Unicode标量表示&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Strings and Characters ：字符和字符串&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Swift的String与OC中的NSString可以进行无缝桥接；&lt;/li&gt;
-  &lt;li&gt;Swift的字符串都是由独立编码的Unicode字符组成；&lt;/li&gt;
-  &lt;li&gt;Swift的字符串可以使用+进行连接；&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;unicode&quot;&gt;Unicode&lt;/h3&gt;
-
-&lt;p&gt;Unicode是一套国际文本的编码标准。其中的每一个字符都可以被解释为一个或多个Unicode标量。字符的Unicode标量是一个唯一的21位数字。&lt;/p&gt;
-
-&lt;p&gt;例如：U+0061表示小写的拉丁字母A（”a”），或U+1F425表示小鸡表情（”🐥”）。&lt;/p&gt;
-
-&lt;p&gt;特殊字符：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;转义特殊字符\0（空字符）， \（反斜杠）， \t（水平制表）， \n（换行）， \r（回车），&quot;（双引号）和'（单引号）&lt;/li&gt;
-  &lt;li&gt;任意Unicode标量，都可写成\u{Ñ}，其中Ñ是用一个值等于一个有效的Unicode代码点的1-8位十六进制数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;wiseWords&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Imagination is more important than knowledge&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; - Einstein&quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &quot;Imagination is more important than knowledge&quot; - Einstein&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dollarSign&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{0061}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// a,  Unicode scalar U+0061&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;blackHeart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{2665}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// ♥,  Unicode scalar U+2665&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sparklingHeart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{1F496}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 💖, Unicode scalar U+1F496&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;其他诸如：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;eAcute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{E9}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;                         &lt;span class=&quot;c1&quot;&gt;// é&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;combinedEAcute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{65}\u{301}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// e followed by ́&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;precomposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{D55C}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;                  &lt;span class=&quot;c1&quot;&gt;// 한&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;decomposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{1112}\u{1161}\u{11AB}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// ᄒ, ᅡ, ᆫ&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;regionalIndicatorForUS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{1F1FA}\u{1F1F8}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//   🇺🇸&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;string-literals&quot;&gt;String Literals：字面字符串&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Swift会自动推断someString为String类型。&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;someString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Some string literal value&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;initializing-an-empty-string&quot;&gt;Initializing an Empty String:初始化空串&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;emptyString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;               &lt;span class=&quot;c1&quot;&gt;// empty string literal&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;anotherEmptyString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// initializer syntax&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// .isEmpty 属性&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emptyString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isEmpty&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Nothing to see here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;string-mutability&quot;&gt;String Mutability：可变字符串&lt;/h3&gt;
-&lt;p&gt;在OC中，是否可变是通过NSMutableString类来决定的，但是在此，仅仅是通过定义来决定: var or let&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;variableString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Horse&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;variableString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; and carriage&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;strings-are-value-typesstring&quot;&gt;Strings Are Value Types：String是值类型&lt;/h3&gt;
-
-&lt;p&gt;1、Swift的String是值类型。Swift的String进行赋值或者在函数入参都会进行值拷贝,使用的是副本而不是传递指针。&lt;/p&gt;
-
-&lt;p&gt;2、Cocoa中的NSString作为参数传递给函数时，传递的其实是他的指针。除非手动copy，否则不会创建副本操作。&lt;/p&gt;
-
-&lt;h3 id=&quot;working-with-characters&quot;&gt;Working with Characters:使用字符&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;character&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dog!🐶&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;character&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// D&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// o&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// g&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// !&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 🐶&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;catCharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐱&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;catString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;catCharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;catString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;Cat!🐱&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;concatenating-strings-and-characters&quot;&gt;Concatenating Strings and Characters：连接字符和字符串&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;instruction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;look over&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;instruction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;exclamationMark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;!&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exclamationMark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;string-interpolation&quot;&gt;String Interpolation：字符串插值&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;multiplier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;multiplier&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; times 2.5 is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;multiplier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.5&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// message is &quot;3 times 2.5 is 7.5&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;注意：插值字符串中的括号中的表达式:不能包含在反斜杠\、回车或换行&lt;/p&gt;
-
-&lt;h3 id=&quot;counting-characters&quot;&gt;Counting Characters：字符计数&lt;/h3&gt;
-
-&lt;p&gt;.characters.count 计数字符数量；countElements()弃用。&lt;/p&gt;
-
-&lt;p&gt;需要注意的是：Unicode字符的不同表达方式可能需要不同数量的内存空间来存储。所以Swift中字符在一个字符串中并不一定占用相同的内存空间。&lt;/p&gt;
-
-&lt;p&gt;如下：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cafe&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Prints &quot;4&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{301}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Prints &quot;4&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{1F496}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Prints &quot;5&quot;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;accessing-and-modifying-a-string&quot;&gt;Accessing and Modifying a String：访问修改字符串&lt;/h3&gt;
-
-&lt;h5 id=&quot;section&quot;&gt;索引访问&lt;/h5&gt;
-
-&lt;p&gt;String值具有相关联的索引类型,String.Index 索引对应每一个位置的字符。
-方法如下：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;typealias&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;CharacterView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 从起始位置：String.Index算起，第String.IndexDistance个位置&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offsetBy&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IndexDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Index&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Swift&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 5&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Error&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Error&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 4&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;offsetBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//从最后向前 -2的位置 3&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;offsetBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Prints &quot;t&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;greeting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Guten Tag!&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// G&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// !&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// u&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;offsetBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// t&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indices&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;terminator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;G u t e n   T a g ! &quot;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 注意：防止索引溢出String的长度&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 运行时Error&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 运行时Error&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;inserting-and-removing&quot;&gt;Inserting and Removing：插入取出&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;插入字符：insert(_:at:)&lt;/li&gt;
-  &lt;li&gt;插入字符串：insert(contentsOf:at:)&lt;/li&gt;
-  &lt;li&gt;移除字符：remove(at:)&lt;/li&gt;
-  &lt;li&gt;移除字符串：removeSubrange(_:)&lt;/li&gt;
-  &lt;li&gt;拼接字符串：append(_ c: Character)、append(other: String)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;welcome&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;hello!&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;contentsOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; there&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;hello there!&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;hello there&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;range&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;offsetBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endIndex&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;removeSubrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;hello&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;jj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_+🐂&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;1_+🐂&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;jj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;1_+🐂s&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;comparing-strings&quot;&gt;Comparing Strings：比较字符串&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Swift 提供了三种方式来比较字符串的值：字符串相等、前缀相等和后缀相等&lt;/li&gt;
-  &lt;li&gt;Swift 中字符串的比较不区分语言环境&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;字符串相等：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;quotation&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;We're a lot alike, you and I.&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sameQuotation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;We're a lot alike, you and I.&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quotation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sameQuotation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;These two strings are considered equal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 会打印&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 2、相等会涉及到 Unicode标量的问题：&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 比如：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;eAcuteQuestion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Voulez-vous un caf&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{E9}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;?&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;combinedEAcuteQuestion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Voulez-vous un caf&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{65}\u{301}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;?&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eAcuteQuestion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;combinedEAcuteQuestion&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;These two strings are considered equal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 会打印&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 又例如：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;latinCapitalLetterA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{41}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cyrillicCapitalLetterA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u{0410}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;latinCapitalLetterA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cyrillicCapitalLetterA&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;These two characters are not equivalent.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 会打印&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;前后缀相等：&lt;/p&gt;
-
-&lt;p&gt;通过调用字符串的hasPrefix/hasSuffix方法来检查字符串是否拥有特定前缀/后缀。 两个方法均需要以字符串作为参数传入并传出Boolean值。 两个方法均执行基本字符串和前缀/后缀字符串之间逐个字符的比较操作&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xz&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;qqqq-2222-++++&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hasPrefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;qqq&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;qqq&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// qqq&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hasSuffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;YES&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// NO&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;大小写&lt;/h3&gt;
-
-&lt;p&gt;使用方法：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;.uppercased() 弃用.uppercaseString&lt;/li&gt;
-  &lt;li&gt;.lowercased() 弃用.lowercaseString&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;normal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Could you help me, please?&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shouty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;uppercased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// shouty 值为 &quot;COULD YOU HELP ME, PLEASE?&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;whispered&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lowercased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// whispered 值为 &quot;could you help me, please?&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;unicode-representations-of-stringsunicode&quot;&gt;Unicode Representations of Strings：字符串的Unicode交涉&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一个Unicode字符串被写入文本或进行储存时，会使用Unicode标量进行编码；&lt;/li&gt;
-  &lt;li&gt;每种编码形式都有小的编码单元组成；&lt;/li&gt;
-  &lt;li&gt;编码形式包括UTF-8编码的形式、UTF-16编码形式和UTF-32的编码形式；&lt;/li&gt;
-  &lt;li&gt;编码单元是各个编码形式中的单个单元：UTF-8编码串为8位码单位、UTF-16编码串为16位代码单位、UTF-32编码串为32位代码单位。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 它是由D，o，g，‼，以及🐶字符（DOG FACE或Unicode标U+1F436）组成&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dogString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dog‼🐶&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;utf-8&quot;&gt;UTF-8&lt;/h5&gt;
-
-&lt;p&gt;可以通过遍历字符串的utf8属性来访问它的UTF-8表示。 其为UTF8View类型的属性，UTF8View是无符号8位 (UInt8) 值的集合，每一个UInt8值都是一个字符的 UTF-8 表示：
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dogString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dog‼🐶&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;codeUnit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dogString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utf8&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;codeUnit&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;terminator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 68 111 103 226 128 188 240 159 144 182&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;上面的例子中，前四个10进制代码单元值 (68, 111, 103, 33) 代表了字符D o g和!，它们的 UTF-8 表示与 ASCII 表示相同。 后四个代码单元值 (240, 159, 144, 182) 是DOG FACE的4字节 UTF-8 表示。&lt;/p&gt;
-
-&lt;h5 id=&quot;utf-16&quot;&gt;UTF-16&lt;/h5&gt;
-
-&lt;p&gt;可以通过遍历字符串的utf16属性来访问它的UTF-16表示。 其为UTF16View类型的属性，UTF16View是无符号16位(UInt16) 值的集合，每一个UInt16都是一个字符的 UTF-16 表示：
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;codeUnit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dogString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utf16&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;codeUnit&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 68 111 103 33 55357 56374&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;同样，前四个代码单元值(68, 111, 103, 33)代表了字符D o g和!，它们的UTF-16代码单元和 UTF-8 完全相同。
-第五和第六个代码单元值(55357 和 56374)是DOG FACE字符的UTF-16表示。 第一个值为U+D83D(十进制值为 55357)，第二个值为U+DC36(十进制值为 56374)。&lt;/p&gt;
-
-&lt;h5 id=&quot;unicode-scalar-representationunicode&quot;&gt;Unicode Scalar Representation：Unicode标量表示&lt;/h5&gt;
-
-&lt;p&gt;可以通过遍历字符串的unicodeScalars属性来访问它的Unicode标量表示。其为UnicodeScalarView类型的属性，UnicodeScalarView是UnicodeScalar的集合。&lt;/p&gt;
-
-&lt;p&gt;每一个UnicodeScalar拥有一个值属性，可以返回对应的21位数值，用UInt32来表示。
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dogString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unicodeScalars&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;terminator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;68 111 103 8252 128054 &quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;同样，前四个代码单元值 (68, 111, 103, 33) 代表了字符D o g和!。 第五位数值，128054，是一个十六进制1F436的十进制表示。 其等同于DOG FACE的Unicode 标量 U+1F436。&lt;/p&gt;
-
-&lt;p&gt;作为查询字符值属性的一种替代方法，每个UnicodeScalar值也可以用来构建一个新的字符串值，比如在字符串插值中使用：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dogString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unicodeScalars&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalar&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// D&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// o&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// g&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// !&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 🐶&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 26 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/26/swift_III_Strings-and-Characters/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/26/swift_III_Strings-and-Characters/</guid>
-        
-        <category>Swift3.0</category>
-        
-        
-        <category>Swift3.0</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift_II_基本运算符</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;概述&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#terminology&quot; id=&quot;markdown-toc-terminology&quot;&gt;Terminology：术语&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#assignment-operator&quot; id=&quot;markdown-toc-assignment-operator&quot;&gt;Assignment Operator：赋值运算符&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#arithmetic-operators&quot; id=&quot;markdown-toc-arithmetic-operators&quot;&gt;Arithmetic Operators：算术运算符&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#range-operators&quot; id=&quot;markdown-toc-range-operators&quot;&gt;Range Operators:区间运算符&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#logical-operators&quot; id=&quot;markdown-toc-logical-operators&quot;&gt;Logical Operators：逻辑运算符&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;概述&lt;/h3&gt;
-&lt;p&gt;Swift 支持大多数的标准C语言的运算符，并且改进了不少特性来减少常见的编码错误。例如：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;赋值符 = 不返回值。防止与==弄混；&lt;/li&gt;
-  &lt;li&gt;算术运算符：+-*/%会检测防止值溢出；&lt;/li&gt;
-  &lt;li&gt;以及C语言没有的表达:（ a..&amp;lt; b和a…b）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Swift3更新：移除了自增自减(++、–)等运算。详见下文：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;terminology&quot;&gt;Terminology：术语&lt;/h3&gt;
-
-&lt;p&gt;运算符有一元、二元和三元运算符：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一元运算符对单一操作对象操作（如-a）。前置运算符需紧排操作对象之前（如!b），后置运算符需紧跟操作对象之后（如i++）&lt;/li&gt;
-  &lt;li&gt;二元运算符操作两个操作对象（如2 + 3）&lt;/li&gt;
-  &lt;li&gt;三元运算符操作三个操作对象，和C语言一样，Swift只有一个，就是三目运算符（a ? b : c）&lt;/li&gt;
-  &lt;li&gt;注意：受运算符影响的值叫操作数，在表达式1 + 2中，加号+是二元运算符，它的两个操作数是值1和2。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;assignment-operator&quot;&gt;Assignment Operator：赋值运算符&lt;/h3&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 赋值运算（a = b），表示用b的值来初始化或更新a的值：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 用元组中：&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// x is equal to 1, and y is equal to 2&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 无返回值：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 这个特性使你无法把（==）错写成（=），所以：if x = y是错误代码&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;arithmetic-operators&quot;&gt;Arithmetic Operators：算术运算符&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Swift3 移除了++、–自增自减运算；&lt;/li&gt;
-  &lt;li&gt;Swift3 不支持浮点的求余运算；&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;与C语言和OC不同的是，Swift 默认情况下不允许在数值运算中出现溢出情况。但是你可以使用 Swift 的溢出运算符来实现溢出运算（如a &amp;amp;+ b）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;求和：+ ，也用于string的拼接：&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;hello, &quot; + &quot;world&quot;  // equals &quot;hello, world&quot;;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;求差：- ;&lt;/li&gt;
-  &lt;li&gt;求积：* ;&lt;/li&gt;
-  &lt;li&gt;求商：/ ，9/5=1;&lt;/li&gt;
-  &lt;li&gt;求余：% ，9%5=4;【非模运算！】&lt;/li&gt;
-  &lt;li&gt;元减运算符:- ，-3(负数3);&lt;/li&gt;
-  &lt;li&gt;复合运算符：+= -= *= /= %=  ， var a = 1;a += 2;&lt;/li&gt;
-  &lt;li&gt;比较运算符：== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= ，返回BOOL值；&lt;/li&gt;
-  &lt;li&gt;恒等: === 恒等于、 !===不恒等于，用于判断是否引用同一对象；&lt;/li&gt;
-  &lt;li&gt;三目运算符：条件?答案1:答案2  条件成立则返回答案1，否则答案2&lt;/li&gt;
-  &lt;li&gt;空合运算符：(a ?? b):是对可选类型a的判空处理，如果a包含数值就解析返回值，否则返回b。
-等价于 &lt;code class=&quot;highlighter-rouge&quot;&gt;a != nil ? a! : b&lt;/code&gt; :可选类型a是空就返回b，不是空就强制解析返回a!空合就是这段代码的简短表达&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;defaultColorName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;red&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;userDefinedColorName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// defaults to nil&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;colorNameToUse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userDefinedColorName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultColorName&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;range-operators&quot;&gt;Range Operators:区间运算符&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;(a…b) 定义一个a、b间的闭区间。可用于for循环；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; times 5 is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 范围是&amp;gt;=1 &amp;lt;=5&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;（a..&amp;lt;b) 定义一个a、b间的半闭区间。可用于数组区间 // &amp;gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Anna&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Alex&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Brian&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jack&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Person &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is called &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;~是不是很好用~&lt;/p&gt;
-
-&lt;h3 id=&quot;logical-operators&quot;&gt;Logical Operators：逻辑运算符&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;!逻辑非&lt;/li&gt;
-  &lt;li&gt;&amp;amp;&amp;amp;逻辑与&lt;/li&gt;
-  &lt;li&gt;||逻辑或&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;可以通过括号明确优先级。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt; 
-OK,over~~&lt;/p&gt;
-</description>
-        <pubDate>Tue, 22 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/22/swift_II_Basic-Operators/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/22/swift_II_Basic-Operators/</guid>
         
         <category>Swift3.0</category>
         

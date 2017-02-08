@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>iOS逆向系列1_Class_dump</title>
-    <meta name="description" content="  1、概述  2、安装          2.1 设置环境变量:      待整理1、概述class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。2、安装class...">
+    <title>自动化测试部署系列 - XCTest入门</title>
+    <meta name="description" content="  简述  UI Testing 和 Accessibility  demo简述  本文是自动化测试部署系列的文章,后续会有更多相关文章关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2016/11/02/1_Class_dump/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/23/AD-XCTest/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -142,11 +142,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>iOS逆向系列1_Class_dump</h1>
+        <h1>自动化测试部署系列 - XCTest入门</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-11-02
+                <i class="fa fa-calendar"></i>2017-01-23
             </div>
 
             <div class="label-card">
@@ -167,7 +167,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
+        <a href="/category/#AD" title="Category: AD" rel="category">AD</a>
     
   
 
@@ -184,8 +184,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a-->
-        <a href="/tag/#class_dump" title="Tag: class_dump" rel="tag">class_dump</a>
+        <!--a href="/tag/#XCTest" title="Tag: XCTest" rel="tag">XCTest</a-->
+        <a href="/tag/#XCTest" title="Tag: XCTest" rel="tag">XCTest</a>
     
   
 
@@ -197,77 +197,108 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、概述</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">2、安装</a>    <ul>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.1 设置环境变量:</a></li>
-    </ul>
-  </li>
+  <li><a href="#section" id="markdown-toc-section">简述</a></li>
+  <li><a href="#ui-testing--accessibility" id="markdown-toc-ui-testing--accessibility">UI Testing 和 Accessibility</a></li>
+  <li><a href="#demo" id="markdown-toc-demo">demo</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">参考及延伸阅读</a></li>
 </ul>
 
-<p><strong>待整理</strong></p>
+<h3 id="section">简述</h3>
 
-<h2 id="section">1、概述</h2>
+<blockquote>
+  <p>本文是自动化测试部署系列的文章,后续会有更多相关文章</p>
+</blockquote>
 
-<p>class-dump，顾名思义，就是用来dump目标对象的class信息的工具。它利用Objective-C语言的runtime特性，将存储在Mach-O文件中的头文件信息提取出来，并生成对应的.h文件。</p>
+<p>关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.</p>
 
-<h2 id="section-1">2、安装</h2>
+<p>Apple 在 Xcode 7 中新加入了一套 UI Testing 的工具,其目的就是解决这个问题.新的 UI Testing 比以往的解决方案要简单不少,特别是在创建测试用例的时候更集成了录制的功能,这有希望让 UI Testing 变得更为普及.</p>
 
-<p>class-dump的用法比较简单，首先去<a href="http://stevenygard.com/projects/class-dump">http://stevenygard.com/projects/class-dump</a>下载最新版的class-dump。</p>
+<h3 id="ui-testing--accessibility">UI Testing 和 Accessibility</h3>
 
-<p>然后操作如下：</p>
+<p>在 iOS 中使用 XCTest, 就必须要了解 Accessibility. UI Accessibility 早在 iOS 3.0 就被引入了,用来辅助身体不便的人士使用 app.VoiceOver 是 Apple 的屏幕阅读技术,而 UI Accessibility 的基本原则就是对屏幕上的 UI 元素进行分类和标记.两者配合,通过阅读或者聆听这些元素,用户就可以在不接触屏幕的情况下通过声音来使用 app.</p>
 
-<h5 id="section-2">2.1 设置环境变量:</h5>
+<p>Accessibility 的核心思想是对 UI 元素进行分类和标记 – 将屏幕上的 UI 分类为像是按钮,文本框,cell 或者是静态文本 (也就是 label) 这样的类型,然后使用 identifier 来区分不同的 UI 元素.用户可以通过语音控制 app 的按钮点击,或是询问某个 label 的内容等等,十分方便.iOS SDK 中的控件都实现了默认的 Accessibility 支持,而我们如果使用自定义的控件的话,则需要自行使用 Accessibility 的 API 来进行添加.</p>
+
+<p>UI 测试的本质就是定位在屏幕上的元素,实现一些像是点击或者拖动这样的操作交互,然后获取 UI 的状态进行断言来判断是否符合我们的预期.这个过程及其需求与 Accessibility 的功能是高度吻合的.这也是为什么 iOS 中大部分的 UI 测试框架都是基于 UI Accessibility 的原因, UI Testing 也不例外.</p>
+
+<h3 id="demo">demo</h3>
+
+<p>demo 比较简单,主要用于演示基本的流程,代码在 GitHub 中.</p>
+
+<p>相比起其他一些 UI 测试框架,Xcode 的 UI Testing 最为诱人的优点在于可以直接录制操作.新建一个 XCTest,默认实现如下:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">XCTest</span>
+
+<span class="kd">class</span> <span class="kt">UITESTUITests</span><span class="p">:</span> <span class="kt">XCTestCase</span> <span class="p">{</span>
+        
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">setUp</span><span class="p">()</span>
+        
+        <span class="n">continueAfterFailure</span> <span class="o">=</span> <span class="kc">false</span>
+        
+        <span class="c1">// launch 方法来启动测试 app</span>
+        <span class="c1">// XCUIApplication 是 UIApplication 在测试进程中的代理 (proxy)</span>
+
+        <span class="kt">XCUIApplication</span><span class="p">()</span><span class="o">.</span><span class="nf">launch</span><span class="p">()</span> 
+
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">tearDown</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">tearDown</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">testExample</span><span class="p">()</span> <span class="p">{</span>
+        
+    <span class="p">}</span>
+    
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>使用的方法是,先创建一个测试方法,然后将光标停留在方法中,然后点击录制.和 app 的交互就会被自动转写成代码.</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/06/5898158326f72.png" alt="" /></p>
+
+<p>操作是:</p>
+<ul>
+  <li>2次点击 “color” 按钮 ,改变背景色</li>
+  <li>点击”下一页”按钮 push 到第二页</li>
+  <li>点击”back” 按钮 pop 回第一页</li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/06/589817a5d03a6.png" alt="" /></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">testMyApp</span><span class="p">()</span> <span class="p">{</span>
+        
+        <span class="k">let</span> <span class="nv">app</span> <span class="o">=</span> <span class="kt">XCUIApplication</span><span class="p">()</span>
+
+        <span class="c1">// "color" 按钮设置 Accessibility id 为 changeColor</span>
+        <span class="k">let</span> <span class="nv">changecolorButton</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">"changeColor"</span><span class="p">]</span>
+
+        <span class="n">changecolorButton</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
+        <span class="n">changecolorButton</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
+
+        <span class="c1">// "下一页"按钮没有设置 Accessibility id</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">"下一页"</span><span class="p">]</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
+
+        <span class="c1">// "back" 按钮设置 Accessibility id 为 back</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">"back"</span><span class="p">]</span><span class="o">.</span><span class="nf">tap</span><span class="p">()</span>
+        
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>编写完成之后可以 cmd+U 运行试试吧.</p>
+
+<h3 id="section-1">参考及延伸阅读</h3>
 
 <ul>
-  <li>
-    <p>打开Terminal，输入$mkdir ~/bin，在当前用户根目录下创建一个bin目录；</p>
-  </li>
-  <li>
-    <p>把class-dump给拷贝到这个目录里，并赋予其可执行权限：$ mv /path/to/class-dump ~/bin $chmod +x ~/bin/class-dump；</p>
-  </li>
-  <li>
-    <p>打开~/.bash_profile文件：$vi ~/.bash_profile，在文件最上方加一行：export PATH=$HOME/bin/:$PATH，然后保存并退出（在英文输入法中依次按下esc和:（shift + ;，即冒号），然后输入wq，回车即可）；</p>
-  </li>
-  <li>
-    <p>在Terminal中执行$source ~/.bash_profile；</p>
-  </li>
-  <li>
-    <p>上面的操作把~/bin路径给加入了环境变量.之后，就可以正常使用了。</p>
-  </li>
-  <li>
-    <p>class-dump的对象是Mach-O格式的二进制文件，如Framework的库文件和App的可执行文件。</p>
-  </li>
+  <li><a href="http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy">Xcode 7 UI 测试初窥</a></li>
+  <li><a href="http://masilotti.com/ui-testing-cheat-sheet/">UITest</a></li>
+  <li><a href="http://nshipster.com/xctestcase/">XCTest​Case</a></li>
+  <li><a href="https://objccn.io/issue-15-6/">UI 测试</a></li>
+  <li><a href="https://objccn.io/issue-15-7/">截图测试</a></li>
 </ul>
-
-<p>下面以支付宝为例，来看看class-dump的完整流程。</p>
-
-<p>1.定位App的可执行文件</p>
-
-<p>首先把带class-dump的App拷贝到OSX中，笔者放在了“/Users/Test ”下。然后在Terminal中进入App所在的目录，并用Xcode自带的plutil工具查看Info.plist中的“CFBundleExecutable”字段，如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /Users/Test/AlipayWallet9.9.5_/Payload/AlipayWallet.app
-$ plutil -p Info.plist | grep CFBundleExecutable
-"CFBundleExecutable" =&gt; "AlipayWallet"
-</code></pre>
-</div>
-
-<p>当前目录下的“AlipayWallet”就是App的可执行文件。</p>
-
-<p>2.class-dump可执行文件</p>
-
-<p>把AlipayWallet的头文件class-dump到“/Users/Test/TEST/Header”下，并将头文件内容按名字排序，命令如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ class-dump -S -s -H AlipayWallet -o /Users/Test/TEST/Header
-</code></pre>
-</div>
-
-<p>结果是：
--APPstore里面的app都只有一个文件：CDStructures.h 而且里面是空的(appstore处理过)
--【直接使用xcode打包的我们自己的ipa】头文件基本全部都展示出来了</p>
-
-<p>透过这些头文件，闭源App的程序架构就能初现端倪了，经验丰富的开发人员可以从中了解非常多的信息，这些信息是iOS逆向工程的基础。不过现在的App工程越来越大，而且还在不停地引用第三方代码，因此经常会发现class-dump出来了成百上千个头文件，虽然靠人工及经验一点点地分析是很好的练习方式，但过程实在太复杂，让人头大。在后面的章节，将通过各种工具逐步缩小目标范围，最后精准地定位目标函数。</p>
-
-<p>值得注意的是，从AppStore下载的App都是经过加密的，可执行文件被加上了一层“壳”，就像是一颗硬硬的核桃，class-dump应付不了这样的文件。你想想，我们试图用class-dump这样一个镊子来取肉，别说解馋，没把镊子夹坏就算不错啦！此时使用class-dump看上去会“失效”。</p>
 
 
         </article>
@@ -288,12 +319,12 @@ $ plutil -p Info.plist | grep CFBundleExecutable
                     
                 
             
-        
-            
-            
                 
                     
                 
+            
+        
+            
             
                 
                     
@@ -354,13 +385,13 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2016/11/01/0_Reverse_Enginner/">iOS逆向系列_综述</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/01/18/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/11/02/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/02/07/AD-Fastlane/">自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></p>
         
     </div>
 </div>
@@ -369,7 +400,7 @@ $ plutil -p Info.plist | grep CFBundleExecutable
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2016/11/02/1_Class_dump/" data-title="iOS逆向系列1_Class_dump" data-url="http://localhost:4000/2016/11/02/1_Class_dump/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/23/AD-XCTest/" data-title="自动化测试部署系列 - XCTest入门" data-url="http://localhost:4000/2017/01/23/AD-XCTest/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
