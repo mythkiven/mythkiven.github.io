@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>自动化测试部署系列 - XCTest入门</title>
-    <meta name="description" content="  简述  UI Testing 和 Accessibility  demo简述  本文是自动化测试部署系列的文章,后续会有更多相关文章关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等...">
+    <title>持续集成系列 - 测试: XCTest</title>
+    <meta name="description" content="  简述  UI Testing 和 Accessibility  demo简述说起 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -134,6 +134,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -142,7 +144,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>自动化测试部署系列 - XCTest入门</h1>
+        <h1>持续集成系列 - 测试: XCTest</h1>
         <div class="label">
 
             <div class="label-card">
@@ -167,7 +169,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#AD" title="Category: AD" rel="category">AD</a>
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
     
   
 
@@ -205,13 +207,15 @@
 
 <h3 id="section">简述</h3>
 
-<blockquote>
-  <p>本文是自动化测试部署系列的文章,后续会有更多相关文章</p>
-</blockquote>
-
-<p>关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.</p>
+<p>说起 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.</p>
 
 <p>Apple 在 Xcode 7 中新加入了一套 UI Testing 的工具,其目的就是解决这个问题.新的 UI Testing 比以往的解决方案要简单不少,特别是在创建测试用例的时候更集成了录制的功能,这有希望让 UI Testing 变得更为普及.</p>
+
+<p>其他概念比如: 单元测试\集成测试.</p>
+
+<p>单元测试:对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
+
+<p>集成测试:是在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试集成测试是在单元测试的基础上，测试在将所有的软件单元按照概要设计规格说明的要求组装成模块、子系统或系统的过程中各部分工作是否达到或实现相应技术指标及要求的活动。也就是说，在集成测试之前，单元测试应该已经完成。这一点很重要，因为如果不经过单元测试，那么集成测试的效果将会受到很大影响，并且会大幅增加软件单元代码纠错的代价。</p>
 
 <h3 id="ui-testing--accessibility">UI Testing 和 Accessibility</h3>
 
@@ -293,6 +297,7 @@
 <h3 id="section-1">参考及延伸阅读</h3>
 
 <ul>
+  <li><a href="http://www.blogs8.cn/posts/A1Rj797">Swift中KIF测试的特点－b</a></li>
   <li><a href="http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy">Xcode 7 UI 测试初窥</a></li>
   <li><a href="http://masilotti.com/ui-testing-cheat-sheet/">UITest</a></li>
   <li><a href="http://nshipster.com/xctestcase/">XCTest​Case</a></li>
@@ -312,6 +317,17 @@
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -329,9 +345,6 @@
                 
                     
                 
-            
-        
-            
             
                 
                     
@@ -385,13 +398,13 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/01/18/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/02/07/AD-Fastlane/">自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></p>
         
     </div>
 </div>
@@ -400,7 +413,7 @@
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/23/AD-XCTest/" data-title="自动化测试部署系列 - XCTest入门" data-url="http://localhost:4000/2017/01/23/AD-XCTest/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/23/AD-XCTest/" data-title="持续集成系列 - 测试: XCTest" data-url="http://localhost:4000/2017/01/23/AD-XCTest/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

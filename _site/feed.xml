@@ -5,12 +5,590 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 08 Feb 2017 16:38:59 +0800</pubDate>
-    <lastBuildDate>Wed, 08 Feb 2017 16:38:59 +0800</lastBuildDate>
+    <pubDate>Fri, 10 Feb 2017 15:43:02 +0800</pubDate>
+    <lastBuildDate>Fri, 10 Feb 2017 15:43:02 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
-        <title>自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</title>
+        <title> 持续集成系列 - CI + Jenkins的魔法世界</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#ci-&quot; id=&quot;markdown-toc-ci-&quot;&gt;CI 基础知识&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-integration&quot; id=&quot;markdown-toc-continuous-integration&quot;&gt;持续集成(Continuous Integration)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-deployment&quot; id=&quot;markdown-toc-continuous-deployment&quot;&gt;持续部署(Continuous Deployment)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#xcode---xcodebuild&quot; id=&quot;markdown-toc-xcode---xcodebuild&quot;&gt;1.  Xcode 命令行工具 : xcodebuild&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#project-&quot; id=&quot;markdown-toc-project-&quot;&gt;2. project 项目的命令行编译:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cocoapods-&quot; id=&quot;markdown-toc-cocoapods-&quot;&gt;3.CocoaPods 项目&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#xctool&quot; id=&quot;markdown-toc-xctool&quot;&gt;4.Xctool&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jenkins-&quot; id=&quot;markdown-toc-jenkins-&quot;&gt;Jenkins 简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jenkins&quot; id=&quot;markdown-toc-jenkins&quot;&gt;安装 Jenkins&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 安装&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2. 启动&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;3. 访问方式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;4. 修改端口&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;5. 用户设置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;6.系统设置&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;配置 github&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#freestyle&quot; id=&quot;markdown-toc-freestyle&quot;&gt;创建freestyle任务&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#githubwebhook&quot; id=&quot;markdown-toc-githubwebhook&quot;&gt;配置Github仓库的Webhook&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gitlab&quot; id=&quot;markdown-toc-gitlab&quot;&gt;配置 GitLab&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ssh&quot; id=&quot;markdown-toc-ssh&quot;&gt;配置 SSH&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#freestyle-1&quot; id=&quot;markdown-toc-freestyle-1&quot;&gt;创建freestyle任务&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jenkins-shell-&quot; id=&quot;markdown-toc-jenkins-shell-&quot;&gt;Jenkins Shell 脚本&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;其他&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#firim&quot; id=&quot;markdown-toc-firim&quot;&gt;fir.im&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#travis&quot; id=&quot;markdown-toc-travis&quot;&gt;Travis&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;自动发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+
+  &lt;p&gt;最近一直在关注移动端的持续集成部署相关的内容,在网搜 Jenkins 资料是很多,但是基本都不是移动端的集成部署.下边将个人的使用体会分享出来,希望能帮助到需要的伙伴们.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;在进行 CI 之前,你需要一些基本的知识&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ci-&quot;&gt;CI 基础知识&lt;/h3&gt;
+
+&lt;p&gt;在互联网的产品开发时代,产品迭代越来越频繁,“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”.很多开发团队也越来越认识到,自动化测试和持续部署可帮助开发团队提高迭代效率和质量.
+那么,如何更好地解决“最后一公里”这一问题呢?&lt;/p&gt;
+
+&lt;p&gt;可以分为两部分:持续集成和持续部署&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;持续集成:是指整个开发过程,每个人开发的模块向项目主体交付时,频繁进行集成以便更快地发现其中的错误&lt;/li&gt;
+  &lt;li&gt;持续部署:是指开发过程中连续的阶段性版本的上线, V1.1.0上线部署,V1.1.1上线部署…&lt;/li&gt;
+  &lt;li&gt;前者和后者时间尺度是一样的,不过前者是涵盖每一次 push ,后者是指一个稳定的版本,可以内测和发布用的&lt;/li&gt;
+  &lt;li&gt;实际使用中,两者是结合在一起的,持续集成的平台上,可以进一步配置持续部署,这样就可以实现:每次 push 自动构建测试,每次稳定的版本,可以顺利的构建分发用于内测.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;continuous-integration&quot;&gt;持续集成(Continuous Integration)&lt;/h5&gt;
+
+&lt;p&gt;持续集成:是指整个开发过程,个人开发的模块,向项目主体交付,频繁进行集成以便更快地发现其中的错误.涉及到的内容为:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;自动化测试:单元测试+ UI 测试&lt;/li&gt;
+  &lt;li&gt;持续集成平台:Jenkins (自动化的构建) \ Travis CI (基于 github 平台的CI持续集成)等&lt;/li&gt;
+  &lt;li&gt;版本控制:如 Git\SVN\CVS 等&lt;/li&gt;
+  &lt;li&gt;部署发布工具:fastlane 等&lt;/li&gt;
+  &lt;li&gt;部署发布平台:蒲公英\Fir.im (目前支持 Android 和 iOS 应用的分发,提供的工具有 flow.ci)&lt;/li&gt;
+  &lt;li&gt;一般流程(Jenkins 为例):Jenkins 服务器轮训 Git ,发现新的版本,就会 clone 到本地,并按照预先设定的脚本进行自动编译,并执行测试.如果有问题,就会发出邮件通知.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;continuous-deployment&quot;&gt;持续部署(Continuous Deployment)&lt;/h5&gt;
+
+&lt;p&gt;持续部署:是指开发过程中的连续的阶段性版本, V1.1.0上线部署,V1.1.1上线部署…
+在移动端主要是使用 fastlane 实现持续部署:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;开发项目,单元测试&lt;/li&gt;
+  &lt;li&gt;模块开发,集成\UI 测试&lt;/li&gt;
+  &lt;li&gt;Archive项目&lt;/li&gt;
+  &lt;li&gt;上传包到iTunes&lt;/li&gt;
+  &lt;li&gt;在iTunes后台提交版本截图\描述等信息(也可以在测试完成后配置)&lt;/li&gt;
+  &lt;li&gt;配置TestFlight,分发测试Beta版&lt;/li&gt;
+  &lt;li&gt;测试,改 bug&lt;/li&gt;
+  &lt;li&gt;测试完成,提交App Store审核&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;xcode---xcodebuild&quot;&gt;1.  Xcode 命令行工具 : xcodebuild&lt;/h5&gt;
+
+&lt;p&gt;Xcode 不仅可以通过 GUI 编译运行,还可以通过命令行实现编译运行,这也是 CI 的基础条件之一.&lt;/p&gt;
+
+&lt;p&gt;官方的使用方法:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xcodebuild &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-project &amp;lt;projectname&amp;gt;] &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;-target &amp;lt;targetname&amp;gt;]...|-alltargets] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-configuration &amp;lt;configurationname&amp;gt;] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-arch &amp;lt;architecture&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-sdk &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;sdkname&amp;gt;|&amp;lt;sdkpath&amp;gt;]] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-showBuildSettings] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildsetting&amp;gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildaction&amp;gt;]...
+
+xcodebuild &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-project &amp;lt;projectname&amp;gt;] -scheme &amp;lt;schemeName&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-destination &amp;lt;destinationspecifier&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-configuration &amp;lt;configurationname&amp;gt;] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-arch &amp;lt;architecture&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-sdk &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;sdkname&amp;gt;|&amp;lt;sdkpath&amp;gt;]] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-showBuildSettings] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildsetting&amp;gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildaction&amp;gt;]...
+
+xcodebuild -workspace &amp;lt;workspacename&amp;gt; -scheme &amp;lt;schemeName&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-destination &amp;lt;destinationspecifier&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-configuration &amp;lt;configurationname&amp;gt;] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-arch &amp;lt;architecture&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-sdk &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;sdkname&amp;gt;|&amp;lt;sdkpath&amp;gt;]] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-showBuildSettings] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildsetting&amp;gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;buildaction&amp;gt;]...
+
+xcodebuild -version &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-sdk &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;sdkfullpath&amp;gt;|&amp;lt;sdkname&amp;gt;] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;infoitem&amp;gt;] &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;关键字:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Options:
+    -usage                              print brief usage
+    -help                               print complete usage
+    -verbose                            provide additional status output
+    -license                            show the Xcode and SDK license agreements
+    -checkFirstLaunchStatus             Check if any First Launch tasks need to be performed
+    -project NAME                       build the project NAME
+    -target NAME                        build the target NAME
+    -alltargets                         build all targets
+    -workspace NAME                     build the workspace NAME
+    -scheme NAME                        build the scheme NAME
+    -configuration NAME                 use the build configuration NAME for building each target
+    -xcconfig PATH                      apply the build settings defined in the file at PATH as overrides
+    -arch ARCH                          build each target for the architecture ARCH; this will override architectures defined in the project
+    -sdk SDK                            use SDK as the name or path of the base SDK when building the project
+    -toolchain NAME                     use the toolchain with identifier or name NAME
+    
+    ....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;实战:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd  /Users/guoyinjinrong1/Git_Projecrt/XCTest/UITEST 
+$ xcodebuild build -workspace UITEST.xcworkspace -scheme UITEST -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;project-&quot;&gt;2. project 项目的命令行编译:&lt;/h5&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 列出 xcodebuild 所有可用的参数:&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;xcodebuild --help
+&lt;span class=&quot;c&quot;&gt;# project 项目的命令行编译:&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;xcodebuild -project &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;project&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;.xcodeproj -target &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;xxtarget&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; -sdk iphonesimulator &lt;span class=&quot;nv&quot;&gt;ONLY_ACTIVE_ARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;NO
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;使用 iphonesimulator SDK 是为了避免签名错误.直到我们稍后引入证书之前,这一步是必须的.通过设置 ONLY_ACTIVE_ARCH=NO 我们可以确保利用模拟器架构编译工程.你也可以设置额外的属性,例如 configuration,输入 man xcodebuild 查看相关文档.&lt;/p&gt;
+
+&lt;h5 id=&quot;cocoapods-&quot;&gt;3.CocoaPods 项目&lt;/h5&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 需要用下面的命令来指定 workspace 和 scheme：&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;xcodebuild -workspace &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;workspace&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;.xcworkspace -scheme &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;scheme&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; -sdk iphonesimulator &lt;span class=&quot;nv&quot;&gt;ONLY_ACTIVE_ARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;NO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;schemes 是由 Xcode 自动生成的,但这在服务器上不会发生.确保所有的 scheme 都被设为 shared 并加入到仓库中.否则它只会在本地工作而不会被  CI 系统识别&lt;/p&gt;
+
+&lt;h5 id=&quot;xctool&quot;&gt;4.Xctool&lt;/h5&gt;
+
+&lt;p&gt;Xctool 是来自 Facebook 的命令行工具,它可以简化程序的编译和测试.它的彩色输出信息比 xcodebuild 更加简洁直观.同时还添加了对逻辑测试,应用测试的支持.(Travis 中已经预装了 xctool.要在本地测试的话,需要用 Homebrew 安装 xctool)&lt;/p&gt;
+
+&lt;p&gt;xctool 用法非常简单,它使用的参数跟 xcodebuild 相同:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xctool &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; -workspace TravisExample.xcworkspace -scheme TravisExampleTests -sdk iphonesimulator &lt;span class=&quot;nv&quot;&gt;ONLY_ACTIVE_ARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;NO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;jenkins-&quot;&gt;Jenkins 简介&lt;/h3&gt;
+
+&lt;p&gt;1.简介:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jenkins 由以前的 hudson 更名而来&lt;/li&gt;
+  &lt;li&gt;Jenkins 是一个跨平台的开源软件项目,旨在实现持续集成和持续交付以提高工作效率&lt;/li&gt;
+  &lt;li&gt;Jenkins 的主要功能是监视重复工作的执行,例如项目的构建等&lt;/li&gt;
+  &lt;li&gt;最终都是为了提高软件开发的效率&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2.特点:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;易于安装:一个命令就可启动,也方便部署到各种Web容器中（如tomcat)&lt;/li&gt;
+  &lt;li&gt;易于配置:所有的配置都在Web界面实现,权限控制得也不错&lt;/li&gt;
+  &lt;li&gt;插件支持:基本上所有的扩展都是有插件完成的,开发插件也很方便,由此产生了庞大的社区&lt;/li&gt;
+  &lt;li&gt;支持分布式构建:Jenkins能够让通过主从模式（master/slave）多台机器一起构建&lt;/li&gt;
+  &lt;li&gt;采用 shell 自定义脚本,控制集成部署环境更加方便灵活&lt;/li&gt;
+  &lt;li&gt;构建失败发邮件通知相关人员解决&lt;/li&gt;
+  &lt;li&gt;自动按天备份 war 包,Jenkins 配置备份以及版本控制化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;3.公司的配置流程:&lt;/p&gt;
+
+&lt;p&gt;1\Jenkins服务器一般先架设在一台服务器上,有配置管理人员管理
+2\产品有构建需求后,配置管理人员就新建一个任务,配好源码仓库,设置构建时间,指定运行脚本来编译测试产品,并且设置报告输出&lt;/p&gt;
+
+&lt;p&gt;4.弊端:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;多平台或依赖的包:
+如果你的软件想在不同的操作系统软件构建并验​​证,这将是相当有难度和技巧性,一般是准备不同的操作系统的机器,然后使用主/从模式进行分布式构建.在C++中你可以使用有关的交叉编译器;当然你可有使用虚拟机的技术&lt;a href=&quot;http://larrycai.github.com/2011/10/25/vagrant-jenkins-ci.html&quot;&gt;vagrant/virtualbox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;配置管理人员的工作:
+一般来说Jenkins的构建任务,它是集中控制的.大多来说都是有专职的配置管理人员来管理,否者权限会混乱.
+当有需求时,他们负责在CI服务器创建任务（这些配置文件不是有版本控制的）,这个就涉及到了沟通成本,你有变化需求,很难及时满足.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;作为开发者,要想随时构建项目,那就需要 Travis CI.&lt;/p&gt;
+
+&lt;h3 id=&quot;jenkins&quot;&gt;安装 Jenkins&lt;/h3&gt;
+
+&lt;h5 id=&quot;section&quot;&gt;1. 安装&lt;/h5&gt;
+
+&lt;p&gt;安装方式一:下载&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/jenkins/osx/jenkins-2.45.pkg&quot;&gt;pkg&lt;/a&gt;文件,然后安装即可(此处未必是最新版,请移步&lt;a href=&quot;https://jenkins.io/&quot;&gt;官网&lt;/a&gt;下载)&lt;/p&gt;
+
+&lt;p&gt;安装方式二:终端&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 安装自动选择最快源的插件&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yum install yum-fastestmirror -y  
+&lt;span class=&quot;c&quot;&gt;# 添加 Jenkins 源:&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo wget -O /etc/yum.repos.d/jenkins.repo http://jenkins-ci.org/redhat/jenkins.repo
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+&lt;span class=&quot;c&quot;&gt;#安装 Jenkins&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yum install jenkins               
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;2. 启动&lt;/h5&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo service jenkins start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;3. 访问方式&lt;/h5&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;open http://localhost:8080/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;4. 修改端口&lt;/h5&gt;
+
+&lt;p&gt;为避免端口冲突,可重配端口:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;vim /etc/sysconfig/jenkins
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo service jenkins restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或者这样修改端口:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
+sudo defaults write /Library/Preferences/org.jenkins-ci httpPort 8443
+sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
+&lt;span class=&quot;c&quot;&gt;# 如果是 https:&lt;/span&gt;
+sudo defaults write /Library/Preferences/org.jenkins-ci httpPort 8443
+sudo defaults write /Library/Preferences/org.jenkins-ci httpsKeyStore /path/to/your/keystore/file
+sudo defaults write /Library/Preferences/org.jenkins-ci httpsKeyStorePassword &amp;lt;keystore password&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# 其中两条命令分别是启动和关闭 Jenkins&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;5. 用户设置&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开页面: http://localhost:8080 , 按照提示从&lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/Shared/Jenkins/Home/secrets/initialAdminPassword&lt;/code&gt;文件中获取密码,然后输入即可. &lt;strong&gt;vim 打开文件或者 cat 显示文件皆可&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;然后进入插件设置页面,可以选择 Jenkins 推荐的插件,也可自主选择需要安装的插件.(会有一些插件安装失败,没关系,可以后续再安装)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装完成之后,进入创建用户页面,设置用户名密码等&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;用户创建完成,就可以开始创建第一个 Jenkins 任务啦!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;主界面如下(已经创建过一个任务):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/0b2dc9f4695effe8bd26d856957165a040f4c3c310b35-pnIrgy_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;6.系统设置&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;编码设置:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;进入 系统管理-&amp;gt;系统设置 界面：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;首先设置一下 jenkins 内部shell 执行编码，目的当在jenkins执行shell命令时，有时候会报 utf-8 编码错误。主要是pod install的时候报错。&lt;/p&gt;
+
+&lt;p&gt;[33mWARNING: CocoaPods requires your terminal to be using UTF-8 encoding.&lt;/p&gt;
+
+&lt;p&gt;设置如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/cb6bfa7ef1bc54947df56afd938f66f13617e97b220ed-hPTfFv_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.邮件设置:&lt;/p&gt;
+
+&lt;p&gt;jenkins Location 设置
+主要设置 jenkins 外部访问的 URL 和系统管理员的邮箱地址.用来发送错误报告的邮箱地址：如图
+&lt;img src=&quot;http://7xsugd.com2.z0.glb.clouddn.com/runningyoungBlog/images/location.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面只设置了邮箱发送的地址（From地址）,下面设置邮箱的服务器\协议\邮箱\密码.如图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xsugd.com2.z0.glb.clouddn.com/runningyoungBlog/images/email.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;github&quot;&gt;配置 github&lt;/h3&gt;
+
+&lt;p&gt;之所以要配置,是因为 Jenkins 默认不支持 GitHub,需要自行配置(默认支持 CVS\Subversion)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1.在 GitHub 中,配置 token (保存此 token 紧接着就要用)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;流程: github –&amp;gt; setting –&amp;gt; Personal Access Token –&amp;gt; Generate new token&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;详细配置如下图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/df55935992514b80c0672f2d3ae55ce4f726f4731bdfe-eVrSec_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2.安装 GitHub Plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果此前已经没安装过&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;流程:系统管理–&amp;gt;插件管理–&amp;gt;可选插件–&amp;gt;直接安装 GitHub Plugin&lt;/p&gt;
+
+  &lt;p&gt;Jenkins会自动帮你安装plain-credentials 、git 、 credentials 、 github-api&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3.配置 GitHub Plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;流程:系统管理 –&amp;gt; 系统设置 –&amp;gt; GitHub –&amp;gt; Add GitHub Sever&lt;/p&gt;
+
+  &lt;p&gt;Add GitHub Sever 页面 Kind 选择 Secrect text,Secret 贴入上文 GitHub 中配置的 Token,ID 可空白,并加上简单描述即可.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/52b78661c0326778df8ea624bb680b59aa11c884106ee-Gos8u3_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上就完成了 GitHub 的配置.&lt;/p&gt;
+
+&lt;h4 id=&quot;freestyle&quot;&gt;创建freestyle任务&lt;/h4&gt;
+
+&lt;p&gt;主界面 –&amp;gt; 点击新建 –&amp;gt; 输入任务名称,并选择任务类型,然后确定&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/c51fae690f1e3d46ae3b63c432fd275add8808b524354-J7rfU3_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1.基本信息:填入 GitHub 项目主页&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/0503e68febf932d309025bba65434d9507d223cde4ae-ECKWwr_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2.项目源码管理:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;填入项目的 git 地址–&amp;gt;点击 Add 添加 git 账户,以便读写该项目–&amp;gt;Branches to build 用于监听分支,**表示监听全部分支–&amp;gt;Local subdirectory for repo 表示项目相对于默认路径的保存路径,之后都会在此路径进行构建执行.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/969a90bcc1d7d12c26164dd7f7ef11b1048a24a3e321-l92EFL_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3.构建触发器/构建环境:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;GitHub hook trigger for GITScm polling 选项:当 GitHub 有版本库更新时触发 Jenkins 进行构建
+Poll SCM 选项:定期检查版本库是否有更新(使用Schedule语法)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/cd592746112fbda093692f630b3b6c8c8e260d4134bac-9nqLy0_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4.构建&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/e0ce275c67b89629017b4a706b2b6cc6b283ed5660c6-0fzKor_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里指定脚本&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env zsh --login&lt;/span&gt;
+
+rvm use 2.0.0
+ruby --version
+bundle
+bundle --version
+bin/pod
+/usr/bin/xcodebuild -scheme &lt;span class=&quot;s1&quot;&gt;'UITEST'&lt;/span&gt; -workspace UITEST.xcworkspace -destination &lt;span class=&quot;s2&quot;&gt;&quot;platform=iOS Simulator,name=iPhone Retina (4-inch),OS=latest&quot;&lt;/span&gt; -configuration Debug clean build &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ONLY_ACTIVE_ARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;NO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;5\ 构建后的操作
+Jenkins默认只能构建前执行shell,不能构建后执行shell.当有该需求时 Jenkins 的 PostBuildScript plugin 插件实现这个功能.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/517fe769dfaed57c8a9e6389d940bbbe1a50bfe83a7c-3uou8P_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上便完成了任务的配置.&lt;/p&gt;
+
+&lt;h5 id=&quot;githubwebhook&quot;&gt;配置Github仓库的Webhook&lt;/h5&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;进入GitHub上指定的项目 –&amp;gt; setting –&amp;gt; WebHooks&amp;amp;Services –&amp;gt; add webhook –&amp;gt; 输入刚刚部署jenkins的服务器的IP&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这样,每次 push 都会触发一次build.&lt;/p&gt;
+
+&lt;p&gt;然而,我的 Jenkins 是本地的,在 GitHub 并不能直接访问到我的电脑,so,设置是无效的….&lt;/p&gt;
+
+&lt;h3 id=&quot;gitlab&quot;&gt;配置 GitLab&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/ee/integration/jenkins.html&quot;&gt;官方教程&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装 Gitlab 插件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;系统管理 -&amp;gt; 管理插件 -&amp;gt; 可选插件 :中选择GitLab Plugin 和 Gitlab Hook Plugin 这两项，然后安装.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装 Xcode 插件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;同上,安装 Xcode integration&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装签名证书管理插件
+OS打包内测版时,需要发布证书及相关签名文件,因此这两个插件对于管理iOS证书非常方便.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;同上,安装 Credentials Plugin 和 Keychains and Provisioning Profiles Management&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;ssh&quot;&gt;配置 SSH&lt;/h5&gt;
+
+&lt;p&gt;在 Jenkins 的证书管理中添加SSH:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/.ssh
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ls 
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat id_rsa.pub
+&lt;span class=&quot;c&quot;&gt;# 然后 copy key, 粘贴到 Jenkins 中,并输入最初始的密码即可.如下图&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/9756ed06006b5d816ac3e4fdc9891249fd7879f116026-K0Lsxk_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;或者创建新的 SSH&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ssh-keygen -t rsa -C “Your email” &lt;span class=&quot;c&quot;&gt;# 生成过程中需设置密码，最终生成 id_rsa 和 id_rsa.pub(公钥),过程中,输入名称 JenkinsT&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 私钥id_rsa:本机添加秘钥到SSH：ssh-add 文件名（需输入管理密码）&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Gitlab上 $ cat  JenkinsT&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Jenkins（private key选项）$ cat  JenkinsT&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 复制公钥的全部内容&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;SSH 添加路径为:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;系统管理 -&amp;gt; 系统设置 -&amp;gt; Gitlab 栏 点击 Add 添加,或者使用如下地址:&lt;/p&gt;
+
+  &lt;p&gt;http://localhost:8080/credentials/store/system/domain/_/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;freestyle-1&quot;&gt;创建freestyle任务&lt;/h4&gt;
+
+&lt;p&gt;主界面 –&amp;gt; 点击新建 –&amp;gt; 输入任务名称,并选择任务类型,然后确定&lt;/p&gt;
+
+&lt;h3 id=&quot;jenkins-shell-&quot;&gt;Jenkins Shell 脚本&lt;/h3&gt;
+
+&lt;p&gt;在 Jenkins 的任务里面,在构建\构建后,都可选择 Execute shell ,作为构建前或者构建后要执行的 shell 脚本.&lt;/p&gt;
+
+&lt;p&gt;python\perl\ruby 等脚本其实也是 shell 脚本,因此这里的 Shell 可以扩展为 python\perl\ruby
+等。&lt;/p&gt;
+
+&lt;p&gt;常见脚本如:&lt;/p&gt;
+
+&lt;p&gt;1\此脚本:在jenkins构建完成后,远程copy配置文件到项目中,并重启tomcat&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#datetime: 2017-2-7 17:00&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#author:3code&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#desc:此脚本用来在jenkins构建完成后，远程copy配置文件到项目中，并重启tomcat&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#copy API工程的配置文件&lt;/span&gt;
+cp -r /data/apache-tomcat-7.0.56/build/API/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;  /data/apache-tomcat-7.0.56/webapps/API/WEB-INF/classes
+
+&lt;span class=&quot;c&quot;&gt;#重启tomcat&lt;/span&gt;
+bash /data/apache-tomcat-7.0.56/bin/shutdown.sh
+
+sleep 30s
+
+bash /data/apache-tomcat-7.0.56/bin/startup.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;对于刚接触Jenkins的同学可能有很多需要配置的地方不知道要怎么填，这时可以点击每一个填空后的？，就会弹出详细的提示。&lt;/li&gt;
+  &lt;li&gt;官方的wiki是很好的入门教程https://wiki.jenkins-ci.org/display/JENKINS/Home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;其他&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jenkins 的界面是可以自定义的,&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Simple+Theme+Plugin&quot;&gt;参考此处&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://runningyoung.github.io/2016/04/01/2016-04-05-jenkins2/&quot;&gt;优秀:Jenkins + Gitlab + 蒲公英 + 邮件通知&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.itgo.me/a/x9151986573431569483&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;
+&lt;a href=&quot;http://blog.fir.im/fir_im_weekly160505/&quot;&gt;fir.im weekly - 「 持续集成 」实践教程合集&lt;/a&gt;
+&lt;a href=&quot;http://blog.flow.ci/cicd_difference/&quot;&gt;谈谈持续集成，持续交付，持续部署之间的区别&lt;/a&gt;
+&lt;a href=&quot;http://blog.caoyue.me/post/react-native-travis-ci-ios&quot;&gt;使用Travis CI自动部署React Native项目（iOS篇）&lt;/a&gt;
+&lt;a href=&quot;http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part3&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;
+…
+&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;
+&lt;a href=&quot;https://gold.xitu.io/entry/57a982d10a2b58005869d8dc&quot;&gt;iOS 持续集成 –Travis CI + Fir.im 自动编译发布&lt;/a&gt;
+&lt;a href=&quot;http://yeziahehe.com/2016/08/07/use_travis_ci_for_ios_project/&quot;&gt;iOS 持续集成–Travis CI + Fir.im自动编译发布&lt;/a&gt;
+&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;
+&lt;a href=&quot;https://docs.docker.com/docker-hub/builds/&quot;&gt;在Docker Hub上配置自动构建&lt;/a&gt;
+&lt;a href=&quot;http://www.jianshu.com/p/19c2b13e81fa&quot;&gt;利用pod trunk发布程序&lt;/a&gt;
+&lt;a href=&quot;http://www.55118885.com/w/166141242.html&quot;&gt;使用GitLab来实现IOS项目的持续集成CI&lt;/a&gt;
+&lt;a href=&quot;http://blog.fir.im/jenkinsgithubfir_cli-xing-ming-ling-cong-yuan-ma-dao-fir-im/&quot;&gt;Jenkins + GitHub + fir-cli 一行命令从源码到 fir.im&lt;/a&gt;
+&lt;a href=&quot;http://www.2cto.com/kf/201411/356826.html&quot;&gt;用持续集成工具Travis进行构建和部署&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;firim&quot;&gt;fir.im&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/f17caec72f0b&quot;&gt;使用 fir CLI插件上传 Swift 应用至fir.im&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;travis&quot;&gt;Travis&lt;/h4&gt;
+&lt;p&gt;相关的文章:&lt;a href=&quot;https://blog.jamespan.me/2015/11/01/ci-your-hexo-blog&quot;&gt;Travis&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://ios.jobbole.com/87803/&quot;&gt;使用 TestFlight 进行 App Beta 版测试&lt;/a&gt;
+&lt;a href=&quot;http://www.jianshu.com/p/27545c2d4d8b&quot;&gt;使用TestFlight进行App构建版本测试&lt;/a&gt;
+&lt;a href=&quot;https://onevcat.com/2012/01/testflight/&quot;&gt;onevcat testflight&lt;/a&gt;
+持续部署是指当交付的代码通过评审之后，自动部署到生产环境中。持续部署是持续交付的最高阶段。这意味着，所有通过了一系列的自动化测试的改动都将自动部署到生产环境。它也可以被称为“Continuous Release”。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;自动发布&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fastlane 是一组工具套件,旨在实现iOS应用发布流程的自动化，并且提供一个运行良好的持续部署流程.&lt;/li&gt;
+  &lt;li&gt;使用场景: push 时执行单元测试,集成测试;创建屏幕截图发给客户;构建分发 Beta 版本;构建并分发到 appstore;&lt;/li&gt;
+  &lt;li&gt;支持与Jenkins和CocoaPods，xctools等其他第三方工具的集成&lt;/li&gt;
+  &lt;li&gt;博客教程:http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&lt;/li&gt;
+  &lt;li&gt;官方教程:https://docs.fastlane.tools/getting-started/ios/screenshots/&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 08 Feb 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/08/AD-jenkins/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/08/AD-jenkins/</guid>
+        
+        <category>fastlane</category>
+        
+        <category>CI</category>
+        
+        
+        <category>CI</category>
+        
+      </item>
+    
+      <item>
+        <title> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#fastlane-&quot; id=&quot;markdown-toc-fastlane-&quot;&gt;Fastlane 简介&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1.主要使用场:&lt;/a&gt;&lt;/li&gt;
@@ -574,12 +1152,12 @@ copyright &quot;#{Time.now.year} 3code&quot;
         <category>fastlane</category>
         
         
-        <category>AD</category>
+        <category>CI</category>
         
       </item>
     
       <item>
-        <title>自动化测试部署系列 - XCTest入门</title>
+        <title>持续集成系列 - 测试: XCTest</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;简述&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#ui-testing--accessibility&quot; id=&quot;markdown-toc-ui-testing--accessibility&quot;&gt;UI Testing 和 Accessibility&lt;/a&gt;&lt;/li&gt;
@@ -589,13 +1167,15 @@ copyright &quot;#{Time.now.year} 3code&quot;
 
 &lt;h3 id=&quot;section&quot;&gt;简述&lt;/h3&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;本文是自动化测试部署系列的文章,后续会有更多相关文章&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.&lt;/p&gt;
+&lt;p&gt;说起 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.&lt;/p&gt;
 
 &lt;p&gt;Apple 在 Xcode 7 中新加入了一套 UI Testing 的工具,其目的就是解决这个问题.新的 UI Testing 比以往的解决方案要简单不少,特别是在创建测试用例的时候更集成了录制的功能,这有希望让 UI Testing 变得更为普及.&lt;/p&gt;
+
+&lt;p&gt;其他概念比如: 单元测试\集成测试.&lt;/p&gt;
+
+&lt;p&gt;单元测试:对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高&lt;/p&gt;
+
+&lt;p&gt;集成测试:是在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试集成测试是在单元测试的基础上，测试在将所有的软件单元按照概要设计规格说明的要求组装成模块、子系统或系统的过程中各部分工作是否达到或实现相应技术指标及要求的活动。也就是说，在集成测试之前，单元测试应该已经完成。这一点很重要，因为如果不经过单元测试，那么集成测试的效果将会受到很大影响，并且会大幅增加软件单元代码纠错的代价。&lt;/p&gt;
 
 &lt;h3 id=&quot;ui-testing--accessibility&quot;&gt;UI Testing 和 Accessibility&lt;/h3&gt;
 
@@ -677,6 +1257,7 @@ copyright &quot;#{Time.now.year} 3code&quot;
 &lt;h3 id=&quot;section-1&quot;&gt;参考及延伸阅读&lt;/h3&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.blogs8.cn/posts/A1Rj797&quot;&gt;Swift中KIF测试的特点－b&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&quot;&gt;Xcode 7 UI 测试初窥&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://masilotti.com/ui-testing-cheat-sheet/&quot;&gt;UITest&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://nshipster.com/xctestcase/&quot;&gt;XCTest​Case&lt;/a&gt;&lt;/li&gt;
@@ -692,7 +1273,417 @@ copyright &quot;#{Time.now.year} 3code&quot;
         <category>XCTest</category>
         
         
-        <category>AD</category>
+        <category>CI</category>
+        
+      </item>
+    
+      <item>
+        <title>持续集成系列 - Github中的魔法工具:Travis CI</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#jenkins&quot; id=&quot;markdown-toc-jenkins&quot;&gt;基础知识,参考博文:Jenkins&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#travis-ci-&quot; id=&quot;markdown-toc-travis-ci-&quot;&gt;1. Travis-CI 简介&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#jenkins-1&quot; id=&quot;markdown-toc-jenkins-1&quot;&gt;对比 Jenkins&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#travis-ci--1&quot; id=&quot;markdown-toc-travis-ci--1&quot;&gt;2.Travis-CI 配置小教程&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#project-&quot; id=&quot;markdown-toc-project-&quot;&gt;project 项目配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#workspace-&quot; id=&quot;markdown-toc-workspace-&quot;&gt;workspace 管理的项目配置&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;3. 应用程序的签名\证书&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;4.部署&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;密码和证书安全&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;其他&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;显示构建状态&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;跳过自动构建&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;资源&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#unit-&quot; id=&quot;markdown-toc-unit-&quot;&gt;Unit 代表单元测试:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ui-&quot; id=&quot;markdown-toc-ui-&quot;&gt;UI 测试&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ui&quot; id=&quot;markdown-toc-ui&quot;&gt;UI自动化测试框架&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ios-&quot; id=&quot;markdown-toc-ios-&quot;&gt;iOS 自动化测试实践&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;工具&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;持续集成平台&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-integration-ci&quot; id=&quot;markdown-toc-continuous-integration-ci&quot;&gt;持续集成(Continuous Integration) CI&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-delivery&quot; id=&quot;markdown-toc-continuous-delivery&quot;&gt;持续交付 Continuous Delivery&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#firim&quot; id=&quot;markdown-toc-firim&quot;&gt;fir.im&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#travis&quot; id=&quot;markdown-toc-travis&quot;&gt;Travis&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-deployment&quot; id=&quot;markdown-toc-continuous-deployment&quot;&gt;持续部署 Continuous Deployment&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#fastlane-&quot; id=&quot;markdown-toc-fastlane-&quot;&gt;fastlane 解决持续部署问题&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;自动发布&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#travis-ci&quot; id=&quot;markdown-toc-travis-ci&quot;&gt;配置Travis CI&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jenkins&quot;&gt;基础知识,参考博文:Jenkins&lt;/h3&gt;
+
+&lt;h3 id=&quot;travis-ci-&quot;&gt;1. Travis-CI 简介&lt;/h3&gt;
+
+&lt;p&gt;Travis-CI 是一个开源的持续构建项目,能够测试和部署;Travis-CI 会同步你在 GitHub 上托管的项目,每当你 Commit Push 之后,预装的编译脚本会分析你的 Xcode 项目,并对每个 target 进行编译.如果所有文件都没有编译错误,并且测试也没有被打断,那么项目就编译成功了.&lt;/p&gt;
+
+&lt;h5 id=&quot;jenkins-1&quot;&gt;对比 Jenkins&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jenkins 和 Travis-CI 类似,前者主要用于公司中项目的 CI(商业化),后者则主要用在 GitHub 中(小众)&lt;/li&gt;
+  &lt;li&gt;都是基于 Vagrant/Virtualbox技术&lt;/li&gt;
+  &lt;li&gt;配置文件:Jenkins 配置在 Jenkins 服务器中,后者配置文件和源码一起.使用 DSL 编写的&lt;/li&gt;
+  &lt;li&gt;Travis Ci 与 Github 集成非常紧密,官方的集成测试托管只支持 Github 项目&lt;/li&gt;
+  &lt;li&gt;总的来说:如果是开源项目,放在 GitHub 上,使用 Travis CI 来做集成测试是最佳选择.但如果是公司项目,当然是搭建 Jenkins 环境.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;travis-ci--1&quot;&gt;2.Travis-CI 配置小教程&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1.用你的 GitHub 账号登录 &lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis-CI&lt;/a&gt;,赋予 TCI 访问 GH 的授权.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于私有仓库,需要注册一个 &lt;a href=&quot;https://magnum.travis-ci.com/&quot;&gt;Travis 专业版账号&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;2.登录之后 Travis-CI 就会同步 GitHub 账号的仓库,然后打开个人页面并给你想要构建的项目启用 Travis-CI &lt;img src=&quot;https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;3.创建一个 .travis.yml 文件,在项目的根目录下.则 Travis-CI 会按照 .travis.yml 里的内容进行构建&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;4.最后可以在&lt;a href=&quot;https://travis-ci.org/repositories&quot;&gt;构建状态页面&lt;/a&gt;来查看你的项目是否构建成功&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;project-&quot;&gt;project 项目配置&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-DSL&quot;&gt;language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_project: ./UITEST.xcodeproj # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;workspace-&quot;&gt;workspace 管理的项目配置&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-DSL&quot;&gt;language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_workspace: ./UITEST.xcworkspace # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时也要设置 Target 为 shared 状态.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;打开项目 -&amp;gt; Manage Schemes -&amp;gt; 把需要构建的 Target 勾上 shared -&amp;gt; 选中你需要管理的 scheme,点击左下角的 Edit 按钮 -&amp;gt; 选择 Build 选项，点击左下角的+号按钮，添加你需要依赖的 CocoaPods 管理的第三方静态库的名字，下图是已经添加后的截图.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/656113-97e903b6472ce2eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上配置,可以看看&lt;a href=&quot;https://docs.travis-ci.com/user/languages/objective-c/&quot;&gt;官方文档&lt;/a&gt;,写的挺详细的&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;3. 应用程序的签名\证书&lt;/h3&gt;
+
+&lt;p&gt;[参见(https://objccn.io/issue-6-5/)&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;4.部署&lt;/h3&gt;
+
+&lt;p&gt;负责分发部署的平台很多像:TestFlight \ HockeyApp \ 蒲公英 \ fir.im 等等&lt;/p&gt;
+
+&lt;p&gt;可以配置然后在上述平台进行部署.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;密码和证书安全&lt;/h3&gt;
+
+&lt;p&gt;对于密码等敏感信息,Travis CI提供了2种解决方案:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对密码等敏感信息进行加密,然后再构建环境时解密&lt;/li&gt;
+  &lt;li&gt;在 Travis CI控制台设置环境变量,然后使用 System.getenv() 获取值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;其他&lt;/h3&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;显示构建状态&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;跳过自动构建&lt;/h5&gt;
+
+&lt;p&gt;如果commit不想让travis ci构建，那么就在commit message里加上[ci skip]就行了。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;[ci skip] commit message&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;资源&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.travis-ci.com/user/customizing-the-build/&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/objcio/issue-6-travis-ci&quot;&gt;示例 Demo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/facebook/xctool&quot;&gt;xctool&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/nukc/how-to-use-travis-ci&quot;&gt;安卓环境下的教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;-&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;优秀的文章为 iOS 建立 Travis CI:签名+部署+发布&lt;/a&gt;
+-&lt;a href=&quot;http://blog.csdn.net/jiang314/article/details/54965283&quot;&gt;备份版:优秀的文章为 iOS 建立 Travis CI:签名+部署+发布&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;为 iOS 建立 Travis CI: https://objccn.io/issue-6-5/&lt;/p&gt;
+
+&lt;p&gt;自动化测试 –&amp;gt; 持续部署&lt;/p&gt;
+
+&lt;p&gt;在互联网的产品开发时代，产品迭代越来越频繁，“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”。很多开发团队也越来越认识到，自动化测试和持续部署可帮助开发团队提高迭代效率和质量。
+那么，如何更好地解决“最后一公里”这一问题呢?&lt;/p&gt;
+
+&lt;p&gt;一切从自动化测试开始，让自动化测试贯穿在整个项目开发-集成-部署-交付的-开发流程中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://huaban.com/go/?pin_id=1002439558&quot; alt=&quot;&quot; /&gt;
+在这个分层自动化测试金字塔中，&lt;/p&gt;
+&lt;h4 id=&quot;unit-&quot;&gt;Unit 代表单元测试:&lt;/h4&gt;
+
+&lt;p&gt;XCTest是苹果在iOS 7和Xcode5引入的一个简单而强大的测试框架，它的测试编写起来非常简单，并且遵循xUnit风格。XCTest的优点是与Xcode深度集成，有专门的Test导航栏，但因为受限于官方测试API，因此功能不是很丰富。&lt;/p&gt;
+
+&lt;p&gt;iOS 中的单元测试开源库:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Kiwi是对XCTest的一个完整替代，使用xSpec风格编写测试。Kiwi带有自己的一套工具集，包括expectations、mocks、stubs，甚至还支持异步测试。&lt;/li&gt;
+  &lt;li&gt;Specta与Kiwi功能相似，但在架构上非常不同。Kiwi注重功能的整合，而Specta则注重模块化。它本身只专注于运行测试，而将模拟、匹配等功能交给第三方。下
+下面这些一些开源测试组件，它们能与Specta和Kiwi框架搭配使用：&lt;/li&gt;
+  &lt;li&gt;Expecta：匹配程序框架。&lt;/li&gt;
+  &lt;li&gt;OCHamcrest：匹配程序框架。&lt;/li&gt;
+  &lt;li&gt;OCMock：模拟测试框架。&lt;/li&gt;
+  &lt;li&gt;OCMockito：模拟测试框架。&lt;/li&gt;
+  &lt;li&gt;OHTTPStubs：模拟网络请求的库，基于block的语法来匹配URL。&lt;/li&gt;
+  &lt;li&gt;Nocilla：模拟网络请求的库，使用链式API。&lt;/li&gt;
+  &lt;li&gt;Quick是:一个使用Swift开发的新测试框架，对测试使用Swift编写的App非常友好。它还有一个Nimble库用于编写匹配模式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高&lt;/p&gt;
+
+&lt;h3 id=&quot;ui-&quot;&gt;UI 测试&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;KIF（Keep It Functional）是用Objective-C编写的用户界面测试框架。KIF tester使用了私有API来了解App中的视图层级。缺点是运行较慢。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;相关文章:&lt;a href=&quot;http://www.blogs8.cn/posts/A1Rj797&quot;&gt;Swift中KIF测试的特点－b&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Subliminal是另一款与XCTest集成的框架。与KIF不同的是，它基于UIAutomation编写，旨在对开发者隐藏UIAutomation中一些复杂的细节。不过它最后更新日期是2014年2月，可能已停止更新。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Calabash是跨平台开发工具Xamarin推出的一款测试工具。它使用BDD风格来编写验收测试。它的优点是支持跨平台（需使用不同的库），声明式的测试风格非常易于读写。缺点是不够稳定并且运行速度慢。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Service 代表服务集成测试: 集成测试是在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试集成测试是在单元测试的基础上，测试在将所有的软件单元按照概要设计规格说明的要求组装成模块、子系统或系统的过程中各部分工作是否达到或实现相应技术指标及要求的活动。也就是说，在集成测试之前，单元测试应该已经完成。这一点很重要，因为如果不经过单元测试，那么集成测试的效果将会受到很大影响，并且会大幅增加软件单元代码纠错的代价。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;系统测试:将需测试的软件，作为整个基于计算机系统的一个元素，与计算机硬件、外设、某些支持软件、数据和人员等其他系统元素及环境结合在一起测试。系统测试的目的在于通过与系统的需求定义作比较，发现软件与系统定义不符合或与之矛盾的地方。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;UI 代表页面级的功能测试: 页面展示逻辑及界面前端与服务展现层交互的集成验证.对于前端而言,不同的开发框架有不同的测试工具.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;你是否曾经试着为 iOS 项目搭建一台支持持续集成的服务器，从我的个人经验而言，这可不是一个轻松的活。首先需要准备一台 Mac 电脑，并安装好全部所需的软件和插件。你要负责管理所有的用户账户，并提供安全保护。你需要授予访问仓库的权限，并配置所有的编译步骤和证书。在项目运行时期，你需要保持服务器的稳健和最新。&lt;/p&gt;
+
+&lt;p&gt;最后，原本你想节省的时间，会发现你花费了大量的时间去维护这台服务器。不过如果你的项目托管在 GitHub) 上，现在有了新的希望：Travis CI。该服务可以为你的项目提供持续集成的支持，也就意味着它会负责好托管一个项目的所有细节。在 Ruby 的世界中，Travis CI 已久负盛名。从 2013 年 4 月起，Travis 也开始支持 iOS 和 Mac 平台。&lt;/p&gt;
+
+&lt;p&gt;在 Ruby 的世界中，Travis CI 已久负盛名，从 2013 年 4 月起，Travis 也开始支持 iOS 和 Mac 平台。&lt;/p&gt;
+
+&lt;p&gt;在项目中集成 Travis CI，不仅包括项目的编译和单元测试的运行，还包括将应用部署到 Fir.im 的测试设备上。&lt;/p&gt;
+
+&lt;h2 id=&quot;ui&quot;&gt;UI自动化测试框架&lt;/h2&gt;
+
+&lt;p&gt;一些第三方自动化测试框架则比较成熟，如Appium, MonkeyTalk，Frank等，这里介绍KIF和EarlGrey:开源\内嵌式框架 (以 framework 形式内嵌至应用中) , 本质上是iOS的Unit test
+\使用Object-C和Swift\支持真机和模拟器&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;EarlGrey:原生的 iOS UI 自动化测试框架,写法多样,操作灵活,作为后来者的EarlGrey功能更加强大.&lt;a href=&quot;https://github.com/google/EarlGrey&quot;&gt;github/文档&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;KIF:出来早\KIF的语法比较简单\适合快速开发.&lt;a href=&quot;&quot;&gt;github&lt;/a&gt;&lt;a href=&quot;http://cocoadocs.org/docsets/KIF/3.5.1/&quot;&gt;文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;ios-&quot;&gt;iOS 自动化测试实践&lt;/h1&gt;
+
+&lt;p&gt;###单元测试（Unit Testing）是针对程序单元进行正确性检验的测试工作,程序单元是应用的 最小可测试部件.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Expecta:专为Objective-C/Cocoa而生，相比OCHamcrest，其优化了匹配的语法，测试用例的可读性更高。&lt;/li&gt;
+  &lt;li&gt;OCHamcrest:&lt;/li&gt;
+  &lt;li&gt;GHUnit已被弃用，不能积极维护！使用XCTest来代替。&lt;/li&gt;
+  &lt;li&gt;OCUnit，被官方集成进XCode 4.x版本中；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;持续集成CI（Continuous Integration）是一种实践,可以让团队在持续的基础上收到反馈并进行改进,不必等到开发周期后期才寻找和修复缺陷.通俗一点儿说:就是指对于开发人员的每一次代码提交,都自动地把Repository中所有代码Check out到一个空目录,并且自动运行所有Test Case.如果成功则接受这次提交,否则告诉所有人,这是一个失败的Revision[2]&lt;/p&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;工具&lt;/h3&gt;
+&lt;p&gt;而 JavaScript 作为一种客户端脚本语言,和传统编程语言 OC、Java 等相比,没有诸如 Xcode\Eclipse等集成开发调试环境,好在 JS 有较为丰富的测试单元测试框架:Buster.js\TestSwarm\JsTestDriver\Jasmine 等&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;单元测试:Qunit\、Jasmine\Mocha&lt;/li&gt;
+  &lt;li&gt;Jasmine: JS 测试框架,可进行单元测试等&lt;/li&gt;
+  &lt;li&gt;Karma:自动化完成单元测试并执行代码覆盖率检测&lt;/li&gt;
+  &lt;li&gt;Travis:完成基于github平台的CI持续集成&lt;/li&gt;
+  &lt;li&gt;Jenkins: 自动化的构建&lt;/li&gt;
+  &lt;li&gt;fir-cli: fir.im提供的简单工具,支持命令行进行打包分发&lt;/li&gt;
+  &lt;li&gt;fir.im: http://fir.im__ 应用分发:目前支持 Android 和 iOS 应用的分发。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;持续集成平台&lt;/h2&gt;
+
+&lt;p&gt;这里列出的持续集成工具都是基于云平台的，因为自己搭建类似Jenkins这样的持续集成环境代价高昂。&lt;/p&gt;
+
+&lt;p&gt;下面的列表是目前支持iOS的主流CI(持续集成)平台。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Travis CI&lt;/li&gt;
+  &lt;li&gt;Ship.io&lt;/li&gt;
+  &lt;li&gt;Sauce Labs&lt;/li&gt;
+  &lt;li&gt;Bitrise&lt;/li&gt;
+  &lt;li&gt;Testdroid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/5183a312b542649b19abe9a5ed5d89de3554efd015523-WlVqgO_fw658&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;continuous-integration-ci&quot;&gt;持续集成(Continuous Integration) CI&lt;/h2&gt;
+
+&lt;p&gt;持续集成是指个人开发的模块,向项目主体交付，频繁进行集成以便更快地发现其中的错误。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;全面的自动化测试。这是实践持续集成&amp;amp;持续部署的基础，同时，选择合适的自动化测试工具也极其重要；&lt;/li&gt;
+  &lt;li&gt;灵活的基础设施。容器，虚拟机的存在让开发人员和 QA 人员不必再大费周折；&lt;/li&gt;
+  &lt;li&gt;版本控制工具。如 Git，CVS，SVN 等；&lt;/li&gt;
+  &lt;li&gt;自动化的构建和软件发布流程的工具，如 Jenkins，flow.ci；&lt;/li&gt;
+  &lt;li&gt;反馈机制。如构建/测试的失败，可以快速地反馈到相关负责人，以尽快解决达到一个更稳定的版本。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;continuous-delivery&quot;&gt;持续交付 Continuous Delivery&lt;/h2&gt;
+
+&lt;p&gt;持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。持续交付优先于整个产品生命周期的软件部署，建立在高水平自动化持续集成之上。
+持续交付的好处
+持续交付和持续集成的优点非常相似：&lt;/p&gt;
+
+&lt;p&gt;快速发布。能够应对业务需求，并更快地实现软件价值。
+编码-&amp;gt;测试-&amp;gt;上线-&amp;gt;交付的频繁迭代周期缩短，同时获得迅速反馈；
+高质量的软件发布标准。整个交付过程标准化、可重复、可靠，
+整个交付过程进度可视化，方便团队人员了解项目成熟度；
+更先进的团队协作方式。从需求分析、产品的用户体验到交互 设计、开发、测试、运维等角色密切协作，相比于传统的瀑布式软件团队，更少浪费。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.itgo.me/a/x9151986573431569483&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;
+&lt;a href=&quot;http://blog.fir.im/fir_im_weekly160505/&quot;&gt;fir.im weekly - 「 持续集成 」实践教程合集&lt;/a&gt;
+&lt;a href=&quot;http://blog.flow.ci/cicd_difference/&quot;&gt;谈谈持续集成，持续交付，持续部署之间的区别&lt;/a&gt;
+&lt;a href=&quot;http://blog.caoyue.me/post/react-native-travis-ci-ios&quot;&gt;使用Travis CI自动部署React Native项目（iOS篇）&lt;/a&gt;
+&lt;a href=&quot;http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part3&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;
+…
+&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;
+&lt;a href=&quot;https://gold.xitu.io/entry/57a982d10a2b58005869d8dc&quot;&gt;iOS 持续集成 –Travis CI + Fir.im 自动编译发布&lt;/a&gt;
+&lt;a href=&quot;http://yeziahehe.com/2016/08/07/use_travis_ci_for_ios_project/&quot;&gt;iOS 持续集成–Travis CI + Fir.im自动编译发布&lt;/a&gt;
+&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;
+&lt;a href=&quot;https://docs.docker.com/docker-hub/builds/&quot;&gt;在Docker Hub上配置自动构建&lt;/a&gt;
+&lt;a href=&quot;http://www.jianshu.com/p/19c2b13e81fa&quot;&gt;利用pod trunk发布程序&lt;/a&gt;
+&lt;a href=&quot;http://www.55118885.com/w/166141242.html&quot;&gt;使用GitLab来实现IOS项目的持续集成CI&lt;/a&gt;
+&lt;a href=&quot;http://blog.fir.im/jenkinsgithubfir_cli-xing-ming-ling-cong-yuan-ma-dao-fir-im/&quot;&gt;Jenkins + GitHub + fir-cli 一行命令从源码到 fir.im&lt;/a&gt;
+&lt;a href=&quot;http://www.2cto.com/kf/201411/356826.html&quot;&gt;用持续集成工具Travis进行构建和部署&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;firim&quot;&gt;fir.im&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/f17caec72f0b&quot;&gt;使用 fir CLI插件上传 Swift 应用至fir.im&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;travis&quot;&gt;Travis&lt;/h4&gt;
+&lt;p&gt;相关的文章:&lt;a href=&quot;https://blog.jamespan.me/2015/11/01/ci-your-hexo-blog&quot;&gt;Travis&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;continuous-deployment&quot;&gt;持续部署 Continuous Deployment&lt;/h2&gt;
+
+&lt;h3 id=&quot;fastlane-&quot;&gt;fastlane 解决持续部署问题&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://fastlane.tools/&quot;&gt;官网&lt;/a&gt;
+&lt;a href=&quot;https://github.com/fastlane/fastlane&quot;&gt;github&lt;/a&gt;
+&lt;a href=&quot;https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/&quot;&gt;用 Travis CI 自動部署網站到 GitHub&lt;/a&gt;
+在实际开发中,iOS开发\打包\发布流程:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;开发项目,单元测试&lt;/li&gt;
+  &lt;li&gt;模块开发,集成\UI 测试&lt;/li&gt;
+  &lt;li&gt;Archive项目&lt;/li&gt;
+  &lt;li&gt;上传包到iTunes&lt;/li&gt;
+  &lt;li&gt;在iTunes后台提交版本截图\描述等信息(也可以在测试完成后配置)&lt;/li&gt;
+  &lt;li&gt;配置TestFlight,分发测试Beta版&lt;/li&gt;
+  &lt;li&gt;测试,改 bug&lt;/li&gt;
+  &lt;li&gt;测试完成,提交App Store审核&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上步骤虽然看着不多,但是每一步都有可能是一个大坑~
+其实可以使用 fastlane 解决以上问题;fastlane是一个完全开源的项目，现在被Twitter收购，是Fabric的一部分，主要是提供自动化构建和发布的一系列的工具集合，他包括iOS和Android工具集，由于我们只在iOS上使用，所以这里仅介绍一下iOS相关的工具：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deliver: 上传应用截图、metadata信息和ipa包到iTunes，提交审核
+snapshot: 在所有分辨率的iOS设备上截图并上传iTunes
+frameit: 快速地把应用截图放入设备框里
+pem: 自动生成推送使用到的的profiles
+sigh: 创建、更新、下载和修复provisioning profiles，支持App Store, Ad Hoc, Development和企业profiles，而且可以自动添加测试设备UDID
+produce: 使用命令行在iTunes和Dev后台创建iOS app
+cert: 自动化创建和维护你的iOS签名证书
+pilot: 管理TestFlight的测试版本和测试设备
+boarding: 自动创建一个表单来邀请参与TestFlight的用户
+gym: 编译、打包iOS app，生成签名的ipa文件
+match: 通过git在团队中共享和同步你的证书和profiles，避免团队开发经常遇到的iOS证书不一致的蛋疼问题
+scan: 跑测试用例
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;上述gym, sigh, match等几个工具可以说是极大提高效率的神器。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://ios.jobbole.com/87803/&quot;&gt;使用 TestFlight 进行 App Beta 版测试&lt;/a&gt;
+&lt;a href=&quot;http://www.jianshu.com/p/27545c2d4d8b&quot;&gt;使用TestFlight进行App构建版本测试&lt;/a&gt;
+&lt;a href=&quot;https://onevcat.com/2012/01/testflight/&quot;&gt;onevcat testflight&lt;/a&gt;
+持续部署是指当交付的代码通过评审之后，自动部署到生产环境中。持续部署是持续交付的最高阶段。这意味着，所有通过了一系列的自动化测试的改动都将自动部署到生产环境。它也可以被称为“Continuous Release”。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;自动发布&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fastlane 是一组工具套件,旨在实现iOS应用发布流程的自动化，并且提供一个运行良好的持续部署流程.&lt;/li&gt;
+  &lt;li&gt;使用场景: push 时执行单元测试,集成测试;创建屏幕截图发给客户;构建分发 Beta 版本;构建并分发到 appstore;&lt;/li&gt;
+  &lt;li&gt;支持与Jenkins和CocoaPods，xctools等其他第三方工具的集成&lt;/li&gt;
+  &lt;li&gt;博客教程:http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&lt;/li&gt;
+  &lt;li&gt;官方教程:https://docs.fastlane.tools/getting-started/ios/screenshots/&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;travis-ci&quot;&gt;配置Travis CI&lt;/h2&gt;
+
+&lt;p&gt;如果你的项目是托管在 Github 上，那么 Travis CI 是做持续集成非常好的选择。在 Ruby 的世界中，Travis CI 已久负盛名，从 2013 年 4 月起，Travis 也开始支持 iOS 和 Mac 平台。&lt;/p&gt;
+
+&lt;p&gt;首先需要将 github 的项目与 Travis 进行关联,&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 13 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/13/Travis-CI/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/13/Travis-CI/</guid>
+        
+        <category>Github</category>
+        
+        <category>Travis-CI</category>
+        
+        
+        <category>CI</category>
         
       </item>
     
@@ -1125,9 +2116,9 @@ copyright &quot;#{Time.now.year} 3code&quot;
 &lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/01/18/587f06c314ded.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 18 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/18/SDiffuseMenu/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/18/SDiffuseMenu/</guid>
+        <pubDate>Sun, 08 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/08/SDiffuseMenu/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/08/SDiffuseMenu/</guid>
         
         <category>SDiffuseMenu</category>
         
@@ -3909,787 +4900,6 @@ print(customersInLine.count)
         <pubDate>Mon, 05 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/05/swift_VI_Functions/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/05/swift_VI_Functions/</guid>
-        
-        <category>Swift3.0</category>
-        
-        
-        <category>Swift3.0</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift3.0_V_控制流</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#for&quot; id=&quot;markdown-toc-for&quot;&gt;for&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#while&quot; id=&quot;markdown-toc-while&quot;&gt;While&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#conditional-statements&quot; id=&quot;markdown-toc-conditional-statements&quot;&gt;Conditional Statements:条件语句&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#if&quot; id=&quot;markdown-toc-if&quot;&gt;if&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#switch&quot; id=&quot;markdown-toc-switch&quot;&gt;switch&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#control-transfer-statements&quot; id=&quot;markdown-toc-control-transfer-statements&quot;&gt;Control Transfer Statements:控制跳转语句&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#labeled-statements&quot; id=&quot;markdown-toc-labeled-statements&quot;&gt;Labeled Statements:标签语句&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#early-exit&quot; id=&quot;markdown-toc-early-exit&quot;&gt;Early Exit：提前退出&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#checking-api-availabilityapi&quot; id=&quot;markdown-toc-checking-api-availabilityapi&quot;&gt;Checking API Availability：检查API可用性&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Swift提供了所有C语言中相似的控制流结构。包括for和while循环；if和switch条件语句；break和continue跳转语句等;&lt;/li&gt;
-  &lt;li&gt;相对于C语言，Swift中switch语句的case语句后，不会自动跳转到下一个语句(这样就避免了C语言中因为忘记break而造成的错误);&lt;/li&gt;
-  &lt;li&gt;另外case语句可以匹配多种类型，包括数据范围，元组，或者特定的类型等;&lt;/li&gt;
-  &lt;li&gt;switch语句中已匹配的数值也可以被用在后续的case语句体中，where关键词还能被加入任意的case语句中，来增加匹配的方式。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;for&quot;&gt;for&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;for-in:对于数据范围，序列，集合等中的每一个元素，都执行一次&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; times 5 is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 1 times 5 is 5&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 2 times 5 is 10&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 3 times 5 is 15&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 4 times 5 is 20&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 5 times 5 is 25&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;忽略变量模式：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;power&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; to the power of &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;3 to the power of 10 is 59049&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;while&quot;&gt;While&lt;/h3&gt;
-
-&lt;p&gt;while循环方式：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;while循环，在每次循环开始前,判断循环条件是否成立&lt;/li&gt;
-  &lt;li&gt;repeat-while循环，在每次循环之后,判断循环条件是否成立&lt;/li&gt;
-  &lt;li&gt;repeat-while 类似 do-while&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;condition&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;Repeat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;condition&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;conditional-statements&quot;&gt;Conditional Statements:条件语句&lt;/h3&gt;
-
-&lt;p&gt;Swift提供了两种条件分支语句的方式，if语句和switch语句。一般if语句比较常用，但是只能检测少量的条件情况。switch语句用于大量的条件可能发生时的条件语句。&lt;/p&gt;
-
-&lt;h5 id=&quot;if&quot;&gt;if&lt;/h5&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;temperatureInFahrenheit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temperatureInFahrenheit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;It's very cold. Consider wearing a scarf.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temperatureInFahrenheit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;86&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;It's really warm. Don't forget to wear sunscreen.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;It's not that cold. Wear a t-shirt.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;It's really warm. Don't forget to wear sunscreen.&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;switch&quot;&gt;switch&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fallthrough 关键字，可让每一个case都有机会执行；&lt;/li&gt;
-  &lt;li&gt;不用break,匹配OK自动终止；&lt;/li&gt;
-  &lt;li&gt;每一种情况，case之后要跟上可执行语句：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherCharacter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Invalid！！！！！！&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The letter A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;一般结构：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;consider&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;respond&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-         &lt;span class=&quot;n&quot;&gt;respond&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-         &lt;span class=&quot;n&quot;&gt;otherwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;案例：匹配字符&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;someCharacter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someCharacter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The first letter of the alphabet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The last letter of the alphabet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Some other character&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;The last letter of the alphabet&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;1、匹配复合数值&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;someCharacter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;e&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someCharacter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;i&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;u&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someCharacter&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is a vowel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;g&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;h&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;j&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;k&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;l&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-     &lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someCharacter&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is a consonant&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someCharacter&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is not a vowel or a consonant&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;e is a vowel&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;2、范围匹配&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;approximateCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;countedThings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;moons orbiting Saturn&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;naturalCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;approximateCount&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;naturalCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;naturalCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;several&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;naturalCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;hundreds of&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;naturalCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;many&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;There are &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;naturalCount&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;countedThings&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;There are dozens of moons orbiting Saturn.&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;3、元组匹配&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;// 匹配坐标：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;somePoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(0, 0) is at the origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, 0) is on the x-axis&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(0, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is on the y-axis&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is inside the box&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somePoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is outside of the box&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;(1, 1) is inside the box&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4、值绑定&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;在case匹配的同时，可以将switch语句中的值绑定给一个临时的常量或者变量，以便在case的语句中使用。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;anotherPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherPoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 此后 x == 2&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;on the x-axis with an x value of &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 此后 y == 6&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;on the y-axis with a y value of &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// x == 2 y == 6.因此匹配&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;somewhere else at (&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// print &quot;somewhere else at (2, 6)&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;5、Where关键词&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;可以在case中增加where来增强判断条件：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;yetAnotherPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yetAnotherPoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 此后 x == 1 y == -1&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is on the line x == y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 满足条件。&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is on the line x == -y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;) is just some arbitrary point&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// prints &quot;(1, -1) is on the line x == -y&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;6、复合情况&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;stillAnotherPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stillAnotherPoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;On an axis, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; from the origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not on an axis&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;On an axis, 9 from the origin&quot;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;control-transfer-statements&quot;&gt;Control Transfer Statements:控制跳转语句&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;continue:结束当前循环，开始下一次循环；&lt;/li&gt;
-  &lt;li&gt;break:终止整个循环过程，用于for中：结束for循环执行for后续代码;switch中：break该case分支匹配结束，如果没有匹配成功，就继续后续的case的匹配。其实和fallthrough在switch中的作用一样&lt;/li&gt;
-  &lt;li&gt;fallthrough:switch中，让每一个case,在fallthrough之前的语句都会执行，不论是否匹配成功。（switch默认在匹配成功之后，后边的case不会被执行）；&lt;/li&gt;
-  &lt;li&gt;return 函数中返回数值,或者提前退出;&lt;/li&gt;
-  &lt;li&gt;throw&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;labeled-statements&quot;&gt;Labeled Statements:标签语句&lt;/h3&gt;
-
-&lt;p&gt;switch和循环可以互相嵌套，循环之间也可以互相嵌套，因此在使用break或者continue的时候，需要知道到底是对哪个语句起作用。这就需要用到标签语句。标签语句的一般形式如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;condition&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;案例：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;finalSquare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;repeating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalSquare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;06&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;02&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;square&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;diceRoll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-
-
-&lt;span class=&quot;nv&quot;&gt;gameLoop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;square&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalSquare&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;diceRoll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diceRoll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diceRoll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;square&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diceRoll&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;finalSquare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// 注意写法： 结束gameLoop游戏&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gameLoop&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;newSquare&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newSquare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;finalSquare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// 注意写法： 结束当前的gameloop游戏，开始下一次的游戏&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gameLoop&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// this is a valid move, so find out its effect&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;square&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diceRoll&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;square&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Game over!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;early-exit&quot;&gt;Early Exit：提前退出&lt;/h3&gt;
-
-&lt;p&gt;使用guard申明，和if一样只判断布尔值。如果条件是true那么guard以后的代码将被调用，如果是false那么就会调用else里面的内容。和if不同的是，guard是一直有else的。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I hope the weather is nice near you.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I hope the weather is nice in &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- 
-&lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;Hello John!&quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;I hope the weather is nice near you.&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jane&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Cupertino&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;Hello Jane!&quot;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;I hope the weather is nice in Cupertino.&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;checking-api-availabilityapi&quot;&gt;Checking API Availability：检查API可用性&lt;/h3&gt;
-
-&lt;p&gt;swift已经內建了对于测试api可用性的支持，从而确保不会调用一个SDK不支持的API。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;#available(platform name version, ..., *)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;APIs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;available&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;fallback&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;APIs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unavailable&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;案例：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;#available(iOS 10, macOS 10.12, *)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;YES&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Fall back to earlier iOS and macOS APIs&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 03 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/03/swift_V_Control-Flow/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/03/swift_V_Control-Flow/</guid>
-        
-        <category>Swift3.0</category>
-        
-        
-        <category>Swift3.0</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift3.0_IV_集合</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#mutability-of-collections&quot; id=&quot;markdown-toc-mutability-of-collections&quot;&gt;1、Mutability of Collections：可变集合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#arrays&quot; id=&quot;markdown-toc-arrays&quot;&gt;2、Arrays：数组&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#array-type-shorthand-syntax&quot; id=&quot;markdown-toc-array-type-shorthand-syntax&quot;&gt;2.1 Array Type Shorthand Syntax：数组简写&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-an-empty-array&quot; id=&quot;markdown-toc-creating-an-empty-array&quot;&gt;2.2 Creating an Empty Array：创建空数组&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-an-array-with-a-default-value&quot; id=&quot;markdown-toc-creating-an-array-with-a-default-value&quot;&gt;2.3 Creating an Array with a Default Value：创建带默认值的数组&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-an-array-by-adding-two-arrays-together&quot; id=&quot;markdown-toc-creating-an-array-by-adding-two-arrays-together&quot;&gt;2.4 Creating an Array by Adding Two Arrays Together：叠加数组&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-an-array-with-an-array-literal&quot; id=&quot;markdown-toc-creating-an-array-with-an-array-literal&quot;&gt;2.5 Creating an Array with an Array Literal：数组文本创建数组&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#accessing-and-modifying-an-array&quot; id=&quot;markdown-toc-accessing-and-modifying-an-array&quot;&gt;2.6 Accessing and Modifying an Array：访问修改数组&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#iterating-over-an-array&quot; id=&quot;markdown-toc-iterating-over-an-array&quot;&gt;2.7 Iterating Over an Array：数组遍历&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#sets&quot; id=&quot;markdown-toc-sets&quot;&gt;3、Sets:集合&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#set-type-syntax&quot; id=&quot;markdown-toc-set-type-syntax&quot;&gt;3.1 Set Type Syntax:集合类型语法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-and-initializing-an-empty-set&quot; id=&quot;markdown-toc-creating-and-initializing-an-empty-set&quot;&gt;3.2 Creating and Initializing an Empty Set：创建空的集合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#creating-a-set-with-an-array-literal&quot; id=&quot;markdown-toc-creating-a-set-with-an-array-literal&quot;&gt;3.3 Creating a Set with an Array Literal:创建数组文本集合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#accessing-and-modifying-a-set&quot; id=&quot;markdown-toc-accessing-and-modifying-a-set&quot;&gt;3.4 Accessing and Modifying a Set：访问修改集合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#iterating-over-a-set&quot; id=&quot;markdown-toc-iterating-over-a-set&quot;&gt;3.5 Iterating Over a Set:遍历集合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#performing-set-operations&quot; id=&quot;markdown-toc-performing-set-operations&quot;&gt;3.6 Performing Set Operations：集合运算&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#dictionaries&quot; id=&quot;markdown-toc-dictionaries&quot;&gt;4、Dictionaries：字典&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;4.1 创建&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#accessing-and-modifying-a-dictionary&quot; id=&quot;markdown-toc-accessing-and-modifying-a-dictionary&quot;&gt;4.2、Accessing and Modifying a Dictionary&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#iterating-over-a-dictionary&quot; id=&quot;markdown-toc-iterating-over-a-dictionary&quot;&gt;4.3 Iterating Over a Dictionary：遍历字典&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Swift 提供了三种集合类：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;数组 arrays 值有序的集合；&lt;/li&gt;
-  &lt;li&gt;集合 sets 值唯一而无序的集合;&lt;/li&gt;
-  &lt;li&gt;字典 dictionaries 键值对且无序的集合；&lt;/li&gt;
-  &lt;li&gt;这三种集合是泛型集合，集合中储存的数值必须是明确的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如下示意：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;mutability-of-collections&quot;&gt;1、Mutability of Collections：可变集合&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;如果你创建了一个数组,set或者字典，并且申明他为变量，那么该集合就是可变的。&lt;/li&gt;
-  &lt;li&gt;如果你申明了数组，set或者字典为常量，那么他就没办法修改。他的内容和大小都没法修改。&lt;/li&gt;
-  &lt;li&gt;如果集合不需要修改，尽量申明成常量。这样编译器会优化集合性能。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;arrays&quot;&gt;2、Arrays：数组&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中；&lt;/li&gt;
-  &lt;li&gt;swift中的Array 是桥接自Foundation的NSArray；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;array-type-shorthand-syntax&quot;&gt;2.1 Array Type Shorthand Syntax：数组简写&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Swift数组应遵循Array&lt;SomeType&gt;这样的形式，其中SomeType是这个数组中唯一允许存在的数据类型；&lt;/SomeType&gt;&lt;/li&gt;
-  &lt;li&gt;简写方式：[SomeType]这样的简单语法；&lt;/li&gt;
-  &lt;li&gt;两种形式在功能上是一样的，一般都用简写形式&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;creating-an-empty-array&quot;&gt;2.2 Creating an Empty Array：创建空数组&lt;/h5&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Int类型的空数组：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;someInts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;someInts is of type [Int] with &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someInts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; items.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 追加元素：&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;someInts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// someInts now contains 1 value of type Int&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 置空：&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;someInts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// someInts is now an empty array, but is still of type [Int]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;creating-an-array-with-a-default-value&quot;&gt;2.3 Creating an Array with a Default Value：创建带默认值的数组&lt;/h5&gt;
-&lt;p&gt;数组的类型从默认值推断，例如下方的 Double数组&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;threeDoubles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;repeating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h5 id=&quot;creating-an-array-by-adding-two-arrays-together&quot;&gt;2.4 Creating an Array by Adding Two Arrays Together：叠加数组&lt;/h5&gt;
-&lt;p&gt;只有类型相同的数组，才能叠加&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;anotherThreeDoubles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;repeating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 都是double类型&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sixDoubles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threeDoubles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherThreeDoubles&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h5 id=&quot;creating-an-array-with-an-array-literal&quot;&gt;2.5 Creating an Array with an Array Literal：数组文本创建数组&lt;/h5&gt;
-&lt;p&gt;形如：[ 值1，值2，值3 ]&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 如下创建[String]类型数组：&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 1、&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Eggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Milk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 2、&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shoppingList2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Eggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Milk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h5 id=&quot;accessing-and-modifying-an-array&quot;&gt;2.6 Accessing and Modifying an Array：访问修改数组&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;通过下标访问\修改:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;count属性:确定元素个数；&lt;/li&gt;
-  &lt;li&gt;isEmpty属性：是否为空；&lt;/li&gt;
-  &lt;li&gt;append(_ newElement: Element)方法：添加新元素；&lt;/li&gt;
-  &lt;li&gt;数组加法：&lt;code class=&quot;highlighter-rouge&quot;&gt;shoppingList += [&quot;Baking Powder&quot;]&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;索引：&lt;code class=&quot;highlighter-rouge&quot;&gt;var firstItem = shoppingList[0]&lt;/code&gt; 索引的第一项，是0；&lt;/li&gt;
-  &lt;li&gt;索引单个修改：&lt;code class=&quot;highlighter-rouge&quot;&gt;shoppingList[0] = &quot;Six eggs&quot;&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;索引范围修改：&lt;code class=&quot;highlighter-rouge&quot;&gt;shoppingList[4...6] = [&quot;Bananas&quot;, &quot;Apples&quot;]&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;索引插入：&lt;code class=&quot;highlighter-rouge&quot;&gt;shoppingList.insert(&quot;Maple Syrup&quot;, at: 0)&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;索引删除：&lt;code class=&quot;highlighter-rouge&quot;&gt;let mapleSyrup = shoppingList.remove(at: 0)&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;删除最后一个元素：&lt;code class=&quot;highlighter-rouge&quot;&gt;let apples = shoppingList.removeLast()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;注意：越界会造成运行时错误；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Eggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Milk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Flour&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Baking Powder&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Chocolate Spread&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Cheese&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Butter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;firstItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Six eggs&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bananas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Apples&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Maple Syrup&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mapleSyrup&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;firstItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;firstItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;iterating-over-an-array&quot;&gt;2.7 Iterating Over an Array：数组遍历&lt;/h5&gt;
-
-&lt;p&gt;1、for -in：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Six eggs&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Milk&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Flour&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Baking Powder&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Bananas&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2、使用全局enumerate函数来进行数组遍历,返回一个由每一个数据项索引值和数据值组成的元组:&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shoppingList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;enumerated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Item &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Item 1: Six eggs&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Item 2: Milk&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Item 3: Flour&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Item 4: Baking Powder&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Item 5: Bananas&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;sets&quot;&gt;3、Sets:集合&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一个集合存储了一串无序的相同类型的数据；&lt;/li&gt;
-  &lt;li&gt;swift set类型桥接自Foundation中的NSSet类；&lt;/li&gt;
-  &lt;li&gt;存进一个集合的类型必须是可以哈希化的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;哈希值&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;哈希值是一个int值，所有相同的对象的哈希值是一样的。例如：a == b，就可以推导出：a.hashValue == b.hashValue；&lt;/li&gt;
-  &lt;li&gt;Swift所有的基本类型（String,Int,Double,Bool）默认是可以哈希化的。可以作为Sets的值或者字典的key；&lt;/li&gt;
-  &lt;li&gt;没有关联值得枚举值也是默认可以哈希化的；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;可用使用自定义类型来设置值类型或字典类型，自定义类型需要从swift标准库遵守哈希化协议。遵守哈希化协议的类型必须提供一个叫做hashValue的方法（返回类型为Int）。hashValue的值在不同的程序或相同的程序中返回不要求相同。因为哈希化协议是可变的。遵守协议的类型必须实现运算符（== or ‘is equal’）。Equatable协议要求必须实现“==”成一个等价关系。见下面的例子：
-
-a == a （自反性）
-a == b 相当于 b == a（对称性）
-a == b &amp;amp;&amp;amp; b == c 相当于 a == c (传递性)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;set-type-syntax&quot;&gt;3.1 Set Type Syntax:集合类型语法&lt;/h5&gt;
-
-&lt;p&gt;集合类型的语法是Set&lt;Element&gt;，Element是允许存入集合中的类型。
-和数组不同的是，集合没有简写方法。&lt;/Element&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;creating-and-initializing-an-empty-set&quot;&gt;3.2 Creating and Initializing an Empty Set：创建空的集合&lt;/h5&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// letters变量被推断为Set&amp;lt;Character&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Character&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;letters is of type Set&amp;lt;Character&amp;gt; with &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; items.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;letters is of type Set&amp;lt;Character&amp;gt; with 0 items.&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// letters now contains 1 value of type Character&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// letters is now an empty set, but is still of type Set&amp;lt;Character&amp;gt;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;creating-a-set-with-an-array-literal&quot;&gt;3.3 Creating a Set with an Array Literal:创建数组文本集合&lt;/h5&gt;
-&lt;p&gt;注意的是，创建集合时，必须带上关键字Set。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// favoriteGenres是字符串集合，即:Set&amp;lt;String&amp;gt; 类型，仅仅储存String，而且是可变的。其余类似&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;favoriteGenres&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rock&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Classical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hip hop&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 简写：&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;favoriteGenres&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rock&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Classical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hip hop&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;accessing-and-modifying-a-set&quot;&gt;3.4 Accessing and Modifying a Set：访问修改集合&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;count属性：&lt;code class=&quot;highlighter-rouge&quot;&gt;favoriteGenres.count&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;.isEmpty属性: &lt;code class=&quot;highlighter-rouge&quot;&gt;if favoriteGenres.isEmpty {}&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;insert(_:)方法：&lt;code class=&quot;highlighter-rouge&quot;&gt;favoriteGenres.insert(&quot;www.3code.info&quot;)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;remove(_:)方法：&lt;code class=&quot;highlighter-rouge&quot;&gt;let removedGenre = favoriteGenres.remove(&quot;Rock&quot;)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;contains(_:)方法：是否包含item，&lt;code class=&quot;highlighter-rouge&quot;&gt;if favoriteGenres.contains(&quot;Funk&quot;) {&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;iterating-over-a-set&quot;&gt;3.5 Iterating Over a Set:遍历集合&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;for-in;&lt;/li&gt;
-  &lt;li&gt;sorted():返回一个value的集合&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;genre&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;favoriteGenres&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genre&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Jazz&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Hip hop&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Classical&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;genre&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;favoriteGenres&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genre&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Classical&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Hip hop&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Jazz&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;performing-set-operations&quot;&gt;3.6 Performing Set Operations：集合运算&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;intersection(_:) 交集&lt;/li&gt;
-  &lt;li&gt;symmetricDifference(_:) 对称差&lt;/li&gt;
-  &lt;li&gt;union(_:) 并集&lt;/li&gt;
-  &lt;li&gt;subtracting(_:) 差集&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;oddDigits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;evenDigits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;singleDigitPrimeNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;oddDigits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evenDigits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;oddDigits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;intersection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evenDigits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [1]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;oddDigits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;subtracting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleDigitPrimeNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [1, 9]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;oddDigits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;symmetricDifference&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleDigitPrimeNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [1, 2, 9]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Set Membership and Equality&lt;/p&gt;
-
-&lt;p&gt;a是b的一个超集，因为a包含了所有元素b。相反地，b是a子集，因为在所有的元素b也被包含a。bc彼此没有相同的元素。
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png&quot; alt=&quot;&quot; /&gt;
-运算方法：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;”==”(is equal)方法:判断两个集合是否拥有相同的元素,相同返回true，反之false&lt;/li&gt;
-  &lt;li&gt;isSubsetOf(_:)方法：判断目标集合是是否为参数集合的子集，是则返回true，反之false&lt;/li&gt;
-  &lt;li&gt;isSupersetOf(_:)方法：判断目标集合是否为参数集合的超集，是则返回true，反之false&lt;/li&gt;
-  &lt;li&gt;isStrictSubsetOf(&lt;em&gt;:)和isStrictSupersetOf(&lt;/em&gt;:)方法：判断目标是否是子集和超集，但是必须是两个集合不相等，满足以上条件返回true，反之false&lt;/li&gt;
-  &lt;li&gt;isDisjointWith(_:)方法：判断两个集合有无相同元素，有相同元素则返回false，反之true。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;houseAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;🐶&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐱&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;farmAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;🐮&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐔&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐑&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐶&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐱&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cityAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;🐦&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;🐭&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
- 
-&lt;span class=&quot;n&quot;&gt;houseAnimals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;isSubset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;farmAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;farmAnimals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;isSuperset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;houseAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;farmAnimals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;isDisjoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cityAnimals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;dictionaries&quot;&gt;4、Dictionaries：字典&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Swift的Dictionary类桥接自Foundation的NSDictionary类&lt;/li&gt;
-  &lt;li&gt;字典Key类型必须符合Hashable协议&lt;/li&gt;
-  &lt;li&gt;写法：Dictionary&amp;lt;Key, Value&amp;gt;&lt;/li&gt;
-  &lt;li&gt;简写：[Key: Value]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;section&quot;&gt;4.1 创建&lt;/h5&gt;
-
-&lt;p&gt;1、创建[Int: String]类型的空字典：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;namesOfIntegers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2、操作&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 插入元素：[16:&quot;sixteen&quot;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;namesOfIntegers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sixteen&quot;&lt;/span&gt; 
-
-&lt;span class=&quot;c1&quot;&gt;// 置空，类型不变：[Int: String]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;namesOfIntegers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[:]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;YYZ&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Toronto Pearson&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DUB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dublin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;4、简写：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;airports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;YYZ&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Toronto Pearson&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DUB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dublin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;accessing-and-modifying-a-dictionary&quot;&gt;4.2、Accessing and Modifying a Dictionary&lt;/h5&gt;
-
-&lt;p&gt;使用下标访问修改&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;.count属性：&lt;code class=&quot;highlighter-rouge&quot;&gt;airports.count&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;.isEmpty属性：&lt;code class=&quot;highlighter-rouge&quot;&gt;if airports.isEmpty {&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;添加/更改元素：&lt;code class=&quot;highlighter-rouge&quot;&gt;airports[&quot;LHR&quot;] = &quot;London&quot;&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;修改元素：updateValue(_:forKey:) 返回可选类型；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;oldValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;updateValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Dublin Airport&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DUB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The old value for DUB was &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;oldValue&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 可选&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;airportName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DUB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The name of the airport is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportName&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;That airport is not in the airports dictionary.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;The name of the airport is Dublin Airport.&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;下标置空：airports[“APL”] = nil；&lt;/li&gt;
-  &lt;li&gt;removeValue(forKey:)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;返回可选类型：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;removedValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;removeValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DUB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The removed airport's name is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;removedValue&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The airports dictionary does not contain a value for DUB.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Prints &quot;The removed airport's name is Dublin Airport.&quot;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;iterating-over-a-dictionary&quot;&gt;4.3 Iterating Over a Dictionary：遍历字典&lt;/h5&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 1、遍历键值对&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airportName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportCode&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportName&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// YYZ: Toronto Pearson&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// LHR: London Heathrow&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 2、遍历key&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airportCode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Airport code: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportCode&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Airport code: YYZ&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Airport code: LHR&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 3、遍历value&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airportName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Airport name: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airportName&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Airport name: Toronto Pearson&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Airport name: London Heathrow&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 4、获取key value&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;airportCodes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// airportCodes is [&quot;YYZ&quot;, &quot;LHR&quot;]&lt;/span&gt;
- 
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;airportNames&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;airports&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// airportNames is [&quot;Toronto Pearson&quot;, &quot;London Heathrow&quot;]&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/01/swift_IV_Collection-Types/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/01/swift_IV_Collection-Types/</guid>
         
         <category>Swift3.0</category>
         

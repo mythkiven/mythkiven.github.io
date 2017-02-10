@@ -134,6 +134,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -149,7 +151,126 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2017/02/07/AD-Fastlane/">自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a>
+                  <a class="post-link" href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-02-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#fastlane" title="Tag: fastlane" rel="tag">fastlane</a>&nbsp;
+    
+        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#ci-" id="markdown-toc-ci-">CI 基础知识</a>    <ul>
+      <li><a href="#continuous-integration" id="markdown-toc-continuous-integration">持续集成(Continuous Integration)</a></li>
+      <li><a href="#continuous-deployment" id="markdown-toc-continuous-deployment">持续部署(Continuous Deployment)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+
+  <p>最近一直在关注移动端的持续集成部署相关的内容,在网搜 Jenkins 资料是很多,但是基本都不是移动端的集成部署.下边将个人的使用体会分享出来,希望能帮助到需要的伙伴们.</p>
+
+</blockquote>
+
+<p><strong>在进行 CI 之前,你需要一些基本的知识</strong></p>
+
+<h3 id="ci-">CI 基础知识</h3>
+
+<p>在互联网的产品开发时代,产品迭代越来越频繁,“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”.很多开发团队也越来越认识到,自动化测试和持续部署可帮助开发团队提高迭代效率和质量.
+那么,如何更好地解决“最后一公里”这一问题呢?</p>
+
+<p>可以分为两部分:持续集成和持续部署</p>
+<ul>
+  <li>持续集成:是指整个开发过程,每个人开发的模块向项目主体交付时,频繁进行集成以便更快地发现其中的错误</li>
+  <li>持续部署:是指开发过程中连续的阶段性版本的上线, V1.1.0上线部署,V1.1.1上线部署…</li>
+  <li>前者和后者时间尺度是一样的,不过前者是涵盖每一次 push ,后者是指一个稳定的版本,可以内测和发布用的</li>
+  <li>实际使用中,两者是结合在一起的,持续集成的平台上,可以进一步配置持续部署,这样就可以实现:每次 push 自动构建测试,每次稳定的版本,可以顺利的构建分发用于内测.</li>
+</ul>
+
+<h5 id="continuous-integration">持续集成(Continuous Integration)</h5>
+
+<p>持续集成:是指整个开发过程,个人开发的模块,向项目主体交付,频繁进行集成以便更快地发现其中的错误.涉及到的内容为:</p>
+
+<ul>
+  <li>自动化测试:单元测试+ UI 测试</li>
+  <li>持续集成平台:Jenkins (自动化的构建) \ Travis CI (基于 github 平台的CI持续集成)等</li>
+  <li>版本控制:如 Git\SVN\CVS 等</li>
+  <li>部署发布工具:fastlane 等</li>
+  <li>部署发布平台:蒲公英\Fir.im (目前支持 Android 和 iOS 应用的分发,提供的工具有 flow.ci)</li>
+  <li>一般流程(Jenkins 为例):Jenkins 服务器轮训 Git ,发现新的版本,就会 clone 到本地,并按照预先设定的脚本进行自动编译,并执行测试.如果有问题,就会发出邮件通知.</li>
+</ul>
+
+<h5 id="continuous-deployment">持续部署(Continuous Deployment)</h5>
+
+<p>持续部署:是指开发过程中的连续的阶段性版本, V1.1.0上线部署,V1.1.1上线部署…
+在移动端主要是使用 fastlane 实现持续部署:</p>
+
+<ul>
+  <li>开发项目,单元测试</li>
+  <li>模块开发,集成\UI 测试</li>
+  <li>Archive项目</li>
+  <li>上传包到iTunes</li>
+  <li>在iTunes后台提交版本截图\描述等信息(也可以在测试完成后配置)</li>
+  <li>配置TestFlight,分发测试Beta版</li>
+  <li>测试,改 bug</li>
+  <li>测试完成,提交App Store审核</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/02/08/AD-jenkins/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -172,7 +293,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#AD" title="Category: AD" rel="category">AD</a>
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
     
   
 
@@ -763,7 +884,7 @@ copyright "#{Time.now.year} 3code"
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2017/01/23/AD-XCTest/">自动化测试部署系列 - XCTest入门</a>
+                  <a class="post-link" href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
@@ -786,7 +907,7 @@ copyright "#{Time.now.year} 3code"
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#AD" title="Category: AD" rel="category">AD</a>
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
     
   
 
@@ -820,13 +941,15 @@ copyright "#{Time.now.year} 3code"
 
 <h3 id="section">简述</h3>
 
-<blockquote>
-  <p>本文是自动化测试部署系列的文章,后续会有更多相关文章</p>
-</blockquote>
-
-<p>关于 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.</p>
+<p>说起 UI 测试,在 iOS 的开源社区有过一系列的尝试,比如 KIF 框架,Apple 自己的 Automating UI Testing 或者 Facebook 的截图测试等.这些方法有一个共同的特点,那就是配置起来十分繁琐,使用上也有诸多不便.这大概也是 UI 测试所面临的最大窘境 – 往往开发者在一个项目里写了一两个 UI 测试用例后,就会觉得难以维护,怯于巨大的时间成本,继而放弃.</p>
 
 <p>Apple 在 Xcode 7 中新加入了一套 UI Testing 的工具,其目的就是解决这个问题.新的 UI Testing 比以往的解决方案要简单不少,特别是在创建测试用例的时候更集成了录制的功能,这有希望让 UI Testing 变得更为普及.</p>
+
+<p>其他概念比如: 单元测试\集成测试.</p>
+
+<p>单元测试:对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
+
+<p>集成测试:是在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试集成测试是在单元测试的基础上，测试在将所有的软件单元按照概要设计规格说明的要求组装成模块、子系统或系统的过程中各部分工作是否达到或实现相应技术指标及要求的活动。也就是说，在集成测试之前，单元测试应该已经完成。这一点很重要，因为如果不经过单元测试，那么集成测试的效果将会受到很大影响，并且会大幅增加软件单元代码纠错的代价。</p>
 
 <h3 id="ui-testing--accessibility">UI Testing 和 Accessibility</h3>
 
@@ -891,11 +1014,273 @@ copyright "#{Time.now.year} 3code"
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2017/01/18/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a>
+                  <a class="post-link" href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-01-18
+                        <i class="fa fa-calendar"></i>2017-01-13
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Github" title="Tag: Github" rel="tag">Github</a>&nbsp;
+    
+        <a href="/tag/#Travis-CI" title="Tag: Travis-CI" rel="tag">Travis-CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#jenkins" id="markdown-toc-jenkins">基础知识,参考博文:Jenkins</a></li>
+  <li><a href="#travis-ci-" id="markdown-toc-travis-ci-">1. Travis-CI 简介</a>    <ul>
+      <li><a href="#jenkins-1" id="markdown-toc-jenkins-1">对比 Jenkins</a></li>
+    </ul>
+  </li>
+  <li><a href="#travis-ci--1" id="markdown-toc-travis-ci--1">2.Travis-CI 配置小教程</a>    <ul>
+      <li><a href="#project-" id="markdown-toc-project-">project 项目配置</a></li>
+      <li><a href="#workspace-" id="markdown-toc-workspace-">workspace 管理的项目配置</a></li>
+    </ul>
+  </li>
+  <li><a href="#section" id="markdown-toc-section">3. 应用程序的签名\证书</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">4.部署</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">密码和证书安全</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">其他</a>    <ul>
+      <li><a href="#section-4" id="markdown-toc-section-4">显示构建状态</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">跳过自动构建</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">资源</a>    <ul>
+      <li><a href="#unit-" id="markdown-toc-unit-">Unit 代表单元测试:</a></li>
+    </ul>
+  </li>
+  <li><a href="#ui-" id="markdown-toc-ui-">UI 测试</a></li>
+</ul>
+
+<h3 id="jenkins">基础知识,参考博文:Jenkins</h3>
+
+<h3 id="travis-ci-">1. Travis-CI 简介</h3>
+
+<p>Travis-CI 是一个开源的持续构建项目,能够测试和部署;Travis-CI 会同步你在 GitHub 上托管的项目,每当你 Commit Push 之后,预装的编译脚本会分析你的 Xcode 项目,并对每个 target 进行编译.如果所有文件都没有编译错误,并且测试也没有被打断,那么项目就编译成功了.</p>
+
+<h5 id="jenkins-1">对比 Jenkins</h5>
+
+<ul>
+  <li>Jenkins 和 Travis-CI 类似,前者主要用于公司中项目的 CI(商业化),后者则主要用在 GitHub 中(小众)</li>
+  <li>都是基于 Vagrant/Virtualbox技术</li>
+  <li>配置文件:Jenkins 配置在 Jenkins 服务器中,后者配置文件和源码一起.使用 DSL 编写的</li>
+  <li>Travis Ci 与 Github 集成非常紧密,官方的集成测试托管只支持 Github 项目</li>
+  <li>总的来说:如果是开源项目,放在 GitHub 上,使用 Travis CI 来做集成测试是最佳选择.但如果是公司项目,当然是搭建 Jenkins 环境.</li>
+</ul>
+
+<h3 id="travis-ci--1">2.Travis-CI 配置小教程</h3>
+
+<ul>
+  <li>1.用你的 GitHub 账号登录 <a href="https://travis-ci.org/">Travis-CI</a>,赋予 TCI 访问 GH 的授权.</li>
+</ul>
+
+<p>对于私有仓库,需要注册一个 <a href="https://magnum.travis-ci.com/">Travis 专业版账号</a></p>
+
+<ul>
+  <li>
+    <p>2.登录之后 Travis-CI 就会同步 GitHub 账号的仓库,然后打开个人页面并给你想要构建的项目启用 Travis-CI <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png" alt="" /></p>
+  </li>
+  <li>
+    <p>3.创建一个 .travis.yml 文件,在项目的根目录下.则 Travis-CI 会按照 .travis.yml 里的内容进行构建</p>
+  </li>
+  <li>
+    <p>4.最后可以在<a href="https://travis-ci.org/repositories">构建状态页面</a>来查看你的项目是否构建成功</p>
+  </li>
+</ul>
+
+<h5 id="project-">project 项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_project: ./UITEST.xcodeproj # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<h5 id="workspace-">workspace 管理的项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_workspace: ./UITEST.xcworkspace # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<p>同时也要设置 Target 为 shared 状态.</p>
+
+<blockquote>
+  <p>打开项目 -&gt; Manage Schemes -&gt; 把需要构建的 Target 勾上 shared -&gt; 选中你需要管理的 scheme,点击左下角的 Edit 按钮 -&gt; 选择 Build 选项，点击左下角的+号按钮，添加你需要依赖的 CocoaPods 管理的第三方静态库的名字，下图是已经添加后的截图.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/656113-97e903b6472ce2eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>以上配置,可以看看<a href="https://docs.travis-ci.com/user/languages/objective-c/">官方文档</a>,写的挺详细的</p>
+
+<h3 id="section">3. 应用程序的签名\证书</h3>
+
+<p>[参见(https://objccn.io/issue-6-5/)</p>
+
+<h3 id="section-1">4.部署</h3>
+
+<p>负责分发部署的平台很多像:TestFlight \ HockeyApp \ 蒲公英 \ fir.im 等等</p>
+
+<p>可以配置然后在上述平台进行部署.</p>
+
+<h3 id="section-2">密码和证书安全</h3>
+
+<p>对于密码等敏感信息,Travis CI提供了2种解决方案:</p>
+
+<ul>
+  <li>对密码等敏感信息进行加密,然后再构建环境时解密</li>
+  <li>在 Travis CI控制台设置环境变量,然后使用 System.getenv() 获取值</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png" alt="" /></p>
+
+<h3 id="section-3">其他</h3>
+
+<h5 id="section-4">显示构建状态</h5>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png" alt="" /></p>
+
+<h5 id="section-5">跳过自动构建</h5>
+
+<p>如果commit不想让travis ci构建，那么就在commit message里加上[ci skip]就行了。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>git commit -m <span class="s2">"[ci skip] commit message"</span>
+</code></pre>
+</div>
+
+<h3 id="section-6">资源</h3>
+
+<ul>
+  <li><a href="https://docs.travis-ci.com/user/customizing-the-build/">官方文档</a></li>
+  <li><a href="https://github.com/objcio/issue-6-travis-ci">示例 Demo</a></li>
+  <li><a href="https://github.com/facebook/xctool">xctool</a></li>
+  <li><a href="https://github.com/nukc/how-to-use-travis-ci">安卓环境下的教程</a></li>
+</ul>
+
+<p>-<a href="https://objccn.io/issue-6-5/">优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a>
+-<a href="http://blog.csdn.net/jiang314/article/details/54965283">备份版:优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a></p>
+
+<p>为 iOS 建立 Travis CI: https://objccn.io/issue-6-5/</p>
+
+<p>自动化测试 –&gt; 持续部署</p>
+
+<p>在互联网的产品开发时代，产品迭代越来越频繁，“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”。很多开发团队也越来越认识到，自动化测试和持续部署可帮助开发团队提高迭代效率和质量。
+那么，如何更好地解决“最后一公里”这一问题呢?</p>
+
+<p>一切从自动化测试开始，让自动化测试贯穿在整个项目开发-集成-部署-交付的-开发流程中。</p>
+
+<p><img src="http://huaban.com/go/?pin_id=1002439558" alt="" />
+在这个分层自动化测试金字塔中，</p>
+<h4 id="unit-">Unit 代表单元测试:</h4>
+
+<p>XCTest是苹果在iOS 7和Xcode5引入的一个简单而强大的测试框架，它的测试编写起来非常简单，并且遵循xUnit风格。XCTest的优点是与Xcode深度集成，有专门的Test导航栏，但因为受限于官方测试API，因此功能不是很丰富。</p>
+
+<p>iOS 中的单元测试开源库:</p>
+<ul>
+  <li>Kiwi是对XCTest的一个完整替代，使用xSpec风格编写测试。Kiwi带有自己的一套工具集，包括expectations、mocks、stubs，甚至还支持异步测试。</li>
+  <li>Specta与Kiwi功能相似，但在架构上非常不同。Kiwi注重功能的整合，而Specta则注重模块化。它本身只专注于运行测试，而将模拟、匹配等功能交给第三方。下
+下面这些一些开源测试组件，它们能与Specta和Kiwi框架搭配使用：</li>
+  <li>Expecta：匹配程序框架。</li>
+  <li>OCHamcrest：匹配程序框架。</li>
+  <li>OCMock：模拟测试框架。</li>
+  <li>OCMockito：模拟测试框架。</li>
+  <li>OHTTPStubs：模拟网络请求的库，基于block的语法来匹配URL。</li>
+  <li>Nocilla：模拟网络请求的库，使用链式API。</li>
+  <li>Quick是:一个使用Swift开发的新测试框架，对测试使用Swift编写的App非常友好。它还有一个Nimble库用于编写匹配模式。</li>
+</ul>
+
+<p>对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
+
+<h3 id="ui-">UI 测试</h3>
+
+<ul>
+  <li>KIF（Keep It Functional）是用Objective-C编写的用户界面测试框架。KIF tester使用了私有API来了解App中的视图层级。缺点是运行较慢。</li>
+</ul>
+
+<blockquote>
+  <p>相关文章:<a href="http://www.blogs8.cn/posts/A1Rj797">Swift中KIF测试的特点－b</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Subliminal是另一款与XCTest集成的框架。与KIF不同的是，它基于UIAutomation编写，旨在对开发者隐藏UIAutomation中一些复杂的细节。不过它最后更新日期是2014年2月，可能已停止更新。</p>
+  </li>
+  <li>
+    <p>Calabash是跨平台开发工具Xamarin推出的一款测试工具。它使用BDD风格来编写验收测试。它的优点是支持跨平台（需使用不同的库），声明式的测试风格非常易于读写。缺点是不够稳定并且运行速度慢。</p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/13/Travis-CI/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-08
                     </div>
                     <div class="label-card">
                         <i class="fa fa-user"></i>3行代码
@@ -1264,7 +1649,7 @@ copyright "#{Time.now.year} 3code"
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2017/01/18/SDiffuseMenu/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2017/01/08/SDiffuseMenu/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1540,1486 +1925,6 @@ copyright "#{Time.now.year} 3code"
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#methods" id="markdown-toc-methods">方法 Methods</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">类型方法</a></li>
-    </ul>
-  </li>
-  <li><a href="#subscripts" id="markdown-toc-subscripts">下标 Subscripts</a></li>
-  <li><a href="#inheritance" id="markdown-toc-inheritance">继承 Inheritance</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">定义基类</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">子类生成</a>        <ul>
-          <li><a href="#section-3" id="markdown-toc-section-3">重写</a></li>
-          <li><a href="#section-4" id="markdown-toc-section-4">防止重写</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="methods">方法 Methods</h1>
-
-<p>方法是与某些特定类型相关联的函数。</p>
-
-<ul>
-  <li>类、结构体、枚举都可以定义实例方法；</li>
-  <li>
-    <p>实例方法为给定类型的实例封装了具体的任务与功能；</p>
-  </li>
-  <li>类、结构体、枚举也可以定义类型方法；</li>
-  <li>
-    <p>类型方法与类型本身相关联，与 OC中的类方法类似；</p>
-  </li>
-  <li>结构体和枚举能够定义方法是 Swift 与 C/OC的主要区别之一；</li>
-  <li>在OC中，类是唯一能定义方法的类型；；</li>
-  <li>但在Swift中，不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在创建的类型（类/结构体/枚举）上定义方法。</li>
-</ul>
-
-<p>1、实例方法</p>
-
-<ul>
-  <li>实例方法是属于某个特定类、结构体或者枚举类型实例的方法；</li>
-  <li>实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致</li>
-  <li>实例方法要写在它所属的类型的前后大括号之间</li>
-  <li>实例方法能够隐式访问它所属类型的所有的其他实例方法和属性</li>
-  <li>实例方法只能被它所属的类的某个特定实例调用</li>
-  <li>实例方法不能脱离于现存的实例而被调用
-案例：</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Counter类，它可用于计算次数的动作时发生的数量：</span>
-
-<span class="kd">class</span> <span class="kt">Counter</span> <span class="p">{</span>
-    <span class="c1">// 本Counter类还声明一个变量属性count，以跟踪当前计数器值。</span>
-    <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1">// 实例方法:increment()递增计数器1</span>
-    <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="p">}</span>
-    <span class="c1">// 实例方法:increment(by: Int) 将计数器增加指定的整数值</span>
-    <span class="kd">func</span> <span class="nf">increment</span><span class="p">(</span><span class="n">by</span> <span class="nv">amount</span><span class="p">:</span><span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
-    <span class="p">}</span>
-    <span class="c1">// reset() 将计数器重置为零</span>
-    <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">let</span> <span class="nv">counter</span> <span class="o">=</span> <span class="kt">Counter</span><span class="p">()</span>
-<span class="c1">// the initial counter value is 0</span>
-<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">()</span>
-<span class="c1">// the counter's value is now 1</span>
-<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
-<span class="c1">// the counter's value is now 6</span>
-<span class="n">counter</span><span class="o">.</span><span class="nf">reset</span><span class="p">()</span>
-<span class="c1">// the counter's value is now 0</span>
-</code></pre>
-</div>
-
-<p>函数参数可以同时有一个局部名称（在函数体内部使用）和一个外部名称（在调用函数时使用）(通过参数标签，参数名称是实现)。方法参数也一样，因为方法就是函数，只是这个函数与某个类型相关联了。</p>
-
-<p>2、 self属性</p>
-
-<ul>
-  <li>类型的每一个实例都有一个隐含属性叫做self，self完全等同于该实例本身；</li>
-  <li>你可以在一个实例的实例方法中使用这个隐含的self属性来引用当前实例；</li>
-  <li>一般不用在类型实例里面写self,Swift默认指当前实例的属性或者方法；</li>
-  <li>一般使用self用于严谨的区分参数和属性。
-```swift
-// 上面例子中的increment方法还可以这样写：
-func increment() {
-  self.count += 1
-}</li>
-</ul>
-
-<p>// 区分参数和属性
-struct Point {
-    // x,y是属性
-    var x = 0.0, y = 0.0
-    // x是参数
-    func isToTheRightOfX(x: Double) -&gt; Bool {
-        // 要进行区分:否则Swift会认为X都是参数。
-        return self.x &gt; x
-    }
-}
-let somePoint = Point(x: 4.0, y: 5.0)
-if somePoint.isToTheRightOfX(1.0) {
-    print(“This point is to the right of the line where x == 1.0”)
-}
-// 打印 “This point is to the right of the line where x == 1.0”</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-3、在实例方法中修改值类型
-
-- 结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改；
-- 但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择可变(mutating)行为，然后就可以从其方法内部改变它的属性；
-- 并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中；
-- 方法还可以给它隐含的self属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例；
-- 要使用可变方法，将关键字mutating 放到方法的func关键字之前就可以了：
-
-```swift
-struct Point {
-    var x = 0.0, y = 0.0
-    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
-        x += deltaX
-        y += deltaY
-    }
-}
-var somePoint = Point(x: 1.0, y: 1.0)
-somePoint.moveBy(x: 2.0, y: 3.0)
-print("The point is now at (\(somePoint.x), \(somePoint.y))")
-// Prints "The point is now at (3.0, 4.0)"
-</code></pre>
-</div>
-
-<p>注意：不能在结构体类型的常量类型上调用可变方法，因为其属性不能被改变，即使属性是变量属性。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">fixedPoint</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="n">fixedPoint</span><span class="o">.</span><span class="nf">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="c1">// 这里将会报告一个错误</span>
-</code></pre>
-</div>
-
-<p>4、在可变方法中给self赋值</p>
-
-<p>可变方法能够赋给隐含属性self一个全新的实例。上面Point的例子可以用下面的方式改写：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Point</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">moveBy</span><span class="p">(</span><span class="n">x</span> <span class="nv">deltaX</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nv">deltaY</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 新版的可变方法moveBy(x:y:)创建了一个新的结构体实例，它的 x 和 y 的值都被设定为目标值。调用这个版本的方法和调用上个版本的最终结果是一样的。</span>
-</code></pre>
-</div>
-
-<p>枚举的可变方法可以把self设置为同一枚举类型中不同的成员：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">TriStateSwitch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kt">Off</span><span class="p">,</span> <span class="kt">Low</span><span class="p">,</span> <span class="kt">High</span>
-    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="o">.</span><span class="kt">Off</span><span class="p">:</span>
-            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Low</span>
-        <span class="k">case</span> <span class="o">.</span><span class="kt">Low</span><span class="p">:</span>
-            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">High</span>
-        <span class="k">case</span> <span class="o">.</span><span class="kt">High</span><span class="p">:</span>
-            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Off</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="nv">ovenLight</span> <span class="o">=</span> <span class="kt">TriStateSwitch</span><span class="o">.</span><span class="kt">Low</span>
-<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
-<span class="c1">// ovenLight 现在等于 .High</span>
-<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
-<span class="c1">// ovenLight 现在等于 .Off</span>
-</code></pre>
-</div>
-<p>上面的例子中定义了一个三态开关的枚举。每次调用next()方法时，开关在不同的电源状态（Off，Low，High）之间循环切换。</p>
-
-<h3 id="section">类型方法</h3>
-
-<ul>
-  <li>实例方法是被某个类型的实例调用的方法；</li>
-  <li>也可以定义在类型本身上调用的方法，这种方法就叫做类型方法；</li>
-  <li>在方法的func关键字之前加上关键字static，来指定类型方法；</li>
-  <li>类还可以用关键字class来允许子类重写父类的方法实现；</li>
-  <li>类型方法和实例方法一样用点语法调用；</li>
-</ul>
-
-<p>注意：
-在OC中，只能为OC的类类型（classes）定义类型方法。在Swift中，你可以为所有的类、结构体和枚举定义类型方法。每一个类型方法都被它所支持的类型显式包含。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
-    <span class="kd">class</span> <span class="kd">func</span> <span class="nf">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 在这里实现类型方法</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kt">SomeClass</span><span class="o">.</span><span class="nf">someTypeMethod</span><span class="p">()</span>
-</code></pre>
-</div>
-
-<ul>
-  <li>在类型方法的方法体（body）中，self指向这个类型本身，而不是类型的某个实例；</li>
-  <li>这意味着可以用self来消除类型属性和类型方法参数之间的歧义；</li>
-  <li>一个类型方法可以直接通过类型方法的名称调用本类中的其它类型方法，而无需在方法名称前面加上类型名称；</li>
-  <li>类似地，在结构体和枚举中，也能够直接通过类型属性的名称访问本类中的类型属性，而不需要前面加上类型名称；</li>
-</ul>
-
-<p>案例：
-下面的例子定义了一个名为LevelTracker结构体。它监测玩家的游戏发展情况（游戏的不同层次或阶段）。这是一个单人游戏，但也可以存储多个玩家在同一设备上的游戏信息。游戏初始时，所有的游戏等级（除了等级 1）都被锁定。每次有玩家完成一个等级，这个等级就对这个设备上的所有玩家解锁。</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// LevelTracker结构体用类型属性和方法监测游戏的哪个等级已经被解锁。它还监测每个玩家的当前等级。</span>
-
-<span class="kd">struct</span> <span class="kt">LevelTracker</span> <span class="p">{</span>
-    <span class="c1">// 类型属性：highestUnlockedLevel监测玩家已解锁的最高等级</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1">// 实例属性:currentLevel来监测每个玩家当前的等级</span>
-    <span class="k">var</span> <span class="nv">currentLevel</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="c1">// 类型方法：一旦新等级被解锁，它会更新highestUnlockedLevel的值</span>
-    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unlock</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="c1">// 如果某个给定的等级已经被解锁，它将返回true</span>
-    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">isUnlocked</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-        <span class="c1">// 尽管没有使用类似LevelTracker.highestUnlockedLevel的写法，这个类型方法还是能够访问类型属性highestUnlockedLevel</span>
-        <span class="k">return</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="n">highestUnlockedLevel</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// 实例方法，管理currentLevel属性</span>
-    <span class="c1">// 这个方法会在更新currentLevel之前检查所请求的新等级是否已经解锁</span>
-    <span class="kd">@discardableResult</span>
-    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">advance</span><span class="p">(</span><span class="n">to</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">isUnlocked</span><span class="p">(</span><span class="n">level</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">currentLevel</span> <span class="o">=</span> <span class="n">level</span>
-            <span class="k">return</span> <span class="kc">true</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">false</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="c1">// 在调用advance(to:)时候忽略返回值，不会产生编译警告，所以函数被标注为@ discardableResult属性</span>
-    <span class="c1">//@discardableResult 将此属性应用于函数或方法声明以在不使用其结果的情况下调用返回值的函数或方法时抑制编译器警告。</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>下面，Player类使用LevelTracker来监测和更新每个玩家的发展进度：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Player</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">tracker</span> <span class="o">=</span> <span class="kt">LevelTracker</span><span class="p">()</span>
-    <span class="k">let</span> <span class="nv">playerName</span><span class="p">:</span> <span class="kt">String</span>
-    <span class="kd">func</span> <span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">unlock</span><span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">tracker</span><span class="o">.</span><span class="nf">advance</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">playerName</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>Player类创建一个新的LevelTracker实例来监测这个用户的进度。它提供了complete(level:)方法，一旦玩家完成某个指定等级就调用它。这个方法为所有玩家解锁下一等级，并且将当前玩家的进度更新为下一等级。</p>
-
-<p>还可以为一个新的玩家创建一个Player的实例，然后看这个玩家完成等级一时发生了什么：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">player</span> <span class="o">=</span> <span class="kt">Player</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Argyrios"</span><span class="p">)</span>
-<span class="n">player</span><span class="o">.</span><span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"highest unlocked level is now </span><span class="se">\(</span><span class="kt">LevelTracker</span><span class="o">.</span><span class="n">highestUnlockedLevel</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// 打印 "highest unlocked level is now 2"</span>
-</code></pre>
-</div>
-
-<h1 id="subscripts">下标 Subscripts</h1>
-
-<ul>
-  <li>下标可以定义在类、结构体和枚举中，是访问集合，列表或序列中元素的快捷方式；</li>
-  <li>可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法；</li>
-  <li>举例：用下标访问一个Array实例中的元素可以写作someArray[index]；</li>
-  <li>举例：访问Dictionary实例中的元素可以写作someDictionary[key]；</li>
-  <li>一个类型可以定义多个下标，通过不同索引类型进行重载。下标不限于一维，你可以定义具有多个入参的下标满足自定义类型的需求。</li>
-</ul>
-
-<p>1、下标语法</p>
-
-<p>下标允许你通过在实例名称后面的方括号中传入一个或者多个索引值来对实例进行存取。语法类似于实例方法语法和计算型属性语法的混合。与定义实例方法类似，定义下标使用subscript关键字，指定一个或多个输入参数和返回类型；与实例方法不同的是，下标可以设定为读写或只读。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
-    <span class="k">get</span> <span class="p">{</span>
-      <span class="c1">// 返回一个适当的 Int 类型的值</span>
-    <span class="p">}</span>
-
-    <span class="nf">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 执行适当的赋值操作</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数</span>
-</code></pre>
-</div>
-
-<p>只读下标：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如同只读计算型属性，可以省略只读下标的get关键字：</span>
-<span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
-    <span class="c1">// 返回一个适当的 Int 类型的值</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>只读下标的实现：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 这里定义了一个TimesTable结构体，用来表示传入整数的乘法表：</span>
-<span class="kd">struct</span> <span class="kt">TimesTable</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">multiplier</span><span class="p">:</span> <span class="kt">Int</span>
-    <span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">index</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">let</span> <span class="nv">threeTimesTable</span> <span class="o">=</span> <span class="kt">TimesTable</span><span class="p">(</span><span class="nv">multiplier</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"six times three is </span><span class="se">\(</span><span class="n">threeTimesTable</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// 打印 "six times three is 18"</span>
-
-<span class="c1">// 在上例中，创建了一个TimesTable实例，用来表示整数3的乘法表。数值3被传递给结构体的构造函数，作为实例成员multiplier的值。</span>
-</code></pre>
-</div>
-
-<p>2、下标用法</p>
-
-<p>下标的确切含义取决于使用场景。下标通常作为访问集合，列表或序列中元素的快捷方式。你可以针对自己特定的类或结构体的功能来自由地以最恰当的方式实现下标。</p>
-
-<p>案例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift 的Dictionary类型实现下标用于对其实例中储存的值进行存取操作。为字典设值时，在下标中使用和字典的键类型相同的键，并把一个和字典的值类型相同的值赋给这个下标：</span>
-
-<span class="k">var</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"spider"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"ant"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">numberOfLegs</span><span class="p">[</span><span class="s">"bird"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-</code></pre>
-</div>
-<p>注意:Swift 的Dictionary类型的下标接受并返回可选类型的值。上例中的numberOfLegs字典通过下标返回的是一个Int?或者说“可选的int”。Dictionary类型之所以如此实现下标，是因为不是每个键都有个对应的值，同时这也提供了一种通过键删除对应值的方式，只需将键对应的值赋值为nil即可。</p>
-
-<p>3、下标选项</p>
-
-<p>下标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。</p>
-
-<p>下标的重载：一个类或结构体可以根据自身需要提供多个下标实现，使用下标时将通过入参的数量和类型进行区分，自动匹配合适的下标，这就是下标的重载。</p>
-
-<p>虽然接受单一入参的下标是最常见的，但也可以根据情况定义接受多个入参的下标。例如下例定义了一个Matrix结构体，用于表示一个Double类型的二维矩阵。Matrix结构体的下标接受两个整型参数：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Matrix</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span>
-    <span class="k">var</span> <span class="nv">grid</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span>
-    <span class="nf">init</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
-        <span class="n">grid</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">columns</span><span class="p">,</span> <span class="nv">repeatedValue</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
-    <span class="p">}</span>
-    <span class="nf">subscript</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
-        <span class="k">get</span> <span class="p">{</span>
-            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span>
-        <span class="p">}</span>
-        <span class="k">set</span> <span class="p">{</span>
-            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
-            <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>Matrix提供了一个接受两个入参的构造方法，入参分别是rows和columns，创建了一个足够容纳rows * columns个Double类型的值的数组。通过传入数组长度和初始值0.0到数组的构造器，将矩阵中每个位置的值初始化为0.0</p>
-
-<p>你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">matrix</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>上例中创建了一个Matrix实例来表示两行两列的矩阵。该Matrix实例的grid数组按照从左上到右下的阅读顺序将矩阵扁平化存储：
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix01_2x.png" alt="" /></p>
-
-<p>将row和column的值传入下标来为矩阵设值，下标的入参使用逗号分隔：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.2</span>
-</code></pre>
-</div>
-<p>上面两条语句分别调用下标的 setter 将矩阵右上角位置（即row为0、column为1的位置）的值设置为1.5，将矩阵左下角位置（即row为1、column为0的位置）的值设置为3.2：</p>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix02_2x.png" alt="" /></p>
-
-<p>Matrix下标的 getter 和 setter 中都含有断言，用来检查下标入参row和column的值是否有效。为了方便进行断言，Matrix包含了一个名为indexIsValidForRow(_:column:)的便利方法，用来检查入参row和column的值是否在矩阵范围内：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>断言在下标越界时触发：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someValue</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="c1">// 断言将会触发，因为 [2, 2] 已经超过了 matrix 的范围</span>
-</code></pre>
-</div>
-
-<h1 id="inheritance">继承 Inheritance</h1>
-
-<p>一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。</p>
-
-<p>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。</p>
-
-<p>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
-
-<h3 id="section-1">定义基类</h3>
-
-<p>不继承于其它类的类，称之为基类。</p>
-
-<p>注意：Swift中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Vehicle基类也定义了一个名为makeNoise的方法。这个方法实际上不为Vehicle实例做任何事，但之后将会被Vehicle的子类定制：</span>
-
-<span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">currentSpeed</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">"traveling at </span><span class="se">\(</span><span class="n">currentSpeed</span><span class="se">)</span><span class="s"> miles per hour"</span>
-    <span class="p">}</span>
-    <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 什么也不做-因为车辆不一定会有噪音</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>可以用初始化语法创建一个Vehicle的新实例，即类名后面跟一个空括号</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someVehicle</span> <span class="o">=</span> <span class="kt">Vehicle</span><span class="p">()</span>
-</code></pre>
-</div>
-
-<h2 id="section-2">子类生成</h2>
-
-<p>子类生成指的是在一个已有类的基础上创建一个新的类。子类继承超类的特性，并且可以进一步完善。你还可以为子类添加新的特性。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span><span class="p">:</span> <span class="kt">SomeSuperclass</span> <span class="p">{</span>
-    <span class="c1">// 这里是子类的定义</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>案例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Bicycle</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">hasBasket</span> <span class="o">=</span> <span class="kc">false</span>
-<span class="p">}</span>
-
-<span class="k">let</span> <span class="nv">bicycle</span> <span class="o">=</span> <span class="kt">Bicycle</span><span class="p">()</span>
-<span class="n">bicycle</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
-
-<span class="c1">// 可以修改Bicycle实例所继承的currentSpeed属性，和查询实例所继承的description属性：</span>
-<span class="n">bicycle</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">15.0</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"Bicycle: </span><span class="se">\(</span><span class="n">bicycle</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// 打印 "Bicycle: traveling at 15.0 miles per hour"</span>
-
-<span class="c1">// 子类还可以继续被其它类继承，下面的示例为Bicycle创建了一个名为Tandem（双人自行车）的子类：</span>
-<span class="kd">class</span> <span class="kt">Tandem</span><span class="p">:</span> <span class="kt">Bicycle</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="p">}</span>
-
-<span class="k">let</span> <span class="nv">tandem</span> <span class="o">=</span> <span class="kt">Tandem</span><span class="p">()</span>
-<span class="n">tandem</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="n">tandem</span><span class="o">.</span><span class="n">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">tandem</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">22.0</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"Tandem: </span><span class="se">\(</span><span class="n">tandem</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// 打印："Tandem: traveling at 22.0 miles per hour"</span>
-</code></pre>
-</div>
-
-<h3 id="section-3">重写</h3>
-
-<p>子类可以为继承来的实例方法，类方法，实例属性，或下标提供自己定制的实现。这种行为叫重写。</p>
-
-<p>如果要重写某个特性，需要在重写定义的前面加上override关键字。这么做，就表明了你是想提供一个重写版本，而非错误地提供了一个相同的定义。意外的重写行为可能会导致不可预知的错误，任何缺少override关键字的重写都会在编译时被诊断为错误。</p>
-
-<p>override关键字会提醒 Swift 编译器去检查该类的超类（或其中一个父类）是否有匹配重写版本的声明。这个检查可以确保你的重写定义是正确的。</p>
-
-<p>1、 访问超类的方法，属性及下标</p>
-
-<p>当你在子类中重写超类的方法，属性或下标时，有时在你的重写版本中使用已经存在的超类实现会大有裨益。比如，你可以完善已有实现的行为，或在一个继承来的变量中存储一个修改过的值。</p>
-
-<p>在合适的地方，你可以通过使用super前缀来访问超类版本的方法，属性或下标：</p>
-<ul>
-  <li>在方法someMethod()的重写实现中，可以通过super.someMethod()来调用超类版本的someMethod()方法。</li>
-  <li>在属性someProperty的 getter 或 setter 的重写实现中，可以通过super.someProperty来访问超类版本的someProperty属性。</li>
-  <li>在下标的重写实现中，可以通过super[someIndex]来访问超类版本中的相同下标。</li>
-</ul>
-
-<p>2、重写方法</p>
-
-<p>在子类中，你可以重写继承来的实例方法或类方法，提供一个定制或替代的方法实现</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 定义了Vehicle的一个新的子类，叫Train，它重写了从Vehicle类继承来的makeNoise()方法</span>
-<span class="kd">class</span> <span class="kt">Train</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Choo Choo"</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>3、重写属性</p>
-
-<p>你可以重写继承来的实例属性或类型属性，提供自己定制的 getter 和 setter，或添加属性观察器使重写的属性可以观察属性值什么时候发生改变。</p>
-
-<ul>
-  <li>可以将一个继承来的只读属性重写为一个读写属性，只需要在重写版本的属性里提供 getter 和 setter 即可；</li>
-  <li>但是，不可以将一个继承来的读写属性重写为一个只读属性；</li>
-  <li>提供定制的 getter（或 setter）来重写任意继承来的属性，无论继承来的属性是存储型的还是计算型的属性；</li>
-  <li>子类并不知道继承来的属性是存储型的还是计算型的，它只知道继承来的属性会有一个名字和类型；</li>
-  <li>在重写一个属性时，必需将它的名字和类型都写出来。这样才能使编译器去检查你重写的属性是与超类中同名同类型的属性相匹配的；</li>
-</ul>
-
-<p>注意
-如果在重写属性中提供了setter，那么也一定要提供getter。如果不想在重写版本中的getter里修改继承来的属性值，可以直接通过super.someProperty来返回继承来的值，其中someProperty是要重写的属性的名字。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Car</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">gear</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">override</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">super</span><span class="o">.</span><span class="n">description</span> <span class="o">+</span> <span class="s">" in gear </span><span class="se">\(</span><span class="n">gear</span><span class="se">)</span><span class="s">"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 重写的description属性首先要调用super.description返回Vehicle类的description属性。之后，Car类版本的description在末尾增加了一些额外的文本来提供关于当前档位的信息。</span>
-</code></pre>
-</div>
-
-<p>4、重写属性观察器</p>
-
-<p>可以通过重写属性为一个继承来的属性添加属性观察器。当继承来的属性值发生改变时，就会被通知到，无论那个属性原本是如何实现的。</p>
-
-<p>注意：不可以为继承来的常量存储型属性或继承来的只读计算型属性添加属性观察器。这些属性的值是不可以被设置的，所以，为它们提供willSet或didSet实现是不恰当。
-此外还要注意，不可以同时提供重写的 setter 和重写的属性观察器。如果想观察属性值的变化，并且已经为那个属性提供了定制的 setter，那么在 setter 中就可以观察到任何值变化了。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 下面的例子定义了一个新类叫AutomaticCar，它是Car的子类。AutomaticCar表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位:</span>
-<span class="kd">class</span> <span class="kt">AutomaticCar</span><span class="p">:</span> <span class="kt">Car</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="k">var</span> <span class="nv">currentSpeed</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span>
-        <span class="k">didSet</span> <span class="p">{</span>
-            <span class="n">gear</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">currentSpeed</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="cm">/*
-当你设置AutomaticCar的currentSpeed属性，属性的didSet观察器就会自动地设置gear属性，为新的速度选择一个合适的挡位。具体来说就是，属性观察器将新的速度值除以10，然后向下取得最接近的整数值，最后加1来得到档位gear的值。例如，速度为35.0时，挡位为4：
-*/</span>
-
-<span class="k">let</span> <span class="nv">automatic</span> <span class="o">=</span> <span class="kt">AutomaticCar</span><span class="p">()</span>
-<span class="n">automatic</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">35.0</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"AutomaticCar: </span><span class="se">\(</span><span class="n">automatic</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// 打印 "AutomaticCar: traveling at 35.0 miles per hour in gear 4"</span>
-</code></pre>
-</div>
-
-<h3 id="section-4">防止重写</h3>
-
-<p>可以通过把方法，属性或下标标记为final来防止它们被重写，只需要在声明关键字前加上final修饰符即可（例如：final var，final func，final class func，以及final subscript）。</p>
-
-<p>如果重写了带有final标记的方法，属性或下标，在编译时会报错。在类扩展中的方法，属性或下标也可以在扩展的定义里标记为 final 的。</p>
-
-<p>可以通过在关键字class前添加final修饰符（final class）来将整个类标记为 final 的。这样的类是不可被继承的，试图继承这样的类会导致编译报错。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-08
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">枚举</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">枚举语法：</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">原始值</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">递归枚举</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">类和结构体</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">类和结构体的对比</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">结构和枚举是值类型</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">类是引用类型</a></li>
-      <li><a href="#section-8" id="markdown-toc-section-8">恒等运算符</a></li>
-      <li><a href="#section-9" id="markdown-toc-section-9">指针</a></li>
-      <li><a href="#section-10" id="markdown-toc-section-10">选择类还是结构体</a></li>
-      <li><a href="#section-11" id="markdown-toc-section-11">字符串、数组、和字典类型的赋值与复制</a></li>
-    </ul>
-  </li>
-  <li><a href="#properties" id="markdown-toc-properties">属性：Properties</a>    <ul>
-      <li><a href="#stored-properties" id="markdown-toc-stored-properties">储存属性 Stored Properties</a></li>
-      <li><a href="#computed-properties" id="markdown-toc-computed-properties">计算属性 Computed Properties</a></li>
-      <li><a href="#property-observers" id="markdown-toc-property-observers">属性观察器 Property Observers</a></li>
-      <li><a href="#global-and-local-variables" id="markdown-toc-global-and-local-variables">全局变量和局部变量 Global and Local Variables</a></li>
-      <li><a href="#type-properties" id="markdown-toc-type-properties">类型属性 Type Properties</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>枚举为一组相关的值定义了一个共同的类型，使你可以在你的代码中以类型安全的方式来使用这些值。</p>
-
-<p>在 Swift 中，枚举类型是一等（first-class）类型。它们采用了很多在传统上只被类（class）所支持的特性，例如计算属性（computed properties），用于提供枚举值的附加信息，实例方法（instance methods），用于提供和枚举值相关联的功能。枚举也可以定义构造函数（initializers）来提供一个初始值；可以在原始实现的基础上扩展它们的功能；还可以遵循协议（protocols）来提供标准的功能。</p>
-
-<h1 id="section">枚举</h1>
-
-<h3 id="section-1">枚举语法：</h3>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">SomeEnumeration</span> <span class="p">{</span>
-    <span class="c1">// enumeration definition goes here</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>指南针案例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">CompassPoint</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">north</span>
-    <span class="k">case</span> <span class="n">south</span>
-    <span class="k">case</span> <span class="n">east</span>
-    <span class="k">case</span> <span class="n">west</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>注意
-与 C 和 Objective-C 不同，Swift 的枚举成员在被创建时不会被赋予一个默认的整型值。在上面的CompassPoint例子中，north，south，east和west不会被隐式地赋值为0，1，2和3。相反，这些枚举成员本身就是完备的值，这些值的类型是已经明确定义好的CompassPoint类型。</p>
-
-<p>多个成员值可以出现在同一行上，用逗号隔开：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Planet</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">mercury</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">earth</span><span class="p">,</span> <span class="n">mars</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturn</span><span class="p">,</span> <span class="n">uranus</span><span class="p">,</span> <span class="n">neptune</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>可以这样使用：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">directionToHead</span> <span class="o">=</span> <span class="kt">CompassPoint</span><span class="o">.</span><span class="n">west</span>
-</code></pre>
-</div>
-
-<p>当directionToHead的类型已知时，再次为其赋值可以使用更简短的点语法：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">directionToHead</span> <span class="o">=</span> <span class="o">.</span><span class="n">east</span>
-</code></pre>
-</div>
-
-<p>使用 Switch 语句匹配枚举值</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">directionToHead</span> <span class="o">=</span> <span class="o">.</span><span class="n">south</span>
-<span class="k">switch</span> <span class="n">directionToHead</span> <span class="p">{</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">north</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Lots of planets have a north"</span><span class="p">)</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">south</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Watch out for penguins"</span><span class="p">)</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">east</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Where the sun rises"</span><span class="p">)</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">west</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Where the skies are blue"</span><span class="p">)</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "Watch out for penguins"</span>
-</code></pre>
-</div>
-
-<p>当不需要匹配每个枚举成员的时候，你可以提供一个default分支来涵盖所有未明确处理的枚举成员：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">somePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="o">.</span><span class="n">earth</span>
-<span class="k">switch</span> <span class="n">somePlanet</span> <span class="p">{</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">earth</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Mostly harmless"</span><span class="p">)</span>
-<span class="k">default</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 打印 "Mostly harmless”</span>
-</code></pre>
-</div>
-
-<p>在 Swift 中，使用如下方式定义表示两种商品条形码(条形码、QR码)的枚举：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Barcode</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nf">upc</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nf">qrCode</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// “定义一个名为Barcode的枚举类型，它的一个成员值是具有(Int，Int，Int，Int)类型关联值的upc，另一个成员值是具有String类型关联值的qrCode。”</span>
-</code></pre>
-</div>
-
-<p>然后可以使用任意一种条形码类型创建新的条形码，例如：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">productBarcode</span> <span class="o">=</span> <span class="kt">Barcode</span><span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="p">,</span> <span class="mi">51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// 创建了一个名为productBarcode的变量，并将Barcode.upc赋值给它，关联的元组值为(8, 85909, 51226, 3)。</span>
-
-<span class="c1">// 同一个商品可以被分配一个不同类型的条形码，例如：</span>
-<span class="n">productBarcode</span> <span class="o">=</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="s">"ABCDEFGHIJKLMNOP"</span><span class="p">)</span>
-
-<span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
-<span class="k">case</span> <span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="k">let</span> <span class="nv">numberSystem</span><span class="p">,</span> <span class="k">let</span> <span class="nv">manufacturer</span><span class="p">,</span> <span class="k">let</span> <span class="nv">product</span><span class="p">,</span> <span class="k">let</span> <span class="nv">check</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"UPC: </span><span class="se">\(</span><span class="n">numberSystem</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">manufacturer</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">product</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">check</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="k">case</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="k">let</span> <span class="nv">productCode</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"QR code: </span><span class="se">\(</span><span class="n">productCode</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "QR code: ABCDEFGHIJKLMNOP."</span>
-
-<span class="c1">// 如果一个枚举成员的所有关联值都被提取为常量，或者都被提取为变量，为了简洁，你可以只在成员名称前标注一个let或者var：</span>
-<span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
-<span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">upc</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">manufacturer</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">check</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"UPC: </span><span class="se">\(</span><span class="n">numberSystem</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">manufacturer</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">product</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">check</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">qrCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"QR code: </span><span class="se">\(</span><span class="n">productCode</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 输出 "QR code: ABCDEFGHIJKLMNOP."</span>
-</code></pre>
-</div>
-
-<h3 id="section-2">原始值</h3>
-
-<p>枚举成员可以被默认值（称为原始值）预填充，这些原始值的类型必须相同。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">ASCIIControlCharacter</span><span class="p">:</span> <span class="kt">Character</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">tab</span> <span class="o">=</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span>
-    <span class="k">case</span> <span class="n">lineFeed</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span>
-    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="o">=</span> <span class="s">"</span><span class="se">\r</span><span class="s">"</span>
-<span class="p">}</span>
-<span class="c1">// 枚举类型ASCIIControlCharacter的原始值类型被定义为Character，并设置了一些比较常见的 ASCII 控制字符</span>
-</code></pre>
-</div>
-
-<p>原始值的隐式赋值</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Planet</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">mercury</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">earth</span><span class="p">,</span> <span class="n">mars</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturn</span><span class="p">,</span> <span class="n">uranus</span><span class="p">,</span> <span class="n">neptune</span>
-<span class="p">}</span>
-<span class="c1">//  venus == 2  earth ==3...</span>
-</code></pre>
-</div>
-
-<p>使用枚举成员的rawValue属性可以访问该枚举成员的原始值：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">earthsOrder</span> <span class="o">=</span> <span class="kt">Planet</span><span class="o">.</span><span class="n">earth</span><span class="o">.</span><span class="n">rawValue</span>
-<span class="c1">// earthsOrder is 3</span>
- 
-<span class="k">let</span> <span class="nv">sunsetDirection</span> <span class="o">=</span> <span class="kt">CompassPoint</span><span class="o">.</span><span class="n">west</span><span class="o">.</span><span class="n">rawValue</span>
-<span class="c1">// sunsetDirection is "west"</span>
-</code></pre>
-</div>
-
-<p>使用原始值初始化枚举实例</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possiblePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
-<span class="c1">// possiblePlanet is of type Planet? and equals Planet.uranus</span>
-<span class="c1">// possiblePlanet是Planet?类型，或者说“可选的Planet”。</span>
-</code></pre>
-</div>
-
-<p>原始值构造器是一个可失败构造器，因为并不是每一个原始值都有与之对应的枚举成员</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如果你试图寻找一个位置为11的行星，通过原始值构造器返回的可选Planet值将是nil：</span>
-
-<span class="k">let</span> <span class="nv">positionToFind</span> <span class="o">=</span> <span class="mi">11</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">somePlanet</span> <span class="o">=</span> <span class="kt">Planet</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="n">positionToFind</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">somePlanet</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nv">earth</span><span class="p">:</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Mostly harmless"</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Not a safe place for humans"</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"There isn't a planet at position </span><span class="se">\(</span><span class="n">positionToFind</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "There isn't a planet at position 11"</span>
-</code></pre>
-</div>
-
-<h3 id="section-3">递归枚举</h3>
-
-<p>递归枚举是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值。使用递归枚举时，编译器会插入一个间接层。你可以在枚举成员前加上indirect来表示该成员可递归。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 在枚举成员前加上indirect来表示该成员可递归。</span>
-<span class="kd">enum</span> <span class="kt">ArithmeticExpression</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nf">number</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span>
-    <span class="kd">indirect</span> <span class="k">case</span> <span class="nf">addition</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
-    <span class="kd">indirect</span> <span class="k">case</span> <span class="nf">multiplication</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 在枚举类型开头加上indirect关键字来表明它的所有成员都是可递归的：</span>
-<span class="kd">indirect</span> <span class="kd">enum</span> <span class="kt">ArithmeticExpression</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nf">number</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nf">addition</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nf">multiplication</span><span class="p">(</span><span class="kt">ArithmeticExpression</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 应用：</span>
-<span class="k">let</span> <span class="nv">five</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">four</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">sum</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">addition</span><span class="p">(</span><span class="n">five</span><span class="p">,</span> <span class="n">four</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">product</span> <span class="o">=</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">multiplication</span><span class="p">(</span><span class="n">sum</span><span class="p">,</span> <span class="kt">ArithmeticExpression</span><span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1">// 要操作具有递归性质的数据结构，使用递归函数是一种直截了当的方式</span>
-<span class="kd">func</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">_</span> <span class="nv">expression</span><span class="p">:</span> <span class="kt">ArithmeticExpression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">expression</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">number</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">value</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">addition</span><span class="p">(</span><span class="k">left</span><span class="p">,</span> <span class="k">right</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">left</span><span class="p">)</span> <span class="o">+</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">right</span><span class="p">)</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">multiplication</span><span class="p">(</span><span class="k">left</span><span class="p">,</span> <span class="k">right</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">left</span><span class="p">)</span> <span class="o">*</span> <span class="nf">evaluate</span><span class="p">(</span><span class="k">right</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="nf">evaluate</span><span class="p">(</span><span class="n">product</span><span class="p">))</span>
-<span class="c1">// 打印 "18"</span>
-</code></pre>
-</div>
-
-<h1 id="section-4">类和结构体</h1>
-
-<p>与其他编程语言所不同的是，Swift 并不要求为自定义类和结构去创建独立的接口和实现文件。只需要在单一文件中定义一个类或者结构体，系统将会自动生成面向其它代码的外部接口。</p>
-
-<h3 id="section-5">类和结构体的对比</h3>
-
-<p>1、共同点：</p>
-
-<ul>
-  <li>定义要存储值的属性</li>
-  <li>定义方法以提供功能</li>
-  <li>定义下标，以使用下标语法访问其值</li>
-  <li>定义初始化程序以设置其初始状态</li>
-  <li>扩展其功能超出默认实现</li>
-  <li>符合协议以提供某种类型的标准功能</li>
-</ul>
-
-<p>2、类独有功能：</p>
-
-<ul>
-  <li>继承使一个类能够继承另一个类的特性。</li>
-  <li>类型转换使您能够在运行时检查和解释类实例的类型。</li>
-  <li>Deinitializers使一个类的实例释放它分配的任何资源。</li>
-  <li>引用计数允许对类实例的多个引用。</li>
-</ul>
-
-<p>注意：结构在code中传递并不会使用引用计数：Structures are always copied when they are passed around in your code, and do not use reference counting.</p>
-
-<p>不同之处：</p>
-
-<ul>
-  <li>与结构不同，类实例不接收默认的成员初始化</li>
-</ul>
-
-<p>3、定义：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
-    <span class="c1">// class 类定义</span>
-<span class="p">}</span>
-<span class="kd">struct</span> <span class="kt">SomeStructure</span> <span class="p">{</span>
-    <span class="c1">// structure  结构体定义</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>例如：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Resolution</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">var</span> <span class="nv">height</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="p">}</span>
-<span class="kd">class</span> <span class="kt">VideoMode</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">resolution</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">()</span>
-    <span class="k">var</span> <span class="nv">interlaced</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="k">var</span> <span class="nv">frameRate</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>4、实例：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someResolution</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">()</span> <span class="c1">// 结构体实例</span>
-<span class="k">let</span> <span class="nv">someVideoMode</span> <span class="o">=</span> <span class="kt">VideoMode</span><span class="p">()</span>  <span class="c1">// 类的实例</span>
-</code></pre>
-</div>
-
-<p>5、属性：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 点语法访问:</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The width of someResolution is </span><span class="se">\(</span><span class="n">someResolution</span><span class="o">.</span><span class="n">width</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The width of someResolution is 0"</span>
-
-<span class="c1">// 访问子属性：</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The width of someVideoMode is </span><span class="se">\(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">width</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The width of someVideoMode is 0"</span>
-
-<span class="c1">// 点语法赋值</span>
-<span class="c1">// 与OC不同，Swift允许直接设置结构属性的子属性</span>
-<span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"The width of someVideoMode is now </span><span class="se">\(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">width</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The width of someVideoMode is now 1280"</span>
-</code></pre>
-</div>
-
-<p>6、结构体成员构造器：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 与结构不同，类实例不接收默认的成员初始化</span>
-<span class="k">let</span> <span class="nv">vga</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<h3 id="section-6">结构和枚举是值类型</h3>
-<ul>
-  <li>默认情况下，值类型的属性不能在它的实例方法中被修改；</li>
-  <li>值类型被赋予给一个变量、常量或者被传递给一个函数的时候，其值会被拷贝；</li>
-  <li>在 Swift 中，所有的结构体和枚举类型都是值类型。这意味着它们的实例，以及实例中所包含的任何值类型属性，在代码中传递的时候都会被复制；</li>
-  <li>在 Swift 中，所有的基本类型：整数（Integer）、浮点数（floating-point）、布尔值（Boolean）、字符串（string)、数组（array）和字典（dictionary），都是值类型，并且在底层都是以结构体的形式所实现；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">hd</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1080</span><span class="p">)</span>
-<span class="c1">// 将hd赋予ciname时，实际上是将hd储存的值copy给ciname，存在ciname实例中。结果就是两个完全独立的实例恰巧包含相同的数值。</span>
-<span class="k">var</span> <span class="nv">cinema</span> <span class="o">=</span> <span class="n">hd</span>
-<span class="n">cinema</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">2048</span>
-</code></pre>
-</div>
-<p>枚举也遵守相同的规则</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">CompassPoint</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">north</span><span class="p">,</span> <span class="n">south</span><span class="p">,</span> <span class="n">east</span><span class="p">,</span> <span class="n">west</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="nv">currentDirection</span> <span class="o">=</span> <span class="kt">CompassPoint</span><span class="o">.</span><span class="n">west</span>
-<span class="k">let</span> <span class="nv">rememberedDirection</span> <span class="o">=</span> <span class="n">currentDirection</span>
-<span class="n">currentDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">east</span>
-<span class="k">if</span> <span class="n">rememberedDirection</span> <span class="o">==</span> <span class="o">.</span><span class="n">west</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The remembered direction is still .west"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The remembered direction is still .west"</span>
-</code></pre>
-</div>
-
-<h3 id="section-7">类是引用类型</h3>
-
-<p>与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，引用的是已存在的实例本身而不是其拷贝</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">tenEighty</span> <span class="o">=</span> <span class="kt">VideoMode</span><span class="p">()</span>
-<span class="n">tenEighty</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="n">hd</span>
-<span class="n">tenEighty</span><span class="o">.</span><span class="n">interlaced</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="n">tenEighty</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"1080i"</span>
-<span class="n">tenEighty</span><span class="o">.</span><span class="n">frameRate</span> <span class="o">=</span> <span class="mf">25.0</span>
-
-<span class="k">let</span> <span class="nv">alsoTenEighty</span> <span class="o">=</span> <span class="n">tenEighty</span>
-<span class="n">alsoTenEighty</span><span class="o">.</span><span class="n">frameRate</span> <span class="o">=</span> <span class="mf">30.0</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="s">"The frameRate property of tenEighty is now </span><span class="se">\(</span><span class="n">tenEighty</span><span class="o">.</span><span class="n">frameRate</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "The frameRate property of tenEighty is now 30.0"</span>
-
-<span class="c1">// 因为类是引用类型，所以tenEight和alsoTenEight实际上引用的是相同的VideoMode实例。换句话说，它们是同一个实例的两种叫法。</span>
-</code></pre>
-</div>
-
-<p>注意：tenEighty和alsoTenEighty被声明为常量而不是变量。他们存的是指针，只要指针不改变就ok，指针指向的实例的属性是可以改变的。</p>
-
-<h3 id="section-8">恒等运算符</h3>
-<p>因为类是引用类型，有可能有多个常量和变量在幕后同时引用同一个类实例。（对于结构体和枚举来说，这并不成立。因为它们作为值类型，在被赋予到常量、变量或者传递到函数时，其值总是会被拷贝。）</p>
-
-<p>如果能够判定两个常量或者变量是否引用同一个类实例将会很有帮助。为了达到这个目的，Swift 内建了两个恒等运算符：</p>
-
-<ul>
-  <li>等价于（===）  “等价于”表示两个类类型（class type）的常量或者变量引用同一个类实例。</li>
-  <li>不等价于（!==）</li>
-  <li>以上和=，!=是不同的，注意区分</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="n">tenEighty</span> <span class="o">===</span> <span class="n">alsoTenEighty</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"tenEighty and alsoTenEighty refer to the same VideoMode instance."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."</span>
-</code></pre>
-</div>
-<h3 id="section-9">指针</h3>
-
-<ul>
-  <li>Swift弱化了指针的概念，其实这里的引用类型，就是指针的体现。</li>
-  <li>注意Swift中的指针，与C中的指针类似，但并不直接指向某个内存地址，不要求用*来表明创建的是一个引用</li>
-</ul>
-
-<h3 id="section-10">选择类还是结构体</h3>
-
-<ul>
-  <li>结构体实例总是通过值传递，类实例总是通过引用传递。这意味两者适用不同的任务</li>
-</ul>
-
-<p>构建结构体的条件：</p>
-<ul>
-  <li>该数据结构的主要目的是用来封装少量相关简单数据值。</li>
-  <li>有理由预计该数据结构的实例在被赋值或传递时，封装的数据将会被拷贝而不是被引用。</li>
-  <li>该数据结构中储存的值类型属性，也应该被拷贝，而不是被引用。</li>
-  <li>该数据结构不需要去继承另一个既有类型的属性或者行为。
-或者：</li>
-  <li>几何形状的大小，封装一个width属性和height属性，两者均为Double类型。</li>
-  <li>一定范围内的路径，封装一个start属性和length属性，两者均为Int类型。</li>
-  <li>三维坐标系内一点，封装x，y和z属性，三者均为Double类型。</li>
-</ul>
-
-<p>在所有其它案例中，定义一个类，生成一个它的实例，并通过引用来管理和传递。实际中，这意味着绝大部分的自定义数据构造都应该是类，而非结构体。</p>
-
-<h3 id="section-11">字符串、数组、和字典类型的赋值与复制</h3>
-
-<ul>
-  <li>
-    <p>Swift 中，许多基本类型，诸如String，Array和Dictionary类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中时，它们的值会被拷贝。</p>
-  </li>
-  <li>
-    <p>Objective-C 中NSString，NSArray和NSDictionary类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用。</p>
-  </li>
-</ul>
-
-<p>注意：
-以上是对字符串、数组、字典的“拷贝”行为的描述。在你的代码中，拷贝行为看起来似乎总会发生。然而，Swift 在幕后只在绝对必要时才执行实际的拷贝。Swift 管理所有的值拷贝以确保性能最优化，所以你没必要去回避赋值来保证性能最优化。</p>
-
-<h1 id="properties">属性：Properties</h1>
-
-<ul>
-  <li>属性：将值跟特定的类、结构或枚举关联；</li>
-  <li>存储属性：存储常量或变量作为实例的一部分。存储属性只能用于类和结构体；</li>
-  <li>计算属性：计算一个值。计算属性可以用于类、结构体和枚举；</li>
-  <li>类型属性：属性也可以直接作用于类型本身，这种属性称为类型属性；</li>
-  <li>属性观察器：监控属性值的变化，以此来触发一个自定义的操作；</li>
-  <li>属性观察器可以添加到自己定义的存储属性上，也可以添加到从父类继承的属性上。</li>
-  <li>常量属性在构造过程完成之前必须要有初始值，变量属性则无。</li>
-</ul>
-
-<h3 id="stored-properties">储存属性 Stored Properties</h3>
-
-<p>简单来说，一个存储属性就是存储在特定类或结构体实例里的一个常量或变量。存储属性可以是变量存储属性（用关键字var定义），也可以是常量存储属性（用关键字let定义）。</p>
-
-<p>1、在定义属性的时候指定默认值:默认构造器</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ShoppingListItem</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
-    <span class="k">var</span> <span class="nv">quantity</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">var</span> <span class="nv">purchased</span> <span class="o">=</span> <span class="kc">false</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="nv">item</span> <span class="o">=</span> <span class="kt">ShoppingListItem</span><span class="p">()</span>
-</code></pre>
-</div>
-
-<p>2、在构造过程中设置或者修改储存属性的值，甚至是常量的储存属性的值：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SurveyQuestion</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span>
-    <span class="k">var</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
-    <span class="nf">init</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
-    <span class="p">}</span>
-    <span class="kd">func</span> <span class="nf">ask</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 修改常量属性的值：</span>
-<span class="k">let</span> <span class="nv">beetsQuestion</span> <span class="o">=</span> <span class="kt">SurveyQuestion</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"How about beets?"</span><span class="p">)</span>
-<span class="n">beetsQuestion</span><span class="o">.</span><span class="nf">ask</span><span class="p">()</span>
-<span class="c1">// 打印 "How about beets?"</span>
-<span class="n">beetsQuestion</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="s">"I also like beets. (But not with cheese.)"</span>
-</code></pre>
-</div>
-
-<p>3、常量结构体的储存属性：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 属性</span>
-<span class="kd">struct</span> <span class="kt">FixedLengthRange</span> <span class="p">{</span>
-    <span class="c1">// 变量属性</span>
-    <span class="k">var</span> <span class="nv">firstValue</span><span class="p">:</span> <span class="kt">Int</span>
-    <span class="c1">// 常量属性</span>
-    <span class="k">let</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span>
-<span class="p">}</span>
-<span class="c1">// 使用默认构造器：</span>
-<span class="k">var</span> <span class="nv">rangeOfThreeItems</span> <span class="o">=</span> <span class="kt">FixedLengthRange</span><span class="p">(</span><span class="nv">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">length</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// 修改变量属性</span>
-<span class="n">rangeOfThreeItems</span><span class="o">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="c1">// 不能修改常量属性，error</span>
-<span class="n">rangeOfThreeItems</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="c1">// 常量结构体:变量属性不可以修改</span>
-<span class="c1">// 如果创建了一个结构体的实例并将其赋值给一个常量，则无法修改该实例的任何属性，即使有属性被声明为变量也不行：</span>
-<span class="k">let</span> <span class="nv">hd</span> <span class="o">=</span> <span class="n">rangeOfThreeItems</span>
-<span class="n">hd</span><span class="o">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">2048</span> 
-<span class="c1">// this will report an error, even though firstValue is a variable property</span>
-
-
-</code></pre>
-</div>
-
-<p>总结：</p>
-<ul>
-  <li>结构体是值类型；当器声明为常量的时候，其所有属性，皆是常量，皆不可修改；</li>
-  <li>类则不同，他是引用类型，即便是定义为常量，也不影响修改属性；</li>
-  <li>变量结构体中的常量属性，不能被修改，变量属性可以修改；</li>
-  <li>常量结构体中的常变量属性皆不可修改；</li>
-</ul>
-
-<p>4、延时储存属性</p>
-
-<p>延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。</p>
-
-<ul>
-  <li>在属性声明前使用lazy来标示一个延迟存储属性；</li>
-  <li>必须将延迟存储属性声明成变量（var），因为属性的初始值可能在实例构造完成之后才会得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</li>
-</ul>
-
-<p>案例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// DataImporter 是一个负责将外部文件中的数据导入的类。这个类的初始化会消耗不少时间。</span>
-<span class="kd">class</span> <span class="kt">DataImporter</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">fileName</span> <span class="o">=</span> <span class="s">"data.txt"</span>
-    <span class="c1">// 这里会提供数据导入功能</span>
-<span class="p">}</span>
-<span class="kd">class</span> <span class="kt">DataManager</span> <span class="p">{</span>
-    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">importer</span> <span class="o">=</span> <span class="kt">DataImporter</span><span class="p">()</span>
-    <span class="c1">// data属性初始值是一个空的字符串（String）数组</span>
-    <span class="k">var</span> <span class="nv">data</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span>
-    <span class="c1">// 这里会提供数据管理功能</span>
-<span class="p">}</span>
-<span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">DataManager</span><span class="p">()</span>
-<span class="n">manager</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Some data"</span><span class="p">)</span>
-<span class="n">manager</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Some more data"</span><span class="p">)</span>
-<span class="c1">// the DataImporter instance for the importer property has not yet been created</span>
-
-<span class="c1">// 只有使用的时候才会创建</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">manager</span><span class="o">.</span><span class="n">importer</span><span class="o">.</span><span class="n">fileName</span><span class="p">)</span>
-<span class="c1">// Prints "data.txt"</span>
-</code></pre>
-</div>
-
-<p>注意：如果一个被标记为lazy的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会被初始化一次。</p>
-
-<p>5、存储属性和实例变量</p>
-
-<p>OC为类实例存储值和引用提供两种方法，除了属性之外，还可以使用实例变量作为属性值的后端存储。</p>
-
-<p>Swift编程语言中把这些理论统一用属性来实现。Swift中的属性没有对应的实例变量，属性的后端存储也无法直接访问。这就避免了不同场景下访问方式的困扰，同时也将属性的定义简化成一个语句。属性的全部信息——包括命名、类型和内存管理特征——都在唯一一个地方（类型定义中）定义。</p>
-
-<h3 id="computed-properties">计算属性 Computed Properties</h3>
-
-<p>除存储属性外，类、结构体和枚举可以定义计算属性。计算属性不直接存储值，而是提供一个getter 和一个可选的setter，来间接获取和设置其他属性或变量的值。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Point 封装了一个 (x, y) 的坐标</span>
-<span class="kd">struct</span> <span class="kt">Point</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="p">}</span>
-
-<span class="c1">// Size 封装了一个 width 和一个 height</span>
-<span class="kd">struct</span> <span class="kt">Size</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="p">}</span>
-
-<span class="c1">// Rect 表示一个有原点和尺寸的矩形</span>
-<span class="kd">struct</span> <span class="kt">Rect</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">origin</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">()</span>
-    <span class="k">var</span> <span class="nv">size</span> <span class="o">=</span> <span class="kt">Size</span><span class="p">()</span>
-<span class="c1">// 一个矩形的中心点可以从原点（origin）和大小（size）算出，所以不需要将它以显式声明的 Point来保存</span>
-    <span class="k">var</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">Point</span> <span class="p">{</span>
-        <span class="k">get</span> <span class="p">{</span>
-            <span class="k">let</span> <span class="nv">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="k">let</span> <span class="nv">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nf">set</span><span class="p">(</span><span class="n">newCenter</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">origin</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newCenter</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">origin</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newCenter</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="nv">square</span> <span class="o">=</span> <span class="kt">Rect</span><span class="p">(</span><span class="nv">origin</span><span class="p">:</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
-                  <span class="nv">size</span><span class="p">:</span> <span class="kt">Size</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">))</span>
-<span class="k">let</span> <span class="nv">initialSquareCenter</span> <span class="o">=</span> <span class="n">square</span><span class="o">.</span><span class="n">center</span>
-<span class="n">square</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"square.origin is now at (</span><span class="se">\(</span><span class="n">square</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">square</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">y</span><span class="se">)</span><span class="s">)"</span><span class="p">)</span>
-<span class="c1">// Prints "square.origin is now at (10.0, 10.0)"</span>
-</code></pre>
-</div>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/computedProperties_2x.png" alt="" /></p>
-
-<p>2、简化setter声明
-如果计算属性的 setter 没有定义表示新值的参数名，则可以使用默认名称 newValue。下面是使用了简化 setter 声明的 Rect 结构体代码：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">AlternativeRect</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">origin</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">()</span>
-    <span class="k">var</span> <span class="nv">size</span> <span class="o">=</span> <span class="kt">Size</span><span class="p">()</span>
-    <span class="k">var</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">Point</span> <span class="p">{</span>
-        <span class="k">get</span> <span class="p">{</span>
-            <span class="k">let</span> <span class="nv">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="k">let</span> <span class="nv">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">set</span> <span class="p">{</span>
-            <span class="n">origin</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">origin</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>3、只读属性</p>
-
-<p>只有getter没有setter的计算属性就是只读计算属性。</p>
-
-<ul>
-  <li>只读计算属性总是返回一个值，可以通过点运算符访问，但不能设置新的值。</li>
-  <li>必须使用var关键字定义计算属性，包括只读计算属性，因为它们的值不是固定的。</li>
-  <li>let关键字只用来声明常量属性，表示初始化后再也无法修改的值。</li>
-</ul>
-
-<p>只读计算属性的声明可以去掉 get 关键字和花括号：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Cuboid</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">var</span> <span class="nv">volume</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">let</span> <span class="nv">fourByFiveByTwo</span> <span class="o">=</span> <span class="kt">Cuboid</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nv">depth</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"the volume of fourByFiveByTwo is </span><span class="se">\(</span><span class="n">fourByFiveByTwo</span><span class="o">.</span><span class="n">volume</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "the volume of fourByFiveByTwo is 40.0"</span>
-<span class="cm">/*
-结构体还有一个名为 volume 的只读计算属性用来返回立方体的体积。为 volume 提供 setter 毫无意义，因为无法确定如何修改 width、height 和 depth 三者的值来匹配新的 volume。然而，Cuboid 提供一个只读计算属性来让外部用户直接获取体积是很有用的。*/</span>
-</code></pre>
-</div>
-
-<h3 id="property-observers">属性观察器 Property Observers</h3>
-
-<p>属性观察器监控和响应属性值的变化，每次属性被设置值的时候都会调用属性观察器，即使新值和当前值相同的时候也不例外。</p>
-
-<ul>
-  <li>可以为除了延迟存储属性之外的其他存储属性添加属性观察器;</li>
-  <li>也可以通过重写属性的方式为继承的属性（包括存储属性和计算属性）添加属性观察器</li>
-  <li>你不必为非重写的计算属性添加属性观察器，因为可以通过它的 setter 直接监控和响应值的变化</li>
-</ul>
-
-<p>可以为属性添加如下的一个或全部观察器：</p>
-<ul>
-  <li>
-    <p>willSet 在新的值被设置之前调用:willSet 观察器会将新的属性值作为常量参数传入，在 willSet 的实现代码中可以为这个参数指定一个名称，如果不指定则参数仍然可用，这时使用默认名称 newValue 表示。</p>
-  </li>
-  <li>
-    <p>didSet 在新的值被设置之后立即调用:didSet 观察器会将旧的属性值作为参数传入，可以为该参数命名或者使用默认参数名 oldValue。如果在 didSet 方法中再次对该属性赋值，那么新值会覆盖旧的值。</p>
-  </li>
-  <li>父类的属性在子类的构造器中被赋值时，它在父类中的 willSet 和 didSet 观察器会被调用，随后才会调用子类的观察器</li>
-  <li>在父类初始化方法调用之前，子类给属性赋值时，观察器不会被调用</li>
-  <li>默认值 oldValue 表示旧值的参数名。</li>
-</ul>
-
-<p>案例：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">StepCounter</span> <span class="p">{</span>
-<span class="c1">// 定义了一个 Int 类型的属性 totalSteps，它是一个存储属性，包含 willSet 和 didSet 观察器。</span>
-    <span class="k">var</span> <span class="nv">totalSteps</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nf">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nf">print</span><span class="p">(</span><span class="s">"About to set totalSteps to </span><span class="se">\(</span><span class="n">newTotalSteps</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">didSet</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="n">totalSteps</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
-                <span class="nf">print</span><span class="p">(</span><span class="s">"Added </span><span class="se">\(</span><span class="n">totalSteps</span> <span class="o">-</span> <span class="n">oldValue</span><span class="se">)</span><span class="s"> steps"</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">let</span> <span class="nv">stepCounter</span> <span class="o">=</span> <span class="kt">StepCounter</span><span class="p">()</span>
-<span class="c1">// 当 totalSteps 被设置新值的时候，它的 willSet 和 didSet 观察器都会被调用，即使新值和当前值完全相同时也会被调用。</span>
-
-<span class="n">stepCounter</span><span class="o">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="c1">// About to set totalSteps to 200</span>
-<span class="c1">// Added 200 steps</span>
-<span class="n">stepCounter</span><span class="o">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">360</span>
-<span class="c1">// About to set totalSteps to 360</span>
-<span class="c1">// Added 160 steps</span>
-<span class="n">stepCounter</span><span class="o">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">896</span>
-<span class="c1">// About to set totalSteps to 896</span>
-<span class="c1">// Added 536 steps</span>
-</code></pre>
-</div>
-
-<p>注意：如果将属性通过 in-out 方式传入函数，willSet 和 didSet 也会调用。这是因为 in-out 参数采用了拷入拷出模式：即在函数内部使用的是参数的 copy，函数结束后，又对参数重新赋值。</p>
-
-<h3 id="global-and-local-variables">全局变量和局部变量 Global and Local Variables</h3>
-
-<p>计算属性和属性观察器所描述的功能也可以用于全局变量和局部变量。全局变量是在函数、方法、闭包或任何类型之外定义的变量。局部变量是在函数、方法或闭包内部定义的变量。</p>
-
-<ul>
-  <li>全局或局部变量都属于存储型变量，跟存储属性类似，它为特定类型的值提供存储空间，并允许读取和写入。</li>
-  <li>在全局或局部范围都可以定义计算型变量和为存储型变量定义观察器。计算型变量跟计算属性一样，返回一个计算结果而不是存储值，声明格式也完全一样。</li>
-  <li>全局的常量或变量都是延迟计算的，跟延迟存储属性相似，</li>
-  <li>全局的常量或变量不需要标记lazy修饰符。</li>
-  <li>局部范围的常量或变量从不延迟计算。</li>
-</ul>
-
-<h3 id="type-properties">类型属性 Type Properties</h3>
-
-<p>类型属性用于定义某个类型所有实例共享的数据，比如所有实例都能用的一个常量（就像 C 语言中的静态常量），或者所有实例都能访问的一个变量（就像 C 语言中的静态变量）。</p>
-
-<ul>
-  <li>实例属性属于一个特定类型的实例，每创建一个实例，实例都拥有属于自己的一套属性值，实例之间的属性相互独立。</li>
-  <li>也可以为类型本身定义属性，无论创建了多少个该类型的实例，这些属性都只有唯一一份。这种属性就是类型属性。</li>
-  <li>存储型类型属性可以是变量或常量，计算型类型属性跟实例的计算型属性一样只能定义成变量属性。</li>
-  <li>跟实例的存储型属性不同，必须给存储型类型属性指定默认值，因为类型本身没有构造器，也就无法在初始化过程中使用构造器给类型属性赋值。</li>
-  <li>存储型类型属性是延迟初始化的，它们只有在第一次被访问的时候才会被初始化。即使它们被多个线程同时访问，系统也保证只会对其进行一次初始化，并且不需要对其使用 lazy 修饰符。</li>
-</ul>
-
-<p>1、类型属性语法</p>
-
-<p>在C或OC中，与某个类型关联的静态常量和静态变量，是作为全局（global）静态变量定义的。但是在 Swift 中，类型属性是作为类型定义的一部分写在类型最外层的花括号内，因此它的作用范围也就在类型支持的范围内。</p>
-
-<p>使用关键字 static 来定义类型属性。在为类定义计算型类型属性时，可以改用关键字 class 来支持子类对父类的实现进行重写。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 下面的例子演示了存储型和计算型类型属性的语法：</span>
-<span class="kd">struct</span> <span class="kt">SomeStructure</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">computedTypeProperty</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">enum</span> <span class="kt">SomeEnumeration</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">computedTypeProperty</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">6</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">computedTypeProperty</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">27</span>
-    <span class="p">}</span>
-    <span class="kd">class</span> <span class="k">var</span> <span class="nv">overrideableComputedTypeProperty</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">107</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>注意：
-例子中的计算型类型属性是只读的，但也可以定义可读可写的计算型类型属性，跟计算型实例属性的语法相同。</p>
-
-<p>2、获取和设置类型属性的值</p>
-
-<p>跟实例属性一样，类型属性也是通过点运算符来访问。但是，类型属性是通过类型本身来访问，而不是通过实例。比如：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="kt">SomeStructure</span><span class="o">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
-<span class="c1">// Prints "Some value."</span>
-<span class="kt">SomeStructure</span><span class="o">.</span><span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Another value."</span>
-<span class="nf">print</span><span class="p">(</span><span class="kt">SomeStructure</span><span class="o">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
-<span class="c1">// Prints "Another value."</span>
-<span class="nf">print</span><span class="p">(</span><span class="kt">SomeEnumeration</span><span class="o">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
-<span class="c1">// Prints "6"</span>
-<span class="nf">print</span><span class="p">(</span><span class="kt">SomeClass</span><span class="o">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
-<span class="c1">// Prints "27"</span>
-</code></pre>
-</div>
-
-<p>下面的例子定义了一个结构体，使用两个存储型类型属性来表示两个声道的音量，每个声道具有 0 到 10 之间的整数音量。下图展示了如何把两个声道结合来模拟立体声的音量。当声道的音量是 0，没有一个灯会亮；当声道的音量是 10，所有灯点亮。本图中，左声道的音量是 9，右声道的音量是 7
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/staticPropertiesVUMeter_2x.png" alt="" /></p>
-
-<p>上面所描述的声道模型使用 AudioChannel 结构体的实例来表示：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">AudioChannel</span> <span class="p">{</span>
-    <span class="c1">// 存储型类型属性：音量的最大上限阈值</span>
-    <span class="kd">static</span> <span class="k">let</span> <span class="nv">thresholdLevel</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="c1">// 存储型类型属性：表示所有 AudioChannel 实例的最大音量，初始值是0</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">maxInputLevelForAllChannels</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1">// 存储型实例属,包含 didSet 属性观察器来检查每次设置后的属性值。</span>
-    <span class="k">var</span> <span class="nv">currentLevel</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="k">didSet</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="n">currentLevel</span> <span class="o">&gt;</span> <span class="kt">AudioChannel</span><span class="o">.</span><span class="n">thresholdLevel</span> <span class="p">{</span>
-                <span class="c1">// 将当前音量限制在阀值之内</span>
-                <span class="n">currentLevel</span> <span class="o">=</span> <span class="kt">AudioChannel</span><span class="o">.</span><span class="n">thresholdLevel</span>
-            <span class="p">}</span>
-            <span class="k">if</span> <span class="n">currentLevel</span> <span class="o">&gt;</span> <span class="kt">AudioChannel</span><span class="o">.</span><span class="n">maxInputLevelForAllChannels</span> <span class="p">{</span>
-                <span class="c1">// 存储当前音量作为新的最大输入音量</span>
-                <span class="kt">AudioChannel</span><span class="o">.</span><span class="n">maxInputLevelForAllChannels</span> <span class="o">=</span> <span class="n">currentLevel</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 可以使用结构体 AudioChannel 创建两个声道 leftChannel 和rightChannel，用以表示立体声系统的音量：</span>
-<span class="k">var</span> <span class="nv">leftChannel</span> <span class="o">=</span> <span class="kt">AudioChannel</span><span class="p">()</span>
-<span class="k">var</span> <span class="nv">rightChannel</span> <span class="o">=</span> <span class="kt">AudioChannel</span><span class="p">()</span>
-
-<span class="c1">// 如果将左声道的 currentLevel 设置成 7，类型属性 maxInputLevelForAllChannels 也会更新成 7：</span>
-<span class="n">leftChannel</span><span class="o">.</span><span class="n">currentLevel</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">leftChannel</span><span class="o">.</span><span class="n">currentLevel</span><span class="p">)</span>
-<span class="c1">// Prints "7"</span>
-<span class="nf">print</span><span class="p">(</span><span class="kt">AudioChannel</span><span class="o">.</span><span class="n">maxInputLevelForAllChannels</span><span class="p">)</span>
-<span class="c1">// Prints "7"</span>
-
-<span class="c1">// 如果试图将右声道的 currentLevel 设置成 11，它会被修正到最大值 10，同时 maxInputLevelForAllChannels 的值也会更新到 10：</span>
-<span class="n">rightChannel</span><span class="o">.</span><span class="n">currentLevel</span> <span class="o">=</span> <span class="mi">11</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">rightChannel</span><span class="o">.</span><span class="n">currentLevel</span><span class="p">)</span>
-<span class="c1">// Prints "10"</span>
-<span class="nf">print</span><span class="p">(</span><span class="kt">AudioChannel</span><span class="o">.</span><span class="n">maxInputLevelForAllChannels</span><span class="p">)</span>
-<span class="c1">// Prints "10"</span>
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -3030,10 +1935,10 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           
-          <span class="page_number ">1/6</span>
+          <span class="page_number ">1/7</span>
           
             <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -3047,11 +1952,15 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                 </div>
                 <ul class="content-ul" recent>
                     
-                        <li><a href="/2017/02/07/AD-Fastlane/">自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
+                        <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
                     
-                        <li><a href="/2017/01/23/AD-XCTest/">自动化测试部署系列 - XCTest入门</a></li>
+                        <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
                     
-                        <li><a href="/2017/01/18/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
+                        <li><a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></li>
+                    
+                        <li><a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></li>
+                    
+                        <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
                     
@@ -3062,10 +1971,6 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                         <li><a href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a></li>
                     
                         <li><a href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a></li>
-                    
-                        <li><a href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a></li>
-                    
-                        <li><a href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a></li>
                     
                 </ul>
             </div>
@@ -3110,7 +2015,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                             <span class="name">
                                 AD
                             </span>
-                            <span class="badge">6</span>
+                            <span class="badge">4</span>
                         </a>
                     </li>
                     
@@ -3138,6 +2043,15 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                                 Swift3.0
                             </span>
                             <span class="badge">11</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#CI" class="categories-list-item" cate="CI">
+                            <span class="name">
+                                CI
+                            </span>
+                            <span class="badge">4</span>
                         </a>
                     </li>
                     
@@ -3366,6 +2280,20 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                       
                       
                       
+                      <a href="/tag/#Github" style="font-size: 9pt; color: #999;">Github</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Travis-CI" style="font-size: 9pt; color: #999;">Travis-CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
                       <a href="/tag/#XCTest" style="font-size: 9pt; color: #999;">XCTest</a>
                     
                       
@@ -3373,7 +2301,14 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                       
                       
                       
-                      <a href="/tag/#fastlane" style="font-size: 9pt; color: #999;">fastlane</a>
+                      <a href="/tag/#fastlane" style="font-size: 10pt; color: #888;">fastlane</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
                     
                 </div>
             </div>

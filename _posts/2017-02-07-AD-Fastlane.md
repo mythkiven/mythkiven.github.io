@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "自动化测试部署系列 - Fastlane的黑魔法:自动打包编译上传 AppStore"
-categories: AD
+title:  " 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore"
+categories: CI
 tags: fastlane
 author: 3行代码
 ---
