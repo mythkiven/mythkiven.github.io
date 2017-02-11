@@ -65,11 +65,6 @@ Xcode 不仅可以通过 GUI 编译运行,还可以通过命令行实现编译�
 ``` shell 
 xcodebuild [-project <projectname>] [[-target <targetname>]...|-alltargets] [-configuration <configurationname>] [-arch <architecture>]... [-sdk [<sdkname>|<sdkpath>]] [-showBuildSettings] [<buildsetting>=<value>]... [<buildaction>]...
 
-xcodebuild [-project <projectname>] -scheme <schemeName> [-destination <destinationspecifier>]... [-configuration <configurationname>] [-arch <architecture>]... [-sdk [<sdkname>|<sdkpath>]] [-showBuildSettings] [<buildsetting>=<value>]... [<buildaction>]...
-
-xcodebuild -workspace <workspacename> -scheme <schemeName> [-destination <destinationspecifier>]... [-configuration <configurationname>] [-arch <architecture>]... [-sdk [<sdkname>|<sdkpath>]] [-showBuildSettings] [<buildsetting>=<value>]... [<buildaction>]...
-
-xcodebuild -version [-sdk [<sdkfullpath>|<sdkname>] [<infoitem>] ]
 ...
 ```
 
@@ -80,18 +75,6 @@ Options:
     -help                               print complete usage
     -verbose                            provide additional status output
     -license                            show the Xcode and SDK license agreements
-    -checkFirstLaunchStatus             Check if any First Launch tasks need to be performed
-    -project NAME                       build the project NAME
-    -target NAME                        build the target NAME
-    -alltargets                         build all targets
-    -workspace NAME                     build the workspace NAME
-    -scheme NAME                        build the scheme NAME
-    -configuration NAME                 use the build configuration NAME for building each target
-    -xcconfig PATH                      apply the build settings defined in the file at PATH as overrides
-    -arch ARCH                          build each target for the architecture ARCH; this will override architectures defined in the project
-    -sdk SDK                            use SDK as the name or path of the base SDK when building the project
-    -toolchain NAME                     use the toolchain with identifier or name NAME
-    
     ....
 ```
 
@@ -258,6 +241,110 @@ jenkins Location 设置
 
 ![](http://7xsugd.com2.z0.glb.clouddn.com/runningyoungBlog/images/email.png)
 
+##### 7. 认证配置
+
+- 基于 用户名+密码 : 将 Gitlab 的用户名,密码添加进来.就可以通过此认证,来访问 Git 的项目库
+- 
+- 基于 API Token : 将 GIT的 token 添加进来.
+
+
+### 项目通用配置
+
+-  插件gitlab hook plugin，可以识别gitlab发送过来的提交信息，并触发对应的job
+-  Environment Injector Plugin（自定义全局变量）
+-  Email Extension Plugin（邮件）
+
+
+
+可以先看看下边的官方教程:
+
+[官方指南 教程](https://berlin.gitbooks.io/jenkins/content/job/pei_zhi_bian_yi_can_shu.html)
+
+##### 项目编译参数
+
+设置 debug,test等:
+
+> 打开项目 -> 选择参数化构建过程 -> 点选 Choice 配置如下
+> 
+> ![](https://berlin.gitbooks.io/jenkins/content/pic/job/jb-02.jpg)
+
+#####  项目构建参数
+
+设置构建参数:
+
+> 打开项目 -> Build with Parameters -> 配置如下
+> 
+> ![](https://berlin.gitbooks.io/jenkins/content/pic/job/jb-03.jpg)
+
+##### 构建触发器
+
+> 通常手动构建job不是我们想要的，我们想要让其自动构建，这就需要达到一定条件进行触发构建，所有就有了触发器
+> 详细的配置,参考[官方文档](https://berlin.gitbooks.io/jenkins/content/job/gou_jian_de_hong_fa_qi.html)
+
+
+Jenkins 支持多种触发器配置,包括：
+
+
+- 
+- 定期检测代码更新，如有更新则进行构建（Poll SCM） (隔一段时间比较一次源代码如果发生变更，那么就build。否则，不进行build)
+- 
+- 根据提交进行构建(Build when a change is pushed to GitHub)
+-
+- 触发远程构建(例如和gitlab的webhooks联动)(当一有对代码push的情况下，就执行构建)
+
+这里以 Gitlab 为例: 有两种方法,这里介绍简单的一种,复杂的请看[官方](https://berlin.gitbooks.io/jenkins/content/job/gou_jian_de_hong_fa_qi.html)
+
+> 1.通过gitlab的webhook与jenkins联动自动触发:需要 jenkins上安装Gitlab Hook Plugin插件.
+> 
+> 2.勾选:Build when a change is pushed to GitLab. GitLab CI Service URL: http://localhost:8080/project/CI%20GitLab  并保存后边的 URL, 这用于在 gitlab 中的 webhook.
+> 
+>  保存以上设置,然后:
+>  
+> 3.进入 gitlab -> 项目 -> 点击左侧的设置 -> webhook -> 粘贴刚才的 URL, 保存,并点击 TEST HOOK... 如果 一切 OK, 页面很快会提示:HOOK SUCCESSFUL.
+> 
+> 4.有问题,参见[官方](https://berlin.gitbooks.io/jenkins/content/job/gou_jian_de_hong_fa_qi.html)
+> 
+> ![](https://berlin.gitbooks.io/jenkins/content/pic/job/jb-18.jpg)
+> 
+
+- 定期进行构建（Build periodically），(隔一段时间build一次，不管版本库代码是否发生变化，通常不会采用此种方式),语法如下:
+```
+H(25-30) 18 1-5： 工作日下午6点25到30分之间进行build
+H 23 1-5：工作日每晚23:00至23:59之间的某一时刻进行build
+H(0-29)/15：前半小时内每隔15分钟进行build（开始时间不确定） 
+H/20：每隔20分钟进行build（开始时间不确定）
+```
+
+
+###### Jobs构建方式\编译 配置
+
+Jenkins支持多种编译配置方式,包括：
+
+- Xcode: iOS编译配置（安装Xcode integration插件）
+- Invoke Gradle script： Android编译配置(安装Gradle plugin插件)
+- Exceute Shell： 脚本方式
+
+对于iOS应用的构建,如果选择Xcode方式构建,需要配置好开发者证书. 推荐使用Exceute Shell方式,简单有效。
+
+
+##### 构建后的操作
+
+- 向分支push后自动触发jenkins job,上边已经是实现
+- jenkins job 成功执行后为当前的commit添加一个标签，方便以后进行线上回滚
+- 如果编译失败，就发邮件给开发人员,如果编译成功，就发邮件给测试人员
+
+
+Artifacts和邮件通知配置等,[参考](https://gold.xitu.io/entry/5792b7320a2b580061ab0e27)
+
+
+ 
+
+
+
+
+
+
+
 ### 配置 github 
 
 之所以要配置,是因为 Jenkins 默认不支持 GitHub,需要自行配置(默认支持 CVS\Subversion)
@@ -342,43 +429,72 @@ Jenkins默认只能构建前执行shell,不能构建后执行shell.当有该需�
 
 然而,我的 Jenkins 是本地的,在 GitHub 并不能直接访问到我的电脑,so,设置是无效的....
 
+
 ### 配置 GitLab
 
-> [官方教程](https://docs.gitlab.com/ee/integration/jenkins.html)
+**集成目的: Gitlab 有新的推送,就会触发 Jenkins 构建.构建状态反馈给 Gitlab**
 
-- 安装 Gitlab 插件 
+##### 1. 安装插件
+
+> [Gitlab官方教程](https://docs.gitlab.com/ee/integration/jenkins.html)
+> [Gitlab 官方教程2](https://docs.gitlab.com/ee/integration/jenkins.html)
+
+- 1). 安装 Gitlab 插件 
 
 > 系统管理 -> 管理插件 -> 可选插件 :中选择GitLab Plugin 和 Gitlab Hook Plugin 这两项，然后安装.
 
-- 安装 Xcode 插件
+- 2). 安装 Xcode 插件
 
 > 同上,安装 Xcode integration
 
-- 安装签名证书管理插件
+- 3). 安装签名证书管理插件
 OS打包内测版时,需要发布证书及相关签名文件,因此这两个插件对于管理iOS证书非常方便.
 
 > 同上,安装 Credentials Plugin 和 Keychains and Provisioning Profiles Management 
 
-##### 配置 SSH
+##### 2. 配置 API Token
 
-在 Jenkins 的证书管理中添加SSH:
+> 1. Gitlabe: Copy the private API token from [ Profile Settings -> Account ]
+> 
+> 2. Jenkins: Go to [ Manage Jenkins -> Configure System ] -> [GitLab] 粘贴 Gitlab 主机地址,以及 API Token
+> 
+> 3. 可能2步骤没有 API Token 选项,因为都已经集成到 Credentials 中了,所以,要进入 Credentials 中,然后 添加新的凭证:
+> 
+> 首页点击 Credentials -> 点击 System -> 点击底部的 Glopbal credentials(unrestricted) -> 跳入新的页面,点击 Add Credentials -> Kind 选择 [GitLab API Token],然后粘贴上述的 token ,要注意的是, Description 需要写清楚,不然容易弄混淆(GitHub 也添加了 Secret text, 容易混)
+>
+> 以上前提是有安装插件:Plain Credentiles Plugin ,以及相关插件. 否则不会有 gitlab API token 这个选项的.
+
+##### 3. 配置 Gitlab 账号密码
+
+
+在系统配置里,添加 类型: Username with password -> 配置账号密码即可.
+
+
+##### 4. 配置 SSH
+
+1.直接获取:
+
 ``` shell
-$ cd ~/.ssh
-$ ls 
-$ cat id_rsa.pub
-# 然后 copy key, 粘贴到 Jenkins 中,并输入最初始的密码即可.如下图
+$ ls ~/.ssh
+$ cat id_rsa # 显示
+$ pbcopy < ~/.ssh/id_rsa #复制
+# 然后 粘贴到 Jenkins 中,并输入最初始的密码即可.如下图
 ```
 
 ![](http://img.hb.aicdn.com/9756ed06006b5d816ac3e4fdc9891249fd7879f116026-K0Lsxk_fw658)
 
-或者创建新的 SSH
+2.创建新的 SSH
 
 ``` shell
-$ ssh-keygen -t rsa -C “Your email” # 生成过程中需设置密码，最终生成 id_rsa 和 id_rsa.pub(公钥),过程中,输入名称 JenkinsT
-# 私钥id_rsa:本机添加秘钥到SSH：ssh-add 文件名（需输入管理密码）
-# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Gitlab上 $ cat  JenkinsT
-# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Jenkins（private key选项）$ cat  JenkinsT
-# 复制公钥的全部内容
+$ ssh-keygen -t rsa -C “Your email” 
+# 私钥id_rsa:本机添加秘钥到秘钥管理器:
+$ eval "$(ssh-agent -s)"
+$ ssh-add ~/.ssh/id_rsa
+# 私钥copy添加进 Jenkins（private key选项）
+$ pbcopy < ~/.ssh/id_rsa
+# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Gitlab上  
+$ pbcopy < ~/.ssh/id_rsa.pub
+
 ```
 
 SSH 添加路径为:
@@ -387,10 +503,245 @@ SSH 添加路径为:
 > 
 > http://localhost:8080/credentials/store/system/domain/_/
 
+
 #### 创建freestyle任务
 
-主界面 --> 点击新建 --> 输入任务名称,并选择任务类型,然后确定
+主界面 --> 点击新建 --> 输入任务名称,并选择 freestyle 任务类型,然后确定
 
+- 源码管理:
+
+>> 输入项目 git 协议地址(git@your.gitlab.server:gitlab_group/gitlab_project.git) 
+>> --> 证书类型选择:相应的 SSH .
+>> -->在高级设置中，将名称设置为origin,将Refspec设置为 +refs/heads/*:refs/remotes/origin/* +refs/merge-requests/*/head:refs/remotes/origin/merge-requests/*
+
+- 
+- 构建触发器:Build when a change is pushed to GitLab. 注意,这里的地址,粘贴在 Gitlab 上 的 WebHook 中
+- 
+
+- 更加详细的任务配置,参考插件[官方文档](https://github.com/jenkinsci/gitlab-plugin#using-it-with-a-job)
+
+
+
+
+
+### Xcode Builder
+
+###### Xcode Builder 设置
+
+> 系统管理–>系统设置->Xcode Builder
+> 默认 path 不变 -> 点击 Add 需填写的内容：
+>
+>![](http://img.blog.csdn.net/20160216141930768)
+
+
+
+>>Keychain Name：iPhone Distribution: *（dis证书常用名）
+>>
+>>Keychain path：${HOME}/Library/Keychains/login.keychain（dis证书路径）
+>>
+>>Keychain password：*
+>>
+>>Add to keychain search path after build：Yes
+>>
+>>Default keychain:iPhone Distribution: *
+
+- 1. General build settings: 
+
+> ++ 填写Target 名字
+> 
+> ++ Clean before build? YES
+> 
+> ++ Pack application and build .ipa? YES
+> 
+> ++ .ipa filename pattern IPA 路径:AD_Demo_${SHORT_VERSION}(固定写法:targetName_${SHORT_VERSION})
+> 
+> ++ Output directory IPA输出位置 ${WORKSPACE}/build/${BUILD_NUMBER}/
+> 
+
+- 2.Code signing & OS X keychain options: 
+
+在系统Xcode Builder（钥匙串设置）已配置,上边已配置
+- 3.Advanced Xcode build options: 
+> ++ “Clean test reports?”  YES
+> 
+> ++Build output directory：${WORKSPACE}/build/${BUILD_NUMBER}/
+> 
+
+![](http://img.blog.csdn.net/20160218095046760)
+![](http://img.blog.csdn.net/20160218095059932)
+![](http://img.blog.csdn.net/20160218095117084)
+- 4. Versioning 构建后的设置 :SHELL 脚本
+
+![](http://img.blog.csdn.net/20160218100247953)
+
+1).点击增加 Shell 脚本:
+
+``` shell 
+"${WORKSPACE}/build/${BUILD_NUMBER}"
+
+for file in "*.ipa"
+do
+    PLIST_NAME=`echo $file`
+done
+
+PLIST_NAME=${PLIST_NAME%.*}
+
+cd "${WORKSPACE}/build"
+echo "PLIST_NAME=$PLIST_NAME" > jenkinsUserGlobal.properties
+
+cat << EOF > ${WORKSPACE}/build/${BUILD_NUMBER}/$PLIST_NAME.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>items</key>
+        <array>
+                <dict>
+                        <key>assets</key>
+                        <array>
+                                <dict>
+                                        <key>kind</key>
+                                        <string>software-package</string>
+                                        <key>url</key>
+                                        <string>https://127.0.0.1/$PLIST_NAME.ipa</string>
+                                </dict>
+                        </array>
+                        <key>metadata</key>
+                        <dict>
+                                <key>bundle-identifier</key>
+                                <string>com.3code.ADDemo</string>
+                                <key>bundle-version</key>
+                                <string>1</string>
+                                <key>kind</key>
+                                <string>software</string>
+                                <key>title</key>
+                                <string>ADDemo</string>
+                        </dict>
+                </dict>
+        </array>
+</dict>
+</plist>
+EOF
+```
+
+2). 点击增加 Inject environment variables
+
+并设置:
+> 需填写的内容：(将在Execute shell中生成的全局变量文件地址放入 Properties File Path中)
+Properties File Path：${WORKSPACE}/build/jenkinsUserGlobal.properties
+
+![](http://img.blog.csdn.net/20160218100610924)
+
+- 5.构建后的操作: 设置邮件
+
+![](http://img.blog.csdn.net/20160218100726636)
+触发器：构建成功、失败触发(扩展一下：失败点“高级”设置只发送给自己) 
+![](http://img.blog.csdn.net/20160218100837965)
+
+>需填写的内容：
+>
+> Project Recipient List：邮件接收人（多个时用”,“分割）
+>
+> Project Reply-To List：$DEFAULT_REPLYTO
+> 
+> Content Type：选择”HTML(text/html)“
+> 
+> Default Subject：标题: **${PROJECT_NAME}构建通知:第${BUILD_NUMBER}次持续集成${PLIST_NAME}构建${BUILD_STATUS}**
+> 
+> Default Content:（将ipa全局变量传递到邮件生成下载链接和链接二维码）,如下:
+
+``` xml
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${ENV, var="JOB_NAME"}-第${BUILD_NUMBER}次构建日志</title>
+</head>
+
+<body leftmargin="8" marginwidth="0" topmargin="8" marginheight="4"
+    ffset="0">
+    <table width="95%" cellpadding="0" cellspacing="0"
+        style="font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif">
+        <tr>
+            <td><h2>
+                    <font color="#0000FF">构建结果 - ${BUILD_STATUS}</font>
+                </h2></td>
+        </tr>
+        <tr>
+                <td><h2>
+                    <font color="#FF0000">App下载链接:<a href="itms-services://?action=download-manifest&url=https://******/${PLIST_NAME}.plist">itms-services://?action=download-manifest&url=https://127.0.0.1/${PLIST_NAME}.plist</a></font>
+                </h2></td>
+        </tr>
+        <tr>
+               <td><h2>
+                      <font color="#FF0000">二维码图片:</font>
+               </h2></td>
+        </tr>
+        <tr>
+                <td>
+                    <img src="http://qr.liantu.com/api.php?text=itms-services://?action=download-manifest%26url=https://******/${PLIST_NAME}.plist" height="300" width="300">
+                </td>
+        </tr>
+        <tr>
+            <td><br />
+            <b><font color="#0B610B">构建信息</font></b>
+            <hr size="2" width="100%" align="center" /></td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>项目名称&nbsp;：&nbsp;${PROJECT_NAME}</li>
+                    <li>构建编号&nbsp;：&nbsp;第${BUILD_NUMBER}次构建</li>
+                    <li>SVN&nbsp;版本：&nbsp;${SVN_REVISION}</li>
+                    <li>触发原因：&nbsp;${CAUSE}</li>
+                    <li>构建日志：&nbsp;<a href="${BUILD_URL}console">${BUILD_URL}console</a></li>
+                    <li>构建&nbsp;&nbsp;Url&nbsp;：&nbsp;<a href="${BUILD_URL}">${BUILD_URL}</a></li>
+                    <li>工作目录&nbsp;：&nbsp;<a href="${PROJECT_URL}ws">${PROJECT_URL}ws</a></li>
+                    <li>项目&nbsp;&nbsp;Url&nbsp;：&nbsp;<a href="${PROJECT_URL}">${PROJECT_URL}</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b><font color="#0B610B">Changes Since Last
+                        Successful Build:</font></b>
+            <hr size="2" width="100%" align="center" /></td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>历史变更记录 : <a href="${PROJECT_URL}changes">${PROJECT_URL}changes</a></li>
+                </ul> ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format="Changes for Build #%n:<br />%c<br />",showPaths=true,changesFormat="<pre>[%a]<br />%m</pre>",pathFormat="&nbsp;&nbsp;&nbsp;&nbsp;%p"}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Failed Test Results</b>
+            <hr size="2" width="100%" align="center" /></td>
+        </tr>
+        <tr>
+            <td><pre
+                    style="font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif">$FAILED_TESTS</pre>
+                <br /></td>
+        </tr>
+        <tr>
+            <td><b><font color="#0B610B">构建日志 (最后 100行):</font></b>
+            <hr size="2" width="100%" align="center" /></td>
+        </tr>
+        <tr>
+            <td><textarea cols="80" rows="30" readonly="readonly"
+                    style="font-family: Courier New">${BUILD_LOG, maxLines=100}</textarea>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+```
+
+邮件截图
+
+![](http://img.blog.csdn.net/20160218103409264)
+![](http://img.blog.csdn.net/20160218103358248)
+
+### 多 Target 扩展
 
 
 ### Jenkins Shell 脚本
@@ -433,13 +784,7 @@ bash /data/apache-tomcat-7.0.56/bin/startup.sh
 
 - Jenkins 的界面是可以自定义的,[参考此处](https://wiki.jenkins-ci.org/display/JENKINS/Simple+Theme+Plugin)
 - [优秀:Jenkins + Gitlab + 蒲公英 + 邮件通知](https://runningyoung.github.io/2016/04/01/2016-04-05-jenkins2/)
-
-
-
-
-
-
-
+- [优秀:jenkins+xcode+svn+七牛](http://blog.csdn.net/fengshi_sh/article/details/50669754)
 
 
 

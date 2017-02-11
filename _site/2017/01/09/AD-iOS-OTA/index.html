@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>持续集成系列 - App 内测分发平台之 OTA </title>
+    <meta name="description" content="  剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????  newItemForGitlab 项目已经可以正确的运行了,关键就是 打包编译的问题//////          前言      剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????newItemFo...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2017/01/09/AD-iOS-OTA/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>持续集成系列 - App 内测分发平台之 OTA </h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2017-01-09
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#OTA" title="Tag: OTA" rel="tag">OTA</a-->
+        <a href="/tag/#OTA" title="Tag: OTA" rel="tag">OTA</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????</a></li>
+  <li><a href="#newitemforgitlab--" id="markdown-toc-newitemforgitlab--">newItemForGitlab 项目已经可以正确的运行了,关键就是 打包编译的问题//////</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">前言</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">构建内测分发平台;</a>        <ul>
+          <li><a href="#web" id="markdown-toc-web">1. 在web服务器上部署好目录结构</a></li>
+          <li><a href="#jenkins" id="markdown-toc-jenkins">2. 在jenkins中用简单的脚本实现这个过程</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section">剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????</h1>
+<h1 id="newitemforgitlab--">newItemForGitlab 项目已经可以正确的运行了,关键就是 打包编译的问题//////</h1>
+
+<h3 id="section-1">前言</h3>
+
+<p>目标是:建立自己的移动应用内测分发平台.方便测试人员快速的获取到最新的测试包.</p>
+
+<p>流程:</p>
+
+<ul>
+  <li>通过脚本,自动将项目打包编译,生成 AdHoc 版本的 ipa</li>
+  <li>脚本自动上传 ipa 到公司内网的服务器</li>
+  <li>然后邮件通知相关人员,邮件中内置 url</li>
+  <li>在 Safari 中点开url,直接安装内测版本</li>
+</ul>
+
+<p><strong>注意事项:必要3条件</strong></p>
+
+<ul>
+  <li>
+    <ol>
+      <li>AdHoc 版 ipa 文件</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>AdHoc 版 plist 文件</li>
+    </ol>
+  </li>
+</ul>
+
+<p>如果是使用 Xcode 打包,会自动生成上述的两个文件,当然也可以使用脚本生成.plist 文件内容如下(小结末尾)</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>一个内测发布页面</li>
+    </ol>
+  </li>
+</ul>
+
+<p>目的是提供一个<code class="highlighter-rouge">itms-services://</code>协议的链接,让用户访问这个链接即可实现在线安装.一个最简单的html页面就是下面这样:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://1192.168.117.39/apps/manifest.plist"</span><span class="nt">&gt;</span>
+  Download ADDemo
+<span class="nt">&lt;/a&gt;</span>
+<span class="c">&lt;!-- 或者这样 --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/xxx.plist"</span><span class="nt">&gt;</span>Install App<span class="nt">&lt;/a&gt;</span>  
+</code></pre>
+</div>
+
+<p>整个OTA的核心就是苹果的itms-services协议， safari通过解析类似于itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/xxxx.plist 这样的一个链接来实现在线安装。url就是你的*.plist文件所在的地址，在iOS7.1以前，这个url是没有限制的，在7.1之后，苹果做了修改，要求这个url必须是可信任的https链接。其他地方的链接并没有要求。</p>
+
+<p>OTA就是over the air,是一种无线发布方式,它可以实现app的在线安装,不再需要数据线.</p>
+
+<p>而对于 https,方案有:自己公司搭建;使用三方的云盘(hppts的,将 ipa 传上去);自己配置.
+更详细的内容参考:<a href="http://blog.csdn.net/close_marty/article/details/38441903">iOS通过OTA方式分发应用的实现</a></p>
+
+<p>相关资料:
+1.plist 文件的内容为:</p>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>items<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;dict&gt;</span>
+            <span class="nt">&lt;key&gt;</span>assets<span class="nt">&lt;/key&gt;</span>
+            <span class="nt">&lt;array&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>software-package<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://192.168.117.39/apps/app.ipa<span class="nt">&lt;/string&gt;</span>
+                    <span class="c">&lt;!-- 这里是服务器上的 ipa 的地址--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>display-image<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://avatar.csdn.net/F/2/A/1_close_marty.jpg<span class="nt">&lt;/string&gt;</span>
+                     <span class="c">&lt;!-- 这是展示图片--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>full-size-image<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://avatar.csdn.net/F/2/A/1_close_marty.jpg<span class="nt">&lt;/string&gt;</span>
+                     <span class="c">&lt;!-- 这是展示图片--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+            <span class="nt">&lt;/array&gt;</span>
+            <span class="nt">&lt;key&gt;</span>metadata<span class="nt">&lt;/key&gt;</span>
+            <span class="c">&lt;!-- 如果是放在服务器上,以下的 内容要写成动态的 --&gt;</span>
+            <span class="nt">&lt;dict&gt;</span>
+                <span class="nt">&lt;key&gt;</span>bundle-identifier<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${BUNDLE_IDENTIFIER}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;com.3code.ADDemo&lt;/string&gt; --&gt;</span>
+                <span class="nt">&lt;key&gt;</span>bundle-version<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${APPLICATION_VERSION}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;1.0&lt;/string&gt; --&gt;</span>
+                <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>software<span class="nt">&lt;/string&gt;</span>
+                <span class="nt">&lt;key&gt;</span>title<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${DISPLAY_NAME}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;AD_Demo&lt;/string&gt; --&gt;</span>
+            <span class="nt">&lt;/dict&gt;</span>
+        <span class="nt">&lt;/dict&gt;</span>
+    <span class="nt">&lt;/array&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/plist&gt;</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>web 页面的参考代码:</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=iso-8859-1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span> <span class="nt">/&gt;</span> 
+  <span class="nt">&lt;title&gt;</span>Install Geoloqi<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="sx">url(bkg.png)</span> <span class="nb">repeat</span> <span class="m">#c5ccd4</span><span class="p">;</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.congrats</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">16pt</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">6px</span><span class="p">;</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.step</span> <span class="p">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="m">#ccc</span> <span class="nb">solid</span><span class="p">;</span>
+      <span class="nl">border-radius</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">4px</span> <span class="m">10px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.instructions</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">10pt</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.arrow</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">15pt</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">table</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"congrats"</span><span class="nt">&gt;</span>Congrats! You've been invited to the beta of Geoloqi.<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"step"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;table&gt;&lt;tr&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"instructions"</span><span class="nt">&gt;</span>Install the<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>Geoloqi app<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">width=</span><span class="s">"24"</span> <span class="na">class=</span><span class="s">"arrow"</span><span class="nt">&gt;</span><span class="ni">&amp;rarr;</span><span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">width=</span><span class="s">"57"</span> <span class="na">class=</span><span class="s">"imagelink"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=http://loqi.me/app/Geoloqi.plist"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"geoloqi-icon.png"</span> <span class="na">height=</span><span class="s">"57"</span> <span class="na">width=</span><span class="s">"57"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>3.证书的配置,<a href="http://blog.csdn.net/close_marty/article/details/38441903">参见</a></p>
+
+<p>OK ,以上是基本的知识储备.</p>
+
+<h3 id="section-2">构建内测分发平台;</h3>
+
+<p>整过程就是: Jenkins 构建成功后发送邮件给相关人员,邮件中附带二维码,其他人员扫描二维码访问install.html页面,点击即可自动安装最新的app.</p>
+
+<h5 id="web">1. 在web服务器上部署好目录结构</h5>
+
+<p><img src="http://img.blog.csdn.net/20140814162711381?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2xvc2VfbWFydHk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+<p>其中：</p>
+
+<ul>
+  <li>install.html 是一个非常简单的发布页面，这个页面的地址固定不变，其他人就总是通过访问 http://xxx.xxx.xxx/ota/install.html 来实现所有操作。</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin-top:50px"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://xxx.xxx.xxx/ota/ca.crt"</span> <span class="na">style=</span><span class="s">"font-size:70px;"</span><span class="nt">&gt;</span>Install Root Certificate<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>  
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin-top:100px"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/ota/iPhone/iPhoneOTA.plist"</span> <span class="na">style=</span><span class="s">"font-size:70px;"</span><span class="nt">&gt;</span>Install iPhone App<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>  
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"text-align:center;margin-top:100px"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/ota/iPad/iPadOTA.plist"</span> <span class="na">style=</span><span class="s">"font-size:70px;"</span><span class="nt">&gt;</span>Install iPad App<span class="nt">&lt;/a&gt;&lt;/div&gt;</span> 
+</code></pre>
+</div>
+
+<ul>
+  <li>iPad和iPhone 目录中是各自对应的最新ipa文件 (通过脚本生成,然后上传过来的)</li>
+  <li>otabuddy.sh 用来根据ipa自动生成plist文件, 脚本地址如下AA1:</li>
+  <li>ca.crt是给https连接对应的服务器证书签名的根证书。 具体 <a href="http://blog.csdn.net/close_marty/article/details/38441903">参考这里</a></li>
+</ul>
+
+<p><a href="https://github.com/sveinungkb/ios-ota-buddy">AA1:脚本</a>
+<a href="https://github.com/Mr3C/ios-ota-buddy">AA1:备份脚本</a></p>
+
+<h5 id="jenkins">2. 在jenkins中用简单的脚本实现这个过程</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#将二维码放到对应job的根目录下,便于作为邮件附件发送。install.png就是install.html的url对应的二维码  </span>
+cp /Users/marty/.jenkins/workspace/install.png /Users/marty/.jenkins/workspace/xxxx/  
+<span class="c">#删除已有的ipa和plist  </span>
+<span class="nb">cd</span> /Library/WebServer/Documents/ota/iPad/  
+rm -rf <span class="k">*</span>.ipa  
+rm -rf <span class="k">*</span>.plist  
+<span class="c">#把最新的ipa从jenkins工作目录复制到web服务器工作目录  </span>
+cp /Users/marty/.jenkins/workspace/xxxx/bin/<span class="k">*</span>.ipa /Library/WebServer/Documents/ota/iPad/  
+<span class="c">#生成Plist文件，plist文件采用固定名称。  </span>
+<span class="nv">ipaName</span><span class="o">=</span><span class="sb">`</span>ls |grep ipa<span class="sb">`</span>  
+./otabuddy.sh plist <span class="nv">$ipaName</span> http://xxx.xxx.xxx/ota/iPad/<span class="nv">$ipaName</span> iPadOTA.plist  
+</code></pre>
+</div>
+
+<ul>
+  <li>在构建成功的邮件中增加一个附件，附件就是二维码
+<img src="http://img.blog.csdn.net/20140814161647302" alt="" /></li>
+</ul>
+
+<p>其他资料:
+-<a href="http://skyseraph.com/2016/07/18/Tools/Jenkins%20Gitlab%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%89%93%E5%8C%85%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/">优秀教程: Jenkins Gitlab持续集成打包平台搭建</a></p>
+<ul>
+  <li><a href="https://github.com/skyseraph/PlistAutoCreate">用于iOS应用程序的自动创建plist和html发布文件的shell脚本</a></li>
+</ul>
+
+<p>参考<a href="http://blog.csdn.net/close_marty/article/details/38441903"></a></p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/09/AD-iOS-OTA/" data-title="持续集成系列 - App 内测分发平台之 OTA " data-url="http://localhost:4000/2017/01/09/AD-iOS-OTA/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

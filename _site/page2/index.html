@@ -151,6 +151,657 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SDiffuseMenu" title="Tag: SDiffuseMenu" rel="tag">SDiffuseMenu</a>&nbsp;
+    
+        <a href="/tag/#Animation" title="Tag: Animation" rel="tag">Animation</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">一、使用方法：</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、添加协议</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、设置菜单的选项按钮数据</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3、设置菜单按钮</a></li>
+      <li><a href="#sdiffusemenu" id="markdown-toc-sdiffusemenu">4、添加 SDiffuseMenu</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">5、动画配置</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">6、动画过程监听</a></li>
+    </ul>
+  </li>
+  <li><a href="#swift" id="markdown-toc-swift">二、Swift转写之旅</a>    <ul>
+      <li><a href="#capropertyanimation" id="markdown-toc-capropertyanimation">1、CAPropertyAnimation动画</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2、动画分析</a>        <ul>
+          <li><a href="#section-7" id="markdown-toc-section-7">2.1、单个选项关闭动画分析：</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">2.2、整体动画的控制</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步<a href="https://github.com/levey/AwesomeMenu">这里</a>。</p>
+
+  <p>SDiffuseMenu 当前版本 V1.2.1,代码<a href="https://github.com/mythkiven/DiffuseMenu_Swift">请戳这里</a></p>
+
+  <p>SDiffuseMenu 嵌入 pod ‘SDiffuseMenu’, ‘~&gt; 1.2.1’</p>
+
+</blockquote>
+
+<p><strong>动画效果如下:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/SDiffuseMenu.gif" alt="" /></p>
+
+<p><strong>配置图如下:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png" alt="" /></p>
+
+<h2 id="section">一、使用方法：</h2>
+
+<p>添加协议(动画状态回调) -&gt; 设置选项数组 -&gt; 设置菜单按钮 -&gt; 动画属性配置 -&gt; .addSubview(menu)</p>
+
+<h4 id="section-1">1、添加协议</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SDiffuseMenuDelegate</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="section-2">2、设置菜单的选项按钮数据</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 加载图片</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImagePressed</span>     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-highlighted.png"</span><span class="p">)</span>    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starImage</span>                     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"star.png"</span><span class="p">)</span>                    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemNormalImage</span>           <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"addbutton-normal.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemLightedImage</span>          <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"addbutton-highlighted.png"</span><span class="p">)</span>   <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemContentImage</span>          <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"plus-normal.png"</span><span class="p">)</span>             <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemContentLightedImage</span>   <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"plus-highlighted.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">menus</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SDiffuseMenuItem</span><span class="p">]()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="mi">6</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">starMenuItem</span> <span class="o">=</span>  <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">storyMenuItemImage</span><span class="p">,</span>
+                                         <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">storyMenuItemImagePressed</span><span class="p">,</span> 
+                                         <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starImage</span><span class="p">,</span>
+                                         <span class="nv">highlightedContentImage</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="n">menus</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">starMenuItem</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="section-3">3、设置菜单按钮</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">startItem</span> <span class="o">=</span> <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">starItemNormalImage</span><span class="p">,</span>
+                                 <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">starItemLightedImage</span><span class="p">,</span>
+                                 <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starItemContentImage</span><span class="p">,</span>
+                                 <span class="nv">highlightedContentImage</span><span class="p">:</span> <span class="n">starItemContentLightedImage</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="sdiffusemenu">4、添加 SDiffuseMenu</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">menuRect</span>  <span class="o">=</span> <span class="kt">CGRect</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="nv">y</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="nv">width</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                           <span class="nv">height</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+<span class="n">menu</span>          <span class="o">=</span>  <span class="kt">SDiffuseMenu</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">menuRect</span><span class="p">,</span>
+                          <span class="nv">startItem</span><span class="p">:</span> <span class="n">startItem</span><span class="p">,</span>
+                         <span class="nv">menusArray</span><span class="p">:</span> <span class="n">menus</span> <span class="k">as</span> <span class="kt">NSArray</span><span class="p">,</span>
+                          <span class="nv">grapyType</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">.</span><span class="kt">SDiffuseMenuGrapyType</span><span class="o">.</span><span class="n">arc</span><span class="p">)</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">center</span>   <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">center</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="section-4">5、动画配置</h4>
+
+<ul>
+  <li>如果配置弧线形动画,则动画中弧线半径变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt; 结束 endRadius</li>
+  <li>如果配置直线形动画,则动画中半径就是直线段的长度,变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt;结束 endRadius</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 动画时长</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">animationDuration</span>  <span class="o">=</span> <span class="kt">CFTimeInterval</span><span class="p">(</span><span class="n">animationDrationValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span>
+<span class="c1">// 最小半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">nearRadius</span>         <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">nearRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 结束半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">endRadius</span>          <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">endRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 最大半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">farRadius</span>          <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">farRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 单个动画间隔时间</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">timeOffset</span>         <span class="o">=</span> <span class="kt">CFTimeInterval</span><span class="p">(</span><span class="n">timeOffSetValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span><span class="o">!</span>
+<span class="c1">// 整体角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">menuWholeAngle</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">menuWholeAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 整体偏移角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAngle</span>        <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 展开时自旋角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">expandRotation</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span><span class="p">)</span>
+<span class="c1">// 结束时自旋角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">closeRotation</span>      <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">// 是否旋转菜单按钮</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButton</span>    <span class="o">=</span> <span class="n">rotateAddButton</span><span class="o">.</span><span class="n">isOn</span>
+<span class="c1">// 菜单按钮旋转角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButtonAngle</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAddButtonAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 菜单展示的形状:直线 or 弧形</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuGrapyType</span> <span class="o">=</span> <span class="n">isLineGrapyType</span><span class="o">.</span><span class="n">isOn</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">?</span> <span class="o">.</span><span class="nv">line</span> <span class="p">:</span> <span class="o">.</span><span class="n">arc</span>
+
+<span class="c1">// 为方便使用,V1.1.0版本已枚举常见方位,可直接使用,无需再次设置 rotateAngle &amp;&amp; menuWholeAngle</span>
+<span class="c1">// 若对于 rotateAngle\menuWholeAngle 不熟悉,建议查看 source 目录下的配置图片</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">above</span> <span class="c1">// 上方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .left // 左方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .below // 下方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .right // 右方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperRight // 右上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerRight // 右下方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperLeft // 左上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerLeft // 左下方90°</span>
+</code></pre>
+</div>
+
+<h4 id="section-5">6、动画过程监听</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="kt">SDiffuseMenuDidSelectMenuItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">,</span> <span class="n">didSelectIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"选中按钮 at index:</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> is: </span><span class="se">\(</span><span class="n">menu</span><span class="o">.</span><span class="nf">menuItemAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单关闭动画结束"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuDidOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单展开动画结束"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单将要展开"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuWillClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单将要关闭"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="swift">二、Swift转写之旅</h2>
+
+<p>总的来说,动画的原理还是比较简单的,主要涉及到的知识点是 CABasicAnimation、CAKeyframeAnimation 以及事件响应链相关知识,下边分两部分介绍</p>
+
+<h3 id="capropertyanimation">1、CAPropertyAnimation动画</h3>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Animation_Types_Timing/Art/animations_info_2x.png" alt="" /></p>
+
+<p>在 SDiffuseMenu 中动画用 CAPropertyAnimation 的子类 CABasicAnimation 和 CAKeyframeAnimation 来实现,关于这两个子类简述如下:</p>
+
+<ul>
+  <li>CABasicAnimation 其实可以看作是一种特殊的关键帧动画,只有头尾两个关键帧,可实现移动、旋转、缩放等基本动画;</li>
+  <li>CAKeyframeAnimation 则可以支持任意多个关键帧,关键帧有两种方式来指定,使用path或values;</li>
+  <li>
+    <ul>
+      <li>path 可以是 CGPathRef、CGMutablePathRef 或者贝塞尔曲线,注意的是:设置了 path 之后 values 就无效了;values 则相对灵活, 可以指定任意关键帧帧值;</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>keyTimes 可以为 values 中的关键帧设置一一对应对应的时间点,其取值范围为0到1.0,keyTimes 没有设置的时候,各个关键帧的时间是平分的;</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>..</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>更多的动画知识请戳此处 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514">CoreAnimation_guide</a></p>
+  <blockquote>
+
+    <p>相关的指南、示例代码可以通过点击页面右上角搜索按钮进行搜索,官方文档大多点到为止,挺适合入门学习的,更深的还需要在实践中摸索总结</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="section-6">2、动画分析</h3>
+
+<p>在 V1.1.0 版本中,已扩展动画的形状:新加入直线型,其原理及计算方法同弧线形,下文不做过多介绍,详情参见版本记录</p>
+
+<p>不论多么复杂的动画,都是由简单的动画组成的,大家先看下 SDiffuseMenu 中单选项动画：</p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/singleItemAnimation.gif" alt="" /></p>
+
+<p>仔细分析发现可以将整个动画可以拆分为三大部分:</p>
+
+<ul>
+  <li>菜单按钮的自旋转,通过 transform 属性即可实现;</li>
+  <li>选项按钮的整体展开动画,实际是在定时器中依次添加单个选项按钮的动画组,控制 timeInterval 来实现动画的先后执行顺序;</li>
+  <li>单个选项按钮的动画则拆分为3部分:展开动画、结束动画和点击动画,都是动画组,下边以结束动画为例,简单介绍其实现过程</li>
+</ul>
+
+<h4 id="section-7">2.1、单个选项关闭动画分析：</h4>
+
+<p>单选项按钮关闭动画过程如下:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/01/20/58817b4e6ba40.png" alt="" /></p>
+
+<p><strong>1、自旋</strong></p>
+
+<p>大家仔细看会发现展开动画和结束动画的自旋转是有差异的,因为关键帧设置的不同</p>
+
+<p>展开动画中设置的关键帧如下,0.1对应展开角度0°,0.3对应 expandRotation 自旋角度,0.4对应0°,所以在0.3 -&gt; 0.4的时间会出现较快速的自旋</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">expandRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.1</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.3</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<p>而关闭的动画中,设置为0 -&gt; 0.4 慢速自旋,0.4 -&gt; 0.5 快速自旋</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">closeRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.5</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<p><strong>2、移动</strong></p>
+
+<p>移动的控制在于 path 是怎样设定的,代码中我写了两种方法,其中一种被注释掉</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">positionAnimation</span>      <span class="o">=</span>  <span class="kt">CAKeyframeAnimation</span><span class="p">(</span><span class="nv">keyPath</span><span class="p">:</span> <span class="s">"position"</span><span class="p">)</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">animationDuration</span>
+</code></pre>
+</div>
+
+<p>1)\使用贝塞尔曲线作为 path,从代码中可以明显的看出移动的路径: endPoint -&gt; farPoint -&gt; startPoint</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="kt">UIBezierPath</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">cgPath</span>
+</code></pre>
+</div>
+
+<p>2)\使用 CGPathRef 或 GCMutablePathRef 设置路径</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span>  <span class="kt">CGMutablePath</span><span class="p">()</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+</code></pre>
+</div>
+
+<p>自旋和平移都有了,接下来要加入到动画组中：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">animationgroup</span>              <span class="o">=</span>  <span class="kt">CAAnimationGroup</span><span class="p">()</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">animations</span>       <span class="o">=</span> <span class="p">[</span><span class="n">positionAnimation</span><span class="p">,</span> <span class="n">rotateAnimation</span><span class="p">]</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">duration</span>         <span class="o">=</span> <span class="n">animationDuration</span>
+<span class="c1">// 动画结束后,layer保持最终的状态</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">fillMode</span>         <span class="o">=</span> <span class="n">kCAFillModeForwards</span>
+<span class="c1">// 速度控制我设置的如此,大家根据需要自行修改即可</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">timingFunction</span>   <span class="o">=</span> <span class="kt">CAMediaTimingFunction</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="n">kCAMediaTimingFunctionEaseIn</span><span class="p">)</span>
+<span class="c1">// 代理是为了获取到动画结束的信号</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">delegate</span>         <span class="o">=</span> <span class="k">self</span>
+</code></pre>
+</div>
+
+<p>最添加进 layer 即可</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="n">animationgroup</span><span class="p">,</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"Close"</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>其余的动画原理和上述的关闭动画其实是一样的,基于属性的动画,通过操作帧来实现我们想要的效果,小伙伴们直接看代码吧~</p>
+
+<h4 id="section-8">2.2、整体动画的控制</h4>
+
+<p>注意,整体动画的控制以上并未表述,在这个地方也需要注意下,为了让整体动画在一个合适的角度展示出来,就需要从整体上控制角度</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/01/16/587c8c512c911.png" alt="" />
+<img src="https://ooo.0o0.ooo/2017/01/16/587c8c7530072.png" alt="" />
+<img src="https://ooo.0o0.ooo/2017/01/16/587c8c8635998.png" alt="" /></p>
+
+<p>从上图中可以看出,整体的角度是由 menuWholeAngle 和 rotateAngle 共同控制的</p>
+
+<ul>
+  <li>menuWholeAngle: 控制整体动画的范围角度;</li>
+  <li>rotateAngle: 用于控制整体的偏移角度</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/08/SDiffuseMenu/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-11
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">构造过程</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">存储属性的初始赋值</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">自定义构造过程</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">默认构造器</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section">构造过程</h1>
+
+<ul>
+  <li>构造过程是使用类、结构体或枚举类型的实例之前的准备过程；</li>
+  <li>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法；</li>
+  <li>与OC中的构造器不同，Swift的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化；</li>
+  <li>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作</li>
+</ul>
+
+<h3 id="section-1">存储属性的初始赋值</h3>
+
+<ul>
+  <li>类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值；</li>
+  <li>可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值；</li>
+  <li>当为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者</li>
+</ul>
+
+<p>1、构造器</p>
+
+<p>以关键字init命名：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 在此处执行构造过程</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>案例：</p>
+
+<p>这个结构体定义了一个不带参数的构造器init，并在里面将存储型属性temperature的值初始化为32.0</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 保存华氏温度的结构体Fahrenheit</span>
+<span class="kd">struct</span> <span class="kt">Fahrenheit</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperature</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">f</span> <span class="o">=</span> <span class="kt">Fahrenheit</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The default temperature is </span><span class="se">\(</span><span class="n">f</span><span class="o">.</span><span class="n">temperature</span><span class="se">)</span><span class="s">° Fahrenheit"</span><span class="p">)</span>
+<span class="c1">// 打印 "The default temperature is 32.0° Fahrenheit”</span>
+</code></pre>
+</div>
+
+<p>2、默认属性值</p>
+
+<p>如前所述，可以在构造器中为存储型属性设置初始值。同样，也可以在属性声明时为其设置默认值</p>
+
+<p>注意：如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能充分利用默认构造器、构造器继承等特性，后续章节将讲到。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 可以使用更简单的方式在定义结构体Fahrenheit时为属性temperature设置默认值：</span>
+<span class="kd">struct</span> <span class="kt">Fahrenheit</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-2">自定义构造过程</h3>
+
+<p>可以通过输入参数和可选类型的属性来自定义构造过程，也可以在构造过程中修改常量属性。</p>
+
+<p>1、构造参数：</p>
+
+<p>自定义构造过程时，可以在定义中提供构造参数，指定所需值的类型和名字。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 面例子中定义了一个包含摄氏度温度的结构体Celsius。它定义了两个不同的构造器：init(fromFahrenheit:)和init(fromKelvin:)，二者分别通过接受不同温标下的温度值来创建新的实例：</span>
+
+<span class="kd">struct</span> <span class="kt">Celsius</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperatureInCelsius</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="c1">// 构造参数，其外部名字为fromFahrenheit,内部名字为fahrenheit</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="nv">fahrenheit</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="p">}</span>
+    <span class="c1">// 构造参数，其外部名字为fromKelvin，内部名字为kelvin</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="nv">kelvin</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">boilingPointOfWater</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="nv">fromFahrenheit</span><span class="p">:</span> <span class="mf">212.0</span><span class="p">)</span>
+<span class="c1">// boilingPointOfWater.temperatureInCelsius 是 100.0</span>
+<span class="k">let</span> <span class="nv">freezingPointOfWater</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="nv">fromKelvin</span><span class="p">:</span> <span class="mf">273.15</span><span class="p">)</span>
+<span class="c1">// freezingPointOfWater.temperatureInCelsius 是 0.0</span>
+</code></pre>
+</div>
+
+<p>2、参数的内部名称和外部名称：</p>
+
+<p>跟函数和方法参数相同，构造参数也拥有一个在构造器内部使用的参数名字和一个在调用构造器时使用的外部参数名字。</p>
+
+<p>当中有多个构造器时，需要通过外部名称来识别不同的构造器：在调用构造器时，主要通过构造器中的参数名和类型来确定应该被调用的构造器。正因为参数如此重要，如果你在定义构造器时没有提供参数的外部名字，Swift 会为构造器的每个参数自动生成一个跟内部名字相同的外部名。</p>
+
+<p>以下例子中定义了一个结构体Color，它包含了三个常量：red、green和blue。这些属性可以存储0.0到1.0之间的值，用来指示颜色中红、绿、蓝成分的含量。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Color提供了一个构造器，其中包含三个Double类型的构造参数。Color也可以提供第二个构造器，它只包含名为white的Double类型的参数，它被用于给上述三个构造参数赋予同样的值。</span>
+
+<span class="kd">struct</span> <span class="kt">Color</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">red</span>   <span class="o">=</span> <span class="n">white</span>
+        <span class="n">green</span> <span class="o">=</span> <span class="n">white</span>
+        <span class="n">blue</span>  <span class="o">=</span> <span class="n">white</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>两种构造器都能用于创建一个新的Color实例，你需要为构造器每个外部参数传值：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">magenta</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">halfGray</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>注意，如果不通过外部参数名字传值，你是没法调用这个构造器的。只要构造器定义了某个外部参数名，你就必须使用它，忽略它将导致编译错误：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">veryGreen</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="c1">// 报编译时错误，需要外部名称</span>
+</code></pre>
+</div>
+
+<p>3、不带外部名的构造器参数：</p>
+
+<p>如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(_)来显式描述它的外部名，以此重写上面所说的默认行为。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">下面是之前Celsius例子的扩展</span><span class="err">，</span><span class="n">跟之前相比添加了一个带有Double类型参数的构造器</span><span class="err">，</span><span class="n">其外部名用_代替</span><span class="err">：</span>
+
+<span class="kd">struct</span> <span class="kt">Celsius</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperatureInCelsius</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="nv">fahrenheit</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="nv">kelvin</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">celsius</span><span class="p">:</span> <span class="kt">Double</span><span class="p">){</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">celsius</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">bodyTemperature</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="mf">37.0</span><span class="p">)</span>
+<span class="c1">// bodyTemperature.temperatureInCelsius 为 37.0</span>
+<span class="c1">// 调用Celsius(37.0)意图明确，不需要外部参数名称。</span>
+</code></pre>
+</div>
+
+<p>4、可选属性类型</p>
+
+<p>如果定制的类型包含一个逻辑上允许取值为空的存储型属性——无论是因为它无法在初始化时赋值，还是因为它在之后某个时间点可以赋值为空——你都需要将它定义为可选类型。可选类型的属性将自动初始化为nil，表示这个属性是有意在初始化时设置为空的。</p>
+
+<p>下面例子中定义了类SurveyQuestion，它包含一个可选字符串属性response：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SurveyQuestion</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">ask</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">cheeseQuestion</span> <span class="o">=</span> <span class="kt">SurveyQuestion</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"Do you like cheese?"</span><span class="p">)</span>
+<span class="n">cheeseQuestion</span><span class="o">.</span><span class="nf">ask</span><span class="p">()</span>
+<span class="c1">// 打印 "Do you like cheese?"</span>
+<span class="n">cheeseQuestion</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="s">"Yes, I do like cheese."</span>
+
+<span class="c1">// 调查问题的答案在回答前是无法确定的，因此我们将属性response声明为String?类型，或者说是可选字符串类型。当SurveyQuestion实例化时，它将自动赋值为nil，表明此字符串暂时还没有值。</span>
+</code></pre>
+</div>
+
+<p>5、构造过程中常量属性的修改</p>
+
+<p>你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。</p>
+
+<p>注意：对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。</p>
+
+<h3 id="section-3">默认构造器</h3>
+
+<p>如果结构体或类的所有属性都有默认值，同时没有自定义的构造器，那么 Swift 会给这些结构体或类提供一个默认构造器。这个默认构造器将简单地创建一个所有属性值都设置为默认值的实例。</p>
+
+<p>案例:下面例子中创建了一个类ShoppingListItem，它封装了购物清单中的某一物品的属性：名字（name）、数量（quantity）和购买状态 purchase state：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ShoppingListItem</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">quantity</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">var</span> <span class="nv">purchased</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">item</span> <span class="o">=</span> <span class="kt">ShoppingListItem</span><span class="p">()</span>
+</code></pre>
+</div>
+<p>由于ShoppingListItem类中的所有属性都有默认值，且它是没有父类的基类，它将自动获得一个可以为所有属性设置默认值的默认构造器（尽管代码中没有显式为name属性设置默认值，但由于name是可选字符串类型，它将默认设置为nil）。上面例子中使用默认构造器创造了一个ShoppingListItem类的实例（使用ShoppingListItem()形式的构造器语法），并将其赋值给变量item。</p>
+
+<p>2、结构体的逐一成员构造器</p>
+
+<p>除了上面提到的默认构造器，如果结构体没有提供自定义的构造器，它们将自动获得一个逐一成员构造器，即使结构体的存储型属性没有默认值。</p>
+
+<p>逐一成员构造器是用来初始化结构体新实例里成员属性的快捷方法。我们在调用逐一成员构造器时，通过与成员属性名相同的参数名进行传值来完成对成员属性的初始赋值。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 结构体Size自动获得了一个逐一成员构造器init(width:height:)。你可以用它来为Size创建新的实例：</span>
+
+<span class="kd">struct</span> <span class="kt">Size</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">twoByTwo</span> <span class="o">=</span> <span class="kt">Size</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/11/swift_X_Initialization_Deinitialization/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a>
                 </h2>
                 <div class="label">
@@ -2274,599 +2925,6 @@ Swift为String类型定义了大于算子（&gt;），通过大于算子简写�
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-03
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#for" id="markdown-toc-for">for</a></li>
-  <li><a href="#while" id="markdown-toc-while">While</a></li>
-</ul>
-
-<ul>
-  <li>Swift提供了所有C语言中相似的控制流结构。包括for和while循环；if和switch条件语句；break和continue跳转语句等;</li>
-  <li>相对于C语言，Swift中switch语句的case语句后，不会自动跳转到下一个语句(这样就避免了C语言中因为忘记break而造成的错误);</li>
-  <li>另外case语句可以匹配多种类型，包括数据范围，元组，或者特定的类型等;</li>
-  <li>switch语句中已匹配的数值也可以被用在后续的case语句体中，where关键词还能被加入任意的case语句中，来增加匹配的方式。</li>
-</ul>
-
-<h3 id="for">for</h3>
-
-<ul>
-  <li>for-in:对于数据范围，序列，集合等中的每一个元素，都执行一次</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 1 times 5 is 5</span>
-<span class="c1">// 2 times 5 is 10</span>
-<span class="c1">// 3 times 5 is 15</span>
-<span class="c1">// 4 times 5 is 20</span>
-<span class="c1">// 5 times 5 is 25</span>
-</code></pre>
-</div>
-
-<p>忽略变量模式：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">base</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="k">let</span> <span class="nv">power</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">var</span> <span class="nv">answer</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">power</span> <span class="p">{</span>
-    <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
-<span class="p">}</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">base</span><span class="se">)</span><span class="s"> to the power of </span><span class="se">\(</span><span class="n">power</span><span class="se">)</span><span class="s"> is </span><span class="se">\(</span><span class="n">answer</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="c1">// Prints "3 to the power of 10 is 59049"</span>
-</code></pre>
-</div>
-
-<h3 id="while">While</h3>
-
-<p>while循环方式：</p>
-
-<ul>
-  <li>while循环，在每次循环开始前,判断循环条件是否成立</li>
-  <li>repeat-while循环，在每次循环之后,判断循环条件是否成立</li>
-  <li>repeat-while 类似 do-while</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="n">condition</span> <span class="p">{</span>
-    <span class="n">statements</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Repeat</span> <span class="p">{</span>
-    <span class="n">statements</span>
-<span class="p">}</span> <span class="k">while</span> <span class="n">condition</span>
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/12/03/swift_V_Control-Flow/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#mutability-of-collections" id="markdown-toc-mutability-of-collections">1、Mutability of Collections：可变集合</a></li>
-  <li><a href="#arrays" id="markdown-toc-arrays">2、Arrays：数组</a>    <ul>
-      <li><a href="#array-type-shorthand-syntax" id="markdown-toc-array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</a></li>
-      <li><a href="#creating-an-empty-array" id="markdown-toc-creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</a></li>
-      <li><a href="#creating-an-array-with-a-default-value" id="markdown-toc-creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</a></li>
-      <li><a href="#creating-an-array-by-adding-two-arrays-together" id="markdown-toc-creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</a></li>
-      <li><a href="#creating-an-array-with-an-array-literal" id="markdown-toc-creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</a></li>
-      <li><a href="#accessing-and-modifying-an-array" id="markdown-toc-accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</a></li>
-      <li><a href="#iterating-over-an-array" id="markdown-toc-iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</a></li>
-    </ul>
-  </li>
-  <li><a href="#sets" id="markdown-toc-sets">3、Sets:集合</a>    <ul>
-      <li><a href="#set-type-syntax" id="markdown-toc-set-type-syntax">3.1 Set Type Syntax:集合类型语法</a></li>
-      <li><a href="#creating-and-initializing-an-empty-set" id="markdown-toc-creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</a></li>
-      <li><a href="#creating-a-set-with-an-array-literal" id="markdown-toc-creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</a></li>
-      <li><a href="#accessing-and-modifying-a-set" id="markdown-toc-accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</a></li>
-      <li><a href="#iterating-over-a-set" id="markdown-toc-iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</a></li>
-      <li><a href="#performing-set-operations" id="markdown-toc-performing-set-operations">3.6 Performing Set Operations：集合运算</a></li>
-    </ul>
-  </li>
-  <li><a href="#dictionaries" id="markdown-toc-dictionaries">4、Dictionaries：字典</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">4.1 创建</a></li>
-      <li><a href="#accessing-and-modifying-a-dictionary" id="markdown-toc-accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</a></li>
-      <li><a href="#iterating-over-a-dictionary" id="markdown-toc-iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>Swift 提供了三种集合类：</p>
-<ul>
-  <li>数组 arrays 值有序的集合；</li>
-  <li>集合 sets 值唯一而无序的集合;</li>
-  <li>字典 dictionaries 键值对且无序的集合；</li>
-  <li>这三种集合是泛型集合，集合中储存的数值必须是明确的</li>
-</ul>
-
-<p>如下示意：</p>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt="" /></p>
-
-<h3 id="mutability-of-collections">1、Mutability of Collections：可变集合</h3>
-
-<ul>
-  <li>如果你创建了一个数组,set或者字典，并且申明他为变量，那么该集合就是可变的。</li>
-  <li>如果你申明了数组，set或者字典为常量，那么他就没办法修改。他的内容和大小都没法修改。</li>
-  <li>如果集合不需要修改，尽量申明成常量。这样编译器会优化集合性能。</li>
-</ul>
-
-<h3 id="arrays">2、Arrays：数组</h3>
-
-<ul>
-  <li>数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中；</li>
-  <li>swift中的Array 是桥接自Foundation的NSArray；</li>
-</ul>
-
-<h5 id="array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</h5>
-
-<ul>
-  <li>Swift数组应遵循Array<SomeType>这样的形式，其中SomeType是这个数组中唯一允许存在的数据类型；</SomeType></li>
-  <li>简写方式：[SomeType]这样的简单语法；</li>
-  <li>两种形式在功能上是一样的，一般都用简写形式</li>
-</ul>
-
-<h5 id="creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Int类型的空数组：</span>
-<span class="k">var</span> <span class="nv">someInts</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"someInts is of type [Int] with </span><span class="se">\(</span><span class="n">someInts</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
-<span class="c1">// 追加元素：</span>
-<span class="n">someInts</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1">// someInts now contains 1 value of type Int</span>
-<span class="c1">// 置空：</span>
-<span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">// someInts is now an empty array, but is still of type [Int]</span>
-</code></pre>
-</div>
-
-<h5 id="creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</h5>
-<p>数组的类型从默认值推断，例如下方的 Double数组</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">threeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span>
-</code></pre>
-</div>
-<h5 id="creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</h5>
-<p>只有类型相同的数组，才能叠加</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">anotherThreeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]</span>
-<span class="c1">// 都是double类型</span>
-<span class="k">var</span> <span class="nv">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
-<span class="c1">// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
-</code></pre>
-</div>
-<h5 id="creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</h5>
-<p>形如：[ 值1，值2，值3 ]</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如下创建[String]类型数组：</span>
-<span class="c1">// 1、</span>
-<span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
-<span class="c1">// 2、</span>
-<span class="k">var</span> <span class="nv">shoppingList2</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
-</code></pre>
-</div>
-<h5 id="accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</h5>
-
-<p><strong>通过下标访问\修改:</strong></p>
-
-<ul>
-  <li>count属性:确定元素个数；</li>
-  <li>isEmpty属性：是否为空；</li>
-  <li>append(_ newElement: Element)方法：添加新元素；</li>
-  <li>数组加法：<code class="highlighter-rouge">shoppingList += ["Baking Powder"]</code>；</li>
-  <li>索引：<code class="highlighter-rouge">var firstItem = shoppingList[0]</code> 索引的第一项，是0；</li>
-  <li>索引单个修改：<code class="highlighter-rouge">shoppingList[0] = "Six eggs"</code>；</li>
-  <li>索引范围修改：<code class="highlighter-rouge">shoppingList[4...6] = ["Bananas", "Apples"]</code>；</li>
-  <li>索引插入：<code class="highlighter-rouge">shoppingList.insert("Maple Syrup", at: 0)</code>；</li>
-  <li>索引删除：<code class="highlighter-rouge">let mapleSyrup = shoppingList.remove(at: 0)</code>；</li>
-  <li>删除最后一个元素：<code class="highlighter-rouge">let apples = shoppingList.removeLast()</code></li>
-  <li>注意：越界会造成运行时错误；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Flour"</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Baking Powder"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Chocolate Spread"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">,</span> <span class="s">"Butter"</span><span class="p">]</span> <span class="c1">// </span>
-
-<span class="k">var</span> <span class="nv">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Six eggs"</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="s">"Apples"</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Maple Syrup"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="k">let</span> <span class="nv">mapleSyrup</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
-</code></pre>
-</div>
-
-<h5 id="iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</h5>
-
-<p>1、for -in：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Six eggs</span>
-<span class="c1">// Milk</span>
-<span class="c1">// Flour</span>
-<span class="c1">// Baking Powder</span>
-<span class="c1">// Bananas</span>
-</code></pre>
-</div>
-
-<p>2、使用全局enumerate函数来进行数组遍历,返回一个由每一个数据项索引值和数据值组成的元组:</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Item </span><span class="se">\(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Item 1: Six eggs</span>
-<span class="c1">// Item 2: Milk</span>
-<span class="c1">// Item 3: Flour</span>
-<span class="c1">// Item 4: Baking Powder</span>
-<span class="c1">// Item 5: Bananas</span>
-</code></pre>
-</div>
-
-<h3 id="sets">3、Sets:集合</h3>
-
-<ul>
-  <li>一个集合存储了一串无序的相同类型的数据；</li>
-  <li>swift set类型桥接自Foundation中的NSSet类；</li>
-  <li>存进一个集合的类型必须是可以哈希化的。</li>
-</ul>
-
-<p><strong>哈希值</strong></p>
-
-<ul>
-  <li>哈希值是一个int值，所有相同的对象的哈希值是一样的。例如：a == b，就可以推导出：a.hashValue == b.hashValue；</li>
-  <li>Swift所有的基本类型（String,Int,Double,Bool）默认是可以哈希化的。可以作为Sets的值或者字典的key；</li>
-  <li>没有关联值得枚举值也是默认可以哈希化的；</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>可用使用自定义类型来设置值类型或字典类型，自定义类型需要从swift标准库遵守哈希化协议。遵守哈希化协议的类型必须提供一个叫做hashValue的方法（返回类型为Int）。hashValue的值在不同的程序或相同的程序中返回不要求相同。因为哈希化协议是可变的。遵守协议的类型必须实现运算符（== or ‘is equal’）。Equatable协议要求必须实现“==”成一个等价关系。见下面的例子：
-
-a == a （自反性）
-a == b 相当于 b == a（对称性）
-a == b &amp;&amp; b == c 相当于 a == c (传递性)
-</code></pre>
-</div>
-
-<h5 id="set-type-syntax">3.1 Set Type Syntax:集合类型语法</h5>
-
-<p>集合类型的语法是Set<Element>，Element是允许存入集合中的类型。
-和数组不同的是，集合没有简写方法。</Element></p>
-
-<h5 id="creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// letters变量被推断为Set&lt;Character&gt;</span>
-<span class="k">var</span> <span class="nv">letters</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"letters is of type Set&lt;Character&gt; with </span><span class="se">\(</span><span class="n">letters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
-<span class="c1">// Prints "letters is of type Set&lt;Character&gt; with 0 items."</span>
-
-<span class="n">letters</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
-<span class="c1">// letters now contains 1 value of type Character</span>
-<span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">// letters is now an empty set, but is still of type Set&lt;Character&gt;</span>
-
-</code></pre>
-</div>
-
-<h5 id="creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</h5>
-<p>注意的是，创建集合时，必须带上关键字Set。</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// favoriteGenres是字符串集合，即:Set&lt;String&gt; 类型，仅仅储存String，而且是可变的。其余类似</span>
-<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
-<span class="c1">// 简写：</span>
-<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<h5 id="accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</h5>
-
-<ul>
-  <li>count属性：<code class="highlighter-rouge">favoriteGenres.count</code>；</li>
-  <li>.isEmpty属性: <code class="highlighter-rouge">if favoriteGenres.isEmpty {}</code></li>
-  <li>insert(_:)方法：<code class="highlighter-rouge">favoriteGenres.insert("www.3code.info")</code></li>
-  <li>remove(_:)方法：<code class="highlighter-rouge">let removedGenre = favoriteGenres.remove("Rock")</code></li>
-  <li>contains(_:)方法：是否包含item，<code class="highlighter-rouge">if favoriteGenres.contains("Funk") {</code></li>
-</ul>
-
-<h5 id="iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</h5>
-<ul>
-  <li>for-in;</li>
-  <li>sorted():返回一个value的集合</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Jazz</span>
-<span class="c1">// Hip hop</span>
-<span class="c1">// Classical</span>
-
-
-<span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Classical</span>
-<span class="c1">// Hip hop</span>
-<span class="c1">// Jazz</span>
-</code></pre>
-</div>
-
-<h5 id="performing-set-operations">3.6 Performing Set Operations：集合运算</h5>
-
-<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png" alt="" /></p>
-
-<ul>
-  <li>intersection(_:) 交集</li>
-  <li>symmetricDifference(_:) 对称差</li>
-  <li>union(_:) 并集</li>
-  <li>subtracting(_:) 差集</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">oddDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">evenDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">singleDigitPrimeNumbers</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">union</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">subtracting</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1, 9]</span>
-<span class="n">oddDigits</span><span class="o">.</span><span class="nf">symmetricDifference</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
-<span class="c1">// [1, 2, 9]</span>
-</code></pre>
-</div>
-
-<p>Set Membership and Equality</p>
-
-<p>a是b的一个超集，因为a包含了所有元素b。相反地，b是a子集，因为在所有的元素b也被包含a。bc彼此没有相同的元素。
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png" alt="" />
-运算方法：</p>
-
-<ul>
-  <li>”==”(is equal)方法:判断两个集合是否拥有相同的元素,相同返回true，反之false</li>
-  <li>isSubsetOf(_:)方法：判断目标集合是是否为参数集合的子集，是则返回true，反之false</li>
-  <li>isSupersetOf(_:)方法：判断目标集合是否为参数集合的超集，是则返回true，反之false</li>
-  <li>isStrictSubsetOf(<em>:)和isStrictSupersetOf(</em>:)方法：判断目标是否是子集和超集，但是必须是两个集合不相等，满足以上条件返回true，反之false</li>
-  <li>isDisjointWith(_:)方法：判断两个集合有无相同元素，有相同元素则返回false，反之true。</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">houseAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">farmAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐮"</span><span class="p">,</span> <span class="s">"🐔"</span><span class="p">,</span> <span class="s">"🐑"</span><span class="p">,</span> <span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
-<span class="k">let</span> <span class="nv">cityAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐦"</span><span class="p">,</span> <span class="s">"🐭"</span><span class="p">]</span>
- 
-<span class="n">houseAnimals</span><span class="o">.</span><span class="nf">isSubset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">farmAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isSuperset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">houseAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isDisjoint</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">cityAnimals</span><span class="p">)</span>
-<span class="c1">// true</span>
-</code></pre>
-</div>
-
-<h3 id="dictionaries">4、Dictionaries：字典</h3>
-
-<ul>
-  <li>Swift的Dictionary类桥接自Foundation的NSDictionary类</li>
-  <li>字典Key类型必须符合Hashable协议</li>
-  <li>写法：Dictionary&lt;Key, Value&gt;</li>
-  <li>简写：[Key: Value]</li>
-</ul>
-
-<h5 id="section">4.1 创建</h5>
-
-<p>1、创建[Int: String]类型的空字典：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt">String</span><span class="p">]()</span>
-</code></pre>
-</div>
-
-<p>2、操作</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 插入元素：[16:"sixteen"]</span>
-<span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span> 
-
-<span class="c1">// 置空，类型不变：[Int: String]</span>
-<span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="p">[:]</span>
-</code></pre>
-</div>
-
-<p>3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<p>4、简写：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<h5 id="accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</h5>
-
-<p>使用下标访问修改</p>
-
-<ul>
-  <li>.count属性：<code class="highlighter-rouge">airports.count</code>；</li>
-  <li>.isEmpty属性：<code class="highlighter-rouge">if airports.isEmpty {</code>；</li>
-  <li>添加/更改元素：<code class="highlighter-rouge">airports["LHR"] = "London"</code>；</li>
-  <li>修改元素：updateValue(_:forKey:) 返回可选类型；</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="s">"Dublin Airport"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The old value for DUB was </span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// 可选</span>
-<span class="k">if</span> <span class="k">let</span> <span class="nv">airportName</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="s">"DUB"</span><span class="p">]</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The name of the airport is </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"That airport is not in the airports dictionary."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The name of the airport is Dublin Airport."</span>
-</code></pre>
-</div>
-<ul>
-  <li>下标置空：airports[“APL”] = nil；</li>
-  <li>removeValue(forKey:)</li>
-</ul>
-
-<p>返回可选类型：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The removed airport's name is </span><span class="se">\(</span><span class="n">removedValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Prints "The removed airport's name is Dublin Airport."</span>
-
-</code></pre>
-</div>
-
-<h5 id="iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</h5>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、遍历键值对</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// YYZ: Toronto Pearson</span>
-<span class="c1">// LHR: London Heathrow</span>
-
-<span class="c1">// 2、遍历key</span>
-<span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport code: </span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport code: YYZ</span>
-<span class="c1">// Airport code: LHR</span>
-<span class="c1">// 3、遍历value</span>
-<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">values</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport name: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Airport name: Toronto Pearson</span>
-<span class="c1">// Airport name: London Heathrow</span>
-
-<span class="c1">// 4、获取key value</span>
-<span class="k">let</span> <span class="nv">airportCodes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
-<span class="c1">// airportCodes is ["YYZ", "LHR"]</span>
- 
-<span class="k">let</span> <span class="nv">airportNames</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="c1">// airportNames is ["Toronto Pearson", "London Heathrow"]</span>
-
-</code></pre>
-</div>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/12/01/swift_IV_Collection-Types/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -2896,11 +2954,15 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
                     
+                        <li><a href="/2017/02/08/AD-jenkins/">Ad Jenkins</a></li>
+                    
                         <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
                     
                         <li><a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></li>
                     
                         <li><a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></li>
+                    
+                        <li><a href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a></li>
                     
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
@@ -2909,10 +2971,6 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
                         <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                         <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
-                    
-                        <li><a href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a></li>
-                    
-                        <li><a href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a></li>
                     
                 </ul>
             </div>
@@ -2993,7 +3051,7 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
                             <span class="name">
                                 CI
                             </span>
-                            <span class="badge">4</span>
+                            <span class="badge">5</span>
                         </a>
                     </li>
                     
@@ -3216,6 +3274,13 @@ a == b &amp;&amp; b == c 相当于 a == c (传递性)
                       
                       
                       <a href="/tag/#Animation" style="font-size: 9pt; color: #999;">Animation</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#OTA" style="font-size: 9pt; color: #999;">OTA</a>
                     
                       
                       

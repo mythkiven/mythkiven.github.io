@@ -151,6 +151,599 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-03
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#for" id="markdown-toc-for">for</a></li>
+  <li><a href="#while" id="markdown-toc-while">While</a></li>
+</ul>
+
+<ul>
+  <li>Swift提供了所有C语言中相似的控制流结构。包括for和while循环；if和switch条件语句；break和continue跳转语句等;</li>
+  <li>相对于C语言，Swift中switch语句的case语句后，不会自动跳转到下一个语句(这样就避免了C语言中因为忘记break而造成的错误);</li>
+  <li>另外case语句可以匹配多种类型，包括数据范围，元组，或者特定的类型等;</li>
+  <li>switch语句中已匹配的数值也可以被用在后续的case语句体中，where关键词还能被加入任意的case语句中，来增加匹配的方式。</li>
+</ul>
+
+<h3 id="for">for</h3>
+
+<ul>
+  <li>for-in:对于数据范围，序列，集合等中的每一个元素，都执行一次</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 1 times 5 is 5</span>
+<span class="c1">// 2 times 5 is 10</span>
+<span class="c1">// 3 times 5 is 15</span>
+<span class="c1">// 4 times 5 is 20</span>
+<span class="c1">// 5 times 5 is 25</span>
+</code></pre>
+</div>
+
+<p>忽略变量模式：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">base</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="nv">power</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">answer</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">power</span> <span class="p">{</span>
+    <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">base</span><span class="se">)</span><span class="s"> to the power of </span><span class="se">\(</span><span class="n">power</span><span class="se">)</span><span class="s"> is </span><span class="se">\(</span><span class="n">answer</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "3 to the power of 10 is 59049"</span>
+</code></pre>
+</div>
+
+<h3 id="while">While</h3>
+
+<p>while循环方式：</p>
+
+<ul>
+  <li>while循环，在每次循环开始前,判断循环条件是否成立</li>
+  <li>repeat-while循环，在每次循环之后,判断循环条件是否成立</li>
+  <li>repeat-while 类似 do-while</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="n">condition</span> <span class="p">{</span>
+    <span class="n">statements</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Repeat</span> <span class="p">{</span>
+    <span class="n">statements</span>
+<span class="p">}</span> <span class="k">while</span> <span class="n">condition</span>
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/03/swift_V_Control-Flow/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/01/swift_IV_Collection-Types/">Swift3.0_IV_集合</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#mutability-of-collections" id="markdown-toc-mutability-of-collections">1、Mutability of Collections：可变集合</a></li>
+  <li><a href="#arrays" id="markdown-toc-arrays">2、Arrays：数组</a>    <ul>
+      <li><a href="#array-type-shorthand-syntax" id="markdown-toc-array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</a></li>
+      <li><a href="#creating-an-empty-array" id="markdown-toc-creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</a></li>
+      <li><a href="#creating-an-array-with-a-default-value" id="markdown-toc-creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</a></li>
+      <li><a href="#creating-an-array-by-adding-two-arrays-together" id="markdown-toc-creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</a></li>
+      <li><a href="#creating-an-array-with-an-array-literal" id="markdown-toc-creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</a></li>
+      <li><a href="#accessing-and-modifying-an-array" id="markdown-toc-accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</a></li>
+      <li><a href="#iterating-over-an-array" id="markdown-toc-iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</a></li>
+    </ul>
+  </li>
+  <li><a href="#sets" id="markdown-toc-sets">3、Sets:集合</a>    <ul>
+      <li><a href="#set-type-syntax" id="markdown-toc-set-type-syntax">3.1 Set Type Syntax:集合类型语法</a></li>
+      <li><a href="#creating-and-initializing-an-empty-set" id="markdown-toc-creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</a></li>
+      <li><a href="#creating-a-set-with-an-array-literal" id="markdown-toc-creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</a></li>
+      <li><a href="#accessing-and-modifying-a-set" id="markdown-toc-accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</a></li>
+      <li><a href="#iterating-over-a-set" id="markdown-toc-iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</a></li>
+      <li><a href="#performing-set-operations" id="markdown-toc-performing-set-operations">3.6 Performing Set Operations：集合运算</a></li>
+    </ul>
+  </li>
+  <li><a href="#dictionaries" id="markdown-toc-dictionaries">4、Dictionaries：字典</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">4.1 创建</a></li>
+      <li><a href="#accessing-and-modifying-a-dictionary" id="markdown-toc-accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</a></li>
+      <li><a href="#iterating-over-a-dictionary" id="markdown-toc-iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Swift 提供了三种集合类：</p>
+<ul>
+  <li>数组 arrays 值有序的集合；</li>
+  <li>集合 sets 值唯一而无序的集合;</li>
+  <li>字典 dictionaries 键值对且无序的集合；</li>
+  <li>这三种集合是泛型集合，集合中储存的数值必须是明确的</li>
+</ul>
+
+<p>如下示意：</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt="" /></p>
+
+<h3 id="mutability-of-collections">1、Mutability of Collections：可变集合</h3>
+
+<ul>
+  <li>如果你创建了一个数组,set或者字典，并且申明他为变量，那么该集合就是可变的。</li>
+  <li>如果你申明了数组，set或者字典为常量，那么他就没办法修改。他的内容和大小都没法修改。</li>
+  <li>如果集合不需要修改，尽量申明成常量。这样编译器会优化集合性能。</li>
+</ul>
+
+<h3 id="arrays">2、Arrays：数组</h3>
+
+<ul>
+  <li>数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中；</li>
+  <li>swift中的Array 是桥接自Foundation的NSArray；</li>
+</ul>
+
+<h5 id="array-type-shorthand-syntax">2.1 Array Type Shorthand Syntax：数组简写</h5>
+
+<ul>
+  <li>Swift数组应遵循Array<SomeType>这样的形式，其中SomeType是这个数组中唯一允许存在的数据类型；</SomeType></li>
+  <li>简写方式：[SomeType]这样的简单语法；</li>
+  <li>两种形式在功能上是一样的，一般都用简写形式</li>
+</ul>
+
+<h5 id="creating-an-empty-array">2.2 Creating an Empty Array：创建空数组</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Int类型的空数组：</span>
+<span class="k">var</span> <span class="nv">someInts</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"someInts is of type [Int] with </span><span class="se">\(</span><span class="n">someInts</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
+<span class="c1">// 追加元素：</span>
+<span class="n">someInts</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">// someInts now contains 1 value of type Int</span>
+<span class="c1">// 置空：</span>
+<span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">// someInts is now an empty array, but is still of type [Int]</span>
+</code></pre>
+</div>
+
+<h5 id="creating-an-array-with-a-default-value">2.3 Creating an Array with a Default Value：创建带默认值的数组</h5>
+<p>数组的类型从默认值推断，例如下方的 Double数组</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">threeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span>
+</code></pre>
+</div>
+<h5 id="creating-an-array-by-adding-two-arrays-together">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</h5>
+<p>只有类型相同的数组，才能叠加</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">anotherThreeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]</span>
+<span class="c1">// 都是double类型</span>
+<span class="k">var</span> <span class="nv">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
+<span class="c1">// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
+</code></pre>
+</div>
+<h5 id="creating-an-array-with-an-array-literal">2.5 Creating an Array with an Array Literal：数组文本创建数组</h5>
+<p>形如：[ 值1，值2，值3 ]</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如下创建[String]类型数组：</span>
+<span class="c1">// 1、</span>
+<span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
+<span class="c1">// 2、</span>
+<span class="k">var</span> <span class="nv">shoppingList2</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
+</code></pre>
+</div>
+<h5 id="accessing-and-modifying-an-array">2.6 Accessing and Modifying an Array：访问修改数组</h5>
+
+<p><strong>通过下标访问\修改:</strong></p>
+
+<ul>
+  <li>count属性:确定元素个数；</li>
+  <li>isEmpty属性：是否为空；</li>
+  <li>append(_ newElement: Element)方法：添加新元素；</li>
+  <li>数组加法：<code class="highlighter-rouge">shoppingList += ["Baking Powder"]</code>；</li>
+  <li>索引：<code class="highlighter-rouge">var firstItem = shoppingList[0]</code> 索引的第一项，是0；</li>
+  <li>索引单个修改：<code class="highlighter-rouge">shoppingList[0] = "Six eggs"</code>；</li>
+  <li>索引范围修改：<code class="highlighter-rouge">shoppingList[4...6] = ["Bananas", "Apples"]</code>；</li>
+  <li>索引插入：<code class="highlighter-rouge">shoppingList.insert("Maple Syrup", at: 0)</code>；</li>
+  <li>索引删除：<code class="highlighter-rouge">let mapleSyrup = shoppingList.remove(at: 0)</code>；</li>
+  <li>删除最后一个元素：<code class="highlighter-rouge">let apples = shoppingList.removeLast()</code></li>
+  <li>注意：越界会造成运行时错误；</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Flour"</span><span class="p">)</span> <span class="c1">// </span>
+<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Baking Powder"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Chocolate Spread"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">,</span> <span class="s">"Butter"</span><span class="p">]</span> <span class="c1">// </span>
+
+<span class="k">var</span> <span class="nv">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Six eggs"</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="s">"Apples"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Maple Syrup"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
+<span class="k">let</span> <span class="nv">mapleSyrup</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
+<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+</code></pre>
+</div>
+
+<h5 id="iterating-over-an-array">2.7 Iterating Over an Array：数组遍历</h5>
+
+<p>1、for -in：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Six eggs</span>
+<span class="c1">// Milk</span>
+<span class="c1">// Flour</span>
+<span class="c1">// Baking Powder</span>
+<span class="c1">// Bananas</span>
+</code></pre>
+</div>
+
+<p>2、使用全局enumerate函数来进行数组遍历,返回一个由每一个数据项索引值和数据值组成的元组:</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Item </span><span class="se">\(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Item 1: Six eggs</span>
+<span class="c1">// Item 2: Milk</span>
+<span class="c1">// Item 3: Flour</span>
+<span class="c1">// Item 4: Baking Powder</span>
+<span class="c1">// Item 5: Bananas</span>
+</code></pre>
+</div>
+
+<h3 id="sets">3、Sets:集合</h3>
+
+<ul>
+  <li>一个集合存储了一串无序的相同类型的数据；</li>
+  <li>swift set类型桥接自Foundation中的NSSet类；</li>
+  <li>存进一个集合的类型必须是可以哈希化的。</li>
+</ul>
+
+<p><strong>哈希值</strong></p>
+
+<ul>
+  <li>哈希值是一个int值，所有相同的对象的哈希值是一样的。例如：a == b，就可以推导出：a.hashValue == b.hashValue；</li>
+  <li>Swift所有的基本类型（String,Int,Double,Bool）默认是可以哈希化的。可以作为Sets的值或者字典的key；</li>
+  <li>没有关联值得枚举值也是默认可以哈希化的；</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>可用使用自定义类型来设置值类型或字典类型，自定义类型需要从swift标准库遵守哈希化协议。遵守哈希化协议的类型必须提供一个叫做hashValue的方法（返回类型为Int）。hashValue的值在不同的程序或相同的程序中返回不要求相同。因为哈希化协议是可变的。遵守协议的类型必须实现运算符（== or ‘is equal’）。Equatable协议要求必须实现“==”成一个等价关系。见下面的例子：
+
+a == a （自反性）
+a == b 相当于 b == a（对称性）
+a == b &amp;&amp; b == c 相当于 a == c (传递性)
+</code></pre>
+</div>
+
+<h5 id="set-type-syntax">3.1 Set Type Syntax:集合类型语法</h5>
+
+<p>集合类型的语法是Set<Element>，Element是允许存入集合中的类型。
+和数组不同的是，集合没有简写方法。</Element></p>
+
+<h5 id="creating-and-initializing-an-empty-set">3.2 Creating and Initializing an Empty Set：创建空的集合</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// letters变量被推断为Set&lt;Character&gt;</span>
+<span class="k">var</span> <span class="nv">letters</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"letters is of type Set&lt;Character&gt; with </span><span class="se">\(</span><span class="n">letters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
+<span class="c1">// Prints "letters is of type Set&lt;Character&gt; with 0 items."</span>
+
+<span class="n">letters</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
+<span class="c1">// letters now contains 1 value of type Character</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">// letters is now an empty set, but is still of type Set&lt;Character&gt;</span>
+
+</code></pre>
+</div>
+
+<h5 id="creating-a-set-with-an-array-literal">3.3 Creating a Set with an Array Literal:创建数组文本集合</h5>
+<p>注意的是，创建集合时，必须带上关键字Set。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// favoriteGenres是字符串集合，即:Set&lt;String&gt; 类型，仅仅储存String，而且是可变的。其余类似</span>
+<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
+<span class="c1">// 简写：</span>
+<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h5 id="accessing-and-modifying-a-set">3.4 Accessing and Modifying a Set：访问修改集合</h5>
+
+<ul>
+  <li>count属性：<code class="highlighter-rouge">favoriteGenres.count</code>；</li>
+  <li>.isEmpty属性: <code class="highlighter-rouge">if favoriteGenres.isEmpty {}</code></li>
+  <li>insert(_:)方法：<code class="highlighter-rouge">favoriteGenres.insert("www.3code.info")</code></li>
+  <li>remove(_:)方法：<code class="highlighter-rouge">let removedGenre = favoriteGenres.remove("Rock")</code></li>
+  <li>contains(_:)方法：是否包含item，<code class="highlighter-rouge">if favoriteGenres.contains("Funk") {</code></li>
+</ul>
+
+<h5 id="iterating-over-a-set">3.5 Iterating Over a Set:遍历集合</h5>
+<ul>
+  <li>for-in;</li>
+  <li>sorted():返回一个value的集合</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Jazz</span>
+<span class="c1">// Hip hop</span>
+<span class="c1">// Classical</span>
+
+
+<span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Classical</span>
+<span class="c1">// Hip hop</span>
+<span class="c1">// Jazz</span>
+</code></pre>
+</div>
+
+<h5 id="performing-set-operations">3.6 Performing Set Operations：集合运算</h5>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png" alt="" /></p>
+
+<ul>
+  <li>intersection(_:) 交集</li>
+  <li>symmetricDifference(_:) 对称差</li>
+  <li>union(_:) 并集</li>
+  <li>subtracting(_:) 差集</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">oddDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">evenDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">singleDigitPrimeNumbers</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">union</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">subtracting</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1, 9]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">symmetricDifference</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1, 2, 9]</span>
+</code></pre>
+</div>
+
+<p>Set Membership and Equality</p>
+
+<p>a是b的一个超集，因为a包含了所有元素b。相反地，b是a子集，因为在所有的元素b也被包含a。bc彼此没有相同的元素。
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png" alt="" />
+运算方法：</p>
+
+<ul>
+  <li>”==”(is equal)方法:判断两个集合是否拥有相同的元素,相同返回true，反之false</li>
+  <li>isSubsetOf(_:)方法：判断目标集合是是否为参数集合的子集，是则返回true，反之false</li>
+  <li>isSupersetOf(_:)方法：判断目标集合是否为参数集合的超集，是则返回true，反之false</li>
+  <li>isStrictSubsetOf(<em>:)和isStrictSupersetOf(</em>:)方法：判断目标是否是子集和超集，但是必须是两个集合不相等，满足以上条件返回true，反之false</li>
+  <li>isDisjointWith(_:)方法：判断两个集合有无相同元素，有相同元素则返回false，反之true。</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">houseAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">farmAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐮"</span><span class="p">,</span> <span class="s">"🐔"</span><span class="p">,</span> <span class="s">"🐑"</span><span class="p">,</span> <span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">cityAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐦"</span><span class="p">,</span> <span class="s">"🐭"</span><span class="p">]</span>
+ 
+<span class="n">houseAnimals</span><span class="o">.</span><span class="nf">isSubset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">farmAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isSuperset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">houseAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isDisjoint</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">cityAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+</code></pre>
+</div>
+
+<h3 id="dictionaries">4、Dictionaries：字典</h3>
+
+<ul>
+  <li>Swift的Dictionary类桥接自Foundation的NSDictionary类</li>
+  <li>字典Key类型必须符合Hashable协议</li>
+  <li>写法：Dictionary&lt;Key, Value&gt;</li>
+  <li>简写：[Key: Value]</li>
+</ul>
+
+<h5 id="section">4.1 创建</h5>
+
+<p>1、创建[Int: String]类型的空字典：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt">String</span><span class="p">]()</span>
+</code></pre>
+</div>
+
+<p>2、操作</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 插入元素：[16:"sixteen"]</span>
+<span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span> 
+
+<span class="c1">// 置空，类型不变：[Int: String]</span>
+<span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="p">[:]</span>
+</code></pre>
+</div>
+
+<p>3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>4、简写：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h5 id="accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</h5>
+
+<p>使用下标访问修改</p>
+
+<ul>
+  <li>.count属性：<code class="highlighter-rouge">airports.count</code>；</li>
+  <li>.isEmpty属性：<code class="highlighter-rouge">if airports.isEmpty {</code>；</li>
+  <li>添加/更改元素：<code class="highlighter-rouge">airports["LHR"] = "London"</code>；</li>
+  <li>修改元素：updateValue(_:forKey:) 返回可选类型；</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="s">"Dublin Airport"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The old value for DUB was </span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 可选</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">airportName</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="s">"DUB"</span><span class="p">]</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The name of the airport is </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"That airport is not in the airports dictionary."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "The name of the airport is Dublin Airport."</span>
+</code></pre>
+</div>
+<ul>
+  <li>下标置空：airports[“APL”] = nil；</li>
+  <li>removeValue(forKey:)</li>
+</ul>
+
+<p>返回可选类型：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The removed airport's name is </span><span class="se">\(</span><span class="n">removedValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "The removed airport's name is Dublin Airport."</span>
+
+</code></pre>
+</div>
+
+<h5 id="iterating-over-a-dictionary">4.3 Iterating Over a Dictionary：遍历字典</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、遍历键值对</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// YYZ: Toronto Pearson</span>
+<span class="c1">// LHR: London Heathrow</span>
+
+<span class="c1">// 2、遍历key</span>
+<span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport code: </span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Airport code: YYZ</span>
+<span class="c1">// Airport code: LHR</span>
+<span class="c1">// 3、遍历value</span>
+<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">values</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport name: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Airport name: Toronto Pearson</span>
+<span class="c1">// Airport name: London Heathrow</span>
+
+<span class="c1">// 4、获取key value</span>
+<span class="k">let</span> <span class="nv">airportCodes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
+<span class="c1">// airportCodes is ["YYZ", "LHR"]</span>
+ 
+<span class="k">let</span> <span class="nv">airportNames</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="c1">// airportNames is ["Toronto Pearson", "London Heathrow"]</span>
+
+</code></pre>
+</div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/01/swift_IV_Collection-Types/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/26/swift_III_Strings-and-Characters/">Swift_III_字符(串)</a>
                 </h2>
                 <div class="label">
@@ -1572,181 +2165,6 @@ from xlwt import easyxf
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/09/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-09
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#iOS逆向理论基础" title="Tag: iOS逆向理论基础" rel="tag">iOS逆向理论基础</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p><strong>待整理</strong></p>
-
-<p>iOS采用的文件格式Mach-O中包含了足够多的原始数据，让我们能够用class-dump等工具还原出二进制文件的头文件</p>
-
-<p>待续…</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/09/7_IOS_Theory/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/07/6_IOS_Tools/">iOS逆向系列6_iOS工具集</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#iOS逆向工具集" title="Tag: iOS逆向工具集" rel="tag">iOS逆向工具集</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、简介</a></li>
-  <li><a href="#cydiasubstrate" id="markdown-toc-cydiasubstrate">2、CydiaSubstrate</a>    <ul>
-      <li><a href="#mobilehooker" id="markdown-toc-mobilehooker">2.1 MobileHooker</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>待整理</strong></p>
-
-<h2 id="section">1、简介</h2>
-
-<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
-
-<p>相关链接：
-Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
-
-<h2 id="cydiasubstrate">2、CydiaSubstrate</h2>
-
-<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
-
-<h5 id="mobilehooker">2.1 MobileHooker</h5>
-
-<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
-	void MSHookFunction(void* function, void* replacement, void** p_original);
-</code></pre>
-</div>
-
-<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
-
-<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
-
-<p><strong>MSHookFunction</strong> 
-MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
-它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
-
-<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
-
-<p><strong>symbol</strong>
-在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
-
-<p>可参阅资料：
-<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
-
-<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
-
-<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/07/6_IOS_Tools/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1776,11 +2194,15 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
                     
+                        <li><a href="/2017/02/08/AD-jenkins/">Ad Jenkins</a></li>
+                    
                         <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
                     
                         <li><a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></li>
                     
                         <li><a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></li>
+                    
+                        <li><a href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a></li>
                     
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
@@ -1789,10 +2211,6 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                         <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                         <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
-                    
-                        <li><a href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a></li>
-                    
-                        <li><a href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a></li>
                     
                 </ul>
             </div>
@@ -1873,7 +2291,7 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                             <span class="name">
                                 CI
                             </span>
-                            <span class="badge">4</span>
+                            <span class="badge">5</span>
                         </a>
                     </li>
                     
@@ -2096,6 +2514,13 @@ MSHookFunction的三个参数的作用分别是：替换的原函数、替换函
                       
                       
                       <a href="/tag/#Animation" style="font-size: 9pt; color: #999;">Animation</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#OTA" style="font-size: 9pt; color: #999;">OTA</a>
                     
                       
                       
