@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Feb 2017 15:05:46 +0800</pubDate>
-    <lastBuildDate>Sun, 12 Feb 2017 15:05:46 +0800</lastBuildDate>
+    <pubDate>Sun, 12 Feb 2017 21:57:24 +0800</pubDate>
+    <lastBuildDate>Sun, 12 Feb 2017 21:57:24 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -1004,1700 +1004,6 @@ bash /data/apache-tomcat-7.0.56/bin/startup.sh
       </item>
     
       <item>
-        <title>Ad Jenkins</title>
-        <description>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;layout&quot; content=&quot;post&quot;&gt;
-&lt;meta name=&quot;tags&quot; content=&quot;fastlane CI&quot;&gt;
-&lt;meta name=&quot;categories&quot; content=&quot;CI&quot;&gt;
-&lt;meta name=&quot;author&quot; content=&quot;3行代码&quot;&gt;&lt;style&gt;body {
-  width: 45em;
-  border: 1px solid #ddd;
-  outline: 1300px solid #fff;
-  margin: 16px auto;
-}
-
-body .markdown-body
-{
-  padding: 30px;
-}
-
-@font-face {
-  font-family: fontawesome-mini;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-@font-face {
-  font-family: octicons-anchor;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-.markdown-body {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: #333333;
-  overflow: hidden;
-  font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Segoe UI&quot;, Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-}
-
-.markdown-body a {
-  background: transparent;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline: 0;
-}
-
-.markdown-body b,
-.markdown-body strong {
-  font-weight: bold;
-}
-
-.markdown-body mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-.markdown-body sup {
-  top: -0.5em;
-}
-.markdown-body sub {
-  bottom: -0.25em;
-}
-
-.markdown-body h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-.markdown-body img {
-  border: 0;
-}
-
-.markdown-body hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-.markdown-body pre {
-  overflow: auto;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.markdown-body input {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-.markdown-body html input[disabled] {
-  cursor: default;
-}
-
-.markdown-body input {
-  line-height: normal;
-}
-
-.markdown-body input[type=&quot;checkbox&quot;] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body .codehilitetable {
-  border: 0;
-  border-spacing: 0;
-}
-
-.markdown-body .codehilitetable tr {
-  border: 0;
-}
-
-.markdown-body .codehilitetable pre,
-.markdown-body .codehilitetable div.codehilite {
-  margin: 0;
-}
-
-.markdown-body .linenos,
-.markdown-body .code,
-.markdown-body .codehilitetable td {
-  border: 0;
-  padding: 0;
-}
-
-.markdown-body td:not(.linenos) .linenodiv {
-  padding: 0 !important;
-}
-
-.markdown-body .code {
-  width: 100%;
-}
-
-.markdown-body .linenos div pre,
-.markdown-body .linenodiv pre,
-.markdown-body .linenodiv {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.markdown-body .code div pre,
-.markdown-body .code div {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.markdown-body * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body input {
-  font: 13px Helvetica, arial, freesans, clean, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;
-  line-height: 1.4;
-}
-
-.markdown-body a {
-  color: #4183c4;
-  text-decoration: none;
-}
-
-.markdown-body a:hover,
-.markdown-body a:focus,
-.markdown-body a:active {
-  text-decoration: underline;
-}
-
-.markdown-body hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.markdown-body hr:before,
-.markdown-body hr:after {
-  display: table;
-  content: &quot; &quot;;
-}
-
-.markdown-body hr:after {
-  clear: both;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-
-.markdown-body h1 {
-  font-size: 30px;
-}
-
-.markdown-body h2 {
-  font-size: 21px;
-}
-
-.markdown-body h3 {
-  font-size: 16px;
-}
-
-.markdown-body h4 {
-  font-size: 14px;
-}
-
-.markdown-body h5 {
-  font-size: 12px;
-}
-
-.markdown-body h6 {
-  font-size: 11px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body code,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body kbd {
-  background-color: #e7e7e7;
-  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
-  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
-  background-image: linear-gradient(#fefefe, #e7e7e7);
-  background-repeat: repeat-x;
-  border-radius: 2px;
-  border: 1px solid #cfcfcf;
-  color: #000;
-  padding: 3px 5px;
-  line-height: 10px;
-  font: 11px Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
-  display: inline-block;
-}
-
-.markdown-body&gt;*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body&gt;*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body .headeranchor-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-}
-
-.markdown-body .headeranchor-link:focus {
-  outline: none;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.markdown-body h1 .headeranchor,
-.markdown-body h2 .headeranchor,
-.markdown-body h3 .headeranchor,
-.markdown-body h4 .headeranchor,
-.markdown-body h5 .headeranchor,
-.markdown-body h6 .headeranchor {
-  display: none;
-  color: #000;
-  vertical-align: middle;
-}
-
-.markdown-body h1:hover .headeranchor-link,
-.markdown-body h2:hover .headeranchor-link,
-.markdown-body h3:hover .headeranchor-link,
-.markdown-body h4:hover .headeranchor-link,
-.markdown-body h5:hover .headeranchor-link,
-.markdown-body h6:hover .headeranchor-link {
-  height: 1em;
-  padding-left: 8px;
-  margin-left: -30px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .headeranchor-link .headeranchor,
-.markdown-body h2:hover .headeranchor-link .headeranchor,
-.markdown-body h3:hover .headeranchor-link .headeranchor,
-.markdown-body h4:hover .headeranchor-link .headeranchor,
-.markdown-body h5:hover .headeranchor-link .headeranchor,
-.markdown-body h6:hover .headeranchor-link .headeranchor {
-  display: inline-block;
-}
-
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-
-.markdown-body h4 {
-  font-size: 1.25em;
-}
-
-.markdown-body h5 {
-  font-size: 1em;
-}
-
-.markdown-body h6 {
-  font-size: 1em;
-  color: #777;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body .admonition {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body hr {
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 2em;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li&gt;p {
-  margin-top: 16px;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote {
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-}
-
-.markdown-body blockquote&gt;:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote&gt;:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
-}
-
-.markdown-body table th {
-  font-weight: bold;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #ddd;
-}
-
-.markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-.markdown-body img {
-  max-width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body code,
-.markdown-body samp {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-  letter-spacing: -0.2em;
-  content: &quot;\00a0&quot;;
-}
-
-.markdown-body pre&gt;code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .codehilite {
-  margin-bottom: 16px;
-}
-
-.markdown-body .codehilite pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown-body .codehilite pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body pre {
-  word-wrap: normal;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-  content: normal;
-}
-
-/* Admonition */
-.markdown-body .admonition {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  position: relative;
-  border-radius: 3px;
-  border: 1px solid #e0e0e0;
-  border-left: 6px solid #333;
-  padding: 10px 10px 10px 30px;
-}
-
-.markdown-body .admonition table {
-  color: #333;
-}
-
-.markdown-body .admonition p {
-  padding: 0;
-}
-
-.markdown-body .admonition-title {
-  font-weight: bold;
-  margin: 0;
-}
-
-.markdown-body .admonition&gt;.admonition-title {
-  color: #333;
-}
-
-.markdown-body .attention&gt;.admonition-title {
-  color: #a6d796;
-}
-
-.markdown-body .caution&gt;.admonition-title {
-  color: #d7a796;
-}
-
-.markdown-body .hint&gt;.admonition-title {
-  color: #96c6d7;
-}
-
-.markdown-body .danger&gt;.admonition-title {
-  color: #c25f77;
-}
-
-.markdown-body .question&gt;.admonition-title {
-  color: #96a6d7;
-}
-
-.markdown-body .note&gt;.admonition-title {
-  color: #d7c896;
-}
-
-.markdown-body .admonition:before,
-.markdown-body .attention:before,
-.markdown-body .caution:before,
-.markdown-body .hint:before,
-.markdown-body .danger:before,
-.markdown-body .question:before,
-.markdown-body .note:before {
-  font: normal normal 16px fontawesome-mini;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  line-height: 1.5;
-  color: #333;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-.markdown-body .admonition:before {
-  content: &quot;\f056\00a0&quot;;
-  color: 333;
-}
-
-.markdown-body .attention:before {
-  content: &quot;\f058\00a0&quot;;
-  color: #a6d796;
-}
-
-.markdown-body .caution:before {
-  content: &quot;\f06a\00a0&quot;;
-  color: #d7a796;
-}
-
-.markdown-body .hint:before {
-  content: &quot;\f05a\00a0&quot;;
-  color: #96c6d7;
-}
-
-.markdown-body .danger:before {
-  content: &quot;\f057\00a0&quot;;
-  color: #c25f77;
-}
-
-.markdown-body .question:before {
-  content: &quot;\f059\00a0&quot;;
-  color: #96a6d7;
-}
-
-.markdown-body .note:before {
-  content: &quot;\f040\00a0&quot;;
-  color: #d7c896;
-}
-
-.markdown-body .admonition::after {
-  content: normal;
-}
-
-.markdown-body .attention {
-  border-left: 6px solid #a6d796;
-}
-
-.markdown-body .caution {
-  border-left: 6px solid #d7a796;
-}
-
-.markdown-body .hint {
-  border-left: 6px solid #96c6d7;
-}
-
-.markdown-body .danger {
-  border-left: 6px solid #c25f77;
-}
-
-.markdown-body .question {
-  border-left: 6px solid #96a6d7;
-}
-
-.markdown-body .note {
-  border-left: 6px solid #d7c896;
-}
-
-.markdown-body .admonition&gt;*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body .admonition&gt;*:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* progress bar*/
-.markdown-body .progress {
-  display: block;
-  width: 300px;
-  margin: 10px 0;
-  height: 24px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #ededed;
-  position: relative;
-  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
-}
-
-.markdown-body .progress-label {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  width: 100%; margin: 0;
-  line-height: 24px;
-  color: #333;
-  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
-  -webkit-font-smoothing: antialiased !important;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.markdown-body .progress-bar {
-  height: 24px;
-  float: left;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #96c6d7;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
-  background-size: 30px 30px;
-  background-image: -webkit-linear-gradient(
-    135deg, rgba(255, 255, 255, .4) 27%,
-    transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%,
-    transparent 77%, transparent
-  );
-  background-image: -moz-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -ms-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -o-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-}
-
-.markdown-body .progress-100plus .progress-bar {
-  background-color: #a6d796;
-}
-
-.markdown-body .progress-80plus .progress-bar {
-  background-color: #c6d796;
-}
-
-.markdown-body .progress-60plus .progress-bar {
-  background-color: #d7c896;
-}
-
-.markdown-body .progress-40plus .progress-bar {
-  background-color: #d7a796;
-}
-
-.markdown-body .progress-20plus .progress-bar {
-  background-color: #d796a6;
-}
-
-.markdown-body .progress-0plus .progress-bar {
-  background-color: #c25f77;
-}
-
-.markdown-body .candystripe-animate .progress-bar{
-  -webkit-animation: animate-stripes 3s linear infinite;
-  -moz-animation: animate-stripes 3s linear infinite;
-  animation: animate-stripes 3s linear infinite;
-}
-
-@-webkit-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@-moz-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-.markdown-body .gloss .progress-bar {
-  box-shadow:
-    inset 0 4px 12px rgba(255, 255, 255, .7),
-    inset 0 -12px 0 rgba(0, 0, 0, .05);
-}
-
-/* Multimarkdown Critic Blocks */
-.markdown-body .critic_mark {
-  background: #ff0;
-}
-
-.markdown-body .critic_delete {
-  color: #c82829;
-  text-decoration: line-through;
-}
-
-.markdown-body .critic_insert {
-  color: #718c00 ;
-  text-decoration: underline;
-}
-
-.markdown-body .critic_comment {
-  color: #8e908c;
-  font-style: italic;
-}
-
-.markdown-body .headeranchor {
-  font: normal normal 16px octicons-anchor;
-  line-height: 1;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.headeranchor:before {
-  content: '\f05c';
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item input {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-
-/* Media */
-@media only screen and (min-width: 480px) {
-  .markdown-body {
-    font-size:14px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .markdown-body {
-    font-size:16px;
-  }
-}
-
-@media print {
-  .markdown-body * {
-    background: transparent !important;
-    color: black !important;
-    filter:none !important;
-    -ms-filter: none !important;
-  }
-
-  .markdown-body {
-    font-size:12pt;
-    max-width:100%;
-    outline:none;
-    border: 0;
-  }
-
-  .markdown-body a,
-  .markdown-body a:visited {
-    text-decoration: underline;
-  }
-
-  .markdown-body .headeranchor-link {
-    display: none;
-  }
-
-  .markdown-body a[href]:after {
-    content: &quot; (&quot; attr(href) &quot;)&quot;;
-  }
-
-  .markdown-body abbr[title]:after {
-    content: &quot; (&quot; attr(title) &quot;)&quot;;
-  }
-
-  .markdown-body .ir a:after,
-  .markdown-body a[href^=&quot;javascript:&quot;]:after,
-  .markdown-body a[href^=&quot;#&quot;]:after {
-    content: &quot;&quot;;
-  }
-
-  .markdown-body pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .markdown-body pre,
-  .markdown-body blockquote {
-    border: 1px solid #999;
-    padding-right: 1em;
-    page-break-inside: avoid;
-  }
-
-  .markdown-body .progress,
-  .markdown-body .progress-bar {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .markdown-body .progress {
-    border: 1px solid #ddd;
-  }
-
-  .markdown-body .progress-bar {
-    height: 22px;
-    border-right: 1px solid #ddd;
-  }
-
-  .markdown-body tr,
-  .markdown-body img {
-    page-break-inside: avoid;
-  }
-
-  .markdown-body img {
-    max-width: 100% !important;
-  }
-
-  .markdown-body p,
-  .markdown-body h2,
-  .markdown-body h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  .markdown-body h2,
-  .markdown-body h3 {
-    page-break-after: avoid;
-  }
-}
-&lt;/style&gt;&lt;title&gt;&quot; 持续集成系列 - CI + Jenkins的魔法世界&quot;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;markdown-body&quot;&gt;&lt;ul&gt;
-&lt;li toc=&quot;toc&quot;&gt;content&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;最近一直在关注移动端的持续集成部署相关的内容,在网搜 Jenkins 资料是很多,但是基本都不是移动端的集成部署.下边将个人的使用体会分享出来,希望能帮助到需要的伙伴们.&lt;br /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;在进行 CI 之前,你需要一些基本的知识&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;ci&quot;&gt;&lt;a name=&quot;user-content-ci&quot; href=&quot;#ci&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;CI 基础知识&lt;/h3&gt;
-&lt;p&gt;在互联网的产品开发时代,产品迭代越来越频繁,“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”.很多开发团队也越来越认识到,自动化测试和持续部署可帮助开发团队提高迭代效率和质量.&lt;br /&gt;
-那么,如何更好地解决“最后一公里”这一问题呢?&lt;/p&gt;
-&lt;p&gt;可以分为两部分:持续集成和持续部署&lt;br /&gt;
-- 持续集成:是指整个开发过程,每个人开发的模块向项目主体交付时,频繁进行集成以便更快地发现其中的错误&lt;br /&gt;
-- 持续部署:是指开发过程中连续的阶段性版本的上线, V1.1.0上线部署,V1.1.1上线部署&amp;hellip;&lt;br /&gt;
-- 前者和后者时间尺度是一样的,不过前者是涵盖每一次 push ,后者是指一个稳定的版本,可以内测和发布用的&lt;br /&gt;
-- 实际使用中,两者是结合在一起的,持续集成的平台上,可以进一步配置持续部署,这样就可以实现:每次 push 自动构建测试,每次稳定的版本,可以顺利的构建分发用于内测.&lt;/p&gt;
-&lt;h5 id=&quot;continuous-integration&quot;&gt;&lt;a name=&quot;user-content-continuous-integration&quot; href=&quot;#continuous-integration&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;持续集成(Continuous Integration)&lt;/h5&gt;
-&lt;p&gt;持续集成:是指整个开发过程,个人开发的模块,向项目主体交付,频繁进行集成以便更快地发现其中的错误.涉及到的内容为:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自动化测试:单元测试+ UI 测试&lt;/li&gt;
-&lt;li&gt;持续集成平台:Jenkins (自动化的构建) \ Travis CI (基于 github 平台的CI持续集成)等&lt;/li&gt;
-&lt;li&gt;版本控制:如 Git\SVN\CVS 等&lt;/li&gt;
-&lt;li&gt;部署发布工具:fastlane 等&lt;/li&gt;
-&lt;li&gt;部署发布平台:蒲公英\Fir.im (目前支持 Android 和 iOS 应用的分发,提供的工具有 flow.ci)&lt;/li&gt;
-&lt;li&gt;一般流程(Jenkins 为例):Jenkins 服务器轮训 Git ,发现新的版本,就会 clone 到本地,并按照预先设定的脚本进行自动编译,并执行测试.如果有问题,就会发出邮件通知.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;continuous-deployment&quot;&gt;&lt;a name=&quot;user-content-continuous-deployment&quot; href=&quot;#continuous-deployment&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;持续部署(Continuous Deployment)&lt;/h5&gt;
-&lt;p&gt;持续部署:是指开发过程中的连续的阶段性版本, V1.1.0上线部署,V1.1.1上线部署&amp;hellip;&lt;br /&gt;
-在移动端主要是使用 fastlane 实现持续部署:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开发项目,单元测试&lt;/li&gt;
-&lt;li&gt;模块开发,集成\UI 测试&lt;/li&gt;
-&lt;li&gt;Archive项目&lt;/li&gt;
-&lt;li&gt;上传包到iTunes&lt;/li&gt;
-&lt;li&gt;在iTunes后台提交版本截图\描述等信息(也可以在测试完成后配置)&lt;/li&gt;
-&lt;li&gt;配置TestFlight,分发测试Beta版&lt;/li&gt;
-&lt;li&gt;测试,改 bug&lt;/li&gt;
-&lt;li&gt;测试完成,提交App Store审核&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;1-xcode-xcodebuild&quot;&gt;&lt;a name=&quot;user-content-1-xcode-xcodebuild&quot; href=&quot;#1-xcode-xcodebuild&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;1.  Xcode 命令行工具 : xcodebuild&lt;/h5&gt;
-&lt;p&gt;Xcode 不仅可以通过 GUI 编译运行,还可以通过命令行实现编译运行,这也是 CI 的基础条件之一.&lt;/p&gt;
-&lt;p&gt;官方的使用方法:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;xcodebuild [-project &amp;lt;projectname&amp;gt;] [[-target &amp;lt;targetname&amp;gt;]...|-alltargets] [-configuration &amp;lt;configurationname&amp;gt;] [-arch &amp;lt;architecture&amp;gt;]... [-sdk [&amp;lt;sdkname&amp;gt;|&amp;lt;sdkpath&amp;gt;]] [-showBuildSettings] [&amp;lt;buildsetting&amp;gt;=&amp;lt;value&amp;gt;]... [&amp;lt;buildaction&amp;gt;]...
-
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;关键字:&lt;br /&gt;
-&lt;pre&gt;&lt;code&gt;Options:
-    -usage                              print brief usage
-    -help                               print complete usage
-    -verbose                            provide additional status output
-    -license                            show the Xcode and SDK license agreements
-    ....
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;实战:&lt;/strong&gt;&lt;br /&gt;
-&lt;pre&gt;&lt;code&gt;$ cd  /Users/guoyinjinrong1/Git_Projecrt/XCTest/UITEST 
-$ xcodebuild build -workspace UITEST.xcworkspace -scheme UITEST -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h5 id=&quot;2-project&quot;&gt;&lt;a name=&quot;user-content-2-project&quot; href=&quot;#2-project&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;2. project 项目的命令行编译:&lt;/h5&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;# 列出 xcodebuild 所有可用的参数:
-$ xcodebuild --help
-# project 项目的命令行编译:
-$ xcodebuild -project {project}.xcodeproj -target {xxtarget} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-#
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用 iphonesimulator SDK 是为了避免签名错误.直到我们稍后引入证书之前,这一步是必须的.通过设置 ONLY_ACTIVE_ARCH=NO 我们可以确保利用模拟器架构编译工程.你也可以设置额外的属性,例如 configuration,输入 man xcodebuild 查看相关文档.&lt;/p&gt;
-&lt;h5 id=&quot;3cocoapods&quot;&gt;&lt;a name=&quot;user-content-3cocoapods&quot; href=&quot;#3cocoapods&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;3.CocoaPods 项目&lt;/h5&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;# 需要用下面的命令来指定 workspace 和 scheme：
-$ xcodebuild -workspace {workspace}.xcworkspace -scheme {scheme} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;schemes 是由 Xcode 自动生成的,但这在服务器上不会发生.确保所有的 scheme 都被设为 shared 并加入到仓库中.否则它只会在本地工作而不会被  CI 系统识别&lt;/p&gt;
-&lt;h5 id=&quot;4xctool&quot;&gt;&lt;a name=&quot;user-content-4xctool&quot; href=&quot;#4xctool&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;4.Xctool&lt;/h5&gt;
-&lt;p&gt;Xctool 是来自 Facebook 的命令行工具,它可以简化程序的编译和测试.它的彩色输出信息比 xcodebuild 更加简洁直观.同时还添加了对逻辑测试,应用测试的支持.(Travis 中已经预装了 xctool.要在本地测试的话,需要用 Homebrew 安装 xctool)&lt;/p&gt;
-&lt;p&gt;xctool 用法非常简单,它使用的参数跟 xcodebuild 相同:&lt;br /&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;xctool test -workspace TravisExample.xcworkspace -scheme TravisExampleTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3 id=&quot;jenkins&quot;&gt;&lt;a name=&quot;user-content-jenkins&quot; href=&quot;#jenkins&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Jenkins 简介&lt;/h3&gt;
-&lt;p&gt;1.简介:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Jenkins 由以前的 hudson 更名而来&lt;/li&gt;
-&lt;li&gt;Jenkins 是一个跨平台的开源软件项目,旨在实现持续集成和持续交付以提高工作效率&lt;/li&gt;
-&lt;li&gt;Jenkins 的主要功能是监视重复工作的执行,例如项目的构建等&lt;/li&gt;
-&lt;li&gt;最终都是为了提高软件开发的效率&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;2.特点:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;易于安装:一个命令就可启动,也方便部署到各种Web容器中（如tomcat)&lt;/li&gt;
-&lt;li&gt;易于配置:所有的配置都在Web界面实现,权限控制得也不错&lt;/li&gt;
-&lt;li&gt;插件支持:基本上所有的扩展都是有插件完成的,开发插件也很方便,由此产生了庞大的社区&lt;/li&gt;
-&lt;li&gt;支持分布式构建:Jenkins能够让通过主从模式（master/slave）多台机器一起构建&lt;/li&gt;
-&lt;li&gt;采用 shell 自定义脚本,控制集成部署环境更加方便灵活&lt;/li&gt;
-&lt;li&gt;构建失败发邮件通知相关人员解决&lt;/li&gt;
-&lt;li&gt;自动按天备份 war 包,Jenkins 配置备份以及版本控制化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;3.公司的配置流程:&lt;/p&gt;
-&lt;p&gt;1\Jenkins服务器一般先架设在一台服务器上,有配置管理人员管理&lt;br /&gt;
-2\产品有构建需求后,配置管理人员就新建一个任务,配好源码仓库,设置构建时间,指定运行脚本来编译测试产品,并且设置报告输出&lt;/p&gt;
-&lt;p&gt;4.弊端:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;多平台或依赖的包:&lt;br /&gt;
-如果你的软件想在不同的操作系统软件构建并验​​证,这将是相当有难度和技巧性,一般是准备不同的操作系统的机器,然后使用主/从模式进行分布式构建.在C++中你可以使用有关的交叉编译器;当然你可有使用虚拟机的技术&lt;a href=&quot;http://larrycai.github.com/2011/10/25/vagrant-jenkins-ci.html&quot;&gt;vagrant/virtualbox&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;配置管理人员的工作:&lt;br /&gt;
-一般来说Jenkins的构建任务,它是集中控制的.大多来说都是有专职的配置管理人员来管理,否者权限会混乱.&lt;br /&gt;
-当有需求时,他们负责在CI服务器创建任务（这些配置文件不是有版本控制的）,这个就涉及到了沟通成本,你有变化需求,很难及时满足.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;作为开发者,要想随时构建项目,那就需要 Travis CI.&lt;/p&gt;
-&lt;h3 id=&quot;jenkins_1&quot;&gt;&lt;a name=&quot;user-content-jenkins_1&quot; href=&quot;#jenkins_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;安装 Jenkins&lt;/h3&gt;
-&lt;h5 id=&quot;1&quot;&gt;&lt;a name=&quot;user-content-1&quot; href=&quot;#1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;1. 安装&lt;/h5&gt;
-&lt;p&gt;安装方式一:下载&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/jenkins/osx/jenkins-2.45.pkg&quot;&gt;pkg&lt;/a&gt;文件,然后安装即可(此处未必是最新版,请移步&lt;a href=&quot;https://jenkins.io/&quot;&gt;官网&lt;/a&gt;下载)&lt;/p&gt;
-&lt;p&gt;安装方式二:终端&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;# 安装自动选择最快源的插件
-$ yum install yum-fastestmirror -y  
-# 添加 Jenkins 源:
-$ sudo wget -O /etc/yum.repos.d/jenkins.repo http://jenkins-ci.org/redhat/jenkins.repo
-$ sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-#安装 Jenkins
-$ yum install jenkins               
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;2&quot;&gt;&lt;a name=&quot;user-content-2&quot; href=&quot;#2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;2. 启动&lt;/h5&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;$ sudo service jenkins start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;3&quot;&gt;&lt;a name=&quot;user-content-3&quot; href=&quot;#3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;3. 访问方式&lt;/h5&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;$ open http://localhost:8080/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;4&quot;&gt;&lt;a name=&quot;user-content-4&quot; href=&quot;#4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;4. 修改端口&lt;/h5&gt;
-&lt;p&gt;为避免端口冲突,可重配端口:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;$ vim /etc/sysconfig/jenkins
-$ sudo service jenkins restart
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;或者这样修改端口:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
-sudo defaults write /Library/Preferences/org.jenkins-ci httpPort 8443
-sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
-# 如果是 https:
-sudo defaults write /Library/Preferences/org.jenkins-ci httpPort 8443
-sudo defaults write /Library/Preferences/org.jenkins-ci httpsKeyStore /path/to/your/keystore/file
-sudo defaults write /Library/Preferences/org.jenkins-ci httpsKeyStorePassword &amp;lt;keystore password&amp;gt;
-# 其中两条命令分别是启动和关闭 Jenkins
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;5&quot;&gt;&lt;a name=&quot;user-content-5&quot; href=&quot;#5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;5. 用户设置&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;打开页面: &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt; , 按照提示从&lt;code&gt;/Users/Shared/Jenkins/Home/secrets/initialAdminPassword&lt;/code&gt;文件中获取密码,然后输入即可. &lt;strong&gt;vim 打开文件或者 cat 显示文件皆可&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;然后进入插件设置页面,可以选择 Jenkins 推荐的插件,也可自主选择需要安装的插件.(会有一些插件安装失败,没关系,可以后续再安装)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;安装完成之后,进入创建用户页面,设置用户名密码等&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;用户创建完成,就可以开始创建第一个 Jenkins 任务啦!&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;主界面如下(已经创建过一个任务):&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/0b2dc9f4695effe8bd26d856957165a040f4c3c310b35-pnIrgy_fw658&quot; /&gt;&lt;/p&gt;
-&lt;h5 id=&quot;6&quot;&gt;&lt;a name=&quot;user-content-6&quot; href=&quot;#6&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;6.系统设置&lt;/h5&gt;
-&lt;ol&gt;
-&lt;li&gt;编码设置:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;进入 系统管理-&amp;gt;系统设置 界面：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;首先设置一下 jenkins 内部shell 执行编码，目的当在jenkins执行shell命令时，有时候会报 utf-8 编码错误。主要是pod install的时候报错。&lt;/p&gt;
-&lt;p&gt;[33mWARNING: CocoaPods requires your terminal to be using UTF-8 encoding.&lt;/p&gt;
-&lt;p&gt;设置如下：&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/cb6bfa7ef1bc54947df56afd938f66f13617e97b220ed-hPTfFv_fw658&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;2.邮件设置:&lt;/p&gt;
-&lt;p&gt;jenkins Location 设置&lt;br /&gt;
-主要设置 jenkins 外部访问的 URL 和系统管理员的邮箱地址.用来发送错误报告的邮箱地址：如图&lt;br /&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://7xsugd.com2.z0.glb.clouddn.com/runningyoungBlog/images/location.png&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;上面只设置了邮箱发送的地址（From地址）,下面设置邮箱的服务器\协议\邮箱\密码.如图:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://7xsugd.com2.z0.glb.clouddn.com/runningyoungBlog/images/email.png&quot; /&gt;&lt;/p&gt;
-&lt;h5 id=&quot;7&quot;&gt;&lt;a name=&quot;user-content-7&quot; href=&quot;#7&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;7. 认证配置&lt;/h5&gt;
-&lt;h2 id=&quot;-gitlab-git&quot;&gt;&lt;a name=&quot;user-content--gitlab-git&quot; href=&quot;#-gitlab-git&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;- 基于 用户名+密码 : 将 Gitlab 的用户名,密码添加进来.就可以通过此认证,来访问 Git 的项目库&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;基于 API Token : 将 GIT的 token 添加进来.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;_1&quot;&gt;&lt;a name=&quot;user-content-_1&quot; href=&quot;#_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;项目通用配置&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;插件gitlab hook plugin，可以识别gitlab发送过来的提交信息，并触发对应的job&lt;/li&gt;
-&lt;li&gt;Environment Injector Plugin（自定义全局变量）&lt;/li&gt;
-&lt;li&gt;Email Extension Plugin（邮件）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;可以先看看下边的官方教程:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://berlin.gitbooks.io/jenkins/content/job/pei_zhi_bian_yi_can_shu.html&quot;&gt;官方指南 教程&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&quot;_2&quot;&gt;&lt;a name=&quot;user-content-_2&quot; href=&quot;#_2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;项目编译参数&lt;/h5&gt;
-&lt;p&gt;设置 debug,test等:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;打开项目 -&amp;gt; 选择参数化构建过程 -&amp;gt; 点选 Choice 配置如下&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://berlin.gitbooks.io/jenkins/content/pic/job/jb-02.jpg&quot; /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;_3&quot;&gt;&lt;a name=&quot;user-content-_3&quot; href=&quot;#_3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;项目构建参数&lt;/h5&gt;
-&lt;p&gt;设置构建参数:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;打开项目 -&amp;gt; Build with Parameters -&amp;gt; 配置如下&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://berlin.gitbooks.io/jenkins/content/pic/job/jb-03.jpg&quot; /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;_4&quot;&gt;&lt;a name=&quot;user-content-_4&quot; href=&quot;#_4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;构建触发器&lt;/h5&gt;
-&lt;blockquote&gt;
-&lt;p&gt;通常手动构建job不是我们想要的，我们想要让其自动构建，这就需要达到一定条件进行触发构建，所有就有了触发器&lt;br /&gt;
-详细的配置,参考&lt;a href=&quot;https://berlin.gitbooks.io/jenkins/content/job/gou_jian_de_hong_fa_qi.html&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Jenkins 支持多种触发器配置,包括：&lt;/p&gt;
-&lt;h2 id=&quot;-build-periodicallybuild&quot;&gt;&lt;a name=&quot;user-content--build-periodicallybuild&quot; href=&quot;#-build-periodicallybuild&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;- 定期进行构建（Build periodically），(隔一段时间build一次，不管版本库代码是否发生变化，通常不会采用此种方式)&lt;/h2&gt;
-&lt;h2 id=&quot;-poll-scm-buildbuild&quot;&gt;&lt;a name=&quot;user-content--poll-scm-buildbuild&quot; href=&quot;#-poll-scm-buildbuild&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;- 定期检测代码更新，如有更新则进行构建（Poll SCM） (隔一段时间比较一次源代码如果发生变更，那么就build。否则，不进行build)&lt;/h2&gt;
-&lt;h2 id=&quot;-build-when-a-change-is-pushed-to-github&quot;&gt;&lt;a name=&quot;user-content--build-when-a-change-is-pushed-to-github&quot; href=&quot;#-build-when-a-change-is-pushed-to-github&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;- 根据提交进行构建(Build when a change is pushed to GitHub)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;jenkins上只需要配置源代码来自git地址，不需要任何额外的配置；&lt;/li&gt;
-&lt;li&gt;在gitlab的某个项目的web hook配置中，配置固定的触发地址：&lt;code&gt;http://your-jenkins-server/gitlab/build_now&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;当gitlab的指定项目有push后，当push完成时，会触发指定的jenkins server上的对应job，匹配原则为：git project url地址一致，branch一致；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;H(25-30) 18 1-5： 工作日下午6点25到30分之间进行build
-H 23 1-5：工作日每晚23:00至23:59之间的某一时刻进行build
-H(0-29)/15：前半小时内每隔15分钟进行build（开始时间不确定） 
-H/20：每隔20分钟进行build（开始时间不确定）
-&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
-- 根据提交进行构建（Build when a change is pushed to GitHub）&lt;br /&gt;
-- 定期检测代码更新，如有更新则进行构建（Poll SCM）&lt;/p&gt;
-&lt;h6 id=&quot;jobs&quot;&gt;&lt;a name=&quot;user-content-jobs&quot; href=&quot;#jobs&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Jobs构建方式\编译 配置&lt;/h6&gt;
-&lt;p&gt;Jenkins支持多种编译配置方式,包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Xcode: iOS编译配置（安装Xcode integration插件）&lt;/li&gt;
-&lt;li&gt;Invoke Gradle script： Android编译配置(安装Gradle plugin插件)&lt;/li&gt;
-&lt;li&gt;Exceute Shell： 脚本方式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;对于iOS应用的构建,如果选择Xcode方式构建,需要配置好开发者证书. 推荐使用Exceute Shell方式,简单有效。&lt;/p&gt;
-&lt;h6 id=&quot;jobs_1&quot;&gt;&lt;a name=&quot;user-content-jobs_1&quot; href=&quot;#jobs_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Jobs构建后处理&lt;/h6&gt;
-&lt;p&gt;Artifacts和邮件通知配置等,&lt;a href=&quot;https://gold.xitu.io/entry/5792b7320a2b580061ab0e27&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;github&quot;&gt;&lt;a name=&quot;user-content-github&quot; href=&quot;#github&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;配置 github&lt;/h3&gt;
-&lt;p&gt;之所以要配置,是因为 Jenkins 默认不支持 GitHub,需要自行配置(默认支持 CVS\Subversion)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1.在 GitHub 中,配置 token (保存此 token 紧接着就要用)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;流程: github &amp;ndash;&amp;gt; setting &amp;ndash;&amp;gt; Personal Access Token &amp;ndash;&amp;gt; Generate new token&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;详细配置如下图:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/df55935992514b80c0672f2d3ae55ce4f726f4731bdfe-eVrSec_fw658&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2.安装 GitHub Plugin&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果此前已经没安装过&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;流程:系统管理&amp;ndash;&amp;gt;插件管理&amp;ndash;&amp;gt;可选插件&amp;ndash;&amp;gt;直接安装 GitHub Plugin&lt;/p&gt;
-&lt;p&gt;Jenkins会自动帮你安装plain-credentials 、git 、 credentials 、 github-api&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;3.配置 GitHub Plugin&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;流程:系统管理 &amp;ndash;&amp;gt; 系统设置 &amp;ndash;&amp;gt; GitHub &amp;ndash;&amp;gt; Add GitHub Sever&lt;/p&gt;
-&lt;p&gt;Add GitHub Sever 页面 Kind 选择 Secrect text,Secret 贴入上文 GitHub 中配置的 Token,ID 可空白,并加上简单描述即可.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/52b78661c0326778df8ea624bb680b59aa11c884106ee-Gos8u3_fw658&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;以上就完成了 GitHub 的配置.&lt;/p&gt;
-&lt;h4 id=&quot;freestyle&quot;&gt;&lt;a name=&quot;user-content-freestyle&quot; href=&quot;#freestyle&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;创建freestyle任务&lt;/h4&gt;
-&lt;p&gt;主界面 &amp;ndash;&amp;gt; 点击新建 &amp;ndash;&amp;gt; 输入任务名称,并选择任务类型,然后确定&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/c51fae690f1e3d46ae3b63c432fd275add8808b524354-J7rfU3_fw658&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1.基本信息:填入 GitHub 项目主页&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/0503e68febf932d309025bba65434d9507d223cde4ae-ECKWwr_fw658&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2.项目源码管理:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;填入项目的 git 地址&amp;ndash;&amp;gt;点击 Add 添加 git 账户,以便读写该项目&amp;ndash;&amp;gt;Branches to build 用于监听分支,**表示监听全部分支&amp;ndash;&amp;gt;Local subdirectory for repo 表示项目相对于默认路径的保存路径,之后都会在此路径进行构建执行.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/969a90bcc1d7d12c26164dd7f7ef11b1048a24a3e321-l92EFL_fw658&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;3.构建触发器/构建环境:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;GitHub hook trigger for GITScm polling 选项:当 GitHub 有版本库更新时触发 Jenkins 进行构建&lt;br /&gt;
-Poll SCM 选项:定期检查版本库是否有更新(使用Schedule语法)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/cd592746112fbda093692f630b3b6c8c8e260d4134bac-9nqLy0_fw658&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;4.构建&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/e0ce275c67b89629017b4a706b2b6cc6b283ed5660c6-0fzKor_fw658&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;这里指定脚本&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;#!/usr/bin/env zsh --login
-
-rvm use 2.0.0
-ruby --version
-bundle
-bundle --version
-bin/pod
-/usr/bin/xcodebuild -scheme 'UITEST' -workspace UITEST.xcworkspace -destination &amp;quot;platform=iOS Simulator,name=iPhone Retina (4-inch),OS=latest&amp;quot; -configuration Debug clean build test ONLY_ACTIVE_ARCH=NO
-&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
-- 5\ 构建后的操作&lt;br /&gt;
-Jenkins默认只能构建前执行shell,不能构建后执行shell.当有该需求时 Jenkins 的 PostBuildScript plugin 插件实现这个功能.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/517fe769dfaed57c8a9e6389d940bbbe1a50bfe83a7c-3uou8P_fw658&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;以上便完成了任务的配置.&lt;/p&gt;
-&lt;h5 id=&quot;githubwebhook&quot;&gt;&lt;a name=&quot;user-content-githubwebhook&quot; href=&quot;#githubwebhook&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;配置Github仓库的Webhook&lt;/h5&gt;
-&lt;blockquote&gt;
-&lt;p&gt;进入GitHub上指定的项目 &amp;ndash;&amp;gt; setting &amp;ndash;&amp;gt; WebHooks&amp;amp;Services &amp;ndash;&amp;gt; add webhook &amp;ndash;&amp;gt; 输入刚刚部署jenkins的服务器的IP&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这样,每次 push 都会触发一次build.&lt;/p&gt;
-&lt;p&gt;然而,我的 Jenkins 是本地的,在 GitHub 并不能直接访问到我的电脑,so,设置是无效的....&lt;/p&gt;
-&lt;h3 id=&quot;gitlab&quot;&gt;&lt;a name=&quot;user-content-gitlab&quot; href=&quot;#gitlab&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;配置 GitLab&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;集成目的: Gitlab 有新的推送,就会触发 Jenkins 构建.构建状态反馈给 Gitlab&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;1_1&quot;&gt;&lt;a name=&quot;user-content-1_1&quot; href=&quot;#1_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;1. 安装插件&lt;/h5&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/ee/integration/jenkins.html&quot;&gt;Gitlab官方教程&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://docs.gitlab.com/ee/integration/jenkins.html&quot;&gt;Gitlab 官方教程2&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;1). 安装 Gitlab 插件 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;系统管理 -&amp;gt; 管理插件 -&amp;gt; 可选插件 :中选择GitLab Plugin 和 Gitlab Hook Plugin 这两项，然后安装.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;2). 安装 Xcode 插件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;同上,安装 Xcode integration&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;3). 安装签名证书管理插件&lt;br /&gt;
-OS打包内测版时,需要发布证书及相关签名文件,因此这两个插件对于管理iOS证书非常方便.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;同上,安装 Credentials Plugin 和 Keychains and Provisioning Profiles Management &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;2-api-token&quot;&gt;&lt;a name=&quot;user-content-2-api-token&quot; href=&quot;#2-api-token&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;2. 配置 API Token&lt;/h5&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Gitlabe: Copy the private API token from [ Profile Settings -&amp;gt; Account ]&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Jenkins: Go to [ Manage Jenkins -&amp;gt; Configure System ] -&amp;gt; [GitLab] 粘贴 Gitlab 主机地址,以及 API Token&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;可能2步骤没有 API Token 选项,因为都已经集成到 Credentials 中了,所以,要进入 Credentials 中,然后 添加新的凭证:&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;首页点击 Credentials -&amp;gt; 点击 System -&amp;gt; 点击底部的 Glopbal credentials(unrestricted) -&amp;gt; 跳入新的页面,点击 Add Credentials -&amp;gt; Kind 选择 [GitLab API Token],然后粘贴上述的 token ,要注意的是, Description 需要写清楚,不然容易弄混淆(GitHub 也添加了 Secret text, 容易混)&lt;/p&gt;
-&lt;p&gt;以上前提是有安装插件:Plain Credentiles Plugin ,以及相关插件. 否则不会有 gitlab API token 这个选项的.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;3-gitlab&quot;&gt;&lt;a name=&quot;user-content-3-gitlab&quot; href=&quot;#3-gitlab&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;3. 配置 Gitlab 账号密码&lt;/h5&gt;
-&lt;p&gt;在系统配置里,添加 类型: Username with password -&amp;gt; 配置账号密码即可.&lt;/p&gt;
-&lt;h5 id=&quot;4-ssh&quot;&gt;&lt;a name=&quot;user-content-4-ssh&quot; href=&quot;#4-ssh&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;4. 配置 SSH&lt;/h5&gt;
-&lt;p&gt;1.直接获取:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;$ ls ~/.ssh
-$ cat id_rsa # 显示
-$ pbcopy &amp;lt; ~/.ssh/id_rsa #复制
-# 然后 粘贴到 Jenkins 中,并输入最初始的密码即可.如下图
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.hb.aicdn.com/9756ed06006b5d816ac3e4fdc9891249fd7879f116026-K0Lsxk_fw658&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;2.创建新的 SSH&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;$ ssh-keygen -t rsa -C “Your email” 
-# 私钥id_rsa:本机添加秘钥到秘钥管理器:
-$ eval &amp;quot;$(ssh-agent -s)&amp;quot;
-$ ssh-add ~/.ssh/id_rsa
-# 私钥copy添加进 Jenkins（private key选项）
-$ pbcopy &amp;lt; ~/.ssh/id_rsa
-# 公钥id_rsa.pub:复制id_rsa.pub里面的公钥添加到Gitlab上  
-$ pbcopy &amp;lt; ~/.ssh/id_rsa.pub
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;SSH 添加路径为:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;系统管理 -&amp;gt; 系统设置 -&amp;gt; Gitlab 栏 点击 Add 添加,或者使用如下地址:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:8080/credentials/store/system/domain/_/&quot;&gt;http://localhost:8080/credentials/store/system/domain/_/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;freestyle_1&quot;&gt;&lt;a name=&quot;user-content-freestyle_1&quot; href=&quot;#freestyle_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;创建freestyle任务&lt;/h4&gt;
-&lt;p&gt;主界面 &amp;ndash;&amp;gt; 点击新建 &amp;ndash;&amp;gt; 输入任务名称,并选择 freestyle 任务类型,然后确定&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;源码管理:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;输入项目 git 协议地址(&lt;a href=&quot;mailto:git@your.gitlab.server&quot;&gt;git@your.gitlab.server&lt;/a&gt;:gitlab_group/gitlab_project.git) &lt;br /&gt;
-&amp;ndash;&amp;gt; 证书类型选择:相应的 SSH .&lt;br /&gt;
-&amp;ndash;&amp;gt;在高级设置中，将名称设置为origin,将Refspec设置为 +refs/heads/&lt;em&gt;:refs/remotes/origin/&lt;/em&gt; +refs/merge-requests/&lt;em&gt;/head:refs/remotes/origin/merge-requests/&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;构建触发器:Build when a change is pushed to GitLab. 注意,这里的地址,粘贴在 Gitlab 上 的 WebHook 中&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;更加详细的任务配置,参考插件&lt;a href=&quot;https://github.com/jenkinsci/gitlab-plugin#using-it-with-a-job&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;xcode-builder&quot;&gt;&lt;a name=&quot;user-content-xcode-builder&quot; href=&quot;#xcode-builder&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Xcode Builder&lt;/h3&gt;
-&lt;h6 id=&quot;xcode-builder_1&quot;&gt;&lt;a name=&quot;user-content-xcode-builder_1&quot; href=&quot;#xcode-builder_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Xcode Builder 设置&lt;/h6&gt;
-&lt;blockquote&gt;
-&lt;p&gt;系统管理–&amp;gt;系统设置-&amp;gt;Xcode Builder&lt;br /&gt;
-默认 path 不变 -&amp;gt; 点击 Add 需填写的内容：&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160216141930768&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Keychain Name：iPhone Distribution: *（dis证书常用名）&lt;/p&gt;
-&lt;p&gt;Keychain path：${HOME}/Library/Keychains/login.keychain（dis证书路径）&lt;/p&gt;
-&lt;p&gt;Keychain password：*&lt;/p&gt;
-&lt;p&gt;Add to keychain search path after build：Yes&lt;/p&gt;
-&lt;p&gt;Default keychain:iPhone Distribution: *&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ol&gt;
-&lt;li&gt;General build settings: &lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;++ 填写Target 名字&lt;/p&gt;
-&lt;p&gt;++ Clean before build? YES&lt;/p&gt;
-&lt;p&gt;++ Pack application and build .ipa? YES&lt;/p&gt;
-&lt;p&gt;++ .ipa filename pattern IPA 路径:AD_Demo_${SHORT_VERSION}(固定写法:targetName_${SHORT_VERSION})&lt;/p&gt;
-&lt;p&gt;++ Output directory IPA输出位置 ${WORKSPACE}/build/${BUILD_NUMBER}/&lt;br /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;2.Code signing &amp;amp; OS X keychain options: &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在系统Xcode Builder（钥匙串设置）已配置,上边已配置&lt;br /&gt;
-- 3.Advanced Xcode build options: &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;++ “Clean test reports?”  YES&lt;/p&gt;
-&lt;p&gt;++Build output directory：${WORKSPACE}/build/${BUILD_NUMBER}/&lt;br /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218095046760&quot; /&gt;&lt;br /&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218095059932&quot; /&gt;&lt;br /&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218095117084&quot; /&gt;&lt;br /&gt;
-- 4. Versioning 构建后的设置 :SHELL 脚本&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218100247953&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;1).点击增加 Shell 脚本:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;&amp;quot;${WORKSPACE}/build/${BUILD_NUMBER}&amp;quot;
-
-for file in &amp;quot;*.ipa&amp;quot;
-do
-    PLIST_NAME=`echo $file`
-done
-
-PLIST_NAME=${PLIST_NAME%.*}
-
-cd &amp;quot;${WORKSPACE}/build&amp;quot;
-echo &amp;quot;PLIST_NAME=$PLIST_NAME&amp;quot; &amp;gt; jenkinsUserGlobal.properties
-
-cat &amp;lt;&amp;lt; EOF &amp;gt; ${WORKSPACE}/build/${BUILD_NUMBER}/$PLIST_NAME.plist
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
-&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
-&amp;lt;dict&amp;gt;
-        &amp;lt;key&amp;gt;items&amp;lt;/key&amp;gt;
-        &amp;lt;array&amp;gt;
-                &amp;lt;dict&amp;gt;
-                        &amp;lt;key&amp;gt;assets&amp;lt;/key&amp;gt;
-                        &amp;lt;array&amp;gt;
-                                &amp;lt;dict&amp;gt;
-                                        &amp;lt;key&amp;gt;kind&amp;lt;/key&amp;gt;
-                                        &amp;lt;string&amp;gt;software-package&amp;lt;/string&amp;gt;
-                                        &amp;lt;key&amp;gt;url&amp;lt;/key&amp;gt;
-                                        &amp;lt;string&amp;gt;https://127.0.0.1/$PLIST_NAME.ipa&amp;lt;/string&amp;gt;
-                                &amp;lt;/dict&amp;gt;
-                        &amp;lt;/array&amp;gt;
-                        &amp;lt;key&amp;gt;metadata&amp;lt;/key&amp;gt;
-                        &amp;lt;dict&amp;gt;
-                                &amp;lt;key&amp;gt;bundle-identifier&amp;lt;/key&amp;gt;
-                                &amp;lt;string&amp;gt;com.3code.ADDemo&amp;lt;/string&amp;gt;
-                                &amp;lt;key&amp;gt;bundle-version&amp;lt;/key&amp;gt;
-                                &amp;lt;string&amp;gt;1&amp;lt;/string&amp;gt;
-                                &amp;lt;key&amp;gt;kind&amp;lt;/key&amp;gt;
-                                &amp;lt;string&amp;gt;software&amp;lt;/string&amp;gt;
-                                &amp;lt;key&amp;gt;title&amp;lt;/key&amp;gt;
-                                &amp;lt;string&amp;gt;ADDemo&amp;lt;/string&amp;gt;
-                        &amp;lt;/dict&amp;gt;
-                &amp;lt;/dict&amp;gt;
-        &amp;lt;/array&amp;gt;
-&amp;lt;/dict&amp;gt;
-&amp;lt;/plist&amp;gt;
-EOF
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2). 点击增加 Inject environment variables&lt;/p&gt;
-&lt;p&gt;并设置:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;需填写的内容：(将在Execute shell中生成的全局变量文件地址放入 Properties File Path中)&lt;br /&gt;
-Properties File Path：${WORKSPACE}/build/jenkinsUserGlobal.properties&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218100610924&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;5.构建后的操作: 设置邮件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218100726636&quot; /&gt;&lt;br /&gt;
-触发器：构建成功、失败触发(扩展一下：失败点“高级”设置只发送给自己) &lt;br /&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218100837965&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;需填写的内容：&lt;/p&gt;
-&lt;p&gt;Project Recipient List：邮件接收人（多个时用”,“分割）&lt;/p&gt;
-&lt;p&gt;Project Reply-To List：$DEFAULT_REPLYTO&lt;/p&gt;
-&lt;p&gt;Content Type：选择”HTML(text/html)“&lt;/p&gt;
-&lt;p&gt;Default Subject：标题: &lt;strong&gt;${PROJECT_NAME}构建通知:第${BUILD_NUMBER}次持续集成${PLIST_NAME}构建${BUILD_STATUS}&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Default Content:（将ipa全局变量传递到邮件生成下载链接和链接二维码）,如下:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-&amp;lt;title&amp;gt;${ENV, var=&amp;quot;JOB_NAME&amp;quot;}-第${BUILD_NUMBER}次构建日志&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-
-&amp;lt;body leftmargin=&amp;quot;8&amp;quot; marginwidth=&amp;quot;0&amp;quot; topmargin=&amp;quot;8&amp;quot; marginheight=&amp;quot;4&amp;quot;
-    ffset=&amp;quot;0&amp;quot;&amp;gt;
-    &amp;lt;table width=&amp;quot;95%&amp;quot; cellpadding=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot;
-        style=&amp;quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&amp;quot;&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;h2&amp;gt;
-                    &amp;lt;font color=&amp;quot;#0000FF&amp;quot;&amp;gt;构建结果 - ${BUILD_STATUS}&amp;lt;/font&amp;gt;
-                &amp;lt;/h2&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;&amp;lt;h2&amp;gt;
-                    &amp;lt;font color=&amp;quot;#FF0000&amp;quot;&amp;gt;App下载链接:&amp;lt;a href=&amp;quot;itms-services://?action=download-manifest&amp;amp;url=https://******/${PLIST_NAME}.plist&amp;quot;&amp;gt;itms-services://?action=download-manifest&amp;amp;url=https://127.0.0.1/${PLIST_NAME}.plist&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
-                &amp;lt;/h2&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-               &amp;lt;td&amp;gt;&amp;lt;h2&amp;gt;
-                      &amp;lt;font color=&amp;quot;#FF0000&amp;quot;&amp;gt;二维码图片:&amp;lt;/font&amp;gt;
-               &amp;lt;/h2&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;
-                    &amp;lt;img src=&amp;quot;http://qr.liantu.com/api.php?text=itms-services://?action=download-manifest%26url=https://******/${PLIST_NAME}.plist&amp;quot; height=&amp;quot;300&amp;quot; width=&amp;quot;300&amp;quot;&amp;gt;
-                &amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;br /&amp;gt;
-            &amp;lt;b&amp;gt;&amp;lt;font color=&amp;quot;#0B610B&amp;quot;&amp;gt;构建信息&amp;lt;/font&amp;gt;&amp;lt;/b&amp;gt;
-            &amp;lt;hr size=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; align=&amp;quot;center&amp;quot; /&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;ul&amp;gt;
-                    &amp;lt;li&amp;gt;项目名称&amp;amp;nbsp;：&amp;amp;nbsp;${PROJECT_NAME}&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;构建编号&amp;amp;nbsp;：&amp;amp;nbsp;第${BUILD_NUMBER}次构建&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;SVN&amp;amp;nbsp;版本：&amp;amp;nbsp;${SVN_REVISION}&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;触发原因：&amp;amp;nbsp;${CAUSE}&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;构建日志：&amp;amp;nbsp;&amp;lt;a href=&amp;quot;${BUILD_URL}console&amp;quot;&amp;gt;${BUILD_URL}console&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;构建&amp;amp;nbsp;&amp;amp;nbsp;Url&amp;amp;nbsp;：&amp;amp;nbsp;&amp;lt;a href=&amp;quot;${BUILD_URL}&amp;quot;&amp;gt;${BUILD_URL}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;工作目录&amp;amp;nbsp;：&amp;amp;nbsp;&amp;lt;a href=&amp;quot;${PROJECT_URL}ws&amp;quot;&amp;gt;${PROJECT_URL}ws&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;项目&amp;amp;nbsp;&amp;amp;nbsp;Url&amp;amp;nbsp;：&amp;amp;nbsp;&amp;lt;a href=&amp;quot;${PROJECT_URL}&amp;quot;&amp;gt;${PROJECT_URL}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;font color=&amp;quot;#0B610B&amp;quot;&amp;gt;Changes Since Last
-                        Successful Build:&amp;lt;/font&amp;gt;&amp;lt;/b&amp;gt;
-            &amp;lt;hr size=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; align=&amp;quot;center&amp;quot; /&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;ul&amp;gt;
-                    &amp;lt;li&amp;gt;历史变更记录 : &amp;lt;a href=&amp;quot;${PROJECT_URL}changes&amp;quot;&amp;gt;${PROJECT_URL}changes&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt; ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format=&amp;quot;Changes for Build #%n:&amp;lt;br /&amp;gt;%c&amp;lt;br /&amp;gt;&amp;quot;,showPaths=true,changesFormat=&amp;quot;&amp;lt;pre&amp;gt;[%a]&amp;lt;br /&amp;gt;%m&amp;lt;/pre&amp;gt;&amp;quot;,pathFormat=&amp;quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;%p&amp;quot;}
-            &amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;Failed Test Results&amp;lt;/b&amp;gt;
-            &amp;lt;hr size=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; align=&amp;quot;center&amp;quot; /&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;pre
-                    style=&amp;quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&amp;quot;&amp;gt;$FAILED_TESTS&amp;lt;/pre&amp;gt;
-                &amp;lt;br /&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;font color=&amp;quot;#0B610B&amp;quot;&amp;gt;构建日志 (最后 100行):&amp;lt;/font&amp;gt;&amp;lt;/b&amp;gt;
-            &amp;lt;hr size=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; align=&amp;quot;center&amp;quot; /&amp;gt;&amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;textarea cols=&amp;quot;80&amp;quot; rows=&amp;quot;30&amp;quot; readonly=&amp;quot;readonly&amp;quot;
-                    style=&amp;quot;font-family: Courier New&amp;quot;&amp;gt;${BUILD_LOG, maxLines=100}&amp;lt;/textarea&amp;gt;
-            &amp;lt;/td&amp;gt;
-        &amp;lt;/tr&amp;gt;
-    &amp;lt;/table&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;邮件截图&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218103409264&quot; /&gt;&lt;br /&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://img.blog.csdn.net/20160218103358248&quot; /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;target&quot;&gt;&lt;a name=&quot;user-content-target&quot; href=&quot;#target&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;多 Target 扩展&lt;/h3&gt;
-&lt;h3 id=&quot;jenkins-shell&quot;&gt;&lt;a name=&quot;user-content-jenkins-shell&quot; href=&quot;#jenkins-shell&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Jenkins Shell 脚本&lt;/h3&gt;
-&lt;p&gt;在 Jenkins 的任务里面,在构建\构建后,都可选择 Execute shell ,作为构建前或者构建后要执行的 shell 脚本.&lt;/p&gt;
-&lt;p&gt;python\perl\ruby 等脚本其实也是 shell 脚本,因此这里的 Shell 可以扩展为 python\perl\ruby&lt;br /&gt;
-等。&lt;/p&gt;
-&lt;p&gt;常见脚本如:&lt;/p&gt;
-&lt;p&gt;1\此脚本:在jenkins构建完成后,远程copy配置文件到项目中,并重启tomcat&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;#!/bin/sh
-#datetime: 2017-2-7 17:00
-#author:3code
-#desc:此脚本用来在jenkins构建完成后，远程copy配置文件到项目中，并重启tomcat
-
-#copy API工程的配置文件
-cp -r /data/apache-tomcat-7.0.56/build/API/*  /data/apache-tomcat-7.0.56/webapps/API/WEB-INF/classes
-
-#重启tomcat
-bash /data/apache-tomcat-7.0.56/bin/shutdown.sh
-
-sleep 30s
-
-bash /data/apache-tomcat-7.0.56/bin/startup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt;&lt;br /&gt;
-- 对于刚接触Jenkins的同学可能有很多需要配置的地方不知道要怎么填，这时可以点击每一个填空后的？，就会弹出详细的提示。&lt;br /&gt;
-- 官方的wiki是很好的入门教程https://wiki.jenkins-ci.org/display/JENKINS/Home&lt;/p&gt;
-&lt;h3 id=&quot;_5&quot;&gt;&lt;a name=&quot;user-content-_5&quot; href=&quot;#_5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;其他&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Jenkins 的界面是可以自定义的,&lt;a href=&quot;https://wiki.jenkins-ci.org/display/JENKINS/Simple+Theme+Plugin&quot;&gt;参考此处&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://runningyoung.github.io/2016/04/01/2016-04-05-jenkins2/&quot;&gt;优秀:Jenkins + Gitlab + 蒲公英 + 邮件通知&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/fengshi_sh/article/details/50669754&quot;&gt;优秀:jenkins+xcode+svn+七牛&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.itgo.me/a/x9151986573431569483&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://blog.fir.im/fir_im_weekly160505/&quot;&gt;fir.im weekly - 「 持续集成 」实践教程合集&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://blog.flow.ci/cicd_difference/&quot;&gt;谈谈持续集成，持续交付，持续部署之间的区别&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://blog.caoyue.me/post/react-native-travis-ci-ios&quot;&gt;使用Travis CI自动部署React Native项目（iOS篇）&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://www.infoq.com/cn/articles/build-ios-continuous-integration-platform-part3&quot;&gt;构建iOS持续集成平台（三）——CI服务器与自动化部署&lt;/a&gt;&lt;br /&gt;
-&amp;hellip;&lt;br /&gt;
-&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://gold.xitu.io/entry/57a982d10a2b58005869d8dc&quot;&gt;iOS 持续集成 &amp;ndash;Travis CI + Fir.im 自动编译发布&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://yeziahehe.com/2016/08/07/use_travis_ci_for_ios_project/&quot;&gt;iOS 持续集成&amp;ndash;Travis CI + Fir.im自动编译发布&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://objccn.io/issue-6-5/&quot;&gt;为 iOS 建立 Travis CI&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://docs.docker.com/docker-hub/builds/&quot;&gt;在Docker Hub上配置自动构建&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://www.jianshu.com/p/19c2b13e81fa&quot;&gt;利用pod trunk发布程序&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://www.55118885.com/w/166141242.html&quot;&gt;使用GitLab来实现IOS项目的持续集成CI&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://blog.fir.im/jenkinsgithubfir_cli-xing-ming-ling-cong-yuan-ma-dao-fir-im/&quot;&gt;Jenkins + GitHub + fir-cli 一行命令从源码到 fir.im&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://www.2cto.com/kf/201411/356826.html&quot;&gt;用持续集成工具Travis进行构建和部署&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;firim&quot;&gt;&lt;a name=&quot;user-content-firim&quot; href=&quot;#firim&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;fir.im&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/f17caec72f0b&quot;&gt;使用 fir CLI插件上传 Swift 应用至fir.im&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;travis&quot;&gt;&lt;a name=&quot;user-content-travis&quot; href=&quot;#travis&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Travis&lt;/h4&gt;
-&lt;p&gt;相关的文章:&lt;a href=&quot;https://blog.jamespan.me/2015/11/01/ci-your-hexo-blog&quot;&gt;Travis&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://ios.jobbole.com/87803/&quot;&gt;使用 TestFlight 进行 App Beta 版测试&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://www.jianshu.com/p/27545c2d4d8b&quot;&gt;使用TestFlight进行App构建版本测试&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://onevcat.com/2012/01/testflight/&quot;&gt;onevcat testflight&lt;/a&gt;&lt;br /&gt;
-持续部署是指当交付的代码通过评审之后，自动部署到生产环境中。持续部署是持续交付的最高阶段。这意味着，所有通过了一系列的自动化测试的改动都将自动部署到生产环境。它也可以被称为“Continuous Release”。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;_6&quot;&gt;&lt;a name=&quot;user-content-_6&quot; href=&quot;#_6&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;自动发布&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Fastlane 是一组工具套件,旨在实现iOS应用发布流程的自动化，并且提供一个运行良好的持续部署流程.&lt;/li&gt;
-&lt;li&gt;使用场景: push 时执行单元测试,集成测试;创建屏幕截图发给客户;构建分发 Beta 版本;构建并分发到 appstore;&lt;/li&gt;
-&lt;li&gt;支持与Jenkins和CocoaPods，xctools等其他第三方工具的集成&lt;/li&gt;
-&lt;li&gt;博客教程:&lt;a href=&quot;http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&quot;&gt;http://www.infoq.com/cn/news/2015/01/fastlane-ios-continuous-deploy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;官方教程:&lt;a href=&quot;https://docs.fastlane.tools/getting-started/ios/screenshots/&quot;&gt;https://docs.fastlane.tools/getting-started/ios/screenshots/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;</description>
-        <pubDate>Wed, 08 Feb 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/02/08/AD-jenkins/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/02/08/AD-jenkins/</guid>
-        
-        
-      </item>
-    
-      <item>
         <title> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#fastlane-&quot; id=&quot;markdown-toc-fastlane-&quot;&gt;Fastlane 简介&lt;/a&gt;    &lt;ul&gt;
@@ -3441,6 +1747,250 @@ copyright &quot;#{Time.now.year} 3code&quot;
         <guid isPermaLink="true">http://localhost:4000/2017/01/23/AD-XCTest/</guid>
         
         <category>XCTest</category>
+        
+        
+        <category>CI</category>
+        
+      </item>
+    
+      <item>
+        <title>持续集成系列 - Xcode 的脚本世界</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;基础知识&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#xcode-&quot; id=&quot;markdown-toc-xcode-&quot;&gt;1. 嵌入 Xcode 项目的脚本&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#xcodebuild&quot; id=&quot;markdown-toc-xcodebuild&quot;&gt;2. Xcodebuild&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;脚本打包&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#plist&quot; id=&quot;markdown-toc-plist&quot;&gt;1.准备Plist文件:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;脚本打测试包&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;脚本打生产包&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;#&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;基础知识&lt;/h3&gt;
+
+&lt;p&gt;现在有两个需求:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;打一个 AdHoc 测试包,发送给测试人员进行测试&lt;/li&gt;
+  &lt;li&gt;打一个 生产包,上线 ITC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上如果人工手动操作,挺耗时耗力的,而自动化则可以完美解决.自动化打包包括两种途径:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用 Apple 自出品的脚本语言: AppleScript;&lt;/li&gt;
+  &lt;li&gt;使用 shell 或者 python&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以下的操作基本是基于 Xcode 自带的命令行工具: Command Line Tools ,其包含两个重要的工具:
+xcodebuild 和 xcrun.相关工具及概念如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;xcodebuild 主要用于编译和打包,&lt;code class=&quot;highlighter-rouge&quot;&gt;$ xcodebuild -help&lt;/code&gt; 可以查看用法&lt;/li&gt;
+  &lt;li&gt;xcrun 主要用于打包 &lt;code class=&quot;highlighter-rouge&quot;&gt;xcrun -h&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;以及 altool ,用于上传二进制文件到 ITC&lt;/li&gt;
+  &lt;li&gt;Workspace、Project、Scheme、Target的区别:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Workspace: 是最大的集合,可以包含多个Project,可以管理不同的Project之间的关系.Workspace是以xcworkspace的文件形式存在的(和Project一致).Workspace的存在是为了解决原来仅有Project的时候不同的Project之间的引用和调用困难的问题.同时,一个Workspace的Project共用一个编译路径。比如使用CocoaPod或者使用其他开发库\框架.&lt;/p&gt;
+
+  &lt;p&gt;Project: 是一个仓库,包含编译一个或多个product所需的文件\资源和信息,保持和聚合这些元素间的关系(每个Target能指定自己的Build Settings来覆盖Project),一般包含的内容如下:&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;Source code, including header files and implementation files
+Libraries and frameworks, internal and external
+Resource files
+Image files
+Interface Builder (nib) files&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+  &lt;p&gt;Scheme: 包含了一些要构建的Scheme,一些构建时用到的设置,一些要运行的测试.同时只能有一个Scheme是有效的.&lt;/p&gt;
+
+  &lt;p&gt;Target: 是对应了具体一个想要构建的Product,包含了一些构建这个Product所需的配置和文件(build settings和build phases).一个Project可以包含多个Target.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;xcode-&quot;&gt;1. 嵌入 Xcode 项目的脚本&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;脚本的位置:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Build Phases -&amp;gt; 点击左上角+ -&amp;gt; 添加 Run Script (运行脚本) -&amp;gt; 添加脚本即可
+&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/12/58a0190a69476.png&quot; alt=&quot;374E29EC-49D9-4348-BA45-56B665CA4448.png&quot; /&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/12/58a0193db099b.png&quot; alt=&quot;81EB716F-2F50-426D-BDBF-C0E2C1EF566E.png&quot; /&gt;&lt;/p&gt;
+
+  &lt;p&gt;默认的是 shell 脚本.需要修改成 py 脚本.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 查看 python 解释器的位置:&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;whereis python
+/usr/bin/python
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;首先将上方的脚本解释器 由 &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh &lt;/code&gt;修改为 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/python &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;然后添加脚本:在编译时,修改一个main.cpp文件的内容:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#-*- coding:utf-8 -*-&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cppfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/Users/jiangxiaocai/Desktop/Test/main.cpp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;outstr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;// 修改.cpp 文件&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cppfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cppfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/12/58a01bc9a01d9.png&quot; alt=&quot;C34DFE25-2477-457F-B57A-26D805A55F96.png&quot; /&gt;
+&lt;img src=&quot;https://ooo.0o0.ooo/2017/02/12/58a01be30a2d1.png&quot; alt=&quot;06809A1C-87D3-4E9F-AC10-4FFB63193CE6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;xcodebuild&quot;&gt;2. Xcodebuild&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 功能选项没有,放进来,主要是用于编译的命令
+
+Available keys for -exportOptionsPlist:
+
+    compileBitcode : Bool
+
+        # For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.
+
+    embedOnDemandResourcesAssetPacksInBundle : Bool
+
+        # For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.
+
+    iCloudContainerEnvironment
+
+        # For non-App Store exports, if the app is using CloudKit, this configures the &quot;com.apple.developer.icloud-container-environment&quot; entitlement. Available options: Development and Production. Defaults to Development.
+
+    manifest : Dictionary
+
+        # For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.
+
+    method : String
+
+        # Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.
+
+    onDemandResourcesAssetPacksBaseURL : String
+
+        # For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn't YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.
+
+    teamID : String
+
+        # The Developer Portal team to use for this export. Defaults to the team used to build the archive.
+
+    thinning : String
+
+        # For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: &amp;lt;none&amp;gt; (Xcode produces a non-thinned universal app), &amp;lt;thin-for-all-variants&amp;gt; (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. &quot;iPhone7,1&quot;). Defaults to &amp;lt;none&amp;gt;.
+
+    uploadBitcode : Bool
+
+        # For App Store exports, should the package include bitcode? Defaults to YES.
+
+    uploadSymbols : Bool
+
+        # For App Store exports, should the package include symbols? Defaults to YES.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;脚本打包&lt;/h3&gt;
+
+&lt;p&gt;一般来说实现实现方式有两种:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;xcodebuild 和 xcrun 实现:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;xcodebuild -workspace XXX -scheme XXX -configuration Release&lt;/p&gt;
+
+  &lt;p&gt;xcrun -sdk iphoneos PackageApplication -v “/XXX/XXX.app” -o “/XXX/XXX”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;xcodebuild 和 exportOptionsPlist 实现:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;准备两个Plist文件，用于导出不同ipa包时使用&lt;/p&gt;
+
+  &lt;p&gt;获取命令行参数，区分上传到Fir还是App Store&lt;/p&gt;
+
+  &lt;p&gt;清理构建目录&lt;/p&gt;
+
+  &lt;p&gt;编译打包&lt;/p&gt;
+
+  &lt;p&gt;导出包&lt;/p&gt;
+
+  &lt;p&gt;上传到Fir或者验证并上传到App Store&lt;/p&gt;
+
+  &lt;p&gt;发邮件通知&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;下边是基于第二种方式的方法:
+首先因为不了解这种自动化打包,所以要看官方的资料,最直接的方式就是:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ xcodebuild -help&lt;/code&gt;,得知如下信息:&lt;/p&gt;
+
+&lt;p&gt;Available keys for -exportOptionsPlist:以下每个 key 的详细解释可以&lt;code class=&quot;highlighter-rouge&quot;&gt;$ xcodebuild -help&lt;/code&gt;查看即可.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;测试包导出: compileBitcode\embedOnDemandResourcesAssetPacksInBundle\iCloudContainerEnvironment\manifest\onDemandResourcesAssetPacksBaseURL\thinning&lt;/li&gt;
+  &lt;li&gt;用于 App Store 导出: uploadBitcode\uploadSymbols&lt;/li&gt;
+  &lt;li&gt;共用: method\teamID&lt;/li&gt;
+  &lt;li&gt;method 可选值: app-store\ package\ ad-hoc\ enterprise\ development and developer-id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;步骤为:&lt;/p&gt;
+
+&lt;h5 id=&quot;plist&quot;&gt;1.准备Plist文件:&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AppStoreExportOptions.plist： method＝app-store，uploadBitcode＝YES，uploadSymbols＝YES
+AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;xcodebuild -exportArchive -archivePath ./xxx.xcarchive -exportOptionsPlist ./AdHocExportOptions.plist -exportPath ./&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;脚本打测试包&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;脚本打生产包&lt;/h5&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;#&lt;/h2&gt;
+
+&lt;p&gt;参考资料:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://zackzheng.info/2015/12/27/2015-12-27-an-automated-script-for-building-archiving-submission-sending-emails/&quot;&gt;教程1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wangjordy.github.io/blog/2015/06/25/xcodebuildtools/&quot;&gt;教程2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/brycezhang/p/4097487.html&quot;&gt;教程3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://3426724.blog.51cto.com/3416724/883484&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000004533963&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.reviewcode.cn/article.html?reviewId=11&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://victorchee.github.io/blog/package-adHoc-ipa/&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/9ee0ba3af81a&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.nswebfrog.com/2013/02/18/ios-automation/&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/webfrogs/xcode_shell&quot;&gt;脚本代码&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itunesconnect.apple.com/docs/UsingApplicationLoader.pdf&quot;&gt;ApplicationLoader 官方使用指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 19 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/19/AD-xctool/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/19/AD-xctool/</guid>
+        
+        <category>Termianl</category>
+        
+        <category>xctool</category>
         
         
         <category>CI</category>
