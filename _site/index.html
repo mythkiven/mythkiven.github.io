@@ -200,10 +200,117 @@
                     </div>
                 </div>
                 <div class="excerpt">
-                    
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">热身小例子</a></li>
+  <li><a href="#shell-" id="markdown-toc-shell-">shell 概念</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">脚本解释器</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">脚本语言</a></li>
+</ul>
+
 <blockquote>
 
+  <p>作为一名 iOS 老司机,当然要得拿下脚本噻,除了 python, 在 mac 上最常用的就是 shell 脚本了.</p>
+
+  <p>以前是看过但用的少,几年了都忘了差不多了,今天温习一遍,从最简单的开始.</p>
+
 </blockquote>
+
+<p>说起脚本,就得说脚本的通用性,说起通用性,就得说常见的操作系统: OS X \ Linux \ Windows \ Unix
+简单介绍下异同:</p>
+
+<ul>
+  <li>BellLAB 发明了 Unix 和 C ;</li>
+  <li>Unix 的 GUI 是 X Window(在内核外跑的应用),包括X Server(与内核通信)与X Client(负责显示)两部分;</li>
+  <li>OS X 的 GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix + BSD);</li>
+  <li>OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的.</li>
+  <li>Linux 一开始就是免费开源的,基于 Unix ;</li>
+</ul>
+
+<p>以上是 Unix 派的,下边的 Windows 则是 DOS NT 系的:</p>
+
+<ul>
+  <li>Windows 则是 DOS + NT 内核;</li>
+  <li>Windows 使用反斜杠: \ 分割路径,原因在于其来自 DOS 最初支持软盘,使用斜杠: /  表示命令参数起始符号</li>
+  <li>Unix 使用斜杠:/分割路径</li>
+</ul>
+
+<p>扯的有点远了…</p>
+
+<p>下边回归正文:</p>
+
+<h3 id="section">热身小例子</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh                # 制定脚本解释器,使用 /bin/sh  作为解释器</span>
+<span class="nb">cd</span> ~                     <span class="c"># 切换到当前用户的 home 目录</span>
+mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</span>
+<span class="nb">cd </span>shell_txt             <span class="c"># 进入 shell_txt 文件夹</span>
+
+<span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0; i&lt;10; i++<span class="o">))</span>; <span class="k">do</span>     <span class="c"># 循环10次</span>
+    touch txt_<span class="nv">$i</span>.txt           <span class="c"># 创建10个文件:test_1…10.txt文件</span>
+<span class="k">done</span>                           <span class="c"># 结束循环</span>
+
+</code></pre>
+</div>
+
+<ul>
+  <li>上边的脚本就创建了 shell_txt 文件夹,并创建10个 txt 文件.</li>
+  <li>cd, mkdir, touch都是系统自带的程序，一般在/bin或者/usr/bin目录下</li>
+  <li>for, do, done是sh脚本语言的关键字。</li>
+</ul>
+
+<h3 id="shell-">shell 概念</h3>
+
+<p>上边是入门热身,下边解释概念:</p>
+
+<blockquote>
+  <ol>
+    <li>
+      <p>shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务</p>
+    </li>
+    <li>
+      <p>shell脚本（shell script），是一种为 shell 编写的脚本程序</p>
+    </li>
+    <li>
+      <p>业界所说的shell通常都是指shell脚本</p>
+    </li>
+    <li>
+      <p>shell编程跟java、php编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。</p>
+    </li>
+    <li>
+      <p>当前主流的操作系统都支持shell编程</p>
+    </li>
+  </ol>
+</blockquote>
+
+<ul>
+  <li>Linux 默认安装就带了 shell 解释器</li>
+  <li>Mac OS 不仅带了 sh、bash 这两个最基础的解释器，还内置了 ksh、csh、zsh 等不常用的解释器。</li>
+  <li>windows 出厂时没有内置 shell 解释器，需要自行安装</li>
+</ul>
+
+<h3 id="section-1">脚本解释器</h3>
+
+<ul>
+  <li>
+    <p>sh   即Bourne shell，POSIX 标准的shell解释器，它的二进制文件路径通常是/bin/sh，由Bell Labs开发</p>
+  </li>
+  <li>
+    <p>bash  是Bourne shell的替代品，属GNU Project，二进制文件路径通常是/bin/bash。</p>
+  </li>
+  <li>
+    <p>业界通常混用bash、sh、和shell，比如你会经常在招聘运维工程师的文案中见到：熟悉Linux Bash编程，精通Shell编程</p>
+  </li>
+</ul>
+
+<h3 id="section-2">脚本语言</h3>
+
+<p>理论上讲，只要一门语言提供了解释器（而不仅是编译器），这门语言就可以胜任脚本编程，常见的解释型语言都是可以用作脚本编程的，如：Perl、Tcl、Python、PHP、Ruby。Perl是最老牌的脚本编程语言了，Python这些年也成了一些linux发行版的预置解释器。</p>
+
+<p>编译型语言，只要有解释器，也可以用作脚本编程，如C shell是内置的（/bin/csh），Java有第三方解释器Jshell，Ada有收费的解释器AdaScript。</p>
+
+<p>shell 只定义了一个非常简单的编程语言，如果你的脚本程序复杂度较高，或者要操作的数据结构比较复杂，那么还是应该使用Python、Perl这样的脚本语言，或者是你本来就已经很擅长的高级语言。因为sh和bash在这方面很弱，比如说：</p>
+
+<p>如果你的脚本是提供给别的用户使用，使用sh或者bash，你的脚本将具有最好的环境兼容性，perl很早就是linux标配了，python这些年也成了一些linux发行版的标配，至于mac os，它默认安装了perl、python、ruby、php、java等主流编程语言。</p>
 
 
                 </div>

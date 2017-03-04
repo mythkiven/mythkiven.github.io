@@ -5,16 +5,172 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 04 Mar 2017 15:56:55 +0800</pubDate>
-    <lastBuildDate>Sat, 04 Mar 2017 15:56:55 +0800</lastBuildDate>
+    <pubDate>Sat, 04 Mar 2017 20:22:39 +0800</pubDate>
+    <lastBuildDate>Sat, 04 Mar 2017 20:22:39 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
         <title>Shell 脚本</title>
-        <description>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;热身小例子&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#shell-&quot; id=&quot;markdown-toc-shell-&quot;&gt;shell 概念&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;脚本解释器&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;脚本语言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;编写脚本&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;运行脚本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;blockquote&gt;
 
+  &lt;p&gt;作为一名 iOS 老司机,当然要得拿下脚本噻,除了 python, 在 mac 上最常用的就是 shell 脚本了.&lt;/p&gt;
+
+  &lt;p&gt;以前是看过但用的少,几年了都忘了差不多了,今天温习一遍,从最简单的开始.&lt;/p&gt;
+
 &lt;/blockquote&gt;
+
+&lt;p&gt;说起脚本,就得说脚本的通用性,说起通用性,就得说常见的操作系统: OS X \ Linux \ Windows \ Unix
+简单介绍下异同:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;BellLAB 发明了 Unix 和 C ;&lt;/li&gt;
+  &lt;li&gt;Unix 的 GUI 是 X Window(在内核外跑的应用),包括X Server(与内核通信)与X Client(负责显示)两部分;&lt;/li&gt;
+  &lt;li&gt;OS X 的 GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix + BSD);&lt;/li&gt;
+  &lt;li&gt;OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的.&lt;/li&gt;
+  &lt;li&gt;Linux 一开始就是免费开源的,基于 Unix ;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上是 Unix 派的,下边的 Windows 则是 DOS NT 系的:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Windows 则是 DOS + NT 内核;&lt;/li&gt;
+  &lt;li&gt;Windows 使用反斜杠: \ 分割路径,原因在于其来自 DOS 最初支持软盘,使用斜杠: /  表示命令参数起始符号&lt;/li&gt;
+  &lt;li&gt;Unix 使用斜杠:/分割路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;扯的有点远了…&lt;/p&gt;
+
+&lt;p&gt;下边回归正文:&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;热身小例子&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh                # 制定脚本解释器,使用 /bin/sh  作为解释器&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~                     &lt;span class=&quot;c&quot;&gt;# 切换到当前用户的 home 目录&lt;/span&gt;
+mkdir shell_txt          &lt;span class=&quot;c&quot;&gt;# 创建一个 shell_txt 文件夹&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;shell_txt             &lt;span class=&quot;c&quot;&gt;# 进入 shell_txt 文件夹&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0; i&amp;lt;10; i++&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# 循环10次&lt;/span&gt;
+    touch txt_&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;.txt           &lt;span class=&quot;c&quot;&gt;# 创建10个文件:test_1…10.txt文件&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;                           &lt;span class=&quot;c&quot;&gt;# 结束循环&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;上边的脚本就创建了 shell_txt 文件夹,并创建10个 txt 文件.&lt;/li&gt;
+  &lt;li&gt;cd, mkdir, touch都是系统自带的程序，一般在/bin或者/usr/bin目录下&lt;/li&gt;
+  &lt;li&gt;for, do, done是sh脚本语言的关键字。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;shell-&quot;&gt;shell 概念&lt;/h3&gt;
+
+&lt;p&gt;上边是入门热身,下边解释概念:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;
+      &lt;p&gt;shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;shell脚本（shell script），是一种为 shell 编写的脚本程序&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;业界所说的shell通常都是指shell脚本&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;shell编程跟java、php编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;当前主流的操作系统都支持shell编程&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linux 默认安装就带了 shell 解释器&lt;/li&gt;
+  &lt;li&gt;Mac OS 不仅带了 sh、bash 这两个最基础的解释器，还内置了 ksh、csh、zsh 等不常用的解释器。&lt;/li&gt;
+  &lt;li&gt;windows 出厂时没有内置 shell 解释器，需要自行安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;脚本解释器&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;sh   即Bourne shell，POSIX 标准的shell解释器，它的二进制文件路径通常是/bin/sh，由Bell Labs开发&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;bash  是Bourne shell的替代品，属GNU Project，二进制文件路径通常是/bin/bash。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;业界通常混用bash、sh、和shell，比如你会经常在招聘运维工程师的文案中见到：熟悉Linux Bash编程，精通Shell编程&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;脚本语言&lt;/h3&gt;
+
+&lt;p&gt;理论上讲，只要一门语言提供了解释器（而不仅是编译器），这门语言就可以胜任脚本编程，常见的解释型语言都是可以用作脚本编程的，如：Perl、Tcl、Python、PHP、Ruby。Perl是最老牌的脚本编程语言了，Python这些年也成了一些linux发行版的预置解释器。&lt;/p&gt;
+
+&lt;p&gt;编译型语言，只要有解释器，也可以用作脚本编程，如C shell是内置的（/bin/csh），Java有第三方解释器Jshell，Ada有收费的解释器AdaScript。&lt;/p&gt;
+
+&lt;p&gt;shell 只定义了一个非常简单的编程语言，如果你的脚本程序复杂度较高，或者要操作的数据结构比较复杂，那么还是应该使用Python、Perl这样的脚本语言，或者是你本来就已经很擅长的高级语言。因为sh和bash在这方面很弱，比如说：&lt;/p&gt;
+
+&lt;p&gt;如果你的脚本是提供给别的用户使用，使用sh或者bash，你的脚本将具有最好的环境兼容性，perl很早就是linux标配了，python这些年也成了一些linux发行版的标配，至于mac os，它默认安装了perl、python、ruby、php、java等主流编程语言。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;编写脚本&lt;/h3&gt;
+
+&lt;p&gt;打开文本编辑器，新建一个文件，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用php写shell 脚本，扩展名就用php好了。&lt;/p&gt;
+
+&lt;p&gt;输入一些代码，第一行一般是这样：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#!/usr/bin/php&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;运行脚本&lt;/h3&gt;
+
+&lt;p&gt;运行Shell脚本有两种方法：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;作为可执行程序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod +x test.sh
+./test.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意，一定要写成./test.sh，而不是test.sh，运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/usr/sbin等在PATH里，你的当前目录通常不在PATH里，所以写成test.sh是会找不到命令的，要用./test.sh告诉系统说，就在当前目录找。&lt;/p&gt;
+
+&lt;p&gt;通过这种方式运行bash脚本，第一行一定要写对，好让系统查找到正确的解释器。&lt;/p&gt;
+
+&lt;p&gt;这里的”系统”，其实就是shell这个应用程序（想象一下Windows Explorer），但我故意写成系统，是方便理解，既然这个系统就是指shell，那么一个使用/bin/sh作为解释器的脚本是不是可以省去第一行呢？是的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;作为解释器参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在终端,知己运行解释器 :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$/&lt;/span&gt;bin/sh test.sh
+&lt;span class=&quot;nv&quot;&gt;$/&lt;/span&gt;bin/php test.php
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这种方式运行的脚本，不需要在第一行指定解释器信息.&lt;/p&gt;
+
+&lt;p&gt;参考 &lt;a href=&quot;https://github.com/qinjx/30min_guides/blob/master/shell.md&quot;&gt;30min_guides&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 04 Mar 2017 00:00:00 +0800</pubDate>
