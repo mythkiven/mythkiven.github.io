@@ -151,6 +151,391 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/12/05/swift_VI_Functions/">Swift3.0_VI_函数</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-05
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#defining-and-calling-functions" id="markdown-toc-defining-and-calling-functions">Defining and Calling Functions：定义和调用</a></li>
+  <li><a href="#function-parameters-and-return-values" id="markdown-toc-function-parameters-and-return-values">Function Parameters and Return Values:功能参数和返回值</a></li>
+  <li><a href="#function-argument-labels-and-parameter-names" id="markdown-toc-function-argument-labels-and-parameter-names">Function Argument Labels and Parameter Names:参数标签和参数名称</a></li>
+  <li><a href="#function-types" id="markdown-toc-function-types">Function Types：函数功能</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">功能类型作为参数类型</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">功能类型作为返回类型</a></li>
+    </ul>
+  </li>
+  <li><a href="#nested-functions" id="markdown-toc-nested-functions">Nested Functions：嵌套函数</a></li>
+</ul>
+
+<h3 id="defining-and-calling-functions">Defining and Calling Functions：定义和调用</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 关键字func  函数名greet  参数名:参数类型String  连接返回值:-&gt;  返回值类型String</span>
+       <span class="kd">func</span>    <span class="nf">greet</span>     <span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>      <span class="o">-&gt;</span>          <span class="kt">String</span>     <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">greeting</span> <span class="o">=</span> <span class="s">"Hello, "</span> <span class="o">+</span> <span class="n">person</span> <span class="o">+</span> <span class="s">"!"</span>
+    <span class="k">return</span> <span class="n">greeting</span>
+<span class="p">}</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Anna"</span><span class="p">))</span>
+<span class="c1">// Prints "Hello, Anna!"</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Brian"</span><span class="p">))</span>
+<span class="c1">// Prints "Hello, Brian!"</span>
+
+
+<span class="kd">func</span> <span class="nf">greetAgain</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Hello again, "</span> <span class="o">+</span> <span class="n">person</span> <span class="o">+</span> <span class="s">"!"</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">greetAgain</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Anna"</span><span class="p">))</span>
+<span class="c1">// Prints "Hello again, Anna!"</span>
+</code></pre>
+</div>
+
+<h3 id="function-parameters-and-return-values">Function Parameters and Return Values:功能参数和返回值</h3>
+
+<p><strong>不带参数的函数：</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloWorld</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"hello, world"</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sayHelloWorld</span><span class="p">())</span>
+<span class="c1">// Prints "hello, world"</span>
+</code></pre>
+</div>
+
+<p><strong>多参数：</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">alreadyGreeted</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">alreadyGreeted</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">greetAgain</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="n">person</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="n">person</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Tim"</span><span class="p">,</span> <span class="nv">alreadyGreeted</span><span class="p">:</span> <span class="kc">true</span><span class="p">))</span>
+<span class="c1">// Prints "Hello again, Tim!"</span>
+</code></pre>
+</div>
+
+<p><strong>无返回值：</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Dave"</span><span class="p">)</span>
+<span class="c1">// Prints "Hello, Dave!"</span>
+</code></pre>
+</div>
+
+<p><strong>调用时忽略返回值：</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">printAndCount</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">string</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">printWithoutCounting</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">_</span> <span class="o">=</span> <span class="nf">printAndCount</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">printAndCount</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"hello, world"</span><span class="p">)</span>
+<span class="c1">// prints "hello, world" and returns a value of 12</span>
+<span class="nf">printWithoutCounting</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"hello, world"</span><span class="p">)</span>
+<span class="c1">// prints "hello, world" but does not return a value</span>
+</code></pre>
+</div>
+
+<p><strong>返回元组</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">min</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">max</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">currentMin</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">var</span> <span class="nv">currentMax</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="k">in</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="o">..&lt;</span><span class="n">array</span><span class="o">.</span><span class="n">count</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">currentMin</span> <span class="p">{</span>
+            <span class="n">currentMin</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">currentMax</span> <span class="p">{</span>
+            <span class="n">currentMax</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">return</span> <span class="p">(</span><span class="n">currentMin</span><span class="p">,</span> <span class="n">currentMax</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">bounds</span> <span class="o">=</span> <span class="nf">minMax</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"min is </span><span class="se">\(</span><span class="n">bounds</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max is </span><span class="se">\(</span><span class="n">bounds</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong>返回可选的元组类型</strong></p>
+
+<p>(Int, Int)? 与(Int?, Int?)不同，前者是可选的元组，后者是元组内元素可选的。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">min</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">max</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)?</span> <span class="p">{</span>
+    <span class="c1">// 如果array为nil，后边会运行时错误，所以要判断：</span>
+    <span class="k">if</span> <span class="n">array</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">currentMin</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">var</span> <span class="nv">currentMax</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="k">in</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="o">..&lt;</span><span class="n">array</span><span class="o">.</span><span class="n">count</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">currentMin</span> <span class="p">{</span>
+            <span class="n">currentMin</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">currentMax</span> <span class="p">{</span>
+            <span class="n">currentMax</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">return</span> <span class="p">(</span><span class="n">currentMin</span><span class="p">,</span> <span class="n">currentMax</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 此时bounds是可选元组，通过可选绑定来取值</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">bounds</span> <span class="o">=</span> <span class="nf">minMax</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"min is </span><span class="se">\(</span><span class="n">bounds</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max is </span><span class="se">\(</span><span class="n">bounds</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "min is -6 and max is 109"</span>
+</code></pre>
+</div>
+
+<h3 id="function-argument-labels-and-parameter-names">Function Argument Labels and Parameter Names:参数标签和参数名称</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">someFunction</span><span class="p">(</span><span class="nv">firstParameterName</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">secondParameterName</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// In the function body, firstParameterName and secondParameterName</span>
+    <span class="c1">// refer to the argument values for the first and second parameters.</span>
+<span class="p">}</span>
+<span class="nf">someFunction</span><span class="p">(</span><span class="nv">firstParameterName</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">secondParameterName</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong>指定参数标签</strong></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">from</span> <span class="nv">hometown</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Hello </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">!  Glad you could visit from </span><span class="se">\(</span><span class="n">hometown</span><span class="se">)</span><span class="s">."</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Bill"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"Cupertino"</span><span class="p">))</span>
+<span class="c1">// Prints "Hello Bill!  Glad you could visit from Cupertino."</span>
+</code></pre>
+</div>
+
+<p><strong>省略参数标签</strong>
+加下划线即可：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">someFunction</span><span class="p">(</span><span class="n">_</span> <span class="nv">firstParameterName</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">secondParameterName</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// In the function body, firstParameterName and secondParameterName</span>
+    <span class="c1">// refer to the argument values for the first and second parameters.</span>
+<span class="p">}</span>
+<span class="nf">someFunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">secondParameterName</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong>默认参数值</strong></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">someFunction</span><span class="p">(</span><span class="nv">parameterWithoutDefault</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">parameterWithDefault</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// If you omit the second argument when calling this function, then</span>
+    <span class="c1">// the value of parameterWithDefault is 12 inside the function body.</span>
+<span class="p">}</span>
+<span class="nf">someFunction</span><span class="p">(</span><span class="nv">parameterWithoutDefault</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">parameterWithDefault</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">// parameterWithDefault is 6</span>
+<span class="nf">someFunction</span><span class="p">(</span><span class="nv">parameterWithoutDefault</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// parameterWithDefault is 12</span>
+</code></pre>
+</div>
+
+<p><strong>可变参数</strong></p>
+
+<p>注意：函数最多只有一个可变参数。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">arithmeticMean</span><span class="p">(</span><span class="n">_</span> <span class="nv">numbers</span><span class="p">:</span> <span class="kt">Double</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span> <span class="p">{</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="kt">Double</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">arithmeticMean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// returns 3.0, which is the arithmetic mean of these five numbers</span>
+<span class="nf">arithmeticMean</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">8.25</span><span class="p">,</span> <span class="mf">18.75</span><span class="p">)</span>
+<span class="c1">// returns 10.0, which is the arithmetic mean of these three numbers</span>
+</code></pre>
+</div>
+
+<p><strong>IN-OUT参数</strong></p>
+
+<ul>
+  <li>输入输出参数：在参数定义前加inout 关键字来定义。</li>
+  <li>一个输入输出参数有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。</li>
+  <li>只能将变量作为输入输出参数。当传入的参数作为输入输出参数时，需要在参数前加&amp;符，表示这个值可以被函数修改。</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">someInt</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">var</span> <span class="nv">anotherInt</span> <span class="o">=</span> <span class="mi">107</span>
+<span class="nf">swapTwoInts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someInt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anotherInt</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"someInt is now </span><span class="se">\(</span><span class="n">someInt</span><span class="se">)</span><span class="s">, and anotherInt is now </span><span class="se">\(</span><span class="n">anotherInt</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "someInt is now 107, and anotherInt is now 3"</span>
+</code></pre>
+</div>
+
+<h3 id="function-types">Function Types：函数功能</h3>
+
+<p>这两个函数的类型是 (Int, Int) -&gt; Int，可以读作“这个函数类型，它有两个In 型的参数并返回一个 Int型的值。”。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">addTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">multiplyTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>如下代码可以解读为：“定义一个叫做mathFunction的变量，类型是‘一个有两个Int型的参数并返回一个 Int型的值的函数’，并让这个新变量指向addTwoInts函数”。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">mathFunction</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">addTwoInts</span>
+</code></pre>
+</div>
+
+<p>然后可调用：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="s">"Result: </span><span class="se">\(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "Result: 5"</span>
+</code></pre>
+</div>
+
+<p>具有相同类型的变量可以指向不同的功能：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">mathFunction</span> <span class="o">=</span> <span class="n">multiplyTwoInts</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Result: </span><span class="se">\(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "Result: 6"</span>
+</code></pre>
+</div>
+
+<p>和其他类型一样，可以指向常量或者变量：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">anotherMathFunction</span> <span class="o">=</span> <span class="n">addTwoInts</span>
+<span class="c1">// anotherMathFunction is inferred to be of type (Int, Int) -&gt; Int</span>
+</code></pre>
+</div>
+
+<h5 id="section">功能类型作为参数类型</h5>
+
+<p>可以用(Int, Int) -&gt; Int这样的函数类型作为另一个函数的参数类型。这样你可以将函数的一部分实现交由给函数的调用者。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">multiplyTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="p">}</span>
+
+<span class="n">mathFunction</span> <span class="o">=</span> <span class="n">multiplyTwoInts</span>
+
+<span class="kd">func</span> <span class="nf">addTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">printMathResult</span><span class="p">(</span><span class="n">_</span> <span class="nv">mathFunction</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Result: </span><span class="se">\(</span><span class="nf">mathFunction</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">printMathResult</span><span class="p">(</span><span class="n">addTwoInts</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// Prints "Result: 8"</span>
+</code></pre>
+</div>
+
+<p>这个例子定义了printMathResult函数，它有三个参数：第一个参数 mathFunction，类型是(Int, Int) -&gt; Int，可以传入任何这种类型的函数；第二个和第三个参数 a 和 b，它们的类型都是 Int，<strong>这两个值作为已给的函数的输入值</strong></p>
+
+<h5 id="section-1">功能类型作为返回类型</h5>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 基础移动函数</span>
+<span class="kd">func</span> <span class="nf">stepForward</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">input</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">stepBackward</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">input</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="c1">// 函数：chooseStepFunction(backward:)，它的返回类型为(Int) -&gt; Int</span>
+<span class="kd">func</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">backward</span> <span class="p">?</span> <span class="nv">stepBackward</span> <span class="p">:</span> <span class="n">stepForward</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">currentValue</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1">// 一个指向函数的常量 moveNearerToZero</span>
+<span class="k">let</span> <span class="nv">moveNearerToZero</span> <span class="o">=</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="n">currentValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">"Counting to zero:"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">currentValue</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">currentValue</span><span class="se">)</span><span class="s">... "</span><span class="p">)</span>
+    <span class="n">currentValue</span> <span class="o">=</span> <span class="nf">moveNearerToZero</span><span class="p">(</span><span class="n">currentValue</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"zero!"</span><span class="p">)</span>
+<span class="c1">// 3...</span>
+<span class="c1">// 2...</span>
+<span class="c1">// 1...</span>
+<span class="c1">// zero!</span>
+</code></pre>
+</div>
+
+<h3 id="nested-functions">Nested Functions：嵌套函数</h3>
+
+<p>重写上边的归零函数：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">stepForward</span><span class="p">(</span><span class="nv">input</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">input</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">stepBackward</span><span class="p">(</span><span class="nv">input</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">input</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">backward</span> <span class="p">?</span> <span class="nv">stepBackward</span> <span class="p">:</span> <span class="n">stepForward</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">currentValue</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="k">let</span> <span class="nv">moveNearerToZero</span> <span class="o">=</span> <span class="nf">chooseStepFunction</span><span class="p">(</span><span class="nv">backward</span><span class="p">:</span> <span class="n">currentValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">// moveNearerToZero now refers to the nested stepForward() function</span>
+<span class="k">while</span> <span class="n">currentValue</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">currentValue</span><span class="se">)</span><span class="s">... "</span><span class="p">)</span>
+    <span class="n">currentValue</span> <span class="o">=</span> <span class="nf">moveNearerToZero</span><span class="p">(</span><span class="n">currentValue</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"zero!"</span><span class="p">)</span>
+<span class="c1">// -4...</span>
+<span class="c1">// -3...</span>
+<span class="c1">// -2...</span>
+<span class="c1">// -1...</span>
+<span class="c1">// zero!</span>
+</code></pre>
+</div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/05/swift_VI_Functions/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/12/03/swift_V_Control-Flow/">Swift3.0_V_控制流</a>
                 </h2>
                 <div class="label">
@@ -1893,278 +2278,6 @@ print(_:separator:terminator)函数是一个打印一个或多个值到相应输
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3code
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#python" title="Category: python" rel="category">python</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#脚本" title="Tag: 脚本" rel="tag">脚本</a>&nbsp;
-    
-        <a href="/tag/#python" title="Tag: python" rel="tag">python</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#python" id="markdown-toc-python">1、python爬取原理及代码</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">1.1 引入需要的库</a></li>
-      <li><a href="#html" id="markdown-toc-html">1.2 获取html</a></li>
-      <li><a href="#section-1" id="markdown-toc-section-1">1.3 获取内容</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">1.4 获取每条信息</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">1.5 写入文件</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">1.6 防止数据重复写入</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">1.7 按日期爬取数据</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">2、开机自动爬取数据的脚本</a></li>
-</ul>
-
-<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
-不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
-但是网站上也只展示在单个基金里，多基金对比就没
-成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
-
-<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
-
-<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
-，不论是pyCharm还是pip还是直接托安装包，
-后来改用excel，数据直接写入excel中。</p>
-
-<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
-
-<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
-代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
-
-<p>实际展示：</p>
-
-<p>控制台打印：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
-
-<p>写入txt：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
-
-<p>写入xls：</p>
-
-<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
-
-<h2 id="python">1、python爬取原理及代码</h2>
-
-<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
-
-<h5 id="section">1.1 引入需要的库</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
-import xlwt
-import time, datetime
-from xlutils.copy import copy
-from xlrd import open_workbook
-from xlwt import easyxf
-</code></pre>
-</div>
-
-<h5 id="html">1.2 获取html</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
-        html = requests.get(url)
-        return html.text
-
-</code></pre>
-</div>
-
-<h5 id="section-1">1.3 获取内容</h5>
-
-<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
-。区别在于:</p>
-
-<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
-
-<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
-        everyclass = re.search(
-            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
-            source, re.S).group(1)
-        return everyclass
-</code></pre>
-</div>
-
-<h5 id="section-2">1.4 获取每条信息</h5>
-
-<p>将自己需要的信息单独抽取出来：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
-        info = {}
-        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
-        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
-        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
-        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
-        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
-
-        return info
-</code></pre>
-</div>
-
-<h5 id="section-3">1.5 写入文件</h5>
-
-<p>创建txt：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
-        for each in classinfo:
-            f.writelines('xuhao:' + each['num'] + '\n')
-            f.writelines('daima:' + each['id'] + '\n')
-            f.writelines('name:' + each['name'] + '\n')
-            f.writelines('time:' + each['time'] + '\n')
-            f.writelines('price1:' + each['price1'] + '\n')
-            f.writelines('price2:' + each['price2'] + '\n')
-            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
-        f.close()
-</code></pre>
-</div>
-
-<p>打开xls,开始写入内容</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
-        rb = open_workbook(path, formatting_info=True)
-        r_sheet = rb.sheet_by_index(0)
-        wb = copy(rb)
-        sheet = wb.get_sheet(0)
-        j = r_sheet.ncols
-        i = 1
-        timeShould = timePrevious
-        timeQ = timePrevious
-        tListB = []
-        tListS = []
-        print sheet
-
-        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
-#写入列信息
-        for each in classinfo:
-            sheet.write(i, j + 0, each['id'])
-            sheet.write(i, j + 1, each['time'])
-            sheet.write(i, j + 2, each['price1'])
-            sheet.write(i, j + 3, each['price2'])
-            i += 1
-            timeQ = each['time']
-            if timeQ &gt; timeShould:
-                tListB.append(each['id']+' '+timeQ)
-            elif timeQ &lt; timeShould:
-                tListS.append(each['id']+' '+timeQ)
-
-        for k in range(j, j + 5):
-            sheet.write(0, k, fir[k - j])
-            print k
-            if k == j + 4:
-                sheet.write(1, k, timeNow.decode('utf-8'))
-                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
-
-</code></pre>
-</div>
-
-<h5 id="section-4">1.6 防止数据重复写入</h5>
-
-<p>按时间判断是否需要写入数据</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
-    rb = open_workbook(path, formatting_info=True)
-    r_sheet = rb.sheet_by_index(0)
-    # 遍历第2行所有列,是否有时间数据c
-    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
-    for c in range(0, r_sheet.ncols):
-        age_nov = r_sheet.cell(1, c).value
-        print age_nov
-        if ((c + 1) % 5 == 0) and (c != 0):
-            print "\n"
-        if age_nov == timeNow:
-            return 1
-    else:
-        return 0
-
-</code></pre>
-</div>
-
-<h5 id="section-5">1.7 按日期爬取数据</h5>
-
-<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
-
-<p>注意weekday() 返回的是0-6是星期一到星期日</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
-    timeT = datetime.date.today()
-    zhouji = timeT.weekday()
-    print zhouji
-    if zhouji &gt;= 1 and zhouji &lt;= 5:
-        return timeToday  
-    else:
-        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
-        return 0
-
-</code></pre>
-</div>
-
-<h2 id="section-6">2、开机自动爬取数据的脚本</h2>
-
-<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
-
-<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
-
-<p>plist脚本存放路径为:</p>
-
-<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
-
-<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/10/pythonGetFund/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -2192,6 +2305,8 @@ from xlwt import easyxf
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
+                    
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
                     
                         <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
@@ -2209,8 +2324,6 @@ from xlwt import easyxf
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
                     
                         <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
-                    
-                        <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
                     
                 </ul>
             </div>
@@ -2292,6 +2405,15 @@ from xlwt import easyxf
                                 CI
                             </span>
                             <span class="badge">6</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                            <span class="name">
+                                脚本
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -2570,6 +2692,13 @@ from xlwt import easyxf
                       
                       
                       <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
                     
                 </div>
             </div>

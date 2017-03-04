@@ -151,6 +151,278 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3code
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#脚本" title="Tag: 脚本" rel="tag">脚本</a>&nbsp;
+    
+        <a href="/tag/#python" title="Tag: python" rel="tag">python</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#python" id="markdown-toc-python">1、python爬取原理及代码</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">1.1 引入需要的库</a></li>
+      <li><a href="#html" id="markdown-toc-html">1.2 获取html</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">1.3 获取内容</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.4 获取每条信息</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">1.5 写入文件</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">1.6 防止数据重复写入</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">1.7 按日期爬取数据</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">2、开机自动爬取数据的脚本</a></li>
+</ul>
+
+<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
+不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
+但是网站上也只展示在单个基金里，多基金对比就没
+成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
+
+<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
+
+<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
+，不论是pyCharm还是pip还是直接托安装包，
+后来改用excel，数据直接写入excel中。</p>
+
+<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
+
+<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
+代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
+
+<p>实际展示：</p>
+
+<p>控制台打印：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
+
+<p>写入txt：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
+
+<p>写入xls：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
+
+<h2 id="python">1、python爬取原理及代码</h2>
+
+<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
+
+<h5 id="section">1.1 引入需要的库</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
+import xlwt
+import time, datetime
+from xlutils.copy import copy
+from xlrd import open_workbook
+from xlwt import easyxf
+</code></pre>
+</div>
+
+<h5 id="html">1.2 获取html</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
+        html = requests.get(url)
+        return html.text
+
+</code></pre>
+</div>
+
+<h5 id="section-1">1.3 获取内容</h5>
+
+<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
+。区别在于:</p>
+
+<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
+
+<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
+        everyclass = re.search(
+            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
+            source, re.S).group(1)
+        return everyclass
+</code></pre>
+</div>
+
+<h5 id="section-2">1.4 获取每条信息</h5>
+
+<p>将自己需要的信息单独抽取出来：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
+        info = {}
+        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
+        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
+        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
+        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
+
+        return info
+</code></pre>
+</div>
+
+<h5 id="section-3">1.5 写入文件</h5>
+
+<p>创建txt：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
+        for each in classinfo:
+            f.writelines('xuhao:' + each['num'] + '\n')
+            f.writelines('daima:' + each['id'] + '\n')
+            f.writelines('name:' + each['name'] + '\n')
+            f.writelines('time:' + each['time'] + '\n')
+            f.writelines('price1:' + each['price1'] + '\n')
+            f.writelines('price2:' + each['price2'] + '\n')
+            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
+        f.close()
+</code></pre>
+</div>
+
+<p>打开xls,开始写入内容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
+        rb = open_workbook(path, formatting_info=True)
+        r_sheet = rb.sheet_by_index(0)
+        wb = copy(rb)
+        sheet = wb.get_sheet(0)
+        j = r_sheet.ncols
+        i = 1
+        timeShould = timePrevious
+        timeQ = timePrevious
+        tListB = []
+        tListS = []
+        print sheet
+
+        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
+#写入列信息
+        for each in classinfo:
+            sheet.write(i, j + 0, each['id'])
+            sheet.write(i, j + 1, each['time'])
+            sheet.write(i, j + 2, each['price1'])
+            sheet.write(i, j + 3, each['price2'])
+            i += 1
+            timeQ = each['time']
+            if timeQ &gt; timeShould:
+                tListB.append(each['id']+' '+timeQ)
+            elif timeQ &lt; timeShould:
+                tListS.append(each['id']+' '+timeQ)
+
+        for k in range(j, j + 5):
+            sheet.write(0, k, fir[k - j])
+            print k
+            if k == j + 4:
+                sheet.write(1, k, timeNow.decode('utf-8'))
+                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
+
+</code></pre>
+</div>
+
+<h5 id="section-4">1.6 防止数据重复写入</h5>
+
+<p>按时间判断是否需要写入数据</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
+    rb = open_workbook(path, formatting_info=True)
+    r_sheet = rb.sheet_by_index(0)
+    # 遍历第2行所有列,是否有时间数据c
+    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
+    for c in range(0, r_sheet.ncols):
+        age_nov = r_sheet.cell(1, c).value
+        print age_nov
+        if ((c + 1) % 5 == 0) and (c != 0):
+            print "\n"
+        if age_nov == timeNow:
+            return 1
+    else:
+        return 0
+
+</code></pre>
+</div>
+
+<h5 id="section-5">1.7 按日期爬取数据</h5>
+
+<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
+
+<p>注意weekday() 返回的是0-6是星期一到星期日</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
+    timeT = datetime.date.today()
+    zhouji = timeT.weekday()
+    print zhouji
+    if zhouji &gt;= 1 and zhouji &lt;= 5:
+        return timeToday  
+    else:
+        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
+        return 0
+
+</code></pre>
+</div>
+
+<h2 id="section-6">2、开机自动爬取数据的脚本</h2>
+
+<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
+
+<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
+
+<p>plist脚本存放路径为:</p>
+
+<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
+
+<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/10/pythonGetFund/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/09/7_IOS_Theory/">iOS逆向系列7_iOS理论基础</a>
                 </h2>
                 <div class="label">
@@ -983,123 +1255,6 @@ after-install::
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/02/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-02
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
-  <li><a href="#theos" id="markdown-toc-theos">2、Theos简介</a></li>
-  <li><a href="#theos-1" id="markdown-toc-theos-1">3、安装Theos</a></li>
-</ul>
-
-<p><strong>待整理</strong></p>
-
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。</p>
-
-<h2 id="section">1、说明</h2>
-<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
-projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
-
-<p>参考教程：</p>
-
-<p>Logos 语法
-<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
-
-<p>Makefile
-<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-<p>debian的官网
-<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
-
-<p>debian:
-<a href="http://www.debian.org/doc/debian-policy">http://www.debian.org/doc/debian-policy</a></p>
-
-<p>Theos安装:
-<a href="https://github.com/theos/theos/wiki/Installation">https://github.com/theos/theos/wiki/Installation</a></p>
-
-<h2 id="theos">2、Theos简介</h2>
-
-<p>Theos是一个越狱开发工具包，由iOS越狱界知名人士Dustin Howett 开发并分享到GitHub上。Theos与其他越狱开发工具相比，最大的特点就是简单：下载安装简单、Logos语法简单、编译发布简单，可以让使用者把精力都放在开发工作上去。</p>
-
-<p>值得一提的是，越狱开发中常用的另一工具iOSOpenDev是整合在Xcode里的，熟悉Xcode的朋友可能会对它更感兴趣。但逆向工程接触底层知识较多，很多东西无法自动化，因此推荐使用整合度并不算高的Theos，当你手动完成一个又一个练习时，对逆向工程的理解一定会更深。</p>
-
-<p><strong>下文与theos相关的内容，最好以官方为准，内容都在不断的更新中。比如安装这块，可以参考https://github.com/theos/theos/wiki/Installation</strong></p>
-
-<p><strong>其实很多的问题，与其百度google，不如直接查看Issues，不少问题在里面都有靠谱的答案</strong></p>
-
-<h2 id="theos-1">3、安装Theos</h2>
-
-<p>首先需要的环境和工具如下：</p>
-
-<ul>
-  <li>curl</li>
-  <li>git</li>
-  <li>make</li>
-  <li>openssh</li>
-  <li>perl</li>
-  <li>rsync</li>
-  <li>dpkg (port or homebrew install on Mac OS X)</li>
-  <li>python (if on Windows)</li>
-</ul>
-
-<p>没有的就用 brew install **</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/02/2_Theos_-install&run/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1127,6 +1282,8 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
+                    
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
                     
                         <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
@@ -1144,8 +1301,6 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
                     
                         <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
-                    
-                        <li><a href="/2016/12/08/swift_VIII_Enumerations_Classes_Structures_Properties/">Swift3.0_VIII_枚举、类、结构体、属性</a></li>
                     
                 </ul>
             </div>
@@ -1227,6 +1382,15 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                                 CI
                             </span>
                             <span class="badge">6</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                            <span class="name">
+                                脚本
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1505,6 +1669,13 @@ projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个
                       
                       
                       <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
                     
                 </div>
             </div>

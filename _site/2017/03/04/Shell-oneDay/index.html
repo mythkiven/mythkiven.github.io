@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>IOS逆向系列_Charles_iPhone网络抓包</title>
-    <meta name="description" content="  安装Charles  配置          1、配置代理：      2、配置手机：      3、拦截HTTPS配置：      4、手机安装证书：      5、对于手机上某个请求的网址，右键选择激活SSL proxy      6、模拟慢网速      安装Charles官网下载：https://ww...">
+    <title>Shell 脚本</title>
+    <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2015/08/07/REVERSE4_Charles/">
+    <link rel="canonical" href="http://localhost:4000/2017/03/04/Shell-oneDay/">
     <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
 
 
@@ -144,11 +144,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>IOS逆向系列_Charles_iPhone网络抓包</h1>
+        <h1>Shell 脚本</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2015-08-07
+                <i class="fa fa-calendar"></i>2017-03-04
             </div>
 
             <div class="label-card">
@@ -169,7 +169,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
+        <a href="/category/#脚本" title="Category: 脚本" rel="category">脚本</a>
     
   
 
@@ -186,8 +186,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a-->
-        <a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a>
+        <!--a href="/tag/#shell" title="Tag: shell" rel="tag">shell</a-->
+        <a href="/tag/#shell" title="Tag: shell" rel="tag">shell</a>
     
   
 
@@ -198,54 +198,10 @@
         </div>
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
-        <ul id="markdown-toc">
-  <li><a href="#charles" id="markdown-toc-charles">安装Charles</a></li>
-  <li><a href="#section" id="markdown-toc-section">配置</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">1、配置代理：</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2、配置手机：</a></li>
-      <li><a href="#https" id="markdown-toc-https">3、拦截HTTPS配置：</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">4、手机安装证书：</a></li>
-      <li><a href="#ssl-proxy" id="markdown-toc-ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</a></li>
-      <li><a href="#section-4" id="markdown-toc-section-4">6、模拟慢网速</a></li>
-    </ul>
-  </li>
-</ul>
+        
+<blockquote>
 
-<h2 id="charles">安装Charles</h2>
-
-<p>官网下载：<a href="https://www.charlesproxy.com/">https://www.charlesproxy.com/</a></p>
-
-<p>从网上找到最新的破解文件：charles.jar，替换系统的即可破解</p>
-
-<h2 id="section">配置</h2>
-
-<h4 id="section-1">1、配置代理：</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Proxy-&gt;Proxy Settings 设置端口8888，勾选Enable transparent HTTP proxying
-</code></pre>
-</div>
-
-<h4 id="section-2">2、配置手机：</h4>
-<p>查看电脑IP(Help-&gt;Local IP Address)，然后iPhone上也设置相同的IP(在无线局域网-&gt;当前连接的wifi-&gt;详情-&gt;最底部HTTP 代理-&gt;手动-&gt;填上电脑的IP、端口号8888)</p>
-
-<h4 id="https">3、拦截HTTPS配置：</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>HELP-&gt; SSL Proxying-&gt;ICRC 安装证书 
-</code></pre>
-</div>
-
-<h4 id="section-3">4、手机安装证书：</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser
-</code></pre>
-</div>
-
-<p>在手机浏览器中访问地址：http://charlesproxy.com/getssl，即可打开证书安装的界面，安装完证书后，就可以截取手机上的Https通讯内容了</p>
-
-<h4 id="ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</h4>
-
-<h4 id="section-4">6、模拟慢网速</h4>
-<p>proxy–&gt;throttle setting —&gt;enable throttling 即可，这个页面就是设置网络节流的</p>
+</blockquote>
 
 
         </article>
@@ -259,13 +215,6 @@
                     
                 
             
-        
-            
-            
-                
-                    
-                
-            
                 
                     
                 
@@ -319,6 +268,13 @@
                 
                     
                 
+            
+                
+                    
+                
+            
+        
+            
             
                 
                     
@@ -344,13 +300,11 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2015/06/10/WKWebView/">WKWebView小教程</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2015/08/07/REVERSE4_Reveal/">IOS逆向系列_Reveal_解码任意APP的UI界面</a></p>
         
     </div>
 </div>
@@ -359,7 +313,7 @@
         <h2 id="comments">评论</h2>
         
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="http://localhost:4000/2015/08/07/REVERSE4_Charles/" data-title="IOS逆向系列_Charles_iPhone网络抓包" data-url="http://localhost:4000/2015/08/07/REVERSE4_Charles/"></div>
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/03/04/Shell-oneDay/" data-title="Shell 脚本" data-url="http://localhost:4000/2017/03/04/Shell-oneDay/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
