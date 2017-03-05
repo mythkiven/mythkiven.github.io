@@ -5,92 +5,114 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 04 Mar 2017 23:25:52 +0800</pubDate>
-    <lastBuildDate>Sat, 04 Mar 2017 23:25:52 +0800</lastBuildDate>
+    <pubDate>Sun, 05 Mar 2017 22:09:55 +0800</pubDate>
+    <lastBuildDate>Sun, 05 Mar 2017 22:09:55 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
-        <title>Unix 入门</title>
+        <title>UNIX 入门小教程</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#unix-&quot; id=&quot;markdown-toc-unix-&quot;&gt;1. Unix 概述&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 文件体系&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#unix-&quot; id=&quot;markdown-toc-unix-&quot;&gt;UNIX 概述&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#unix&quot; id=&quot;markdown-toc-unix&quot;&gt;从功能上看 Unix&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unix-1&quot; id=&quot;markdown-toc-unix-1&quot;&gt;从构架上看 Unix&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 文件体系&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;修改文件权限&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;文件目录&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;浏览文件系统&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;以下是如何在一行上组合这些命令 -&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#pr-&quot; id=&quot;markdown-toc-pr-&quot;&gt;pr 语法如下:&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;4. 通信&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#vim&quot; id=&quot;markdown-toc-vim&quot;&gt;5. VIM&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;操作模式&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#vi&quot; id=&quot;markdown-toc-vi&quot;&gt;保存 VI&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#vi-1&quot; id=&quot;markdown-toc-vi-1&quot;&gt;退出 VI:&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;重命名:&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;在文本中移动光标:&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;5. 常用命令汇集&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2. 环境变量&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#path&quot; id=&quot;markdown-toc-path&quot;&gt;PATH&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unix--1&quot; id=&quot;markdown-toc-unix--1&quot;&gt;Unix 环境变量&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;3.基础小程序&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;打印文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;发邮件&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;4.用户管理与进程&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;进程&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;5. 网络通信&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vim&quot; id=&quot;markdown-toc-vim&quot;&gt;6. VIM&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;操作模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vi&quot; id=&quot;markdown-toc-vi&quot;&gt;保存 VI&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vi-1&quot; id=&quot;markdown-toc-vi-1&quot;&gt;退出 VI:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;重命名:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;在文本中移动光标:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;7. 性能管理:&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;性能工具&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#os-x-&quot; id=&quot;markdown-toc-os-x-&quot;&gt;8. OS X 使用小技能&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;9. 常用命令汇集&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
 
-  &lt;p&gt;作为一名 iOS 老司机,要想工作效率高,那么 Unix 则是必须要熟悉的.今天开挂直接原滋原味的看英语版.&lt;/p&gt;
+  &lt;p&gt;作为一名 iOS 老司机,要想工作效率高,Unix 则是必须要熟悉的.今天扒一扒 Unix 的那些事&lt;/p&gt;
+
+  &lt;p&gt;奉上 Unix 学习笔记,需要的拿去但请注明链接.&lt;/p&gt;
 
 &lt;/blockquote&gt;
 
-&lt;p&gt;说起脚本,就得说脚本的通用性,说起通用性,就得说常见的操作系统: OS X \ Linux \ Windows \ Unix
-简单介绍下异同:&lt;/p&gt;
+&lt;h3 id=&quot;unix-&quot;&gt;UNIX 概述&lt;/h3&gt;
+
+&lt;p&gt;说起 Unix 就必须说 Bell Labs ,这个实验室厉害啊, 对计算机早期的贡献是相当大的.像大家熟知的 Unix \ C  都是这家公司发明创建的,
+实验室目前是 Nokia 公司的.关于贝尔实验室,更多介绍请戳 &lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;其实关于操作系统,以前是学过的,但不知道为啥就分不清了…以下简单介绍下 Unix \ OS X \ Linux \ Windows 的异同,可以有一个直观的认识.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;BellLAB 发明了 Unix (还有 C);&lt;/li&gt;
-  &lt;li&gt;Unix 的 GUI 是 X Window(在内核外跑的应用),包括X Server(与内核通信)与X Client(负责显示)两部分;&lt;/li&gt;
-  &lt;li&gt;OS X 的 GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix + BSD);&lt;/li&gt;
-  &lt;li&gt;OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的;&lt;/li&gt;
-  &lt;li&gt;Linux 一开始就是免费开源的,基于 Unix.&lt;/li&gt;
+  &lt;li&gt;Unix : GUI 是 X Window(在内核外跑的应用),内核则包括 X Server(与内核通信)与 X Client(负责显示)两部分;&lt;/li&gt;
+  &lt;li&gt;OS X : GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix BSD);&lt;/li&gt;
+  &lt;li&gt;OS   : 注意和 OS X 是不同的,OS X 是全新设计基于 Unix 内核的,而 OS 内核基于 Mach(微内核) .&lt;/li&gt;
+  &lt;li&gt;Linux : 也是基于 Unix 内核的.&lt;/li&gt;
+  &lt;li&gt;Windows : 内核是 DOS  NT ;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;以上是 Unix 派的,下边的 Windows 则是 DOS + NT 系的:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;除上之外, Unix 的变体有: Solaris Unix,AIX,HP Unix,BSD以及 Linux 等等&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;unix&quot;&gt;从功能上看 Unix&lt;/h5&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Windows 则是 DOS + NT 内核;&lt;/li&gt;
-  &lt;li&gt;Windows 使用反斜杠: \ 分割路径,原因在于其来自 DOS 最初支持软盘,使用斜杠: /  表示命令参数起始符号&lt;/li&gt;
-  &lt;li&gt;Unix 使用斜杠:/分割路径&lt;/li&gt;
+  &lt;li&gt;内核: 操作系统的核心,调度任务和管理存储;&lt;/li&gt;
+  &lt;li&gt;shell: 连接和解释用户的命令，从内存中调用程序并执行它们;&lt;/li&gt;
+  &lt;li&gt;工具和应用程序: 为操作系统提供附加功能.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;快要扯到另一篇 Shell 文章了…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/03/05/58bb78709b9d2.png&quot; alt=&quot;屏幕快照 2017-03-05 10.34.16.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;下边回归正文:&lt;/p&gt;
-
-&lt;h3 id=&quot;unix-&quot;&gt;1. Unix 概述&lt;/h3&gt;
+&lt;h5 id=&quot;unix-1&quot;&gt;从构架上看 Unix&lt;/h5&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://www.tutorialspoint.com/unix/images/unix_architecture.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;以前笔记本经常遇到的 CPU 被 kernel_task 占据大量的空间,当时不清楚这家伙干嘛的,从这张图中看明白了,真的是系统任务.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;用户通过 shell 程序与内核通信。shell是一个命令行解释器; 它翻译由用户输入的命令，并将它们转换为内核理解的语言。&lt;/li&gt;
-  &lt;li&gt;Unix 的变体有: Solaris Unix,AIX,HP Unix,BSD以及 Linux 等等。Linux由一群AT＆T员工Ken Thompson，Dennis Ritchie，Douglas McIlroy和Joe Ossanna在贝尔实验室开发的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Unix的所有版本集成的主要概念是以下四个基础：&lt;/p&gt;
+&lt;p&gt;上图展示了 Unix 的基本框架:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;内核 : 内核是操作系统的核心。它与硬件和大多数任务（如内存管理，任务调度和文件管理）交互。&lt;/p&gt;
+    &lt;p&gt;内核 : 内核是操作系统的核心,它与硬件和大多数任务（如内存管理，任务调度和文件管理）交互&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Shell : shell 是处理请求的实用程序。当在终端上键入命令时，shell会解释该命令并调用所需的程序。shell对所有命令使用标准语法。C Shell，Bourne Shell和Korn Shell是大多数Unix版本中最有名的shell。&lt;/p&gt;
+    &lt;p&gt;Shell: shell 是处理请求的实用程序,当在终端上键入命令时，shell 会解释该命令并调用所需的程序。shell对所有命令使用标准语法。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;命令和实用程序 : 有各种命令和实用程序。cp，mv，cat和grep等是命令和实用程序的几个例子。&lt;/p&gt;
+    &lt;p&gt;命令和实用程序 :有各种命令和实用程序，您可以在您的日常活动中使用。cp，mv，cat和grep等是命令和实用程序的几个例子。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;文件和目录 : Unix的所有数据都组织成文件。然后将所有文件组织到目录中。这些目录进一步组织成称为文件系统的树状结构。&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;2. 文件体系&lt;/h3&gt;
+&lt;h3 id=&quot;section&quot;&gt;1. 文件体系&lt;/h3&gt;
 
 &lt;p&gt;Unix中的每个文件都有以下属性&lt;/p&gt;
 
@@ -102,7 +124,7 @@
     &lt;p&gt;组权限    组的权限决定了用户，文件所属组的成员可以对文件执行哪些操作。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;其他权限  其他人的权限指示所有其他用户可对文件执行的操作。&lt;/p&gt;
+    &lt;p&gt;其他人权限  其他人的权限指示所有其他用户可对文件执行的操作。&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -111,21 +133,27 @@
 drwxr-xr--- 1 amrood   users 1024  Nov 2 00:10  mydir
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;第一列表示不同的访问模式,权限被分成三组(所有者,组,其他人权限 )，权限：read（r），write（w），execute（x）
--rwxr-xr–  表示(2-4)所有者权限: rwx ,(5-7)组权限: xr ,(8-10)其他人权限: r&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;d 开头的表示目录&lt;/li&gt;
+  &lt;li&gt;第一列表示不同的访问模式,权限被分成三组(所有者,组,其他人权限 )，权限：read（r），write（w），execute（x）&lt;/li&gt;
+  &lt;li&gt;-rwxr-xr–  表示(2-4)所有者权限: rwx ,(5-7)组权限: xr ,(8-10)其他人权限: r&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h5 id=&quot;section-1&quot;&gt;修改文件权限&lt;/h5&gt;
 
 &lt;p&gt;chmod（change mode）命令。有两种方式使用chmod - 符号模式和绝对模式&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;符号模式&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;添加权限, - - 删除权限 = 设置指定权限
-```
-$chmod o+wx testfile
+  &lt;li&gt;符号模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;添加权限, - - 删除权限 = 设置指定权限&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$chmod o+wx testfile
 $ls -l testfile
 -rwxrwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
 $chmod u-x testfile
@@ -133,94 +161,300 @@ $ls -l testfile
 -rw-rwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
 $chmod g = rx testfile
 $ls -l testfile
--rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+-rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
 
-&lt;h1 id=&quot;section-2&quot;&gt;以下是如何在一行上组合这些命令 -&lt;/h1&gt;
+# 以下是如何在一行上组合这些命令 -
 
-&lt;p&gt;$chmod o+wx,u-x,g = rx testfile
+$chmod o+wx,u-x,g = rx testfile
 $ls -l testfile
--rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-- 绝对模式
-
+-rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;数   八进制权限表示    参考文献
-0   没有权限          — —
+
+&lt;ul&gt;
+  &lt;li&gt;绝对模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;数   八进制权限表示    参考文献
+0   没有权限          --- ---
 1   执行权限              - X
 2   写权限              -w-
 3   执行和写入权限    1（执行）+ 2（写）= 3  -wx
-4   读取权限            r–
+4   读取权限            r--
 5   读取和执行权限     4（读取）+ 1（执行）= 5 rx
 6   读写权限        4（读）+ 2（写）= 6  rw-
-7   所有权限       4（读）+ 2（写）+ 1（执行）= 7   rwx&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
+7   所有权限       4（读）+ 2（写）+ 1（执行）= 7   rwx
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;$ls -l testfile
--rwxrwxr–  1 amrood   users 1024  Nov 2 00:10  testfile
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ls -l testfile
+-rwxrwxr--  1 amrood   users 1024  Nov 2 00:10  testfile
 然后修改:
 $ chmod 755 testfile
 $ls -l testfile
 -rwxr-xr-x  1 amrood   users 1024  Nov 2 00:10  testfile
 $chmod 743 testfile
 $ls -l testfile
--rwxr—wx  1 amrood   users 1024  Nov 2 00:10  testfile
+-rwxr---wx  1 amrood   users 1024  Nov 2 00:10  testfile
 $chmod 043 testfile
 $ls -l testfile
-—-r—wx  1 amrood   users 1024  Nov 2 00:10  testfile&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[更多参见](https://www.tutorialspoint.com/unix/unix-file-permission.htm)
-......
-
-
-##### PATH 
-
-PATH变量指定shell应查找命令的位置。通常Path变量设置如下 
-
-$PATH=/bin:/usr/bin
-
-这里，用冒号字符（:)分隔的每个单独的条目是目录
-
-##### 打印文件
-
-- 使用 pr 
-
-$pr 文件 即可打印文件的内容
+----r---wx  1 amrood   users 1024  Nov 2 00:10  testfile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;h1 id=&quot;pr-&quot;&gt;pr 语法如下:&lt;/h1&gt;
-&lt;p&gt;pr option(s) filename(s)&lt;/p&gt;
 
-&lt;p&gt;-k 产生 K 列输出 $pr -k txt.txt 
-等等 ..&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-- 使用 cat 
+&lt;h5 id=&quot;section-2&quot;&gt;文件目录&lt;/h5&gt;
 
-$cat txt.txt 
+&lt;ul&gt;
+  &lt;li&gt;/    : 根目录,命令:$ cd /&lt;/li&gt;
+&lt;/ul&gt;
 
-### 3. 进程
-
-操作系统通过称为pid或进程ID的五位ID号跟踪进程。系统中的每个进程都有一个唯一的pid。
-
-通过运行ps（process status）命令很容易看到你自己的进程，如下所示
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd / ;ls
+# 列出根目录的文件夹:
+Applications        home
+Library             installer.failurerequests
+Network             net
+System              opt
+Users               private
+Volumes             sbin
+bin                 tmp
+cores               usr
+dev                 var
+etc
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;$ps
+
+&lt;p&gt;关于上述目录说明如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;/bin  : 这是可执行文件所在的位置。这些文件可供所有用户使用&lt;/li&gt;
+  &lt;li&gt;/dev  : 设备驱动&lt;/li&gt;
+  &lt;li&gt;/etc  : 管理程序目录命令，配置文件，磁盘配置文件，有效用户列表，组，以太网，主机，在哪里发送关键消息&lt;/li&gt;
+  &lt;li&gt;/lib  : 含共享库文件和有时其他与内核相关的文件&lt;/li&gt;
+  &lt;li&gt;/home : 包含用户和其他帐户的主目录&lt;/li&gt;
+  &lt;li&gt;/tmp  : 保存系统引导之间使用的临时文件&lt;/li&gt;
+  &lt;li&gt;/usr  : 用于其他目的，可供许多用户使用。包括管理命令，共享文件，库文件和其他&lt;/li&gt;
+  &lt;li&gt;/var  : 通常包含可变长度文件，例如日志和打印文件以及可能包含可变数据量的任何其他类型的文件&lt;/li&gt;
+  &lt;li&gt;/sbin : 包含二进制（可执行文件）文件，通常用于系统管理。例如，fdisk和ifconfig utlities&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;浏览文件系统&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
+  &lt;li&gt;$cd 目录名       : 进入目录&lt;/li&gt;
+  &lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
+  &lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
+  &lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
+  &lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
+  &lt;li&gt;$mv file1 file2 : 移动file1 到file2&lt;/li&gt;
+  &lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
+  &lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
+  &lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
+  &lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
+  &lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-system.htm&quot;&gt;更多文件相关内容&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;2. 环境变量&lt;/h3&gt;
+
+&lt;p&gt;在登录 Unix 系统时,会先初始化设置环境变量,读取/ etc / profile(OS X:.profile) 文件,
+如果 Home目录存在 profile 文件,就会读取,并在终端显示 $ 符号.&lt;/p&gt;
+
+&lt;h5 id=&quot;path&quot;&gt;PATH&lt;/h5&gt;
+
+&lt;p&gt;PATH变量指定shell应查找命令的位置。通常Path变量设置如下&lt;/p&gt;
+
+&lt;p&gt;$PATH=/bin:/usr/bin&lt;/p&gt;
+
+&lt;p&gt;这里，用冒号字符（:)分隔的每个单独的条目是目录&lt;/p&gt;
+
+&lt;p&gt;我自己的 profile 文件 PATH 设置如下:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$vim .bash_profile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;结果如下:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 加载 .profile&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; -s &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.profile&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.profile&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Load the default .profile&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 加载 RVM &lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; -s &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.rvm/scripts/rvm&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.rvm/scripts/rvm&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Load RVM into a shell session *as a function*&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 设置 PATH 路径&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;:/usr/local/mysql-5.6.12-osx10.7-x86_64/bin/mysql
+
+&lt;span class=&quot;c&quot;&gt;# 设置 PATH 路径&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 设置 PATH 路径&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 设置 PATH 路径&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;THEOS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/theos
+
+&lt;span class=&quot;c&quot;&gt;# 设置 PATH 路径&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$THEOS&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意之所以会设置这么多的路径,是因为:当请求 shell 执行命令的时候, shel 会从 PATH 路径中寻找命令,如果不存在,就不会执行:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ home
+-bash: home: command not found
+# 这是因为上述没有 PATH 路径没有 home 命令 ,shell 无法解释 home 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;unix--1&quot;&gt;Unix 环境变量&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- HOME 当前用户主目录:
+$ echo $HOME
+/Users/jiangxiaocai
+
+- PATH  打印当前的 PATH 路径 
+$ echo $PATH
+
+- PWD 当前目录路径
+$ pwd
+/Users/jiangxiaocai
+
+- RANDOM 每次引用都生成一个介于0和32,767之间的随机整数
+$ echo $RANDOM
+20303
+
+- TERM 显示类型
+$ echo $TERM
+xterm-256color
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-environment.htm&quot;&gt;更多的请看&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;3.基础小程序&lt;/h3&gt;
+
+&lt;h5 id=&quot;section-6&quot;&gt;打印文件&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用 pr&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$pr 文件 即可打印文件的内容&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# pr 语法如下:
+pr option(s) filename(s)
+$pr txt.txt
+
+# -k 产生 K 列输出:
+$pr -2 txt.txt 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用 cat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$cat txt.txt&lt;/p&gt;
+
+&lt;h5 id=&quot;section-7&quot;&gt;发邮件&lt;/h5&gt;
+
+&lt;p&gt;语法:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$mail [-s subject] [-c cc-addr] [-b bcc-addr] to-addr
+
+# 以下是将测试消息发送到admin@yahoo.com的示例。
+$mail -s &quot;Test Message&quot; admin@yahoo.com 
+#...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-permission.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;4.用户管理与进程&lt;/h3&gt;
+
+&lt;p&gt;Unix 上有三种账户:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;根账户:可以运行任何命令&lt;/li&gt;
+  &lt;li&gt;系统账户:系统帐户是操作系统特定组件所需的帐户，例如邮件帐户和sshd帐户。这些帐户通常需要您的系统上的某些特定功能，对它们的任何修改可能会对系统产生不利影响。&lt;/li&gt;
+  &lt;li&gt;用户帐户:
+用户帐户为用户和用户组提供对系统的交互式访问。一般用户通常分配到这些帐户，并且通常对关键系统文件和目录的访问受限。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-user-administration.htm&quot;&gt;更多账户资料&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-9&quot;&gt;进程&lt;/h5&gt;
+
+&lt;p&gt;操作系统通过称为pid或进程ID的五位ID号跟踪进程。系统中的每个进程都有一个唯一的pid。&lt;/p&gt;
+
+&lt;p&gt;通过运行ps（process status）命令很容易看到你自己的进程，如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ps
 PID       TTY      TIME        CMD
 18358     ttyp3    00:00:00    sh
 18361     ttyp3    00:01:31    abiword
 18789     ttyp3    00:00:00    ps
-```
--f（f为full）选项 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ps -f&lt;/code&gt; 精细显示&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;-f（f为full）选项 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ps -f&lt;/code&gt; 精细显示&lt;/p&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;4. 通信&lt;/h3&gt;
+&lt;h3 id=&quot;section-10&quot;&gt;5. 网络通信&lt;/h3&gt;
+
+&lt;p&gt;Unix 系统可以通过终端进行电子邮件的通信.&lt;/p&gt;
 
 &lt;p&gt;$ping 该命令发送回送请求到网络上可用的主机。使用此命令，您可以检查远程主机是否响应良好。&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ping hostname or ip-address&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;vim&quot;&gt;5. VIM&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用 traceroute 诊断到某个主机的路由节点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$ traceroute oschina.net&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;检查某个主机是否运行 HTTP 服务，或者检查某网站是否可用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$ curl -I www.oschina.net&lt;/td&gt;
+      &lt;td&gt;head -n 1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用 dig 来诊断域名信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$ dig www.oschina.net A&lt;/p&gt;
+
+&lt;p&gt;$ dig www.oschina.net MX&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;显示系统路由表&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$ netstat -r&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;显示活动网络连接&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$ netstat -an&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;显示网络统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$ netstat -s&lt;/p&gt;
+
+&lt;h3 id=&quot;vim&quot;&gt;6. VIM&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;$vi filename      如果新文件已经不存在，则创建新文件，否则打开现有文件&lt;/li&gt;
@@ -228,7 +462,7 @@ PID       TTY      TIME        CMD
   &lt;li&gt;$view filename    只读模式打开&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;section-4&quot;&gt;操作模式&lt;/h5&gt;
+&lt;h5 id=&quot;section-11&quot;&gt;操作模式&lt;/h5&gt;
 
 &lt;ul&gt;
   &lt;li&gt;命令模式 - 此模式允许您执行管理任务，例如保存文件，执行命令，移动光标，剪切（ying）和粘贴线或单词，以及查找和替换。在这种模式下，无论你输入什么都被解释为一个命令。&lt;/li&gt;
@@ -252,13 +486,13 @@ PID       TTY      TIME        CMD
   &lt;li&gt;ESC 进入命令模式，键入冒号和’q!’,然后回车.这时会直接退出,不进行提示.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;section-5&quot;&gt;重命名:&lt;/h5&gt;
+&lt;h5 id=&quot;section-12&quot;&gt;重命名:&lt;/h5&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ESC 进入命令模式，键入’冒号和’w filename2’和return .&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;section-6&quot;&gt;在文本中移动光标:&lt;/h5&gt;
+&lt;h5 id=&quot;section-13&quot;&gt;在文本中移动光标:&lt;/h5&gt;
 
 &lt;p&gt;要在文件中移动而不影响文本，您必须处于命令模式（按两次Esc）。下表列出了几个可用于一次移动一个字符的命令：&lt;/p&gt;
 
@@ -271,48 +505,139 @@ PID       TTY      TIME        CMD
 
 &lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-vi-editor.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;5. 常用命令汇集&lt;/h3&gt;
+&lt;h3 id=&quot;section-14&quot;&gt;7. 性能管理:&lt;/h3&gt;
+
+&lt;h5 id=&quot;section-15&quot;&gt;性能工具&lt;/h5&gt;
+
+&lt;p&gt;Unix提供以下重要工具来测量和微调Unix系统性能&lt;/p&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;nice/renice    运行具有修改的调度优先级的程序&lt;/li&gt;
+  &lt;li&gt;$netstat       打印网络连接，路由表，接口统计信息，伪装连接和多播成员资格&lt;/li&gt;
+  &lt;li&gt;$time          帮助计时一个简单的命令或提供资源使用&lt;/li&gt;
+  &lt;li&gt;$uptime        这是系统负载平均&lt;/li&gt;
+  &lt;li&gt;$ps      报告当前进程的快照&lt;/li&gt;
+  &lt;li&gt;$vmstat       报告虚拟内存统计&lt;/li&gt;
+  &lt;li&gt;$gprof        显示调用图配置文件数据&lt;/li&gt;
+  &lt;li&gt;$prof         促进过程分析&lt;/li&gt;
+  &lt;li&gt;$top   [有用] 显示系统任务: 很详细&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;os-x-&quot;&gt;8. OS X 使用小技能&lt;/h3&gt;
+
+&lt;p&gt;tab 键可以自动补全路径:&lt;/p&gt;
+
+&lt;p&gt;Tab Complete 是 command line 中最能给你节省时间的特性之一，利用它的自动完成文件、目录名称功能还可以防止你输入错误。使用cd进入你的 home folder，使用cd P命令，然后按下tab按键。你可能会听到错误音，因为你的 home folder 内有多个 P 开头的文件夹。再按一次tab，Terminal 将会为你列出 P 开头的两个文件夹：Public 和 Pictures。按U，再按tab，Terminal 则会自动为你补全Public/。Tab complete 同样会处理那些特殊字符。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-16&quot;&gt;9. 常用命令汇集&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用\反斜杠转义&lt;/li&gt;
+  &lt;li&gt;使用;来分开两个命令,从而在一行执行,例如:&lt;code class=&quot;highlighter-rouge&quot;&gt;cd \bin ; ls&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;获取帮助:$man pwd ,用户获取 pwd 命令的联机帮助,其他类似.&lt;/li&gt;
+  &lt;li&gt;$ctrl+c 关闭进行&lt;/li&gt;
+  &lt;li&gt;$kill -signal pid 关闭某个 PID 的进程&lt;/li&gt;
+  &lt;li&gt;$w 查看谁正在登录到你的 Mac 机器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;系统用户:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$login 登录电脑,首先要输入用户名,回车输入密码&lt;/li&gt;
   &lt;li&gt;$passwd 修改当前用户的密码&lt;/li&gt;
-  &lt;li&gt;$cal   显示日历&lt;/li&gt;
-  &lt;li&gt;$date  显示日期&lt;/li&gt;
-  &lt;li&gt;$ls    列出当前文件夹的内容&lt;/li&gt;
-  &lt;li&gt;$ls -l 在ls 基础上列出详细信息 (其中以 d …..开头的项表示目录)&lt;/li&gt;
-  &lt;li&gt;$ls -l 列出权限信息&lt;/li&gt;
   &lt;li&gt;$whoami 获取当前是哪个用户登录的&lt;/li&gt;
   &lt;li&gt;$who    当前用户信息&lt;/li&gt;
   &lt;li&gt;$users  当前用户信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;文件管理:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$ cd $HOME 进入用户父目录&lt;/li&gt;
+  &lt;li&gt;$cd .. 进入父目录,相对目录&lt;/li&gt;
+  &lt;li&gt;$cd \ 进入根目录&lt;/li&gt;
+  &lt;li&gt;$ls    列出当前文件夹的内容&lt;/li&gt;
+  &lt;li&gt;$ls -l 在ls 基础上列出详细信息 (其中以 d …..开头的项表示目录)&lt;/li&gt;
+  &lt;li&gt;$ls -l 列出权限信息&lt;/li&gt;
+  &lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
+  &lt;li&gt;$cd 目录名       : 进入目录&lt;/li&gt;
+  &lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
+  &lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
+  &lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
+  &lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
+  &lt;li&gt;$mv file1 file2 : 移动file1 到file2&lt;/li&gt;
+  &lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
+  &lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
+  &lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
+  &lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
+  &lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;重启关机:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;**注意 + sudo **&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;$logout     注销&lt;/li&gt;
-  &lt;li&gt;$halt       立即关机&lt;/li&gt;
+  &lt;li&gt;$sudo halt       立即关机&lt;/li&gt;
   &lt;li&gt;$init 0     在关闭系统之前，使用预定义的脚本关闭系统以同步和清理系统&lt;/li&gt;
   &lt;li&gt;$init 6     系统完全关闭然后重新启动，重新启动系统&lt;/li&gt;
   &lt;li&gt;$poweroff   通过关闭电源关闭系统&lt;/li&gt;
   &lt;li&gt;$reboot     重启&lt;/li&gt;
   &lt;li&gt;$shutdown   关闭系统&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
-  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$shutdown - r now 重启&lt;/li&gt;
+  &lt;li&gt;$shutdown now 关机&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4.日期日历:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$cal   显示日历&lt;/li&gt;
+  &lt;li&gt;$date  显示日期&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;5.其他&lt;/p&gt;
+
+&lt;p&gt;强制 Finder 程序显示隐藏文件&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$defaults write com.apple.finder AppleShowAllFiles TRUE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;强制 Finder 程序不显示隐藏文件&lt;/p&gt;
+&lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;$&lt;/p&gt;
+    &lt;p&gt;$defaults write com.apple.finder AppleShowAllFiles FALSE&lt;/p&gt;
   &lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;$&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://upclinux.github.io/intro/07/script/&quot;&gt;关于脚本和批处理,这里介绍的还可以&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_commands/index.htm&quot;&gt;Unix 系统命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;贝尔实验室的维基百科&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://s3-us-west-2.amazonaws.com/belllabs-microsite-unixhistory/tutorial.html&quot;&gt;Unix 档案&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/opprecedence.html&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.tutorialspoint.com/unix/unix-shell.htm&quot;&gt;Unix   Shell教程 英语&lt;/a&gt;&lt;/li&gt;
@@ -328,6 +653,1456 @@ PID       TTY      TIME        CMD
         
         
         <category>Unix</category>
+        
+      </item>
+    
+      <item>
+        <title>Unix</title>
+        <description>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;layout&quot; content=&quot;post&quot;&gt;
+&lt;meta name=&quot;categories&quot; content=&quot;Unix&quot;&gt;
+&lt;meta name=&quot;tags&quot; content=&quot;Unix&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;3行代码&quot;&gt;&lt;style&gt;body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Segoe UI&quot;, Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type=&quot;checkbox&quot;] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: &quot; &quot;;
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body&gt;*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body&gt;*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li&gt;p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote&gt;:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote&gt;:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: &quot;\00a0&quot;;
+}
+
+.markdown-body pre&gt;code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition&gt;.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention&gt;.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution&gt;.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint&gt;.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger&gt;.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question&gt;.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note&gt;.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: &quot;\f056\00a0&quot;;
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: &quot;\f058\00a0&quot;;
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: &quot;\f06a\00a0&quot;;
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: &quot;\f05a\00a0&quot;;
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: &quot;\f057\00a0&quot;;
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: &quot;\f059\00a0&quot;;
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: &quot;\f040\00a0&quot;;
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition&gt;*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition&gt;*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: &quot; (&quot; attr(href) &quot;)&quot;;
+  }
+
+  .markdown-body abbr[title]:after {
+    content: &quot; (&quot; attr(title) &quot;)&quot;;
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^=&quot;javascript:&quot;]:after,
+  .markdown-body a[href^=&quot;#&quot;]:after {
+    content: &quot;&quot;;
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+&lt;/style&gt;&lt;title&gt;&quot;UNIX 入门小教程&quot;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;markdown-body&quot;&gt;&lt;ul&gt;
+&lt;li toc=&quot;toc&quot;&gt;content&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作为一名 iOS 老司机,要想工作效率高,Unix 则是必须要熟悉的.今天扒一扒 Unix 的那些事&lt;/p&gt;
+&lt;p&gt;奉上 Unix 学习笔记,需要的拿去但请注明链接.&lt;br /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;unix&quot;&gt;&lt;a name=&quot;user-content-unix&quot; href=&quot;#unix&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;UNIX 概述&lt;/h3&gt;
+&lt;p&gt;说起 Unix 就必须说 Bell Labs ,这个实验室厉害啊, 对计算机早期的贡献是相当大的.像大家熟知的 Unix \ C  都是这家公司发明创建的,&lt;br /&gt;
+实验室目前是 Nokia 公司的.关于贝尔实验室,更多介绍请戳 &lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其实关于操作系统,以前是学过的,但不知道为啥就分不清了&amp;hellip;以下简单介绍下 Unix \ OS X \ Linux \ Windows 的异同,可以有一个直观的认识.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unix : GUI 是 X Window(在内核外跑的应用),内核则包括 X Server(与内核通信)与 X Client(负责显示)两部分;&lt;/li&gt;
+&lt;li&gt;OS X : GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix BSD);&lt;/li&gt;
+&lt;li&gt;OS   : 注意和 OS X 是不同的,OS X 是全新设计基于 Unix 内核的,而 OS 内核基于 Mach(微内核) .&lt;/li&gt;
+&lt;li&gt;Linux : 也是基于 Unix 内核的.&lt;/li&gt;
+&lt;li&gt;Windows : 内核是 DOS  NT ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;除上之外, Unix 的变体有: Solaris Unix,AIX,HP Unix,BSD以及 Linux 等等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;unix_1&quot;&gt;&lt;a name=&quot;user-content-unix_1&quot; href=&quot;#unix_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;从功能上看 Unix&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;内核: 操作系统的核心,调度任务和管理存储;&lt;/li&gt;
+&lt;li&gt;shell: 连接和解释用户的命令，从内存中调用程序并执行它们;&lt;/li&gt;
+&lt;li&gt;工具和应用程序: 为操作系统提供附加功能.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&quot;屏幕快照 2017-03-05 10.34.16.png&quot; src=&quot;https://ooo.0o0.ooo/2017/03/05/58bb78709b9d2.png&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;unix_2&quot;&gt;&lt;a name=&quot;user-content-unix_2&quot; href=&quot;#unix_2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;从构架上看 Unix&lt;/h5&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://www.tutorialspoint.com/unix/images/unix_architecture.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;上图展示了 Unix 的基本框架:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;内核 : 内核是操作系统的核心,它与硬件和大多数任务（如内存管理，任务调度和文件管理）交互&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shell: shell 是处理请求的实用程序,当在终端上键入命令时，shell 会解释该命令并调用所需的程序。shell对所有命令使用标准语法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令和实用程序 :有各种命令和实用程序，您可以在您的日常活动中使用。cp，mv，cat和grep等是命令和实用程序的几个例子。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件和目录 : Unix的所有数据都组织成文件。然后将所有文件组织到目录中。这些目录进一步组织成称为文件系统的树状结构。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1&quot;&gt;&lt;a name=&quot;user-content-1&quot; href=&quot;#1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;1. 文件体系&lt;/h3&gt;
+&lt;p&gt;Unix中的每个文件都有以下属性 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;所有者权限  所有者的权限决定文件所有者可对文件执行的操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组权限    组的权限决定了用户，文件所属组的成员可以对文件执行哪些操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他人权限  其他人的权限指示所有其他用户可对文件执行的操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ls -l /home/amrood
+-rwxr-xr--  1 amrood   users 1024  Nov 2 00:10  myfile
+drwxr-xr--- 1 amrood   users 1024  Nov 2 00:10  mydir
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+- d 开头的表示目录&lt;br /&gt;
+- 第一列表示不同的访问模式,权限被分成三组(所有者,组,其他人权限 )，权限：read（r），write（w），execute（x）&lt;br /&gt;
+- -rwxr-xr&amp;ndash;  表示(2-4)所有者权限: rwx ,(5-7)组权限: xr ,(8-10)其他人权限: r &lt;/p&gt;
+&lt;h5 id=&quot;_1&quot;&gt;&lt;a name=&quot;user-content-_1&quot; href=&quot;#_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;修改文件权限&lt;/h5&gt;
+&lt;p&gt;chmod（change mode）命令。有两种方式使用chmod - 符号模式和绝对模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;符号模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;添加权限, - - 删除权限 = 设置指定权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;$chmod o+wx testfile
+$ls -l testfile
+-rwxrwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
+$chmod u-x testfile
+$ls -l testfile
+-rw-rwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
+$chmod g = rx testfile
+$ls -l testfile
+-rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
+
+# 以下是如何在一行上组合这些命令 -
+
+$chmod o+wx,u-x,g = rx testfile
+$ls -l testfile
+-rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;绝对模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;数   八进制权限表示    参考文献
+0   没有权限          --- ---
+1   执行权限              - X
+2   写权限              -w-
+3   执行和写入权限    1（执行）+ 2（写）= 3  -wx
+4   读取权限            r--
+5   读取和执行权限     4（读取）+ 1（执行）= 5 rx
+6   读写权限        4（读）+ 2（写）= 6  rw-
+7   所有权限       4（读）+ 2（写）+ 1（执行）= 7   rwx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;$ls -l testfile
+-rwxrwxr--  1 amrood   users 1024  Nov 2 00:10  testfile
+然后修改:
+$ chmod 755 testfile
+$ls -l testfile
+-rwxr-xr-x  1 amrood   users 1024  Nov 2 00:10  testfile
+$chmod 743 testfile
+$ls -l testfile
+-rwxr---wx  1 amrood   users 1024  Nov 2 00:10  testfile
+$chmod 043 testfile
+$ls -l testfile
+----r---wx  1 amrood   users 1024  Nov 2 00:10  testfile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;_2&quot;&gt;&lt;a name=&quot;user-content-_2&quot; href=&quot;#_2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;文件目录&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;/    : 根目录,命令:$ cd /&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;$ cd / ;ls
+# 列出根目录的文件夹:
+Applications        home
+Library             installer.failurerequests
+Network             net
+System              opt
+Users               private
+Volumes             sbin
+bin                 tmp
+cores               usr
+dev                 var
+etc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;关于上述目录说明如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/bin  : 这是可执行文件所在的位置。这些文件可供所有用户使用&lt;/li&gt;
+&lt;li&gt;/dev  : 设备驱动&lt;/li&gt;
+&lt;li&gt;/etc  : 管理程序目录命令，配置文件，磁盘配置文件，有效用户列表，组，以太网，主机，在哪里发送关键消息&lt;/li&gt;
+&lt;li&gt;/lib  : 含共享库文件和有时其他与内核相关的文件&lt;/li&gt;
+&lt;li&gt;/home : 包含用户和其他帐户的主目录&lt;/li&gt;
+&lt;li&gt;/tmp  : 保存系统引导之间使用的临时文件&lt;/li&gt;
+&lt;li&gt;/usr  : 用于其他目的，可供许多用户使用。包括管理命令，共享文件，库文件和其他&lt;/li&gt;
+&lt;li&gt;/var  : 通常包含可变长度文件，例如日志和打印文件以及可能包含可变数据量的任何其他类型的文件&lt;/li&gt;
+&lt;li&gt;/sbin : 包含二进制（可执行文件）文件，通常用于系统管理。例如，fdisk和ifconfig utlities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;....&lt;/p&gt;
+&lt;h5 id=&quot;_3&quot;&gt;&lt;a name=&quot;user-content-_3&quot; href=&quot;#_3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;浏览文件系统&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
+&lt;li&gt;$cd 目录名       : 进入目录 &lt;/li&gt;
+&lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
+&lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
+&lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
+&lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
+&lt;li&gt;$mv file1 file2 : 移动file1 到file2   &lt;/li&gt;
+&lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
+&lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
+&lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
+&lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
+&lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-system.htm&quot;&gt;更多文件相关内容&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2&quot;&gt;&lt;a name=&quot;user-content-2&quot; href=&quot;#2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;2. 环境变量&lt;/h3&gt;
+&lt;p&gt;在登录 Unix 系统时,会先初始化设置环境变量,读取/ etc / profile(OS X:.profile) 文件,&lt;br /&gt;
+如果 Home目录存在 profile 文件,就会读取,并在终端显示 $ 符号.&lt;/p&gt;
+&lt;h5 id=&quot;path&quot;&gt;&lt;a name=&quot;user-content-path&quot; href=&quot;#path&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;PATH&lt;/h5&gt;
+&lt;p&gt;PATH变量指定shell应查找命令的位置。通常Path变量设置如下 &lt;/p&gt;
+&lt;p&gt;$PATH=/bin:/usr/bin&lt;/p&gt;
+&lt;p&gt;这里，用冒号字符（:)分隔的每个单独的条目是目录&lt;/p&gt;
+&lt;p&gt;我自己的 profile 文件 PATH 设置如下:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$vim .bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;结果如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;# 加载 .profile
+[[ -s &amp;quot;$HOME/.profile&amp;quot; ]] &amp;amp;&amp;amp; source &amp;quot;$HOME/.profile&amp;quot; # Load the default .profile
+
+# 加载 RVM 
+[[ -s &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot; ]] &amp;amp;&amp;amp; source &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot; # Load RVM into a shell session *as a function*
+
+# 设置 PATH 路径
+export PATH=${PATH}:/usr/local/mysql-5.6.12-osx10.7-x86_64/bin/mysql
+
+# 设置 PATH 路径
+export PATH=/usr/local/bin:$PATH
+
+# 设置 PATH 路径
+export PATH=$HOME/bin/:$PATH
+
+# 设置 PATH 路径
+export THEOS=/opt/theos
+
+# 设置 PATH 路径
+export PATH=$THEOS/bin:$PATH
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意之所以会设置这么多的路径,是因为:当请求 shell 执行命令的时候, shel 会从 PATH 路径中寻找命令,如果不存在,就不会执行:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ home
+-bash: home: command not found
+# 这是因为上述没有 PATH 路径没有 home 命令 ,shell 无法解释 home 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;unix_3&quot;&gt;&lt;a name=&quot;user-content-unix_3&quot; href=&quot;#unix_3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Unix 环境变量&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;- HOME 当前用户主目录:
+$ echo $HOME
+/Users/jiangxiaocai
+
+- PATH  打印当前的 PATH 路径 
+$ echo $PATH
+
+- PWD 当前目录路径
+$ pwd
+/Users/jiangxiaocai
+
+- RANDOM 每次引用都生成一个介于0和32,767之间的随机整数
+$ echo $RANDOM
+20303
+
+- TERM 显示类型
+$ echo $TERM
+xterm-256color
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-environment.htm&quot;&gt;更多的请看&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3&quot;&gt;&lt;a name=&quot;user-content-3&quot; href=&quot;#3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;3.基础小程序&lt;/h3&gt;
+&lt;h5 id=&quot;_4&quot;&gt;&lt;a name=&quot;user-content-_4&quot; href=&quot;#_4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;打印文件&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 pr &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$pr 文件 即可打印文件的内容&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# pr 语法如下:
+pr option(s) filename(s)
+$pr txt.txt
+
+# -k 产生 K 列输出:
+$pr -2 txt.txt 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 cat &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$cat txt.txt &lt;/p&gt;
+&lt;h5 id=&quot;_5&quot;&gt;&lt;a name=&quot;user-content-_5&quot; href=&quot;#_5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;发邮件&lt;/h5&gt;
+&lt;p&gt;语法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$mail [-s subject] [-c cc-addr] [-b bcc-addr] to-addr
+
+# 以下是将测试消息发送到admin@yahoo.com的示例。
+$mail -s &amp;quot;Test Message&amp;quot; admin@yahoo.com 
+#...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-permission.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;4&quot;&gt;&lt;a name=&quot;user-content-4&quot; href=&quot;#4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;4.用户管理与进程&lt;/h3&gt;
+&lt;p&gt;Unix 上有三种账户:&lt;br /&gt;
+- 根账户:可以运行任何命令&lt;br /&gt;
+- 系统账户:系统帐户是操作系统特定组件所需的帐户，例如邮件帐户和sshd帐户。这些帐户通常需要您的系统上的某些特定功能，对它们的任何修改可能会对系统产生不利影响。&lt;br /&gt;
+- 用户帐户:&lt;br /&gt;
+用户帐户为用户和用户组提供对系统的交互式访问。一般用户通常分配到这些帐户，并且通常对关键系统文件和目录的访问受限。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-user-administration.htm&quot;&gt;更多账户资料&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;_6&quot;&gt;&lt;a name=&quot;user-content-_6&quot; href=&quot;#_6&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;进程&lt;/h5&gt;
+&lt;p&gt;操作系统通过称为pid或进程ID的五位ID号跟踪进程。系统中的每个进程都有一个唯一的pid。&lt;/p&gt;
+&lt;p&gt;通过运行ps（process status）命令很容易看到你自己的进程，如下所示&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;$ps
+PID       TTY      TIME        CMD
+18358     ttyp3    00:00:00    sh
+18361     ttyp3    00:01:31    abiword
+18789     ttyp3    00:00:00    ps
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+-f（f为full）选项 &lt;code&gt;$ps -f&lt;/code&gt; 精细显示&lt;/p&gt;
+&lt;h3 id=&quot;5&quot;&gt;&lt;a name=&quot;user-content-5&quot; href=&quot;#5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;5. 通信&lt;/h3&gt;
+&lt;p&gt;Unix 系统可以通过终端进行电子邮件的通信.&lt;/p&gt;
+&lt;p&gt;$ping 该命令发送回送请求到网络上可用的主机。使用此命令，您可以检查远程主机是否响应良好。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ping hostname or ip-address&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;6-vim&quot;&gt;&lt;a name=&quot;user-content-6-vim&quot; href=&quot;#6-vim&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;6. VIM&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$vi filename      如果新文件已经不存在，则创建新文件，否则打开现有文件&lt;/li&gt;
+&lt;li&gt;$vi -R filename   以只读模式打开现有文件。&lt;/li&gt;
+&lt;li&gt;$view filename    只读模式打开&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;_7&quot;&gt;&lt;a name=&quot;user-content-_7&quot; href=&quot;#_7&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;操作模式&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;命令模式 - 此模式允许您执行管理任务，例如保存文件，执行命令，移动光标，剪切（ying）和粘贴线或单词，以及查找和替换。在这种模式下，无论你输入什么都被解释为一个命令。&lt;/li&gt;
+&lt;li&gt;插入模式 - 此模式允许您将文本插入文件。在此模式下键入的所有内容都将被解释为输入并放在文件中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;vi始终在命令模式下启动。要输入文本，您必须处于插入模式，只需输入i。要退出插入模式，请按Esc键，这将使您返回命令模式。&lt;br /&gt;
+如果您不确定您所处的模式，请按Esc键两次; 这将带你到命令模式。使用vi编辑器打开文件&lt;/p&gt;
+&lt;h5 id=&quot;vi&quot;&gt;&lt;a name=&quot;user-content-vi&quot; href=&quot;#vi&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;保存 VI&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ESC 进入命令模式，键入冒号和w,即可保存&lt;/li&gt;
+&lt;li&gt;ESC 进入命令模式，键入&amp;rsquo;冒号和&amp;rsquo;wq&amp;rsquo;, 或者键入&amp;rsquo;冒号和&amp;rsquo;zz&amp;rsquo;   然后回车.这时会保存退出 .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;vi_1&quot;&gt;&lt;a name=&quot;user-content-vi_1&quot; href=&quot;#vi_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;退出 VI:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ESC 进入命令模式，键入冒号和&amp;rsquo;q&amp;rsquo;,然后回车.这时会提示保存.&lt;/li&gt;
+&lt;li&gt;ESC 进入命令模式，键入冒号和&amp;rsquo;q!&amp;rsquo;,然后回车.这时会直接退出,不进行提示.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;_8&quot;&gt;&lt;a name=&quot;user-content-_8&quot; href=&quot;#_8&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;重命名:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ESC 进入命令模式，键入&amp;rsquo;冒号和&amp;rsquo;w filename2&amp;rsquo;和return .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;_9&quot;&gt;&lt;a name=&quot;user-content-_9&quot; href=&quot;#_9&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;在文本中移动光标:&lt;/h5&gt;
+&lt;p&gt;要在文件中移动而不影响文本，您必须处于命令模式（按两次Esc）。下表列出了几个可用于一次移动一个字符的命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;k 将光标向上移动一行&lt;/li&gt;
+&lt;li&gt;j 将光标向下移动一行&lt;/li&gt;
+&lt;li&gt;h    将光标移动到左一个字符位置&lt;/li&gt;
+&lt;li&gt;l  将光标向右移动一个字符位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-vi-editor.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;7&quot;&gt;&lt;a name=&quot;user-content-7&quot; href=&quot;#7&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;7. 性能管理:&lt;/h3&gt;
+&lt;h5 id=&quot;_10&quot;&gt;&lt;a name=&quot;user-content-_10&quot; href=&quot;#_10&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;性能工具&lt;/h5&gt;
+&lt;p&gt;Unix提供以下重要工具来测量和微调Unix系统性能 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nice/renice    运行具有修改的调度优先级的程序&lt;/li&gt;
+&lt;li&gt;$netstat       打印网络连接，路由表，接口统计信息，伪装连接和多播成员资格&lt;/li&gt;
+&lt;li&gt;$time          帮助计时一个简单的命令或提供资源使用&lt;/li&gt;
+&lt;li&gt;$uptime        这是系统负载平均&lt;/li&gt;
+&lt;li&gt;$ps      报告当前进程的快照&lt;/li&gt;
+&lt;li&gt;$vmstat       报告虚拟内存统计&lt;/li&gt;
+&lt;li&gt;$gprof        显示调用图配置文件数据&lt;/li&gt;
+&lt;li&gt;$prof         促进过程分析&lt;/li&gt;
+&lt;li&gt;$top   [有用] 显示系统任务: 很详细&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5_1&quot;&gt;&lt;a name=&quot;user-content-5_1&quot; href=&quot;#5_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;5. 常用命令汇集&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用;来分开两个命令,从而在一行执行,例如:&lt;code&gt;cd \bin ; ls&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取帮助:$man pwd ,用户获取 pwd 命令的联机帮助,其他类似.&lt;/li&gt;
+&lt;li&gt;$ctrl+c 关闭进行&lt;/li&gt;
+&lt;li&gt;$kill -signal pid 关闭某个 PID 的进程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;系统用户:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;$login 登录电脑,首先要输入用户名,回车输入密码&lt;/li&gt;
+&lt;li&gt;$passwd 修改当前用户的密码&lt;/li&gt;
+&lt;li&gt;$whoami 获取当前是哪个用户登录的&lt;/li&gt;
+&lt;li&gt;$who    当前用户信息&lt;/li&gt;
+&lt;li&gt;$users  当前用户信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;文件管理:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;$cd \ 进入根目录&lt;/li&gt;
+&lt;li&gt;$ls    列出当前文件夹的内容&lt;/li&gt;
+&lt;li&gt;$ls -l 在ls 基础上列出详细信息 (其中以 d .....开头的项表示目录)&lt;/li&gt;
+&lt;li&gt;$ls -l 列出权限信息&lt;/li&gt;
+&lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
+&lt;li&gt;$cd 目录名       : 进入目录 &lt;/li&gt;
+&lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
+&lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
+&lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
+&lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
+&lt;li&gt;$mv file1 file2 : 移动file1 到file2   &lt;/li&gt;
+&lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
+&lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
+&lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
+&lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
+&lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;重启关机:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;注意 + sudo &lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$logout     注销&lt;/li&gt;
+&lt;li&gt;$sudo halt       立即关机&lt;/li&gt;
+&lt;li&gt;$init 0     在关闭系统之前，使用预定义的脚本关闭系统以同步和清理系统&lt;/li&gt;
+&lt;li&gt;$init 6     系统完全关闭然后重新启动，重新启动系统&lt;/li&gt;
+&lt;li&gt;$poweroff   通过关闭电源关闭系统&lt;/li&gt;
+&lt;li&gt;$reboot     重启&lt;/li&gt;
+&lt;li&gt;$shutdown   关闭系统&lt;/li&gt;
+&lt;li&gt;$shutdown - r now 重启 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$shutdown now&lt;br /&gt;
+4.日期日历:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$cal   显示日历&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$date  显示日期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;$&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://upclinux.github.io/intro/07/script/&quot;&gt;关于脚本和批处理,这里介绍的还可以&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_commands/index.htm&quot;&gt;Unix 系统命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;贝尔实验室的维基百科&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://s3-us-west-2.amazonaws.com/belllabs-microsite-unixhistory/tutorial.html&quot;&gt;Unix 档案&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/opprecedence.html&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.tutorialspoint.com/unix/unix-shell.htm&quot;&gt;Unix   Shell教程 英语&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://bash.cyberciti.biz/guide/Main_Page&quot;&gt;Linux  Shell教程 英语&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;</description>
+        <pubDate>Sat, 04 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/04/Unix/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/04/Unix/</guid>
+        
         
       </item>
     
@@ -3947,644 +5722,6 @@ cp /Users/marty/.jenkins/workspace/xxxx/bin/&lt;span class=&quot;k&quot;&gt;*&lt
         <category>SDiffuseMenu</category>
         
         <category>Animation</category>
-        
-        
-        <category>Swift3.0</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift3.0_X_构造过程和析构过程 </title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;构造过程&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;存储属性的初始赋值&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;自定义构造过程&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;默认构造器&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;值类型的构造器代理&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;类的继承和构造过程&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;可失败构造器&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;必要构造器&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;通过闭包或函数设置属性的默认值&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;析构过程&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;析构过程原理&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;析构器实践&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;section&quot;&gt;构造过程&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;构造过程是使用类、结构体或枚举类型的实例之前的准备过程；&lt;/li&gt;
-  &lt;li&gt;通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法；&lt;/li&gt;
-  &lt;li&gt;与OC中的构造器不同，Swift的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化；&lt;/li&gt;
-  &lt;li&gt;类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;存储属性的初始赋值&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值；&lt;/li&gt;
-  &lt;li&gt;可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值；&lt;/li&gt;
-  &lt;li&gt;当为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1、构造器&lt;/p&gt;
-
-&lt;p&gt;以关键字init命名：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 在此处执行构造过程&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;案例：&lt;/p&gt;
-
-&lt;p&gt;这个结构体定义了一个不带参数的构造器init，并在里面将存储型属性temperature的值初始化为32.0&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 保存华氏温度的结构体Fahrenheit&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Fahrenheit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;temperature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperature&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;32.0&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Fahrenheit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The default temperature is &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temperature&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;° Fahrenheit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;The default temperature is 32.0° Fahrenheit”&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2、默认属性值&lt;/p&gt;
-
-&lt;p&gt;如前所述，可以在构造器中为存储型属性设置初始值。同样，也可以在属性声明时为其设置默认值&lt;/p&gt;
-
-&lt;p&gt;注意：如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能充分利用默认构造器、构造器继承等特性，后续章节将讲到。&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 可以使用更简单的方式在定义结构体Fahrenheit时为属性temperature设置默认值：&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Fahrenheit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;temperature&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;32.0&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;自定义构造过程&lt;/h3&gt;
-
-&lt;p&gt;可以通过输入参数和可选类型的属性来自定义构造过程，也可以在构造过程中修改常量属性。&lt;/p&gt;
-
-&lt;p&gt;1、构造参数：&lt;/p&gt;
-
-&lt;p&gt;自定义构造过程时，可以在定义中提供构造参数，指定所需值的类型和名字。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 面例子中定义了一个包含摄氏度温度的结构体Celsius。它定义了两个不同的构造器：init(fromFahrenheit:)和init(fromKelvin:)，二者分别通过接受不同温标下的温度值来创建新的实例：&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Celsius&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;temperatureInCelsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 构造参数，其外部名字为fromFahrenheit,内部名字为fahrenheit&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromFahrenheit&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fahrenheit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperatureInCelsius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fahrenheit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;32.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 构造参数，其外部名字为fromKelvin，内部名字为kelvin&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromKelvin&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;kelvin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperatureInCelsius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kelvin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;273.15&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;boilingPointOfWater&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Celsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fromFahrenheit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;212.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// boilingPointOfWater.temperatureInCelsius 是 100.0&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;freezingPointOfWater&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Celsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fromKelvin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;273.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// freezingPointOfWater.temperatureInCelsius 是 0.0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2、参数的内部名称和外部名称：&lt;/p&gt;
-
-&lt;p&gt;跟函数和方法参数相同，构造参数也拥有一个在构造器内部使用的参数名字和一个在调用构造器时使用的外部参数名字。&lt;/p&gt;
-
-&lt;p&gt;当中有多个构造器时，需要通过外部名称来识别不同的构造器：在调用构造器时，主要通过构造器中的参数名和类型来确定应该被调用的构造器。正因为参数如此重要，如果你在定义构造器时没有提供参数的外部名字，Swift 会为构造器的每个参数自动生成一个跟内部名字相同的外部名。&lt;/p&gt;
-
-&lt;p&gt;以下例子中定义了一个结构体Color，它包含了三个常量：red、green和blue。这些属性可以存储0.0到1.0之间的值，用来指示颜色中红、绿、蓝成分的含量。&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Color提供了一个构造器，其中包含三个Double类型的构造参数。Color也可以提供第二个构造器，它只包含名为white的Double类型的参数，它被用于给上述三个构造参数赋予同样的值。&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Color&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;red&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;red&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;red&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;white&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;white&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;white&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;两种构造器都能用于创建一个新的Color实例，你需要为构造器每个外部参数传值：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;magenta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;halfGray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;注意，如果不通过外部参数名字传值，你是没法调用这个构造器的。只要构造器定义了某个外部参数名，你就必须使用它，忽略它将导致编译错误：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;veryGreen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 报编译时错误，需要外部名称&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;3、不带外部名的构造器参数：&lt;/p&gt;
-
-&lt;p&gt;如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(_)来显式描述它的外部名，以此重写上面所说的默认行为。&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;下面是之前Celsius例子的扩展&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;跟之前相比添加了一个带有Double类型参数的构造器&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;其外部名用_代替&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Celsius&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;temperatureInCelsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromFahrenheit&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fahrenheit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperatureInCelsius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fahrenheit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;32.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromKelvin&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;kelvin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperatureInCelsius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kelvin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;273.15&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;celsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temperatureInCelsius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;celsius&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;bodyTemperature&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Celsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;37.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// bodyTemperature.temperatureInCelsius 为 37.0&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 调用Celsius(37.0)意图明确，不需要外部参数名称。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;4、可选属性类型&lt;/p&gt;
-
-&lt;p&gt;如果定制的类型包含一个逻辑上允许取值为空的存储型属性——无论是因为它无法在初始化时赋值，还是因为它在之后某个时间点可以赋值为空——你都需要将它定义为可选类型。可选类型的属性将自动初始化为nil，表示这个属性是有意在初始化时设置为空的。&lt;/p&gt;
-
-&lt;p&gt;下面例子中定义了类SurveyQuestion，它包含一个可选字符串属性response：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SurveyQuestion&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cheeseQuestion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SurveyQuestion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Do you like cheese?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cheeseQuestion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;Do you like cheese?&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cheeseQuestion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Yes, I do like cheese.&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 调查问题的答案在回答前是无法确定的，因此我们将属性response声明为String?类型，或者说是可选字符串类型。当SurveyQuestion实例化时，它将自动赋值为nil，表明此字符串暂时还没有值。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;5、构造过程中常量属性的修改&lt;/p&gt;
-
-&lt;p&gt;你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。&lt;/p&gt;
-
-&lt;p&gt;注意：对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;默认构造器&lt;/h3&gt;
-
-&lt;p&gt;如果结构体或类的所有属性都有默认值，同时没有自定义的构造器，那么 Swift 会给这些结构体或类提供一个默认构造器。这个默认构造器将简单地创建一个所有属性值都设置为默认值的实例。&lt;/p&gt;
-
-&lt;p&gt;案例:下面例子中创建了一个类ShoppingListItem，它封装了购物清单中的某一物品的属性：名字（name）、数量（quantity）和购买状态 purchase state：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ShoppingListItem&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;quantity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;purchased&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ShoppingListItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;由于ShoppingListItem类中的所有属性都有默认值，且它是没有父类的基类，它将自动获得一个可以为所有属性设置默认值的默认构造器（尽管代码中没有显式为name属性设置默认值，但由于name是可选字符串类型，它将默认设置为nil）。上面例子中使用默认构造器创造了一个ShoppingListItem类的实例（使用ShoppingListItem()形式的构造器语法），并将其赋值给变量item。&lt;/p&gt;
-
-&lt;p&gt;2、结构体的逐一成员构造器&lt;/p&gt;
-
-&lt;p&gt;除了上面提到的默认构造器，如果结构体没有提供自定义的构造器，它们将自动获得一个逐一成员构造器，即使结构体的存储型属性没有默认值。&lt;/p&gt;
-
-&lt;p&gt;逐一成员构造器是用来初始化结构体新实例里成员属性的快捷方法。我们在调用逐一成员构造器时，通过与成员属性名相同的参数名进行传值来完成对成员属性的初始赋值。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 结构体Size自动获得了一个逐一成员构造器init(width:height:)。你可以用它来为Size创建新的实例：&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;twoByTwo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;值类型的构造器代理&lt;/h3&gt;
-
-&lt;p&gt;构造器可以通过调用其它构造器来完成实例的部分构造过程。这一过程称为构造器代理，它能减少多个构造器间的代码重复。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;构造器代理的实现规则和形式在值类型和类类型中有所不同;&lt;/li&gt;
-  &lt;li&gt;值类型（结构体和枚举类型）不支持继承，所以构造器代理的过程相对简单，因为它们只能代理给自己的其它构造器;&lt;/li&gt;
-  &lt;li&gt;类则不同，它可以继承自其它类，这意味着类有责任保证其所有继承的存储型属性在构造时也能正确的初始化;&lt;/li&gt;
-  &lt;li&gt;对于值类型，可以使用self.init在自定义的构造器中引用相同类型中的其它构造器。并且只能在构造器内部调用self.init;&lt;/li&gt;
-  &lt;li&gt;如果为某个值类型定义了一个自定义的构造器，将无法访问到默认构造器（如果是结构体，还将无法访问逐一成员构造器）。这种限制可以防止为值类型增加了一个额外的且十分复杂的构造器之后,仍然有人错误的使用自动生成的构造器;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;注意:假如你希望默认构造器、逐一成员构造器以及你自己的自定义构造器都能用来创建实例，可以将自定义的构造器写到扩展（extension）中，而不是写在值类型的原始定义中.&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;可以通过以下三种方式为Rect创建实例&lt;/p&gt;
-
-&lt;p&gt;— 使用被初始化为默认值的origin和size属性来初始化；&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;提供指定的origin和size实例来初始化；&lt;/li&gt;
-  &lt;li&gt;提供指定的center和size来初始化。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Rect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 构造器1：在功能上跟没有自定义构造器时自动获得的默认构造器是一样的&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 构造器2：在功能上跟结构体在没有自定义构造器时获得的逐一成员构造器是一样的&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 简单地将origin和size的参数值赋给对应的存储型属性：&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 构造器3:它先通过center和size的值计算出origin的坐标，然后再调用（或者说代理给）init(origin:size:)构造器来将新的origin和size值赋值到对应的属性中：&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;originX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;originY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;originX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;originY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;类的继承和构造过程&lt;/h3&gt;
-
-&lt;p&gt;类里面的所有存储型属性——包括所有继承自父类的属性——都必须在构造过程中设置初始值。&lt;/p&gt;
-
-&lt;p&gt;Swift为类类型提供了两种构造器来确保实例中所有存储型属性都能获得初始值，它们分别是指定构造器和便利构造器。&lt;/p&gt;
-
-&lt;p&gt;1、指定构造器和便利构造器&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;指定构造器：是类中最主要的构造器。一个指定构造器将初始化类中提供的所有属性，并根据父类链往上调用父类的构造器来实现父类的初始化。每一个类都必须拥有至少一个指定构造器。在某些情况下，许多类通过继承了父类中的指定构造器而满足了这个条件。&lt;/li&gt;
-  &lt;li&gt;便利构造器：是类中比较次要的、辅助型的构造器。可以定义便利构造器来调用同一个类中的指定构造器，并为其参数提供默认值。也可以定义便利构造器来创建一个特殊用途或特定输入值的实例。应当只在必要的时候为类提供便利构造器，比方说某种情况下通过使用便利构造器来快捷调用某个指定构造器，能够节省更多开发时间并让类的构造过程更清晰明了。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;2、指定构造器和便利构造器的语法&lt;/p&gt;
-
-&lt;p&gt;类的指定构造器的写法跟值类型简单构造器一样：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;便利构造器也采用相同样式的写法，但需要在init关键字之前放置convenience关键字，并使用空格将它们俩分开：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;convenience&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;statements&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;3、类的构造器代理规则&lt;/p&gt;
-
-&lt;p&gt;为了简化指定构造器和便利构造器之间的调用关系，Swift 采用以下三条规则来限制构造器之间的代理调用：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;规则 1 指定构造器必须调用其直接父类的的指定构造器。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;规则 2 便利构造器必须调用同类中定义的其它构造器。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;规则 3 便利构造器必须最终导致一个指定构造器被调用。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;一个更方便记忆的方法是：指定构造器必须总是向上代理；便利构造器必须总是横向代理&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation01_2x.png&quot; alt=&quot;&quot; /&gt;
-注意:
-这些规则不会影响类的实例如何创建。任何上图中展示的构造器都可以用来创建完全初始化的实例。这些规则只影响类定义如何实现。&lt;/p&gt;
-
-&lt;p&gt;下面图例中展示了一种涉及四个类的更复杂的类层级结构。它演示了指定构造器是如何在类层级中充当“管道”的作用，在类的构造器链上简化了类之间的相互关系。
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation02_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4、两段式构造过程：&lt;/p&gt;
-
-&lt;p&gt;Swift 中类的构造过程包含两个阶段。第一个阶段，每个存储型属性被引入它们的类指定一个初始值。当每个存储型属性的初始值被确定后，第二阶段开始，它给每个类一次机会，在新实例准备使用之前进一步定制它们的存储型属性。&lt;/p&gt;
-
-&lt;p&gt;两段式构造过程的使用让构造过程更安全，同时在整个类层级结构中给予了每个类完全的灵活性。两段式构造过程可以防止属性值在初始化之前被访问，也可以防止属性被另外一个构造器意外地赋予不同的值。&lt;/p&gt;
-
-&lt;p&gt;注意
-Swift 的两段式构造过程跟OC中的构造过程类似。最主要的区别在于阶段 1，OC给每一个属性赋值0或空值（比如说0或nil）。Swift 的构造流程则更加灵活，它允许你设置定制的初始值，并自如应对某些属性不能以0或nil作为合法默认值的情况。&lt;/p&gt;
-
-&lt;p&gt;Swift 编译器将执行 4 种有效的安全检查，以确保两段式构造过程能不出错地完成：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;安全检查 1 指定构造器必须保证它所在类引入的所有属性都必须先初始化完成，之后才能将其它构造任务向上代理给父类中的构造器。 如上所述，一个对象的内存只有在其所有存储型属性确定之后才能完全初始化。为了满足这一规则，指定构造器必须保证它所在类引入的属性在它往上代理之前先完成初始化。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安全检查 2 指定构造器必须先向上代理调用父类构造器，然后再为继承的属性设置新值。如果没这么做，指定构造器赋予的新值将被父类中的构造器所覆盖。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安全检查 3 便利构造器必须先代理调用同一类中的其它构造器，然后再为任意属性赋新值。如果没这么做，便利构造器赋予的新值将被同一类中其它指定构造器所覆盖。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安全检查 4 构造器在第一阶段构造完成之前，不能调用任何实例方法，不能读取任何实例属性的值，不能引用self作为一个值。 类实例在第一阶段结束以前并不是完全有效的。只有第一阶段完成后，该实例才会成为有效实例，才能访问属性和调用方法。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以下是两段式构造过程中基于上述安全检查的构造流程展示：&lt;/p&gt;
-
-&lt;p&gt;阶段 1&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;某个指定构造器或便利构造器被调用。&lt;/li&gt;
-  &lt;li&gt;完成新实例内存的分配，但此时内存还没有被初始化。&lt;/li&gt;
-  &lt;li&gt;指定构造器确保其所在类引入的所有存储型属性都已赋初值。存储型属性所属的内存完成初始化。&lt;/li&gt;
-  &lt;li&gt;指定构造器将调用父类的构造器，完成父类属性的初始化。&lt;/li&gt;
-  &lt;li&gt;这个调用父类构造器的过程沿着构造器链一直往上执行，直到到达构造器链的最顶部。&lt;/li&gt;
-  &lt;li&gt;当到达了构造器链最顶部，且已确保所有实例包含的存储型属性都已经赋值，这个实例的内存被认为已经完全初始化。此时阶段 1 完成。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;阶段 2&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;从顶部构造器链一直往下，每个构造器链中类的指定构造器都有机会进一步定制实例。构造器此时可以访问self、修改它的属性并调用实例方法等等。&lt;/li&gt;
-  &lt;li&gt;最终，任意构造器链中的便利构造器可以有机会定制实例和使用self。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;下图展示了在假定的子类和父类之间的构造阶段 1：
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization01_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，构造过程从对子类中一个便利构造器的调用开始。这个便利构造器此时没法修改任何属性，它把构造任务代理给同一类中的指定构造器。&lt;/p&gt;
-
-&lt;p&gt;如安全检查 1 所示，指定构造器将确保所有子类的属性都有值。然后它将调用父类的指定构造器，并沿着构造器链一直往上完成父类的构造过程。&lt;/p&gt;
-
-&lt;p&gt;父类中的指定构造器确保所有父类的属性都有值。由于没有更多的父类需要初始化，也就无需继续向上代理。&lt;/p&gt;
-
-&lt;p&gt;一旦父类中所有属性都有了初始值，实例的内存被认为是完全初始化，阶段 1 完成。&lt;/p&gt;
-
-&lt;p&gt;以下展示了相同构造过程的阶段 2：
-&lt;img src=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization02_2x.png&quot; alt=&quot;&quot; /&gt;
-父类中的指定构造器现在有机会进一步来定制实例（尽管这不是必须的）。&lt;/p&gt;
-
-&lt;p&gt;一旦父类中的指定构造器完成调用，子类中的指定构造器可以执行更多的定制操作（这也不是必须的）。&lt;/p&gt;
-
-&lt;p&gt;最终，一旦子类的指定构造器完成调用，最开始被调用的便利构造器可以执行更多的定制操作。&lt;/p&gt;
-
-&lt;p&gt;5、构造器的继承和重写&lt;/p&gt;
-
-&lt;p&gt;跟OC中的子类不同，Swift 中的子类默认情况下不会继承父类的构造器。Swift 的这种机制可以防止一个父类的简单构造器被一个更精细的子类继承，并被错误地用来创建子类的实例。&lt;/p&gt;
-
-&lt;p&gt;注意：父类的构造器仅会在安全和适当的情况下被继承。&lt;/p&gt;
-
-&lt;p&gt;假如希望自定义的子类中能提供一个或多个跟父类相同的构造器，可以在子类中提供这些构造器的自定义实现。
-当在编写一个和父类中指定构造器相匹配的子类构造器时，实际上是在重写父类的这个指定构造器。因此，必须在定义子类构造器时带上override修饰符。即使重写的是系统自动提供的默认构造器，也需要带上override修饰符&lt;/p&gt;
-
-&lt;p&gt;正如重写属性，方法或者是下标，override修饰符会让编译器去检查父类中是否有相匹配的指定构造器，并验证构造器参数是否正确。&lt;/p&gt;
-
-&lt;p&gt;注意：当重写一个父类的指定构造器时，总是需要写override修饰符，即使子类将父类的指定构造器重写为了便利构造器。&lt;/p&gt;
-
-&lt;p&gt;相反，如果编写了一个和父类便利构造器相匹配的子类构造器，由于子类不能直接调用父类的便利构造器（每个规则都在上文类的构造器代理规则有所描述），因此，严格意义上来讲，子类并未对一个父类构造器提供重写。最后的结果就是，在子类中“重写”一个父类便利构造器时，不需要加override前缀。&lt;/p&gt;
-
-&lt;p&gt;在下面的例子中定义了一个叫Vehicle的基类。基类中声明了一个存储型属性numberOfWheels，它是值为0的Int类型的存储型属性。numberOfWheels属性用于创建名为descrpiption的String类型的计算型属性：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Vehicle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numberOfWheels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfWheels&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; wheel(s)&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Vehicle类只为存储型属性提供默认值，而不自定义构造器。因此，它会自动获得一个默认构造器，具体内容请参考默认构造器。自动获得的默认构造器总会是类中的指定构造器，它可以用于创建numberOfWheels为0的Vehicle实例：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;vehicle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Vehicle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Vehicle: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vehicle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Vehicle: 0 wheel(s)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;注意：
-子类可以在初始化时修改继承来的变量属性，但是不能修改继承来的常量属性。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;6、构造器的自动继承&lt;/p&gt;
-
-&lt;p&gt;如上所述，子类在默认情况下不会继承父类的构造器。但是如果满足特定条件，父类构造器是可以被自动继承的。&lt;/p&gt;
-
-&lt;p&gt;假设你为子类中引入的所有新属性都提供了默认值，以下 2 个规则适用：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;规则 1 如果子类没有定义任何指定构造器，它将自动继承所有父类的指定构造器。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;规则 2 如果子类提供了所有父类指定构造器的实现——无论是通过规则 1 继承过来的，还是提供了自定义实现——它将自动继承所有父类的便利构造器。【子类可以将父类的指定构造器实现为便利构造器。】&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;即使你在子类中添加了更多的便利构造器，这两条规则仍然适用。&lt;/p&gt;
-
-&lt;p&gt;7、指定构造器和便利构造器实践&lt;/p&gt;
-
-&lt;p&gt;详见文档：&lt;a href=&quot;https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203&quot;&gt;Swift&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;可失败构造器&lt;/h3&gt;
-
-&lt;p&gt;如果一个类、结构体或枚举类型的对象，在构造过程中有可能失败，则为其定义一个可失败构造器。这里所指的“失败”是指，如给构造器传入无效的参数值，或缺少某种所需的外部资源，又或是不满足某种必要的条件等。&lt;/p&gt;
-
-&lt;p&gt;为了妥善处理这种构造过程中可能会失败的情况。你可以在一个类，结构体或是枚举类型的定义中，添加一个或多个可失败构造器。其语法为在init关键字后面添加问号(init?)。&lt;/p&gt;
-
-&lt;p&gt;注意:
-可失败构造器的参数名和参数类型，不能与其它非可失败构造器的参数名，及其参数类型相同。&lt;/p&gt;
-
-&lt;p&gt;可失败构造器会创建一个类型为自身类型的可选类型的对象。你通过return nil语句来表明可失败构造器在何种情况下应该“失败”。&lt;/p&gt;
-
-&lt;p&gt;注意:
-严格来说，构造器都不支持返回值。因为构造器本身的作用，只是为了确保对象能被正确构造。因此你只是用return nil表明可失败构造器构造失败，而不要用关键字return来表明构造成功。&lt;/p&gt;
-
-&lt;p&gt;1、枚举类型的可失败构造器&lt;/p&gt;
-
-&lt;p&gt;可以通过一个带一个或多个参数的可失败构造器来获取枚举类型中特定的枚举成员。如果提供的参数无法匹配任何枚举成员，则构造失败。&lt;/p&gt;
-
-&lt;p&gt;2、带原始值的枚举类型的可失败构造器&lt;/p&gt;
-
-&lt;p&gt;带原始值的枚举类型会自带一个可失败构造器init?(rawValue:)，该可失败构造器有一个名为rawValue的参数，其类型和枚举类型的原始值类型一致，如果该参数的值能够和某个枚举成员的原始值匹配，则该构造器会构造相应的枚举成员，否则构造失败。&lt;/p&gt;
-
-&lt;p&gt;3、构造失败的传递&lt;/p&gt;
-
-&lt;p&gt;类，结构体，枚举的可失败构造器可以横向代理到类型中的其他可失败构造器。类似的，子类的可失败构造器也能向上代理到父类的可失败构造器。&lt;/p&gt;
-
-&lt;p&gt;无论是向上代理还是横向代理，如果你代理到的其他可失败构造器触发构造失败，整个构造过程将立即终止，接下来的任何构造代码不会再被执行。&lt;/p&gt;
-
-&lt;p&gt;注意：
-可失败构造器也可以代理到其它的非可失败构造器。通过这种方式，你可以增加一个可能的失败状态到现有的构造过程中。&lt;/p&gt;
-
-&lt;p&gt;4、重写一个可失败构造器&lt;/p&gt;
-
-&lt;p&gt;如同其它的构造器，你可以在子类中重写父类的可失败构造器。或者你也可以用子类的非可失败构造器重写一个父类的可失败构造器。这使你可以定义一个不会构造失败的子类，即使父类的构造器允许构造失败。&lt;/p&gt;
-
-&lt;p&gt;注意，当你用子类的非可失败构造器重写父类的可失败构造器时，向上代理到父类的可失败构造器的唯一方式是对父类的可失败构造器的返回值进行强制解包。&lt;/p&gt;
-
-&lt;p&gt;注意
-你可以用非可失败构造器重写可失败构造器，但反过来却不行。&lt;/p&gt;
-
-&lt;p&gt;5、可失败构造器 init!&lt;/p&gt;
-
-&lt;p&gt;通常来说我们通过在init关键字后添加问号的方式（init?）来定义一个可失败构造器，但你也可以通过在init后面添加惊叹号的方式来定义一个可失败构造器（init!），该可失败构造器将会构建一个对应类型的隐式解包可选类型的对象。&lt;/p&gt;
-
-&lt;p&gt;你可以在init?中代理到init!，反之亦然。你也可以用init?重写init!，反之亦然。你还可以用init代理到init!，不过，一旦init!构造失败，则会触发一个断言。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-7&quot;&gt;必要构造器&lt;/h3&gt;
-
-&lt;p&gt;在类的构造器前添加required修饰符表明所有该类的子类都必须实现该构造器：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// 构造器的实现代码&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在子类重写父类的必要构造器时，必须在子类的构造器前也添加required修饰符，表明该构造器要求也应用于继承链后面的子类。在重写父类中必要的指定构造器时，不需要添加override修饰符：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SomeSubclass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// 构造器的实现代码&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;注意：
-如果子类继承的构造器能满足必要构造器的要求，则无须在子类中显式提供必要构造器的实现。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-8&quot;&gt;通过闭包或函数设置属性的默认值&lt;/h3&gt;
-
-&lt;p&gt;如果某个存储型属性的默认值需要一些定制或设置，你可以使用闭包或全局函数为其提供定制的默认值。每当某个属性所在类型的新实例被创建时，对应的闭包或函数会被调用，而它们的返回值会当做默认值赋值给这个属性。&lt;/p&gt;
-
-&lt;p&gt;这种类型的闭包或函数通常会创建一个跟属性类型相同的临时变量，然后修改它的值以满足预期的初始状态，最后返回这个临时变量，作为属性的默认值。&lt;/p&gt;
-
-&lt;p&gt;下面介绍了如何用闭包为属性提供默认值：&lt;/p&gt;
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;someProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;SomeType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// 在这个闭包中给 someProperty 创建一个默认值&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// someValue 必须和 SomeType 类型相同&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someValue&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;注意闭包结尾的大括号后面接了一对空的小括号。这用来告诉 Swift 立即执行此闭包。如果你忽略了这对括号，相当于将闭包本身作为值赋值给了属性，而不是将闭包的返回值赋值给属性。&lt;/p&gt;
-
-&lt;p&gt;注意：
-如果你使用闭包来初始化属性，请记住在闭包执行时，实例的其它部分都还没有初始化。这意味着你不能在闭包里访问其它属性，即使这些属性有默认值。同样，你也不能使用隐式的self属性，或者调用任何实例方法。&lt;/p&gt;
-
-&lt;h1 id=&quot;section-9&quot;&gt;析构过程&lt;/h1&gt;
-
-&lt;p&gt;析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit来标示，类似于构造器要用init来标示。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-10&quot;&gt;析构过程原理&lt;/h3&gt;
-&lt;p&gt;Swift 会自动释放不再需要的实例以释放资源。如自动引用计数章节中所讲述，Swift 通过自动引用计数（ARC）处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在类实例被释放之前手动去关闭该文件。&lt;/p&gt;
-
-&lt;p&gt;在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示：&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;deinit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 执行析构过程&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;析构器是在实例释放发生前被自动调用。你不能主动调用析构器。子类继承了父类的析构器，并且在子类析构器实现的最后，父类的析构器会被自动调用。即使子类没有提供自己的析构器，父类的析构器也同样会被调用。&lt;/p&gt;
-
-&lt;p&gt;因为直到实例的析构器被调用后，实例才会被释放，所以析构器可以访问实例的所有属性，并且可以根据那些属性可以修改它的行为（比如查找一个需要被关闭的文件）。&lt;/p&gt;
-
-&lt;h3 id=&quot;section-11&quot;&gt;析构器实践&lt;/h3&gt;
-
-&lt;p&gt;这是一个析构器实践的例子。这个例子描述了一个简单的游戏，这里定义了两种新类型，分别是Bank和Player。Bank类管理一种虚拟硬币，确保流通的硬币数量永远不可能超过 10,000。在游戏中有且只能有一个Bank存在，因此Bank用类来实现，并使用类型属性和类型方法来存储和管理其当前状态。&lt;/p&gt;
-
-&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 使用coinsInBank属性来跟踪它当前拥有的硬币数量&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;coinsInBank&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10_000&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// 在Bank对象分发硬币之前检查是否有足够的硬币。如果硬币不足，Bank对象会返回一个比请求时小的数字（如果Bank对象中没有硬币了就返回0）。此方法返回一个整型值，表示提供的硬币的实际数量&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;distribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coins&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numberOfCoinsRequested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numberOfCoinsToVend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfCoinsRequested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberOfCoinsToVend&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberOfCoinsToVend&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 方法只是将Bank实例接收到的硬币数目加回硬币存储中&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;receive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coins&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Player类描述了游戏中的一个玩家。每一个玩家在任意时间都有一定数量的硬币存储在他们的钱包中。这通过玩家的coinsInPurse属性来表示：&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;coinsInPurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;coinsInPurse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;distribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Player类定义了一个win(coins:)方法，该方法从Bank对象获取一定数量的硬币，并把它们添加到玩家的钱包。&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;coinsInPurse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;distribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Player类还实现了一个析构器，这个析构器在Player实例释放前被调用。在这里，析构器的作用只是将玩家的所有硬币都返还给Bank对象：&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;deinit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;receive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coinsInPurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 每个Player实例在初始化的过程中，都从Bank对象获取指定数量的硬币。如果没有足够的硬币可用，Player实例可能会收到比指定数量少的硬币.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;playerOne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Player&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A new player has joined the game with &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;playerOne&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coinsInPurse&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; coins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;A new player has joined the game with 100 coins&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;There are now &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; coins left in the bank&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;There are now 9900 coins left in the bank&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 因为playerOne是可选的，所以访问其coinsInPurse属性来打印钱包中的硬币数量时，使用感叹号（!）来解包：&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;playerOne&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;coins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlayerOne won 2000 coins &amp;amp; now has &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;playerOne&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coinsInPurse&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; coins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 输出 &quot;PlayerOne won 2000 coins &amp;amp; now has 2100 coins&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The bank now only has &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; coins left&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 输出 &quot;The bank now only has 7900 coins left&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 这里，玩家已经赢得了 2,000 枚硬币，所以玩家的钱包中现在有 2,100 枚硬币，而Bank对象只剩余 7,900 枚硬币。&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;playerOne&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;nil&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlayerOne has left the game&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;PlayerOne has left the game&quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The bank now has &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Bank&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coinsInBank&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; coins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 打印 &quot;The bank now has 10000 coins&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 玩家现在已经离开了游戏。这通过将可选类型的playerOne变量设置为nil来表示，意味着“没有Player实例”。当这一切发生时，playerOne变量对Player实例的引用被破坏了。没有其它属性或者变量引用Player实例，因此该实例会被释放，以便回收内存。在这之前，该实例的析构器被自动调用，玩家的硬币被返还给银行。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sun, 11 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/11/swift_X_Initialization_Deinitialization/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/11/swift_X_Initialization_Deinitialization/</guid>
-        
-        <category>Swift3.0</category>
         
         
         <category>Swift3.0</category>
