@@ -151,6 +151,268 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-13
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Github" title="Tag: Github" rel="tag">Github</a>&nbsp;
+    
+        <a href="/tag/#Travis-CI" title="Tag: Travis-CI" rel="tag">Travis-CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#jenkins" id="markdown-toc-jenkins">基础知识,参考博文:Jenkins</a></li>
+  <li><a href="#travis-ci-" id="markdown-toc-travis-ci-">1. Travis-CI 简介</a>    <ul>
+      <li><a href="#jenkins-1" id="markdown-toc-jenkins-1">对比 Jenkins</a></li>
+    </ul>
+  </li>
+  <li><a href="#travis-ci--1" id="markdown-toc-travis-ci--1">2.Travis-CI 配置小教程</a>    <ul>
+      <li><a href="#project-" id="markdown-toc-project-">project 项目配置</a></li>
+      <li><a href="#workspace-" id="markdown-toc-workspace-">workspace 管理的项目配置</a></li>
+    </ul>
+  </li>
+  <li><a href="#section" id="markdown-toc-section">3. 应用程序的签名\证书</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">4.部署</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">密码和证书安全</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">其他</a>    <ul>
+      <li><a href="#section-4" id="markdown-toc-section-4">显示构建状态</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">跳过自动构建</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">资源</a>    <ul>
+      <li><a href="#unit-" id="markdown-toc-unit-">Unit 代表单元测试:</a></li>
+    </ul>
+  </li>
+  <li><a href="#ui-" id="markdown-toc-ui-">UI 测试</a></li>
+</ul>
+
+<h3 id="jenkins">基础知识,参考博文:Jenkins</h3>
+
+<h3 id="travis-ci-">1. Travis-CI 简介</h3>
+
+<p>Travis-CI 是一个开源的持续构建项目,能够测试和部署;Travis-CI 会同步你在 GitHub 上托管的项目,每当你 Commit Push 之后,预装的编译脚本会分析你的 Xcode 项目,并对每个 target 进行编译.如果所有文件都没有编译错误,并且测试也没有被打断,那么项目就编译成功了.</p>
+
+<h5 id="jenkins-1">对比 Jenkins</h5>
+
+<ul>
+  <li>Jenkins 和 Travis-CI 类似,前者主要用于公司中项目的 CI(商业化),后者则主要用在 GitHub 中(小众)</li>
+  <li>都是基于 Vagrant/Virtualbox技术</li>
+  <li>配置文件:Jenkins 配置在 Jenkins 服务器中,后者配置文件和源码一起.使用 DSL 编写的</li>
+  <li>Travis Ci 与 Github 集成非常紧密,官方的集成测试托管只支持 Github 项目</li>
+  <li>总的来说:如果是开源项目,放在 GitHub 上,使用 Travis CI 来做集成测试是最佳选择.但如果是公司项目,当然是搭建 Jenkins 环境.</li>
+</ul>
+
+<h3 id="travis-ci--1">2.Travis-CI 配置小教程</h3>
+
+<ul>
+  <li>1.用你的 GitHub 账号登录 <a href="https://travis-ci.org/">Travis-CI</a>,赋予 TCI 访问 GH 的授权.</li>
+</ul>
+
+<p>对于私有仓库,需要注册一个 <a href="https://magnum.travis-ci.com/">Travis 专业版账号</a></p>
+
+<ul>
+  <li>
+    <p>2.登录之后 Travis-CI 就会同步 GitHub 账号的仓库,然后打开个人页面并给你想要构建的项目启用 Travis-CI <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png" alt="" /></p>
+  </li>
+  <li>
+    <p>3.创建一个 .travis.yml 文件,在项目的根目录下.则 Travis-CI 会按照 .travis.yml 里的内容进行构建</p>
+  </li>
+  <li>
+    <p>4.最后可以在<a href="https://travis-ci.org/repositories">构建状态页面</a>来查看你的项目是否构建成功</p>
+  </li>
+</ul>
+
+<h5 id="project-">project 项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_project: ./UITEST.xcodeproj # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<h5 id="workspace-">workspace 管理的项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_workspace: ./UITEST.xcworkspace # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<p>同时也要设置 Target 为 shared 状态.</p>
+
+<blockquote>
+  <p>打开项目 -&gt; Manage Schemes -&gt; 把需要构建的 Target 勾上 shared -&gt; 选中你需要管理的 scheme,点击左下角的 Edit 按钮 -&gt; 选择 Build 选项，点击左下角的+号按钮，添加你需要依赖的 CocoaPods 管理的第三方静态库的名字，下图是已经添加后的截图.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/656113-97e903b6472ce2eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>以上配置,可以看看<a href="https://docs.travis-ci.com/user/languages/objective-c/">官方文档</a>,写的挺详细的</p>
+
+<h3 id="section">3. 应用程序的签名\证书</h3>
+
+<p>[参见(https://objccn.io/issue-6-5/)</p>
+
+<h3 id="section-1">4.部署</h3>
+
+<p>负责分发部署的平台很多像:TestFlight \ HockeyApp \ 蒲公英 \ fir.im 等等</p>
+
+<p>可以配置然后在上述平台进行部署.</p>
+
+<h3 id="section-2">密码和证书安全</h3>
+
+<p>对于密码等敏感信息,Travis CI提供了2种解决方案:</p>
+
+<ul>
+  <li>对密码等敏感信息进行加密,然后再构建环境时解密</li>
+  <li>在 Travis CI控制台设置环境变量,然后使用 System.getenv() 获取值</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png" alt="" /></p>
+
+<h3 id="section-3">其他</h3>
+
+<h5 id="section-4">显示构建状态</h5>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png" alt="" /></p>
+
+<h5 id="section-5">跳过自动构建</h5>
+
+<p>如果commit不想让travis ci构建，那么就在commit message里加上[ci skip]就行了。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>git commit -m <span class="s2">"[ci skip] commit message"</span>
+</code></pre>
+</div>
+
+<h3 id="section-6">资源</h3>
+
+<ul>
+  <li><a href="https://docs.travis-ci.com/user/customizing-the-build/">官方文档</a></li>
+  <li><a href="https://github.com/objcio/issue-6-travis-ci">示例 Demo</a></li>
+  <li><a href="https://github.com/facebook/xctool">xctool</a></li>
+  <li><a href="https://github.com/nukc/how-to-use-travis-ci">安卓环境下的教程</a></li>
+</ul>
+
+<p>-<a href="https://objccn.io/issue-6-5/">优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a>
+-<a href="http://blog.csdn.net/jiang314/article/details/54965283">备份版:优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a></p>
+
+<p>为 iOS 建立 Travis CI: https://objccn.io/issue-6-5/</p>
+
+<p>自动化测试 –&gt; 持续部署</p>
+
+<p>在互联网的产品开发时代，产品迭代越来越频繁，“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”。很多开发团队也越来越认识到，自动化测试和持续部署可帮助开发团队提高迭代效率和质量。
+那么，如何更好地解决“最后一公里”这一问题呢?</p>
+
+<p>一切从自动化测试开始，让自动化测试贯穿在整个项目开发-集成-部署-交付的-开发流程中。</p>
+
+<p><img src="http://huaban.com/go/?pin_id=1002439558" alt="" />
+在这个分层自动化测试金字塔中，</p>
+<h4 id="unit-">Unit 代表单元测试:</h4>
+
+<p>XCTest是苹果在iOS 7和Xcode5引入的一个简单而强大的测试框架，它的测试编写起来非常简单，并且遵循xUnit风格。XCTest的优点是与Xcode深度集成，有专门的Test导航栏，但因为受限于官方测试API，因此功能不是很丰富。</p>
+
+<p>iOS 中的单元测试开源库:</p>
+<ul>
+  <li>Kiwi是对XCTest的一个完整替代，使用xSpec风格编写测试。Kiwi带有自己的一套工具集，包括expectations、mocks、stubs，甚至还支持异步测试。</li>
+  <li>Specta与Kiwi功能相似，但在架构上非常不同。Kiwi注重功能的整合，而Specta则注重模块化。它本身只专注于运行测试，而将模拟、匹配等功能交给第三方。下
+下面这些一些开源测试组件，它们能与Specta和Kiwi框架搭配使用：</li>
+  <li>Expecta：匹配程序框架。</li>
+  <li>OCHamcrest：匹配程序框架。</li>
+  <li>OCMock：模拟测试框架。</li>
+  <li>OCMockito：模拟测试框架。</li>
+  <li>OHTTPStubs：模拟网络请求的库，基于block的语法来匹配URL。</li>
+  <li>Nocilla：模拟网络请求的库，使用链式API。</li>
+  <li>Quick是:一个使用Swift开发的新测试框架，对测试使用Swift编写的App非常友好。它还有一个Nimble库用于编写匹配模式。</li>
+</ul>
+
+<p>对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
+
+<h3 id="ui-">UI 测试</h3>
+
+<ul>
+  <li>KIF（Keep It Functional）是用Objective-C编写的用户界面测试框架。KIF tester使用了私有API来了解App中的视图层级。缺点是运行较慢。</li>
+</ul>
+
+<blockquote>
+  <p>相关文章:<a href="http://www.blogs8.cn/posts/A1Rj797">Swift中KIF测试的特点－b</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Subliminal是另一款与XCTest集成的框架。与KIF不同的是，它基于UIAutomation编写，旨在对开发者隐藏UIAutomation中一些复杂的细节。不过它最后更新日期是2014年2月，可能已停止更新。</p>
+  </li>
+  <li>
+    <p>Calabash是跨平台开发工具Xamarin推出的一款测试工具。它使用BDD风格来编写验收测试。它的优点是支持跨平台（需使用不同的库），声明式的测试风格非常易于读写。缺点是不够稳定并且运行速度慢。</p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/13/Travis-CI/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a>
                 </h2>
                 <div class="label">
@@ -2521,266 +2783,6 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/12/07/swift_VII_Closures/">Swift3.0_VII_闭包</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-12-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">前言</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">闭包表达式</a>        <ul>
-          <li><a href="#section-2" id="markdown-toc-section-2">闭包表达式语法</a></li>
-          <li><a href="#sorted" id="markdown-toc-sorted">sorted函数</a></li>
-        </ul>
-      </li>
-      <li><a href="#trailing-closures" id="markdown-toc-trailing-closures">尾随闭包(Trailing Closures)</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="section">前言</h2>
-
-<p><strong>闭包：独立的代码块，可以传递及引用。</strong></p>
-
-<ul>
-  <li>闭包可以捕获和存储其所在上下文中任意常量和变量的引用；</li>
-  <li>Swift会管理捕获过程中涉及到的所有内存管理；</li>
-</ul>
-
-<p>闭包的形式：</p>
-<ul>
-  <li>全局函数都是闭包，特点是有函数名但没有捕获任何值。</li>
-  <li>嵌套函数都是闭包，特点是有函数名，并且可以在它封闭的函数中捕获值。</li>
-  <li>闭包表达式都是闭包，特点是没有函数名，可以使用轻量的语法在它所围绕的上下文中捕获值。</li>
-</ul>
-
-<p>语法优化：</p>
-<ul>
-  <li>根据上下文推理参数及返回值类型</li>
-  <li>隐式返回单表达式闭包，即单表达式闭包可以省略 return 关键字</li>
-  <li>参数名称缩写</li>
-  <li>尾随闭包语法</li>
-</ul>
-
-<h3 id="section-1">闭包表达式</h3>
-
-<p>闭包表达式是一种编写内联闭包的方式，它简洁、紧凑。闭包表达式提供了数种语义优化，为的是以最简单的形式编程而不需要大量的声明或意图。以下以同一个sort函数进行几次改进，每次函数都更加简洁，以此说明闭包表达式的优化</p>
-
-<h5 id="section-2">闭包表达式语法</h5>
-<p>闭合表达式语法具有以下一般构造形式：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="p">{</span> <span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">return</span> <span class="n">type</span> <span class="k">in</span>
-    <span class="n">statements</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>闭包表达式语法可以使用常量参数、变量参数和 inout 类型作为参数，但皆不可提供默认值。</p>
-
-<h5 id="sorted">sorted函数</h5>
-
-<p>Swift的标准函数库提供了一个名为sort的函数,他用于输出类型排序的闭包函数，给已知类型的数组数据的值排序:</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sorted</span><span class="p">(</span><span class="n">by</span> <span class="nv">areInIncreasingOrder</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">,</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span>  <span class="o">-&gt;</span>  <span class="p">[</span><span class="kt">Element</span><span class="p">]</span>
-
-<span class="nv">使用</span><span class="p">:</span>
- <span class="k">let</span> <span class="nv">students</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Kofi"</span><span class="p">,</span> <span class="s">"Abena"</span><span class="p">,</span> <span class="s">"Peter"</span><span class="p">,</span> <span class="s">"Kweku"</span><span class="p">,</span> <span class="s">"Akosua"</span><span class="p">]</span>
- <span class="k">let</span> <span class="nv">descendingStudents</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
- <span class="nf">print</span><span class="p">(</span><span class="n">descendingStudents</span><span class="p">)</span> <span class="c1">//1 Prints "["Peter", "Kweku", "Kofi", "Akosua", "Abena"]"</span>
- <span class="nf">print</span><span class="p">(</span><span class="n">students</span><span class="o">.</span><span class="nf">sorted</span><span class="p">())</span> <span class="c1">//2 Prints "["Abena", "Akosua", "Kofi", "Kweku", "Peter"]"</span>
- <span class="nf">print</span><span class="p">(</span><span class="n">students</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="o">&lt;</span><span class="p">))</span> <span class="c1">//3  Prints "["Abena", "Akosua", "Kofi", "Kweku", "Peter"]"</span>
-
-</code></pre>
-</div>
-
-<p>1、先看一个排序的例子：</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">]</span>
-<span class="kd">func</span> <span class="nf">backward</span><span class="p">(</span><span class="n">_</span> <span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="nv">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">backward</span><span class="p">)</span>
-<span class="c1">// reversedNames is equal to ["Ewa", "Daniella", "Chris", "Barry", "Alex"]</span>
-
-</code></pre>
-</div>
-
-<p>2、闭包表达式来改写上边的例子：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversed</span> <span class="o">=</span> <span class="nf">sorted</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span>
-<span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
-<span class="p">})</span>
-</code></pre>
-</div>
-
-<p>3、可以用一行来表达：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre>
-</div>
-
-<p>4、Swift可以根据上下文推断类型，因此可以省略String:</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre>
-</div>
-
-<p>5、单行表达式闭包可以通过省略 return 关键字来隐式返回单行表达式的结果</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre>
-</div>
-
-<p>6、参数名简写:</p>
-
-<ul>
-  <li>Swift 自动为内联闭包提供了参数名称简写功能，</li>
-  <li>可以直接通过 $0,$1,$2等名字来引用闭包的参数值</li>
-  <li>关键字:in、return 可以省略,此时闭包表达式完全由闭包函数体构成</li>
-  <li>下边例子;$0和$1表示闭包中第一个和第二个String类型的参数。
-    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-<p>7、运算符函数：
-Swift为String类型定义了大于算子（&gt;），通过大于算子简写如下</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>8、Trailing 闭包</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-</code></pre>
-</div>
-
-<p>总结，如下：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">]</span>
-<span class="kd">func</span> <span class="nf">backward</span><span class="p">(</span><span class="n">_</span> <span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
-<span class="p">}</span>
-
-<span class="k">var</span> <span class="nv">ss1</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">backward</span><span class="p">)</span>
-<span class="k">var</span> <span class="nv">ss2</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{(</span><span class="nv">s1</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span><span class="nv">s2</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span><span class="o">&gt;</span><span class="n">s2</span> <span class="p">})</span>
-<span class="k">var</span> <span class="nv">ss3</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-<span class="k">var</span> <span class="nv">ss4</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-<span class="k">var</span> <span class="nv">ss5</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span> <span class="p">)</span>
-<span class="k">var</span> <span class="nv">ss6</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
-<span class="k">var</span> <span class="nv">ss7</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-<span class="n">以上</span> <span class="n">ss1到ss7结果相同</span><span class="err">，</span><span class="n">都是</span> <span class="p">[</span><span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">,</span> <span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<h3 id="trailing-closures">尾随闭包(Trailing Closures)</h3>
-
-<p>如果需要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用trailing闭包来替代。Trailing 闭包是一个书写在函数括号之外(之后)的闭包表达式，函数支持将其作为最后一个参数调用。</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// function body goes here</span>
-<span class="p">}</span>
-<span class="c1">// Here's how you call this function without using a trailing closure:</span>
-<span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">{</span>
-    <span class="c1">// closure's body goes here</span>
-<span class="p">})</span>
-<span class="c1">// Here's how you call this function with a trailing closure instead:</span>
-<span class="nf">someFunctionThatTakesAClosure</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// trailing closure's body goes here</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>上述的sort函数可以改写为：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-</code></pre>
-</div>
-
-<p>如果一个封闭表达式是作为函数或方法唯一的参数,可以忽略()</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">reversedNames</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-</code></pre>
-</div>
-
-<p>当闭包非常长以至于不能在一行中进行书写时，尾随闭包变得非常有用。</p>
-
-<p>举例来说，Swift的Array类型有一个map方法，其获取一个闭包表达式作为其唯一参数。 数组中的每一个元素调用一次该闭包函数，并返回该元素所映射的值(也可以是不同类型的值)。 具体的映射方式和返回值类型由闭包来指定。</p>
-
-<p>当提供给数组闭包函数后，map方法将返回一个新的数组，数组中包含了与原数组一一对应的映射后的值，
-下例介绍了如何在map方法中使用尾随闭包将Int类型数组[16,58,510]转换为包含对应String类型的数组[“OneSix”, “FiveEight”, “FiveOneZero”]:</p>
-
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">digitNames</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="mi">0</span><span class="p">:</span> <span class="s">"Zero"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">"One"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">"Two"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">"Three"</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">"Four"</span><span class="p">,</span>
-    <span class="mi">5</span><span class="p">:</span> <span class="s">"Five"</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s">"Six"</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s">"Seven"</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s">"Eight"</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s">"Nine"</span>
-<span class="p">]</span>
-<span class="k">let</span> <span class="nv">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">510</span><span class="p">]</span>
-</code></pre>
-</div>
-
-<p>通过调用numbers.map来调用映射后的String数组
-使用如下：</p>
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">strings</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span>
-    <span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="k">in</span>
-    <span class="k">var</span> <span class="nv">number</span> <span class="o">=</span> <span class="n">number</span>
-    <span class="k">var</span> <span class="nv">output</span> <span class="o">=</span> <span class="s">""</span>
-    <span class="k">repeat</span> <span class="p">{</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">digitNames</span><span class="p">[</span><span class="n">number</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">!</span> <span class="o">+</span> <span class="n">output</span>
-        <span class="n">number</span> <span class="o">/=</span> <span class="mi">10</span>
-    <span class="p">}</span> <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">output</span>
-<span class="p">}</span>
-<span class="c1">// strings is inferred to be of type [String]</span>
-<span class="c1">// its value is ["OneSix", "FiveEight", "FiveOneZero"]</span>
-</code></pre>
-</div>
-<p>注意： 字典digitNames下标后跟着一个叹号 (!)，因为字典下标返回一个可选值 (optional value)，表明即使该 key不存在也不会查找失败。 在上例中，它保证了number % 10可以总是作为一个 digitNames字典的有效下标key。 因此叹号可以用于解析存储在可选下标项中的String类型值。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/12/07/swift_VII_Closures/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -2808,6 +2810,8 @@ Swift为String类型定义了大于算子（&gt;），通过大于算子简写�
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Unix/">Unix 入门</a></li>
+                    
                         <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
@@ -2825,8 +2829,6 @@ Swift为String类型定义了大于算子（&gt;），通过大于算子简写�
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
-                    
-                        <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                 </ul>
             </div>
@@ -2912,9 +2914,18 @@ Swift为String类型定义了大于算子（&gt;），通过大于算子简写�
                     </li>
                     
                     <li>
-                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
                             <span class="name">
-                                脚本
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -3201,7 +3212,14 @@ Swift为String类型定义了大于算子（&gt;），通过大于算子简写�
                       
                       
                       
-                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
                     
                 </div>
             </div>

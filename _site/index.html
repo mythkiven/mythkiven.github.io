@@ -151,6 +151,66 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/03/04/Unix/">Unix 入门</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-03-04
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Unix" title="Category: Unix" rel="category">Unix</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Unix" title="Tag: Unix" rel="tag">Unix</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/03/04/Unix/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/03/04/Shell-oneDay/">Shell 脚本</a>
                 </h2>
                 <div class="label">
@@ -174,7 +234,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#脚本" title="Category: 脚本" rel="category">脚本</a>
+        <a href="/category/#Shell" title="Category: Shell" rel="category">Shell</a>
     
   
 
@@ -191,7 +251,7 @@
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#shell" title="Tag: shell" rel="tag">shell</a>
+        <a href="/tag/#Shell" title="Tag: Shell" rel="tag">Shell</a>
     
   
 
@@ -200,118 +260,7 @@
                     </div>
                 </div>
                 <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">热身小例子</a></li>
-  <li><a href="#shell-" id="markdown-toc-shell-">shell 概念</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">脚本解释器</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">脚本语言</a></li>
-</ul>
-
-<blockquote>
-
-  <p>作为一名 iOS 老司机,当然要得拿下脚本噻,除了 python, 在 mac 上最常用的就是 shell 脚本了.</p>
-
-  <p>以前是看过但用的少,几年了都忘了差不多了,今天温习一遍,从最简单的开始.</p>
-
-</blockquote>
-
-<p>说起脚本,就得说脚本的通用性,说起通用性,就得说常见的操作系统: OS X \ Linux \ Windows \ Unix
-简单介绍下异同:</p>
-
-<ul>
-  <li>BellLAB 发明了 Unix 和 C ;</li>
-  <li>Unix 的 GUI 是 X Window(在内核外跑的应用),包括X Server(与内核通信)与X Client(负责显示)两部分;</li>
-  <li>OS X 的 GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix + BSD);</li>
-  <li>OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的.</li>
-  <li>Linux 一开始就是免费开源的,基于 Unix ;</li>
-</ul>
-
-<p>以上是 Unix 派的,下边的 Windows 则是 DOS NT 系的:</p>
-
-<ul>
-  <li>Windows 则是 DOS + NT 内核;</li>
-  <li>Windows 使用反斜杠: \ 分割路径,原因在于其来自 DOS 最初支持软盘,使用斜杠: /  表示命令参数起始符号</li>
-  <li>Unix 使用斜杠:/分割路径</li>
-</ul>
-
-<p>扯的有点远了…</p>
-
-<p>下边回归正文:</p>
-
-<h3 id="section">热身小例子</h3>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh                # 制定脚本解释器,使用 /bin/sh  作为解释器</span>
-<span class="nb">cd</span> ~                     <span class="c"># 切换到当前用户的 home 目录</span>
-mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</span>
-<span class="nb">cd </span>shell_txt             <span class="c"># 进入 shell_txt 文件夹</span>
-
-<span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0; i&lt;10; i++<span class="o">))</span>; <span class="k">do</span>     <span class="c"># 循环10次</span>
-    touch txt_<span class="nv">$i</span>.txt           <span class="c"># 创建10个文件:test_1…10.txt文件</span>
-<span class="k">done</span>                           <span class="c"># 结束循环</span>
-
-</code></pre>
-</div>
-
-<ul>
-  <li>上边的脚本就创建了 shell_txt 文件夹,并创建10个 txt 文件.</li>
-  <li>cd, mkdir, touch都是系统自带的程序，一般在/bin或者/usr/bin目录下</li>
-  <li>for, do, done是sh脚本语言的关键字。</li>
-</ul>
-
-<h3 id="shell-">shell 概念</h3>
-
-<p>上边是入门热身,下边解释概念:</p>
-
-<blockquote>
-  <ol>
-    <li>
-      <p>shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务</p>
-    </li>
-    <li>
-      <p>shell脚本（shell script），是一种为 shell 编写的脚本程序</p>
-    </li>
-    <li>
-      <p>业界所说的shell通常都是指shell脚本</p>
-    </li>
-    <li>
-      <p>shell编程跟java、php编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。</p>
-    </li>
-    <li>
-      <p>当前主流的操作系统都支持shell编程</p>
-    </li>
-  </ol>
-</blockquote>
-
-<ul>
-  <li>Linux 默认安装就带了 shell 解释器</li>
-  <li>Mac OS 不仅带了 sh、bash 这两个最基础的解释器，还内置了 ksh、csh、zsh 等不常用的解释器。</li>
-  <li>windows 出厂时没有内置 shell 解释器，需要自行安装</li>
-</ul>
-
-<h3 id="section-1">脚本解释器</h3>
-
-<ul>
-  <li>
-    <p>sh   即Bourne shell，POSIX 标准的shell解释器，它的二进制文件路径通常是/bin/sh，由Bell Labs开发</p>
-  </li>
-  <li>
-    <p>bash  是Bourne shell的替代品，属GNU Project，二进制文件路径通常是/bin/bash。</p>
-  </li>
-  <li>
-    <p>业界通常混用bash、sh、和shell，比如你会经常在招聘运维工程师的文案中见到：熟悉Linux Bash编程，精通Shell编程</p>
-  </li>
-</ul>
-
-<h3 id="section-2">脚本语言</h3>
-
-<p>理论上讲，只要一门语言提供了解释器（而不仅是编译器），这门语言就可以胜任脚本编程，常见的解释型语言都是可以用作脚本编程的，如：Perl、Tcl、Python、PHP、Ruby。Perl是最老牌的脚本编程语言了，Python这些年也成了一些linux发行版的预置解释器。</p>
-
-<p>编译型语言，只要有解释器，也可以用作脚本编程，如C shell是内置的（/bin/csh），Java有第三方解释器Jshell，Ada有收费的解释器AdaScript。</p>
-
-<p>shell 只定义了一个非常简单的编程语言，如果你的脚本程序复杂度较高，或者要操作的数据结构比较复杂，那么还是应该使用Python、Perl这样的脚本语言，或者是你本来就已经很擅长的高级语言。因为sh和bash在这方面很弱，比如说：</p>
-
-<p>如果你的脚本是提供给别的用户使用，使用sh或者bash，你的脚本将具有最好的环境兼容性，perl很早就是linux标配了，python这些年也成了一些linux发行版的标配，至于mac os，它默认安装了perl、python、ruby、php、java等主流编程语言。</p>
-
+                    
 
                 </div>
                 <div class="read-all">
@@ -1449,268 +1398,6 @@ AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-01-13
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Github" title="Tag: Github" rel="tag">Github</a>&nbsp;
-    
-        <a href="/tag/#Travis-CI" title="Tag: Travis-CI" rel="tag">Travis-CI</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#jenkins" id="markdown-toc-jenkins">基础知识,参考博文:Jenkins</a></li>
-  <li><a href="#travis-ci-" id="markdown-toc-travis-ci-">1. Travis-CI 简介</a>    <ul>
-      <li><a href="#jenkins-1" id="markdown-toc-jenkins-1">对比 Jenkins</a></li>
-    </ul>
-  </li>
-  <li><a href="#travis-ci--1" id="markdown-toc-travis-ci--1">2.Travis-CI 配置小教程</a>    <ul>
-      <li><a href="#project-" id="markdown-toc-project-">project 项目配置</a></li>
-      <li><a href="#workspace-" id="markdown-toc-workspace-">workspace 管理的项目配置</a></li>
-    </ul>
-  </li>
-  <li><a href="#section" id="markdown-toc-section">3. 应用程序的签名\证书</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">4.部署</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">密码和证书安全</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">其他</a>    <ul>
-      <li><a href="#section-4" id="markdown-toc-section-4">显示构建状态</a></li>
-      <li><a href="#section-5" id="markdown-toc-section-5">跳过自动构建</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-6" id="markdown-toc-section-6">资源</a>    <ul>
-      <li><a href="#unit-" id="markdown-toc-unit-">Unit 代表单元测试:</a></li>
-    </ul>
-  </li>
-  <li><a href="#ui-" id="markdown-toc-ui-">UI 测试</a></li>
-</ul>
-
-<h3 id="jenkins">基础知识,参考博文:Jenkins</h3>
-
-<h3 id="travis-ci-">1. Travis-CI 简介</h3>
-
-<p>Travis-CI 是一个开源的持续构建项目,能够测试和部署;Travis-CI 会同步你在 GitHub 上托管的项目,每当你 Commit Push 之后,预装的编译脚本会分析你的 Xcode 项目,并对每个 target 进行编译.如果所有文件都没有编译错误,并且测试也没有被打断,那么项目就编译成功了.</p>
-
-<h5 id="jenkins-1">对比 Jenkins</h5>
-
-<ul>
-  <li>Jenkins 和 Travis-CI 类似,前者主要用于公司中项目的 CI(商业化),后者则主要用在 GitHub 中(小众)</li>
-  <li>都是基于 Vagrant/Virtualbox技术</li>
-  <li>配置文件:Jenkins 配置在 Jenkins 服务器中,后者配置文件和源码一起.使用 DSL 编写的</li>
-  <li>Travis Ci 与 Github 集成非常紧密,官方的集成测试托管只支持 Github 项目</li>
-  <li>总的来说:如果是开源项目,放在 GitHub 上,使用 Travis CI 来做集成测试是最佳选择.但如果是公司项目,当然是搭建 Jenkins 环境.</li>
-</ul>
-
-<h3 id="travis-ci--1">2.Travis-CI 配置小教程</h3>
-
-<ul>
-  <li>1.用你的 GitHub 账号登录 <a href="https://travis-ci.org/">Travis-CI</a>,赋予 TCI 访问 GH 的授权.</li>
-</ul>
-
-<p>对于私有仓库,需要注册一个 <a href="https://magnum.travis-ci.com/">Travis 专业版账号</a></p>
-
-<ul>
-  <li>
-    <p>2.登录之后 Travis-CI 就会同步 GitHub 账号的仓库,然后打开个人页面并给你想要构建的项目启用 Travis-CI <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png" alt="" /></p>
-  </li>
-  <li>
-    <p>3.创建一个 .travis.yml 文件,在项目的根目录下.则 Travis-CI 会按照 .travis.yml 里的内容进行构建</p>
-  </li>
-  <li>
-    <p>4.最后可以在<a href="https://travis-ci.org/repositories">构建状态页面</a>来查看你的项目是否构建成功</p>
-  </li>
-</ul>
-
-<h5 id="project-">project 项目配置</h5>
-
-<pre><code class="language-DSL">language: swift # 语言种类
-#language: objective-c 
-
-osx_image: xcode8 # 环境
-
-# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
-xcode_project: ./UITEST.xcodeproj # 项目文件相对于.travis.yml文件的路径
-
-xcode_scheme: UITEST # 你需要集成测试的scheme
-
-xcode_sdk: iphonesimulator10.0 # 模拟器
-
-</code></pre>
-
-<h5 id="workspace-">workspace 管理的项目配置</h5>
-
-<pre><code class="language-DSL">language: swift # 语言种类
-#language: objective-c 
-
-osx_image: xcode8 # 环境
-
-# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
-xcode_workspace: ./UITEST.xcworkspace # 项目文件相对于.travis.yml文件的路径
-
-xcode_scheme: UITEST # 你需要集成测试的scheme
-
-xcode_sdk: iphonesimulator10.0 # 模拟器
-
-</code></pre>
-
-<p>同时也要设置 Target 为 shared 状态.</p>
-
-<blockquote>
-  <p>打开项目 -&gt; Manage Schemes -&gt; 把需要构建的 Target 勾上 shared -&gt; 选中你需要管理的 scheme,点击左下角的 Edit 按钮 -&gt; 选择 Build 选项，点击左下角的+号按钮，添加你需要依赖的 CocoaPods 管理的第三方静态库的名字，下图是已经添加后的截图.</p>
-</blockquote>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/656113-97e903b6472ce2eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
-
-<p>以上配置,可以看看<a href="https://docs.travis-ci.com/user/languages/objective-c/">官方文档</a>,写的挺详细的</p>
-
-<h3 id="section">3. 应用程序的签名\证书</h3>
-
-<p>[参见(https://objccn.io/issue-6-5/)</p>
-
-<h3 id="section-1">4.部署</h3>
-
-<p>负责分发部署的平台很多像:TestFlight \ HockeyApp \ 蒲公英 \ fir.im 等等</p>
-
-<p>可以配置然后在上述平台进行部署.</p>
-
-<h3 id="section-2">密码和证书安全</h3>
-
-<p>对于密码等敏感信息,Travis CI提供了2种解决方案:</p>
-
-<ul>
-  <li>对密码等敏感信息进行加密,然后再构建环境时解密</li>
-  <li>在 Travis CI控制台设置环境变量,然后使用 System.getenv() 获取值</li>
-</ul>
-
-<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png" alt="" /></p>
-
-<h3 id="section-3">其他</h3>
-
-<h5 id="section-4">显示构建状态</h5>
-
-<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png" alt="" /></p>
-
-<h5 id="section-5">跳过自动构建</h5>
-
-<p>如果commit不想让travis ci构建，那么就在commit message里加上[ci skip]就行了。</p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>git commit -m <span class="s2">"[ci skip] commit message"</span>
-</code></pre>
-</div>
-
-<h3 id="section-6">资源</h3>
-
-<ul>
-  <li><a href="https://docs.travis-ci.com/user/customizing-the-build/">官方文档</a></li>
-  <li><a href="https://github.com/objcio/issue-6-travis-ci">示例 Demo</a></li>
-  <li><a href="https://github.com/facebook/xctool">xctool</a></li>
-  <li><a href="https://github.com/nukc/how-to-use-travis-ci">安卓环境下的教程</a></li>
-</ul>
-
-<p>-<a href="https://objccn.io/issue-6-5/">优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a>
--<a href="http://blog.csdn.net/jiang314/article/details/54965283">备份版:优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a></p>
-
-<p>为 iOS 建立 Travis CI: https://objccn.io/issue-6-5/</p>
-
-<p>自动化测试 –&gt; 持续部署</p>
-
-<p>在互联网的产品开发时代，产品迭代越来越频繁，“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”。很多开发团队也越来越认识到，自动化测试和持续部署可帮助开发团队提高迭代效率和质量。
-那么，如何更好地解决“最后一公里”这一问题呢?</p>
-
-<p>一切从自动化测试开始，让自动化测试贯穿在整个项目开发-集成-部署-交付的-开发流程中。</p>
-
-<p><img src="http://huaban.com/go/?pin_id=1002439558" alt="" />
-在这个分层自动化测试金字塔中，</p>
-<h4 id="unit-">Unit 代表单元测试:</h4>
-
-<p>XCTest是苹果在iOS 7和Xcode5引入的一个简单而强大的测试框架，它的测试编写起来非常简单，并且遵循xUnit风格。XCTest的优点是与Xcode深度集成，有专门的Test导航栏，但因为受限于官方测试API，因此功能不是很丰富。</p>
-
-<p>iOS 中的单元测试开源库:</p>
-<ul>
-  <li>Kiwi是对XCTest的一个完整替代，使用xSpec风格编写测试。Kiwi带有自己的一套工具集，包括expectations、mocks、stubs，甚至还支持异步测试。</li>
-  <li>Specta与Kiwi功能相似，但在架构上非常不同。Kiwi注重功能的整合，而Specta则注重模块化。它本身只专注于运行测试，而将模拟、匹配等功能交给第三方。下
-下面这些一些开源测试组件，它们能与Specta和Kiwi框架搭配使用：</li>
-  <li>Expecta：匹配程序框架。</li>
-  <li>OCHamcrest：匹配程序框架。</li>
-  <li>OCMock：模拟测试框架。</li>
-  <li>OCMockito：模拟测试框架。</li>
-  <li>OHTTPStubs：模拟网络请求的库，基于block的语法来匹配URL。</li>
-  <li>Nocilla：模拟网络请求的库，使用链式API。</li>
-  <li>Quick是:一个使用Swift开发的新测试框架，对测试使用Swift编写的App非常友好。它还有一个Nimble库用于编写匹配模式。</li>
-</ul>
-
-<p>对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
-
-<h3 id="ui-">UI 测试</h3>
-
-<ul>
-  <li>KIF（Keep It Functional）是用Objective-C编写的用户界面测试框架。KIF tester使用了私有API来了解App中的视图层级。缺点是运行较慢。</li>
-</ul>
-
-<blockquote>
-  <p>相关文章:<a href="http://www.blogs8.cn/posts/A1Rj797">Swift中KIF测试的特点－b</a></p>
-</blockquote>
-
-<ul>
-  <li>
-    <p>Subliminal是另一款与XCTest集成的框架。与KIF不同的是，它基于UIAutomation编写，旨在对开发者隐藏UIAutomation中一些复杂的细节。不过它最后更新日期是2014年2月，可能已停止更新。</p>
-  </li>
-  <li>
-    <p>Calabash是跨平台开发工具Xamarin推出的一款测试工具。它使用BDD风格来编写验收测试。它的优点是支持跨平台（需使用不同的库），声明式的测试风格非常易于读写。缺点是不够稳定并且运行速度慢。</p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/01/13/Travis-CI/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1738,6 +1425,8 @@ xcode_sdk: iphonesimulator10.0 # 模拟器
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Unix/">Unix 入门</a></li>
+                    
                         <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
@@ -1755,8 +1444,6 @@ xcode_sdk: iphonesimulator10.0 # 模拟器
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
-                    
-                        <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                 </ul>
             </div>
@@ -1842,9 +1529,18 @@ xcode_sdk: iphonesimulator10.0 # 模拟器
                     </li>
                     
                     <li>
-                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
                             <span class="name">
-                                脚本
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -2131,7 +1827,14 @@ xcode_sdk: iphonesimulator10.0 # 模拟器
                       
                       
                       
-                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
                     
                 </div>
             </div>

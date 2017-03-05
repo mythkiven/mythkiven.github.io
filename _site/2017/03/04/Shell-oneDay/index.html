@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Shell 脚本</title>
-    <meta name="description" content="  热身小例子  shell 概念  脚本解释器  脚本语言  作为一名 iOS 老司机,当然要得拿下脚本噻,除了 python, 在 mac 上最常用的就是 shell 脚本了.  以前是看过但用的少,几年了都忘了差不多了,今天温习一遍,从最简单的开始.说起脚本,就得说脚本的通用性,说起通用性,就得说常见的操作...">
+    <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -169,7 +169,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#脚本" title="Category: 脚本" rel="category">脚本</a>
+        <a href="/category/#Shell" title="Category: Shell" rel="category">Shell</a>
     
   
 
@@ -186,8 +186,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#shell" title="Tag: shell" rel="tag">shell</a-->
-        <a href="/tag/#shell" title="Tag: shell" rel="tag">shell</a>
+        <!--a href="/tag/#Shell" title="Tag: Shell" rel="tag">Shell</a-->
+        <a href="/tag/#Shell" title="Tag: Shell" rel="tag">Shell</a>
     
   
 
@@ -199,19 +199,51 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
+  <li><a href="#shell-" id="markdown-toc-shell-">shell 基础</a></li>
   <li><a href="#section" id="markdown-toc-section">热身小例子</a></li>
-  <li><a href="#shell-" id="markdown-toc-shell-">shell 概念</a></li>
-  <li><a href="#section-1" id="markdown-toc-section-1">脚本解释器</a></li>
-  <li><a href="#section-2" id="markdown-toc-section-2">脚本语言</a></li>
-  <li><a href="#section-3" id="markdown-toc-section-3">编写脚本</a></li>
-  <li><a href="#section-4" id="markdown-toc-section-4">运行脚本</a></li>
+  <li><a href="#shell--1" id="markdown-toc-shell--1">1. shell 概念</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">2. 脚本解释器</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">3. 脚本语言</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">4. 编写脚本</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">5. 运行脚本</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">6. 变量</a>    <ul>
+      <li><a href="#section-6" id="markdown-toc-section-6">定义变量</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">变量类型</a></li>
+      <li><a href="#section-8" id="markdown-toc-section-8">使用变量</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">重定义变量</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">注释</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-11" id="markdown-toc-section-11">7. 字符串</a>    <ul>
+      <li><a href="#section-12" id="markdown-toc-section-12">单引号</a></li>
+      <li><a href="#section-13" id="markdown-toc-section-13">双引号</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-14" id="markdown-toc-section-14">8. 字符串操作</a>    <ul>
+      <li><a href="#section-15" id="markdown-toc-section-15">拼接字符串</a></li>
+      <li><a href="#section-16" id="markdown-toc-section-16">获取字符串长度：</a></li>
+      <li><a href="#section-17" id="markdown-toc-section-17">提取子字符串</a></li>
+      <li><a href="#section-18" id="markdown-toc-section-18">查找子字符串</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-19" id="markdown-toc-section-19">9. 流程控制</a>    <ul>
+      <li><a href="#if" id="markdown-toc-if">if</a></li>
+      <li><a href="#if-else" id="markdown-toc-if-else">if else</a></li>
+      <li><a href="#for-while" id="markdown-toc-for-while">for while</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-20" id="markdown-toc-section-20">10. 函数</a>    <ul>
+      <li><a href="#section-21" id="markdown-toc-section-21">文件包含</a></li>
+    </ul>
+  </li>
+  <li><a href="#shell--2" id="markdown-toc-shell--2">11. 终端\shell 常用命令</a></li>
+  <li><a href="#os-x-" id="markdown-toc-os-x-">12. OS X 常用终端命令</a></li>
+  <li><a href="#section-22" id="markdown-toc-section-22">13.更多参考链接</a></li>
 </ul>
 
 <blockquote>
 
-  <p>作为一名 iOS 老司机,当然要得拿下脚本噻,除了 python, 在 mac 上最常用的就是 shell 脚本了.</p>
-
-  <p>以前是看过但用的少,几年了都忘了差不多了,今天温习一遍,从最简单的开始.</p>
+  <p>作为一名 iOS 老司机,工作中最常用的就是脚本\命令行了,但是没系统的看过. python 以前用的多,现在要系统的看看 shell ,虽然不一定会学的深入,但是绝对可以进一步提高我的工作效率.</p>
 
 </blockquote>
 
@@ -219,14 +251,14 @@
 简单介绍下异同:</p>
 
 <ul>
-  <li>BellLAB 发明了 Unix 和 C ;</li>
+  <li>BellLAB 发明了 Unix (还有 C);</li>
   <li>Unix 的 GUI 是 X Window(在内核外跑的应用),包括X Server(与内核通信)与X Client(负责显示)两部分;</li>
   <li>OS X 的 GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix + BSD);</li>
-  <li>OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的.</li>
-  <li>Linux 一开始就是免费开源的,基于 Unix ;</li>
+  <li>OS X 是全新设计的,和 OS (Mach内核)不同, OS 不是基于 Unix 的;</li>
+  <li>Linux 一开始就是免费开源的,基于 Unix.</li>
 </ul>
 
-<p>以上是 Unix 派的,下边的 Windows 则是 DOS NT 系的:</p>
+<p>以上是 Unix 派的,下边的 Windows 则是 DOS + NT 系的:</p>
 
 <ul>
   <li>Windows 则是 DOS + NT 内核;</li>
@@ -237,6 +269,41 @@
 <p>扯的有点远了…</p>
 
 <p>下边回归正文:</p>
+
+<h3 id="shell-">shell 基础</h3>
+
+<p>最初的 Unix shell是在20世纪70年代中期由Stephen R. Bourne写的，现在 shell 分为两种:</p>
+
+<ul>
+  <li>Bourne shell : 默认提示符是$字符。</li>
+</ul>
+
+<blockquote>
+  <p>Bourne Shell 的各种子类别如下：</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>Bourne Shell （sh）、 Korn shell （ksh）、 Bourne Again（bash）、POSIX shell（sh）</p>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>C shell: 则默认提示符是％字符。</li>
+</ul>
+
+<blockquote>
+  <p>C shell 子类别如下:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>C shell（csh）、 TENEX / TOPS C shell（tcsh）</p>
+  </blockquote>
+</blockquote>
+
+<p><strong>Bourne shell是在UNIX系统上出现的第一个shell，因此它被称为“shell”。</strong>
+Bourne shell通常在大多数UNIX版本上安装为/ bin / sh</p>
 
 <h3 id="section">热身小例子</h3>
 
@@ -258,7 +325,7 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
   <li>for, do, done是sh脚本语言的关键字。</li>
 </ul>
 
-<h3 id="shell-">shell 概念</h3>
+<h3 id="shell--1">1. shell 概念</h3>
 
 <p>上边是入门热身,下边解释概念:</p>
 
@@ -288,7 +355,7 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
   <li>windows 出厂时没有内置 shell 解释器，需要自行安装</li>
 </ul>
 
-<h3 id="section-1">脚本解释器</h3>
+<h3 id="section-1">2. 脚本解释器</h3>
 
 <ul>
   <li>
@@ -302,7 +369,7 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
   </li>
 </ul>
 
-<h3 id="section-2">脚本语言</h3>
+<h3 id="section-2">3. 脚本语言</h3>
 
 <p>理论上讲，只要一门语言提供了解释器（而不仅是编译器），这门语言就可以胜任脚本编程，常见的解释型语言都是可以用作脚本编程的，如：Perl、Tcl、Python、PHP、Ruby。Perl是最老牌的脚本编程语言了，Python这些年也成了一些linux发行版的预置解释器。</p>
 
@@ -312,7 +379,7 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
 
 <p>如果你的脚本是提供给别的用户使用，使用sh或者bash，你的脚本将具有最好的环境兼容性，perl很早就是linux标配了，python这些年也成了一些linux发行版的标配，至于mac os，它默认安装了perl、python、ruby、php、java等主流编程语言。</p>
 
-<h3 id="section-3">编写脚本</h3>
+<h3 id="section-3">4. 编写脚本</h3>
 
 <p>打开文本编辑器，新建一个文件，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用php写shell 脚本，扩展名就用php好了。</p>
 
@@ -325,30 +392,15 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
 
 <p>“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。</p>
 
-<h3 id="section-4">运行脚本</h3>
+<h3 id="section-4">5. 运行脚本</h3>
 
-<p>运行Shell脚本有两种方法：</p>
-
-<ul>
-  <li>作为可执行程序</li>
-</ul>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>chmod +x test.sh
-./test.sh
-</code></pre>
-</div>
-
-<p>注意，一定要写成./test.sh，而不是test.sh，运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/usr/sbin等在PATH里，你的当前目录通常不在PATH里，所以写成test.sh是会找不到命令的，要用./test.sh告诉系统说，就在当前目录找。</p>
-
-<p>通过这种方式运行bash脚本，第一行一定要写对，好让系统查找到正确的解释器。</p>
-
-<p>这里的”系统”，其实就是shell这个应用程序（想象一下Windows Explorer），但我故意写成系统，是方便理解，既然这个系统就是指shell，那么一个使用/bin/sh作为解释器的脚本是不是可以省去第一行呢？是的。</p>
+<p>运行Shell脚本的方法：</p>
 
 <ul>
   <li>作为解释器参数</li>
 </ul>
 
-<p>在终端,知己运行解释器 :</p>
+<p>在终端,直接运行解释器 :</p>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">$/</span>bin/sh test.sh
 <span class="nv">$/</span>bin/php test.php
@@ -357,8 +409,302 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
 
 <p>这种方式运行的脚本，不需要在第一行指定解释器信息.</p>
 
-<p>参考 <a href="https://github.com/qinjx/30min_guides/blob/master/shell.md">30min_guides</a></p>
+<ul>
+  <li>或者</li>
+</ul>
 
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">$sh</span> test.sh
+</code></pre>
+</div>
+
+<p><strong>说明,以下仅挑选部分语法知识,更多的请参见文末的链接,里面内容很全的.</strong></p>
+
+<h3 id="section-5">6. 变量</h3>
+
+<p>一个变量只不过是一个指向实际数据的指针</p>
+
+<h5 id="section-6">定义变量</h5>
+
+<p>定义变量时,变量名不加美元符号（$），如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 标量变量:
+your_name="qinjx"
+# 只读变量
+NAME="Zara Ali"
+readonly NAME
+</code></pre>
+</div>
+
+<h5 id="section-7">变量类型</h5>
+
+<ul>
+  <li>
+    <p>局部变量  一个局部变量是一个变量，只是shell的当前实例中存在。</p>
+  </li>
+  <li>
+    <p>环境变量 环境变量可用于shell的任何子进程。一些程序需要环境变量才能正常工作。</p>
+  </li>
+  <li>
+    <p>Shell变量 - shell变量是一个特殊的变量，由shell设置，是shell所需要的，以便正确地运行。</p>
+  </li>
+</ul>
+
+<p>注意: 变量名和等号之间不能有空格</p>
+
+<h5 id="section-8">使用变量</h5>
+
+<p>使用一个定义过的变量，只要在变量名前面加美元符号即可，如：</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">your_name</span><span class="o">=</span><span class="s2">"qinjx"</span>
+<span class="nb">echo</span> <span class="nv">$your_name</span>
+<span class="nb">echo</span> <span class="k">${</span><span class="nv">your_name</span><span class="k">}</span>
+</code></pre>
+</div>
+<p>变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界,比如下边的例子</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">for </span>skill <span class="k">in </span>Ada Coffe Action Java; <span class="k">do
+    </span><span class="nb">echo</span> <span class="s2">"I am good at </span><span class="k">${</span><span class="nv">skill</span><span class="k">}</span><span class="s2">Script"</span>
+<span class="k">done</span> 
+</code></pre>
+</div>
+
+<p>如果不给skill变量加花括号，写成echo “I am good at $skillScript”，解释器就会把$skillScript当成一个变量（其值为空），代码执行结果就不是我们期望的样子了</p>
+
+<h5 id="section-9">重定义变量</h5>
+
+<p>已定义的变量，可以被重新定义，如：</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">your_name</span><span class="o">=</span><span class="s2">"qinjx"</span>
+<span class="nb">echo</span> <span class="nv">$your_name</span>
+
+<span class="nv">your_name</span><span class="o">=</span><span class="s2">"alibaba"</span>
+<span class="nb">echo</span> <span class="nv">$your_name</span>
+</code></pre>
+</div>
+
+<p>这样写是合法的，但注意，第二次赋值的时候不能写$your_name=”alibaba”，使用变量的时候才加美元符。</p>
+
+<h5 id="section-10">注释</h5>
+
+<p>以“#”开头的行就是注释，会被解释器忽略。</p>
+
+<p>多行注释</p>
+
+<p>sh里没有多行注释，只能每一行加一个#号</p>
+
+<p>如果在开发过程中，遇到大段的代码需要临时注释起来，过一会儿又取消注释，怎么办呢？每一行加个#符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。</p>
+
+<h3 id="section-11">7. 字符串</h3>
+
+<p>字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了，哈哈），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。</p>
+
+<h5 id="section-12">单引号</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>str='this is a string'
+</code></pre>
+</div>
+
+<p>单引号字符串的限制：</p>
+
+<p>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的
+单引号字串中不能出现单引号（对单引号使用转义符后也不行）</p>
+
+<h5 id="section-13">双引号</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">your_name</span><span class="o">=</span><span class="s1">'qinjx'</span>
+<span class="nv">str</span><span class="o">=</span><span class="s2">"Hello, I know your are </span><span class="se">\"</span><span class="nv">$your_name</span><span class="se">\"</span><span class="s2">! </span><span class="se">\n</span><span class="s2">"</span>
+</code></pre>
+</div>
+
+<p>双引号里可以有变量
+双引号里可以出现转义字符</p>
+
+<h3 id="section-14">8. 字符串操作</h3>
+
+<h5 id="section-15">拼接字符串</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nv">your_name</span><span class="o">=</span><span class="s2">"qinjx"</span>
+<span class="nv">greeting</span><span class="o">=</span><span class="s2">"hello, "</span><span class="nv">$your_name</span><span class="s2">" !"</span>
+<span class="nv">greeting_1</span><span class="o">=</span><span class="s2">"hello, </span><span class="k">${</span><span class="nv">your_name</span><span class="k">}</span><span class="s2"> !"</span>
+
+<span class="nb">echo</span> <span class="nv">$greeting</span> <span class="nv">$greeting_1</span>
+</code></pre>
+</div>
+
+<h5 id="section-16">获取字符串长度：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>string="abcd"
+echo ${#string} 
+#输出：4
+</code></pre>
+</div>
+
+<h5 id="section-17">提取子字符串</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>string="alibaba is a great company"
+echo ${string:1:4} 
+#输出：liba
+</code></pre>
+</div>
+<h5 id="section-18">查找子字符串</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>string="alibaba is a great company"
+echo `expr index "$string" is`
+#输出：8，这个语句的意思是：找出单词is在这名话中的位置
+</code></pre>
+</div>
+
+<h3 id="section-19">9. 流程控制</h3>
+
+<h5 id="if">if</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if condition
+then
+    command1 
+    command2
+    ...
+    commandN 
+fi 
+</code></pre>
+</div>
+
+<p>写成一行</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge"> if </code>ps -ef</td>
+      <td>grep ssh<code class="highlighter-rouge">;  then echo hello; fi </code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>末尾的fi就是if倒过来拼写，后面还会遇到类似的</p>
+
+<h5 id="if-else">if else</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if condition
+then
+    command1 
+    command2
+    ...
+    commandN
+else
+    command
+fi 
+
+</code></pre>
+</div>
+
+<h5 id="for-while">for while</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for var in item1 item2 ... itemN
+do
+    command1
+    command2
+    ...
+    commandN
+done 
+</code></pre>
+</div>
+
+<p>写成一行：</p>
+
+<p><code class="highlighter-rouge">for var in item1 item2 ... itemN; do command1; command2… done;</code></p>
+
+<h3 id="section-20">10. 函数</h3>
+
+<h5 id="section-21">文件包含</h5>
+
+<p>可以使用source和.关键字，如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 写法1
+source ./function.sh
+# 写法2
+. ./function.sh 
+</code></pre>
+</div>
+
+<p>在bash里，source和.是等效的，他们都是读入function.sh的内容并执行其内容（类似PHP里的include），为了更好的可移植性，推荐使用第二种写法。</p>
+
+<p>包含一个文件和执行一个文件一样，也要写这个文件的路径，不能光写文件名，比如上述例子中:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>. ./function.sh
+# 不可以写作：
+
+. function.sh 
+</code></pre>
+</div>
+
+<p>如果function.sh是用户传入的参数，如何获得它的绝对路径呢？方法是：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>#$1是用户输入的参数，如function.sh 
+real_path=`readlink -f $1` 
+. $real_path 
+
+</code></pre>
+</div>
+
+<h3 id="shell--2">11. 终端\shell 常用命令</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">echo</code> 显示在屏幕上</li>
+</ul>
+
+<p>$  echo “wwwww”
+终端就会打印: wwwww</p>
+
+<ul>
+  <li>获取文件的绝对路径</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># function.sh 的绝对路径: real_path
+real_path=`readlink -f $1` 
+</code></pre>
+</div>
+
+<ul>
+  <li>ps 查看进程表</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ps 
+  PID TTY           TIME CMD
+75831 ttys000    0:00.13 -bash
+75832 ttys001    0:00.13 -bash
+78258 ttys001    2:07.88 ruby /Users/zzz/.rvm/gems/ruby-2.3.0/bin/jeky
+80088 ttys001    0:00.04 /Users/zzz/.rvm/gems/ruby-2.3.0/gems/rb-fseve
+42208 ttys002    0:00.29 -bash
+</code></pre>
+</div>
+<ul>
+  <li>date 打印当前日期</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ date
+2017年 3月 4日 星期六 21时03分15秒 CST
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>pwd 打印当前路径</p>
+  </li>
+  <li>
+    <p>ls 列出当前路径的内容</p>
+  </li>
+</ul>
+
+<h3 id="os-x-">12. OS X 常用终端命令</h3>
+
+<h3 id="section-22">13.更多参考链接</h3>
+
+<ul>
+  <li><a href="http://training.apple.com/pdf/support-10.11-exam-prep.pdf">OS X Support Essentials 10.11</a></li>
+  <li><a href="http://tldp.org/LDP/abs/html/opprecedence.html">高级Bash脚本指南</a></li>
+  <li><a href="http://tldp.org/LDP/abs/html/">高级Bash脚本指南</a></li>
+  <li><a href="http://www.tutorialspoint.com/unix/unix-shell.htm">Unix   Shell教程 英语</a></li>
+  <li><a href="https://bash.cyberciti.biz/guide/Main_Page">Linux  Shell教程 英语</a></li>
+  <li><a href="https://www.tutorialspoint.com/unix/unix-file-permission.htm">Unix 入门教程</a></li>
+</ul>
 
         </article>
         <hr>
@@ -371,35 +717,6 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
                     
                 
             
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
         
             
             
@@ -425,12 +742,41 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
                     
                 
             
+        
+            
+            
+                
+                    
+                
+            
                 
                     
                 
             
         
             
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
             
                 
                     
@@ -461,6 +807,8 @@ mkdir shell_txt          <span class="c"># 创建一个 shell_txt 文件夹</spa
     </div>
     <div class="nex">
 
+        
+        <p><strong>下一篇</strong> <a href="/2017/03/04/Unix/">Unix 入门</a></p>
         
     </div>
 </div>

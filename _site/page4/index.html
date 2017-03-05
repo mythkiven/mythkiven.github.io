@@ -151,6 +151,604 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/11/20/swift_I_guide/">Swift_I_入门体验</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a>    <ul>
+      <li><a href="#iconstants-and-variables" id="markdown-toc-iconstants-and-variables">I.Constants and Variables:变常量</a>        <ul>
+          <li><a href="#declaring-constants-and-variables" id="markdown-toc-declaring-constants-and-variables">1.Declaring Constants and Variables:声明</a></li>
+          <li><a href="#naming-constants-and-variables" id="markdown-toc-naming-constants-and-variables">2.Naming Constants and Variables：命名</a></li>
+          <li><a href="#printing-constants-and-variables" id="markdown-toc-printing-constants-and-variables">3.Printing Constants and Variables：打印</a></li>
+        </ul>
+      </li>
+      <li><a href="#comments" id="markdown-toc-comments">Comments：注释</a></li>
+      <li><a href="#semicolons" id="markdown-toc-semicolons">Semicolons：分号</a></li>
+      <li><a href="#integers" id="markdown-toc-integers">Integers</a>        <ul>
+          <li><a href="#integer-bounds" id="markdown-toc-integer-bounds">1.Integer Bounds：边界</a></li>
+          <li><a href="#int" id="markdown-toc-int">2.Int</a></li>
+          <li><a href="#uint" id="markdown-toc-uint">3.UInt</a></li>
+        </ul>
+      </li>
+      <li><a href="#floating-point-numbers" id="markdown-toc-floating-point-numbers">Floating-Point Numbers</a></li>
+      <li><a href="#type-safety-and-type-inference" id="markdown-toc-type-safety-and-type-inference">Type Safety and Type Inference：类型安全</a></li>
+      <li><a href="#numeric-literals" id="markdown-toc-numeric-literals">Numeric Literals</a></li>
+      <li><a href="#numeric-type-conversion-" id="markdown-toc-numeric-type-conversion-">Numeric Type Conversion 数字类型转换</a>        <ul>
+          <li><a href="#integer-conversion" id="markdown-toc-integer-conversion">Integer Conversion:整型转换</a></li>
+          <li><a href="#integer-and-floating-point-conversion" id="markdown-toc-integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</a></li>
+        </ul>
+      </li>
+      <li><a href="#type-aliases" id="markdown-toc-type-aliases">Type Aliases：类型别名</a></li>
+      <li><a href="#booleans" id="markdown-toc-booleans">Booleans</a></li>
+      <li><a href="#tuples" id="markdown-toc-tuples">Tuples：元组</a></li>
+      <li><a href="#optionals" id="markdown-toc-optionals">Optionals：可选类型</a>        <ul>
+          <li><a href="#nil" id="markdown-toc-nil">nil</a></li>
+          <li><a href="#if-statements-and-forced-unwrappingif" id="markdown-toc-if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</a></li>
+          <li><a href="#optional-binding" id="markdown-toc-optional-binding">Optional Binding：可选绑定</a></li>
+          <li><a href="#implicitly-unwrapped-optionals" id="markdown-toc-implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</a></li>
+        </ul>
+      </li>
+      <li><a href="#error-handling" id="markdown-toc-error-handling">Error Handling：错误处理</a></li>
+      <li><a href="#assertions" id="markdown-toc-assertions">Assertions：断言</a>        <ul>
+          <li><a href="#debugging-with-assertions" id="markdown-toc-debugging-with-assertions">Debugging with Assertions：使用断言调试</a></li>
+          <li><a href="#when-to-use-assertions" id="markdown-toc-when-to-use-assertions">When to Use Assertions：何时使用断言</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+<ul>
+  <li>必备武器：playground+官方文档；</li>
+  <li>系列章节我会以中英结合的形式展现，不要问为什么；</li>
+  <li>本笔记针对有一定swift或OC基础的；</li>
+  <li>后续相关的文章都基于<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html">The Swift Programming Language (Swift 3.0.1)</a> ，基本上是围绕文档翻译一遍。</li>
+</ul>
+
+<p>先热热身：</p>
+<ul>
+  <li>Swift包含C和OC的所有基础数据类型，再次基础上还引入了OC没有的高级数据类型；</li>
+  <li>constants ：Swift中的常量比C中的更加强大，使用更安全；</li>
+  <li>tuples ：Swift亦引入了OC没有的高级数据类型，元组；</li>
+  <li>optional types：处理未知类型，比nil更加安全；</li>
+  <li>type safety：Swift是类型安全的，代码里值的类型非常明确：需要String类型，你就不能错误地传递Int；</li>
+</ul>
+
+<h3 id="iconstants-and-variables">I.Constants and Variables:变常量</h3>
+
+<h5 id="declaring-constants-and-variables">1.Declaring Constants and Variables:声明</h5>
+<p>let常量不用多说，var变量的需要注意： type是如何定义的。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// type声明的方式1：初始值推断。</span>
+<span class="k">let</span> <span class="nv">maximumNumberOfLoginAttempts</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">currentLoginAttempt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1">// 方式2：Type Annotations 类型标注</span>
+<span class="k">var</span> <span class="nv">welcomeMessage</span><span class="p">:</span> <span class="kt">String</span> <span class="c1">// 定义一个String类型的变量:welcomeMessage</span>
+<span class="n">welcomeMessage</span> <span class="o">=</span> <span class="s">"Hello"</span> 
+<span class="k">var</span> <span class="nv">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span> <span class="c1">// 定义多个同类型变量</span>
+</code></pre>
+</div>
+
+<h5 id="naming-constants-and-variables">2.Naming Constants and Variables：命名</h5>
+
+<p>常量和变量名几乎可以包含任何字符，包括Unicode字符：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、</span>
+<span class="k">let</span> <span class="nv">π</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="k">let</span> <span class="nv">你好</span> <span class="o">=</span> <span class="s">"你好世界"</span>
+<span class="k">let</span> <span class="nv">🐶🐮</span> <span class="o">=</span> <span class="s">"dogcow"</span>
+
+<span class="c1">// 2、</span>
+<span class="cm">/* 
+注意：常量和变量的名字不能包含空格、数学符号、箭头、私用的（非法的）Unicode代码点、连线与制表符。也不能以数字开头。
+*/</span>
+
+<span class="c1">// 3、</span>
+<span class="cm">/*
+如果使用与Swift保留关键字相同的名称作为常量或者变量名，可以使用反引号（`）将关键字包围的方式将其作为名字使用。例子如下：  尽量还是避免使用关键字
+*/</span>
+<span class="kd">let</span> <span class="err">`</span><span class="kd">let</span><span class="err">`</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nf">print</span><span class="p">(</span><span class="err">`</span><span class="kd">let</span><span class="err">`</span><span class="p">)</span>
+
+<span class="c1">// 4、常量的值一旦设定后就不能更改.如果尝试去更改，编译器会报错</span>
+</code></pre>
+</div>
+
+<h5 id="printing-constants-and-variables">3.Printing Constants and Variables：打印</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 默认情况下，print会加一个换行符来结束当前行</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">)</span>                 <span class="c1">// Prints "Bonjour!\n" </span>
+<span class="c1">// 可以给terminator赋一个空字符串，防止换行</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">friendlyWelcome</span><span class="p">,</span> <span class="nv">terminator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span> <span class="c1">// Prints "Bonjour!"</span>
+
+<span class="cm">/*
+print(_:separator:terminator)函数是一个打印一个或多个值到相应输出区域的全局的函数。separator 和 terminator 参数有默认值，一般可以忽略之
+*/</span>
+
+<span class="c1">// Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，并且去提示Swift 用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义： </span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The current value of friendlyWelcome is </span><span class="se">\(</span><span class="n">friendlyWelcome</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The current value of friendlyWelcome is Bonjour!"</span>
+
+</code></pre>
+</div>
+
+<h3 id="comments">Comments：注释</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">// This is a comment.</span>
+
+<span class="cm">/* This is also a comment
+ but is written over multiple lines. */</span>
+
+<span class="cm">/* 嵌套注释: This is the start of the first multiline comment.
+ /* This is the second, nested multiline comment. */
+ This is the end of the first multiline comment. */</span>
+
+</code></pre>
+</div>
+
+<h3 id="semicolons">Semicolons：分号</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 单行代码可以不用注释，</span>
+<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span>
+<span class="k">let</span> <span class="nv">dog</span> <span class="o">=</span> <span class="s">"🐶"</span>
+<span class="c1">// 多行代码合并到一行，需要分号</span>
+<span class="k">let</span> <span class="nv">cat</span> <span class="o">=</span> <span class="s">"🐱"</span><span class="p">;</span> <span class="nf">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+<span class="c1">// Prints "🐱"</span>
+
+
+</code></pre>
+</div>
+
+<h3 id="integers">Integers</h3>
+<p>Swift提供的有符号和无符号整数由8,16,32和64位组成。8位无符号整数类型是UInt8,32位有符号整数的类型是Int32。</p>
+
+<h5 id="integer-bounds">1.Integer Bounds：边界</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">minValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">min</span>  <span class="c1">// minValue is equal to 0, and is of type UInt8</span>
+<span class="k">let</span> <span class="nv">maxValue</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">max</span>  <span class="c1">// maxValue is equal to 255, and is of type UInt8</span>
+</code></pre>
+</div>
+
+<h5 id="int">2.Int</h5>
+<p>一般来说，你不需要给整数指定一个特定的长度,Swift会自动处理：</p>
+<ul>
+  <li>在32位平台上，Int和Int32长度相同。</li>
+  <li>在64位平台上，Int和Int64长度相同。</li>
+  <li>32位平台上， Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647。所以一般情况不用担心大小的问题。</li>
+</ul>
+
+<h5 id="uint">3.UInt</h5>
+<p>UInt长度与当前平台的原生字长相同：</p>
+<ul>
+  <li>在32位平台上，UInt和UInt32长度相同。</li>
+  <li>在64位平台上，UInt和UInt64长度相同。</li>
+</ul>
+
+<p>注意：尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换。</p>
+
+<h3 id="floating-point-numbers">Floating-Point Numbers</h3>
+
+<p>浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
+<ul>
+  <li>Double表示64位浮点数。存储很大或者很高精度的浮点数;</li>
+  <li>Float表示32位浮点数。精度要求不高可使用此类型;</li>
+</ul>
+
+<p>注意： Double精确度很高，可以精确到15位小数位数，而Float只能精确到6位小数位数。Swift在推断浮点型数字时，优先使用Double类型。</p>
+
+<h3 id="type-safety-and-type-inference">Type Safety and Type Inference：类型安全</h3>
+
+<p>Swift是一个类型安全的语言。并且可以进行类型推断。</p>
+
+<ul>
+  <li>1、编译代码的时候它执行类型检查，并会将任何类型不匹配类型标注为错误；</li>
+  <li>2、如果没有给值指定一个类型，Swift会通过类型推断去推断出相对应的类型；</li>
+  <li>3、由于有类型推断，Swift相对于C语言和Objective-C来说，只需要更少的类型声明。
+代码如下：
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">meaningOfLife</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1">// meaningOfLife is inferred to be of type Int</span>
+<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>             <span class="c1">// pi is inferred to be of type Double</span>
+<span class="k">let</span> <span class="nv">anotherPi</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.14159</span>  <span class="c1">// anotherPi is also inferred to be of type Double。Swift优先推断Double</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="numeric-literals">Numeric Literals</h3>
+
+<p>1、整数常量可以写为：</p>
+<ul>
+  <li>一个十进制数，无前缀</li>
+  <li>一个二进制数字，用0b前缀</li>
+  <li>一个八进制数，有0o前缀</li>
+  <li>一个十六进制数字，用0x前缀</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalInteger</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="k">let</span> <span class="nv">binaryInteger</span> <span class="o">=</span> <span class="mb">0b10001</span>       <span class="c1">// 17 in binary notation</span>
+<span class="k">let</span> <span class="nv">octalInteger</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o21</span>           <span class="c1">// 17 in octal notation</span>
+<span class="k">let</span> <span class="nv">hexadecimalInteger</span> <span class="o">=</span> <span class="mh">0x11</span>     <span class="c1">// 17 in hexadecimal notation</span>
+</code></pre>
+</div>
+
+<p>2、Numeric Literals还有一个可选的指数(exponent),十进制用e/E指定，十六进制用p/P指定:</p>
+
+<ul>
+  <li>1.25e2 表示1.25 × 10^2，等于125.0</li>
+  <li>
+    <p>1.25e-2 表示1.25 × 10^-2，等于0.0125</p>
+  </li>
+  <li>0xFp2 表示15 × 2^2，等于60.0</li>
+  <li>0xFp-2 表示15 × 2^-2，等于3.75</li>
+</ul>
+
+<p>如下都表示十进制12.1875:</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decimalDouble</span> <span class="o">=</span> <span class="mf">12.1875</span>
+<span class="k">let</span> <span class="nv">exponentDouble</span> <span class="o">=</span> <span class="mf">1.21875e1</span>
+<span class="k">let</span> <span class="nv">hexadecimalDouble</span> <span class="o">=</span> <span class="mh">0xC</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span>
+</code></pre>
+</div>
+
+<p>3、Numeric Literals可以包含额外的格式，使它们更容易阅读。这两个整数和浮点数可以用额外的零填充并且可以包含下划线，以帮助可读性。无论何种类型的格式不会影响其基本数值：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">paddedDouble</span> <span class="o">=</span> <span class="mf">000123.456</span>
+<span class="k">let</span> <span class="nv">oneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="k">let</span> <span class="nv">justOverOneMillion</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="o">.</span><span class="mo">000_000_1</span>
+</code></pre>
+</div>
+
+<h3 id="numeric-type-conversion-">Numeric Type Conversion 数字类型转换</h3>
+
+<p>一句话：一般情况下，整数型常变量都建议使用Int类型。</p>
+
+<h5 id="integer-conversion">Integer Conversion:整型转换</h5>
+
+<ul>
+  <li>SomeType(ofInitialValue)类型转换</li>
+  <li>基本运算符两侧的数字需要是同类型的，
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
+<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">let</span> <span class="nv">twoThousandAndOne</span> <span class="o">=</span> <span class="n">twoThousand</span> <span class="o">+</span> <span class="kt">UInt16</span><span class="p">(</span><span class="n">one</span><span class="p">)</span><span class="c1">// 不能直接相加，需要类型转换</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h5 id="integer-and-floating-point-conversion">Integer and Floating-Point Conversion：整型浮点型转换</h5>
+<p>必须显式指定类型，否则报错</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">three</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="k">let</span> <span class="nv">pointOneFourOneFiveNine</span> <span class="o">=</span> <span class="mf">0.14159</span>
+<span class="k">let</span> <span class="nv">papi</span> <span class="o">=</span>  <span class="n">three</span><span class="o">+</span><span class="n">pointOneFourOneFiveNine</span> <span class="c1">// 报错</span>
+<span class="k">let</span> <span class="nv">pi</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">pointOneFourOneFiveNine</span> <span class="c1">// OK,is inferred to be of type Double</span>
+<span class="k">let</span> <span class="nv">integerPi</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="c1">// integerPi equals 3, and is inferred to be of type Int</span>
+
+</code></pre>
+</div>
+
+<p><strong>注意：如下代码，如果数字没有被明确指定类型，那么他们的类型会在编译需要时被推测。</strong>
+<strong>但是如果已经显式之处了类型，必须先进行类型转换，才能够运算</strong></p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">twoThousand</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">2_000</span>
+<span class="k">let</span> <span class="nv">one</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">let</span> <span class="nv">e1</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="mi">10</span> <span class="c1">// ok  类型会在编译需要时被推测</span>
+<span class="k">let</span> <span class="nv">e2</span> <span class="o">=</span> <span class="n">twoThousand</span><span class="o">+</span><span class="n">one</span> <span class="c1">// 报错</span>
+
+</code></pre>
+</div>
+
+<h3 id="type-aliases">Type Aliases：类型别名</h3>
+
+<p>自定义符合自己风格或者更有意义的名字：AudioSample代表UInt16</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">typealias</span> <span class="kt">AudioSample</span> <span class="o">=</span> <span class="kt">UInt16</span>
+<span class="k">var</span> <span class="nv">maxAmplitudeFound</span> <span class="o">=</span> <span class="kt">AudioSample</span><span class="o">.</span><span class="n">min</span>
+</code></pre>
+</div>
+
+<h3 id="booleans">Booleans</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">orangesAreOrange</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="k">let</span> <span class="nv">turnipsAreDelicious</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="k">if</span> <span class="n">turnipsAreDelicious</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Mmm, tasty turnips!"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Eww, turnips are horrible."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "Eww, turnips are horrible."</span>
+
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">i</span> <span class="p">{</span>
+    <span class="c1">// 报错而不会编译，因为在该使用BOOL的地方使用了非BOOL值</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+    <span class="c1">// compile successfully</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="tuples">Tuples：元组</h3>
+
+<p>把多个值符合组成一个复合值，其中类型没要求，是任意类型。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、http404Error的元组</span>
+<span class="k">let</span> <span class="nv">http404Error</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
+<span class="c1">// http404Error is of type (Int, String), and equals (404, "Not Found")</span>
+
+<span class="c1">// 2、元组的内容可以取出作为单独的常量和变量：</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMessage</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">statusMessage</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is Not Found"</span>
+
+<span class="c1">// 3、可以忽略不需要的元组值，通过使用下滑线_</span>
+<span class="nf">let</span> <span class="p">(</span><span class="n">justTheStatusCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Error</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">justTheStatusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+
+<span class="c1">// 4、使用索引访问元组</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 404"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http404Error</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is Not Found"</span>
+
+<span class="c1">// 5、定义元组时可以分别命名各个元素</span>
+<span class="k">let</span> <span class="nv">http200Status</span> <span class="o">=</span> <span class="p">(</span><span class="nv">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status code is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">statusCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status code is 200"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The status message is </span><span class="se">\(</span><span class="n">http200Status</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "The status message is OK"</span>
+
+</code></pre>
+</div>
+<p>注意：</p>
+<ul>
+  <li>元组在临时数据中非常有用，但不适合用于创建复杂的数据结构(使用类或者结构体等)。</li>
+  <li>将元组用作函数返回值是不错的选择。</li>
+</ul>
+
+<h3 id="optionals">Optionals：可选类型</h3>
+
+<p>在C或者OC中没有可选类型的概念，譬如下面的代码，可以看出其用处</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 将String转Int：</span>
+<span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">let</span> <span class="nv">possibleNumber2</span> <span class="o">=</span> <span class="s">"www.3code.info"</span>
+<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">//被推测为类型 "Int?", or "optional Int"</span>
+<span class="k">let</span> <span class="nv">convertedNumber2</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber2</span><span class="p">)</span> <span class="c1">//不会报错的，是可选类型</span>
+</code></pre>
+</div>
+<p>那么convertedNumber的类型是：Int?,而不是Int，意即是不明确的。？表示可能是Int，也可能是其他类型宁，或者是不存的。</p>
+
+<h5 id="nil">nil</h5>
+<p>Swift中的nil和OC的不太一样，这里并不是指针，他是指某种类型的缺省值。任意类型都可以被设置为nil，而不仅仅是对象类型。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">serverResponseCode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">404</span>
+<span class="k">var</span> <span class="nv">serverResponseCode2</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">404</span>
+ 
+<span class="n">serverResponseCode</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// OK</span>
+<span class="n">serverResponseCode2</span> <span class="o">=</span> <span class="kc">nil</span> <span class="c1">// 报错</span>
+
+<span class="k">var</span> <span class="nv">surveyAnswer</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="c1">// 缺省的定义，value默认是nil</span>
+
+</code></pre>
+</div>
+<p>注意：nil是不能在不可选类型中使用的。</p>
+
+<h5 id="if-statements-and-forced-unwrappingif">If Statements and Forced Unwrapping:if和强制解析</h5>
+
+<p>强制解析:可以在可选类型后添加!来取出其中的数值，前提是存在数值。这就是强制解析。！表示我知道这个可选类型一定有数值，请使用这个数值。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">let</span> <span class="nv">convertedNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="c1">// 可选类型</span>
+
+<span class="c1">// 可以通过if来判断上诉可选类型是否有值</span>
+<span class="k">if</span> <span class="n">convertedNumber</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="c1">// 通过!来取出可选类型的值。</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"convertedNumber has an integer value of </span><span class="se">\(</span><span class="n">convertedNumber</span><span class="o">!</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+    <span class="c1">// Prints "convertedNumber has an integer value of 123."</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>注意：只有在确定可选类型有值之后，才可以强制解析值，否则运行时会报错</p>
+
+<h5 id="optional-binding">Optional Binding：可选绑定</h5>
+
+<p>可选绑定用来判断可选类型是否包含值，如果包含就把值赋给临时常变量，可以用在if while 中，如下
+标准格式;</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="kd">let</span> <span class="nx">constantName</span> <span class="o">=</span> <span class="nx">someOptional</span> <span class="p">{</span>
+    <span class="nx">statements</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>如下代码表示：如果可选类型possibleNumber(Int？)包含一个数值，那么就将其值赋给新建的常量actualNumber，</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">possibleNumber</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">actualNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">possibleNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> has an integer value of </span><span class="se">\(</span><span class="n">actualNumber</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\"\(</span><span class="n">possibleNumber</span><span class="se">)\"</span><span class="s"> could not be converted to an integer"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints ""123" has an integer value of 123"</span>
+</code></pre>
+</div>
+
+<p>如果一个可选绑定的值是nil或者BOOL计算结果是false。那么整个if的条件都是false的。如下：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">),</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">),</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//【上边代码等价于下边代码】 Prints "4 &lt; 42 &lt; 100"</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="nv">firstNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"4"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">secondNumber</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">firstNumber</span> <span class="o">&lt;</span> <span class="n">secondNumber</span> <span class="o">&amp;&amp;</span> <span class="n">secondNumber</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">firstNumber</span><span class="se">)</span><span class="s"> &lt; </span><span class="se">\(</span><span class="n">secondNumber</span><span class="se">)</span><span class="s"> &lt; 100"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h5 id="implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals：隐式可选类型</h5>
+<p>上边介绍的可选类型，可以通过if判断是否有值，然后强制解析取值，或者可选绑定取值。</p>
+
+<p>但也有一种情形:隐式可选类型，定义之后就一直是值的，需要将？改为！。其实隐式可选类型是普通的可选类型，但是可以被当做非可选类型来使用，并不需要每次都是用解析来取值。一般用于类的构造中。</p>
+
+<p>如下可以看出差异:隐式可选类型可以自动解析类型</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 可选类型</span>
+<span class="k">let</span> <span class="nv">possibleString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"An optional string."</span>
+<span class="k">let</span> <span class="nv">forcedString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">possibleString</span><span class="o">!</span> 
+
+
+<span class="c1">// 隐式可选类型</span>
+<span class="k">let</span> <span class="nv">assumedString</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">"An implicitly unwrapped optional string."</span>
+<span class="k">let</span> <span class="nv">implicitString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">assumedString</span>  
+<span class="c1">// 当做普通的可选类型进行判断：</span>
+<span class="k">if</span> <span class="n">assumedString</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">assumedString</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 可选绑定：</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">definiteString</span> <span class="o">=</span> <span class="n">assumedString</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">definiteString</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>注意：</p>
+<ul>
+  <li>在隐式可选类型没有数据的时候尝试取值，会触发运行时错误。</li>
+  <li>如果一个变量可能变成nil的话，请不要使用隐式可选类型，要使用可选类型。</li>
+</ul>
+
+<h3 id="error-handling">Error Handling：错误处理</h3>
+
+<p>可以在函数声明中添加关键字：throws。那么当函数执行遇到错误时，会抛出一个错误。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">canThrowAnError</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
+    <span class="c1">// this function may or may not throw an error</span>
+<span class="p">}</span>
+<span class="c1">// 如果出现错误，在下边会抛出</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="nf">canThrowAnError</span><span class="p">()</span>
+    <span class="c1">// no error was thrown</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="c1">// an error was thrown</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>如下细分了错误的情况，以及相应的措施：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">makeASandwich</span><span class="p">()</span> <span class="k">throws</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+ 
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="nf">makeASandwich</span><span class="p">()</span>
+    <span class="nf">eatASandwich</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="n">outOfCleanDishes</span> <span class="p">{</span>
+    <span class="nf">washDishes</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">SandwichError</span><span class="o">.</span><span class="nf">missingIngredients</span><span class="p">(</span><span class="k">let</span> <span class="nv">ingredients</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">buyGroceries</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="assertions">Assertions：断言</h3>
+
+<p>可选类型可以判断值是否存在，处理缺省情况。然而当值缺省时，代码可能就没法继续了。这是需要在代码中植入断言，代码触发断言来结束运行。</p>
+
+<p>格式：assert(<em>:</em>:file:line:) 这是全局函数。</p>
+
+<h5 id="debugging-with-assertions">Debugging with Assertions：使用断言调试</h5>
+<p>在调试环境中的合适位置加入断言，将有助于代码调试。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"A person's age cannot be less than zero"</span><span class="p">)</span>
+<span class="c1">// 或者如下：</span>
+<span class="nf">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>注意：当代码编译时，断言将会被禁用。</p>
+
+<h5 id="when-to-use-assertions">When to Use Assertions：何时使用断言</h5>
+
+<p>当条件可能是假，但是最终一定要保证为真，那么就得使用断言。如下情形：</p>
+<ul>
+  <li>断言是否”数组越界”;</li>
+  <li>断言给函数传递的值，是否合法；</li>
+  <li>可选类型是否为nil；</li>
+</ul>
+
+<p>注意：断言会终止程序运行。</p>
+
+<p>OK.以上是基础部分。花了我整整3.5h，由于速度比较快，不能保证准确度。后续将会加快进度，略去基础的细节，呈现实用的部分。</p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/20/swift_I_guide/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/10/pythonGetFund/">python脚本 - 开机自动爬基金数据</a>
                 </h2>
                 <div class="label">
@@ -1052,209 +1650,6 @@ objc_getAssociatedObject</p>
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/04/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-04
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>&nbsp;
-    
-        <a href="/tag/#Logos" title="Tag: Logos" rel="tag">Logos</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
-  <li><a href="#makefile" id="markdown-toc-makefile">2、Makefile</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">2.1 基本配置</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">2.2 指定处理器架构</a></li>
-      <li><a href="#sdk" id="markdown-toc-sdk">2.3 指定SDK版本</a></li>
-      <li><a href="#framework" id="markdown-toc-framework">2.4 导入framework</a></li>
-      <li><a href="#mach-omach-o-object" id="markdown-toc-mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>待整理</strong></p>
-
-<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
-怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
-
-<h2 id="section">1、说明</h2>
-<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
-projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
-
-<p>参考教程：</p>
-
-<p>Logos 语法
-<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
-
-<p>Makefile
-<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-<p>debian的官网
-<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
-
-<h2 id="makefile">2、Makefile</h2>
-
-<h5 id="section-1">2.1 基本配置</h5>
-
-<p>Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>#固定写法:系统变量，不要更改。
-#告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
-include $(THEOS)/makefiles/common.mk
-
-#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
-TWEAK_NAME = projectBy3code
-
-#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
-#这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
-projectBy3code_FILES = Tweak.xm
-
-#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
-include $(THEOS_MAKE_PATH)/tweak.mk
-
-#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
-after-install::
-		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
-</code></pre>
-</div>
-
-<p>是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：</p>
-
-<h5 id="section-2">2.2 指定处理器架构</h5>
-
-<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
-</code></pre>
-</div>
-
-<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
-You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
-
-<h5 id="sdk">2.3 指定SDK版本</h5>
-
-<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
-
-<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
-方法如下：
- you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
-
-<p>SDKVERSION = 9.3
-SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
-
-<p>TARGET = iphone::9.2:9.0</p>
-
-<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
-</code></pre>
-</div>
-
-<p>比如：TARGET = iphone:8.1:8.0
-   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0</p>
-
-<h5 id="framework">2.4 导入framework</h5>
-<p>这里包括你想用到框架的名称</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
-</code></pre>
-</div>
-
-<p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
-上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
-</code></pre>
-</div>
-
-<p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
-TARGET = iphone:latest:7.0
-include theos/makefiles/common.mk
-TWEAK_NAME = projectBy3code
-projectBy3code_FILES = Tweak.xm
-projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
-include $(THEOS_MAKE_PATH)/tweak.mk
-after-install::
-      install.exec "killall -9 SpringBoard"
-</code></pre>
-</div>
-<p>上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。</p>
-
-<h5 id="mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</h5>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lx
-</code></pre>
-</div>
-
-<p>Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
-</code></pre>
-</div>
-
-<p>大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
-</code></pre>
-</div>
-
-<p>稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/04/3_Theos_-fourFile/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1282,6 +1677,8 @@ after-install::
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Unix/">Unix 入门</a></li>
+                    
                         <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
@@ -1299,8 +1696,6 @@ after-install::
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
-                    
-                        <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                 </ul>
             </div>
@@ -1386,9 +1781,18 @@ after-install::
                     </li>
                     
                     <li>
-                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
                             <span class="name">
-                                脚本
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1675,7 +2079,14 @@ after-install::
                       
                       
                       
-                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
                     
                 </div>
             </div>

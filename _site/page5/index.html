@@ -151,6 +151,209 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/11/04/3_Theos_-fourFile/">iOS逆向系列3_Theos_file简介及Logos基本语法</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-11-04
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Theos" title="Tag: Theos" rel="tag">Theos</a>&nbsp;
+    
+        <a href="/tag/#Logos" title="Tag: Logos" rel="tag">Logos</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、说明</a></li>
+  <li><a href="#makefile" id="markdown-toc-makefile">2、Makefile</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">2.1 基本配置</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2.2 指定处理器架构</a></li>
+      <li><a href="#sdk" id="markdown-toc-sdk">2.3 指定SDK版本</a></li>
+      <li><a href="#framework" id="markdown-toc-framework">2.4 导入framework</a></li>
+      <li><a href="#mach-omach-o-object" id="markdown-toc-mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>待整理</strong></p>
+
+<p>在iosOpenDev之前，很多ios插件都使用theos编译开发，现在使用theos开发的人也不在少数。theos 有自己的模板用于开发一系列的插件程序，所以在早期开发的插件中基本上都是使用theos。
+怎样安装theos，在前边的文章已有介绍：<a href="">传送门</a></p>
+
+<h2 id="section">1、说明</h2>
+<p>使用theos创建工程：projectBy3code。文件夹内有四个文件：
+projectBy3code.plist、Makefile、Tweak.xm、control 下面分别介绍这四个文件</p>
+
+<p>参考教程：</p>
+
+<p>Logos 语法
+<a href="http://iphonedevwiki.net/index.php/Logos">http://iphonedevwiki.net/index.php/Logos</a></p>
+
+<p>Makefile
+<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+<p>debian的官网
+<a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">http://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+
+<h2 id="makefile">2、Makefile</h2>
+
+<h5 id="section-1">2.1 基本配置</h5>
+
+<p>Makefile文件指定工程用到的文件、框架、库等信息。projectBy3code的Makefile内容以及解释如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#固定写法:系统变量，不要更改。
+#告诉theOS在编译脚本中包括共同的make命令，避免做重复的make编译工作
+include $(THEOS)/makefiles/common.mk
+
+#tweak的名字，即用Theos创建工程时指定的“Project Name”，跟control文件中的“Name”字段对应，不要更改。
+TWEAK_NAME = projectBy3code
+
+#tweak包含的源文件（不包括头文件），多个文件间以空格分隔，如： projectBy3code_FILES = Tweak.xm Hook.xm New.x ObjC.m ObjC++.mm.头文件是可以按需修改的。
+#这里是需要编译的文件列表，注意：不要把头文件添加到这里。如果你要添加一个新的.m或者.mm文件到项目中，确保在这里添加新的文件的名称，否则将不会建立编译连接。
+projectBy3code_FILES = Tweak.xm
+
+#根据不同的Theos工程类型，通过include命令指定不同的.mk文件；在逆向工程初级阶段，我们开发的一般是Application、Tweak和Tool三种类型的程序，它们对应的.mk文件分别是application.mk、tweak.mk和tool.mk，可以按需更改。	
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+#tweak安装之后杀掉SpringBoard进程，好让CydiaSubstrate在进程启动时加载对应的dylib。
+after-install::
+		install.exec "killall -9 SpringBoard; killall -9 Instantiating; killall -9 iphone/tweak; killall -9 in; killall -9 projectBy3code/..."
+</code></pre>
+</div>
+
+<p>是不是非常简单？Makefile里的默认内容确实非常简单，如何指定SDK版本？怎么导入framework？lib文件在哪里链接？，面包会有的，牛奶也会有的。下面介绍：</p>
+
+<h5 id="section-2">2.2 指定处理器架构</h5>
+
+<p><strong>这里不需要明确的指出，可以不加这一条！！原因是5s使用的64位处理器，不能用armv7指令集，所以需要在Makefile里将armv7更改为arm64，因此不要加，可能得不偿失.除非明确，否则不要加如下代码</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+</code></pre>
+</div>
+
+<p>上面的语句在表示不同的处理器架构，采用arm64架构的App不兼容armv7/armv7s架构，必须适配arm64架构的dylib。
+You shouldn’t need to explicitly set ARCHS unless you have a very good reason. Theos will always ensure it is set to an appropriate value for your SDK and deployment targets.</p>
+
+<h5 id="sdk">2.3 指定SDK版本</h5>
+
+<p>默认是：iphone:clang:latest:latest。意即meaning to build for iOS, using clang, with the latest SDK version, deploying to support iOS versions matching the SDK version, or newer。</p>
+
+<p>SDK可以放在xcode的包路径里面，或者最好的是放在theos里，然后设置路径即可。
+方法如下：
+ you should edit ~/.theosrc (which probably doesn’t exist, so create it) and insert something along the lines of:</p>
+
+<p>SDKVERSION = 9.3
+SYSROOT = $(THEOS)/sdks/iPhoneOS9.3.sdk</p>
+
+<p>TARGET = iphone::9.2:9.0</p>
+
+<p>Which indicates that you are building for iOS, using SDK 9.2, and intending to support iOS 9.0 and newer.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>TARGET = iphone:latest:8.0
+</code></pre>
+</div>
+
+<p>比如：TARGET = iphone:8.1:8.0
+   上面的语句即指定采用8.1版本的SDK，且发布对象为iOS 8.0及以上版本。也可以把“Base SDK”设置为“latest”，指定以Xcode附带的最新版本SDK编译，如：TARGET = iphone:latest:8.0</p>
+
+<h5 id="framework">2.4 导入framework</h5>
+<p>这里包括你想用到框架的名称</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_FRAMEWORKS =  UIKit CoreTelephony CoreAudio
+</code></pre>
+</div>
+
+<p>例如：projectBy3code_FRAMEWORKS = UIKit CoreTelephony CoreAudio
+上面的语句所展示的功能没什么多说的，但既然是tweak开发，很多朋友关注的应该是如何导入private framework吧？很简单，用下面的语句即可：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore 例如：projectBy3code_PRIVATE_FRAMEWORKS = AppSupport ChatKit IMCore
+</code></pre>
+</div>
+
+<p>虽然只是多了个“PRIVATE”，但有一点要注意：private framework是AppStore开发所不允许使用的，它的内容在每个iOS版本之间可能发生变化，在导入之前，一定要确定导入的private framework确实存在。举一个例子，如果你的tweak打算兼容iOS 7和iOS 8两个版本，那么Makefile可写成如下内容：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ARCHS = armv7 arm64
+TARGET = iphone:latest:7.0
+include theos/makefiles/common.mk
+TWEAK_NAME = projectBy3code
+projectBy3code_FILES = Tweak.xm
+projectBy3code_PRIVATE_FRAMEWORK = BaseBoard
+include $(THEOS_MAKE_PATH)/tweak.mk
+after-install::
+      install.exec "killall -9 SpringBoard"
+</code></pre>
+</div>
+<p>上面的语句可以成功编译和链接，并不会报错。但是，因为BaseBoard这个private framework只存在于8.0及以上版本的SDK里，在iOS 7里是没有的，所以这个tweak在iOS 7中会因找不到framework而无法正常工作。这种情况可以通过弱链接（谷歌搜索“makefile weak linking”）或dlopen()、dlsym()和dlclose()系列函数动态调用private framework来解决。</p>
+
+<h5 id="mach-omach-o-object">2.5 链接Mach-O对象（Mach-O object）</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lx
+</code></pre>
+</div>
+
+<p>Theos采用GNU Linker来链接Mach-O对象，包括.dylib、.a和.o。在Terminal中输入“man ld”，定位到“-lx”部分，它是这么写的：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>“-lx This option tells the linker to search for libx.dylib or libx.a in the library search path.If string x is of the form y.o,then that file is searched for in the “same places,but without prepending`lib’or appending`.a’or`.dylib’to the filename.”
+</code></pre>
+</div>
+
+<p>大致意思是说，-lx代表链接libx.a或libx.dylib，即给“x”加上“lib”的前缀，以及“.a”或“.dylib”的后缀；如果x是“y.o”的形式，则直接链接y.o，不加任何前缀或后缀。iOS支持链接的Mach-O对象全是以“libx.dylib”和“y.o”形式命名的，完全兼容GNU Linker。“这样，链接Mach-O对象就很方便了。例如，要链接libsqlite3.0.dylib、libz.dylib和dylib1.o，像下面这么写就可以了：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>projectBy3code_LDFLAGS = -lz –lsqlite3.0 –dylib1.o
+</code></pre>
+</div>
+
+<p>稍后还有一个字段需要介绍，但一般来说，Makefile中定义了以上字段就已经完全够用了；更详细的Makefile介绍，可以参阅<a href="http://www.gnu.org/software/make/manual/html_node/Makefiles.html">http://www.gnu.org/software/make/manual/html_node/Makefiles.html</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/11/04/3_Theos_-fourFile/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/11/02/2_Theos_-install&run/">iOS逆向系列2_Theos_安装编译打包运行</a>
                 </h2>
                 <div class="label">
@@ -985,76 +1188,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/05/18/tree/">使用 tree 形展示目录结构</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-05-18
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>3行代码
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#tips" title="Category: tips" rel="category">tips</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#mac_tips" title="Tag: mac_tips" rel="tag">mac_tips</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>其实也蛮简单的,一行命令即可:</p>
-
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="n">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">print</span> <span class="o">|</span> <span class="n">sed</span> <span class="o">-</span><span class="n">e</span> <span class="err">'</span><span class="n">s</span><span class="p">;[</span><span class="o">^/</span><span class="p">]</span><span class="err">*/</span><span class="p">;</span><span class="o">|</span><span class="n">____</span><span class="p">;</span><span class="n">g</span><span class="p">;</span><span class="n">s</span><span class="p">;</span><span class="n">____</span><span class="o">|</span><span class="p">;</span> <span class="o">|</span><span class="p">;</span><span class="n">g</span><span class="err">'</span>
-</code></pre>
-</div>
-
-<p>但是每次都这么输,就有点吃力,最好是简化为使用一个命令, tree 即可达到一行命令的效果.</p>
-
-<p>也就是使用别名的形式:使用  alias 指定别名的方法</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/05/18/tree/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1082,6 +1215,8 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/03/04/Unix/">Unix 入门</a></li>
+                    
                         <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
                     
                         <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
@@ -1099,8 +1234,6 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                         <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
                     
                         <li><a href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a></li>
-                    
-                        <li><a href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a></li>
                     
                 </ul>
             </div>
@@ -1186,9 +1319,18 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                     </li>
                     
                     <li>
-                        <a href="/category/#脚本" class="categories-list-item" cate="脚本">
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
                             <span class="name">
-                                脚本
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1475,7 +1617,14 @@ Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略�
                       
                       
                       
-                      <a href="/tag/#shell" style="font-size: 9pt; color: #999;">shell</a>
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
                     
                 </div>
             </div>
