@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Feb 2017 21:57:24 +0800</pubDate>
-    <lastBuildDate>Sun, 12 Feb 2017 21:57:24 +0800</lastBuildDate>
+    <pubDate>Wed, 08 Mar 2017 13:00:18 +0800</pubDate>
+    <lastBuildDate>Wed, 08 Mar 2017 13:00:18 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -1767,7 +1767,7 @@ copyright &quot;#{Time.now.year} 3code&quot;
       &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;脚本打生产包&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;#&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#shell-&quot; id=&quot;markdown-toc-shell-&quot;&gt;shell 脚本打包实战&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;基础知识&lt;/h3&gt;
@@ -1857,7 +1857,7 @@ Interface Builder (nib) files&lt;/p&gt;
 
 &lt;h5 id=&quot;xcodebuild&quot;&gt;2. Xcodebuild&lt;/h5&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 功能选项没有,放进来,主要是用于编译的命令
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 功能选项没有放进来,主要是用于编译的命令
 
 Available keys for -exportOptionsPlist:
 
@@ -1965,19 +1965,45 @@ AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
 
 &lt;h5 id=&quot;section-3&quot;&gt;脚本打生产包&lt;/h5&gt;
 
-&lt;h2 id=&quot;section-4&quot;&gt;#&lt;/h2&gt;
+&lt;h3 id=&quot;shell-&quot;&gt;shell 脚本打包实战&lt;/h3&gt;
 
-&lt;p&gt;参考资料:&lt;/p&gt;
+&lt;p&gt;这里参考了 &lt;a href=&quot;http://blog.nswebfrog.com/2013/02/18/ios-automation/&quot;&gt;博文&lt;/a&gt;,&lt;a href=&quot;https://github.com/webfrogs/xcode_shell&quot;&gt;代码&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;备份脚本&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载完脚本之后,解读如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ipa-build:  编译xcode工程并生成ipa文件
+ipa-publish: 生成符合itms-services协议的文件,并发布到服务器
+sendEmail:  stmp发送email的脚本
+sftpDownloadFile: 通过sftp协议下载文件
+sftpUploadFile: 通过sftp协议上传文件
+updateLocalIndexHtml:  对索引文件进行处理(二进制文件,非shell脚本)
+uploadItemsServicesFiles:   将itms-services协议文件上传到服务器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;而实际使用的脚本是: ipa-build 和 ipa-publish ,其他文件是,ipa-publish这个脚本调用的依赖文件&lt;/p&gt;
+
+&lt;p&gt;ipa-build 使用方法如下:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型(Debug\ AdHoc\Release\Distribution)
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ipa-build 脚本运行后,会在 iOS 工程根路径下生成名为 “build” 的文件夹,在这个文件夹中又有一个名为 “ipa-build” 的文件夹,打包所生成的最新 ipa 包就在其中.&lt;/p&gt;
+
+&lt;p&gt;ipa-publish 使用方法如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型 打包 ipa(如果已经生成过,忽略)
+# 3. 上传 ftp.
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://zackzheng.info/2015/12/27/2015-12-27-an-automated-script-for-building-archiving-submission-sending-emails/&quot;&gt;教程1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://wangjordy.github.io/blog/2015/06/25/xcodebuildtools/&quot;&gt;教程2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/brycezhang/p/4097487.html&quot;&gt;教程3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://3426724.blog.51cto.com/3416724/883484&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000004533963&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.reviewcode.cn/article.html?reviewId=11&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://victorchee.github.io/blog/package-adHoc-ipa/&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/9ee0ba3af81a&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://blog.nswebfrog.com/2013/02/18/ios-automation/&quot;&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/webfrogs/xcode_shell&quot;&gt;脚本代码&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://itunesconnect.apple.com/docs/UsingApplicationLoader.pdf&quot;&gt;ApplicationLoader 官方使用指南&lt;/a&gt;&lt;/li&gt;

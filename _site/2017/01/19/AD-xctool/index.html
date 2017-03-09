@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>持续集成系列 - Xcode 的脚本世界</title>
-    <meta name="description" content="  基础知识          1. 嵌入 Xcode 项目的脚本      2. Xcodebuild        脚本打包          1.准备Plist文件:      脚本打测试包      脚本打生产包        #基础知识现在有两个需求:  打一个 AdHoc 测试包,发送给测试人员进行测...">
+    <meta name="description" content="  基础知识          1. 嵌入 Xcode 项目的脚本      2. Xcodebuild        脚本打包          1.准备Plist文件:      脚本打测试包      脚本打生产包        shell 脚本打包实战基础知识现在有两个需求:  打一个 AdHoc 测试包...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -213,7 +213,7 @@
       <li><a href="#section-3" id="markdown-toc-section-3">脚本打生产包</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">#</a></li>
+  <li><a href="#shell-" id="markdown-toc-shell-">shell 脚本打包实战</a></li>
 </ul>
 
 <h3 id="section">基础知识</h3>
@@ -303,7 +303,7 @@ Interface Builder (nib) files</p>
 
 <h5 id="xcodebuild">2. Xcodebuild</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 功能选项没有,放进来,主要是用于编译的命令
+<div class="highlighter-rouge"><pre class="highlight"><code># 功能选项没有放进来,主要是用于编译的命令
 
 Available keys for -exportOptionsPlist:
 
@@ -411,19 +411,45 @@ AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
 
 <h5 id="section-3">脚本打生产包</h5>
 
-<h2 id="section-4">#</h2>
+<h3 id="shell-">shell 脚本打包实战</h3>
 
-<p>参考资料:</p>
+<p>这里参考了 <a href="http://blog.nswebfrog.com/2013/02/18/ios-automation/">博文</a>,<a href="https://github.com/webfrogs/xcode_shell">代码</a></p>
+
+<p><a href="">备份脚本</a></p>
+
+<p>下载完脚本之后,解读如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ipa-build:  编译xcode工程并生成ipa文件
+ipa-publish: 生成符合itms-services协议的文件,并发布到服务器
+sendEmail:  stmp发送email的脚本
+sftpDownloadFile: 通过sftp协议下载文件
+sftpUploadFile: 通过sftp协议上传文件
+updateLocalIndexHtml:  对索引文件进行处理(二进制文件,非shell脚本)
+uploadItemsServicesFiles:   将itms-services协议文件上传到服务器
+</code></pre>
+</div>
+
+<p>而实际使用的脚本是: ipa-build 和 ipa-publish ,其他文件是,ipa-publish这个脚本调用的依赖文件</p>
+
+<p>ipa-build 使用方法如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型(Debug\ AdHoc\Release\Distribution)
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<p>ipa-build 脚本运行后,会在 iOS 工程根路径下生成名为 “build” 的文件夹,在这个文件夹中又有一个名为 “ipa-build” 的文件夹,打包所生成的最新 ipa 包就在其中.</p>
+
+<p>ipa-publish 使用方法如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型 打包 ipa(如果已经生成过,忽略)
+# 3. 上传 ftp.
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
 <ul>
-  <li><a href="http://zackzheng.info/2015/12/27/2015-12-27-an-automated-script-for-building-archiving-submission-sending-emails/">教程1</a></li>
-  <li><a href="http://wangjordy.github.io/blog/2015/06/25/xcodebuildtools/">教程2</a></li>
-  <li><a href="http://www.cnblogs.com/brycezhang/p/4097487.html">教程3</a></li>
-  <li><a href="http://3426724.blog.51cto.com/3416724/883484"></a></li>
-  <li><a href="https://segmentfault.com/a/1190000004533963"></a></li>
-  <li><a href="http://www.reviewcode.cn/article.html?reviewId=11"></a></li>
-  <li><a href="http://victorchee.github.io/blog/package-adHoc-ipa/"></a></li>
-  <li><a href="http://www.jianshu.com/p/9ee0ba3af81a"></a></li>
-  <li><a href="http://blog.nswebfrog.com/2013/02/18/ios-automation/"></a></li>
   <li></li>
   <li><a href="https://github.com/webfrogs/xcode_shell">脚本代码</a></li>
   <li><a href="https://itunesconnect.apple.com/docs/UsingApplicationLoader.pdf">ApplicationLoader 官方使用指南</a></li>
