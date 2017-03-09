@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>3行代码</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/page2/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" index>
+    <div class="left">
+        <h1>Welcome to 3code.info!</h1>
+        <small>记录生活</small>
+        <hr>
+        <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/01/19/AD-xctool/">持续集成系列 - Xcode 的脚本世界</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-19
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Termianl" title="Tag: Termianl" rel="tag">Termianl</a>&nbsp;
+    
+        <a href="/tag/#xctool" title="Tag: xctool" rel="tag">xctool</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">基础知识</a>    <ul>
+      <li><a href="#xcode-" id="markdown-toc-xcode-">1. 嵌入 Xcode 项目的脚本</a></li>
+      <li><a href="#xcodebuild" id="markdown-toc-xcodebuild">2. Xcodebuild</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">脚本打包</a>    <ul>
+      <li><a href="#plist" id="markdown-toc-plist">1.准备Plist文件:</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">脚本打测试包</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">脚本打生产包</a></li>
+    </ul>
+  </li>
+  <li><a href="#shell-" id="markdown-toc-shell-">shell 脚本打包实战</a></li>
+</ul>
+
+<h3 id="section">基础知识</h3>
+
+<p>现在有两个需求:</p>
+
+<ul>
+  <li>打一个 AdHoc 测试包,发送给测试人员进行测试</li>
+  <li>打一个 生产包,上线 ITC</li>
+</ul>
+
+<p>以上如果人工手动操作,挺耗时耗力的,而自动化则可以完美解决.自动化打包包括两种途径:</p>
+<ul>
+  <li>使用 Apple 自出品的脚本语言: AppleScript;</li>
+  <li>使用 shell 或者 python</li>
+</ul>
+
+<p>以下的操作基本是基于 Xcode 自带的命令行工具: Command Line Tools ,其包含两个重要的工具:
+xcodebuild 和 xcrun.相关工具及概念如下:</p>
+
+<ul>
+  <li>xcodebuild 主要用于编译和打包,<code class="highlighter-rouge">$ xcodebuild -help</code> 可以查看用法</li>
+  <li>xcrun 主要用于打包 <code class="highlighter-rouge">xcrun -h</code></li>
+  <li>以及 altool ,用于上传二进制文件到 ITC</li>
+  <li>Workspace、Project、Scheme、Target的区别:</li>
+</ul>
+
+<blockquote>
+  <p>Workspace: 是最大的集合,可以包含多个Project,可以管理不同的Project之间的关系.Workspace是以xcworkspace的文件形式存在的(和Project一致).Workspace的存在是为了解决原来仅有Project的时候不同的Project之间的引用和调用困难的问题.同时,一个Workspace的Project共用一个编译路径。比如使用CocoaPod或者使用其他开发库\框架.</p>
+
+  <p>Project: 是一个仓库,包含编译一个或多个product所需的文件\资源和信息,保持和聚合这些元素间的关系(每个Target能指定自己的Build Settings来覆盖Project),一般包含的内容如下:</p>
+
+  <blockquote>
+    <p>Source code, including header files and implementation files
+Libraries and frameworks, internal and external
+Resource files
+Image files
+Interface Builder (nib) files</p>
+  </blockquote>
+
+  <p>Scheme: 包含了一些要构建的Scheme,一些构建时用到的设置,一些要运行的测试.同时只能有一个Scheme是有效的.</p>
+
+  <p>Target: 是对应了具体一个想要构建的Product,包含了一些构建这个Product所需的配置和文件(build settings和build phases).一个Project可以包含多个Target.</p>
+
+</blockquote>
+
+<h5 id="xcode-">1. 嵌入 Xcode 项目的脚本</h5>
+
+<ul>
+  <li>脚本的位置:</li>
+</ul>
+
+<blockquote>
+  <p>Build Phases -&gt; 点击左上角+ -&gt; 添加 Run Script (运行脚本) -&gt; 添加脚本即可
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0190a69476.png" alt="374E29EC-49D9-4348-BA45-56B665CA4448.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0193db099b.png" alt="81EB716F-2F50-426D-BDBF-C0E2C1EF566E.png" /></p>
+
+  <p>默认的是 shell 脚本.需要修改成 py 脚本.</p>
+</blockquote>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 查看 python 解释器的位置:</span>
+<span class="gp">$ </span>whereis python
+/usr/bin/python
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>首先将上方的脚本解释器 由 <code class="highlighter-rouge">/bin/sh </code>修改为 <code class="highlighter-rouge">/usr/bin/python </code></p>
+  </li>
+  <li>
+    <p>然后添加脚本:在编译时,修改一个main.cpp文件的内容:</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">cppfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/Users/jiangxiaocai/Desktop/Test/main.cpp'</span><span class="p">,</span><span class="s">'w'</span><span class="p">)</span>
+<span class="n">outstr</span> <span class="o">=</span> <span class="s">"// 修改.cpp 文件"</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outstr</span><span class="p">)</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/12/58a01bc9a01d9.png" alt="C34DFE25-2477-457F-B57A-26D805A55F96.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a01be30a2d1.png" alt="06809A1C-87D3-4E9F-AC10-4FFB63193CE6.png" /></p>
+
+<h5 id="xcodebuild">2. Xcodebuild</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 功能选项没有放进来,主要是用于编译的命令
+
+Available keys for -exportOptionsPlist:
+
+    compileBitcode : Bool
+
+        # For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.
+
+    embedOnDemandResourcesAssetPacksInBundle : Bool
+
+        # For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.
+
+    iCloudContainerEnvironment
+
+        # For non-App Store exports, if the app is using CloudKit, this configures the "com.apple.developer.icloud-container-environment" entitlement. Available options: Development and Production. Defaults to Development.
+
+    manifest : Dictionary
+
+        # For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.
+
+    method : String
+
+        # Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.
+
+    onDemandResourcesAssetPacksBaseURL : String
+
+        # For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn't YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.
+
+    teamID : String
+
+        # The Developer Portal team to use for this export. Defaults to the team used to build the archive.
+
+    thinning : String
+
+        # For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: &lt;none&gt; (Xcode produces a non-thinned universal app), &lt;thin-for-all-variants&gt; (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. "iPhone7,1"). Defaults to &lt;none&gt;.
+
+    uploadBitcode : Bool
+
+        # For App Store exports, should the package include bitcode? Defaults to YES.
+
+    uploadSymbols : Bool
+
+        # For App Store exports, should the package include symbols? Defaults to YES.
+
+</code></pre>
+</div>
+
+<h3 id="section-1">脚本打包</h3>
+
+<p>一般来说实现实现方式有两种:</p>
+
+<ul>
+  <li>xcodebuild 和 xcrun 实现:</li>
+</ul>
+
+<blockquote>
+  <p>xcodebuild -workspace XXX -scheme XXX -configuration Release</p>
+
+  <p>xcrun -sdk iphoneos PackageApplication -v “/XXX/XXX.app” -o “/XXX/XXX”</p>
+</blockquote>
+
+<ul>
+  <li>xcodebuild 和 exportOptionsPlist 实现:</li>
+</ul>
+
+<blockquote>
+  <p>准备两个Plist文件，用于导出不同ipa包时使用</p>
+
+  <p>获取命令行参数，区分上传到Fir还是App Store</p>
+
+  <p>清理构建目录</p>
+
+  <p>编译打包</p>
+
+  <p>导出包</p>
+
+  <p>上传到Fir或者验证并上传到App Store</p>
+
+  <p>发邮件通知</p>
+</blockquote>
+
+<p>下边是基于第二种方式的方法:
+首先因为不了解这种自动化打包,所以要看官方的资料,最直接的方式就是:
+<code class="highlighter-rouge">$ xcodebuild -help</code>,得知如下信息:</p>
+
+<p>Available keys for -exportOptionsPlist:以下每个 key 的详细解释可以<code class="highlighter-rouge">$ xcodebuild -help</code>查看即可.</p>
+
+<ul>
+  <li>测试包导出: compileBitcode\embedOnDemandResourcesAssetPacksInBundle\iCloudContainerEnvironment\manifest\onDemandResourcesAssetPacksBaseURL\thinning</li>
+  <li>用于 App Store 导出: uploadBitcode\uploadSymbols</li>
+  <li>共用: method\teamID</li>
+  <li>method 可选值: app-store\ package\ ad-hoc\ enterprise\ development and developer-id</li>
+</ul>
+
+<p>步骤为:</p>
+
+<h5 id="plist">1.准备Plist文件:</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AppStoreExportOptions.plist： method＝app-store，uploadBitcode＝YES，uploadSymbols＝YES
+AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
+</code></pre>
+</div>
+<p>xcodebuild -exportArchive -archivePath ./xxx.xcarchive -exportOptionsPlist ./AdHocExportOptions.plist -exportPath ./</p>
+
+<h5 id="section-2">脚本打测试包</h5>
+
+<h5 id="section-3">脚本打生产包</h5>
+
+<h3 id="shell-">shell 脚本打包实战</h3>
+
+<p>这里参考了 <a href="http://blog.nswebfrog.com/2013/02/18/ios-automation/">博文</a>,<a href="https://github.com/webfrogs/xcode_shell">代码</a></p>
+
+<p><a href="">备份脚本</a></p>
+
+<p>下载完脚本之后,解读如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ipa-build:  编译xcode工程并生成ipa文件
+ipa-publish: 生成符合itms-services协议的文件,并发布到服务器
+sendEmail:  stmp发送email的脚本
+sftpDownloadFile: 通过sftp协议下载文件
+sftpUploadFile: 通过sftp协议上传文件
+updateLocalIndexHtml:  对索引文件进行处理(二进制文件,非shell脚本)
+uploadItemsServicesFiles:   将itms-services协议文件上传到服务器
+</code></pre>
+</div>
+
+<p>而实际使用的脚本是: ipa-build 和 ipa-publish ,其他文件是,ipa-publish这个脚本调用的依赖文件</p>
+
+<p>ipa-build 使用方法如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型(Debug\ AdHoc\Release\Distribution)
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<p>ipa-build 脚本运行后,会在 iOS 工程根路径下生成名为 “build” 的文件夹,在这个文件夹中又有一个名为 “ipa-build” 的文件夹,打包所生成的最新 ipa 包就在其中.</p>
+
+<p>ipa-publish 使用方法如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型 打包 ipa(如果已经生成过,忽略)
+# 3. 上传 ftp.
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/19/AD-xctool/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-13
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Github" title="Tag: Github" rel="tag">Github</a>&nbsp;
+    
+        <a href="/tag/#Travis-CI" title="Tag: Travis-CI" rel="tag">Travis-CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#jenkins" id="markdown-toc-jenkins">基础知识,参考博文:Jenkins</a></li>
+  <li><a href="#travis-ci-" id="markdown-toc-travis-ci-">1. Travis-CI 简介</a>    <ul>
+      <li><a href="#jenkins-1" id="markdown-toc-jenkins-1">对比 Jenkins</a></li>
+    </ul>
+  </li>
+  <li><a href="#travis-ci--1" id="markdown-toc-travis-ci--1">2.Travis-CI 配置小教程</a>    <ul>
+      <li><a href="#project-" id="markdown-toc-project-">project 项目配置</a></li>
+      <li><a href="#workspace-" id="markdown-toc-workspace-">workspace 管理的项目配置</a></li>
+    </ul>
+  </li>
+  <li><a href="#section" id="markdown-toc-section">3. 应用程序的签名\证书</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">4.部署</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">密码和证书安全</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">其他</a>    <ul>
+      <li><a href="#section-4" id="markdown-toc-section-4">显示构建状态</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">跳过自动构建</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">资源</a>    <ul>
+      <li><a href="#unit-" id="markdown-toc-unit-">Unit 代表单元测试:</a></li>
+    </ul>
+  </li>
+  <li><a href="#ui-" id="markdown-toc-ui-">UI 测试</a></li>
+</ul>
+
+<h3 id="jenkins">基础知识,参考博文:Jenkins</h3>
+
+<h3 id="travis-ci-">1. Travis-CI 简介</h3>
+
+<p>Travis-CI 是一个开源的持续构建项目,能够测试和部署;Travis-CI 会同步你在 GitHub 上托管的项目,每当你 Commit Push 之后,预装的编译脚本会分析你的 Xcode 项目,并对每个 target 进行编译.如果所有文件都没有编译错误,并且测试也没有被打断,那么项目就编译成功了.</p>
+
+<h5 id="jenkins-1">对比 Jenkins</h5>
+
+<ul>
+  <li>Jenkins 和 Travis-CI 类似,前者主要用于公司中项目的 CI(商业化),后者则主要用在 GitHub 中(小众)</li>
+  <li>都是基于 Vagrant/Virtualbox技术</li>
+  <li>配置文件:Jenkins 配置在 Jenkins 服务器中,后者配置文件和源码一起.使用 DSL 编写的</li>
+  <li>Travis Ci 与 Github 集成非常紧密,官方的集成测试托管只支持 Github 项目</li>
+  <li>总的来说:如果是开源项目,放在 GitHub 上,使用 Travis CI 来做集成测试是最佳选择.但如果是公司项目,当然是搭建 Jenkins 环境.</li>
+</ul>
+
+<h3 id="travis-ci--1">2.Travis-CI 配置小教程</h3>
+
+<ul>
+  <li>1.用你的 GitHub 账号登录 <a href="https://travis-ci.org/">Travis-CI</a>,赋予 TCI 访问 GH 的授权.</li>
+</ul>
+
+<p>对于私有仓库,需要注册一个 <a href="https://magnum.travis-ci.com/">Travis 专业版账号</a></p>
+
+<ul>
+  <li>
+    <p>2.登录之后 Travis-CI 就会同步 GitHub 账号的仓库,然后打开个人页面并给你想要构建的项目启用 Travis-CI <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png" alt="" /></p>
+  </li>
+  <li>
+    <p>3.创建一个 .travis.yml 文件,在项目的根目录下.则 Travis-CI 会按照 .travis.yml 里的内容进行构建</p>
+  </li>
+  <li>
+    <p>4.最后可以在<a href="https://travis-ci.org/repositories">构建状态页面</a>来查看你的项目是否构建成功</p>
+  </li>
+</ul>
+
+<h5 id="project-">project 项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_project: ./UITEST.xcodeproj # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<h5 id="workspace-">workspace 管理的项目配置</h5>
+
+<pre><code class="language-DSL">language: swift # 语言种类
+#language: objective-c 
+
+osx_image: xcode8 # 环境
+
+# 根据项目类型不同,可以选择两个 key :xcode_project 或者  xcode_workspace
+xcode_workspace: ./UITEST.xcworkspace # 项目文件相对于.travis.yml文件的路径
+
+xcode_scheme: UITEST # 你需要集成测试的scheme
+
+xcode_sdk: iphonesimulator10.0 # 模拟器
+
+</code></pre>
+
+<p>同时也要设置 Target 为 shared 状态.</p>
+
+<blockquote>
+  <p>打开项目 -&gt; Manage Schemes -&gt; 把需要构建的 Target 勾上 shared -&gt; 选中你需要管理的 scheme,点击左下角的 Edit 按钮 -&gt; 选择 Build 选项，点击左下角的+号按钮，添加你需要依赖的 CocoaPods 管理的第三方静态库的名字，下图是已经添加后的截图.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/656113-97e903b6472ce2eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>以上配置,可以看看<a href="https://docs.travis-ci.com/user/languages/objective-c/">官方文档</a>,写的挺详细的</p>
+
+<h3 id="section">3. 应用程序的签名\证书</h3>
+
+<p>[参见(https://objccn.io/issue-6-5/)</p>
+
+<h3 id="section-1">4.部署</h3>
+
+<p>负责分发部署的平台很多像:TestFlight \ HockeyApp \ 蒲公英 \ fir.im 等等</p>
+
+<p>可以配置然后在上述平台进行部署.</p>
+
+<h3 id="section-2">密码和证书安全</h3>
+
+<p>对于密码等敏感信息,Travis CI提供了2种解决方案:</p>
+
+<ul>
+  <li>对密码等敏感信息进行加密,然后再构建环境时解密</li>
+  <li>在 Travis CI控制台设置环境变量,然后使用 System.getenv() 获取值</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png" alt="" /></p>
+
+<h3 id="section-3">其他</h3>
+
+<h5 id="section-4">显示构建状态</h5>
+
+<p><img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png" alt="" /></p>
+
+<h5 id="section-5">跳过自动构建</h5>
+
+<p>如果commit不想让travis ci构建，那么就在commit message里加上[ci skip]就行了。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>git commit -m <span class="s2">"[ci skip] commit message"</span>
+</code></pre>
+</div>
+
+<h3 id="section-6">资源</h3>
+
+<ul>
+  <li><a href="https://docs.travis-ci.com/user/customizing-the-build/">官方文档</a></li>
+  <li><a href="https://github.com/objcio/issue-6-travis-ci">示例 Demo</a></li>
+  <li><a href="https://github.com/facebook/xctool">xctool</a></li>
+  <li><a href="https://github.com/nukc/how-to-use-travis-ci">安卓环境下的教程</a></li>
+</ul>
+
+<p>-<a href="https://objccn.io/issue-6-5/">优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a>
+-<a href="http://blog.csdn.net/jiang314/article/details/54965283">备份版:优秀的文章为 iOS 建立 Travis CI:签名+部署+发布</a></p>
+
+<p>为 iOS 建立 Travis CI: https://objccn.io/issue-6-5/</p>
+
+<p>自动化测试 –&gt; 持续部署</p>
+
+<p>在互联网的产品开发时代，产品迭代越来越频繁，“从功能开发完成直到成功部署”这一阶段被称为软件开发“最后一公里”。很多开发团队也越来越认识到，自动化测试和持续部署可帮助开发团队提高迭代效率和质量。
+那么，如何更好地解决“最后一公里”这一问题呢?</p>
+
+<p>一切从自动化测试开始，让自动化测试贯穿在整个项目开发-集成-部署-交付的-开发流程中。</p>
+
+<p><img src="http://huaban.com/go/?pin_id=1002439558" alt="" />
+在这个分层自动化测试金字塔中，</p>
+<h4 id="unit-">Unit 代表单元测试:</h4>
+
+<p>XCTest是苹果在iOS 7和Xcode5引入的一个简单而强大的测试框架，它的测试编写起来非常简单，并且遵循xUnit风格。XCTest的优点是与Xcode深度集成，有专门的Test导航栏，但因为受限于官方测试API，因此功能不是很丰富。</p>
+
+<p>iOS 中的单元测试开源库:</p>
+<ul>
+  <li>Kiwi是对XCTest的一个完整替代，使用xSpec风格编写测试。Kiwi带有自己的一套工具集，包括expectations、mocks、stubs，甚至还支持异步测试。</li>
+  <li>Specta与Kiwi功能相似，但在架构上非常不同。Kiwi注重功能的整合，而Specta则注重模块化。它本身只专注于运行测试，而将模拟、匹配等功能交给第三方。下
+下面这些一些开源测试组件，它们能与Specta和Kiwi框架搭配使用：</li>
+  <li>Expecta：匹配程序框架。</li>
+  <li>OCHamcrest：匹配程序框架。</li>
+  <li>OCMock：模拟测试框架。</li>
+  <li>OCMockito：模拟测试框架。</li>
+  <li>OHTTPStubs：模拟网络请求的库，基于block的语法来匹配URL。</li>
+  <li>Nocilla：模拟网络请求的库，使用链式API。</li>
+  <li>Quick是:一个使用Swift开发的新测试框架，对测试使用Swift编写的App非常友好。它还有一个Nimble库用于编写匹配模式。</li>
+</ul>
+
+<p>对软件中的最小可测试单元进行检验。通常而言，一个单元测试是用于判断某个特定条件（或者场景）下某个特定函数的行为。相比其他层级的测试，单元测试发现并解决问题付出的成本相对来说最低，而投入产出比最高</p>
+
+<h3 id="ui-">UI 测试</h3>
+
+<ul>
+  <li>KIF（Keep It Functional）是用Objective-C编写的用户界面测试框架。KIF tester使用了私有API来了解App中的视图层级。缺点是运行较慢。</li>
+</ul>
+
+<blockquote>
+  <p>相关文章:<a href="http://www.blogs8.cn/posts/A1Rj797">Swift中KIF测试的特点－b</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Subliminal是另一款与XCTest集成的框架。与KIF不同的是，它基于UIAutomation编写，旨在对开发者隐藏UIAutomation中一些复杂的细节。不过它最后更新日期是2014年2月，可能已停止更新。</p>
+  </li>
+  <li>
+    <p>Calabash是跨平台开发工具Xamarin推出的一款测试工具。它使用BDD风格来编写验收测试。它的优点是支持跨平台（需使用不同的库），声明式的测试风格非常易于读写。缺点是不够稳定并且运行速度慢。</p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/13/Travis-CI/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-09
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#OTA" title="Tag: OTA" rel="tag">OTA</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????</a></li>
+  <li><a href="#newitemforgitlab--" id="markdown-toc-newitemforgitlab--">newItemForGitlab 项目已经可以正确的运行了,关键就是 打包编译的问题//////</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">前言</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section">剩下的任务就是: 如何通过脚本,将项目打包,并上传的服务器??????????</h1>
+<h1 id="newitemforgitlab--">newItemForGitlab 项目已经可以正确的运行了,关键就是 打包编译的问题//////</h1>
+
+<h3 id="section-1">前言</h3>
+
+<p>目标是:建立自己的移动应用内测分发平台.方便测试人员快速的获取到最新的测试包.</p>
+
+<p>流程:</p>
+
+<ul>
+  <li>通过脚本,自动将项目打包编译,生成 AdHoc 版本的 ipa</li>
+  <li>脚本自动上传 ipa 到公司内网的服务器</li>
+  <li>然后邮件通知相关人员,邮件中内置 url</li>
+  <li>在 Safari 中点开url,直接安装内测版本</li>
+</ul>
+
+<p><strong>注意事项:必要3条件</strong></p>
+
+<ul>
+  <li>
+    <ol>
+      <li>AdHoc 版 ipa 文件</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>AdHoc 版 plist 文件</li>
+    </ol>
+  </li>
+</ul>
+
+<p>如果是使用 Xcode 打包,会自动生成上述的两个文件,当然也可以使用脚本生成.plist 文件内容如下(小结末尾)</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>一个内测发布页面</li>
+    </ol>
+  </li>
+</ul>
+
+<p>目的是提供一个<code class="highlighter-rouge">itms-services://</code>协议的链接,让用户访问这个链接即可实现在线安装.一个最简单的html页面就是下面这样:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://1192.168.117.39/apps/manifest.plist"</span><span class="nt">&gt;</span>
+  Download ADDemo
+<span class="nt">&lt;/a&gt;</span>
+<span class="c">&lt;!-- 或者这样 --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/xxx.plist"</span><span class="nt">&gt;</span>Install App<span class="nt">&lt;/a&gt;</span>  
+</code></pre>
+</div>
+
+<p>整个OTA的核心就是苹果的itms-services协议， safari通过解析类似于itms-services://?action=download-manifest&amp;url=https://xxx.xxx.xxx/xxxx.plist 这样的一个链接来实现在线安装。url就是你的*.plist文件所在的地址，在iOS7.1以前，这个url是没有限制的，在7.1之后，苹果做了修改，要求这个url必须是可信任的https链接。其他地方的链接并没有要求。</p>
+
+<p>OTA就是over the air,是一种无线发布方式,它可以实现app的在线安装,不再需要数据线.</p>
+
+<p>而对于 https,方案有:自己公司搭建;使用三方的云盘(hppts的,将 ipa 传上去);自己配置.
+更详细的内容参考:<a href="http://blog.csdn.net/close_marty/article/details/38441903">iOS通过OTA方式分发应用的实现</a></p>
+
+<p>相关资料:
+1.plist 文件的内容为:</p>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>items<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;dict&gt;</span>
+            <span class="nt">&lt;key&gt;</span>assets<span class="nt">&lt;/key&gt;</span>
+            <span class="nt">&lt;array&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>software-package<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://192.168.117.39/apps/app.ipa<span class="nt">&lt;/string&gt;</span>
+                    <span class="c">&lt;!-- 这里是服务器上的 ipa 的地址--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>display-image<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://avatar.csdn.net/F/2/A/1_close_marty.jpg<span class="nt">&lt;/string&gt;</span>
+                     <span class="c">&lt;!-- 这是展示图片--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+                <span class="nt">&lt;dict&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>full-size-image<span class="nt">&lt;/string&gt;</span>
+                    <span class="nt">&lt;key&gt;</span>url<span class="nt">&lt;/key&gt;</span>
+                    <span class="nt">&lt;string&gt;</span>https://avatar.csdn.net/F/2/A/1_close_marty.jpg<span class="nt">&lt;/string&gt;</span>
+                     <span class="c">&lt;!-- 这是展示图片--&gt;</span>
+                <span class="nt">&lt;/dict&gt;</span>
+            <span class="nt">&lt;/array&gt;</span>
+            <span class="nt">&lt;key&gt;</span>metadata<span class="nt">&lt;/key&gt;</span>
+            <span class="c">&lt;!-- 如果是放在服务器上,以下的 内容要写成动态的 --&gt;</span>
+            <span class="nt">&lt;dict&gt;</span>
+                <span class="nt">&lt;key&gt;</span>bundle-identifier<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${BUNDLE_IDENTIFIER}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;com.3code.ADDemo&lt;/string&gt; --&gt;</span>
+                <span class="nt">&lt;key&gt;</span>bundle-version<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${APPLICATION_VERSION}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;1.0&lt;/string&gt; --&gt;</span>
+                <span class="nt">&lt;key&gt;</span>kind<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>software<span class="nt">&lt;/string&gt;</span>
+                <span class="nt">&lt;key&gt;</span>title<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>${DISPLAY_NAME}<span class="nt">&lt;/string&gt;</span>  
+                <span class="c">&lt;!-- &lt;string&gt;AD_Demo&lt;/string&gt; --&gt;</span>
+            <span class="nt">&lt;/dict&gt;</span>
+        <span class="nt">&lt;/dict&gt;</span>
+    <span class="nt">&lt;/array&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/plist&gt;</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>web 页面的参考代码:</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=iso-8859-1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span> <span class="nt">/&gt;</span> 
+  <span class="nt">&lt;title&gt;</span>Install Geoloqi<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="sx">url(bkg.png)</span> <span class="nb">repeat</span> <span class="m">#c5ccd4</span><span class="p">;</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.congrats</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">16pt</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">6px</span><span class="p">;</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.step</span> <span class="p">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="m">#ccc</span> <span class="nb">solid</span><span class="p">;</span>
+      <span class="nl">border-radius</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">4px</span> <span class="m">10px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.instructions</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">10pt</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.arrow</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">15pt</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">table</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"congrats"</span><span class="nt">&gt;</span>Congrats! You've been invited to the beta of Geoloqi.<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"step"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;table&gt;&lt;tr&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"instructions"</span><span class="nt">&gt;</span>Install the<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>Geoloqi app<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">width=</span><span class="s">"24"</span> <span class="na">class=</span><span class="s">"arrow"</span><span class="nt">&gt;</span><span class="ni">&amp;rarr;</span><span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">width=</span><span class="s">"57"</span> <span class="na">class=</span><span class="s">"imagelink"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"itms-services://?action=download-manifest&amp;url=http://loqi.me/app/Geoloqi.plist"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"geoloqi-icon.png"</span> <span class="na">height=</span><span class="s">"57"</span> <span class="na">width=</span><span class="s">"57"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>3.证书的配置,<a href="http://blog.csdn.net/close_marty/article/details/38441903">参见</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/09/AD-iOS-OTA/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-01-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SDiffuseMenu" title="Tag: SDiffuseMenu" rel="tag">SDiffuseMenu</a>&nbsp;
+    
+        <a href="/tag/#Animation" title="Tag: Animation" rel="tag">Animation</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">一、使用方法：</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、添加协议</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、设置菜单的选项按钮数据</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3、设置菜单按钮</a></li>
+      <li><a href="#sdiffusemenu" id="markdown-toc-sdiffusemenu">4、添加 SDiffuseMenu</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">5、动画配置</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">6、动画过程监听</a></li>
+    </ul>
+  </li>
+  <li><a href="#swift" id="markdown-toc-swift">二、Swift转写之旅</a>    <ul>
+      <li><a href="#capropertyanimation" id="markdown-toc-capropertyanimation">1、CAPropertyAnimation动画</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2、动画分析</a>        <ul>
+          <li><a href="#section-7" id="markdown-toc-section-7">2.1、单个选项关闭动画分析：</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">2.2、整体动画的控制</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>本动画是 Swift 版的 AwesomeMenu,如需OC版还请移步<a href="https://github.com/levey/AwesomeMenu">这里</a>。</p>
+
+  <p>SDiffuseMenu 当前版本 V1.2.1,代码<a href="https://github.com/mythkiven/DiffuseMenu_Swift">请戳这里</a></p>
+
+  <p>SDiffuseMenu 嵌入 pod ‘SDiffuseMenu’, ‘~&gt; 1.2.1’</p>
+
+</blockquote>
+
+<p><strong>动画效果如下:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/SDiffuseMenu.gif" alt="" /></p>
+
+<p><strong>配置图如下:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/settingAngle.png" alt="" /></p>
+
+<h2 id="section">一、使用方法：</h2>
+
+<p>添加协议(动画状态回调) -&gt; 设置选项数组 -&gt; 设置菜单按钮 -&gt; 动画属性配置 -&gt; .addSubview(menu)</p>
+
+<h4 id="section-1">1、添加协议</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SDiffuseMenuDelegate</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="section-2">2、设置菜单的选项按钮数据</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 加载图片</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImage</span>            <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-normal.png"</span><span class="p">)</span>         <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">storyMenuItemImagePressed</span>     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"menuitem-highlighted.png"</span><span class="p">)</span>    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starImage</span>                     <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"star.png"</span><span class="p">)</span>                    <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemNormalImage</span>           <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"addbutton-normal.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemLightedImage</span>          <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"addbutton-highlighted.png"</span><span class="p">)</span>   <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemContentImage</span>          <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"plus-normal.png"</span><span class="p">)</span>             <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">starItemContentLightedImage</span>   <span class="o">=</span>  <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span><span class="s">"plus-highlighted.png"</span><span class="p">)</span>        <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"图片加载失败"</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">menus</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SDiffuseMenuItem</span><span class="p">]()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="mi">6</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">starMenuItem</span> <span class="o">=</span>  <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">storyMenuItemImage</span><span class="p">,</span>
+                                         <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">storyMenuItemImagePressed</span><span class="p">,</span> 
+                                         <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starImage</span><span class="p">,</span>
+                                         <span class="nv">highlightedContentImage</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="n">menus</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">starMenuItem</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="section-3">3、设置菜单按钮</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">startItem</span> <span class="o">=</span> <span class="kt">SDiffuseMenuItem</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">starItemNormalImage</span><span class="p">,</span>
+                                 <span class="nv">highlightedImage</span><span class="p">:</span> <span class="n">starItemLightedImage</span><span class="p">,</span>
+                                 <span class="nv">contentImage</span><span class="p">:</span> <span class="n">starItemContentImage</span><span class="p">,</span>
+                                 <span class="nv">highlightedContentImage</span><span class="p">:</span> <span class="n">starItemContentLightedImage</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="sdiffusemenu">4、添加 SDiffuseMenu</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">menuRect</span>  <span class="o">=</span> <span class="kt">CGRect</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="nv">y</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="nv">width</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                           <span class="nv">height</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+<span class="n">menu</span>          <span class="o">=</span>  <span class="kt">SDiffuseMenu</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">menuRect</span><span class="p">,</span>
+                          <span class="nv">startItem</span><span class="p">:</span> <span class="n">startItem</span><span class="p">,</span>
+                         <span class="nv">menusArray</span><span class="p">:</span> <span class="n">menus</span> <span class="k">as</span> <span class="kt">NSArray</span><span class="p">,</span>
+                          <span class="nv">grapyType</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="o">.</span><span class="kt">SDiffuseMenuGrapyType</span><span class="o">.</span><span class="n">arc</span><span class="p">)</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">center</span>   <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="n">center</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="k">self</span><span class="o">.</span><span class="n">menuView</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="section-4">5、动画配置</h4>
+
+<ul>
+  <li>如果配置弧线形动画,则动画中弧线半径变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt; 结束 endRadius</li>
+  <li>如果配置直线形动画,则动画中半径就是直线段的长度,变化为:0–&gt; 最大 farRadius–&gt; 最小 nearRadius–&gt;结束 endRadius</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 动画时长</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">animationDuration</span>  <span class="o">=</span> <span class="kt">CFTimeInterval</span><span class="p">(</span><span class="n">animationDrationValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span>
+<span class="c1">// 最小半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">nearRadius</span>         <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">nearRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 结束半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">endRadius</span>          <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">endRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 最大半径</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">farRadius</span>          <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">farRadiusValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 单个动画间隔时间</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">timeOffset</span>         <span class="o">=</span> <span class="kt">CFTimeInterval</span><span class="p">(</span><span class="n">timeOffSetValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span><span class="o">!</span>
+<span class="c1">// 整体角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">menuWholeAngle</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">menuWholeAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 整体偏移角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAngle</span>        <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 展开时自旋角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">expandRotation</span>     <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span><span class="p">)</span>
+<span class="c1">// 结束时自旋角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">closeRotation</span>      <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">// 是否旋转菜单按钮</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButton</span>    <span class="o">=</span> <span class="n">rotateAddButton</span><span class="o">.</span><span class="n">isOn</span>
+<span class="c1">// 菜单按钮旋转角度</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">rotateAddButtonAngle</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">rotateAddButtonAngleValue</span><span class="o">.</span><span class="n">text</span><span class="o">!</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">)</span><span class="o">.</span><span class="n">floatValue</span><span class="p">)</span>
+<span class="c1">// 菜单展示的形状:直线 or 弧形</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuGrapyType</span> <span class="o">=</span> <span class="n">isLineGrapyType</span><span class="o">.</span><span class="n">isOn</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">?</span> <span class="o">.</span><span class="nv">line</span> <span class="p">:</span> <span class="o">.</span><span class="n">arc</span>
+
+<span class="c1">// 为方便使用,V1.1.0版本已枚举常见方位,可直接使用,无需再次设置 rotateAngle &amp;&amp; menuWholeAngle</span>
+<span class="c1">// 若对于 rotateAngle\menuWholeAngle 不熟悉,建议查看 source 目录下的配置图片</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">sDiffuseMenuDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">above</span> <span class="c1">// 上方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .left // 左方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .below // 下方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .right // 右方180°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperRight // 右上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerRight // 右下方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .upperLeft // 左上方90°</span>
+<span class="c1">//        menu.sDiffuseMenuDirection = .lowerLeft // 左下方90°</span>
+</code></pre>
+</div>
+
+<h4 id="section-5">6、动画过程监听</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="kt">SDiffuseMenuDidSelectMenuItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">,</span> <span class="n">didSelectIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"选中按钮 at index:</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> is: </span><span class="se">\(</span><span class="n">menu</span><span class="o">.</span><span class="nf">menuItemAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="se">)</span><span class="s"> "</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单关闭动画结束"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuDidOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单展开动画结束"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单将要展开"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="kt">SDiffuseMenuWillClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">menu</span><span class="p">:</span> <span class="kt">SDiffuseMenu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"菜单将要关闭"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="swift">二、Swift转写之旅</h2>
+
+<p>总的来说,动画的原理还是比较简单的,主要涉及到的知识点是 CABasicAnimation、CAKeyframeAnimation 以及事件响应链相关知识,下边分两部分介绍</p>
+
+<h3 id="capropertyanimation">1、CAPropertyAnimation动画</h3>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Animation_Types_Timing/Art/animations_info_2x.png" alt="" /></p>
+
+<p>在 SDiffuseMenu 中动画用 CAPropertyAnimation 的子类 CABasicAnimation 和 CAKeyframeAnimation 来实现,关于这两个子类简述如下:</p>
+
+<ul>
+  <li>CABasicAnimation 其实可以看作是一种特殊的关键帧动画,只有头尾两个关键帧,可实现移动、旋转、缩放等基本动画;</li>
+  <li>CAKeyframeAnimation 则可以支持任意多个关键帧,关键帧有两种方式来指定,使用path或values;</li>
+  <li>
+    <ul>
+      <li>path 可以是 CGPathRef、CGMutablePathRef 或者贝塞尔曲线,注意的是:设置了 path 之后 values 就无效了;values 则相对灵活, 可以指定任意关键帧帧值;</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>keyTimes 可以为 values 中的关键帧设置一一对应对应的时间点,其取值范围为0到1.0,keyTimes 没有设置的时候,各个关键帧的时间是平分的;</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>..</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>更多的动画知识请戳此处 <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514">CoreAnimation_guide</a></p>
+  <blockquote>
+
+    <p>相关的指南、示例代码可以通过点击页面右上角搜索按钮进行搜索,官方文档大多点到为止,挺适合入门学习的,更深的还需要在实践中摸索总结</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="section-6">2、动画分析</h3>
+
+<p>在 V1.1.0 版本中,已扩展动画的形状:新加入直线型,其原理及计算方法同弧线形,下文不做过多介绍,详情参见版本记录</p>
+
+<p>不论多么复杂的动画,都是由简单的动画组成的,大家先看下 SDiffuseMenu 中单选项动画：</p>
+
+<p><img src="https://raw.githubusercontent.com/mythkiven/DiffuseMenu_Swift/master/Source/singleItemAnimation.gif" alt="" /></p>
+
+<p>仔细分析发现可以将整个动画可以拆分为三大部分:</p>
+
+<ul>
+  <li>菜单按钮的自旋转,通过 transform 属性即可实现;</li>
+  <li>选项按钮的整体展开动画,实际是在定时器中依次添加单个选项按钮的动画组,控制 timeInterval 来实现动画的先后执行顺序;</li>
+  <li>单个选项按钮的动画则拆分为3部分:展开动画、结束动画和点击动画,都是动画组,下边以结束动画为例,简单介绍其实现过程</li>
+</ul>
+
+<h4 id="section-7">2.1、单个选项关闭动画分析：</h4>
+
+<p>单选项按钮关闭动画过程如下:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/01/20/58817b4e6ba40.png" alt="" /></p>
+
+<p><strong>1、自旋</strong></p>
+
+<p>大家仔细看会发现展开动画和结束动画的自旋转是有差异的,因为关键帧设置的不同</p>
+
+<p>展开动画中设置的关键帧如下,0.1对应展开角度0°,0.3对应 expandRotation 自旋角度,0.4对应0°,所以在0.3 -&gt; 0.4的时间会出现较快速的自旋</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">expandRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.1</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.3</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<p>而关闭的动画中,设置为0 -&gt; 0.4 慢速自旋,0.4 -&gt; 0.5 快速自旋</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">rotateAnimation</span><span class="o">.</span><span class="n">values</span>   <span class="o">=</span> <span class="p">[</span><span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="n">closeRotation</span><span class="p">),</span>
+                           <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">rotateAnimation</span><span class="o">.</span><span class="n">keyTimes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.4</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">),</span>
+                           <span class="kt">NSNumber</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mf">0.5</span> <span class="k">as</span> <span class="kt">Float</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<p><strong>2、移动</strong></p>
+
+<p>移动的控制在于 path 是怎样设定的,代码中我写了两种方法,其中一种被注释掉</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">positionAnimation</span>      <span class="o">=</span>  <span class="kt">CAKeyframeAnimation</span><span class="p">(</span><span class="nv">keyPath</span><span class="p">:</span> <span class="s">"position"</span><span class="p">)</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">animationDuration</span>
+</code></pre>
+</div>
+
+<p>1)\使用贝塞尔曲线作为 path,从代码中可以明显的看出移动的路径: endPoint -&gt; farPoint -&gt; startPoint</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="kt">UIBezierPath</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">cgPath</span>
+</code></pre>
+</div>
+
+<p>2)\使用 CGPathRef 或 GCMutablePathRef 设置路径</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span>  <span class="kt">CGMutablePath</span><span class="p">()</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">endPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">farPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">startPoint</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="n">positionAnimation</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+</code></pre>
+</div>
+
+<p>自旋和平移都有了,接下来要加入到动画组中：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">animationgroup</span>              <span class="o">=</span>  <span class="kt">CAAnimationGroup</span><span class="p">()</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">animations</span>       <span class="o">=</span> <span class="p">[</span><span class="n">positionAnimation</span><span class="p">,</span> <span class="n">rotateAnimation</span><span class="p">]</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">duration</span>         <span class="o">=</span> <span class="n">animationDuration</span>
+<span class="c1">// 动画结束后,layer保持最终的状态</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">fillMode</span>         <span class="o">=</span> <span class="n">kCAFillModeForwards</span>
+<span class="c1">// 速度控制我设置的如此,大家根据需要自行修改即可</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">timingFunction</span>   <span class="o">=</span> <span class="kt">CAMediaTimingFunction</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="n">kCAMediaTimingFunctionEaseIn</span><span class="p">)</span>
+<span class="c1">// 代理是为了获取到动画结束的信号</span>
+<span class="n">animationgroup</span><span class="o">.</span><span class="n">delegate</span>         <span class="o">=</span> <span class="k">self</span>
+</code></pre>
+</div>
+
+<p>最添加进 layer 即可</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="n">animationgroup</span><span class="p">,</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"Close"</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>其余的动画原理和上述的关闭动画其实是一样的,基于属性的动画,通过操作帧来实现我们想要的效果,小伙伴们直接看代码吧~</p>
+
+<h4 id="section-8">2.2、整体动画的控制</h4>
+
+<p>注意,整体动画的控制以上并未表述,在这个地方也需要注意下,为了让整体动画在一个合适的角度展示出来,就需要从整体上控制角度</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/01/16/587c8c512c911.png" alt="" />
+<img src="https://ooo.0o0.ooo/2017/01/16/587c8c7530072.png" alt="" />
+<img src="https://ooo.0o0.ooo/2017/01/16/587c8c8635998.png" alt="" /></p>
+
+<p>从上图中可以看出,整体的角度是由 menuWholeAngle 和 rotateAngle 共同控制的</p>
+
+<ul>
+  <li>menuWholeAngle: 控制整体动画的范围角度;</li>
+  <li>rotateAngle: 用于控制整体的偏移角度</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/01/08/SDiffuseMenu/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/11/swift_X_Initialization_Deinitialization/">Swift3.0_X_构造过程和析构过程 </a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-11
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">构造过程</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">存储属性的初始赋值</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">自定义构造过程</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">默认构造器</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section">构造过程</h1>
+
+<ul>
+  <li>构造过程是使用类、结构体或枚举类型的实例之前的准备过程；</li>
+  <li>通过定义构造器来实现构造过程，这些构造器可以看做是用来创建特定类型新实例的特殊方法；</li>
+  <li>与OC中的构造器不同，Swift的构造器无需返回值，它们的主要任务是保证新实例在第一次使用前完成正确的初始化；</li>
+  <li>类的实例也可以通过定义析构器在实例释放之前执行特定的清除工作</li>
+</ul>
+
+<h3 id="section-1">存储属性的初始赋值</h3>
+
+<ul>
+  <li>类和结构体在创建实例时，必须为所有存储型属性设置合适的初始值；</li>
+  <li>可以在构造器中为存储型属性赋初值，也可以在定义属性时为其设置默认值；</li>
+  <li>当为存储型属性设置默认值或者在构造器中为其赋值时，它们的值是被直接设置的，不会触发任何属性观察者</li>
+</ul>
+
+<p>1、构造器</p>
+
+<p>以关键字init命名：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 在此处执行构造过程</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>案例：</p>
+
+<p>这个结构体定义了一个不带参数的构造器init，并在里面将存储型属性temperature的值初始化为32.0</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 保存华氏温度的结构体Fahrenheit</span>
+<span class="kd">struct</span> <span class="kt">Fahrenheit</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperature</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">f</span> <span class="o">=</span> <span class="kt">Fahrenheit</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"The default temperature is </span><span class="se">\(</span><span class="n">f</span><span class="o">.</span><span class="n">temperature</span><span class="se">)</span><span class="s">° Fahrenheit"</span><span class="p">)</span>
+<span class="c1">// 打印 "The default temperature is 32.0° Fahrenheit”</span>
+</code></pre>
+</div>
+
+<p>2、默认属性值</p>
+
+<p>如前所述，可以在构造器中为存储型属性设置初始值。同样，也可以在属性声明时为其设置默认值</p>
+
+<p>注意：如果一个属性总是使用相同的初始值，那么为其设置一个默认值比每次都在构造器中赋值要好。两种方法的效果是一样的，只不过使用默认值让属性的初始化和声明结合得更紧密。使用默认值能让构造器更简洁、更清晰，且能通过默认值自动推导出属性的类型；同时，它也能充分利用默认构造器、构造器继承等特性，后续章节将讲到。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 可以使用更简单的方式在定义结构体Fahrenheit时为属性temperature设置默认值：</span>
+<span class="kd">struct</span> <span class="kt">Fahrenheit</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-2">自定义构造过程</h3>
+
+<p>可以通过输入参数和可选类型的属性来自定义构造过程，也可以在构造过程中修改常量属性。</p>
+
+<p>1、构造参数：</p>
+
+<p>自定义构造过程时，可以在定义中提供构造参数，指定所需值的类型和名字。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 面例子中定义了一个包含摄氏度温度的结构体Celsius。它定义了两个不同的构造器：init(fromFahrenheit:)和init(fromKelvin:)，二者分别通过接受不同温标下的温度值来创建新的实例：</span>
+
+<span class="kd">struct</span> <span class="kt">Celsius</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperatureInCelsius</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="c1">// 构造参数，其外部名字为fromFahrenheit,内部名字为fahrenheit</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="nv">fahrenheit</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="p">}</span>
+    <span class="c1">// 构造参数，其外部名字为fromKelvin，内部名字为kelvin</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="nv">kelvin</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">boilingPointOfWater</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="nv">fromFahrenheit</span><span class="p">:</span> <span class="mf">212.0</span><span class="p">)</span>
+<span class="c1">// boilingPointOfWater.temperatureInCelsius 是 100.0</span>
+<span class="k">let</span> <span class="nv">freezingPointOfWater</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="nv">fromKelvin</span><span class="p">:</span> <span class="mf">273.15</span><span class="p">)</span>
+<span class="c1">// freezingPointOfWater.temperatureInCelsius 是 0.0</span>
+</code></pre>
+</div>
+
+<p>2、参数的内部名称和外部名称：</p>
+
+<p>跟函数和方法参数相同，构造参数也拥有一个在构造器内部使用的参数名字和一个在调用构造器时使用的外部参数名字。</p>
+
+<p>当中有多个构造器时，需要通过外部名称来识别不同的构造器：在调用构造器时，主要通过构造器中的参数名和类型来确定应该被调用的构造器。正因为参数如此重要，如果你在定义构造器时没有提供参数的外部名字，Swift 会为构造器的每个参数自动生成一个跟内部名字相同的外部名。</p>
+
+<p>以下例子中定义了一个结构体Color，它包含了三个常量：red、green和blue。这些属性可以存储0.0到1.0之间的值，用来指示颜色中红、绿、蓝成分的含量。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Color提供了一个构造器，其中包含三个Double类型的构造参数。Color也可以提供第二个构造器，它只包含名为white的Double类型的参数，它被用于给上述三个构造参数赋予同样的值。</span>
+
+<span class="kd">struct</span> <span class="kt">Color</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">red</span>   <span class="o">=</span> <span class="n">white</span>
+        <span class="n">green</span> <span class="o">=</span> <span class="n">white</span>
+        <span class="n">blue</span>  <span class="o">=</span> <span class="n">white</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>两种构造器都能用于创建一个新的Color实例，你需要为构造器每个外部参数传值：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">magenta</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">halfGray</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>注意，如果不通过外部参数名字传值，你是没法调用这个构造器的。只要构造器定义了某个外部参数名，你就必须使用它，忽略它将导致编译错误：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">veryGreen</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="c1">// 报编译时错误，需要外部名称</span>
+</code></pre>
+</div>
+
+<p>3、不带外部名的构造器参数：</p>
+
+<p>如果你不希望为构造器的某个参数提供外部名字，你可以使用下划线(_)来显式描述它的外部名，以此重写上面所说的默认行为。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">下面是之前Celsius例子的扩展</span><span class="err">，</span><span class="n">跟之前相比添加了一个带有Double类型参数的构造器</span><span class="err">，</span><span class="n">其外部名用_代替</span><span class="err">：</span>
+
+<span class="kd">struct</span> <span class="kt">Celsius</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">temperatureInCelsius</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="nv">fahrenheit</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="nv">kelvin</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">celsius</span><span class="p">:</span> <span class="kt">Double</span><span class="p">){</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">celsius</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">bodyTemperature</span> <span class="o">=</span> <span class="kt">Celsius</span><span class="p">(</span><span class="mf">37.0</span><span class="p">)</span>
+<span class="c1">// bodyTemperature.temperatureInCelsius 为 37.0</span>
+<span class="c1">// 调用Celsius(37.0)意图明确，不需要外部参数名称。</span>
+</code></pre>
+</div>
+
+<p>4、可选属性类型</p>
+
+<p>如果定制的类型包含一个逻辑上允许取值为空的存储型属性——无论是因为它无法在初始化时赋值，还是因为它在之后某个时间点可以赋值为空——你都需要将它定义为可选类型。可选类型的属性将自动初始化为nil，表示这个属性是有意在初始化时设置为空的。</p>
+
+<p>下面例子中定义了类SurveyQuestion，它包含一个可选字符串属性response：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SurveyQuestion</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">ask</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">cheeseQuestion</span> <span class="o">=</span> <span class="kt">SurveyQuestion</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"Do you like cheese?"</span><span class="p">)</span>
+<span class="n">cheeseQuestion</span><span class="o">.</span><span class="nf">ask</span><span class="p">()</span>
+<span class="c1">// 打印 "Do you like cheese?"</span>
+<span class="n">cheeseQuestion</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="s">"Yes, I do like cheese."</span>
+
+<span class="c1">// 调查问题的答案在回答前是无法确定的，因此我们将属性response声明为String?类型，或者说是可选字符串类型。当SurveyQuestion实例化时，它将自动赋值为nil，表明此字符串暂时还没有值。</span>
+</code></pre>
+</div>
+
+<p>5、构造过程中常量属性的修改</p>
+
+<p>你可以在构造过程中的任意时间点给常量属性指定一个值，只要在构造过程结束时是一个确定的值。一旦常量属性被赋值，它将永远不可更改。</p>
+
+<p>注意：对于类的实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。</p>
+
+<h3 id="section-3">默认构造器</h3>
+
+<p>如果结构体或类的所有属性都有默认值，同时没有自定义的构造器，那么 Swift 会给这些结构体或类提供一个默认构造器。这个默认构造器将简单地创建一个所有属性值都设置为默认值的实例。</p>
+
+<p>案例:下面例子中创建了一个类ShoppingListItem，它封装了购物清单中的某一物品的属性：名字（name）、数量（quantity）和购买状态 purchase state：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ShoppingListItem</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">quantity</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">var</span> <span class="nv">purchased</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">item</span> <span class="o">=</span> <span class="kt">ShoppingListItem</span><span class="p">()</span>
+</code></pre>
+</div>
+<p>由于ShoppingListItem类中的所有属性都有默认值，且它是没有父类的基类，它将自动获得一个可以为所有属性设置默认值的默认构造器（尽管代码中没有显式为name属性设置默认值，但由于name是可选字符串类型，它将默认设置为nil）。上面例子中使用默认构造器创造了一个ShoppingListItem类的实例（使用ShoppingListItem()形式的构造器语法），并将其赋值给变量item。</p>
+
+<p>2、结构体的逐一成员构造器</p>
+
+<p>除了上面提到的默认构造器，如果结构体没有提供自定义的构造器，它们将自动获得一个逐一成员构造器，即使结构体的存储型属性没有默认值。</p>
+
+<p>逐一成员构造器是用来初始化结构体新实例里成员属性的快捷方法。我们在调用逐一成员构造器时，通过与成员属性名相同的参数名进行传值来完成对成员属性的初始赋值。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 结构体Size自动获得了一个逐一成员构造器init(width:height:)。你可以用它来为Size创建新的实例：</span>
+
+<span class="kd">struct</span> <span class="kt">Size</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">twoByTwo</span> <span class="o">=</span> <span class="kt">Size</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/11/swift_X_Initialization_Deinitialization/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/">Swift3.0_IX_方法、下标和继承 </a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-12-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Swift3.0" title="Category: Swift3.0" rel="category">Swift3.0</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Swift3.0" title="Tag: Swift3.0" rel="tag">Swift3.0</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#methods" id="markdown-toc-methods">方法 Methods</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">类型方法</a></li>
+    </ul>
+  </li>
+  <li><a href="#subscripts" id="markdown-toc-subscripts">下标 Subscripts</a></li>
+  <li><a href="#inheritance" id="markdown-toc-inheritance">继承 Inheritance</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">定义基类</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">子类生成</a>        <ul>
+          <li><a href="#section-3" id="markdown-toc-section-3">重写</a></li>
+          <li><a href="#section-4" id="markdown-toc-section-4">防止重写</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="methods">方法 Methods</h1>
+
+<p>方法是与某些特定类型相关联的函数。</p>
+
+<ul>
+  <li>类、结构体、枚举都可以定义实例方法；</li>
+  <li>
+    <p>实例方法为给定类型的实例封装了具体的任务与功能；</p>
+  </li>
+  <li>类、结构体、枚举也可以定义类型方法；</li>
+  <li>
+    <p>类型方法与类型本身相关联，与 OC中的类方法类似；</p>
+  </li>
+  <li>结构体和枚举能够定义方法是 Swift 与 C/OC的主要区别之一；</li>
+  <li>在OC中，类是唯一能定义方法的类型；；</li>
+  <li>但在Swift中，不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在创建的类型（类/结构体/枚举）上定义方法。</li>
+</ul>
+
+<p>1、实例方法</p>
+
+<ul>
+  <li>实例方法是属于某个特定类、结构体或者枚举类型实例的方法；</li>
+  <li>实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致</li>
+  <li>实例方法要写在它所属的类型的前后大括号之间</li>
+  <li>实例方法能够隐式访问它所属类型的所有的其他实例方法和属性</li>
+  <li>实例方法只能被它所属的类的某个特定实例调用</li>
+  <li>实例方法不能脱离于现存的实例而被调用
+案例：</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Counter类，它可用于计算次数的动作时发生的数量：</span>
+
+<span class="kd">class</span> <span class="kt">Counter</span> <span class="p">{</span>
+    <span class="c1">// 本Counter类还声明一个变量属性count，以跟踪当前计数器值。</span>
+    <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// 实例方法:increment()递增计数器1</span>
+    <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="c1">// 实例方法:increment(by: Int) 将计数器增加指定的整数值</span>
+    <span class="kd">func</span> <span class="nf">increment</span><span class="p">(</span><span class="n">by</span> <span class="nv">amount</span><span class="p">:</span><span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
+    <span class="p">}</span>
+    <span class="c1">// reset() 将计数器重置为零</span>
+    <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">counter</span> <span class="o">=</span> <span class="kt">Counter</span><span class="p">()</span>
+<span class="c1">// the initial counter value is 0</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">()</span>
+<span class="c1">// the counter's value is now 1</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// the counter's value is now 6</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">reset</span><span class="p">()</span>
+<span class="c1">// the counter's value is now 0</span>
+</code></pre>
+</div>
+
+<p>函数参数可以同时有一个局部名称（在函数体内部使用）和一个外部名称（在调用函数时使用）(通过参数标签，参数名称是实现)。方法参数也一样，因为方法就是函数，只是这个函数与某个类型相关联了。</p>
+
+<p>2、 self属性</p>
+
+<ul>
+  <li>类型的每一个实例都有一个隐含属性叫做self，self完全等同于该实例本身；</li>
+  <li>你可以在一个实例的实例方法中使用这个隐含的self属性来引用当前实例；</li>
+  <li>一般不用在类型实例里面写self,Swift默认指当前实例的属性或者方法；</li>
+  <li>一般使用self用于严谨的区分参数和属性。
+```swift
+// 上面例子中的increment方法还可以这样写：
+func increment() {
+  self.count += 1
+}</li>
+</ul>
+
+<p>// 区分参数和属性
+struct Point {
+    // x,y是属性
+    var x = 0.0, y = 0.0
+    // x是参数
+    func isToTheRightOfX(x: Double) -&gt; Bool {
+        // 要进行区分:否则Swift会认为X都是参数。
+        return self.x &gt; x
+    }
+}
+let somePoint = Point(x: 4.0, y: 5.0)
+if somePoint.isToTheRightOfX(1.0) {
+    print(“This point is to the right of the line where x == 1.0”)
+}
+// 打印 “This point is to the right of the line where x == 1.0”</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+3、在实例方法中修改值类型
+
+- 结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改；
+- 但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择可变(mutating)行为，然后就可以从其方法内部改变它的属性；
+- 并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中；
+- 方法还可以给它隐含的self属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例；
+- 要使用可变方法，将关键字mutating 放到方法的func关键字之前就可以了：
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveBy(x: 2.0, y: 3.0)
+print("The point is now at (\(somePoint.x), \(somePoint.y))")
+// Prints "The point is now at (3.0, 4.0)"
+</code></pre>
+</div>
+
+<p>注意：不能在结构体类型的常量类型上调用可变方法，因为其属性不能被改变，即使属性是变量属性。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">fixedPoint</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">fixedPoint</span><span class="o">.</span><span class="nf">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="c1">// 这里将会报告一个错误</span>
+</code></pre>
+</div>
+
+<p>4、在可变方法中给self赋值</p>
+
+<p>可变方法能够赋给隐含属性self一个全新的实例。上面Point的例子可以用下面的方式改写：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Point</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">moveBy</span><span class="p">(</span><span class="n">x</span> <span class="nv">deltaX</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nv">deltaY</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 新版的可变方法moveBy(x:y:)创建了一个新的结构体实例，它的 x 和 y 的值都被设定为目标值。调用这个版本的方法和调用上个版本的最终结果是一样的。</span>
+</code></pre>
+</div>
+
+<p>枚举的可变方法可以把self设置为同一枚举类型中不同的成员：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">TriStateSwitch</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Off</span><span class="p">,</span> <span class="kt">Low</span><span class="p">,</span> <span class="kt">High</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Off</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Low</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Low</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">High</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">High</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Off</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">ovenLight</span> <span class="o">=</span> <span class="kt">TriStateSwitch</span><span class="o">.</span><span class="kt">Low</span>
+<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
+<span class="c1">// ovenLight 现在等于 .High</span>
+<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
+<span class="c1">// ovenLight 现在等于 .Off</span>
+</code></pre>
+</div>
+<p>上面的例子中定义了一个三态开关的枚举。每次调用next()方法时，开关在不同的电源状态（Off，Low，High）之间循环切换。</p>
+
+<h3 id="section">类型方法</h3>
+
+<ul>
+  <li>实例方法是被某个类型的实例调用的方法；</li>
+  <li>也可以定义在类型本身上调用的方法，这种方法就叫做类型方法；</li>
+  <li>在方法的func关键字之前加上关键字static，来指定类型方法；</li>
+  <li>类还可以用关键字class来允许子类重写父类的方法实现；</li>
+  <li>类型方法和实例方法一样用点语法调用；</li>
+</ul>
+
+<p>注意：
+在OC中，只能为OC的类类型（classes）定义类型方法。在Swift中，你可以为所有的类、结构体和枚举定义类型方法。每一个类型方法都被它所支持的类型显式包含。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="kd">func</span> <span class="nf">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 在这里实现类型方法</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">SomeClass</span><span class="o">.</span><span class="nf">someTypeMethod</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>在类型方法的方法体（body）中，self指向这个类型本身，而不是类型的某个实例；</li>
+  <li>这意味着可以用self来消除类型属性和类型方法参数之间的歧义；</li>
+  <li>一个类型方法可以直接通过类型方法的名称调用本类中的其它类型方法，而无需在方法名称前面加上类型名称；</li>
+  <li>类似地，在结构体和枚举中，也能够直接通过类型属性的名称访问本类中的类型属性，而不需要前面加上类型名称；</li>
+</ul>
+
+<p>案例：
+下面的例子定义了一个名为LevelTracker结构体。它监测玩家的游戏发展情况（游戏的不同层次或阶段）。这是一个单人游戏，但也可以存储多个玩家在同一设备上的游戏信息。游戏初始时，所有的游戏等级（除了等级 1）都被锁定。每次有玩家完成一个等级，这个等级就对这个设备上的所有玩家解锁。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// LevelTracker结构体用类型属性和方法监测游戏的哪个等级已经被解锁。它还监测每个玩家的当前等级。</span>
+
+<span class="kd">struct</span> <span class="kt">LevelTracker</span> <span class="p">{</span>
+    <span class="c1">// 类型属性：highestUnlockedLevel监测玩家已解锁的最高等级</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">// 实例属性:currentLevel来监测每个玩家当前的等级</span>
+    <span class="k">var</span> <span class="nv">currentLevel</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">// 类型方法：一旦新等级被解锁，它会更新highestUnlockedLevel的值</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unlock</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 如果某个给定的等级已经被解锁，它将返回true</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">isUnlocked</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="c1">// 尽管没有使用类似LevelTracker.highestUnlockedLevel的写法，这个类型方法还是能够访问类型属性highestUnlockedLevel</span>
+        <span class="k">return</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="n">highestUnlockedLevel</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 实例方法，管理currentLevel属性</span>
+    <span class="c1">// 这个方法会在更新currentLevel之前检查所请求的新等级是否已经解锁</span>
+    <span class="kd">@discardableResult</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">advance</span><span class="p">(</span><span class="n">to</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">isUnlocked</span><span class="p">(</span><span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">currentLevel</span> <span class="o">=</span> <span class="n">level</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 在调用advance(to:)时候忽略返回值，不会产生编译警告，所以函数被标注为@ discardableResult属性</span>
+    <span class="c1">//@discardableResult 将此属性应用于函数或方法声明以在不使用其结果的情况下调用返回值的函数或方法时抑制编译器警告。</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>下面，Player类使用LevelTracker来监测和更新每个玩家的发展进度：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Player</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">tracker</span> <span class="o">=</span> <span class="kt">LevelTracker</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">playerName</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="kd">func</span> <span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">unlock</span><span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="nf">advance</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">playerName</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Player类创建一个新的LevelTracker实例来监测这个用户的进度。它提供了complete(level:)方法，一旦玩家完成某个指定等级就调用它。这个方法为所有玩家解锁下一等级，并且将当前玩家的进度更新为下一等级。</p>
+
+<p>还可以为一个新的玩家创建一个Player的实例，然后看这个玩家完成等级一时发生了什么：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">player</span> <span class="o">=</span> <span class="kt">Player</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Argyrios"</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"highest unlocked level is now </span><span class="se">\(</span><span class="kt">LevelTracker</span><span class="o">.</span><span class="n">highestUnlockedLevel</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "highest unlocked level is now 2"</span>
+</code></pre>
+</div>
+
+<h1 id="subscripts">下标 Subscripts</h1>
+
+<ul>
+  <li>下标可以定义在类、结构体和枚举中，是访问集合，列表或序列中元素的快捷方式；</li>
+  <li>可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法；</li>
+  <li>举例：用下标访问一个Array实例中的元素可以写作someArray[index]；</li>
+  <li>举例：访问Dictionary实例中的元素可以写作someDictionary[key]；</li>
+  <li>一个类型可以定义多个下标，通过不同索引类型进行重载。下标不限于一维，你可以定义具有多个入参的下标满足自定义类型的需求。</li>
+</ul>
+
+<p>1、下标语法</p>
+
+<p>下标允许你通过在实例名称后面的方括号中传入一个或者多个索引值来对实例进行存取。语法类似于实例方法语法和计算型属性语法的混合。与定义实例方法类似，定义下标使用subscript关键字，指定一个或多个输入参数和返回类型；与实例方法不同的是，下标可以设定为读写或只读。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">get</span> <span class="p">{</span>
+      <span class="c1">// 返回一个适当的 Int 类型的值</span>
+    <span class="p">}</span>
+
+    <span class="nf">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 执行适当的赋值操作</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数</span>
+</code></pre>
+</div>
+
+<p>只读下标：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如同只读计算型属性，可以省略只读下标的get关键字：</span>
+<span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="c1">// 返回一个适当的 Int 类型的值</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>只读下标的实现：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 这里定义了一个TimesTable结构体，用来表示传入整数的乘法表：</span>
+<span class="kd">struct</span> <span class="kt">TimesTable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">multiplier</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">index</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">threeTimesTable</span> <span class="o">=</span> <span class="kt">TimesTable</span><span class="p">(</span><span class="nv">multiplier</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"six times three is </span><span class="se">\(</span><span class="n">threeTimesTable</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "six times three is 18"</span>
+
+<span class="c1">// 在上例中，创建了一个TimesTable实例，用来表示整数3的乘法表。数值3被传递给结构体的构造函数，作为实例成员multiplier的值。</span>
+</code></pre>
+</div>
+
+<p>2、下标用法</p>
+
+<p>下标的确切含义取决于使用场景。下标通常作为访问集合，列表或序列中元素的快捷方式。你可以针对自己特定的类或结构体的功能来自由地以最恰当的方式实现下标。</p>
+
+<p>案例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift 的Dictionary类型实现下标用于对其实例中储存的值进行存取操作。为字典设值时，在下标中使用和字典的键类型相同的键，并把一个和字典的值类型相同的值赋给这个下标：</span>
+
+<span class="k">var</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"spider"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"ant"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">numberOfLegs</span><span class="p">[</span><span class="s">"bird"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre>
+</div>
+<p>注意:Swift 的Dictionary类型的下标接受并返回可选类型的值。上例中的numberOfLegs字典通过下标返回的是一个Int?或者说“可选的int”。Dictionary类型之所以如此实现下标，是因为不是每个键都有个对应的值，同时这也提供了一种通过键删除对应值的方式，只需将键对应的值赋值为nil即可。</p>
+
+<p>3、下标选项</p>
+
+<p>下标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。</p>
+
+<p>下标的重载：一个类或结构体可以根据自身需要提供多个下标实现，使用下标时将通过入参的数量和类型进行区分，自动匹配合适的下标，这就是下标的重载。</p>
+
+<p>虽然接受单一入参的下标是最常见的，但也可以根据情况定义接受多个入参的下标。例如下例定义了一个Matrix结构体，用于表示一个Double类型的二维矩阵。Matrix结构体的下标接受两个整型参数：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Matrix</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">grid</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">columns</span><span class="p">,</span> <span class="nv">repeatedValue</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
+    <span class="p">}</span>
+    <span class="nf">subscript</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span>
+            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span>
+            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Matrix提供了一个接受两个入参的构造方法，入参分别是rows和columns，创建了一个足够容纳rows * columns个Double类型的值的数组。通过传入数组长度和初始值0.0到数组的构造器，将矩阵中每个位置的值初始化为0.0</p>
+
+<p>你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">matrix</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>上例中创建了一个Matrix实例来表示两行两列的矩阵。该Matrix实例的grid数组按照从左上到右下的阅读顺序将矩阵扁平化存储：
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix01_2x.png" alt="" /></p>
+
+<p>将row和column的值传入下标来为矩阵设值，下标的入参使用逗号分隔：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.2</span>
+</code></pre>
+</div>
+<p>上面两条语句分别调用下标的 setter 将矩阵右上角位置（即row为0、column为1的位置）的值设置为1.5，将矩阵左下角位置（即row为1、column为0的位置）的值设置为3.2：</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix02_2x.png" alt="" /></p>
+
+<p>Matrix下标的 getter 和 setter 中都含有断言，用来检查下标入参row和column的值是否有效。为了方便进行断言，Matrix包含了一个名为indexIsValidForRow(_:column:)的便利方法，用来检查入参row和column的值是否在矩阵范围内：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>断言在下标越界时触发：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someValue</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="c1">// 断言将会触发，因为 [2, 2] 已经超过了 matrix 的范围</span>
+</code></pre>
+</div>
+
+<h1 id="inheritance">继承 Inheritance</h1>
+
+<p>一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。</p>
+
+<p>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。</p>
+
+<p>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
+
+<h3 id="section-1">定义基类</h3>
+
+<p>不继承于其它类的类，称之为基类。</p>
+
+<p>注意：Swift中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Vehicle基类也定义了一个名为makeNoise的方法。这个方法实际上不为Vehicle实例做任何事，但之后将会被Vehicle的子类定制：</span>
+
+<span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">currentSpeed</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"traveling at </span><span class="se">\(</span><span class="n">currentSpeed</span><span class="se">)</span><span class="s"> miles per hour"</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 什么也不做-因为车辆不一定会有噪音</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>可以用初始化语法创建一个Vehicle的新实例，即类名后面跟一个空括号</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someVehicle</span> <span class="o">=</span> <span class="kt">Vehicle</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h2 id="section-2">子类生成</h2>
+
+<p>子类生成指的是在一个已有类的基础上创建一个新的类。子类继承超类的特性，并且可以进一步完善。你还可以为子类添加新的特性。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span><span class="p">:</span> <span class="kt">SomeSuperclass</span> <span class="p">{</span>
+    <span class="c1">// 这里是子类的定义</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>案例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Bicycle</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">hasBasket</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">bicycle</span> <span class="o">=</span> <span class="kt">Bicycle</span><span class="p">()</span>
+<span class="n">bicycle</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="c1">// 可以修改Bicycle实例所继承的currentSpeed属性，和查询实例所继承的description属性：</span>
+<span class="n">bicycle</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">15.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Bicycle: </span><span class="se">\(</span><span class="n">bicycle</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "Bicycle: traveling at 15.0 miles per hour"</span>
+
+<span class="c1">// 子类还可以继续被其它类继承，下面的示例为Bicycle创建了一个名为Tandem（双人自行车）的子类：</span>
+<span class="kd">class</span> <span class="kt">Tandem</span><span class="p">:</span> <span class="kt">Bicycle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">tandem</span> <span class="o">=</span> <span class="kt">Tandem</span><span class="p">()</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">22.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Tandem: </span><span class="se">\(</span><span class="n">tandem</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印："Tandem: traveling at 22.0 miles per hour"</span>
+</code></pre>
+</div>
+
+<h3 id="section-3">重写</h3>
+
+<p>子类可以为继承来的实例方法，类方法，实例属性，或下标提供自己定制的实现。这种行为叫重写。</p>
+
+<p>如果要重写某个特性，需要在重写定义的前面加上override关键字。这么做，就表明了你是想提供一个重写版本，而非错误地提供了一个相同的定义。意外的重写行为可能会导致不可预知的错误，任何缺少override关键字的重写都会在编译时被诊断为错误。</p>
+
+<p>override关键字会提醒 Swift 编译器去检查该类的超类（或其中一个父类）是否有匹配重写版本的声明。这个检查可以确保你的重写定义是正确的。</p>
+
+<p>1、 访问超类的方法，属性及下标</p>
+
+<p>当你在子类中重写超类的方法，属性或下标时，有时在你的重写版本中使用已经存在的超类实现会大有裨益。比如，你可以完善已有实现的行为，或在一个继承来的变量中存储一个修改过的值。</p>
+
+<p>在合适的地方，你可以通过使用super前缀来访问超类版本的方法，属性或下标：</p>
+<ul>
+  <li>在方法someMethod()的重写实现中，可以通过super.someMethod()来调用超类版本的someMethod()方法。</li>
+  <li>在属性someProperty的 getter 或 setter 的重写实现中，可以通过super.someProperty来访问超类版本的someProperty属性。</li>
+  <li>在下标的重写实现中，可以通过super[someIndex]来访问超类版本中的相同下标。</li>
+</ul>
+
+<p>2、重写方法</p>
+
+<p>在子类中，你可以重写继承来的实例方法或类方法，提供一个定制或替代的方法实现</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 定义了Vehicle的一个新的子类，叫Train，它重写了从Vehicle类继承来的makeNoise()方法</span>
+<span class="kd">class</span> <span class="kt">Train</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Choo Choo"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>3、重写属性</p>
+
+<p>你可以重写继承来的实例属性或类型属性，提供自己定制的 getter 和 setter，或添加属性观察器使重写的属性可以观察属性值什么时候发生改变。</p>
+
+<ul>
+  <li>可以将一个继承来的只读属性重写为一个读写属性，只需要在重写版本的属性里提供 getter 和 setter 即可；</li>
+  <li>但是，不可以将一个继承来的读写属性重写为一个只读属性；</li>
+  <li>提供定制的 getter（或 setter）来重写任意继承来的属性，无论继承来的属性是存储型的还是计算型的属性；</li>
+  <li>子类并不知道继承来的属性是存储型的还是计算型的，它只知道继承来的属性会有一个名字和类型；</li>
+  <li>在重写一个属性时，必需将它的名字和类型都写出来。这样才能使编译器去检查你重写的属性是与超类中同名同类型的属性相匹配的；</li>
+</ul>
+
+<p>注意
+如果在重写属性中提供了setter，那么也一定要提供getter。如果不想在重写版本中的getter里修改继承来的属性值，可以直接通过super.someProperty来返回继承来的值，其中someProperty是要重写的属性的名字。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Car</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">gear</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">override</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">super</span><span class="o">.</span><span class="n">description</span> <span class="o">+</span> <span class="s">" in gear </span><span class="se">\(</span><span class="n">gear</span><span class="se">)</span><span class="s">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 重写的description属性首先要调用super.description返回Vehicle类的description属性。之后，Car类版本的description在末尾增加了一些额外的文本来提供关于当前档位的信息。</span>
+</code></pre>
+</div>
+
+<p>4、重写属性观察器</p>
+
+<p>可以通过重写属性为一个继承来的属性添加属性观察器。当继承来的属性值发生改变时，就会被通知到，无论那个属性原本是如何实现的。</p>
+
+<p>注意：不可以为继承来的常量存储型属性或继承来的只读计算型属性添加属性观察器。这些属性的值是不可以被设置的，所以，为它们提供willSet或didSet实现是不恰当。
+此外还要注意，不可以同时提供重写的 setter 和重写的属性观察器。如果想观察属性值的变化，并且已经为那个属性提供了定制的 setter，那么在 setter 中就可以观察到任何值变化了。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 下面的例子定义了一个新类叫AutomaticCar，它是Car的子类。AutomaticCar表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位:</span>
+<span class="kd">class</span> <span class="kt">AutomaticCar</span><span class="p">:</span> <span class="kt">Car</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">var</span> <span class="nv">currentSpeed</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">didSet</span> <span class="p">{</span>
+            <span class="n">gear</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">currentSpeed</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*
+当你设置AutomaticCar的currentSpeed属性，属性的didSet观察器就会自动地设置gear属性，为新的速度选择一个合适的挡位。具体来说就是，属性观察器将新的速度值除以10，然后向下取得最接近的整数值，最后加1来得到档位gear的值。例如，速度为35.0时，挡位为4：
+*/</span>
+
+<span class="k">let</span> <span class="nv">automatic</span> <span class="o">=</span> <span class="kt">AutomaticCar</span><span class="p">()</span>
+<span class="n">automatic</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">35.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"AutomaticCar: </span><span class="se">\(</span><span class="n">automatic</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "AutomaticCar: traveling at 35.0 miles per hour in gear 4"</span>
+</code></pre>
+</div>
+
+<h3 id="section-4">防止重写</h3>
+
+<p>可以通过把方法，属性或下标标记为final来防止它们被重写，只需要在声明关键字前加上final修饰符即可（例如：final var，final func，final class func，以及final subscript）。</p>
+
+<p>如果重写了带有final标记的方法，属性或下标，在编译时会报错。在类扩展中的方法，属性或下标也可以在扩展的定义里标记为 final 的。</p>
+
+<p>可以通过在关键字class前添加final修饰符（final class）来将整个类标记为 final 的。这样的类是不可被继承的，试图继承这样的类会导致编译报错。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/12/10/swift_IX_Methods_Subscripts_Inheritance/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+        </ul>
+
+
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="/" class="previous"><i class="fa fa-angle-left"></i></a>
+          
+          <span class="page_number ">2/7</span>
+          
+            <a href="/page3" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+          
+        </div>
+    </div>
+    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <div class="right">
+        <div class="wrap">
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    最新文章
+                </div>
+                <ul class="content-ul" recent>
+                    
+                        <li><a href="/2017/03/04/Unix/">UNIX 入门小教程</a></li>
+                    
+                        <li><a href="/2017/03/04/Unix/">Unix</a></li>
+                    
+                        <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
+                    
+                        <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
+                    
+                        <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
+                    
+                        <li><a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></li>
+                    
+                        <li><a href="/2017/01/19/AD-xctool/">持续集成系列 - Xcode 的脚本世界</a></li>
+                    
+                        <li><a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></li>
+                    
+                        <li><a href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a></li>
+                    
+                        <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
+                    
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    分类
+                </div>
+                <ul class="content-ul" cate>
+                    
+                    <li>
+                        <a href="/category/#OS_X" class="categories-list-item" cate="OS_X">
+                            <span class="name">
+                                OS_X
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Objective-C" class="categories-list-item" cate="Objective-C">
+                            <span class="name">
+                                Objective-C
+                            </span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Reverse" class="categories-list-item" cate="Reverse">
+                            <span class="name">
+                                Reverse
+                            </span>
+                            <span class="badge">9</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#AD" class="categories-list-item" cate="AD">
+                            <span class="name">
+                                AD
+                            </span>
+                            <span class="badge">4</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#tips" class="categories-list-item" cate="tips">
+                            <span class="name">
+                                tips
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#python" class="categories-list-item" cate="python">
+                            <span class="name">
+                                python
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Swift3.0" class="categories-list-item" cate="Swift3.0">
+                            <span class="name">
+                                Swift3.0
+                            </span>
+                            <span class="badge">11</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#CI" class="categories-list-item" cate="CI">
+                            <span class="name">
+                                CI
+                            </span>
+                            <span class="badge">6</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
+                            <span class="name">
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#apache" style="font-size: 9pt; color: #999;">apache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" style="font-size: 9pt; color: #999;">WKWebView、Native与JS、缓存、NSURLProtocol</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Charles" style="font-size: 9pt; color: #999;">Charles</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Reveal" style="font-size: 9pt; color: #999;">Reveal</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOSOpenDev" style="font-size: 9pt; color: #999;">iOSOpenDev</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#block" style="font-size: 9pt; color: #999;">block</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#缓存" style="font-size: 10pt; color: #888;">缓存</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SecureCRT" style="font-size: 9pt; color: #999;">SecureCRT</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#博客" style="font-size: 9pt; color: #999;">博客</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#jekyll" style="font-size: 9pt; color: #999;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#sublime" style="font-size: 9pt; color: #999;">sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#环境变量" style="font-size: 9pt; color: #999;">环境变量</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#mac_tips" style="font-size: 9pt; color: #999;">mac_tips</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Sublime" style="font-size: 10pt; color: #888;">Sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向" style="font-size: 9pt; color: #999;">iOS逆向</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#class_dump" style="font-size: 9pt; color: #999;">class_dump</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Theos" style="font-size: 10pt; color: #888;">Theos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Logos" style="font-size: 9pt; color: #999;">Logos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS基础" style="font-size: 9pt; color: #999;">iOS基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IDA、iFunBox、dyld_decache" style="font-size: 9pt; color: #999;">IDA、iFunBox、dyld_decache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向工具集" style="font-size: 9pt; color: #999;">iOS逆向工具集</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向理论基础" style="font-size: 9pt; color: #999;">iOS逆向理论基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#脚本" style="font-size: 9pt; color: #999;">脚本</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#python" style="font-size: 9pt; color: #999;">python</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Swift3.0" style="font-size: 18pt; color: #000;">Swift3.0</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SDiffuseMenu" style="font-size: 9pt; color: #999;">SDiffuseMenu</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Animation" style="font-size: 9pt; color: #999;">Animation</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#OTA" style="font-size: 9pt; color: #999;">OTA</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Github" style="font-size: 9pt; color: #999;">Github</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Travis-CI" style="font-size: 9pt; color: #999;">Travis-CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Termianl" style="font-size: 9pt; color: #999;">Termianl</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#xctool" style="font-size: 9pt; color: #999;">xctool</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#XCTest" style="font-size: 9pt; color: #999;">XCTest</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#fastlane" style="font-size: 10pt; color: #888;">fastlane</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
+                    
+                </div>
+            </div>
+
+            <!-- <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    Links
+                </div>
+                <ul  class="content-ul">
+
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <script src="/js/scroll.min.js " charset="utf-8"></script> -->
+<!-- <script src="/js/pageContent.js " charset="utf-8"></script> -->
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

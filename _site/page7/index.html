@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>3行代码</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/page7/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" index>
+    <div class="left">
+        <h1>Welcome to 3code.info!</h1>
+        <small>记录生活</small>
+        <hr>
+        <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/10/15/NSURLProtocol/">NSURLProtocol小教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-10-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Objective-C" title="Category: Objective-C" rel="category">Objective-C</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#NSURLProtocol" title="Tag: NSURLProtocol" rel="tag">NSURLProtocol</a>&nbsp;
+    
+        <a href="/tag/#缓存" title="Tag: 缓存" rel="tag">缓存</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">1、基本使用</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、注册</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、实现方法</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">3、坑</a></li>
+      <li><a href="#request" id="markdown-toc-request">4、修改request请求头</a></li>
+      <li><a href="#requesturl" id="markdown-toc-requesturl">5、request.URL重定向</a></li>
+      <li><a href="#nsurlprotocolclient" id="markdown-toc-nsurlprotocolclient">6、NSURLProtocolClient</a></li>
+    </ul>
+  </li>
+  <li><a href="#nsurlprotocolnsurlsession" id="markdown-toc-nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</a></li>
+</ul>
+
+<p>iOS里面总有一些比较神秘，但也总是充满惊喜的API，譬如本博客持续更新的:NSURLProtocol。</p>
+
+<p>NSURLProtocol并不是protocol而是一个虚拟类。使用的话需要实例化一个子类来操作，在这个子类中，可以实现如下的功能:</p>
+
+<ul>
+  <li>重定向网络请求</li>
+  <li>忽略网络请求，使用本地缓存</li>
+  <li>自定义网络请求的返回结果</li>
+  <li>全局的网络请求设置</li>
+</ul>
+
+<p>注意:</p>
+<ul>
+  <li>NSURLProtocol只能拦截 NSURLConnection、NSURLSession 和 UIWebView 中的请求，无法拦截WKWebView中发出的网络请求。</li>
+  <li>可以注册多个NSURLProtocol的子类，注册多个NSURLProtocol子类会逆序去执行，也就是先注册的子类后执行。</li>
+  <li>AFN\SDWebImage等开始使用NSURLSession，需要注意其中潜在的坑</li>
+  <li>UIWebView本身是有缓存的，基于NSURLCache来实现</li>
+</ul>
+
+<p>如下是URL Loading System的组织图，本文只是简单的介绍下NSURLProtocol。</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="" /></p>
+
+<h2 id="section">1、基本使用</h2>
+
+<h4 id="section-1">1、注册</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">application:</span><span class="o">(</span><span class="n">UIApplication</span> <span class="o">*)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="o">(</span><span class="n">NSDictionary</span> <span class="o">*)</span><span class="n">launchOptions</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">registerClass:</span><span class="o">[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+    <span class="nc">return</span> <span class="n">YES</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h4 id="section-2">2、实现方法</h4>
+
+<p>// 1、每有一个请求的时候都会调用这个方法，如果返回YES就代表这个request需要被处理，反之就是不需要被处理。</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">static</span> <span class="n">NSString</span> <span class="o">*</span> <span class="kd">const</span> <span class="n">protocolKey</span> <span class="o">=</span> <span class="err">@</span><span class="s">"protocolKey"</span><span class="o">;</span>
+
+<span class="o">+</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">canInitWithRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="c1">//防止无限循环，因为一个请求在被拦截处理过程中，也会发起一个请求，这样又会走到这里</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// 对https请求做相关处理</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">scheme</span> <span class="o">=</span> <span class="o">[[</span><span class="n">request</span> <span class="n">URL</span><span class="o">]</span> <span class="n">scheme</span><span class="o">];</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">scheme</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"https"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>// 2、这个方法返回request，可以修改request</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">+</span> <span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="nl">canonicalRequestForRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">request</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>// 3、这个方法用于处理被拦截的request，从而处理请求头、重定向、缓存等</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">startLoading</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>// 4、停止请求</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span> <span class="nx">stopLoading</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="section-3">3、坑</h4>
+<p>不做解释，遇到的人都懂：</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
+</code></pre>
+</div>
+
+<h4 id="request">4、修改request请求头</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">startLoading</span> <span class="o">{</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">request</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="c1">//给请求头添加一个请求体</span>
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="o">[</span><span class="n">request</span><span class="o">.</span><span class="na">allHTTPHeaderFields</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">headers</span> <span class="nl">setObject:</span><span class="err">@</span><span class="s">"3code.info"</span> <span class="nl">forKey:</span><span class="err">@</span><span class="s">"key"</span><span class="o">];</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="c1">//.....然后使用NSURLSession发送request</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h4 id="requesturl">5、request.URL重定向</h4>
+<p>将请求重定向到3code.info</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">startLoading</span> <span class="o">{</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">request</span> <span class="n">mutableCopy</span><span class="o">];</span>
+    <span class="c1">//request改为访问3code.info了</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">URL</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="err">@</span><span class="s">"http://www.3code.info"</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">setProperty:</span><span class="err">@</span><span class="o">(</span><span class="n">YES</span><span class="o">)</span> <span class="nl">forKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="c1">//使用NSURLSession继续把重定向的request发送出去</span>
+    <span class="n">NSURLSessionConfiguration</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSessionConfiguration</span> <span class="n">ephemeralSessionConfiguration</span><span class="o">];</span>
+    <span class="n">NSOperationQueue</span> <span class="o">*</span><span class="n">mainQueue</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSOperationQueue</span> <span class="n">mainQueue</span><span class="o">];</span>
+    <span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="o">[</span><span class="n">NSURLSession</span> <span class="nl">sessionWithConfiguration:</span><span class="n">config</span> <span class="nl">delegate:</span><span class="n">self</span> <span class="nl">delegateQueue:</span><span class="n">mainQueue</span><span class="o">];</span>
+    <span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">task</span> <span class="o">=</span> <span class="o">[</span><span class="n">session</span> <span class="nl">dataTaskWithRequest:</span><span class="n">request</span><span class="o">];</span>
+    <span class="o">[</span><span class="n">task</span> <span class="n">resume</span><span class="o">];</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h4 id="nsurlprotocolclient">6、NSURLProtocolClient</h4>
+
+<p>webview中发送一个request，在这里拦截后使用NSURLSession重新发request。那webview是收不到response的。这里就要做一个处理，每一个NSURLProtocol的子类都有一个client对象来处理response。写法用下边这个就行，比较固定的。(保留了以前的NSURLConnection)</p>
+
+<p>本次更新：</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">task:</span><span class="o">(</span><span class="n">NSURLSessionTask</span> <span class="o">*)</span><span class="n">task</span> <span class="nl">didCompleteWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSURLSessionResponseDisposition</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">NSURLSessionResponseAllow</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">-(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">URLSession:</span><span class="o">(</span><span class="n">NSURLSession</span> <span class="o">*)</span><span class="n">session</span> <span class="nl">dataTask:</span><span class="o">(</span><span class="n">NSURLSessionDataTask</span> <span class="o">*)</span><span class="n">dataTask</span> <span class="nl">willCacheResponse:</span><span class="o">(</span><span class="n">NSCachedURLResponse</span> <span class="o">*)</span><span class="n">proposedResponse</span> <span class="nl">completionHandler:</span><span class="o">(</span><span class="kt">void</span> <span class="o">(^)(</span><span class="n">NSCachedURLResponse</span> <span class="o">*</span><span class="n">cachedResponse</span><span class="o">))</span><span class="n">completionHandler</span> <span class="o">{</span>
+    <span class="n">completionHandler</span><span class="o">(</span><span class="n">proposedResponse</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>NSURLConnection：</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveResponse:</span><span class="o">(</span><span class="n">NSURLResponse</span> <span class="o">*)</span><span class="n">response</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didReceiveResponse:</span><span class="n">response</span> <span class="nl">cacheStoragePolicy:</span><span class="n">NSURLCacheStorageNotAllowed</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didReceiveData:</span><span class="o">(</span><span class="n">NSData</span> <span class="o">*)</span><span class="n">data</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didLoadData:</span><span class="n">data</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span> <span class="nl">connectionDidFinishLoading:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocolDidFinishLoading:</span><span class="n">self</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="o">-</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="nl">connection:</span><span class="o">(</span><span class="n">NSURLConnection</span> <span class="o">*)</span><span class="n">connection</span> <span class="nl">didFailWithError:</span><span class="o">(</span><span class="n">NSError</span> <span class="o">*)</span><span class="n">error</span> <span class="o">{</span>
+    <span class="o">[</span><span class="n">self</span><span class="o">.</span><span class="na">client</span> <span class="nl">URLProtocol:</span><span class="n">self</span> <span class="nl">didFailWithError:</span><span class="n">error</span><span class="o">];</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="nsurlprotocolnsurlsession">2、NSURLProtocol拦截NSURLSession</h2>
+
+<p>上一期的项目有个需求，就是在移动网络下，不进行高清图片，视频等下载操作。其中遇到的问题就是拦截NSURLSession。这里简化为如下实现。</p>
+
+<p>思路：使用NSURLProtocol拦截所有的request，过滤耗流量的request。并做处理。其实蛮简单的，但是AFNetwork、SDWebImageCache等三方库并未拦截。原因是NSURLSession。</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<span class="o">+</span> <span class="o">(</span><span class="n">BOOL</span><span class="o">)</span><span class="nl">canInitWithRequest:</span><span class="o">(</span><span class="n">NSURLRequest</span> <span class="o">*)</span><span class="n">request</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">([</span><span class="n">NSURLProtocol</span> <span class="nl">propertyForKey:</span><span class="n">protocolKey</span> <span class="nl">inRequest:</span><span class="n">request</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//满足条件时直接截获请求</span>
+    <span class="k">if</span> <span class="o">([[</span><span class="n">UserConfig</span> <span class="n">sharedInstance</span><span class="o">]</span> <span class="n">isOffPicture</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">([</span><span class="n">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">pathExtension</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"jpg"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span> <span class="o">||</span> <span class="o">[</span><span class="n">request</span><span class="o">.</span><span class="na">URL</span><span class="o">.</span><span class="na">pathExtension</span> <span class="nl">caseInsensitiveCompare:</span><span class="err">@</span><span class="s">"png"</span><span class="o">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">[</span><span class="n">self</span> <span class="n">isPictureDownload</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>从官方文档中可以了解到自定义的NSURLProtocol子类需要赋给NSURLSessionConfiguration的protocolClasses属性,同时其创建的Session时关联的NSURLSessionConfiguration为defaultSessionConfiguration。那么解决方法就跃然纸上了，如下代码：</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">+</span> <span class="o">(</span><span class="n">NSURLSessionConfiguration</span> <span class="o">*)</span><span class="n">zw_defaultSessionConfiguration</span> <span class="o">{</span>
+<span class="c1">//    如果需要NSURLProtocol来截获NSURLSession发出的请求，需要每一个NSURLSession在创建时配置的NSURLSessionConfiguration类的protocolClasses属性附上自定义的NSURLProtocol：如下</span>
+    <span class="n">NSURLSessionConfiguration</span> <span class="o">*</span><span class="n">configuration</span> <span class="o">=</span> <span class="o">[</span><span class="n">self</span> <span class="n">zw_defaultSessionConfiguration</span><span class="o">];</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">protocolClasses</span> <span class="o">=</span> <span class="err">@</span><span class="o">[[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+    <span class="nc">configuration</span><span class="o">.</span><span class="na">protocolClasses</span> <span class="o">=</span> <span class="n">protocolClasses</span><span class="o">;</span>
+    
+    <span class="k">return</span> <span class="n">configuration</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="o">+</span> <span class="o">(</span><span class="kt">void</span><span class="o">)</span><span class="n">load</span> <span class="o">{</span>
+<span class="c1">//  使用Method Swizzling方法，defaultSessionConfiguration实现（AFNetwork、SDWebImageCache在创建时使用的是[NSURLSessionConfiguration defaultSessionConfiguration]）如下：</span>
+    <span class="n">Method</span> <span class="n">systemMethod</span> <span class="o">=</span> <span class="n">class_getClassMethod</span><span class="o">([</span><span class="n">NSURLSessionConfiguration</span> <span class="kd">class</span><span class="err">],</span> <span class="err">@</span><span class="nc">selector</span><span class="o">(</span><span class="n">defaultSessionConfiguration</span><span class="o">));</span>
+    <span class="n">Method</span> <span class="n">zwMethod</span> <span class="o">=</span> <span class="n">class_getClassMethod</span><span class="o">([</span><span class="n">self</span> <span class="kd">class</span><span class="err">],</span> <span class="err">@</span><span class="nc">selector</span><span class="o">(</span><span class="n">zw_defaultSessionConfiguration</span><span class="o">));</span>
+    <span class="n">method_exchangeImplementations</span><span class="o">(</span><span class="n">systemMethod</span><span class="o">,</span> <span class="n">zwMethod</span><span class="o">);</span>
+    <span class="o">[</span><span class="n">NSURLProtocol</span> <span class="nl">registerClass:</span><span class="o">[</span><span class="n">CodeURLProtocol</span> <span class="kd">class</span><span class="err">]];</span>
+<span class="err">}</span>
+</code></pre>
+</div>
+
+<p>以上就解决了NSURLProtocol拦截NSURLSession的问题。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/10/15/NSURLProtocol/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/09/12/performSEL&dispatchAfter/">Cancel performSelector & dispatch_after</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-09-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Objective-C" title="Category: Objective-C" rel="category">Objective-C</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#block" title="Tag: block" rel="tag">block</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#performselector" id="markdown-toc-performselector">performSelector</a></li>
+  <li><a href="#block" id="markdown-toc-block">取消一个待执行的Block</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">1、方案1</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、方案2</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>前几天项目里有个需求，要延时执行一个SEL，同时这个SEL在没有被执行前也可以被cancel。
+最先想到的是performSelector…afterDelay…，因为其有cancel方法：</p>
+
+<h2 id="performselector">performSelector</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (id)performSelector:(SEL)aSelector;  
+- (id)performSelector:(SEL)aSelector withObject:(id)object;  
+- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;
+</code></pre>
+</div>
+<p>这三个方法，均为同步执行，与线程无关，主线程和子线程中均可调用。等同于直接调用该方法。在需要动态的去调用方法的时候去使用。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay inModes:(NSArray *)modes;
+- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay;
+</code></pre>
+</div>
+<p>这两个方法为异步执行,且只能在主线程中执行，其它线程不执行，即使delay传参为0，也不会立即执行，而是在next runloop执行。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget selector:(SEL)aSelector object:(id)anArgument;
++ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget;
+</code></pre>
+</div>
+<p>在方法未执行之前，可以使用以上方法进行取消。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait modes:(NSArray *)array;
+- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;
+</code></pre>
+</div>
+<p>1、这两个方法，在主线程和子线程中均可执行，均会在主线程中调aSelector方法,
+2、设置wait为NO:等待当前线程执行完以后，主线程才会执行aSelector方法，
+3、设置为YES：不等待当前线程执行完，就在主线程上执行aSelector方法。</p>
+
+<h2 id="block">取消一个待执行的Block</h2>
+
+<h4 id="section">1、方案1</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>-(void)run{
+    [self performSelector:@selector(TEST) withObject:@"12" afterDelay:2];  
+}
+-(void)cancelRun{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(TEST) object:@"12"];
+}
+</code></pre>
+</div>
+<p>但是操作需要添加到主线程才行，子线程不会执行延时的TEST:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_async(dispatch_get_main_queue(), ^{ [self run]  });
+</code></pre>
+</div>
+
+<p>原因是performSelector afterDelay 是注册到当前线程的定时器里的，然后子线程没有runloop(需要手动添加)，没法delay执行SEL，so添加到主线程操作。</p>
+
+<h4 id="section-1">2、方案2</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.2*NSEC_PER_SEC);
+dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [weakSelf TEST];
+    });
+</code></pre>
+</div>
+
+<p>注意，这里也需要取消操作。我并没有找到GCD直接取消block的操作，需要自己进行构造的，在github上找到一个方案，实际操作也OK。paste如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#import &lt;Foundation/Foundation.h&gt;
+typedef void(^SMDelayedBlockHandle)(BOOL cancel);
+static SMDelayedBlockHandle perform_block_after_delay(CGFloat seconds, dispatch_block_t block) {
+    
+    if (nil == block) {
+        return nil;
+    }
+    
+    // block定义在栈上，可以使用__block修改变量，需将其copy到堆上。
+    __block dispatch_block_t blockToExecute = [block copy];
+    __block SMDelayedBlockHandle delayHandleCopy = nil;
+
+    // 【这里，block被包裹进 一个取消的handle中：】
+    SMDelayedBlockHandle delayHandle = ^(BOOL cancel){      
+        if (NO == cancel &amp;&amp; nil != blockToExecute) {
+            dispatch_async(dispatch_get_main_queue(), blockToExecute);
+        }
+#if !__has_feature(objc_arc)
+        [blockToExecute release];
+        [delayHandleCopy release];
+#endif
+        blockToExecute = nil;
+        delayHandleCopy = nil;
+    };
+    // delayHandle copy到堆上.
+    delayHandleCopy = [delayHandle copy];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (nil != delayHandleCopy) {
+            delayHandleCopy(NO);
+        }
+    });
+    return delayHandleCopy;
+};
+
+static void cancel_delayed_block(SMDelayedBlockHandle delayedHandle) {
+    if (nil == delayedHandle) {
+        return;
+    }
+    delayedHandle(YES);
+}
+</code></pre>
+</div>
+
+<p>方法奇妙之处就在于block copy到heap上执行，当需要中途取消时候，直接置空heap上的copy。</p>
+
+<p>实际可以这样使用：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)delayBlock {
+    SMDelayedBlockHandle handle = perform_block_after_delay(2.0f, ^{
+                [_delayedBlockHandle release];
+                _delayedBlockHandle = nil;
+            });
+    _delayedBlockHandle = [handle retain];
+}
+ 
+- (void)cancelBlock {
+    if (nil == _delayedBlockHandle) {
+        return;
+    }
+    _delayedBlockHandle(YES);
+    [_delayedBlockHandle release];
+    _delayedBlockHandle = nil;
+}
+
+</code></pre>
+</div>
+
+<p>参考博客：<a href="https://blog.spacemanlabs.com/2011/12/cancel-dispatch_after/">博客</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/09/12/performSEL&dispatchAfter/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/08/07/REVERSE4_Reveal/">IOS逆向系列_Reveal_解码任意APP的UI界面</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-08-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Reveal" title="Tag: Reveal" rel="tag">Reveal</a>&nbsp;
+    
+        <a href="/tag/#iOSOpenDev" title="Tag: iOSOpenDev" rel="tag">iOSOpenDev</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#iphone" id="markdown-toc-iphone">iphone配置</a>    <ul>
+      <li><a href="#revealloader" id="markdown-toc-revealloader">RevealLoader</a></li>
+    </ul>
+  </li>
+  <li><a href="#mac" id="markdown-toc-mac">Mac配置</a>    <ul>
+      <li><a href="#ssh" id="markdown-toc-ssh">1、SSH</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">2、关于破解：</a></li>
+      <li><a href="#reveal" id="markdown-toc-reveal">3、Reveal</a></li>
+      <li><a href="#framework---dylib--plist" id="markdown-toc-framework---dylib--plist">4、framework +  dylib + plist</a>        <ul>
+          <li><a href="#revealserverframework" id="markdown-toc-revealserverframework">4.1  RevealServer.framework</a></li>
+          <li><a href="#librevealdylib" id="markdown-toc-librevealdylib">4.2 libReveal.dylib</a>            <ul>
+              <li><a href="#iosopendev" id="markdown-toc-iosopendev">方法1：iOSOpenDev创建一个</a></li>
+              <li><a href="#section-2" id="markdown-toc-section-2">方法2</a></li>
+            </ul>
+          </li>
+          <li><a href="#librevealplist" id="markdown-toc-librevealplist">4.3 libReveal.plist</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+<p>Reveal可以直观地查看App的UI布局，官方给Reveal的定位是“See your application’s view hierarchy at runtime with advanced 2D and 3D visualisations”，但作为逆向开发，查看自己App的UI布局显然不能满足我们的需求，能够查看别人App的UI布局才是正经事儿。</p>
+
+<p>从使用至今，Reveal也历经了好几个版本：1.5.x-&gt;1.6.x-&gt;V++(V2等)，不论是哪个版本都有免费使用的机会。旧版的可以直接破解，新版的可以修改系统时间来解决。</p>
+
+<h2 id="iphone">iphone配置</h2>
+
+<h3 id="revealloader">RevealLoader</h3>
+
+<p>1、在手机上添加源:http://rheard.com/cydia然后安装 Reveal Loader。注意需要VPN才行。</p>
+
+<p>2、下载完Reveal Loader后，检查iOS上的/Library/目录下有没有一个名为RHRevealLoader的文件夹:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># ls -l /Library/ | grep RHRevealLoader
+</code></pre>
+</div>
+
+<p>如果没有，就手动创建一个:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /Library/RHRevealLoader
+</code></pre>
+</div>
+
+<p>3、Reveal Loader的配置界面位于Settings应用中，点击Reveal进入其界面，呈现在我们面前的主要是一些使用声明。点击Enabled Applications，进入配置界面。要分析哪个App，就打开对应的开关。</p>
+
+<h2 id="mac">Mac配置</h2>
+
+<h3 id="ssh">1、SSH</h3>
+
+<p>手动开启，或者使用PP助手，没有使用过的话，<strong>记得开启后修改密码。</strong></p>
+
+<h3 id="section-1">2、关于破解：</h3>
+
+<p>如果是使用1.6.x以下的版本，可以google到破解文件，覆盖安装就行。
+如果是V2及以上版本，破解方法我还没找，现在用的是1.5.x。。</p>
+
+<p>注意：新版的Reveal缺少libReaveal.dylib，可以基于Reveal.framwwork使用iOSOpenDev创建一个。</p>
+
+<h3 id="reveal">3、Reveal</h3>
+
+<p>与其功能相近的工具有：PonyDebugger（https://github.com/square/PonyDebugger）和Spark Inspector（http://sparkinspector.com）。不过Reveal在UI上更直观些。</p>
+
+<p>其常规用法是将framework集成至Xcode工程中，具体可参见Reveal的官网<a href="http://revealapp.com/">http://revealapp.com/</a>，</p>
+
+<p>下面进重点。</p>
+
+<h3 id="framework---dylib--plist">4、framework +  dylib + plist</h3>
+
+<h4 id="revealserverframework">4.1  RevealServer.framework</h4>
+<p>通过openSSH拷贝framework到越狱机</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework root@iphoneip:/System/Library/Frameworks  
+</code></pre>
+</div>
+
+<p>早期版本的libReveal.dylib是支持ARM架构的，只要把这个libReveal.dylib文件扔到手机的/Library/MobileSubstrate/DynamicLibraries/目录下，就OK了：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@iphoneip:/Library/MobileSubstrate/DynamicLibraries  
+</code></pre>
+</div>
+
+<h4 id="librevealdylib">4.2 libReveal.dylib</h4>
+
+<p>然后打开Reveal，在它标题栏的Help选项下，点开Show Reveal Library in Finder,把libReveal.dylib拷贝到RHRevealLoader目录下。</p>
+
+<p>新版的这个文件是没有的，麻烦点可以使用iOSOpenDev创建：</p>
+
+<h6 id="iosopendev">方法1：iOSOpenDev创建一个</h6>
+
+<ul>
+  <li>1、安装 macports</li>
+  <li>2、 已经安装可能要升级,更新MacPorts到最新版本，时间比较长。 $sudo port -v selfupdate</li>
+  <li>3、更新MacPorts后，安装DPKG文件，装过的忽略。 $ sudo port -f install dpkg</li>
+  <li>4、安装iOSOpenDev <a href="http://iosopendev.com/download/">http://iosopendev.com/download/</a></li>
+  <li>5、期间会各种报错，可以google解决。</li>
+  <li>6、新建CaptainHookTweak工程，使用Reveal.framwwork生成一个libReaveal.dylib即可。
+注意一定要添加相关的库，否则编译会报错。</li>
+</ul>
+
+<h6 id="section-2">方法2</h6>
+
+<p>注意，还有简单的方法😁😁😁</p>
+
+<p>将文件/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer 重命名为libReveal.dylib。copy到手机目录下：/Library/MobileSubstrate/DynamicLibraries/即可</p>
+
+<h4 id="librevealplist">4.3 libReveal.plist</h4>
+
+<p>在电脑上创建libReveal.plist，然后copy到iphone的 /Library/MobileSubstrate/DynamicLibraries/ 目录下。</p>
+
+<p>libReveal.plist内容如下（Bundles里写要分析的app的Bundle，可以制定多个):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">     
+    </span><span class="err">Filter</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">{</span><span class="w">    
+         </span><span class="err">Bundles</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">(</span><span class="nt">"info.3code.www"</span><span class="err">);</span><span class="w">     
+    </span><span class="err">};</span><span class="w">     
+</span><span class="err">}</span><span class="w">  
+</span></code></pre>
+</div>
+
+<p><strong>注意：</strong></p>
+
+<p>0、只有安装 Cydia Substrate之后才会有MobileSubstrate目录。mobilesubstrate是cydia插件/软件运行的一个基础依赖包。它提供软件运行的公共库，可以用来动态替换内存中的代码、数据等。安装的插件或软件比如iFile、Activator、SBSettings几乎都是依赖mobilesubstrate才能运行的。</p>
+
+<p>1、libReveal.plist：这个plist是有过滤作用的，它决定你要研究那个App，你通过指定bundleId来决定哪个App/进程启动时，这个libReveal.dylib注入进去。当libReveal.plist不存在时，相当于没有过滤，没有限制，所有进程都会被注入，可能出现白苹果，修复方法见google…</p>
+
+<p>2、手机的/Library/MobileSubstrate/DynamicLibraries目录下存放着所有在系统启动时就需要加载的动态链接库，所以把reveal的动态链接库上传</p>
+
+<p>以上完成之后：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># killall SpringBoard
+或者手动重启
+</code></pre>
+</div>
+
+<p>然后 开启Reveal，就可以尽情的分析APP喽。</p>
+
+<p>链接：
+<a href="https://github.com/heardrwt/RevealLoader">https://github.com/heardrwt/RevealLoader</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/08/07/REVERSE4_Reveal/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/08/07/REVERSE4_Charles/">IOS逆向系列_Charles_iPhone网络抓包</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-08-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Reverse" title="Category: Reverse" rel="category">Reverse</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Charles" title="Tag: Charles" rel="tag">Charles</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#charles" id="markdown-toc-charles">安装Charles</a></li>
+  <li><a href="#section" id="markdown-toc-section">配置</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">1、配置代理：</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">2、配置手机：</a></li>
+      <li><a href="#https" id="markdown-toc-https">3、拦截HTTPS配置：</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">4、手机安装证书：</a></li>
+      <li><a href="#ssl-proxy" id="markdown-toc-ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">6、模拟慢网速</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="charles">安装Charles</h2>
+
+<p>官网下载：<a href="https://www.charlesproxy.com/">https://www.charlesproxy.com/</a></p>
+
+<p>从网上找到最新的破解文件：charles.jar，替换系统的即可破解</p>
+
+<h2 id="section">配置</h2>
+
+<h4 id="section-1">1、配置代理：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Proxy-&gt;Proxy Settings 设置端口8888，勾选Enable transparent HTTP proxying
+</code></pre>
+</div>
+
+<h4 id="section-2">2、配置手机：</h4>
+<p>查看电脑IP(Help-&gt;Local IP Address)，然后iPhone上也设置相同的IP(在无线局域网-&gt;当前连接的wifi-&gt;详情-&gt;最底部HTTP 代理-&gt;手动-&gt;填上电脑的IP、端口号8888)</p>
+
+<h4 id="https">3、拦截HTTPS配置：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HELP-&gt; SSL Proxying-&gt;ICRC 安装证书 
+</code></pre>
+</div>
+
+<h4 id="section-3">4、手机安装证书：</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser
+</code></pre>
+</div>
+
+<p>在手机浏览器中访问地址：http://charlesproxy.com/getssl，即可打开证书安装的界面，安装完证书后，就可以截取手机上的Https通讯内容了</p>
+
+<h4 id="ssl-proxy">5、对于手机上某个请求的网址，右键选择激活SSL proxy</h4>
+
+<h4 id="section-4">6、模拟慢网速</h4>
+<p>proxy–&gt;throttle setting —&gt;enable throttling 即可，这个页面就是设置网络节流的</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/08/07/REVERSE4_Charles/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/06/10/WKWebView/">WKWebView小教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-06-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Objective-C" title="Category: Objective-C" rel="category">Objective-C</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" title="Tag: WKWebView、Native与JS、缓存、NSURLProtocol" rel="tag">WKWebView、Native与JS、缓存、NSURLProtocol</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、基础</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">1.1 初始化</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">1.2 加载页面</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">1.3 代理方法</a>        <ul>
+          <li><a href="#section-5" id="markdown-toc-section-5">1.3.1  需要注意的几个代理方法：</a></li>
+          <li><a href="#section-6" id="markdown-toc-section-6">1.3.2 其它代理方法汇总</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">前言</h2>
+
+<p>WKWebView出来有段时间了，项目中一直在使用UIWebView因为要兼容IOS7，前段时间产品那边忽然想开了，ignoreIOS7。下边总结了之前学习的笔记，如果需要demo的还请留言。
+早在2014年的WWDC大会上就了解过WebKit，自诩有60fps刷新率、内置手势、和Safari相同的JavaScript引擎等等众多优势，相比之下UIWebview显得比较low。</p>
+
+<p>就这段时间的使用体验来看，变化集中在：</p>
+<ul>
+  <li>1、内存消耗少，性能提升；</li>
+  <li>2、协议接口更细化，更丰富；</li>
+  <li>3、GPU硬件加速、KVO、cookie不自动携带…</li>
+</ul>
+
+<p>福利资源：<a href="https://github.com/WebKit/webkit">WebKit源码</a></p>
+
+<h2 id="section-1">1、基础</h2>
+
+<p>基本属性</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">#</span><span class="kn">import</span> <span class="err">&lt;</span><span class="nn">WebKit</span><span class="o">/</span><span class="n">WebKit</span><span class="o">.</span><span class="na">h</span><span class="o">&gt;</span>
+
+
+<span class="n">WKWebView</span> <span class="o">*</span><span class="n">webView</span> <span class="o">=</span> <span class="o">[[</span><span class="n">WKWebView</span> <span class="n">alloc</span><span class="o">]</span> <span class="nl">initWithFrame:</span><span class="n">self</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">frame</span><span class="o">];</span>
+<span class="c1">// 代理</span>
+<span class="n">webView</span><span class="o">.</span><span class="na">navigationDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="o">;</span>
+<span class="n">webView</span><span class="o">.</span><span class="na">UIDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="o">;</span>
+<span class="c1">// opaque不透明的。</span>
+<span class="n">webView</span><span class="o">.</span><span class="na">opaque</span> <span class="o">=</span> <span class="n">NO</span><span class="o">;</span>  
+<span class="c1">// web内手势左右滑动导航</span>
+<span class="n">webView</span><span class="o">.</span><span class="na">allowsBackForwardNavigationGestures</span> <span class="o">=</span><span class="n">YES</span><span class="o">;</span>
+<span class="c1">// 加载数据</span>
+<span class="o">[</span><span class="n">webView</span> <span class="nl">loadRequest:</span><span class="o">[</span><span class="n">NSURLRequest</span> <span class="nl">requestWithURL:</span><span class="o">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="err">@</span><span class="s">"http://www.3code.info"</span><span class="o">]]];</span>
+</code></pre>
+</div>
+
+<h4 id="section-2">1.1 初始化</h4>
+
+<p>初始化方法，两种：</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 默认初始化</span>
+<span class="o">-</span> <span class="p">(</span><span class="nx">instancetype</span><span class="p">)</span><span class="nx">initWithFrame</span><span class="err">:</span> 
+<span class="c1">// 根据对webview的相关配置，进行初始化 【【此种方法参见下方的cookie小节，里面有详细的使用介绍】】</span>
+<span class="o">-</span> <span class="p">(</span><span class="nx">instancetype</span><span class="p">)</span><span class="nx">initWithFrame</span><span class="err">:</span> <span class="nx">configuration</span><span class="err">:</span> 
+
+</code></pre>
+</div>
+
+<h4 id="section-3">1.2 加载页面</h4>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 通过一个网页URL来加载一个WKWebView</span>
+<span class="o">-</span><span class="nx">loadRequest</span><span class="err">:</span> 
+<span class="c1">// 根据一个文件,加载一个WKWebView，后边是资源路径 【IOS9】</span>
+<span class="o">-</span><span class="nx">loadFileURL</span><span class="err">:</span> <span class="nx">allowingReadAccessToURL</span><span class="err">:</span> 
+<span class="c1">// 将html文件读取为字符串从而加载为WKWebView，baseURL是我们自己设置的资源路径(主目录)</span>
+<span class="o">-</span><span class="nx">loadHTMLString</span><span class="err">:</span> <span class="nx">baseURL</span><span class="err">:</span> 
+<span class="c1">// 下边方法使用的比较少，但更加自由，其中data是文件数据，MIMEType是文件类型，characterEncodingName是编码类型，baseURL是素材资源路径</span>
+<span class="o">-</span><span class="nx">loadData</span><span class="err">:</span> <span class="nx">MIMEType</span><span class="err">:</span> <span class="nx">characterEncodingName</span><span class="err">:</span>  <span class="nx">baseURL</span><span class="err">:</span>  <span class="nx">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="nx">_11</span><span class="p">,</span> <span class="mi">9</span><span class="nx">_0</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="section-4">1.3 代理方法</h4>
+
+<h5 id="section-5">1.3.1  需要注意的几个代理方法：</h5>
+
+<p>1、<code class="highlighter-rouge">-(void)webView: decidePolicyForNavigationAction: </code></p>
+
+<p>注意的是：</p>
+<ul>
+  <li>需要call decisionHandler，允许or不允许加载，否则报错。</li>
+  <li>
+    <p>当点击link时，如果有标签_blank,在webview中不会新开窗口，但是在WKWeb中，可以控制新开一个WKWebview。这时可以通过该方法的第一个参数WKNavigationAction的属性，来判断是否需要开新的view:</p>
+
+    <p>if(!navigationAction.targetFrame.mainFrame){
+      开新窗口
+  }</p>
+  </li>
+</ul>
+
+<p>这时就会调用 createWebViewWithConfiguration方法return的wkwebview，来加载新的页面。但如果没有实现这个协议，那么操作link就不会有反应了。</p>
+
+<p>2、<code class="highlighter-rouge">-(void) webView: decidePolicyForNavigationResponse: </code>
+这个也需要call decisionHandler,允许or不允许加载。</p>
+
+<h5 id="section-6">1.3.2 其它代理方法汇总</h5>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="cm">/* WKNavigationDelegate  */</span>
+
+<span class="c1">//1、【即将发送request请求】 可以决定是否请求，拦截request、cookie等。call decisionHandler</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">decidePolicyForNavigationAction</span><span class="err">:</span> 
+<span class="c1">//2、【开始请求页面】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didStartProvisionalNavigation</span><span class="err">:</span> 
+<span class="c1">//3、【收到response】 根据response决定要不要继续加载。call decisionHandler</span>
+<span class="o">-</span><span class="p">(</span><span class="k">void</span><span class="p">)</span> <span class="nx">webView</span><span class="err">:</span> <span class="nx">decidePolicyForNavigationResponse</span><span class="err">:</span> 
+<span class="c1">//4、【收到web内容，开始渲染】 可以注入JS</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didCommitNavigation</span><span class="err">:</span> 
+<span class="c1">//5、【页面渲染完成】可以注入JS</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFinishNavigation</span><span class="err">:</span> 
+
+<span class="c1">// 【网页内容被终止】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webViewWebContentProcessDidTerminate</span><span class="err">:</span>
+<span class="c1">// 【错误：页面跳转失败】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFailNavigation</span><span class="err">:</span> 
+<span class="c1">// 【错误：启动加载数据失败】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didFailProvisionalNavigation</span><span class="err">:</span> 
+<span class="c1">// 【页面校验身份】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didReceiveAuthenticationChallenge</span><span class="err">:</span> 
+<span class="c1">// 【重定向】</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">didReceiveServerRedirectForProvisionalNavigation</span>
+
+<span class="cm">/* UIDelegate  */</span>
+<span class="c1">// 当页面中有调用了js的alert、confirm、prompt方法就会触发以下方法</span>
+<span class="c1">// 页面中有输入框弹出警告框时调用</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptTextInputPanelWithPrompt</span><span class="err">:</span> 
+<span class="c1">// 页面中有确认框弹出警告框时调用</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptConfirmPanelWithMessage</span><span class="err">:</span><span class="p">(</span> 
+<span class="c1">// 警告框页面中有警告框弹出警告框时调用</span>
+<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nx">webView</span><span class="err">:</span> <span class="nx">runJavaScriptAlertPanelWithMessage</span><span class="err">:</span> 
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/06/10/WKWebView/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2015/05/05/macServe/">在mac上开启http服务</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2015-05-05
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>3行代码
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#OS_X" title="Category: OS_X" rel="category">OS_X</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#apache" title="Tag: apache" rel="tag">apache</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>介绍一种简便的方式,使用 Mac 自带 apache,无需手动配置,直接开启即可</p>
+
+<ul>
+  <li>启动 apache 服务</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">start</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>apache所在的路径是:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">open</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">WebServer</span><span class="o">/</span><span class="n">Documents</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>对外的URL:电脑 IP + Documents下的路径.</p>
+  </li>
+  <li>
+    <p>实例:</p>
+  </li>
+</ul>
+
+<p>路径文件:/Library/WebServer/Documents/TEST/%E5%A6%0%A7.html
+对应 URL:http://192.电脑 IP.222/TEST/%E5%A6%0%A7.html</p>
+
+<p><strong>这样局域网的伙伴们就可以轻松访问你的共享文件喽</strong></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2015/05/05/macServe/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+        </ul>
+
+
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="/page6" class="previous"><i class="fa fa-angle-left"></i></a>
+          
+          <span class="page_number ">7/7</span>
+          
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          
+        </div>
+    </div>
+    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <div class="right">
+        <div class="wrap">
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    最新文章
+                </div>
+                <ul class="content-ul" recent>
+                    
+                        <li><a href="/2017/03/04/Unix/">UNIX 入门小教程</a></li>
+                    
+                        <li><a href="/2017/03/04/Unix/">Unix</a></li>
+                    
+                        <li><a href="/2017/03/04/Shell-oneDay/">Shell 脚本</a></li>
+                    
+                        <li><a href="/2017/02/08/AD-jenkins/"> 持续集成系列 - CI + Jenkins的魔法世界</a></li>
+                    
+                        <li><a href="/2017/02/07/AD-Fastlane/"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</a></li>
+                    
+                        <li><a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></li>
+                    
+                        <li><a href="/2017/01/19/AD-xctool/">持续集成系列 - Xcode 的脚本世界</a></li>
+                    
+                        <li><a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></li>
+                    
+                        <li><a href="/2017/01/09/AD-iOS-OTA/">持续集成系列 - App 内测分发平台之 OTA </a></li>
+                    
+                        <li><a href="/2017/01/08/SDiffuseMenu/">Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu</a></li>
+                    
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    分类
+                </div>
+                <ul class="content-ul" cate>
+                    
+                    <li>
+                        <a href="/category/#OS_X" class="categories-list-item" cate="OS_X">
+                            <span class="name">
+                                OS_X
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Objective-C" class="categories-list-item" cate="Objective-C">
+                            <span class="name">
+                                Objective-C
+                            </span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Reverse" class="categories-list-item" cate="Reverse">
+                            <span class="name">
+                                Reverse
+                            </span>
+                            <span class="badge">9</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#AD" class="categories-list-item" cate="AD">
+                            <span class="name">
+                                AD
+                            </span>
+                            <span class="badge">4</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#tips" class="categories-list-item" cate="tips">
+                            <span class="name">
+                                tips
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#python" class="categories-list-item" cate="python">
+                            <span class="name">
+                                python
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Swift3.0" class="categories-list-item" cate="Swift3.0">
+                            <span class="name">
+                                Swift3.0
+                            </span>
+                            <span class="badge">11</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#CI" class="categories-list-item" cate="CI">
+                            <span class="name">
+                                CI
+                            </span>
+                            <span class="badge">6</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Shell" class="categories-list-item" cate="Shell">
+                            <span class="name">
+                                Shell
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Unix" class="categories-list-item" cate="Unix">
+                            <span class="name">
+                                Unix
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#apache" style="font-size: 9pt; color: #999;">apache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#WKWebView、Native与JS、缓存、NSURLProtocol" style="font-size: 9pt; color: #999;">WKWebView、Native与JS、缓存、NSURLProtocol</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Charles" style="font-size: 9pt; color: #999;">Charles</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Reveal" style="font-size: 9pt; color: #999;">Reveal</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOSOpenDev" style="font-size: 9pt; color: #999;">iOSOpenDev</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#block" style="font-size: 9pt; color: #999;">block</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLProtocol" style="font-size: 9pt; color: #999;">NSURLProtocol</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#缓存" style="font-size: 10pt; color: #888;">缓存</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#NSURLCache" style="font-size: 9pt; color: #999;">NSURLCache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SecureCRT" style="font-size: 9pt; color: #999;">SecureCRT</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#博客" style="font-size: 9pt; color: #999;">博客</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#jekyll" style="font-size: 9pt; color: #999;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#sublime" style="font-size: 9pt; color: #999;">sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#环境变量" style="font-size: 9pt; color: #999;">环境变量</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#mac_tips" style="font-size: 9pt; color: #999;">mac_tips</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Sublime" style="font-size: 10pt; color: #888;">Sublime</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向" style="font-size: 9pt; color: #999;">iOS逆向</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#class_dump" style="font-size: 9pt; color: #999;">class_dump</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Theos" style="font-size: 10pt; color: #888;">Theos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Logos" style="font-size: 9pt; color: #999;">Logos</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS基础" style="font-size: 9pt; color: #999;">iOS基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IDA、iFunBox、dyld_decache" style="font-size: 9pt; color: #999;">IDA、iFunBox、dyld_decache</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向工具集" style="font-size: 9pt; color: #999;">iOS逆向工具集</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS逆向理论基础" style="font-size: 9pt; color: #999;">iOS逆向理论基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#脚本" style="font-size: 9pt; color: #999;">脚本</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#python" style="font-size: 9pt; color: #999;">python</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Swift3.0" style="font-size: 18pt; color: #000;">Swift3.0</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SDiffuseMenu" style="font-size: 9pt; color: #999;">SDiffuseMenu</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Animation" style="font-size: 9pt; color: #999;">Animation</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#OTA" style="font-size: 9pt; color: #999;">OTA</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Github" style="font-size: 9pt; color: #999;">Github</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Travis-CI" style="font-size: 9pt; color: #999;">Travis-CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Termianl" style="font-size: 9pt; color: #999;">Termianl</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#xctool" style="font-size: 9pt; color: #999;">xctool</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#XCTest" style="font-size: 9pt; color: #999;">XCTest</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#fastlane" style="font-size: 10pt; color: #888;">fastlane</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Shell" style="font-size: 9pt; color: #999;">Shell</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Unix" style="font-size: 9pt; color: #999;">Unix</a>
+                    
+                </div>
+            </div>
+
+            <!-- <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    Links
+                </div>
+                <ul  class="content-ul">
+
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <script src="/js/scroll.min.js " charset="utf-8"></script> -->
+<!-- <script src="/js/pageContent.js " charset="utf-8"></script> -->
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

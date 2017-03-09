@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>持续集成系列 - Xcode 的脚本世界</title>
+    <meta name="description" content="  基础知识          1. 嵌入 Xcode 项目的脚本      2. Xcodebuild        脚本打包          1.准备Plist文件:      脚本打测试包      脚本打生产包        shell 脚本打包实战基础知识现在有两个需求:  打一个 AdHoc 测试包...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2017/01/19/AD-xctool/">
+    <link rel="alternate" type="application/rss+xml" title="3行代码" href="http://localhost:4000/feed.xml ">
+
+
+<script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+     })();
+    </script>
+
+
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">3行代码</a>
+        <small>技术博客</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>持续集成系列 - Xcode 的脚本世界</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2017-01-19
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>3行代码
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#CI" title="Category: CI" rel="category">CI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Termianl" title="Tag: Termianl" rel="tag">Termianl</a-->
+        <a href="/tag/#Termianl" title="Tag: Termianl" rel="tag">Termianl</a>&nbsp;
+    
+        <!--a href="/tag/#xctool" title="Tag: xctool" rel="tag">xctool</a-->
+        <a href="/tag/#xctool" title="Tag: xctool" rel="tag">xctool</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">基础知识</a>    <ul>
+      <li><a href="#xcode-" id="markdown-toc-xcode-">1. 嵌入 Xcode 项目的脚本</a></li>
+      <li><a href="#xcodebuild" id="markdown-toc-xcodebuild">2. Xcodebuild</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">脚本打包</a>    <ul>
+      <li><a href="#plist" id="markdown-toc-plist">1.准备Plist文件:</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">脚本打测试包</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">脚本打生产包</a></li>
+    </ul>
+  </li>
+  <li><a href="#shell-" id="markdown-toc-shell-">shell 脚本打包实战</a></li>
+</ul>
+
+<h3 id="section">基础知识</h3>
+
+<p>现在有两个需求:</p>
+
+<ul>
+  <li>打一个 AdHoc 测试包,发送给测试人员进行测试</li>
+  <li>打一个 生产包,上线 ITC</li>
+</ul>
+
+<p>以上如果人工手动操作,挺耗时耗力的,而自动化则可以完美解决.自动化打包包括两种途径:</p>
+<ul>
+  <li>使用 Apple 自出品的脚本语言: AppleScript;</li>
+  <li>使用 shell 或者 python</li>
+</ul>
+
+<p>以下的操作基本是基于 Xcode 自带的命令行工具: Command Line Tools ,其包含两个重要的工具:
+xcodebuild 和 xcrun.相关工具及概念如下:</p>
+
+<ul>
+  <li>xcodebuild 主要用于编译和打包,<code class="highlighter-rouge">$ xcodebuild -help</code> 可以查看用法</li>
+  <li>xcrun 主要用于打包 <code class="highlighter-rouge">xcrun -h</code></li>
+  <li>以及 altool ,用于上传二进制文件到 ITC</li>
+  <li>Workspace、Project、Scheme、Target的区别:</li>
+</ul>
+
+<blockquote>
+  <p>Workspace: 是最大的集合,可以包含多个Project,可以管理不同的Project之间的关系.Workspace是以xcworkspace的文件形式存在的(和Project一致).Workspace的存在是为了解决原来仅有Project的时候不同的Project之间的引用和调用困难的问题.同时,一个Workspace的Project共用一个编译路径。比如使用CocoaPod或者使用其他开发库\框架.</p>
+
+  <p>Project: 是一个仓库,包含编译一个或多个product所需的文件\资源和信息,保持和聚合这些元素间的关系(每个Target能指定自己的Build Settings来覆盖Project),一般包含的内容如下:</p>
+
+  <blockquote>
+    <p>Source code, including header files and implementation files
+Libraries and frameworks, internal and external
+Resource files
+Image files
+Interface Builder (nib) files</p>
+  </blockquote>
+
+  <p>Scheme: 包含了一些要构建的Scheme,一些构建时用到的设置,一些要运行的测试.同时只能有一个Scheme是有效的.</p>
+
+  <p>Target: 是对应了具体一个想要构建的Product,包含了一些构建这个Product所需的配置和文件(build settings和build phases).一个Project可以包含多个Target.</p>
+
+</blockquote>
+
+<h5 id="xcode-">1. 嵌入 Xcode 项目的脚本</h5>
+
+<ul>
+  <li>脚本的位置:</li>
+</ul>
+
+<blockquote>
+  <p>Build Phases -&gt; 点击左上角+ -&gt; 添加 Run Script (运行脚本) -&gt; 添加脚本即可
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0190a69476.png" alt="374E29EC-49D9-4348-BA45-56B665CA4448.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0193db099b.png" alt="81EB716F-2F50-426D-BDBF-C0E2C1EF566E.png" /></p>
+
+  <p>默认的是 shell 脚本.需要修改成 py 脚本.</p>
+</blockquote>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 查看 python 解释器的位置:</span>
+<span class="gp">$ </span>whereis python
+/usr/bin/python
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>首先将上方的脚本解释器 由 <code class="highlighter-rouge">/bin/sh </code>修改为 <code class="highlighter-rouge">/usr/bin/python </code></p>
+  </li>
+  <li>
+    <p>然后添加脚本:在编译时,修改一个main.cpp文件的内容:</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">cppfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/Users/jiangxiaocai/Desktop/Test/main.cpp'</span><span class="p">,</span><span class="s">'w'</span><span class="p">)</span>
+<span class="n">outstr</span> <span class="o">=</span> <span class="s">"// 修改.cpp 文件"</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outstr</span><span class="p">)</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/12/58a01bc9a01d9.png" alt="C34DFE25-2477-457F-B57A-26D805A55F96.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a01be30a2d1.png" alt="06809A1C-87D3-4E9F-AC10-4FFB63193CE6.png" /></p>
+
+<h5 id="xcodebuild">2. Xcodebuild</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 功能选项没有放进来,主要是用于编译的命令
+
+Available keys for -exportOptionsPlist:
+
+    compileBitcode : Bool
+
+        # For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.
+
+    embedOnDemandResourcesAssetPacksInBundle : Bool
+
+        # For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.
+
+    iCloudContainerEnvironment
+
+        # For non-App Store exports, if the app is using CloudKit, this configures the "com.apple.developer.icloud-container-environment" entitlement. Available options: Development and Production. Defaults to Development.
+
+    manifest : Dictionary
+
+        # For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.
+
+    method : String
+
+        # Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.
+
+    onDemandResourcesAssetPacksBaseURL : String
+
+        # For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn't YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.
+
+    teamID : String
+
+        # The Developer Portal team to use for this export. Defaults to the team used to build the archive.
+
+    thinning : String
+
+        # For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: &lt;none&gt; (Xcode produces a non-thinned universal app), &lt;thin-for-all-variants&gt; (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. "iPhone7,1"). Defaults to &lt;none&gt;.
+
+    uploadBitcode : Bool
+
+        # For App Store exports, should the package include bitcode? Defaults to YES.
+
+    uploadSymbols : Bool
+
+        # For App Store exports, should the package include symbols? Defaults to YES.
+
+</code></pre>
+</div>
+
+<h3 id="section-1">脚本打包</h3>
+
+<p>一般来说实现实现方式有两种:</p>
+
+<ul>
+  <li>xcodebuild 和 xcrun 实现:</li>
+</ul>
+
+<blockquote>
+  <p>xcodebuild -workspace XXX -scheme XXX -configuration Release</p>
+
+  <p>xcrun -sdk iphoneos PackageApplication -v “/XXX/XXX.app” -o “/XXX/XXX”</p>
+</blockquote>
+
+<ul>
+  <li>xcodebuild 和 exportOptionsPlist 实现:</li>
+</ul>
+
+<blockquote>
+  <p>准备两个Plist文件，用于导出不同ipa包时使用</p>
+
+  <p>获取命令行参数，区分上传到Fir还是App Store</p>
+
+  <p>清理构建目录</p>
+
+  <p>编译打包</p>
+
+  <p>导出包</p>
+
+  <p>上传到Fir或者验证并上传到App Store</p>
+
+  <p>发邮件通知</p>
+</blockquote>
+
+<p>下边是基于第二种方式的方法:
+首先因为不了解这种自动化打包,所以要看官方的资料,最直接的方式就是:
+<code class="highlighter-rouge">$ xcodebuild -help</code>,得知如下信息:</p>
+
+<p>Available keys for -exportOptionsPlist:以下每个 key 的详细解释可以<code class="highlighter-rouge">$ xcodebuild -help</code>查看即可.</p>
+
+<ul>
+  <li>测试包导出: compileBitcode\embedOnDemandResourcesAssetPacksInBundle\iCloudContainerEnvironment\manifest\onDemandResourcesAssetPacksBaseURL\thinning</li>
+  <li>用于 App Store 导出: uploadBitcode\uploadSymbols</li>
+  <li>共用: method\teamID</li>
+  <li>method 可选值: app-store\ package\ ad-hoc\ enterprise\ development and developer-id</li>
+</ul>
+
+<p>步骤为:</p>
+
+<h5 id="plist">1.准备Plist文件:</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AppStoreExportOptions.plist： method＝app-store，uploadBitcode＝YES，uploadSymbols＝YES
+AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
+</code></pre>
+</div>
+<p>xcodebuild -exportArchive -archivePath ./xxx.xcarchive -exportOptionsPlist ./AdHocExportOptions.plist -exportPath ./</p>
+
+<h5 id="section-2">脚本打测试包</h5>
+
+<h5 id="section-3">脚本打生产包</h5>
+
+<h3 id="shell-">shell 脚本打包实战</h3>
+
+<p>这里参考了 <a href="http://blog.nswebfrog.com/2013/02/18/ios-automation/">博文</a>,<a href="https://github.com/webfrogs/xcode_shell">代码</a></p>
+
+<p><a href="">备份脚本</a></p>
+
+<p>下载完脚本之后,解读如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ipa-build:  编译xcode工程并生成ipa文件
+ipa-publish: 生成符合itms-services协议的文件,并发布到服务器
+sendEmail:  stmp发送email的脚本
+sftpDownloadFile: 通过sftp协议下载文件
+sftpUploadFile: 通过sftp协议上传文件
+updateLocalIndexHtml:  对索引文件进行处理(二进制文件,非shell脚本)
+uploadItemsServicesFiles:   将itms-services协议文件上传到服务器
+</code></pre>
+</div>
+
+<p>而实际使用的脚本是: ipa-build 和 ipa-publish ,其他文件是,ipa-publish这个脚本调用的依赖文件</p>
+
+<p>ipa-build 使用方法如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型(Debug\ AdHoc\Release\Distribution)
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<p>ipa-build 脚本运行后,会在 iOS 工程根路径下生成名为 “build” 的文件夹,在这个文件夹中又有一个名为 “ipa-build” 的文件夹,打包所生成的最新 ipa 包就在其中.</p>
+
+<p>ipa-publish 使用方法如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型 打包 ipa(如果已经生成过,忽略)
+# 3. 上传 ftp.
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<ul>
+  <li></li>
+  <li><a href="https://github.com/webfrogs/xcode_shell">脚本代码</a></li>
+  <li><a href="https://itunesconnect.apple.com/docs/UsingApplicationLoader.pdf">ApplicationLoader 官方使用指南</a></li>
+</ul>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2017/01/13/Travis-CI/">持续集成系列 - Github中的魔法工具:Travis CI</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2017/01/23/AD-XCTest/">持续集成系列 - 测试: XCTest</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">评论</h2>
+        
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/2017/01/19/AD-xctool/" data-title="持续集成系列 - Xcode 的脚本世界" data-url="http://localhost:4000/2017/01/19/AD-xctool/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "mythkiven"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    内容
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">相似文章</a></li>
+                    <li><a href="#comments">评论</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             3行代码的技术博客 
+        </p>
+        <p class="contact">
+            Contact me at:  
+            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>   -->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+<!--            <a href="mailto:mythziven@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>        -->
+
+
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+        
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+
+          <!--   <span>
+                Theme designed by <a href="https://github.com/mythkiven">MyKiven</a>.
+            </span> -->
+
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>
