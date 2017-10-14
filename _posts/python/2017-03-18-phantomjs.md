@@ -18,8 +18,7 @@ python 中主流的爬虫模块简介如下:
 - Selenium，自动化web测试方案解决者，自带了js解释器，selenium配合浏览器可以用来做动态网页的爬取\分析\挖掘,缺点是耗性能,抓取请求的原理和 fiddler 类似都是基于代理的.
 - Scrapy：一个专业的爬虫框架（单机），有相对完整的解决方案。
 - API爬虫：这里大概都是需要付费的爬虫API，比如google，twitter的解决方案等
-
-笔者在文章中只会出现前三种方式来做爬虫编写。
+ 
 
 ### PhantomJS简介
 
@@ -54,6 +53,7 @@ $ phantomjs
 phantomjs> phantom.exit() 
 ```
 
+待续...
 
 
 
