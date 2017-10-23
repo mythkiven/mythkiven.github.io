@@ -1,0 +1,25 @@
+---
+layout: page
+title: 留言板
+header: 根据快速导航到相应的文章
+group: navigation
+---
+
+<p>来留下你的足迹吧。留言让我们的距离更近哦。</p>
+
+<p>PS: 留言回复可能不及时，可直接发邮件。</p>
+
+<section>
+
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "{{ page.url | prepend: site.baseurl | prepend: site.url }}", 
+    sourceId: "{{ page.url }}",
+    productKey: "57c303a5e5454e68a826bb241b99b0b0",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+</section>
