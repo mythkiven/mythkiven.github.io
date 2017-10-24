@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "OS X 部署环境变量"
-categories: OS_X
-tags:  sublime 环境变量
+categories: OS
+tags:  OS
 author: 3code
 ---
 

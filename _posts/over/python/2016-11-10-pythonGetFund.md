@@ -2,7 +2,7 @@
 layout: post
 title:  "python脚本 - 开机自动爬基金数据"
 categories: python  
-tags: 脚本 python
+tags: python
 author: 3code
 ---
 

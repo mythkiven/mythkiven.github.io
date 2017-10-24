@@ -2,7 +2,7 @@
 layout: post
 title:  "IOS逆向系列_Reveal_解码任意APP的UI界面"
 categories:  Reverse
-tags:  Reveal iOSOpenDev
+tags:  Reverse
 author: 3行代码
 ---
 

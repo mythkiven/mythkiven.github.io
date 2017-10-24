@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Sublime Text基础教程"
-categories: AD
-tags:  Sublime 
+categories: OS
+tags:  OS
 author: 3Code
 ---
 

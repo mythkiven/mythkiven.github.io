@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS逆向系列3_Theos_file简介及Logos基本语法"
 categories: Reverse
-tags:  Theos  Logos
+tags:  Reverse
 author: 3行代码
 ---
 

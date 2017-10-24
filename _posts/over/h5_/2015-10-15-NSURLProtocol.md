@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "NSURLProtocol小教程"
-categories: Objective-C
-tags: NSURLProtocol 缓存 
+categories: OC
+tags: OC
 author: 3行代码
 ---
 

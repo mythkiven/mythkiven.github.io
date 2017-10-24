@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "python3.5 爬虫那些事之phantomjs"
-categories:  phantomjs
-tags: phantomjs
+categories:  python
+tags: python
 author: 3行代码
 ---
 

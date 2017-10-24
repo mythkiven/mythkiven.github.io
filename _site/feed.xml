@@ -5,8 +5,8 @@
     <description>mythkiven</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Oct 2017 12:43:07 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Oct 2017 12:43:07 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Oct 2017 13:34:31 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Oct 2017 13:34:31 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -70,10 +70,10 @@
         <link>http://localhost:4000/blog/2017/03/phantomjs.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/03/phantomjs.html</guid>
         
-        <category>phantomjs</category>
+        <category>python</category>
         
         
-        <category>phantomjs</category>
+        <category>python</category>
         
       </item>
     
@@ -202,10 +202,10 @@ Content-Type application/json; charset=UTF-8
         <link>http://localhost:4000/blog/2017/03/encoding.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/03/encoding.html</guid>
         
-        <category>python3.5</category>
+        <category>python</category>
         
         
-        <category>python3.5</category>
+        <category>python</category>
         
       </item>
     
@@ -853,1456 +853,6 @@ PID       TTY      TIME        CMD
         
         
         <category>Unix</category>
-        
-      </item>
-    
-      <item>
-        <title>Unix</title>
-        <description>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;layout&quot; content=&quot;post&quot;&gt;
-&lt;meta name=&quot;categories&quot; content=&quot;Unix&quot;&gt;
-&lt;meta name=&quot;tags&quot; content=&quot;Unix&quot;&gt;
-&lt;meta name=&quot;author&quot; content=&quot;3行代码&quot;&gt;&lt;style&gt;body {
-  width: 45em;
-  border: 1px solid #ddd;
-  outline: 1300px solid #fff;
-  margin: 16px auto;
-}
-
-body .markdown-body
-{
-  padding: 30px;
-}
-
-@font-face {
-  font-family: fontawesome-mini;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-@font-face {
-  font-family: octicons-anchor;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
-
-.markdown-body {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: #333333;
-  overflow: hidden;
-  font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Segoe UI&quot;, Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-}
-
-.markdown-body a {
-  background: transparent;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline: 0;
-}
-
-.markdown-body b,
-.markdown-body strong {
-  font-weight: bold;
-}
-
-.markdown-body mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-.markdown-body sup {
-  top: -0.5em;
-}
-.markdown-body sub {
-  bottom: -0.25em;
-}
-
-.markdown-body h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-.markdown-body img {
-  border: 0;
-}
-
-.markdown-body hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-.markdown-body pre {
-  overflow: auto;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.markdown-body input {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-.markdown-body html input[disabled] {
-  cursor: default;
-}
-
-.markdown-body input {
-  line-height: normal;
-}
-
-.markdown-body input[type=&quot;checkbox&quot;] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body .codehilitetable {
-  border: 0;
-  border-spacing: 0;
-}
-
-.markdown-body .codehilitetable tr {
-  border: 0;
-}
-
-.markdown-body .codehilitetable pre,
-.markdown-body .codehilitetable div.codehilite {
-  margin: 0;
-}
-
-.markdown-body .linenos,
-.markdown-body .code,
-.markdown-body .codehilitetable td {
-  border: 0;
-  padding: 0;
-}
-
-.markdown-body td:not(.linenos) .linenodiv {
-  padding: 0 !important;
-}
-
-.markdown-body .code {
-  width: 100%;
-}
-
-.markdown-body .linenos div pre,
-.markdown-body .linenodiv pre,
-.markdown-body .linenodiv {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.markdown-body .code div pre,
-.markdown-body .code div {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.markdown-body * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body input {
-  font: 13px Helvetica, arial, freesans, clean, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;
-  line-height: 1.4;
-}
-
-.markdown-body a {
-  color: #4183c4;
-  text-decoration: none;
-}
-
-.markdown-body a:hover,
-.markdown-body a:focus,
-.markdown-body a:active {
-  text-decoration: underline;
-}
-
-.markdown-body hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.markdown-body hr:before,
-.markdown-body hr:after {
-  display: table;
-  content: &quot; &quot;;
-}
-
-.markdown-body hr:after {
-  clear: both;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-
-.markdown-body h1 {
-  font-size: 30px;
-}
-
-.markdown-body h2 {
-  font-size: 21px;
-}
-
-.markdown-body h3 {
-  font-size: 16px;
-}
-
-.markdown-body h4 {
-  font-size: 14px;
-}
-
-.markdown-body h5 {
-  font-size: 12px;
-}
-
-.markdown-body h6 {
-  font-size: 11px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body code,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body kbd {
-  background-color: #e7e7e7;
-  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
-  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
-  background-image: linear-gradient(#fefefe, #e7e7e7);
-  background-repeat: repeat-x;
-  border-radius: 2px;
-  border: 1px solid #cfcfcf;
-  color: #000;
-  padding: 3px 5px;
-  line-height: 10px;
-  font: 11px Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
-  display: inline-block;
-}
-
-.markdown-body&gt;*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body&gt;*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body .headeranchor-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-}
-
-.markdown-body .headeranchor-link:focus {
-  outline: none;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.markdown-body h1 .headeranchor,
-.markdown-body h2 .headeranchor,
-.markdown-body h3 .headeranchor,
-.markdown-body h4 .headeranchor,
-.markdown-body h5 .headeranchor,
-.markdown-body h6 .headeranchor {
-  display: none;
-  color: #000;
-  vertical-align: middle;
-}
-
-.markdown-body h1:hover .headeranchor-link,
-.markdown-body h2:hover .headeranchor-link,
-.markdown-body h3:hover .headeranchor-link,
-.markdown-body h4:hover .headeranchor-link,
-.markdown-body h5:hover .headeranchor-link,
-.markdown-body h6:hover .headeranchor-link {
-  height: 1em;
-  padding-left: 8px;
-  margin-left: -30px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .headeranchor-link .headeranchor,
-.markdown-body h2:hover .headeranchor-link .headeranchor,
-.markdown-body h3:hover .headeranchor-link .headeranchor,
-.markdown-body h4:hover .headeranchor-link .headeranchor,
-.markdown-body h5:hover .headeranchor-link .headeranchor,
-.markdown-body h6:hover .headeranchor-link .headeranchor {
-  display: inline-block;
-}
-
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-
-.markdown-body h4 {
-  font-size: 1.25em;
-}
-
-.markdown-body h5 {
-  font-size: 1em;
-}
-
-.markdown-body h6 {
-  font-size: 1em;
-  color: #777;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body .admonition {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body hr {
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 2em;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li&gt;p {
-  margin-top: 16px;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote {
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-}
-
-.markdown-body blockquote&gt;:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote&gt;:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
-}
-
-.markdown-body table th {
-  font-weight: bold;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #ddd;
-}
-
-.markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-.markdown-body img {
-  max-width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body code,
-.markdown-body samp {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-  letter-spacing: -0.2em;
-  content: &quot;\00a0&quot;;
-}
-
-.markdown-body pre&gt;code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .codehilite {
-  margin-bottom: 16px;
-}
-
-.markdown-body .codehilite pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown-body .codehilite pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body pre {
-  word-wrap: normal;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-  content: normal;
-}
-
-/* Admonition */
-.markdown-body .admonition {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  position: relative;
-  border-radius: 3px;
-  border: 1px solid #e0e0e0;
-  border-left: 6px solid #333;
-  padding: 10px 10px 10px 30px;
-}
-
-.markdown-body .admonition table {
-  color: #333;
-}
-
-.markdown-body .admonition p {
-  padding: 0;
-}
-
-.markdown-body .admonition-title {
-  font-weight: bold;
-  margin: 0;
-}
-
-.markdown-body .admonition&gt;.admonition-title {
-  color: #333;
-}
-
-.markdown-body .attention&gt;.admonition-title {
-  color: #a6d796;
-}
-
-.markdown-body .caution&gt;.admonition-title {
-  color: #d7a796;
-}
-
-.markdown-body .hint&gt;.admonition-title {
-  color: #96c6d7;
-}
-
-.markdown-body .danger&gt;.admonition-title {
-  color: #c25f77;
-}
-
-.markdown-body .question&gt;.admonition-title {
-  color: #96a6d7;
-}
-
-.markdown-body .note&gt;.admonition-title {
-  color: #d7c896;
-}
-
-.markdown-body .admonition:before,
-.markdown-body .attention:before,
-.markdown-body .caution:before,
-.markdown-body .hint:before,
-.markdown-body .danger:before,
-.markdown-body .question:before,
-.markdown-body .note:before {
-  font: normal normal 16px fontawesome-mini;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  line-height: 1.5;
-  color: #333;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-.markdown-body .admonition:before {
-  content: &quot;\f056\00a0&quot;;
-  color: 333;
-}
-
-.markdown-body .attention:before {
-  content: &quot;\f058\00a0&quot;;
-  color: #a6d796;
-}
-
-.markdown-body .caution:before {
-  content: &quot;\f06a\00a0&quot;;
-  color: #d7a796;
-}
-
-.markdown-body .hint:before {
-  content: &quot;\f05a\00a0&quot;;
-  color: #96c6d7;
-}
-
-.markdown-body .danger:before {
-  content: &quot;\f057\00a0&quot;;
-  color: #c25f77;
-}
-
-.markdown-body .question:before {
-  content: &quot;\f059\00a0&quot;;
-  color: #96a6d7;
-}
-
-.markdown-body .note:before {
-  content: &quot;\f040\00a0&quot;;
-  color: #d7c896;
-}
-
-.markdown-body .admonition::after {
-  content: normal;
-}
-
-.markdown-body .attention {
-  border-left: 6px solid #a6d796;
-}
-
-.markdown-body .caution {
-  border-left: 6px solid #d7a796;
-}
-
-.markdown-body .hint {
-  border-left: 6px solid #96c6d7;
-}
-
-.markdown-body .danger {
-  border-left: 6px solid #c25f77;
-}
-
-.markdown-body .question {
-  border-left: 6px solid #96a6d7;
-}
-
-.markdown-body .note {
-  border-left: 6px solid #d7c896;
-}
-
-.markdown-body .admonition&gt;*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body .admonition&gt;*:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* progress bar*/
-.markdown-body .progress {
-  display: block;
-  width: 300px;
-  margin: 10px 0;
-  height: 24px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #ededed;
-  position: relative;
-  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
-}
-
-.markdown-body .progress-label {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  width: 100%; margin: 0;
-  line-height: 24px;
-  color: #333;
-  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
-  -webkit-font-smoothing: antialiased !important;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.markdown-body .progress-bar {
-  height: 24px;
-  float: left;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #96c6d7;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
-  background-size: 30px 30px;
-  background-image: -webkit-linear-gradient(
-    135deg, rgba(255, 255, 255, .4) 27%,
-    transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%,
-    transparent 77%, transparent
-  );
-  background-image: -moz-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -ms-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -o-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-}
-
-.markdown-body .progress-100plus .progress-bar {
-  background-color: #a6d796;
-}
-
-.markdown-body .progress-80plus .progress-bar {
-  background-color: #c6d796;
-}
-
-.markdown-body .progress-60plus .progress-bar {
-  background-color: #d7c896;
-}
-
-.markdown-body .progress-40plus .progress-bar {
-  background-color: #d7a796;
-}
-
-.markdown-body .progress-20plus .progress-bar {
-  background-color: #d796a6;
-}
-
-.markdown-body .progress-0plus .progress-bar {
-  background-color: #c25f77;
-}
-
-.markdown-body .candystripe-animate .progress-bar{
-  -webkit-animation: animate-stripes 3s linear infinite;
-  -moz-animation: animate-stripes 3s linear infinite;
-  animation: animate-stripes 3s linear infinite;
-}
-
-@-webkit-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@-moz-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-.markdown-body .gloss .progress-bar {
-  box-shadow:
-    inset 0 4px 12px rgba(255, 255, 255, .7),
-    inset 0 -12px 0 rgba(0, 0, 0, .05);
-}
-
-/* Multimarkdown Critic Blocks */
-.markdown-body .critic_mark {
-  background: #ff0;
-}
-
-.markdown-body .critic_delete {
-  color: #c82829;
-  text-decoration: line-through;
-}
-
-.markdown-body .critic_insert {
-  color: #718c00 ;
-  text-decoration: underline;
-}
-
-.markdown-body .critic_comment {
-  color: #8e908c;
-  font-style: italic;
-}
-
-.markdown-body .headeranchor {
-  font: normal normal 16px octicons-anchor;
-  line-height: 1;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.headeranchor:before {
-  content: '\f05c';
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item input {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-
-/* Media */
-@media only screen and (min-width: 480px) {
-  .markdown-body {
-    font-size:14px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .markdown-body {
-    font-size:16px;
-  }
-}
-
-@media print {
-  .markdown-body * {
-    background: transparent !important;
-    color: black !important;
-    filter:none !important;
-    -ms-filter: none !important;
-  }
-
-  .markdown-body {
-    font-size:12pt;
-    max-width:100%;
-    outline:none;
-    border: 0;
-  }
-
-  .markdown-body a,
-  .markdown-body a:visited {
-    text-decoration: underline;
-  }
-
-  .markdown-body .headeranchor-link {
-    display: none;
-  }
-
-  .markdown-body a[href]:after {
-    content: &quot; (&quot; attr(href) &quot;)&quot;;
-  }
-
-  .markdown-body abbr[title]:after {
-    content: &quot; (&quot; attr(title) &quot;)&quot;;
-  }
-
-  .markdown-body .ir a:after,
-  .markdown-body a[href^=&quot;javascript:&quot;]:after,
-  .markdown-body a[href^=&quot;#&quot;]:after {
-    content: &quot;&quot;;
-  }
-
-  .markdown-body pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .markdown-body pre,
-  .markdown-body blockquote {
-    border: 1px solid #999;
-    padding-right: 1em;
-    page-break-inside: avoid;
-  }
-
-  .markdown-body .progress,
-  .markdown-body .progress-bar {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .markdown-body .progress {
-    border: 1px solid #ddd;
-  }
-
-  .markdown-body .progress-bar {
-    height: 22px;
-    border-right: 1px solid #ddd;
-  }
-
-  .markdown-body tr,
-  .markdown-body img {
-    page-break-inside: avoid;
-  }
-
-  .markdown-body img {
-    max-width: 100% !important;
-  }
-
-  .markdown-body p,
-  .markdown-body h2,
-  .markdown-body h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  .markdown-body h2,
-  .markdown-body h3 {
-    page-break-after: avoid;
-  }
-}
-&lt;/style&gt;&lt;title&gt;&quot;UNIX 入门小教程&quot;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;markdown-body&quot;&gt;&lt;ul&gt;
-&lt;li toc=&quot;toc&quot;&gt;content&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;作为一名 iOS 老司机,要想工作效率高,Unix 则是必须要熟悉的.今天扒一扒 Unix 的那些事&lt;/p&gt;
-&lt;p&gt;奉上 Unix 学习笔记,需要的拿去但请注明链接.&lt;br /&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;unix&quot;&gt;&lt;a name=&quot;user-content-unix&quot; href=&quot;#unix&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;UNIX 概述&lt;/h3&gt;
-&lt;p&gt;说起 Unix 就必须说 Bell Labs ,这个实验室厉害啊, 对计算机早期的贡献是相当大的.像大家熟知的 Unix \ C  都是这家公司发明创建的,&lt;br /&gt;
-实验室目前是 Nokia 公司的.关于贝尔实验室,更多介绍请戳 &lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其实关于操作系统,以前是学过的,但不知道为啥就分不清了&amp;hellip;以下简单介绍下 Unix \ OS X \ Linux \ Windows 的异同,可以有一个直观的认识.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Unix : GUI 是 X Window(在内核外跑的应用),内核则包括 X Server(与内核通信)与 X Client(负责显示)两部分;&lt;/li&gt;
-&lt;li&gt;OS X : GUI 是自己开发的 Aqua(嵌入内核中) ,而内核则是基于Darwin(Unix BSD);&lt;/li&gt;
-&lt;li&gt;OS   : 注意和 OS X 是不同的,OS X 是全新设计基于 Unix 内核的,而 OS 内核基于 Mach(微内核) .&lt;/li&gt;
-&lt;li&gt;Linux : 也是基于 Unix 内核的.&lt;/li&gt;
-&lt;li&gt;Windows : 内核是 DOS  NT ;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;除上之外, Unix 的变体有: Solaris Unix,AIX,HP Unix,BSD以及 Linux 等等&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;unix_1&quot;&gt;&lt;a name=&quot;user-content-unix_1&quot; href=&quot;#unix_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;从功能上看 Unix&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;内核: 操作系统的核心,调度任务和管理存储;&lt;/li&gt;
-&lt;li&gt;shell: 连接和解释用户的命令，从内存中调用程序并执行它们;&lt;/li&gt;
-&lt;li&gt;工具和应用程序: 为操作系统提供附加功能.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&quot;屏幕快照 2017-03-05 10.34.16.png&quot; src=&quot;https://ooo.0o0.ooo/2017/03/05/58bb78709b9d2.png&quot; /&gt;&lt;/p&gt;
-&lt;h5 id=&quot;unix_2&quot;&gt;&lt;a name=&quot;user-content-unix_2&quot; href=&quot;#unix_2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;从构架上看 Unix&lt;/h5&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://www.tutorialspoint.com/unix/images/unix_architecture.jpg&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;上图展示了 Unix 的基本框架:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;内核 : 内核是操作系统的核心,它与硬件和大多数任务（如内存管理，任务调度和文件管理）交互&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Shell: shell 是处理请求的实用程序,当在终端上键入命令时，shell 会解释该命令并调用所需的程序。shell对所有命令使用标准语法。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;命令和实用程序 :有各种命令和实用程序，您可以在您的日常活动中使用。cp，mv，cat和grep等是命令和实用程序的几个例子。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;文件和目录 : Unix的所有数据都组织成文件。然后将所有文件组织到目录中。这些目录进一步组织成称为文件系统的树状结构。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;1&quot;&gt;&lt;a name=&quot;user-content-1&quot; href=&quot;#1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;1. 文件体系&lt;/h3&gt;
-&lt;p&gt;Unix中的每个文件都有以下属性 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;所有者权限  所有者的权限决定文件所有者可对文件执行的操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;组权限    组的权限决定了用户，文件所属组的成员可以对文件执行哪些操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;其他人权限  其他人的权限指示所有其他用户可对文件执行的操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ls -l /home/amrood
--rwxr-xr--  1 amrood   users 1024  Nov 2 00:10  myfile
-drwxr-xr--- 1 amrood   users 1024  Nov 2 00:10  mydir
-&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
-- d 开头的表示目录&lt;br /&gt;
-- 第一列表示不同的访问模式,权限被分成三组(所有者,组,其他人权限 )，权限：read（r），write（w），execute（x）&lt;br /&gt;
-- -rwxr-xr&amp;ndash;  表示(2-4)所有者权限: rwx ,(5-7)组权限: xr ,(8-10)其他人权限: r &lt;/p&gt;
-&lt;h5 id=&quot;_1&quot;&gt;&lt;a name=&quot;user-content-_1&quot; href=&quot;#_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;修改文件权限&lt;/h5&gt;
-&lt;p&gt;chmod（change mode）命令。有两种方式使用chmod - 符号模式和绝对模式&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;符号模式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;添加权限, - - 删除权限 = 设置指定权限&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;$chmod o+wx testfile
-$ls -l testfile
--rwxrwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
-$chmod u-x testfile
-$ls -l testfile
--rw-rwxrwx  1 amrood   users 1024  Nov 2 00:10  testfile
-$chmod g = rx testfile
-$ls -l testfile
--rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
-
-# 以下是如何在一行上组合这些命令 -
-
-$chmod o+wx,u-x,g = rx testfile
-$ls -l testfile
--rw-r-xrwx  1 amrood   users 1024  Nov 2 00:10  testfile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;绝对模式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;数   八进制权限表示    参考文献
-0   没有权限          --- ---
-1   执行权限              - X
-2   写权限              -w-
-3   执行和写入权限    1（执行）+ 2（写）= 3  -wx
-4   读取权限            r--
-5   读取和执行权限     4（读取）+ 1（执行）= 5 rx
-6   读写权限        4（读）+ 2（写）= 6  rw-
-7   所有权限       4（读）+ 2（写）+ 1（执行）= 7   rwx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;$ls -l testfile
--rwxrwxr--  1 amrood   users 1024  Nov 2 00:10  testfile
-然后修改:
-$ chmod 755 testfile
-$ls -l testfile
--rwxr-xr-x  1 amrood   users 1024  Nov 2 00:10  testfile
-$chmod 743 testfile
-$ls -l testfile
--rwxr---wx  1 amrood   users 1024  Nov 2 00:10  testfile
-$chmod 043 testfile
-$ls -l testfile
-----r---wx  1 amrood   users 1024  Nov 2 00:10  testfile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;_2&quot;&gt;&lt;a name=&quot;user-content-_2&quot; href=&quot;#_2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;文件目录&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;/    : 根目录,命令:$ cd /&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;$ cd / ;ls
-# 列出根目录的文件夹:
-Applications        home
-Library             installer.failurerequests
-Network             net
-System              opt
-Users               private
-Volumes             sbin
-bin                 tmp
-cores               usr
-dev                 var
-etc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;关于上述目录说明如下:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;/bin  : 这是可执行文件所在的位置。这些文件可供所有用户使用&lt;/li&gt;
-&lt;li&gt;/dev  : 设备驱动&lt;/li&gt;
-&lt;li&gt;/etc  : 管理程序目录命令，配置文件，磁盘配置文件，有效用户列表，组，以太网，主机，在哪里发送关键消息&lt;/li&gt;
-&lt;li&gt;/lib  : 含共享库文件和有时其他与内核相关的文件&lt;/li&gt;
-&lt;li&gt;/home : 包含用户和其他帐户的主目录&lt;/li&gt;
-&lt;li&gt;/tmp  : 保存系统引导之间使用的临时文件&lt;/li&gt;
-&lt;li&gt;/usr  : 用于其他目的，可供许多用户使用。包括管理命令，共享文件，库文件和其他&lt;/li&gt;
-&lt;li&gt;/var  : 通常包含可变长度文件，例如日志和打印文件以及可能包含可变数据量的任何其他类型的文件&lt;/li&gt;
-&lt;li&gt;/sbin : 包含二进制（可执行文件）文件，通常用于系统管理。例如，fdisk和ifconfig utlities&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;....&lt;/p&gt;
-&lt;h5 id=&quot;_3&quot;&gt;&lt;a name=&quot;user-content-_3&quot; href=&quot;#_3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;浏览文件系统&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
-&lt;li&gt;$cd 目录名       : 进入目录 &lt;/li&gt;
-&lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
-&lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
-&lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
-&lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
-&lt;li&gt;$mv file1 file2 : 移动file1 到file2   &lt;/li&gt;
-&lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
-&lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
-&lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
-&lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
-&lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-system.htm&quot;&gt;更多文件相关内容&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2&quot;&gt;&lt;a name=&quot;user-content-2&quot; href=&quot;#2&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;2. 环境变量&lt;/h3&gt;
-&lt;p&gt;在登录 Unix 系统时,会先初始化设置环境变量,读取/ etc / profile(OS X:.profile) 文件,&lt;br /&gt;
-如果 Home目录存在 profile 文件,就会读取,并在终端显示 $ 符号.&lt;/p&gt;
-&lt;h5 id=&quot;path&quot;&gt;&lt;a name=&quot;user-content-path&quot; href=&quot;#path&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;PATH&lt;/h5&gt;
-&lt;p&gt;PATH变量指定shell应查找命令的位置。通常Path变量设置如下 &lt;/p&gt;
-&lt;p&gt;$PATH=/bin:/usr/bin&lt;/p&gt;
-&lt;p&gt;这里，用冒号字符（:)分隔的每个单独的条目是目录&lt;/p&gt;
-&lt;p&gt;我自己的 profile 文件 PATH 设置如下:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$vim .bash_profile&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;结果如下:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;# 加载 .profile
-[[ -s &amp;quot;$HOME/.profile&amp;quot; ]] &amp;amp;&amp;amp; source &amp;quot;$HOME/.profile&amp;quot; # Load the default .profile
-
-# 加载 RVM 
-[[ -s &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot; ]] &amp;amp;&amp;amp; source &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot; # Load RVM into a shell session *as a function*
-
-# 设置 PATH 路径
-export PATH=${PATH}:/usr/local/mysql-5.6.12-osx10.7-x86_64/bin/mysql
-
-# 设置 PATH 路径
-export PATH=/usr/local/bin:$PATH
-
-# 设置 PATH 路径
-export PATH=$HOME/bin/:$PATH
-
-# 设置 PATH 路径
-export THEOS=/opt/theos
-
-# 设置 PATH 路径
-export PATH=$THEOS/bin:$PATH
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意之所以会设置这么多的路径,是因为:当请求 shell 执行命令的时候, shel 会从 PATH 路径中寻找命令,如果不存在,就不会执行:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ home
--bash: home: command not found
-# 这是因为上述没有 PATH 路径没有 home 命令 ,shell 无法解释 home 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&quot;unix_3&quot;&gt;&lt;a name=&quot;user-content-unix_3&quot; href=&quot;#unix_3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;Unix 环境变量&lt;/h5&gt;
-&lt;pre&gt;&lt;code&gt;- HOME 当前用户主目录:
-$ echo $HOME
-/Users/jiangxiaocai
-
-- PATH  打印当前的 PATH 路径 
-$ echo $PATH
-
-- PWD 当前目录路径
-$ pwd
-/Users/jiangxiaocai
-
-- RANDOM 每次引用都生成一个介于0和32,767之间的随机整数
-$ echo $RANDOM
-20303
-
-- TERM 显示类型
-$ echo $TERM
-xterm-256color
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-environment.htm&quot;&gt;更多的请看&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3&quot;&gt;&lt;a name=&quot;user-content-3&quot; href=&quot;#3&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;3.基础小程序&lt;/h3&gt;
-&lt;h5 id=&quot;_4&quot;&gt;&lt;a name=&quot;user-content-_4&quot; href=&quot;#_4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;打印文件&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;使用 pr &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$pr 文件 即可打印文件的内容&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# pr 语法如下:
-pr option(s) filename(s)
-$pr txt.txt
-
-# -k 产生 K 列输出:
-$pr -2 txt.txt 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;使用 cat &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$cat txt.txt &lt;/p&gt;
-&lt;h5 id=&quot;_5&quot;&gt;&lt;a name=&quot;user-content-_5&quot; href=&quot;#_5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;发邮件&lt;/h5&gt;
-&lt;p&gt;语法:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$mail [-s subject] [-c cc-addr] [-b bcc-addr] to-addr
-
-# 以下是将测试消息发送到admin@yahoo.com的示例。
-$mail -s &amp;quot;Test Message&amp;quot; admin@yahoo.com 
-#...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-file-permission.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;4&quot;&gt;&lt;a name=&quot;user-content-4&quot; href=&quot;#4&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;4.用户管理与进程&lt;/h3&gt;
-&lt;p&gt;Unix 上有三种账户:&lt;br /&gt;
-- 根账户:可以运行任何命令&lt;br /&gt;
-- 系统账户:系统帐户是操作系统特定组件所需的帐户，例如邮件帐户和sshd帐户。这些帐户通常需要您的系统上的某些特定功能，对它们的任何修改可能会对系统产生不利影响。&lt;br /&gt;
-- 用户帐户:&lt;br /&gt;
-用户帐户为用户和用户组提供对系统的交互式访问。一般用户通常分配到这些帐户，并且通常对关键系统文件和目录的访问受限。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-user-administration.htm&quot;&gt;更多账户资料&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&quot;_6&quot;&gt;&lt;a name=&quot;user-content-_6&quot; href=&quot;#_6&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;进程&lt;/h5&gt;
-&lt;p&gt;操作系统通过称为pid或进程ID的五位ID号跟踪进程。系统中的每个进程都有一个唯一的pid。&lt;/p&gt;
-&lt;p&gt;通过运行ps（process status）命令很容易看到你自己的进程，如下所示&lt;br /&gt;
-&lt;pre&gt;&lt;code&gt;$ps
-PID       TTY      TIME        CMD
-18358     ttyp3    00:00:00    sh
-18361     ttyp3    00:01:31    abiword
-18789     ttyp3    00:00:00    ps
-&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
--f（f为full）选项 &lt;code&gt;$ps -f&lt;/code&gt; 精细显示&lt;/p&gt;
-&lt;h3 id=&quot;5&quot;&gt;&lt;a name=&quot;user-content-5&quot; href=&quot;#5&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;5. 通信&lt;/h3&gt;
-&lt;p&gt;Unix 系统可以通过终端进行电子邮件的通信.&lt;/p&gt;
-&lt;p&gt;$ping 该命令发送回送请求到网络上可用的主机。使用此命令，您可以检查远程主机是否响应良好。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ping hostname or ip-address&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;6-vim&quot;&gt;&lt;a name=&quot;user-content-6-vim&quot; href=&quot;#6-vim&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;6. VIM&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;$vi filename      如果新文件已经不存在，则创建新文件，否则打开现有文件&lt;/li&gt;
-&lt;li&gt;$vi -R filename   以只读模式打开现有文件。&lt;/li&gt;
-&lt;li&gt;$view filename    只读模式打开&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;_7&quot;&gt;&lt;a name=&quot;user-content-_7&quot; href=&quot;#_7&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;操作模式&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;命令模式 - 此模式允许您执行管理任务，例如保存文件，执行命令，移动光标，剪切（ying）和粘贴线或单词，以及查找和替换。在这种模式下，无论你输入什么都被解释为一个命令。&lt;/li&gt;
-&lt;li&gt;插入模式 - 此模式允许您将文本插入文件。在此模式下键入的所有内容都将被解释为输入并放在文件中。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;vi始终在命令模式下启动。要输入文本，您必须处于插入模式，只需输入i。要退出插入模式，请按Esc键，这将使您返回命令模式。&lt;br /&gt;
-如果您不确定您所处的模式，请按Esc键两次; 这将带你到命令模式。使用vi编辑器打开文件&lt;/p&gt;
-&lt;h5 id=&quot;vi&quot;&gt;&lt;a name=&quot;user-content-vi&quot; href=&quot;#vi&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;保存 VI&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;ESC 进入命令模式，键入冒号和w,即可保存&lt;/li&gt;
-&lt;li&gt;ESC 进入命令模式，键入&amp;rsquo;冒号和&amp;rsquo;wq&amp;rsquo;, 或者键入&amp;rsquo;冒号和&amp;rsquo;zz&amp;rsquo;   然后回车.这时会保存退出 .&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;vi_1&quot;&gt;&lt;a name=&quot;user-content-vi_1&quot; href=&quot;#vi_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;退出 VI:&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;ESC 进入命令模式，键入冒号和&amp;rsquo;q&amp;rsquo;,然后回车.这时会提示保存.&lt;/li&gt;
-&lt;li&gt;ESC 进入命令模式，键入冒号和&amp;rsquo;q!&amp;rsquo;,然后回车.这时会直接退出,不进行提示.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;_8&quot;&gt;&lt;a name=&quot;user-content-_8&quot; href=&quot;#_8&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;重命名:&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;ESC 进入命令模式，键入&amp;rsquo;冒号和&amp;rsquo;w filename2&amp;rsquo;和return .&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;_9&quot;&gt;&lt;a name=&quot;user-content-_9&quot; href=&quot;#_9&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;在文本中移动光标:&lt;/h5&gt;
-&lt;p&gt;要在文件中移动而不影响文本，您必须处于命令模式（按两次Esc）。下表列出了几个可用于一次移动一个字符的命令：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;k 将光标向上移动一行&lt;/li&gt;
-&lt;li&gt;j 将光标向下移动一行&lt;/li&gt;
-&lt;li&gt;h    将光标移动到左一个字符位置&lt;/li&gt;
-&lt;li&gt;l  将光标向右移动一个字符位置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix/unix-vi-editor.htm&quot;&gt;更多参见&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7&quot;&gt;&lt;a name=&quot;user-content-7&quot; href=&quot;#7&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;7. 性能管理:&lt;/h3&gt;
-&lt;h5 id=&quot;_10&quot;&gt;&lt;a name=&quot;user-content-_10&quot; href=&quot;#_10&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;性能工具&lt;/h5&gt;
-&lt;p&gt;Unix提供以下重要工具来测量和微调Unix系统性能 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;nice/renice    运行具有修改的调度优先级的程序&lt;/li&gt;
-&lt;li&gt;$netstat       打印网络连接，路由表，接口统计信息，伪装连接和多播成员资格&lt;/li&gt;
-&lt;li&gt;$time          帮助计时一个简单的命令或提供资源使用&lt;/li&gt;
-&lt;li&gt;$uptime        这是系统负载平均&lt;/li&gt;
-&lt;li&gt;$ps      报告当前进程的快照&lt;/li&gt;
-&lt;li&gt;$vmstat       报告虚拟内存统计&lt;/li&gt;
-&lt;li&gt;$gprof        显示调用图配置文件数据&lt;/li&gt;
-&lt;li&gt;$prof         促进过程分析&lt;/li&gt;
-&lt;li&gt;$top   [有用] 显示系统任务: 很详细&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;5_1&quot;&gt;&lt;a name=&quot;user-content-5_1&quot; href=&quot;#5_1&quot; class=&quot;headeranchor-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;headeranchor&quot;&gt;&lt;/span&gt;&lt;/a&gt;5. 常用命令汇集&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;使用;来分开两个命令,从而在一行执行,例如:&lt;code&gt;cd \bin ; ls&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;获取帮助:$man pwd ,用户获取 pwd 命令的联机帮助,其他类似.&lt;/li&gt;
-&lt;li&gt;$ctrl+c 关闭进行&lt;/li&gt;
-&lt;li&gt;$kill -signal pid 关闭某个 PID 的进程&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;系统用户:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;$login 登录电脑,首先要输入用户名,回车输入密码&lt;/li&gt;
-&lt;li&gt;$passwd 修改当前用户的密码&lt;/li&gt;
-&lt;li&gt;$whoami 获取当前是哪个用户登录的&lt;/li&gt;
-&lt;li&gt;$who    当前用户信息&lt;/li&gt;
-&lt;li&gt;$users  当前用户信息&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;文件管理:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;$cd \ 进入根目录&lt;/li&gt;
-&lt;li&gt;$ls    列出当前文件夹的内容&lt;/li&gt;
-&lt;li&gt;$ls -l 在ls 基础上列出详细信息 (其中以 d .....开头的项表示目录)&lt;/li&gt;
-&lt;li&gt;$ls -l 列出权限信息&lt;/li&gt;
-&lt;li&gt;$cat 文件名      : 显示文件内容&lt;/li&gt;
-&lt;li&gt;$cd 目录名       : 进入目录 &lt;/li&gt;
-&lt;li&gt;$cp file1 file2 : 将file1 内容复制到 file2 ,或者将 file1 复制到 file2 目录中&lt;/li&gt;
-&lt;li&gt;$file 文件名     : 显示文件类型&lt;/li&gt;
-&lt;li&gt;$head 文件名     : 显示文件开头&lt;/li&gt;
-&lt;li&gt;$mkdir 目录名    : 创建文件夹&lt;/li&gt;
-&lt;li&gt;$mv file1 file2 : 移动file1 到file2   &lt;/li&gt;
-&lt;li&gt;$rm filename    : 删除文件&lt;/li&gt;
-&lt;li&gt;$rmdir dirname  : 删除目录&lt;/li&gt;
-&lt;li&gt;$touch filename : 创建空白文件或修改现有文件或其属性&lt;/li&gt;
-&lt;li&gt;$whereis 文件名  : 显示文件的位置&lt;/li&gt;
-&lt;li&gt;$which filename : 如果文件在PATH中，则显示文件的位置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;重启关机:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;注意 + sudo &lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$logout     注销&lt;/li&gt;
-&lt;li&gt;$sudo halt       立即关机&lt;/li&gt;
-&lt;li&gt;$init 0     在关闭系统之前，使用预定义的脚本关闭系统以同步和清理系统&lt;/li&gt;
-&lt;li&gt;$init 6     系统完全关闭然后重新启动，重新启动系统&lt;/li&gt;
-&lt;li&gt;$poweroff   通过关闭电源关闭系统&lt;/li&gt;
-&lt;li&gt;$reboot     重启&lt;/li&gt;
-&lt;li&gt;$shutdown   关闭系统&lt;/li&gt;
-&lt;li&gt;$shutdown - r now 重启 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$shutdown now&lt;br /&gt;
-4.日期日历:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$cal   显示日历&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$date  显示日期&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;$&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://upclinux.github.io/intro/07/script/&quot;&gt;关于脚本和批处理,这里介绍的还可以&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_commands/index.htm&quot;&gt;Unix 系统命令&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bell_Labs&quot;&gt;贝尔实验室的维基百科&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://s3-us-west-2.amazonaws.com/belllabs-microsite-unixhistory/tutorial.html&quot;&gt;Unix 档案&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/opprecedence.html&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://tldp.org/LDP/abs/html/&quot;&gt;高级Bash脚本指南&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.tutorialspoint.com/unix/unix-shell.htm&quot;&gt;Unix   Shell教程 英语&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://bash.cyberciti.biz/guide/Main_Page&quot;&gt;Linux  Shell教程 英语&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;</description>
-        <pubDate>Sat, 04 Mar 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/blog/2017/03/Unix.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/03/Unix.html</guid>
-        
         
       </item>
     
@@ -3812,12 +2362,10 @@ bash /data/apache-tomcat-7.0.56/bin/startup.sh
         <link>http://localhost:4000/blog/2017/02/AD-jenkins.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/02/AD-jenkins.html</guid>
         
-        <category>fastlane</category>
-        
-        <category>CI</category>
+        <category>持续集成</category>
         
         
-        <category>CI</category>
+        <category>持续集成</category>
         
       </item>
     
@@ -4383,10 +2931,10 @@ copyright &quot;#{Time.now.year} 3code&quot;
         <link>http://localhost:4000/blog/2017/02/AD-Fastlane.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/02/AD-Fastlane.html</guid>
         
-        <category>fastlane</category>
+        <category>持续集成</category>
         
         
-        <category>CI</category>
+        <category>持续集成</category>
         
       </item>
     
@@ -4564,10 +3112,10 @@ copyright &quot;#{Time.now.year} 3code&quot;
         <link>http://localhost:4000/blog/2017/01/AD-XCTest.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/01/AD-XCTest.html</guid>
         
-        <category>XCTest</category>
+        <category>持续集成</category>
         
         
-        <category>CI</category>
+        <category>持续集成</category>
         
       </item>
     
@@ -4832,12 +3380,10 @@ $ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
         <link>http://localhost:4000/blog/2017/01/AD-xctool.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/01/AD-xctool.html</guid>
         
-        <category>Termianl</category>
-        
-        <category>xctool</category>
+        <category>持续集成</category>
         
         
-        <category>CI</category>
+        <category>持续集成</category>
         
       </item>
     
@@ -5242,12 +3788,264 @@ scan: 跑测试用例
         <link>http://localhost:4000/blog/2017/01/Travis-CI.html</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2017/01/Travis-CI.html</guid>
         
-        <category>Github</category>
-        
-        <category>Travis-CI</category>
+        <category>持续集成</category>
         
         
-        <category>CI</category>
+        <category>持续集成</category>
+        
+      </item>
+    
+      <item>
+        <title>持续集成系列 - App 内测分发平台之 OTA </title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#前言&quot; id=&quot;markdown-toc-前言&quot;&gt;前言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#构建内测分发平台&quot; id=&quot;markdown-toc-构建内测分发平台&quot;&gt;构建内测分发平台;&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-在web服务器上部署好目录结构&quot; id=&quot;markdown-toc-1-在web服务器上部署好目录结构&quot;&gt;1. 在web服务器上部署好目录结构&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-在jenkins中用简单的脚本实现这个过程&quot; id=&quot;markdown-toc-2-在jenkins中用简单的脚本实现这个过程&quot;&gt;2. 在jenkins中用简单的脚本实现这个过程&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;目标是:建立自己的移动应用内测分发平台.方便测试人员快速的获取到最新的测试包.&lt;/p&gt;
+
+&lt;p&gt;流程:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;通过脚本,自动将项目打包编译,生成 AdHoc 版本的 ipa&lt;/li&gt;
+  &lt;li&gt;脚本自动上传 ipa 到公司内网的服务器&lt;/li&gt;
+  &lt;li&gt;然后邮件通知相关人员,邮件中内置 url&lt;/li&gt;
+  &lt;li&gt;在 Safari 中点开url,直接安装内测版本&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;注意事项:必要3条件&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;AdHoc 版 ipa 文件&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;AdHoc 版 plist 文件&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果是使用 Xcode 打包,会自动生成上述的两个文件,当然也可以使用脚本生成.plist 文件内容如下(小结末尾)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;一个内测发布页面&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目的是提供一个&lt;code class=&quot;highlighter-rouge&quot;&gt;itms-services://&lt;/code&gt;协议的链接,让用户访问这个链接即可实现在线安装.一个最简单的html页面就是下面这样:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;itms-services://?action=download-manifest&amp;amp;url=https://1192.168.117.39/apps/manifest.plist&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  Download ADDemo
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 或者这样 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;itms-services://?action=download-manifest&amp;amp;url=https://xxx.xxx.xxx/xxx.plist&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Install App&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;整个OTA的核心就是苹果的itms-services协议， safari通过解析类似于itms-services://?action=download-manifest&amp;amp;url=https://xxx.xxx.xxx/xxxx.plist 这样的一个链接来实现在线安装。url就是你的*.plist文件所在的地址，在iOS7.1以前，这个url是没有限制的，在7.1之后，苹果做了修改，要求这个url必须是可信任的https链接。其他地方的链接并没有要求。&lt;/p&gt;
+
+&lt;p&gt;OTA就是over the air,是一种无线发布方式,它可以实现app的在线安装,不再需要数据线.&lt;/p&gt;
+
+&lt;p&gt;而对于 https,方案有:自己公司搭建;使用三方的云盘(hppts的,将 ipa 传上去);自己配置.
+更详细的内容参考:&lt;a href=&quot;http://blog.csdn.net/close_marty/article/details/38441903&quot;&gt;iOS通过OTA方式分发应用的实现&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;相关资料:
+1.plist 文件的内容为:&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;plist&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;items&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;assets&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software-package&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;url&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;https://192.168.117.39/apps/app.ipa&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这里是服务器上的 ipa 的地址--&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;display-image&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;url&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;https://avatar.csdn.net/F/2/A/1_close_marty.jpg&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                     &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这是展示图片--&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;full-size-image&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;url&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;https://avatar.csdn.net/F/2/A/1_close_marty.jpg&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                     &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 这是展示图片--&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;metadata&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 如果是放在服务器上,以下的 内容要写成动态的 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-identifier&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;${BUNDLE_IDENTIFIER}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;  
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;string&amp;gt;com.3code.ADDemo&amp;lt;/string&amp;gt; --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-version&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;${APPLICATION_VERSION}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;  
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;string&amp;gt;1.0&amp;lt;/string&amp;gt; --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;${DISPLAY_NAME}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;  
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;string&amp;gt;AD_Demo&amp;lt;/string&amp;gt; --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plist&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;web 页面的参考代码:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=iso-8859-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Install Geoloqi&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;style &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(bkg.png)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repeat&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#c5ccd4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Helvetica&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.congrats&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.step&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#ccc&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;14px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.instructions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.arrow&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;congrats&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Congrats! You've been invited to the beta of Geoloqi.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;step&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;instructions&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Install the&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;Geoloqi app&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;24&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arrow&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;rarr;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;57&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;imagelink&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;itms-services://?action=download-manifest&amp;amp;url=http://loqi.me/app/Geoloqi.plist&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;geoloqi-icon.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;57&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;57&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3.证书的配置,&lt;a href=&quot;http://blog.csdn.net/close_marty/article/details/38441903&quot;&gt;参见&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;OK ,以上是基本的知识储备.&lt;/p&gt;
+
+&lt;h3 id=&quot;构建内测分发平台&quot;&gt;构建内测分发平台;&lt;/h3&gt;
+
+&lt;p&gt;整过程就是: Jenkins 构建成功后发送邮件给相关人员,邮件中附带二维码,其他人员扫描二维码访问install.html页面,点击即可自动安装最新的app.&lt;/p&gt;
+
+&lt;h5 id=&quot;1-在web服务器上部署好目录结构&quot;&gt;1. 在web服务器上部署好目录结构&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140814162711381?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2xvc2VfbWFydHk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;install.html 是一个非常简单的发布页面，这个页面的地址固定不变，其他人就总是通过访问 http://xxx.xxx.xxx/ota/install.html 来实现所有操作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-align:center;margin-top:50px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xxx.xxx.xxx/ota/ca.crt&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size:70px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Install Root Certificate&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-align:center;margin-top:100px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;itms-services://?action=download-manifest&amp;amp;url=https://xxx.xxx.xxx/ota/iPhone/iPhoneOTA.plist&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size:70px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Install iPhone App&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-align:center;margin-top:100px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;itms-services://?action=download-manifest&amp;amp;url=https://xxx.xxx.xxx/ota/iPad/iPadOTA.plist&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size:70px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Install iPad App&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;iPad和iPhone 目录中是各自对应的最新ipa文件 (通过脚本生成,然后上传过来的)&lt;/li&gt;
+  &lt;li&gt;otabuddy.sh 用来根据ipa自动生成plist文件, 脚本地址如下AA1:&lt;/li&gt;
+  &lt;li&gt;ca.crt是给https连接对应的服务器证书签名的根证书。 具体 &lt;a href=&quot;http://blog.csdn.net/close_marty/article/details/38441903&quot;&gt;参考这里&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/sveinungkb/ios-ota-buddy&quot;&gt;AA1:脚本&lt;/a&gt;
+&lt;a href=&quot;https://github.com/Mr3C/ios-ota-buddy&quot;&gt;AA1:备份脚本&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;2-在jenkins中用简单的脚本实现这个过程&quot;&gt;2. 在jenkins中用简单的脚本实现这个过程&lt;/h5&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#将二维码放到对应job的根目录下,便于作为邮件附件发送。install.png就是install.html的url对应的二维码  &lt;/span&gt;
+cp /Users/marty/.jenkins/workspace/install.png /Users/marty/.jenkins/workspace/xxxx/  
+&lt;span class=&quot;c&quot;&gt;#删除已有的ipa和plist  &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /Library/WebServer/Documents/ota/iPad/  
+rm -rf &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.ipa  
+rm -rf &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.plist  
+&lt;span class=&quot;c&quot;&gt;#把最新的ipa从jenkins工作目录复制到web服务器工作目录  &lt;/span&gt;
+cp /Users/marty/.jenkins/workspace/xxxx/bin/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.ipa /Library/WebServer/Documents/ota/iPad/  
+&lt;span class=&quot;c&quot;&gt;#生成Plist文件，plist文件采用固定名称。  &lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ipaName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls |grep ipa&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;  
+./otabuddy.sh plist &lt;span class=&quot;nv&quot;&gt;$ipaName&lt;/span&gt; http://xxx.xxx.xxx/ota/iPad/&lt;span class=&quot;nv&quot;&gt;$ipaName&lt;/span&gt; iPadOTA.plist  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在构建成功的邮件中增加一个附件，附件就是二维码
+&lt;img src=&quot;http://img.blog.csdn.net/20140814161647302&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其他资料:
+-&lt;a href=&quot;http://skyseraph.com/2016/07/18/Tools/Jenkins%20Gitlab%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%89%93%E5%8C%85%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/&quot;&gt;优秀教程: Jenkins Gitlab持续集成打包平台搭建&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/skyseraph/PlistAutoCreate&quot;&gt;用于iOS应用程序的自动创建plist和html发布文件的shell脚本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考&lt;a href=&quot;http://blog.csdn.net/close_marty/article/details/38441903&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 09 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/blog/2017/01/AD-iOS-OTA.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/AD-iOS-OTA.html</guid>
+        
+        <category>持续集成</category>
+        
+        
+        <category>持续集成</category>
         
       </item>
     

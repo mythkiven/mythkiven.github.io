@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  " 持续集成系列 - CI + Jenkins的魔法世界"
-categories: CI
-tags: fastlane CI
+categories: 持续集成
+tags: 持续集成
 author: 3行代码
 ---
 

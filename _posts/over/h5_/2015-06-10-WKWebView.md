@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "WKWebView小教程"
-categories: Objective-C
-tags: WKWebView、Native与JS、缓存、NSURLProtocol
+categories: OC 
+tags: OC 
 author: 3行代码
 ---
 

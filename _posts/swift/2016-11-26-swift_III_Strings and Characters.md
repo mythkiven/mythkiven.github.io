@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Swift_III_字符(串)"
-categories: Swift3.0
-tags: Swift3.0
+title:  "Swift3.0_III_字符(串)"
+categories: Swift
+tags: Swift
 author: 3行代码
 ---
 

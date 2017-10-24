@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS逆向系列5_IDA/iFunBox/other"
 categories: Reverse
-tags: IDA、iFunBox、dyld_decache
+tags: Reverse
 author: 3行代码
 ---
 

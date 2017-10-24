@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Swift3.0_X_构造过程和析构过程 "
-categories: Swift3.0
-tags: Swift3.0
+categories: Swift
+tags: Swift
 author: 3行代码
 ---
 

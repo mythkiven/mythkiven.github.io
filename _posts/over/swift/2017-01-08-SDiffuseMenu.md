@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Swift 版 AwesomeMenu 的改写之旅:SDiffuseMenu"
-categories: Swift3.0
-tags: SDiffuseMenu Animation
+title:  "一款常见的菜单动画 by Swift"
+categories: Swift
+tags: Swift
 author: 3行代码
 ---
 

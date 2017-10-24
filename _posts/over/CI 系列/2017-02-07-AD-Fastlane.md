@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  " 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore"
-categories: CI
-tags: fastlane
+categories: 持续集成
+tags: 持续集成
 author: 3行代码
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Swift_I_入门体验"
-categories: Swift3.0
-tags: Swift3.0
+title:  "Swift3.0_I_入门体验"
+categories: Swift
+tags: Swift
 author: 3行代码
 ---
 
