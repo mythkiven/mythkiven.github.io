@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>三行代码</title>
-    <description>mythkiven</description>
+    <description>欢迎访问我的博客</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Oct 2017 13:48:36 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Oct 2017 13:48:36 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Oct 2017 13:49:11 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Oct 2017 13:49:11 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
