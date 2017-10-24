@@ -76,7 +76,7 @@ nav:
     - {title: 归档, description: archive, url: '/nav/archive'}   
     - {title: 分类, description: tags, url: '/nav/tags'}
     - {title: 留言, description: messages, url: '/nav/messages'}    
-    - {title: 关于, description: about, url: '/nav/about'}      
+    - {title: 关于, description: about, url: '/about'}      
     
 
 # Pagination
