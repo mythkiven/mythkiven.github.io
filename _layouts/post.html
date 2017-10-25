@@ -7,9 +7,11 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="{{page.date | date: date_to_xmlschema}}" itemprop="datePublished" class="post-meta__date date">{{page.date | date: "%F"}}
-      </time>   
-      <span id="busuanzi_container_page_pv" style="display: block;"> | 阅读：<span style="display: block;" id="busuanzi_value_page_pv"></span>次</span> 
+      <time datetime="{{page.date | date: date_to_xmlschema}}" itemprop="datePublished" class="post-meta__date date">{{page.date | date: "%F"}} </time>  
+      <p><span id="busuanzi_container_page_pv" style="display: inline;"> | 阅读：<span style="display: inline;" id="busuanzi_value_page_pv"></span>次</span> 
+      </p>
+
+      
     </div>
   </header>
 <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
