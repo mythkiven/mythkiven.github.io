@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>python脚本 - 开机自动爬基金数据</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="python脚本 - 开机自动爬基金数据">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="python脚本 - 开机自动爬基金数据">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/11/pythonGetFund.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">python脚本 - 开机自动爬基金数据</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-11-10 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-11-10
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#1python爬取原理及代码" id="markdown-toc-1python爬取原理及代码">1、python爬取原理及代码</a>    <ul>
+      <li><a href="#11-引入需要的库" id="markdown-toc-11-引入需要的库">1.1 引入需要的库</a></li>
+      <li><a href="#12-获取html" id="markdown-toc-12-获取html">1.2 获取html</a></li>
+      <li><a href="#13-获取内容" id="markdown-toc-13-获取内容">1.3 获取内容</a></li>
+      <li><a href="#14-获取每条信息" id="markdown-toc-14-获取每条信息">1.4 获取每条信息</a></li>
+      <li><a href="#15-写入文件" id="markdown-toc-15-写入文件">1.5 写入文件</a></li>
+      <li><a href="#16-防止数据重复写入" id="markdown-toc-16-防止数据重复写入">1.6 防止数据重复写入</a></li>
+      <li><a href="#17-按日期爬取数据" id="markdown-toc-17-按日期爬取数据">1.7 按日期爬取数据</a></li>
+    </ul>
+  </li>
+  <li><a href="#2开机自动爬取数据的脚本" id="markdown-toc-2开机自动爬取数据的脚本">2、开机自动爬取数据的脚本</a></li>
+</ul>
+
+<p>    话说玩基金也有很长一段时间了，但是感觉各种基金app里面的数据展示不全，
+不少app都只展示近几年的数据，基金成立之处数据没有，虽然网站上有
+但是网站上也只展示在单个基金里，多基金对比就没
+成立之初的数据，反正各种不爽，所以萌生直接爬取的想法，刚好可以练练python。</p>
+
+<p>    我是从15年底就开始运行这个脚本，目前已经有一份数据，正准备借助MATLAB的simulink模块分析。</p>
+
+<p>    最开始直接放在txt里，后来想存数据库，但是pyCharm上各种安装不上mysql
+，不论是pyCharm还是pip还是直接托安装包，
+后来改用excel，数据直接写入excel中。</p>
+
+<p>    截止发文为止，数据已经迁至数据库，相关操作，后续再开一个博文介绍。</p>
+
+<p>    下边是基于OSX10.11系统，开机自动爬取数据，并存入指定excel，
+代码在github<a href="https://github.com/mythkiven/getFund">传送门</a></p>
+
+<p>实际展示：</p>
+
+<p>控制台打印：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825712e47466.png" alt="" /></p>
+
+<p>写入txt：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/5825719ba664e.png" alt="" /></p>
+
+<p>写入xls：</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/11/11/58257180958e8.png" alt="" /></p>
+
+<h2 id="1python爬取原理及代码">1、python爬取原理及代码</h2>
+
+<p><strong>原理:获取html – 使用正则匹配 – 解析 – 存储</strong></p>
+
+<h5 id="11-引入需要的库">1.1 引入需要的库</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import xlrd
+import xlwt
+import time, datetime
+from xlutils.copy import copy
+from xlrd import open_workbook
+from xlwt import easyxf
+</code></pre>
+</div>
+
+<h5 id="12-获取html">1.2 获取html</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> def getSource(self, url):
+        html = requests.get(url)
+        return html.text
+
+</code></pre>
+</div>
+
+<h5 id="13-获取内容">1.3 获取内容</h5>
+
+<p>这里匹配内容使用的是 re模块，re是Python自带的正则表达式库文件，为字符串的匹配筛选提供了极大的便利。下文使用re.search，这个模块里还有个相似的函数 re.match()
+。区别在于:</p>
+
+<p>match只从字串的开始位置进行匹配，如果失败，它就此放弃；</p>
+
+<p>search则会完全遍历整个字串中所有可能的位置，直到成功地找到一个匹配，或者搜索完字串，以失败告终。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getMainText(self, source):
+        everyclass = re.search(
+            '(&lt;table width="950" border="0" align="center" cellpadding="0" cellspacing="0" class="table02" id="fundlist" data-lt="sypm"&gt;.*?&lt;/table&gt;)',
+            source, re.S).group(1)
+        return everyclass
+</code></pre>
+</div>
+
+<h5 id="14-获取每条信息">1.4 获取每条信息</h5>
+
+<p>将自己需要的信息单独抽取出来：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getInfo(self, eachclass):
+        info = {}
+        info["num"] = re.search('&lt;td width="3%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["id"] = re.search('target="_blank"&gt;(.*?)&lt;/a&gt;&lt;/td&gt;', eachclass, re.S).group(1)
+        info['name'] = re.search('target="_blank" class="blue ellipsis" title="(.*?)"&gt;', eachclass, re.S).group(1)
+        info['time'] = re.search('&lt;td width="7%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S).group(1)
+        info["price1"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[1]
+        info["price2"] = re.findall('&lt;td width="6%" align="center"&gt;(.*?)&lt;/td&gt;', eachclass, re.S)[2]
+
+        return info
+</code></pre>
+</div>
+
+<h5 id="15-写入文件">1.5 写入文件</h5>
+
+<p>创建txt：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>f = open("/Users/www_3code_info/fund/" + timePrevious + ".txt", 'a+')
+        for each in classinfo:
+            f.writelines('xuhao:' + each['num'] + '\n')
+            f.writelines('daima:' + each['id'] + '\n')
+            f.writelines('name:' + each['name'] + '\n')
+            f.writelines('time:' + each['time'] + '\n')
+            f.writelines('price1:' + each['price1'] + '\n')
+            f.writelines('price2:' + each['price2'] + '\n')
+            f.writelines('url:http://www.jjmmw.com/fund/' + each['id'] + '/' + '\n\n')
+        f.close()
+</code></pre>
+</div>
+
+<p>打开xls,开始写入内容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 打开文件
+        rb = open_workbook(path, formatting_info=True)
+        r_sheet = rb.sheet_by_index(0)
+        wb = copy(rb)
+        sheet = wb.get_sheet(0)
+        j = r_sheet.ncols
+        i = 1
+        timeShould = timePrevious
+        timeQ = timePrevious
+        tListB = []
+        tListS = []
+        print sheet
+
+        fir = ['ID', 'Time', 'NowPrice', 'PlusPrice', 'WriteTime']
+#写入列信息
+        for each in classinfo:
+            sheet.write(i, j + 0, each['id'])
+            sheet.write(i, j + 1, each['time'])
+            sheet.write(i, j + 2, each['price1'])
+            sheet.write(i, j + 3, each['price2'])
+            i += 1
+            timeQ = each['time']
+            if timeQ &gt; timeShould:
+                tListB.append(each['id']+' '+timeQ)
+            elif timeQ &lt; timeShould:
+                tListS.append(each['id']+' '+timeQ)
+
+        for k in range(j, j + 5):
+            sheet.write(0, k, fir[k - j])
+            print k
+            if k == j + 4:
+                sheet.write(1, k, timeNow.decode('utf-8'))
+                sheet.write(2, k, 'UNupdate:' + str(len(tListS)))
+
+</code></pre>
+</div>
+
+<h5 id="16-防止数据重复写入">1.6 防止数据重复写入</h5>
+
+<p>按时间判断是否需要写入数据</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def read_excel():
+    rb = open_workbook(path, formatting_info=True)
+    r_sheet = rb.sheet_by_index(0)
+    # 遍历第2行所有列,是否有时间数据c
+    print "\n已经爬取的列数:" + str(r_sheet.ncols) + "\n"
+    for c in range(0, r_sheet.ncols):
+        age_nov = r_sheet.cell(1, c).value
+        print age_nov
+        if ((c + 1) % 5 == 0) and (c != 0):
+            print "\n"
+        if age_nov == timeNow:
+            return 1
+    else:
+        return 0
+
+</code></pre>
+</div>
+
+<h5 id="17-按日期爬取数据">1.7 按日期爬取数据</h5>
+
+<p>基金一般都是晚上更新当天数据，因为开机早上获取，所以这里设置爬取日期是:周2-6。周日,周一不更新</p>
+
+<p>注意weekday() 返回的是0-6是星期一到星期日</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def getTime():
+    timeT = datetime.date.today()
+    zhouji = timeT.weekday()
+    print zhouji
+    if zhouji &gt;= 1 and zhouji &lt;= 5:
+        return timeToday  
+    else:
+        print "今天是周日或者周一,不获取信息。周六获取周五,周二获取周一的信息"
+        return 0
+
+</code></pre>
+</div>
+
+<h2 id="2开机自动爬取数据的脚本">2、开机自动爬取数据的脚本</h2>
+
+<p>开机启动相关的可参考我的另一篇文章：<a href="www.3code.info/2016/04/30/deployEnvironmentVariable/">OSX环境变量的设置</a></p>
+
+<p>    在linux下执行定期任务可以使用crontab，mac os上不推荐使用。mac os上推荐做法是采用plist脚本，plist脚本可以设置执行的动作，时间间隔等其他一些信息。使用plist脚本原则上时间间隔可以为一秒。</p>
+
+<p>plist脚本存放路径为:</p>
+
+<p>/Library/LaunchDaemons:只要系统启动了，哪怕用户不登陆系统也会被执行。</p>
+
+<p>或/Library/LaunchAgents:当用户登陆系统后才会被执行。</p>
+
+<p>    可以通过两种方式来设置脚本的执行时间。一个是使用StartInterval，它指定脚本每间隔多长时间（单位：秒）执行一次；另外一个使用 StartCalendarInterval，它可以指定脚本在多少分钟、小时、天、星期几、月时间上执行，类似如crontab的中的设置。</p>
+
+<p>一个简单例子如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>com.3code.test.plist<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/Users/3code/plist-test.sh<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/array&gt;</span>
+    <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;false/&gt;</span>
+    <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;true/&gt;</span>
+    <span class="nt">&lt;key&gt;</span>StartInterval<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;integer&gt;</span>60<span class="nt">&lt;/integer&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/plist&gt;</span>
+</code></pre>
+</div>
+
+<p>其中key是plist脚本定义的属性，紧跟着的下一行是该属性对应的值。上述脚本是每间隔60秒执行一次/Users/3code/plist-test.sh这个shell脚本，也可以使用StartCalendarInterval来替换StartInterval达到同样的效 果，例如：</p>
+
+<key>StartCalendarInterval</key>
+<dict>
+  <key>Minute</key>
+  <integer>0</integer>
+</dict>
+<p>上述设置的意思为每天的每个小时的第0分钟执行，也即使每60秒执行一次。</p>
+
+<p>plist脚本中定义的属性以及具体的含义，可以参看苹果官方网站的说明。</p>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/11/7_IOS_Theory.html" data-toggle="tooltip" data-placement="top" title="iOS逆向系列7_iOS理论基础">上一篇：  <span>iOS逆向系列7_iOS理论基础</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/11/swift_I_guide.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_I_入门体验">下一篇：  <span>Swift3.0_I_入门体验</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

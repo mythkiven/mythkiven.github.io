@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Sublime Text基础教程</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sublime Text基础教程">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sublime Text基础教程">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/10/useSublime.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">Sublime Text基础教程</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-10-29 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-10-29
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#1简介" id="markdown-toc-1简介">1、简介</a></li>
+  <li><a href="#2安装" id="markdown-toc-2安装">2、安装</a>    <ul>
+      <li><a href="#21-命令模式" id="markdown-toc-21-命令模式">2.1 命令模式</a></li>
+      <li><a href="#22-goto-anything-cmdp" id="markdown-toc-22-goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</a></li>
+      <li><a href="#23-安装packagecontrol组件" id="markdown-toc-23-安装packagecontrol组件">2.3 安装PackageControl组件</a></li>
+    </ul>
+  </li>
+  <li><a href="#进阶" id="markdown-toc-进阶">进阶</a></li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147e0b8e24a.jpg" alt="" /></p>
+
+<h2 id="说明">说明</h2>
+<p><strong>本人目前sublime2\3都在使用，以下涵盖两个版本的内容，环境是OS X EI。建议大家使用sublime3，下边所述部分插件在2上可能有差异。</strong></p>
+
+<h2 id="1简介">1、简介</h2>
+
+<p>Sublime Text 是一个代码编辑器，也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
+Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+
+<h2 id="2安装">2、安装</h2>
+
+<p>Sublime 的安装比较简单，直接去官网<a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a>，点击Download菜单，进入之后选择自己操作系统的进行下载安装安装即可。</p>
+
+<h5 id="21-命令模式">2.1 命令模式</h5>
+
+<p>习惯了Unix系列操作系统的人往往会觉得过于可视化操作会显得很low。当然Sublime Text 提供的也有命令模式操作，但Sublime Text的命令模式要比VIM的好用的多。</p>
+
+<p>cmd+shift+p来打开命令模式：
+在弹出的输入框里输入我们需要的命令，比如，我想拷贝当前文件的路径，输入copy之后，选择File:copy path选项之后，当前文件的路径就已经复制到了系统的剪切板上。</p>
+
+<p>Sublime Text的命令模式支持模糊匹配，输入cp回车后可以直接实现上面的拷贝当前文件的路径功能（因为cp模糊匹配了File:copy path）。</p>
+
+<h5 id="22-goto-anything-cmdp">2.2 Goto AnyThing [cmd+p]</h5>
+
+<p>1、查找文件：如果项目文件目录很多层，文件查找是一个很头疼的问题，不过Sublime Text里有一个叫做Goto AnyThing的功能，通过快捷键cmd+p打开Goto AnyThing窗口，在输入框中输入我们想要打开的文件模糊名称即可，Sublime Text会为我们查找出符合的文件。</p>
+
+<p>2、快速查看文件内部结构：cmd+p打开Goto AnyThing窗口后，输入@字符，就会出现当前文件的结构，如js文件会列出所有方法，md文件会列出大纲。</p>
+
+<h5 id="23-安装packagecontrol组件">2.3 安装PackageControl组件</h5>
+
+<p>在sublime里面使用快捷键：ctrl+~ 调出控制台，Sublime Text2粘贴如下代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import urllib2,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
+</code></pre>
+</div>
+
+<p>Sublime Text3可以粘贴如下代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+</code></pre>
+</div>
+<p>保险起见最好去官网复制代码。<a href="https://packagecontrol.io/installation#st3">传送门</a>
+粘贴回车就会自动安装。成功安装后，会有如下效果:</p>
+
+<p><img src="https://ooo.0o0.ooo/2016/10/29/58147bf453227.jpg" alt="" /></p>
+
+<p>使用 cmd + Shift + P 调出面板，然后输入 pci ，选中“Package Control: Install Package”并回车，然后通过输入插件的名字找到插件并回车安装即可。</p>
+
+<p><strong>注意的是，需要本地装有python环境.</strong></p>
+
+<p>有了package control，就可以安装想要的插件了!sublime下面有很多插件，一般编辑器有的，sublime都会以插件的形式出现。之后的操作就类似了，安装某插件xxx:</p>
+
+<p>cmd+Shift+P调出面板 -&gt; 输pci回车 -&gt; 然后搜索自己需要的插件安装即可.</p>
+
+<h2 id="进阶">进阶</h2>
+
+<p><a href="http://3code.info/2016/10/30/SublimeUpgrade/">传送门</a></p>
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/05/tree.html" data-toggle="tooltip" data-placement="top" title="使用 tree 形展示目录结构">上一篇：  <span>使用 tree 形展示目录结构</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/10/SublimeUpgrade.html" data-toggle="tooltip" data-placement="top" title="Sublime Text进阶教程">下一篇：  <span>Sublime Text进阶教程</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>持续集成系列 - Xcode 的脚本世界</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="持续集成系列 - Xcode 的脚本世界">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="持续集成系列 - Xcode 的脚本世界">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2017/01/AD-xctool.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">持续集成系列 - Xcode 的脚本世界</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2017-01-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-01-19
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a>    <ul>
+      <li><a href="#1-嵌入-xcode-项目的脚本" id="markdown-toc-1-嵌入-xcode-项目的脚本">1. 嵌入 Xcode 项目的脚本</a></li>
+      <li><a href="#2-xcodebuild" id="markdown-toc-2-xcodebuild">2. Xcodebuild</a></li>
+    </ul>
+  </li>
+  <li><a href="#脚本打包" id="markdown-toc-脚本打包">脚本打包</a>    <ul>
+      <li><a href="#1准备plist文件" id="markdown-toc-1准备plist文件">1.准备Plist文件:</a></li>
+      <li><a href="#脚本打测试包" id="markdown-toc-脚本打测试包">脚本打测试包</a></li>
+      <li><a href="#脚本打生产包" id="markdown-toc-脚本打生产包">脚本打生产包</a></li>
+    </ul>
+  </li>
+  <li><a href="#shell-脚本打包实战" id="markdown-toc-shell-脚本打包实战">shell 脚本打包实战</a></li>
+</ul>
+
+<h3 id="基础知识">基础知识</h3>
+
+<p>现在有两个需求:</p>
+
+<ul>
+  <li>打一个 AdHoc 测试包,发送给测试人员进行测试</li>
+  <li>打一个 生产包,上线 ITC</li>
+</ul>
+
+<p>以上如果人工手动操作,挺耗时耗力的,而自动化则可以完美解决.自动化打包包括两种途径:</p>
+<ul>
+  <li>使用 Apple 自出品的脚本语言: AppleScript;</li>
+  <li>使用 shell 或者 python</li>
+</ul>
+
+<p>以下的操作基本是基于 Xcode 自带的命令行工具: Command Line Tools ,其包含两个重要的工具:
+xcodebuild 和 xcrun.相关工具及概念如下:</p>
+
+<ul>
+  <li>xcodebuild 主要用于编译和打包,<code class="highlighter-rouge">$ xcodebuild -help</code> 可以查看用法</li>
+  <li>xcrun 主要用于打包 <code class="highlighter-rouge">xcrun -h</code></li>
+  <li>以及 altool ,用于上传二进制文件到 ITC</li>
+  <li>Workspace、Project、Scheme、Target的区别:</li>
+</ul>
+
+<blockquote>
+  <p>Workspace: 是最大的集合,可以包含多个Project,可以管理不同的Project之间的关系.Workspace是以xcworkspace的文件形式存在的(和Project一致).Workspace的存在是为了解决原来仅有Project的时候不同的Project之间的引用和调用困难的问题.同时,一个Workspace的Project共用一个编译路径。比如使用CocoaPod或者使用其他开发库\框架.</p>
+
+  <p>Project: 是一个仓库,包含编译一个或多个product所需的文件\资源和信息,保持和聚合这些元素间的关系(每个Target能指定自己的Build Settings来覆盖Project),一般包含的内容如下:</p>
+
+  <blockquote>
+    <p>Source code, including header files and implementation files
+Libraries and frameworks, internal and external
+Resource files
+Image files
+Interface Builder (nib) files</p>
+  </blockquote>
+
+  <p>Scheme: 包含了一些要构建的Scheme,一些构建时用到的设置,一些要运行的测试.同时只能有一个Scheme是有效的.</p>
+
+  <p>Target: 是对应了具体一个想要构建的Product,包含了一些构建这个Product所需的配置和文件(build settings和build phases).一个Project可以包含多个Target.</p>
+
+</blockquote>
+
+<h5 id="1-嵌入-xcode-项目的脚本">1. 嵌入 Xcode 项目的脚本</h5>
+
+<ul>
+  <li>脚本的位置:</li>
+</ul>
+
+<blockquote>
+  <p>Build Phases -&gt; 点击左上角+ -&gt; 添加 Run Script (运行脚本) -&gt; 添加脚本即可
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0190a69476.png" alt="374E29EC-49D9-4348-BA45-56B665CA4448.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a0193db099b.png" alt="81EB716F-2F50-426D-BDBF-C0E2C1EF566E.png" /></p>
+
+  <p>默认的是 shell 脚本.需要修改成 py 脚本.</p>
+</blockquote>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 查看 python 解释器的位置:</span>
+<span class="gp">$ </span>whereis python
+/usr/bin/python
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>首先将上方的脚本解释器 由 <code class="highlighter-rouge">/bin/sh </code>修改为 <code class="highlighter-rouge">/usr/bin/python </code></p>
+  </li>
+  <li>
+    <p>然后添加脚本:在编译时,修改一个main.cpp文件的内容:</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">cppfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/Users/jiangxiaocai/Desktop/Test/main.cpp'</span><span class="p">,</span><span class="s">'w'</span><span class="p">)</span>
+<span class="n">outstr</span> <span class="o">=</span> <span class="s">"// 修改.cpp 文件"</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outstr</span><span class="p">)</span>
+<span class="n">cppfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/12/58a01bc9a01d9.png" alt="C34DFE25-2477-457F-B57A-26D805A55F96.png" />
+<img src="https://ooo.0o0.ooo/2017/02/12/58a01be30a2d1.png" alt="06809A1C-87D3-4E9F-AC10-4FFB63193CE6.png" /></p>
+
+<h5 id="2-xcodebuild">2. Xcodebuild</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 功能选项没有放进来,主要是用于编译的命令
+
+Available keys for -exportOptionsPlist:
+
+    compileBitcode : Bool
+
+        # For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.
+
+    embedOnDemandResourcesAssetPacksInBundle : Bool
+
+        # For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.
+
+    iCloudContainerEnvironment
+
+        # For non-App Store exports, if the app is using CloudKit, this configures the "com.apple.developer.icloud-container-environment" entitlement. Available options: Development and Production. Defaults to Development.
+
+    manifest : Dictionary
+
+        # For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.
+
+    method : String
+
+        # Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.
+
+    onDemandResourcesAssetPacksBaseURL : String
+
+        # For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn't YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.
+
+    teamID : String
+
+        # The Developer Portal team to use for this export. Defaults to the team used to build the archive.
+
+    thinning : String
+
+        # For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: &lt;none&gt; (Xcode produces a non-thinned universal app), &lt;thin-for-all-variants&gt; (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. "iPhone7,1"). Defaults to &lt;none&gt;.
+
+    uploadBitcode : Bool
+
+        # For App Store exports, should the package include bitcode? Defaults to YES.
+
+    uploadSymbols : Bool
+
+        # For App Store exports, should the package include symbols? Defaults to YES.
+
+</code></pre>
+</div>
+
+<h3 id="脚本打包">脚本打包</h3>
+
+<p>一般来说实现实现方式有两种:</p>
+
+<ul>
+  <li>xcodebuild 和 xcrun 实现:</li>
+</ul>
+
+<blockquote>
+  <p>xcodebuild -workspace XXX -scheme XXX -configuration Release</p>
+
+  <p>xcrun -sdk iphoneos PackageApplication -v “/XXX/XXX.app” -o “/XXX/XXX”</p>
+</blockquote>
+
+<ul>
+  <li>xcodebuild 和 exportOptionsPlist 实现:</li>
+</ul>
+
+<blockquote>
+  <p>准备两个Plist文件，用于导出不同ipa包时使用</p>
+
+  <p>获取命令行参数，区分上传到Fir还是App Store</p>
+
+  <p>清理构建目录</p>
+
+  <p>编译打包</p>
+
+  <p>导出包</p>
+
+  <p>上传到Fir或者验证并上传到App Store</p>
+
+  <p>发邮件通知</p>
+</blockquote>
+
+<p>下边是基于第二种方式的方法:
+首先因为不了解这种自动化打包,所以要看官方的资料,最直接的方式就是:
+<code class="highlighter-rouge">$ xcodebuild -help</code>,得知如下信息:</p>
+
+<p>Available keys for -exportOptionsPlist:以下每个 key 的详细解释可以<code class="highlighter-rouge">$ xcodebuild -help</code>查看即可.</p>
+
+<ul>
+  <li>测试包导出: compileBitcode\embedOnDemandResourcesAssetPacksInBundle\iCloudContainerEnvironment\manifest\onDemandResourcesAssetPacksBaseURL\thinning</li>
+  <li>用于 App Store 导出: uploadBitcode\uploadSymbols</li>
+  <li>共用: method\teamID</li>
+  <li>method 可选值: app-store\ package\ ad-hoc\ enterprise\ development and developer-id</li>
+</ul>
+
+<p>步骤为:</p>
+
+<h5 id="1准备plist文件">1.准备Plist文件:</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AppStoreExportOptions.plist： method＝app-store，uploadBitcode＝YES，uploadSymbols＝YES
+AdHocExportOptions.plist： method＝ad-hoc，compileBitcode＝NO
+</code></pre>
+</div>
+<p>xcodebuild -exportArchive -archivePath ./xxx.xcarchive -exportOptionsPlist ./AdHocExportOptions.plist -exportPath ./</p>
+
+<h5 id="脚本打测试包">脚本打测试包</h5>
+
+<h5 id="脚本打生产包">脚本打生产包</h5>
+
+<h3 id="shell-脚本打包实战">shell 脚本打包实战</h3>
+
+<p>这里参考了 <a href="http://blog.nswebfrog.com/2013/02/18/ios-automation/">博文</a>,<a href="https://github.com/webfrogs/xcode_shell">代码</a></p>
+
+<p><a href="">备份脚本</a></p>
+
+<p>下载完脚本之后,解读如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ipa-build:  编译xcode工程并生成ipa文件
+ipa-publish: 生成符合itms-services协议的文件,并发布到服务器
+sendEmail:  stmp发送email的脚本
+sftpDownloadFile: 通过sftp协议下载文件
+sftpUploadFile: 通过sftp协议上传文件
+updateLocalIndexHtml:  对索引文件进行处理(二进制文件,非shell脚本)
+uploadItemsServicesFiles:   将itms-services协议文件上传到服务器
+</code></pre>
+</div>
+
+<p>而实际使用的脚本是: ipa-build 和 ipa-publish ,其他文件是,ipa-publish这个脚本调用的依赖文件</p>
+
+<p>ipa-build 使用方法如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型(Debug\ AdHoc\Release\Distribution)
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<p>ipa-build 脚本运行后,会在 iOS 工程根路径下生成名为 “build” 的文件夹,在这个文件夹中又有一个名为 “ipa-build” 的文件夹,打包所生成的最新 ipa 包就在其中.</p>
+
+<p>ipa-publish 使用方法如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 1. $ cd ipa-build 所在的目录
+# 2. 执行脚本:sh ipa-build 绝对路径 ipa类型 打包 ipa(如果已经生成过,忽略)
+# 3. 上传 ftp.
+$ sh ipa-build /Users/guoyinjinrong1/Git_Projecrt/JenkinsTest AdHoc
+</code></pre>
+</div>
+
+<ul>
+  <li></li>
+  <li><a href="https://github.com/webfrogs/xcode_shell">脚本代码</a></li>
+  <li><a href="https://itunesconnect.apple.com/docs/UsingApplicationLoader.pdf">ApplicationLoader 官方使用指南</a></li>
+</ul>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2017/01/Travis-CI.html" data-toggle="tooltip" data-placement="top" title="持续集成系列 - Github中的魔法工具:Travis CI">上一篇：  <span>持续集成系列 - Github中的魔法工具:Travis CI</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2017/01/AD-XCTest.html" data-toggle="tooltip" data-placement="top" title="持续集成系列 - 测试: XCTest">下一篇：  <span>持续集成系列 - 测试: XCTest</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

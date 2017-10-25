@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift3.0_IX_方法、下标和继承 </title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift3.0_IX_方法、下标和继承 ">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift3.0_IX_方法、下标和继承 ">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/12/swift_IX_Methods_Subscripts_Inheritance.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">Swift3.0_IX_方法、下标和继承 </h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-12-10 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-10
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#方法-methods" id="markdown-toc-方法-methods">方法 Methods</a>    <ul>
+      <li><a href="#类型方法" id="markdown-toc-类型方法">类型方法</a></li>
+    </ul>
+  </li>
+  <li><a href="#下标-subscripts" id="markdown-toc-下标-subscripts">下标 Subscripts</a></li>
+  <li><a href="#继承-inheritance" id="markdown-toc-继承-inheritance">继承 Inheritance</a>    <ul>
+      <li><a href="#定义基类" id="markdown-toc-定义基类">定义基类</a></li>
+      <li><a href="#子类生成" id="markdown-toc-子类生成">子类生成</a>        <ul>
+          <li><a href="#重写" id="markdown-toc-重写">重写</a></li>
+          <li><a href="#防止重写" id="markdown-toc-防止重写">防止重写</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="方法-methods">方法 Methods</h1>
+
+<p>方法是与某些特定类型相关联的函数。</p>
+
+<ul>
+  <li>类、结构体、枚举都可以定义实例方法；</li>
+  <li>
+    <p>实例方法为给定类型的实例封装了具体的任务与功能；</p>
+  </li>
+  <li>类、结构体、枚举也可以定义类型方法；</li>
+  <li>
+    <p>类型方法与类型本身相关联，与 OC中的类方法类似；</p>
+  </li>
+  <li>结构体和枚举能够定义方法是 Swift 与 C/OC的主要区别之一；</li>
+  <li>在OC中，类是唯一能定义方法的类型；；</li>
+  <li>但在Swift中，不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在创建的类型（类/结构体/枚举）上定义方法。</li>
+</ul>
+
+<p>1、实例方法</p>
+
+<ul>
+  <li>实例方法是属于某个特定类、结构体或者枚举类型实例的方法；</li>
+  <li>实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致</li>
+  <li>实例方法要写在它所属的类型的前后大括号之间</li>
+  <li>实例方法能够隐式访问它所属类型的所有的其他实例方法和属性</li>
+  <li>实例方法只能被它所属的类的某个特定实例调用</li>
+  <li>实例方法不能脱离于现存的实例而被调用
+案例：</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Counter类，它可用于计算次数的动作时发生的数量：</span>
+
+<span class="kd">class</span> <span class="kt">Counter</span> <span class="p">{</span>
+    <span class="c1">// 本Counter类还声明一个变量属性count，以跟踪当前计数器值。</span>
+    <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// 实例方法:increment()递增计数器1</span>
+    <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="c1">// 实例方法:increment(by: Int) 将计数器增加指定的整数值</span>
+    <span class="kd">func</span> <span class="nf">increment</span><span class="p">(</span><span class="n">by</span> <span class="nv">amount</span><span class="p">:</span><span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
+    <span class="p">}</span>
+    <span class="c1">// reset() 将计数器重置为零</span>
+    <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">counter</span> <span class="o">=</span> <span class="kt">Counter</span><span class="p">()</span>
+<span class="c1">// the initial counter value is 0</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">()</span>
+<span class="c1">// the counter's value is now 1</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">increment</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// the counter's value is now 6</span>
+<span class="n">counter</span><span class="o">.</span><span class="nf">reset</span><span class="p">()</span>
+<span class="c1">// the counter's value is now 0</span>
+</code></pre>
+</div>
+
+<p>函数参数可以同时有一个局部名称（在函数体内部使用）和一个外部名称（在调用函数时使用）(通过参数标签，参数名称是实现)。方法参数也一样，因为方法就是函数，只是这个函数与某个类型相关联了。</p>
+
+<p>2、 self属性</p>
+
+<ul>
+  <li>类型的每一个实例都有一个隐含属性叫做self，self完全等同于该实例本身；</li>
+  <li>你可以在一个实例的实例方法中使用这个隐含的self属性来引用当前实例；</li>
+  <li>一般不用在类型实例里面写self,Swift默认指当前实例的属性或者方法；</li>
+  <li>一般使用self用于严谨的区分参数和属性。
+```swift
+// 上面例子中的increment方法还可以这样写：
+func increment() {
+  self.count += 1
+}</li>
+</ul>
+
+<p>// 区分参数和属性
+struct Point {
+    // x,y是属性
+    var x = 0.0, y = 0.0
+    // x是参数
+    func isToTheRightOfX(x: Double) -&gt; Bool {
+        // 要进行区分:否则Swift会认为X都是参数。
+        return self.x &gt; x
+    }
+}
+let somePoint = Point(x: 4.0, y: 5.0)
+if somePoint.isToTheRightOfX(1.0) {
+    print(“This point is to the right of the line where x == 1.0”)
+}
+// 打印 “This point is to the right of the line where x == 1.0”</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+3、在实例方法中修改值类型
+
+- 结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改；
+- 但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择可变(mutating)行为，然后就可以从其方法内部改变它的属性；
+- 并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中；
+- 方法还可以给它隐含的self属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例；
+- 要使用可变方法，将关键字mutating 放到方法的func关键字之前就可以了：
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveBy(x: 2.0, y: 3.0)
+print("The point is now at (\(somePoint.x), \(somePoint.y))")
+// Prints "The point is now at (3.0, 4.0)"
+</code></pre>
+</div>
+
+<p>注意：不能在结构体类型的常量类型上调用可变方法，因为其属性不能被改变，即使属性是变量属性。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">fixedPoint</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">fixedPoint</span><span class="o">.</span><span class="nf">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="c1">// 这里将会报告一个错误</span>
+</code></pre>
+</div>
+
+<p>4、在可变方法中给self赋值</p>
+
+<p>可变方法能够赋给隐含属性self一个全新的实例。上面Point的例子可以用下面的方式改写：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Point</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">moveBy</span><span class="p">(</span><span class="n">x</span> <span class="nv">deltaX</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nv">deltaY</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 新版的可变方法moveBy(x:y:)创建了一个新的结构体实例，它的 x 和 y 的值都被设定为目标值。调用这个版本的方法和调用上个版本的最终结果是一样的。</span>
+</code></pre>
+</div>
+
+<p>枚举的可变方法可以把self设置为同一枚举类型中不同的成员：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">TriStateSwitch</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Off</span><span class="p">,</span> <span class="kt">Low</span><span class="p">,</span> <span class="kt">High</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Off</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Low</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Low</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">High</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">High</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Off</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">ovenLight</span> <span class="o">=</span> <span class="kt">TriStateSwitch</span><span class="o">.</span><span class="kt">Low</span>
+<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
+<span class="c1">// ovenLight 现在等于 .High</span>
+<span class="n">ovenLight</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
+<span class="c1">// ovenLight 现在等于 .Off</span>
+</code></pre>
+</div>
+<p>上面的例子中定义了一个三态开关的枚举。每次调用next()方法时，开关在不同的电源状态（Off，Low，High）之间循环切换。</p>
+
+<h3 id="类型方法">类型方法</h3>
+
+<ul>
+  <li>实例方法是被某个类型的实例调用的方法；</li>
+  <li>也可以定义在类型本身上调用的方法，这种方法就叫做类型方法；</li>
+  <li>在方法的func关键字之前加上关键字static，来指定类型方法；</li>
+  <li>类还可以用关键字class来允许子类重写父类的方法实现；</li>
+  <li>类型方法和实例方法一样用点语法调用；</li>
+</ul>
+
+<p>注意：
+在OC中，只能为OC的类类型（classes）定义类型方法。在Swift中，你可以为所有的类、结构体和枚举定义类型方法。每一个类型方法都被它所支持的类型显式包含。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="kd">func</span> <span class="nf">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 在这里实现类型方法</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">SomeClass</span><span class="o">.</span><span class="nf">someTypeMethod</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>在类型方法的方法体（body）中，self指向这个类型本身，而不是类型的某个实例；</li>
+  <li>这意味着可以用self来消除类型属性和类型方法参数之间的歧义；</li>
+  <li>一个类型方法可以直接通过类型方法的名称调用本类中的其它类型方法，而无需在方法名称前面加上类型名称；</li>
+  <li>类似地，在结构体和枚举中，也能够直接通过类型属性的名称访问本类中的类型属性，而不需要前面加上类型名称；</li>
+</ul>
+
+<p>案例：
+下面的例子定义了一个名为LevelTracker结构体。它监测玩家的游戏发展情况（游戏的不同层次或阶段）。这是一个单人游戏，但也可以存储多个玩家在同一设备上的游戏信息。游戏初始时，所有的游戏等级（除了等级 1）都被锁定。每次有玩家完成一个等级，这个等级就对这个设备上的所有玩家解锁。</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// LevelTracker结构体用类型属性和方法监测游戏的哪个等级已经被解锁。它还监测每个玩家的当前等级。</span>
+
+<span class="kd">struct</span> <span class="kt">LevelTracker</span> <span class="p">{</span>
+    <span class="c1">// 类型属性：highestUnlockedLevel监测玩家已解锁的最高等级</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">// 实例属性:currentLevel来监测每个玩家当前的等级</span>
+    <span class="k">var</span> <span class="nv">currentLevel</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">// 类型方法：一旦新等级被解锁，它会更新highestUnlockedLevel的值</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unlock</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 如果某个给定的等级已经被解锁，它将返回true</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">isUnlocked</span><span class="p">(</span><span class="n">_</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="c1">// 尽管没有使用类似LevelTracker.highestUnlockedLevel的写法，这个类型方法还是能够访问类型属性highestUnlockedLevel</span>
+        <span class="k">return</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="n">highestUnlockedLevel</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 实例方法，管理currentLevel属性</span>
+    <span class="c1">// 这个方法会在更新currentLevel之前检查所请求的新等级是否已经解锁</span>
+    <span class="kd">@discardableResult</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">advance</span><span class="p">(</span><span class="n">to</span> <span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">isUnlocked</span><span class="p">(</span><span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">currentLevel</span> <span class="o">=</span> <span class="n">level</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 在调用advance(to:)时候忽略返回值，不会产生编译警告，所以函数被标注为@ discardableResult属性</span>
+    <span class="c1">//@discardableResult 将此属性应用于函数或方法声明以在不使用其结果的情况下调用返回值的函数或方法时抑制编译器警告。</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>下面，Player类使用LevelTracker来监测和更新每个玩家的发展进度：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Player</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">tracker</span> <span class="o">=</span> <span class="kt">LevelTracker</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">playerName</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="kd">func</span> <span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">LevelTracker</span><span class="o">.</span><span class="nf">unlock</span><span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tracker</span><span class="o">.</span><span class="nf">advance</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">playerName</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>Player类创建一个新的LevelTracker实例来监测这个用户的进度。它提供了complete(level:)方法，一旦玩家完成某个指定等级就调用它。这个方法为所有玩家解锁下一等级，并且将当前玩家的进度更新为下一等级。</p>
+
+<p>还可以为一个新的玩家创建一个Player的实例，然后看这个玩家完成等级一时发生了什么：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">player</span> <span class="o">=</span> <span class="kt">Player</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Argyrios"</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="nf">complete</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"highest unlocked level is now </span><span class="se">\(</span><span class="kt">LevelTracker</span><span class="o">.</span><span class="n">highestUnlockedLevel</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "highest unlocked level is now 2"</span>
+</code></pre>
+</div>
+
+<h1 id="下标-subscripts">下标 Subscripts</h1>
+
+<ul>
+  <li>下标可以定义在类、结构体和枚举中，是访问集合，列表或序列中元素的快捷方式；</li>
+  <li>可以使用下标的索引，设置和获取值，而不需要再调用对应的存取方法；</li>
+  <li>举例：用下标访问一个Array实例中的元素可以写作someArray[index]；</li>
+  <li>举例：访问Dictionary实例中的元素可以写作someDictionary[key]；</li>
+  <li>一个类型可以定义多个下标，通过不同索引类型进行重载。下标不限于一维，你可以定义具有多个入参的下标满足自定义类型的需求。</li>
+</ul>
+
+<p>1、下标语法</p>
+
+<p>下标允许你通过在实例名称后面的方括号中传入一个或者多个索引值来对实例进行存取。语法类似于实例方法语法和计算型属性语法的混合。与定义实例方法类似，定义下标使用subscript关键字，指定一个或多个输入参数和返回类型；与实例方法不同的是，下标可以设定为读写或只读。这种行为由 getter 和 setter 实现，有点类似计算型属性：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">get</span> <span class="p">{</span>
+      <span class="c1">// 返回一个适当的 Int 类型的值</span>
+    <span class="p">}</span>
+
+    <span class="nf">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 执行适当的赋值操作</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 如同计算型属性，可以不指定 setter 的参数（newValue）。如果不指定参数，setter 会提供一个名为newValue的默认参数</span>
+</code></pre>
+</div>
+
+<p>只读下标：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如同只读计算型属性，可以省略只读下标的get关键字：</span>
+<span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="c1">// 返回一个适当的 Int 类型的值</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>只读下标的实现：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 这里定义了一个TimesTable结构体，用来表示传入整数的乘法表：</span>
+<span class="kd">struct</span> <span class="kt">TimesTable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">multiplier</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">index</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">threeTimesTable</span> <span class="o">=</span> <span class="kt">TimesTable</span><span class="p">(</span><span class="nv">multiplier</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"six times three is </span><span class="se">\(</span><span class="n">threeTimesTable</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "six times three is 18"</span>
+
+<span class="c1">// 在上例中，创建了一个TimesTable实例，用来表示整数3的乘法表。数值3被传递给结构体的构造函数，作为实例成员multiplier的值。</span>
+</code></pre>
+</div>
+
+<p>2、下标用法</p>
+
+<p>下标的确切含义取决于使用场景。下标通常作为访问集合，列表或序列中元素的快捷方式。你可以针对自己特定的类或结构体的功能来自由地以最恰当的方式实现下标。</p>
+
+<p>案例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Swift 的Dictionary类型实现下标用于对其实例中储存的值进行存取操作。为字典设值时，在下标中使用和字典的键类型相同的键，并把一个和字典的值类型相同的值赋给这个下标：</span>
+
+<span class="k">var</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"spider"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"ant"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">numberOfLegs</span><span class="p">[</span><span class="s">"bird"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre>
+</div>
+<p>注意:Swift 的Dictionary类型的下标接受并返回可选类型的值。上例中的numberOfLegs字典通过下标返回的是一个Int?或者说“可选的int”。Dictionary类型之所以如此实现下标，是因为不是每个键都有个对应的值，同时这也提供了一种通过键删除对应值的方式，只需将键对应的值赋值为nil即可。</p>
+
+<p>3、下标选项</p>
+
+<p>下标可以接受任意数量的入参，并且这些入参可以是任意类型。下标的返回值也可以是任意类型。下标可以使用变量参数和可变参数，但不能使用输入输出参数，也不能给参数设置默认值。</p>
+
+<p>下标的重载：一个类或结构体可以根据自身需要提供多个下标实现，使用下标时将通过入参的数量和类型进行区分，自动匹配合适的下标，这就是下标的重载。</p>
+
+<p>虽然接受单一入参的下标是最常见的，但也可以根据情况定义接受多个入参的下标。例如下例定义了一个Matrix结构体，用于表示一个Double类型的二维矩阵。Matrix结构体的下标接受两个整型参数：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Matrix</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">grid</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">columns</span><span class="p">,</span> <span class="nv">repeatedValue</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
+    <span class="p">}</span>
+    <span class="nf">subscript</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span>
+            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span>
+            <span class="nf">assert</span><span class="p">(</span><span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Matrix提供了一个接受两个入参的构造方法，入参分别是rows和columns，创建了一个足够容纳rows * columns个Double类型的值的数组。通过传入数组长度和初始值0.0到数组的构造器，将矩阵中每个位置的值初始化为0.0</p>
+
+<p>你可以通过传入合适的row和column的数量来构造一个新的Matrix实例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">matrix</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>上例中创建了一个Matrix实例来表示两行两列的矩阵。该Matrix实例的grid数组按照从左上到右下的阅读顺序将矩阵扁平化存储：
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix01_2x.png" alt="" /></p>
+
+<p>将row和column的值传入下标来为矩阵设值，下标的入参使用逗号分隔：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.2</span>
+</code></pre>
+</div>
+<p>上面两条语句分别调用下标的 setter 将矩阵右上角位置（即row为0、column为1的位置）的值设置为1.5，将矩阵左下角位置（即row为1、column为0的位置）的值设置为3.2：</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix02_2x.png" alt="" /></p>
+
+<p>Matrix下标的 getter 和 setter 中都含有断言，用来检查下标入参row和column的值是否有效。为了方便进行断言，Matrix包含了一个名为indexIsValidForRow(_:column:)的便利方法，用来检查入参row和column的值是否在矩阵范围内：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">indexIsValidForRow</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>断言在下标越界时触发：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someValue</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="c1">// 断言将会触发，因为 [2, 2] 已经超过了 matrix 的范围</span>
+</code></pre>
+</div>
+
+<h1 id="继承-inheritance">继承 Inheritance</h1>
+
+<p>一个类可以继承另一个类的方法，属性和其它特性。当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类）。在 Swift 中，继承是区分「类」与其它类型的一个基本特征。</p>
+
+<p>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。</p>
+
+<p>可以为类中继承来的属性添加属性观察器，这样一来，当属性值改变时，类就会被通知到。可以为任何属性添加属性观察器，无论它原本被定义为存储型属性还是计算型属性。</p>
+
+<h3 id="定义基类">定义基类</h3>
+
+<p>不继承于其它类的类，称之为基类。</p>
+
+<p>注意：Swift中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Vehicle基类也定义了一个名为makeNoise的方法。这个方法实际上不为Vehicle实例做任何事，但之后将会被Vehicle的子类定制：</span>
+
+<span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">currentSpeed</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"traveling at </span><span class="se">\(</span><span class="n">currentSpeed</span><span class="se">)</span><span class="s"> miles per hour"</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 什么也不做-因为车辆不一定会有噪音</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>可以用初始化语法创建一个Vehicle的新实例，即类名后面跟一个空括号</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someVehicle</span> <span class="o">=</span> <span class="kt">Vehicle</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h2 id="子类生成">子类生成</h2>
+
+<p>子类生成指的是在一个已有类的基础上创建一个新的类。子类继承超类的特性，并且可以进一步完善。你还可以为子类添加新的特性。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">SomeClass</span><span class="p">:</span> <span class="kt">SomeSuperclass</span> <span class="p">{</span>
+    <span class="c1">// 这里是子类的定义</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>案例：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Bicycle</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">hasBasket</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">bicycle</span> <span class="o">=</span> <span class="kt">Bicycle</span><span class="p">()</span>
+<span class="n">bicycle</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="c1">// 可以修改Bicycle实例所继承的currentSpeed属性，和查询实例所继承的description属性：</span>
+<span class="n">bicycle</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">15.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Bicycle: </span><span class="se">\(</span><span class="n">bicycle</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "Bicycle: traveling at 15.0 miles per hour"</span>
+
+<span class="c1">// 子类还可以继续被其它类继承，下面的示例为Bicycle创建了一个名为Tandem（双人自行车）的子类：</span>
+<span class="kd">class</span> <span class="kt">Tandem</span><span class="p">:</span> <span class="kt">Bicycle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">tandem</span> <span class="o">=</span> <span class="kt">Tandem</span><span class="p">()</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">hasBasket</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">currentNumberOfPassengers</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tandem</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">22.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Tandem: </span><span class="se">\(</span><span class="n">tandem</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印："Tandem: traveling at 22.0 miles per hour"</span>
+</code></pre>
+</div>
+
+<h3 id="重写">重写</h3>
+
+<p>子类可以为继承来的实例方法，类方法，实例属性，或下标提供自己定制的实现。这种行为叫重写。</p>
+
+<p>如果要重写某个特性，需要在重写定义的前面加上override关键字。这么做，就表明了你是想提供一个重写版本，而非错误地提供了一个相同的定义。意外的重写行为可能会导致不可预知的错误，任何缺少override关键字的重写都会在编译时被诊断为错误。</p>
+
+<p>override关键字会提醒 Swift 编译器去检查该类的超类（或其中一个父类）是否有匹配重写版本的声明。这个检查可以确保你的重写定义是正确的。</p>
+
+<p>1、 访问超类的方法，属性及下标</p>
+
+<p>当你在子类中重写超类的方法，属性或下标时，有时在你的重写版本中使用已经存在的超类实现会大有裨益。比如，你可以完善已有实现的行为，或在一个继承来的变量中存储一个修改过的值。</p>
+
+<p>在合适的地方，你可以通过使用super前缀来访问超类版本的方法，属性或下标：</p>
+<ul>
+  <li>在方法someMethod()的重写实现中，可以通过super.someMethod()来调用超类版本的someMethod()方法。</li>
+  <li>在属性someProperty的 getter 或 setter 的重写实现中，可以通过super.someProperty来访问超类版本的someProperty属性。</li>
+  <li>在下标的重写实现中，可以通过super[someIndex]来访问超类版本中的相同下标。</li>
+</ul>
+
+<p>2、重写方法</p>
+
+<p>在子类中，你可以重写继承来的实例方法或类方法，提供一个定制或替代的方法实现</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 定义了Vehicle的一个新的子类，叫Train，它重写了从Vehicle类继承来的makeNoise()方法</span>
+<span class="kd">class</span> <span class="kt">Train</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Choo Choo"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>3、重写属性</p>
+
+<p>你可以重写继承来的实例属性或类型属性，提供自己定制的 getter 和 setter，或添加属性观察器使重写的属性可以观察属性值什么时候发生改变。</p>
+
+<ul>
+  <li>可以将一个继承来的只读属性重写为一个读写属性，只需要在重写版本的属性里提供 getter 和 setter 即可；</li>
+  <li>但是，不可以将一个继承来的读写属性重写为一个只读属性；</li>
+  <li>提供定制的 getter（或 setter）来重写任意继承来的属性，无论继承来的属性是存储型的还是计算型的属性；</li>
+  <li>子类并不知道继承来的属性是存储型的还是计算型的，它只知道继承来的属性会有一个名字和类型；</li>
+  <li>在重写一个属性时，必需将它的名字和类型都写出来。这样才能使编译器去检查你重写的属性是与超类中同名同类型的属性相匹配的；</li>
+</ul>
+
+<p>注意
+如果在重写属性中提供了setter，那么也一定要提供getter。如果不想在重写版本中的getter里修改继承来的属性值，可以直接通过super.someProperty来返回继承来的值，其中someProperty是要重写的属性的名字。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Car</span><span class="p">:</span> <span class="kt">Vehicle</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">gear</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">override</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">super</span><span class="o">.</span><span class="n">description</span> <span class="o">+</span> <span class="s">" in gear </span><span class="se">\(</span><span class="n">gear</span><span class="se">)</span><span class="s">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 重写的description属性首先要调用super.description返回Vehicle类的description属性。之后，Car类版本的description在末尾增加了一些额外的文本来提供关于当前档位的信息。</span>
+</code></pre>
+</div>
+
+<p>4、重写属性观察器</p>
+
+<p>可以通过重写属性为一个继承来的属性添加属性观察器。当继承来的属性值发生改变时，就会被通知到，无论那个属性原本是如何实现的。</p>
+
+<p>注意：不可以为继承来的常量存储型属性或继承来的只读计算型属性添加属性观察器。这些属性的值是不可以被设置的，所以，为它们提供willSet或didSet实现是不恰当。
+此外还要注意，不可以同时提供重写的 setter 和重写的属性观察器。如果想观察属性值的变化，并且已经为那个属性提供了定制的 setter，那么在 setter 中就可以观察到任何值变化了。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 下面的例子定义了一个新类叫AutomaticCar，它是Car的子类。AutomaticCar表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位:</span>
+<span class="kd">class</span> <span class="kt">AutomaticCar</span><span class="p">:</span> <span class="kt">Car</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">var</span> <span class="nv">currentSpeed</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">didSet</span> <span class="p">{</span>
+            <span class="n">gear</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">currentSpeed</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*
+当你设置AutomaticCar的currentSpeed属性，属性的didSet观察器就会自动地设置gear属性，为新的速度选择一个合适的挡位。具体来说就是，属性观察器将新的速度值除以10，然后向下取得最接近的整数值，最后加1来得到档位gear的值。例如，速度为35.0时，挡位为4：
+*/</span>
+
+<span class="k">let</span> <span class="nv">automatic</span> <span class="o">=</span> <span class="kt">AutomaticCar</span><span class="p">()</span>
+<span class="n">automatic</span><span class="o">.</span><span class="n">currentSpeed</span> <span class="o">=</span> <span class="mf">35.0</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"AutomaticCar: </span><span class="se">\(</span><span class="n">automatic</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// 打印 "AutomaticCar: traveling at 35.0 miles per hour in gear 4"</span>
+</code></pre>
+</div>
+
+<h3 id="防止重写">防止重写</h3>
+
+<p>可以通过把方法，属性或下标标记为final来防止它们被重写，只需要在声明关键字前加上final修饰符即可（例如：final var，final func，final class func，以及final subscript）。</p>
+
+<p>如果重写了带有final标记的方法，属性或下标，在编译时会报错。在类扩展中的方法，属性或下标也可以在扩展的定义里标记为 final 的。</p>
+
+<p>可以通过在关键字class前添加final修饰符（final class）来将整个类标记为 final 的。这样的类是不可被继承的，试图继承这样的类会导致编译报错。</p>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/12/swift_VIII_Enumerations_Classes_Structures_Properties.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_VIII_枚举、类、结构体、属性">上一篇：  <span>Swift3.0_VIII_枚举、类、结构体、属性</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/12/swift_X_Initialization_Deinitialization.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_X_构造过程和析构过程 ">下一篇：  <span>Swift3.0_X_构造过程和析构过程 </span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

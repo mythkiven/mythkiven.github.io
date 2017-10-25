@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift3.0_V_控制流</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift3.0_V_控制流">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift3.0_V_控制流">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/12/swift_V_Control-Flow.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">Swift3.0_V_控制流</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-12-03 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-03
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#for" id="markdown-toc-for">for</a></li>
+  <li><a href="#while" id="markdown-toc-while">While</a></li>
+  <li><a href="#conditional-statements条件语句" id="markdown-toc-conditional-statements条件语句">Conditional Statements:条件语句</a>    <ul>
+      <li><a href="#if" id="markdown-toc-if">if</a></li>
+      <li><a href="#switch" id="markdown-toc-switch">switch</a></li>
+    </ul>
+  </li>
+  <li><a href="#control-transfer-statements控制跳转语句" id="markdown-toc-control-transfer-statements控制跳转语句">Control Transfer Statements:控制跳转语句</a></li>
+  <li><a href="#labeled-statements标签语句" id="markdown-toc-labeled-statements标签语句">Labeled Statements:标签语句</a></li>
+  <li><a href="#early-exit提前退出" id="markdown-toc-early-exit提前退出">Early Exit：提前退出</a></li>
+  <li><a href="#checking-api-availability检查api可用性" id="markdown-toc-checking-api-availability检查api可用性">Checking API Availability：检查API可用性</a></li>
+</ul>
+
+<ul>
+  <li>Swift提供了所有C语言中相似的控制流结构。包括for和while循环；if和switch条件语句；break和continue跳转语句等;</li>
+  <li>相对于C语言，Swift中switch语句的case语句后，不会自动跳转到下一个语句(这样就避免了C语言中因为忘记break而造成的错误);</li>
+  <li>另外case语句可以匹配多种类型，包括数据范围，元组，或者特定的类型等;</li>
+  <li>switch语句中已匹配的数值也可以被用在后续的case语句体中，where关键词还能被加入任意的case语句中，来增加匹配的方式。</li>
+</ul>
+
+<h3 id="for">for</h3>
+
+<ul>
+  <li>for-in:对于数据范围，序列，集合等中的每一个元素，都执行一次</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 1 times 5 is 5</span>
+<span class="c1">// 2 times 5 is 10</span>
+<span class="c1">// 3 times 5 is 15</span>
+<span class="c1">// 4 times 5 is 20</span>
+<span class="c1">// 5 times 5 is 25</span>
+</code></pre>
+</div>
+
+<p>忽略变量模式：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">base</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="nv">power</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">answer</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">power</span> <span class="p">{</span>
+    <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">base</span><span class="se">)</span><span class="s"> to the power of </span><span class="se">\(</span><span class="n">power</span><span class="se">)</span><span class="s"> is </span><span class="se">\(</span><span class="n">answer</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Prints "3 to the power of 10 is 59049"</span>
+</code></pre>
+</div>
+
+<h3 id="while">While</h3>
+
+<p>while循环方式：</p>
+
+<ul>
+  <li>while循环，在每次循环开始前,判断循环条件是否成立</li>
+  <li>repeat-while循环，在每次循环之后,判断循环条件是否成立</li>
+  <li>repeat-while 类似 do-while</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="n">condition</span> <span class="p">{</span>
+    <span class="n">statements</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kt">Repeat</span> <span class="p">{</span>
+    <span class="n">statements</span>
+<span class="p">}</span> <span class="k">while</span> <span class="n">condition</span>
+</code></pre>
+</div>
+
+<h3 id="conditional-statements条件语句">Conditional Statements:条件语句</h3>
+
+<p>Swift提供了两种条件分支语句的方式，if语句和switch语句。一般if语句比较常用，但是只能检测少量的条件情况。switch语句用于大量的条件可能发生时的条件语句。</p>
+
+<h5 id="if">if</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">temperatureInFahrenheit</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="k">if</span> <span class="n">temperatureInFahrenheit</span> <span class="o">&lt;=</span> <span class="mi">32</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It's very cold. Consider wearing a scarf."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">temperatureInFahrenheit</span> <span class="o">&gt;=</span> <span class="mi">86</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It's really warm. Don't forget to wear sunscreen."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It's not that cold. Wear a t-shirt."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "It's really warm. Don't forget to wear sunscreen."</span>
+</code></pre>
+</div>
+
+<h5 id="switch">switch</h5>
+
+<ul>
+  <li>fallthrough 关键字，可让每一个case都有机会执行；</li>
+  <li>不用break,匹配OK自动终止；</li>
+  <li>每一种情况，case之后要跟上可执行语句：</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">switch</span> <span class="n">anotherCharacter</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">"a"</span><span class="p">:</span> <span class="c1">// Invalid！！！！！！</span>
+<span class="k">case</span> <span class="s">"A"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The letter A"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>一般结构：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">switch</span> <span class="n">some</span> <span class="n">value</span> <span class="n">to</span> <span class="n">consider</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">value</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">respond</span> <span class="n">to</span> <span class="n">value</span> <span class="mi">1</span>
+    <span class="k">case</span> <span class="n">value</span> <span class="mi">2</span><span class="p">,</span> <span class="n">value</span> <span class="mi">3</span><span class="p">:</span>
+         <span class="n">respond</span> <span class="n">to</span> <span class="n">value</span> <span class="mi">2</span> <span class="n">or</span> <span class="mi">3</span>
+    <span class="k">default</span><span class="p">:</span>
+         <span class="n">otherwise</span><span class="p">,</span> <span class="k">do</span> <span class="n">something</span> <span class="k">else</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>案例：匹配字符</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someCharacter</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"z"</span>
+<span class="k">switch</span> <span class="n">someCharacter</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">"a"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The first letter of the alphabet"</span><span class="p">)</span>
+<span class="k">case</span> <span class="s">"z"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The last letter of the alphabet"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Some other character"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "The last letter of the alphabet"</span>
+</code></pre>
+</div>
+
+<p><strong>1、匹配复合数值</strong></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">someCharacter</span><span class="p">:</span> <span class="kt">Character</span> <span class="o">=</span> <span class="s">"e"</span>
+<span class="k">switch</span> <span class="n">someCharacter</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">someCharacter</span><span class="se">)</span><span class="s"> is a vowel"</span><span class="p">)</span>
+<span class="k">case</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"f"</span><span class="p">,</span> <span class="s">"g"</span><span class="p">,</span> <span class="s">"h"</span><span class="p">,</span> <span class="s">"j"</span><span class="p">,</span> <span class="s">"k"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"m"</span><span class="p">,</span>
+     <span class="s">"n"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"q"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"v"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">someCharacter</span><span class="se">)</span><span class="s"> is a consonant"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">someCharacter</span><span class="se">)</span><span class="s"> is not a vowel or a consonant"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "e is a vowel"</span>
+</code></pre>
+</div>
+
+<p><strong>2、范围匹配</strong></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">approximateCount</span> <span class="o">=</span> <span class="mi">62</span>
+<span class="k">let</span> <span class="nv">countedThings</span> <span class="o">=</span> <span class="s">"moons orbiting Saturn"</span>
+<span class="k">var</span> <span class="nv">naturalCount</span><span class="p">:</span> <span class="kt">String</span>
+<span class="k">switch</span> <span class="n">approximateCount</span> <span class="p">{</span>
+<span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">"no"</span>
+<span class="k">case</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="mi">12</span><span class="p">:</span>
+    <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">"several"</span>
+<span class="k">case</span> <span class="mi">12</span><span class="o">..&lt;</span><span class="mi">1000</span><span class="p">:</span>
+    <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">"hundreds of"</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">"many"</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"There are </span><span class="se">\(</span><span class="n">naturalCount</span><span class="se">)</span><span class="s"> </span><span class="se">\(</span><span class="n">countedThings</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="c1">// Prints "There are dozens of moons orbiting Saturn."</span>
+</code></pre>
+</div>
+
+<p><strong>3、元组匹配</strong></p>
+
+<p>// 匹配坐标：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">somePoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">switch</span> <span class="n">somePoint</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"(0, 0) is at the origin"</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">, 0) is on the x-axis"</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"(0, </span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">) is on the y-axis"</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">...</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">...</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">) is inside the box"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">0</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">somePoint</span><span class="o">.</span><span class="mi">1</span><span class="se">)</span><span class="s">) is outside of the box"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "(1, 1) is inside the box"</span>
+</code></pre>
+</div>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png" alt="" /></p>
+
+<p><strong>4、值绑定</strong></p>
+
+<p>在case匹配的同时，可以将switch语句中的值绑定给一个临时的常量或者变量，以便在case的语句中使用。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">anotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="k">switch</span> <span class="n">anotherPoint</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">(</span><span class="k">let</span> <span class="nv">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="c1">// 此后 x == 2</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"on the x-axis with an x value of </span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">let</span> <span class="nv">y</span><span class="p">):</span> <span class="c1">// 此后 y == 6</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"on the y-axis with a y value of </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="k">case</span> <span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="c1">// x == 2 y == 6.因此匹配</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"somewhere else at (</span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// print "somewhere else at (2, 6)"</span>
+</code></pre>
+</div>
+
+<p><strong>5、Where关键词</strong></p>
+
+<p>可以在case中增加where来增强判断条件：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">yetAnotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">switch</span> <span class="n">yetAnotherPoint</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">where</span> <span class="n">x</span> <span class="o">==</span> <span class="nv">y</span><span class="p">:</span> <span class="c1">// 此后 x == 1 y == -1</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">) is on the line x == y"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">where</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="nv">y</span><span class="p">:</span> <span class="c1">// 满足条件。</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">) is on the line x == -y"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"(</span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">) is just some arbitrary point"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// prints "(1, -1) is on the line x == -y"</span>
+</code></pre>
+</div>
+
+<p><strong>6、复合情况</strong></p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">stillAnotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">switch</span> <span class="n">stillAnotherPoint</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">(</span><span class="k">let</span> <span class="nv">distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">let</span> <span class="nv">distance</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"On an axis, </span><span class="se">\(</span><span class="n">distance</span><span class="se">)</span><span class="s"> from the origin"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Not on an axis"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "On an axis, 9 from the origin"</span>
+
+</code></pre>
+</div>
+
+<h3 id="control-transfer-statements控制跳转语句">Control Transfer Statements:控制跳转语句</h3>
+
+<ul>
+  <li>continue:结束当前循环，开始下一次循环；</li>
+  <li>break:终止整个循环过程，用于for中：结束for循环执行for后续代码;switch中：break该case分支匹配结束，如果没有匹配成功，就继续后续的case的匹配。其实和fallthrough在switch中的作用一样</li>
+  <li>fallthrough:switch中，让每一个case,在fallthrough之前的语句都会执行，不论是否匹配成功。（switch默认在匹配成功之后，后边的case不会被执行）；</li>
+  <li>return 函数中返回数值,或者提前退出;</li>
+  <li>throw</li>
+</ul>
+
+<h3 id="labeled-statements标签语句">Labeled Statements:标签语句</h3>
+
+<p>switch和循环可以互相嵌套，循环之间也可以互相嵌套，因此在使用break或者continue的时候，需要知道到底是对哪个语句起作用。这就需要用到标签语句。标签语句的一般形式如下：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">label</span> <span class="nv">name</span><span class="p">:</span> <span class="k">while</span> <span class="n">condition</span> <span class="p">{</span>
+    <span class="n">statements</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>案例：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">finalSquare</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="k">var</span> <span class="nv">board</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">finalSquare</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">board</span><span class="p">[</span><span class="mo">03</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">08</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mo">06</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">09</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">09</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mo">02</span>
+<span class="n">board</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mo">02</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">08</span>
+<span class="k">var</span> <span class="nv">square</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="nv">diceRoll</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="nv">gameLoop</span><span class="p">:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="p">{</span>
+    <span class="n">diceRoll</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">diceRoll</span> <span class="o">==</span> <span class="mi">7</span> <span class="p">{</span> <span class="n">diceRoll</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="k">switch</span> <span class="n">square</span> <span class="o">+</span> <span class="n">diceRoll</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nv">finalSquare</span><span class="p">:</span>
+        <span class="c1">// 注意写法： 结束gameLoop游戏</span>
+        <span class="k">break</span> <span class="n">gameLoop</span>
+    <span class="k">case</span> <span class="k">let</span> <span class="nv">newSquare</span> <span class="k">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="nv">finalSquare</span><span class="p">:</span>
+        <span class="c1">// 注意写法： 结束当前的gameloop游戏，开始下一次的游戏</span>
+        <span class="k">continue</span> <span class="n">gameLoop</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="c1">// this is a valid move, so find out its effect</span>
+        <span class="n">square</span> <span class="o">+=</span> <span class="n">diceRoll</span>
+        <span class="n">square</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="n">square</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Game over!"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="early-exit提前退出">Early Exit：提前退出</h3>
+
+<p>使用guard申明，和if一样只判断布尔值。如果条件是true那么guard以后的代码将被调用，如果是false那么就会调用else里面的内容。和if不同的是，guard是一直有else的。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">person</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+    
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">location</span> <span class="o">=</span> <span class="n">person</span><span class="p">[</span><span class="s">"location"</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"I hope the weather is nice near you."</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="s">"I hope the weather is nice in </span><span class="se">\(</span><span class="n">location</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span>
+ 
+<span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"John"</span><span class="p">])</span>
+<span class="c1">// Prints "Hello John!"</span>
+<span class="c1">// Prints "I hope the weather is nice near you."</span>
+<span class="nf">greet</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Jane"</span><span class="p">,</span> <span class="s">"location"</span><span class="p">:</span> <span class="s">"Cupertino"</span><span class="p">])</span>
+<span class="c1">// Prints "Hello Jane!"</span>
+<span class="c1">// Prints "I hope the weather is nice in Cupertino."</span>
+</code></pre>
+</div>
+
+<h3 id="checking-api-availability检查api可用性">Checking API Availability：检查API可用性</h3>
+
+<p>swift已经內建了对于测试api可用性的支持，从而确保不会调用一个SDK不支持的API。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="kd">#available(platform name version, ..., *)</span> <span class="p">{</span>
+    <span class="n">statements</span> <span class="n">to</span> <span class="n">execute</span> <span class="k">if</span> <span class="n">the</span> <span class="kt">APIs</span> <span class="n">are</span> <span class="n">available</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">fallback</span> <span class="n">statements</span> <span class="n">to</span> <span class="n">execute</span> <span class="k">if</span> <span class="n">the</span> <span class="kt">APIs</span> <span class="n">are</span> <span class="n">unavailable</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>案例：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="kd">#available(iOS 10, macOS 10.12, *)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"YES"</span><span class="p">)</span>
+    <span class="c1">// Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"NO"</span><span class="p">)</span>
+    <span class="c1">// Fall back to earlier iOS and macOS APIs</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/12/swift_IV_Collection-Types.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_IV_集合">上一篇：  <span>Swift3.0_IV_集合</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/12/swift_VI_Functions.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_VI_函数">下一篇：  <span>Swift3.0_VI_函数</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

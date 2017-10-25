@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>iOS逆向系列6_iOS工具集</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS逆向系列6_iOS工具集">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS逆向系列6_iOS工具集">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/11/6_IOS_Tools.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">iOS逆向系列6_iOS工具集</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-11-07 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-11-07
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#1简介" id="markdown-toc-1简介">1、简介</a></li>
+  <li><a href="#2cydiasubstrate" id="markdown-toc-2cydiasubstrate">2、CydiaSubstrate</a>    <ul>
+      <li><a href="#21-mobilehooker" id="markdown-toc-21-mobilehooker">2.1 MobileHooker</a></li>
+      <li><a href="#22-mobileloader" id="markdown-toc-22-mobileloader">2.2 MobileLoader</a></li>
+      <li><a href="#23-safe-mode" id="markdown-toc-23-safe-mode">2.3 Safe mode</a></li>
+    </ul>
+  </li>
+  <li><a href="#3cycript" id="markdown-toc-3cycript">3、Cycript</a></li>
+  <li><a href="#4lldb与debugserver" id="markdown-toc-4lldb与debugserver">4、LLDB与debugserver</a>    <ul>
+      <li><a href="#11-lldb" id="markdown-toc-11-lldb">1.1 LLDB</a></li>
+      <li><a href="#12-debugserver" id="markdown-toc-12-debugserver">1.2 debugserver</a></li>
+      <li><a href="#13-lldb的使用" id="markdown-toc-13-lldb的使用">1.3 LLDB的使用</a></li>
+      <li><a href="#14-lldb使用小提示" id="markdown-toc-14-lldb使用小提示">1.4 LLDB使用小提示</a></li>
+    </ul>
+  </li>
+  <li><a href="#5dumpdecrypted" id="markdown-toc-5dumpdecrypted">5、dumpdecrypted</a></li>
+  <li><a href="#6-openssh" id="markdown-toc-6-openssh">6、 OpenSSH</a></li>
+  <li><a href="#7usbmuxd" id="markdown-toc-7usbmuxd">7、usbmuxd</a></li>
+  <li><a href="#8ifile" id="markdown-toc-8ifile">8、iFile</a></li>
+  <li><a href="#9mterminal" id="markdown-toc-9mterminal">9、MTerminal</a></li>
+  <li><a href="#10syslogd-tovarlogsyslog" id="markdown-toc-10syslogd-tovarlogsyslog">10、syslogd to/var/log/syslog</a></li>
+</ul>
+
+<p><strong>待整理</strong></p>
+
+<h2 id="1简介">1、简介</h2>
+
+<p>前几篇文章介绍了iOS逆向工程的OSX工具，为了完成iOS逆向工程，还需要在iOS上安装、配置一系列工具，将两个平台联动起来。以下的操作均在iPhone 5，iOS 8.1中完成。</p>
+
+<p>相关链接：
+Cydia Substrate <a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a></p>
+
+<h2 id="2cydiasubstrate">2、CydiaSubstrate</h2>
+
+<p><strong>CydiaSubstrate是绝大部分tweak正常工作的基础，它由MobileHooker、MobileLoader和Safe mode组成</strong></p>
+
+<h5 id="21-mobilehooker">2.1 MobileHooker</h5>
+
+<p>MobileHooker的作用是替换系统函数，也就是所谓的hook，它主要包含以下两个函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	void MSHookMessageEx(Class class, SEL selector, IMP replacement, IMP *result);
+	void MSHookFunction(void* function, void* replacement, void** p_original);
+</code></pre>
+</div>
+
+<p><strong>MSHookMessageEx</strong> 作用于Objective-C函数，通过调用method_setImplementation函数将[class selector]的实现改为replacement，达到hook的目的。举个简单的例子，向一个NSString对象发送hasSuffix:消息（即调用[NSString hasSuffix:]），正常情况下它的实现是判断NSString对象有没有某个后缀；如果把这个实现替换成hasPrefix:的实现，那么NSString对象在收到hasSuffix:消息后，实际进行的操作是“口是心非”地判断这个NSString对象有没有某个前缀（prefix）。</p>
+
+<p>之前提到的Logos语法主要是对此函数作了一层封装，让编写针对OC函数的hook代码变得更简单直观了，但其底层实现仍完全基于MSHookMessageEx。对于OC函数的hook，推荐使用更一目了然的Logos语法。如果对MSHookMessageEx本身的使用感兴趣，可以去看它的官方文档，或者Google搜索“cydiasubstrate fuchsiaexample”。参考：<a href="http://www.cydiasubstrate.com/">http://www.cydiasubstrate.com/</a>。</p>
+
+<p><strong>MSHookFunction</strong> 
+MSHookFunction的三个参数的作用分别是：替换的原函数、替换函数，以及被MobileHooker保存的原函数。
+它作用于C和C++函数，通过编写汇编指令，在进程执行到function时转而执行replacement，同时保存function的指令及其返回地址，使得用户可以选择性地执行function，并保证进程能够在执行完replacement后继续正常运行。</p>
+
+<p>释义:进程先执行一些指令后，先执行函数A，再接着执行剩下的指令。如果钩住（hook）了函数A（即上面说的function），想用函数B（即replacement）替换它，那么进程的执行流程就变成：进程先执行一些指令，在原本应该执行函数A的地方跳转到函数B的位置执行函数B，同时函数A的代码被MobileHooker保存了下来。在函数B中，可以选择是否执行函数A，以及何时执行函数A，在函数B执行完成后，则会继续执行剩下的指令。</p>
+
+<p><strong>symbol</strong>
+在计算机中，一个函数的指令被存放在一段内存中，当进程需要执行这个函数时，它必须知道要去内存的哪个地方找到这个函数，然后执行它的指令。也就是说，进程要根据这个函数的名称，找到它在内存中的地址，而这个名称与地址的映射关系，是存储在“symbol table”中的——“symbol table”中的symbol就是这个函数的名称，进程会根据这个symbol找到它在内存中的地址，然后跳转过去执行。</p>
+
+<p>可参阅资料：
+<a href="http://www.cydiasubstrate.com/api/c/MSFindSymbol/">http://www.cydiasubstrate.com/api/c/MSFindSymbol/</a></p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/ff553493(v=vs.85).aspx</a></p>
+
+<p><a href="http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types">http://en.wikibooks.org/wiki/Reverse_Engineering/Mac_OS_X#Symbols_Types</a></p>
+
+<h5 id="22-mobileloader">2.2 MobileLoader</h5>
+
+<p>MobileLoader的作用是加载第三方dylib。在iOS启动时，会由launchd将MobileLoader载入内存，然后MobileLoader会根据dylib的同名plist文件指定的作用范围，有选择地在不同进程里通过dlopen函数打开目录/Library/MobileSubstrate/DynamicLibraries/下的所有dylib。这个plist文件的格式已在Theos部分详细讲解，此处不再赘述。对于大多数初级iOS逆向工程师来说，MobileLoader的工作过程是完全透明的，此处仅作简单了解即可。</p>
+
+<h5 id="23-safe-mode">2.3 Safe mode</h5>
+
+<p>应用的质量良莠不齐，程序崩溃在所难免。因为tweak的本质是dylib，寄生在别的进程里，一旦出错，可能会导致整个进程崩溃，而一旦崩溃的是SpringBoard等系统进程，则会造成iOS瘫痪，所以CydiaSubstrate引入了Safe mode，它会捕获SIGTRAP、SIGABRT、SIGILL、SIGBUS、SIGSEGV、SIGSYS这6种信号，然后进入安全模式。</p>
+
+<p>在安全模式里，所有基于CydiaSubstrate的第三方dylib均会被禁用，便于查错与修复。但是，并不是拥有了Safe mode就能高枕无忧，在很多时候，设备还是会因为第三方dylib的原因而无法进入系统，症状主要有：开机时卡在白苹果上，或者进度圈不停地转。在出现这种情况时，可以同时按住home和lock键硬重启，然后按住音量“+”键来完全禁用CydiaSubstrate，待系统重启完毕后，再来查错与修复。当问题被成功修复后，再重启一次iOS，就能重新启用CydiaSubstrate了，非常方便。</p>
+
+<h2 id="3cycript">3、Cycript</h2>
+
+<p>Cycript是由saurik推出的一款脚本语言，可以看作是Objective-JavaScript。</p>
+
+<p>Cycript具备脚本语言的便利，可以直接用来写App，而且在Cycript中可以测试函数，明显节省时间。这是一门语法简单而功能强大的语言。</p>
+
+<p>更多详细资料可参阅它的官网<a href="http://www.cycript.org">http://www.cycript.org</a>。</p>
+
+<h2 id="4lldb与debugserver">4、LLDB与debugserver</h2>
+
+<h5 id="11-lldb">1.1 LLDB</h5>
+
+<p>如果说IDA是倚天剑，那么LLDB就是屠龙刀，两者在iOS逆向工程中的地位不相上下，难分伯仲。LLDB全称为“Low Level Debugger”，是由苹果出品，内置于Xcode中的动态调试工具，不但通吃C、C++、Objective-C，还全盘支持OSX、iOS，以及iOS模拟器。LLDB的功能可以概括为以下四点：</p>
+
+<ul>
+  <li>在指定的条件下启动程序；</li>
+  <li>在指定的条件下停止程序；</li>
+  <li>在程序停止的时候检查程序内部发生的事；</li>
+  <li>在程序停止的时候对程序进行改动，观察程序的执行过程有什么变化。</li>
+</ul>
+
+<p>LLDB没有图形界面，使用时看着Terminal中黑压压的一片文字，初学者很容易被吓跑，但是一旦掌握其基本用法，配合IDA双管齐下，就能解决很多难倒大片初学者的问题，投资回报极高。LLDB是运行在OSX中的，要想调试iOS，还需要另一个工具的配合，它就是debugserver。</p>
+
+<h5 id="12-debugserver">1.2 debugserver</h5>
+
+<p>debugserver运行在iOS上，顾名思义，它作为服务端，实际执行LLDB（作为客户端）传过来的命令，再把执行结果反馈给LLDB，显示给用户，即所谓的“远程调试”。在默认情况下，iOS上并没有安装debugserver。需要配置debugserver+LLDB，动态调试别人的App，发挥它们在逆向工程中的真正威力。</p>
+
+<h5 id="13-lldb的使用">1.3 LLDB的使用</h5>
+
+<p>常用的LLDB命令：</p>
+
+<p>1.image list</p>
+
+<p>“image list”与GDB中的“info shared”类似，用于列举当前进程中的所有模块（image）。因为ASLR（Address Space Layout Randomization，详见http://theiphonewiki.com/wiki/ASLR）的关系，每次进程启动时，同一进程的所有模块在虚拟内存中的起始地址都会产生随机偏移。所以要使用“image list-o-f”命令操作。</p>
+
+<p>2.breakpoint</p>
+
+<p>“breakpoint”与GDB中的“break”类似，用于设置断点。</p>
+
+<p>因为逆向工程中的调试涉及的多是汇编代码，所以大多数情况下都是在某一条汇编指令上下断点，在函数上下断点的情况很少。</p>
+
+<p>3.print</p>
+
+<p>LLDB的主要功能之一是“在程序停止的时候检查程序内部发生的事”，而这个功能正是通过“print”命令完成的，它可以打印某处的值。</p>
+
+<p>4.nexti与stepi</p>
+
+<p>“nexti”与“stepi”的作用都是执行下一条机器指令，它们最大的区别是前者不进入函数体，而后者会进入函数体。它们可分别简写为“ni”与“si”，是调试时使用最多的指令之一。</p>
+
+<p>5.register write</p>
+
+<p>“register write”命令用于给指定的寄存器赋值，从而“对程序进行改动，观察程序的执行过程有什么变化”。</p>
+
+<p>LLDB脱胎于GDB，虽然两者的命令有差别，但用法和思路是一脉相承的。要想完整地熟悉LLDB的使用，推荐阅读“Peter’s GDB tutorial”和“RMS’s gdb Debugger Tutorial”（Google一下）。IDA宜静，LLDB宜动，熟练地使用这两个工具是成为逆向高手的必经之路。</p>
+
+<h5 id="14-lldb使用小提示">1.4 LLDB使用小提示</h5>
+
+<p>1.调试的二进制文件必须从iOS中提取</p>
+
+<p>IDA分析的二进制文件必须与LLDB调试的二进制文件相同，这样偏移前基地址、ASLR偏移、偏移后基地址才能对应得上。IDA分析的二进制文件可以通过dyld_decache工具从本机获取；从其他渠道（如SDK、模拟器等）提取的文件一般不能用作动态调试。</p>
+
+<p>2.LLDB中的简化输入</p>
+
+<p>在使用LLDB时，如果想重复执行上一条指令，直接按回车键就可以了；如果想查看以前执行过的指令，按方向键的向上和向下键就可以了。
+LLDB的命令都很简单，但怎么用简单的命令去解决复杂的问题，却不简单。</p>
+
+<h2 id="5dumpdecrypted">5、dumpdecrypted</h2>
+
+<p>前面在介绍class-dump时提到过，从AppStore下载的App（以下简称StoreApp）是被苹果加密过的（从其他渠道下载的一般没有加密），可执行文件被套上了一层保护壳，而class-dump无法作用于加密过的App。在这种情况下，想要获取头文件，需要先解密App的可执行文件，俗称“砸壳”。dumpdecrypted就是由越狱社区的知名人士Stefan Esser（@i0n1c）出品的一款砸壳工具，被越狱社区广泛运用在iOS逆向工程研究中。</p>
+
+<h2 id="6-openssh">6、 OpenSSH</h2>
+
+<p>OpenSSH会在iOS上安装SSH服务 ，以给外界提供一个通过ssh接入iOS的途径。</p>
+
+<p>这里用得最多的一般只有2个命令：ssh和scp，前者用于远程登录，后者用于远程拷贝文件。
+两种命令的用法都比较简单直观。在安装OpenSSH后需要注意修改默认登录密码”alpine”。iOS上的用户有2个，分别是root和mobile。主义需要修改密码。如果没有修改默认密码，Ikee等病毒就有可能通过ssh以root用户身份登录iOS，拿到最高权限。这个后果是非常严重的：iOS中的所有数据，包括短信、电话本、AppleID的账号密码等敏感信息泄露的风险将大大增加，你的设备可能会被入侵者玩弄于股掌之间，为所欲为。因此，在安装OpenSSH之后一定要记得修改默认密码！</p>
+
+<h2 id="7usbmuxd">7、usbmuxd</h2>
+
+<p>很多朋友是通过WiFi连接使用SSH服务的，因为无线网络的不稳定性及传输速度的限制，在复制文件或用LLDB远程调试时，iOS的响应很慢，效率不高。iOS越狱社区的知名人士Nikias Bassen（@pimskeks）开发了一款可以把本地OSX/Windows端口转发到远程iOS端口的工具usbmuxd，使我们能够通过USB连接线ssh到iOS中，大大增加了ssh连接的速度，也方便了那些没有WiFi的朋友。</p>
+
+<h2 id="8ifile">8、iFile</h2>
+
+<p>iFile是iOS上一款非常强大的文件管理App，可以看作是iOS版的Finder。它能进行各种文件操作，从最简单的浏览，到编辑、剪贴、复制，还可以安装deb文件，十分方便。</p>
+
+<h2 id="9mterminal">9、MTerminal</h2>
+
+<p>MTerminal是开源的iOS版Terminal，基本功能一应俱全。其用法与Terminal区别不大，只是屏幕和键盘小了点。笔者认为MTerminal最实用的场景是在没有电脑的环境下利用碎片时间，结合Cycript进行代码测试。</p>
+
+<h2 id="10syslogd-tovarlogsyslog">10、syslogd to/var/log/syslog</h2>
+
+<p>syslogd是iOS中记录系统日志的守护进程，“syslogd to/var/log/syslog”的作用是把日志给写入“/var/log/syslog”文件中</p>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/11/5_IDA-iFunBox-other.html" data-toggle="tooltip" data-placement="top" title="iOS逆向系列5_IDA/iFunBox/other">上一篇：  <span>iOS逆向系列5_IDA/iFunBox/other</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/11/7_IOS_Theory.html" data-toggle="tooltip" data-placement="top" title="iOS逆向系列7_iOS理论基础">下一篇：  <span>iOS逆向系列7_iOS理论基础</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

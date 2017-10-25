@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content=" 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content=" 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2017/02/AD-Fastlane.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title"> 持续集成系列 - Fastlane的黑魔法:自动打包编译上传 AppStore</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2017-02-07 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-02-07
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#fastlane-简介" id="markdown-toc-fastlane-简介">Fastlane 简介</a>    <ul>
+      <li><a href="#1主要使用场" id="markdown-toc-1主要使用场">1.主要使用场:</a></li>
+      <li><a href="#2工具集" id="markdown-toc-2工具集">2.工具集</a></li>
+      <li><a href="#3常见命令" id="markdown-toc-3常见命令">3.常见命令</a></li>
+    </ul>
+  </li>
+  <li><a href="#fastlane-入门实战" id="markdown-toc-fastlane-入门实战">fastlane 入门实战</a>    <ul>
+      <li><a href="#1安装-fastlane" id="markdown-toc-1安装-fastlane">1.安装 fastlane</a>        <ul>
+          <li><a href="#11-创建app-id描述文件" id="markdown-toc-11-创建app-id描述文件">1.1 创建App ID\描述文件</a></li>
+          <li><a href="#12-安装" id="markdown-toc-12-安装">1.2 安装</a></li>
+          <li><a href="#13-为项目配置-fastlane" id="markdown-toc-13-为项目配置-fastlane">1.3 为项目配置 fastlane</a></li>
+        </ul>
+      </li>
+      <li><a href="#2fastlane-文件配置" id="markdown-toc-2fastlane-文件配置">2.fastlane 文件配置</a>        <ul>
+          <li><a href="#21-配置-metadata-文件夹" id="markdown-toc-21-配置-metadata-文件夹">2.1 配置 metadata 文件夹</a></li>
+          <li><a href="#22-配置证书" id="markdown-toc-22-配置证书">2.2 配置证书</a></li>
+          <li><a href="#23-将-fastlane-本地配置上传至-itc" id="markdown-toc-23-将-fastlane-本地配置上传至-itc">2.3 将 fastlane 本地配置上传至 ITC</a></li>
+        </ul>
+      </li>
+      <li><a href="#3xcode-配置" id="markdown-toc-3xcode-配置">3.Xcode 配置</a></li>
+      <li><a href="#4snapshot-截图和-xctest" id="markdown-toc-4snapshot-截图和-xctest">4.Snapshot 截图和 XCTest</a></li>
+      <li><a href="#5创建-ipa-文件" id="markdown-toc-5创建-ipa-文件">5.创建 IPA 文件</a></li>
+      <li><a href="#6上传-ipa-文件到-itc" id="markdown-toc-6上传-ipa-文件到-itc">6.上传 IPA 文件到 ITC</a></li>
+      <li><a href="#7配置-deliverfile" id="markdown-toc-7配置-deliverfile">7.配置 Deliverfile</a></li>
+      <li><a href="#8提交-appstore-审核" id="markdown-toc-8提交-appstore-审核">8.提交 AppStore 审核</a></li>
+      <li><a href="#9使用一键命令" id="markdown-toc-9使用一键命令">9.使用一键命令</a></li>
+      <li><a href="#10参考" id="markdown-toc-10参考">10.参考</a></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>有关神器 Fastlane 持续集成\部署的文章网上挺多,本文定位是入门教程,针对 iOS 应用的持续部署,<strong>只需一条命令就可实现从 Xcode 项目到 编译\打包\构建\提交审核</strong></p>
+
+  <p>文章稍微有点长,涵盖内容为:fastlane 简介\安装\配置 + Snapshot 截图 + XCTest + 一键上传App Store</p>
+
+  <p>说明:本文将 Apple Dev Center 简称为 ADC; iTunes Connect 简称为 ITC</p>
+
+</blockquote>
+
+<ul>
+  <li>首发文章及代码请<a href="https://github.com/mythkiven/AD_Fastlane">戳一下</a></li>
+  <li>先放图看 fastlane 实现自动上传功能:</li>
+</ul>
+
+<p>进度:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/08/589a9ef7823dc.png" alt="" /></p>
+
+<p>提交成功,等待审核
+<img src="https://ooo.0o0.ooo/2017/02/08/589aaed07d991.png" alt="" /></p>
+
+<h2 id="fastlane-简介">Fastlane 简介</h2>
+
+<p>fastlane 是一个完全开源的项目,包含一组 Ruby 实现的工具集,能完成 iOS 和 Android 工程 的自动化构建\测试和发布等功能,<a href="https://krausefx.com/blog/fastlane-is-now-part-of-fabric">现被Twitter收购,是Fabric的一部分</a>.fastlane 强大之处就在于其提供的工具全,基本可以覆盖打包测试发布的所有流程,如下图:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/08/589ace59a6210.png" alt="" /></p>
+
+<p>fastlane 的每一个工具都对应一个 Ruby 脚本,用来执行某一特定的任务,而最妙的是可以通过配置文件将不同的工具灵活的结合在一起,从而形成一个完整的自动化流程,实现一键上传 ITC,从而缩短用于构建发布的时间.</p>
+
+<h5 id="1主要使用场">1.主要使用场:</h5>
+
+<ul>
+  <li>提交时执行测试（包括单元测试和集成测试）</li>
+  <li>构建并分发内部测试\公开测试版本</li>
+  <li>构建生产版本并上传至 ITC（包括更新配置文件,创建新的屏幕截图,上传应用并提交审核）</li>
+  <li>…</li>
+</ul>
+
+<h5 id="2工具集">2.工具集</h5>
+
+<p>fastlane 将如下的工具套件有机地结合起来,从管理证书到单元测试,从编译打包到上传发布,都能通过命令行轻松完成.该套件支持与 Jenkins 和 CocoaPods,xctools 等其他第三方工具的集成,并且能够定义多个通道（lanes）以支持不同的部署目标.</p>
+
+<ul>
+  <li>deliver: 将应用在 ITC 上所需数据提交至 ITC (包括:截图,配置文件,ipa包)</li>
+  <li>snapshot: 依靠 UI Test 完成截图</li>
+  <li>frameit: 快速地把应用截图放入设备框里</li>
+  <li>pem: 可以自动化地生成和更新应用推送通知描述文件</li>
+  <li>sigh: 创建\更新\下载和修复 provisioning profiles,支持App Store, Ad Hoc, Development和企业profiles</li>
+  <li>gym: 编译\打包iOS app,生成签名的ipa文件</li>
+  <li>…</li>
+</ul>
+
+<h5 id="3常见命令">3.常见命令</h5>
+
+<p>fastlane 命令中,个人觉得下面两个较为常用:</p>
+
+<ul>
+  <li>列出所有的 fastlane 的 actions:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane actions
+</code></pre>
+</div>
+
+<ul>
+  <li>fastlane action [action_name]: 显示某一个 action 的详细配置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$  fastlane action match
+</code></pre>
+</div>
+
+<h2 id="fastlane-入门实战">fastlane 入门实战</h2>
+
+<h3 id="1安装-fastlane">1.安装 fastlane</h3>
+
+<h5 id="11-创建app-id描述文件">1.1 创建App ID\描述文件</h5>
+
+<ul>
+  <li>本教程目标是上传 ITC ,因此需要提前在 ADC 和 ITC 中创建 App ID\描述文件\App</li>
+  <li>这里使用的项目是 AD Demo,代码见 <a href="https://github.com/mythkiven/AD_Fastlane">GitHub</a></li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/06/589845eaa299d.png" alt="" />
+<img src="https://ooo.0o0.ooo/2017/02/06/589847204b77a.png" alt="" /></p>
+
+<h5 id="12-安装">1.2 安装</h5>
+
+<p>查看 Ruby 版本,低于2.0最好升级</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ruby -v
+</code></pre>
+</div>
+
+<p>检查 Xcode CLT 是否安装</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ xcode-select --install
+</code></pre>
+</div>
+
+<p>安装 fastlane</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem install -n /usr/local/bin fastlane
+</code></pre>
+</div>
+
+<p>检查版本 fastlane</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane --version
+fastlane installation at path:
+/Library/Ruby/Gems/2.0.0/gems/fastlane-2.14.2/bin/fastlane
+-----------------------------
+fastlane 2.14.2
+</code></pre>
+</div>
+
+<p>OK,安装完成</p>
+
+<h5 id="13-为项目配置-fastlane">1.3 为项目配置 fastlane</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd 项目目录
+$ fastlane init
+</code></pre>
+</div>
+
+<p>如果期间报错 <code class="highlighter-rouge">Connection reset by peer - SSL_Connect</code>,就需要执行:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew update &amp;&amp; brew install ruby
+// 重装
+$ sudo gem install -n /usr/local/bin fastlane
+</code></pre>
+</div>
+
+<p>然后重新执行</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane init
+</code></pre>
+</div>
+
+<ul>
+  <li>期间会让你输入 Apple ID 账号密码(这个信息会存在钥匙串中,后续使用无需再输入密码)</li>
+  <li>会检测当前的 app identifier 是否在  ADC 中</li>
+  <li>会检测当前 app 是否在 ITC 中</li>
+  <li>如果已经在 ADC 和 ITC 中创建相应的信息,那么过程会很顺利,如下图:</li>
+</ul>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/07/58992aea708c6.png" alt="" /></p>
+
+<p>并在 Xcode 项目目录中生成如下文件:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/07/58992b1016443.png" alt="" /></p>
+
+<p>注意:如果没有在 ITC 中创建 App ,也就不会创建上述两个文件夹;当然也可以后续创建,执行如下操作即可:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane produce init
+</code></pre>
+</div>
+
+<h3 id="2fastlane-文件配置">2.fastlane 文件配置</h3>
+
+<p>fastlane 的各文件解释如下:</p>
+
+<ul>
+  <li>Appfile:用于存储应用程序标识符和Apple ID 等信息</li>
+  <li>Fastfile:配置管理 lane</li>
+  <li>Deliverfile:配置应用在 ITC 中的各种信息,和 ICC 中的数据是一一对应的</li>
+  <li>metadata:包含应用在 ITC 中的各种信息</li>
+  <li>screenshots:包含截图数据</li>
+</ul>
+
+<p>需要注意的是,metadata 和 Deliverfile,都可以配置 ITC 的数据,但后者优先级高.正如下图:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/08/589aba7c0b998.png" alt="" /></p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/08/589aba7c1d252.png" alt="" /></p>
+
+<p>下文先在 metadata 文件夹中进行配置用于演示,在文末会删除 metadata 中的配置文本,全部配置在 Deliverfile 中.</p>
+
+<h5 id="21-配置-metadata-文件夹">2.1 配置 metadata 文件夹</h5>
+
+<p>修改 App 描述:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd metadata 
+$ cd zh-Hans
+$ vim description.txt
+</code></pre>
+</div>
+
+<p>修改关键字:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vim keywords.txt
+</code></pre>
+</div>
+
+<p>修改 support_url:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vim support_url.txt
+</code></pre>
+</div>
+
+<p>修改 copyright:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vim copyright.txt
+</code></pre>
+</div>
+
+<p>等等,其他信息的修改类似.</p>
+
+<p>然后创建分级文件:itunes_rating_config.json,这个和 ICC 中的分级是对应的.</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"CARTOON_FANTASY_VIOLENCE"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"REALISTIC_VIOLENCE"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"PROLONGED_GRAPHIC_SADISTIC_REALISTIC_VIOLENCE"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"PROFANITY_CRUDE_HUMOR"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"MATURE_SUGGESTIVE"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"HORROR"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+</span><span class="nt">"MEDICAL_TREATMENT_INFO"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"ALCOHOL_TOBACCO_DRUGS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"GAMBLING"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"SEXUAL_CONTENT_NUDITY"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"GRAPHIC_SEXUAL_CONTENT_NUDITY"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"UNRESTRICTED_WEB_ACCESS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"GAMBLING_CONTESTS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>此处配置参见<a href="https://github.com/fastlane/fastlane/blob/master/deliver/Reference.md">官方文档</a></p>
+
+<p>然后将 App 图标添加至文件夹中,接下来要创建证书:</p>
+
+<h5 id="22-配置证书">2.2 配置证书</h5>
+
+<p>修改 Fastfile:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vim Fastfile
+</code></pre>
+</div>
+
+<p>修改内容如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>fastlane_version "2.14.2"
+
+default_platform :ios
+
+platform :ios do
+ 
+  # 当前任务的描述
+  desc "Creating a code signing certificate and provisioning profile"
+  # 任务名称
+  lane :provision do
+    # 创建 ITC 中的 App 信息
+    produce(
+      app_name: 'AD_Demo',
+      language: 'zh-Hans',
+      app_version: '1.0',
+      sku: 'com.3code.ADDemo.Test'
+    )
+    # 使用证书创建私钥及签名
+    cert
+    # 每次运行时创建新的配置文件
+    sigh(force: true)
+  end
+ 
+  error do |lane, exception|
+  
+  end
+  
+end
+</code></pre>
+</div>
+
+<p>如果想创建 ad hoc 配置文件,需要指定sigh(adhoc: true).更多的信息参见:</p>
+
+<ul>
+  <li><a href="https://github.com/fastlane/fastlane/tree/master/fastlane/docs">官方文档</a></li>
+  <li><a href="https://docs.fastlane.tools/actions/">fastlane actions</a></li>
+</ul>
+
+<h5 id="23-将-fastlane-本地配置上传至-itc">2.3 将 fastlane 本地配置上传至 ITC</h5>
+
+<p>重新进入项目目录,执行如下操作:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane provision
+</code></pre>
+</div>
+
+<p>等待一小会儿,终端提示成功创建证书配置:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>fastlane.tools finished successfully 🎉
+</code></pre>
+</div>
+
+<p>打开 ICC 网页,会发现本地的配置,已经成功上传.</p>
+
+<h3 id="3xcode-配置">3.Xcode 配置</h3>
+
+<p>xcode 配置也简单,只需要将项目修改至生产状态即可(描述文件).其它像构建版本号之类的不用理会, fastlane 会处理的.</p>
+
+<h3 id="4snapshot-截图和-xctest">4.Snapshot 截图和 XCTest</h3>
+
+<p>snapshot 需要和 XCTest 配合使用,关于 XCTest,我的博客中<a href="www.3code.info/2017/01/23/AD-XCTest/">有一篇文章</a>做了简单介绍.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane snapshot init
+</code></pre>
+</div>
+
+<p>目录中会生成一个 Snapfile 文件,用于配置截图信息,修改内容如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 图片尺寸
+devices([
+  "iPhone 5",
+  "iPhone 6",
+  "iPhone 6 Plus"
+])
+ 
+# 支持语言
+languages([
+  'zh-Hans'
+])
+ 
+# 储存位置
+output_directory "./fastlane/screenshots"
+ 
+# 删除之前图片
+clear_previous_screenshots true
+</code></pre>
+</div>
+
+<p>然后打开 Xcode 工程,添加截图设置(需要增加 UI Test, 因为截图是在 UI Test 时截取的):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\\ 1）在项目添加UI测试,已经添加略过
+\\ 2）将./fastlane/SnapshotHelper.swift 添加到UI测试中
+\\ 3）打开 AD_DemoUITests.swift ,删除setUp和tearDown方法，然后在其中添加以下代码testExample：
+ 
+  let app = XCUIApplication()
+  setupSnapshot(app)
+  app.launch()
+  
+  app.buttons["next"].tap()
+  snapshot("01firstPage") // 此处截图
+  
+  app.buttons["back"].tap()
+  snapshot("02secondPage") // 此处截图
+
+</code></pre>
+</div>
+
+<p>打开 Fastfile ,并添加如下信息,用于配置截图</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  desc "Take screenshots"
+  lane :screenshot do
+    snapshot
+  end
+</code></pre>
+</div>
+
+<p>执行 <code class="highlighter-rouge">$ fastlane screenshot</code>, fastlane 会自动调用模拟器,执行测试并生成快照,可能会由于模拟器启动慢而导致时间稍微有点长.</p>
+
+<p>成功截图的提示:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/07/58995745a83cd.png" alt="" /></p>
+
+<h3 id="5创建-ipa-文件">5.创建 IPA 文件</h3>
+
+<p>打开 fastfile,加入如下代码,配置创建 ipa</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "Create ipa"
+  lane :build do
+    increment_build_number
+    gym
+  end
+</code></pre>
+</div>
+
+<p>保存并执行如下操作,将自动创建 IPA 包</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane build
+</code></pre>
+</div>
+
+<p>如果出现错误: <code class="highlighter-rouge">There does not seem to be a CURRENT_PROJECT_VERSION key set for this project.  Add this key to your target's expert build settings.</code>
+<a href="https://developer.apple.com/library/content/qa/qa1827/_index.html">请查阅此处</a></p>
+
+<p>这是一个自动增加构建版本号的设置,需要手动修改.</p>
+
+<h3 id="6上传-ipa-文件到-itc">6.上传 IPA 文件到 ITC</h3>
+
+<p>打开 Fastfile ,添加如下代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "Upload to App Store"
+  lane :upload do
+    deliver
+  end
+</code></pre>
+</div>
+
+<p>然后执行命令,上传到 ITC :</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane upload
+</code></pre>
+</div>
+
+<p>期间,会创建一个 html 形式的预览文件,确认没问题输入 y;</p>
+
+<p>当然最有可能的错误就是网络链接的问题: <code class="highlighter-rouge">Please use diagnostic mode to check connectivity. You need to have outbound access to TCP port 443.</code> 重新配置代理即可.</p>
+
+<h3 id="7配置-deliverfile">7.配置 Deliverfile</h3>
+
+<p>其实上传 ITC 最主要的文件是 Deliverfile,配置好 Deliverfile 后,可以删除 metadata 文件夹中的文本配置.最终配置如下图:</p>
+
+<p><img src="https://ooo.0o0.ooo/2017/02/08/589ac0ac8d172.png" alt="" /></p>
+
+<p>以下是主要的配置,更多更详细的<a href="https://github.com/mythkiven/AD_Fastlane/blob/master/AD_Demo/fastlane/Deliverfile">请戳文件</a>,里面有详细的注释,拿来即可使用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+# 1 app_identifier
+app_identifier "com.3code.ADDemo"
+
+# 2 用户名,Apple ID电子邮件地址
+username "Apple ID电子邮件地址"  
+
+# 3 支持语言
+supportedLanguages = {
+  "cmn-Hans" =&gt; "zh-Hans"
+}
+
+# 4 app 名称
+name({
+'zh-Hans' =&gt; "ADDemo"
+})
+
+# 5 描述
+description({
+  'zh-Hans' =&gt; "简体中文版"
+})
+
+# 6 提交审核信息
+submission_information({    
+    export_compliance_encryption_updated: false,
+    export_compliance_uses_encryption: false,
+    content_rights_contains_third_party_content: false,
+    add_id_info_uses_idfa: false
+})
+
+# 7 应用审核小组的联系信息 app 审核信息
+app_review_information(
+  first_name: "name",
+  last_name: "name",
+  phone_number: "手机号",
+  email_address: "email",
+  demo_user: "测试账号用户名",
+  demo_password: "测试账号密码",
+  notes: "noting"
+)
+
+# 8 copyright 
+copyright "#{Time.now.year} 3code"
+
+# 
+</code></pre>
+</div>
+
+<h3 id="8提交-appstore-审核">8.提交 AppStore 审核</h3>
+
+<p>继续打开 Fastfile,修改如下代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "Upload to App Store and submit for review"
+  lane :upload do
+    deliver(
+      submit_for_review: true
+    )
+  end
+</code></pre>
+</div>
+
+<p>然后执行命令,提交审核 :</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane upload
+</code></pre>
+</div>
+
+<h3 id="9使用一键命令">9.使用一键命令</h3>
+
+<p>添加如下的代码,可以一步搞定所有的操作:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>desc "Provision, take screenshots, build and upload to App Store"
+  lane :do_everything do
+    provision
+    screenshot
+    build
+    upload
+  end
+</code></pre>
+</div>
+
+<p>对应的命令是:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fastlane do_everything
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>本文只是简单的介绍了 fastlane 的使用,更多的资料还请参考文末的链接</p>
+  </li>
+  <li>
+    <p>如果你对 ITC 不了解,或者很少发布 App ,建议看看官方文档,要知道发布 App 也有<a href="https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide_SCh/Appendices/Properties.html">官方指南哦</a></p>
+  </li>
+  <li>
+    <p>本文是系列文章,后续文章会陆续在这里以及我的<a href="www.3code.info">博客</a>中发布,喜欢请给个✨吧</p>
+  </li>
+</ul>
+
+<h3 id="10参考">10.参考</h3>
+
+<ul>
+  <li><a href="https://fastlane.tools/">官网</a></li>
+  <li><a href="https://github.com/fastlane/fastlane">github</a></li>
+  <li><a href="https://docs.fastlane.tools/getting-started/ios/setup/">文档</a></li>
+</ul>
+
+<p>最后给点小建议:如果遇到错误首选就是查 issues,你遇到的问题,基本前人都遇到过了.我能在2天里快速入门 fastlane 全靠看 issues 😁😁</p>
+
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2017/01/AD-XCTest.html" data-toggle="tooltip" data-placement="top" title="持续集成系列 - 测试: XCTest">上一篇：  <span>持续集成系列 - 测试: XCTest</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2017/02/AD-jenkins.html" data-toggle="tooltip" data-placement="top" title=" 持续集成系列 - CI + Jenkins的魔法世界">下一篇：  <span> 持续集成系列 - CI + Jenkins的魔法世界</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift3.0_IV_集合</title>
+  <meta name="description" content="">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift3.0_IV_集合">
+  <meta name="twitter:description" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift3.0_IV_集合">
+  <meta property="og:description" content="">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/blog/2016/12/swift_IV_Collection-Types.html">
+  <link rel="alternate" type="application/rss+xml" title="三行代码" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 --> 
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+
+<!-- 百度统计 -->
+  
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d9432112fb859bf7276f8399641fb0c5";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  
+
+<!-- google 统计 -->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85978943-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/archive" title="archive" class="btn-mobile-menu__icon">
+                      归档
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/tags" title="tags" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/nav/messages" title="messages" class="btn-mobile-menu__icon">
+                      留言
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 三行代码 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                三行代码
+                            
+                        </h2>
+                        <p>
+                           
+                                iOS/H5/安卓
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 三行代码" class="blog-button">三行代码</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">技术博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">欢迎访问我的博客</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">主页</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/archive" title="archive">归档</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/tags" title="tags">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/nav/messages" title="messages">留言</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+ 
+</header>
+
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">Swift3.0_IV_集合</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-12-01 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-01
+      </time>  
+    <p>  
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+<script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <section class="post">
+    <ul id="markdown-toc">
+  <li><a href="#1mutability-of-collections可变集合" id="markdown-toc-1mutability-of-collections可变集合">1、Mutability of Collections：可变集合</a></li>
+  <li><a href="#2arrays数组" id="markdown-toc-2arrays数组">2、Arrays：数组</a>    <ul>
+      <li><a href="#21-array-type-shorthand-syntax数组简写" id="markdown-toc-21-array-type-shorthand-syntax数组简写">2.1 Array Type Shorthand Syntax：数组简写</a></li>
+      <li><a href="#22-creating-an-empty-array创建空数组" id="markdown-toc-22-creating-an-empty-array创建空数组">2.2 Creating an Empty Array：创建空数组</a></li>
+      <li><a href="#23-creating-an-array-with-a-default-value创建带默认值的数组" id="markdown-toc-23-creating-an-array-with-a-default-value创建带默认值的数组">2.3 Creating an Array with a Default Value：创建带默认值的数组</a></li>
+      <li><a href="#24-creating-an-array-by-adding-two-arrays-together叠加数组" id="markdown-toc-24-creating-an-array-by-adding-two-arrays-together叠加数组">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</a></li>
+      <li><a href="#25-creating-an-array-with-an-array-literal数组文本创建数组" id="markdown-toc-25-creating-an-array-with-an-array-literal数组文本创建数组">2.5 Creating an Array with an Array Literal：数组文本创建数组</a></li>
+      <li><a href="#26-accessing-and-modifying-an-array访问修改数组" id="markdown-toc-26-accessing-and-modifying-an-array访问修改数组">2.6 Accessing and Modifying an Array：访问修改数组</a></li>
+      <li><a href="#27-iterating-over-an-array数组遍历" id="markdown-toc-27-iterating-over-an-array数组遍历">2.7 Iterating Over an Array：数组遍历</a></li>
+    </ul>
+  </li>
+  <li><a href="#3sets集合" id="markdown-toc-3sets集合">3、Sets:集合</a>    <ul>
+      <li><a href="#31-set-type-syntax集合类型语法" id="markdown-toc-31-set-type-syntax集合类型语法">3.1 Set Type Syntax:集合类型语法</a></li>
+      <li><a href="#32-creating-and-initializing-an-empty-set创建空的集合" id="markdown-toc-32-creating-and-initializing-an-empty-set创建空的集合">3.2 Creating and Initializing an Empty Set：创建空的集合</a></li>
+      <li><a href="#33-creating-a-set-with-an-array-literal创建数组文本集合" id="markdown-toc-33-creating-a-set-with-an-array-literal创建数组文本集合">3.3 Creating a Set with an Array Literal:创建数组文本集合</a></li>
+      <li><a href="#34-accessing-and-modifying-a-set访问修改集合" id="markdown-toc-34-accessing-and-modifying-a-set访问修改集合">3.4 Accessing and Modifying a Set：访问修改集合</a></li>
+      <li><a href="#35-iterating-over-a-set遍历集合" id="markdown-toc-35-iterating-over-a-set遍历集合">3.5 Iterating Over a Set:遍历集合</a></li>
+      <li><a href="#36-performing-set-operations集合运算" id="markdown-toc-36-performing-set-operations集合运算">3.6 Performing Set Operations：集合运算</a></li>
+    </ul>
+  </li>
+  <li><a href="#4dictionaries字典" id="markdown-toc-4dictionaries字典">4、Dictionaries：字典</a>    <ul>
+      <li><a href="#41-创建" id="markdown-toc-41-创建">4.1 创建</a></li>
+      <li><a href="#42accessing-and-modifying-a-dictionary" id="markdown-toc-42accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</a></li>
+      <li><a href="#43-iterating-over-a-dictionary遍历字典" id="markdown-toc-43-iterating-over-a-dictionary遍历字典">4.3 Iterating Over a Dictionary：遍历字典</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Swift 提供了三种集合类：</p>
+<ul>
+  <li>数组 arrays 值有序的集合；</li>
+  <li>集合 sets 值唯一而无序的集合;</li>
+  <li>字典 dictionaries 键值对且无序的集合；</li>
+  <li>这三种集合是泛型集合，集合中储存的数值必须是明确的</li>
+</ul>
+
+<p>如下示意：</p>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png" alt="" /></p>
+
+<h3 id="1mutability-of-collections可变集合">1、Mutability of Collections：可变集合</h3>
+
+<ul>
+  <li>如果你创建了一个数组,set或者字典，并且申明他为变量，那么该集合就是可变的。</li>
+  <li>如果你申明了数组，set或者字典为常量，那么他就没办法修改。他的内容和大小都没法修改。</li>
+  <li>如果集合不需要修改，尽量申明成常量。这样编译器会优化集合性能。</li>
+</ul>
+
+<h3 id="2arrays数组">2、Arrays：数组</h3>
+
+<ul>
+  <li>数组使用有序列表存储同一类型的多个值。相同的值可以多次出现在一个数组的不同位置中；</li>
+  <li>swift中的Array 是桥接自Foundation的NSArray；</li>
+</ul>
+
+<h5 id="21-array-type-shorthand-syntax数组简写">2.1 Array Type Shorthand Syntax：数组简写</h5>
+
+<ul>
+  <li>Swift数组应遵循Array<SomeType>这样的形式，其中SomeType是这个数组中唯一允许存在的数据类型；</SomeType></li>
+  <li>简写方式：[SomeType]这样的简单语法；</li>
+  <li>两种形式在功能上是一样的，一般都用简写形式</li>
+</ul>
+
+<h5 id="22-creating-an-empty-array创建空数组">2.2 Creating an Empty Array：创建空数组</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// Int类型的空数组：</span>
+<span class="k">var</span> <span class="nv">someInts</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"someInts is of type [Int] with </span><span class="se">\(</span><span class="n">someInts</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
+<span class="c1">// 追加元素：</span>
+<span class="n">someInts</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">// someInts now contains 1 value of type Int</span>
+<span class="c1">// 置空：</span>
+<span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">// someInts is now an empty array, but is still of type [Int]</span>
+</code></pre>
+</div>
+
+<h5 id="23-creating-an-array-with-a-default-value创建带默认值的数组">2.3 Creating an Array with a Default Value：创建带默认值的数组</h5>
+<p>数组的类型从默认值推断，例如下方的 Double数组</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">threeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]</span>
+</code></pre>
+</div>
+<h5 id="24-creating-an-array-by-adding-two-arrays-together叠加数组">2.4 Creating an Array by Adding Two Arrays Together：叠加数组</h5>
+<p>只有类型相同的数组，才能叠加</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">anotherThreeDoubles</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]</span>
+<span class="c1">// 都是double类型</span>
+<span class="k">var</span> <span class="nv">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
+<span class="c1">// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
+</code></pre>
+</div>
+<h5 id="25-creating-an-array-with-an-array-literal数组文本创建数组">2.5 Creating an Array with an Array Literal：数组文本创建数组</h5>
+<p>形如：[ 值1，值2，值3 ]</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 如下创建[String]类型数组：</span>
+<span class="c1">// 1、</span>
+<span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
+<span class="c1">// 2、</span>
+<span class="k">var</span> <span class="nv">shoppingList2</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span>
+</code></pre>
+</div>
+<h5 id="26-accessing-and-modifying-an-array访问修改数组">2.6 Accessing and Modifying an Array：访问修改数组</h5>
+
+<p><strong>通过下标访问\修改:</strong></p>
+
+<ul>
+  <li>count属性:确定元素个数；</li>
+  <li>isEmpty属性：是否为空；</li>
+  <li>append(_ newElement: Element)方法：添加新元素；</li>
+  <li>数组加法：<code class="highlighter-rouge">shoppingList += ["Baking Powder"]</code>；</li>
+  <li>索引：<code class="highlighter-rouge">var firstItem = shoppingList[0]</code> 索引的第一项，是0；</li>
+  <li>索引单个修改：<code class="highlighter-rouge">shoppingList[0] = "Six eggs"</code>；</li>
+  <li>索引范围修改：<code class="highlighter-rouge">shoppingList[4...6] = ["Bananas", "Apples"]</code>；</li>
+  <li>索引插入：<code class="highlighter-rouge">shoppingList.insert("Maple Syrup", at: 0)</code>；</li>
+  <li>索引删除：<code class="highlighter-rouge">let mapleSyrup = shoppingList.remove(at: 0)</code>；</li>
+  <li>删除最后一个元素：<code class="highlighter-rouge">let apples = shoppingList.removeLast()</code></li>
+  <li>注意：越界会造成运行时错误；</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shoppingList</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Flour"</span><span class="p">)</span> <span class="c1">// </span>
+<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Baking Powder"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span> <span class="o">+=</span> <span class="p">[</span><span class="s">"Chocolate Spread"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">,</span> <span class="s">"Butter"</span><span class="p">]</span> <span class="c1">// </span>
+
+<span class="k">var</span> <span class="nv">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Six eggs"</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="p">[</span><span class="mi">4</span><span class="o">...</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="s">"Apples"</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">shoppingList</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"Maple Syrup"</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
+<span class="k">let</span> <span class="nv">mapleSyrup</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// </span>
+<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+<span class="n">firstItem</span> <span class="o">=</span> <span class="n">shoppingList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// </span>
+</code></pre>
+</div>
+
+<h5 id="27-iterating-over-an-array数组遍历">2.7 Iterating Over an Array：数组遍历</h5>
+
+<p>1、for -in：</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">shoppingList</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Six eggs</span>
+<span class="c1">// Milk</span>
+<span class="c1">// Flour</span>
+<span class="c1">// Baking Powder</span>
+<span class="c1">// Bananas</span>
+</code></pre>
+</div>
+
+<p>2、使用全局enumerate函数来进行数组遍历,返回一个由每一个数据项索引值和数据值组成的元组:</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">shoppingList</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Item </span><span class="se">\(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Item 1: Six eggs</span>
+<span class="c1">// Item 2: Milk</span>
+<span class="c1">// Item 3: Flour</span>
+<span class="c1">// Item 4: Baking Powder</span>
+<span class="c1">// Item 5: Bananas</span>
+</code></pre>
+</div>
+
+<h3 id="3sets集合">3、Sets:集合</h3>
+
+<ul>
+  <li>一个集合存储了一串无序的相同类型的数据；</li>
+  <li>swift set类型桥接自Foundation中的NSSet类；</li>
+  <li>存进一个集合的类型必须是可以哈希化的。</li>
+</ul>
+
+<p><strong>哈希值</strong></p>
+
+<ul>
+  <li>哈希值是一个int值，所有相同的对象的哈希值是一样的。例如：a == b，就可以推导出：a.hashValue == b.hashValue；</li>
+  <li>Swift所有的基本类型（String,Int,Double,Bool）默认是可以哈希化的。可以作为Sets的值或者字典的key；</li>
+  <li>没有关联值得枚举值也是默认可以哈希化的；</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>可用使用自定义类型来设置值类型或字典类型，自定义类型需要从swift标准库遵守哈希化协议。遵守哈希化协议的类型必须提供一个叫做hashValue的方法（返回类型为Int）。hashValue的值在不同的程序或相同的程序中返回不要求相同。因为哈希化协议是可变的。遵守协议的类型必须实现运算符（== or ‘is equal’）。Equatable协议要求必须实现“==”成一个等价关系。见下面的例子：
+
+a == a （自反性）
+a == b 相当于 b == a（对称性）
+a == b &amp;&amp; b == c 相当于 a == c (传递性)
+</code></pre>
+</div>
+
+<h5 id="31-set-type-syntax集合类型语法">3.1 Set Type Syntax:集合类型语法</h5>
+
+<p>集合类型的语法是Set<Element>，Element是允许存入集合中的类型。
+和数组不同的是，集合没有简写方法。</Element></p>
+
+<h5 id="32-creating-and-initializing-an-empty-set创建空的集合">3.2 Creating and Initializing an Empty Set：创建空的集合</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// letters变量被推断为Set&lt;Character&gt;</span>
+<span class="k">var</span> <span class="nv">letters</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"letters is of type Set&lt;Character&gt; with </span><span class="se">\(</span><span class="n">letters</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s"> items."</span><span class="p">)</span>
+<span class="c1">// Prints "letters is of type Set&lt;Character&gt; with 0 items."</span>
+
+<span class="n">letters</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
+<span class="c1">// letters now contains 1 value of type Character</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">// letters is now an empty set, but is still of type Set&lt;Character&gt;</span>
+
+</code></pre>
+</div>
+
+<h5 id="33-creating-a-set-with-an-array-literal创建数组文本集合">3.3 Creating a Set with an Array Literal:创建数组文本集合</h5>
+<p>注意的是，创建集合时，必须带上关键字Set。</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// favoriteGenres是字符串集合，即:Set&lt;String&gt; 类型，仅仅储存String，而且是可变的。其余类似</span>
+<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
+<span class="c1">// 简写：</span>
+<span class="k">var</span> <span class="nv">favoriteGenres</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rock"</span><span class="p">,</span> <span class="s">"Classical"</span><span class="p">,</span> <span class="s">"Hip hop"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h5 id="34-accessing-and-modifying-a-set访问修改集合">3.4 Accessing and Modifying a Set：访问修改集合</h5>
+
+<ul>
+  <li>count属性：<code class="highlighter-rouge">favoriteGenres.count</code>；</li>
+  <li>.isEmpty属性: <code class="highlighter-rouge">if favoriteGenres.isEmpty {}</code></li>
+  <li>insert(_:)方法：<code class="highlighter-rouge">favoriteGenres.insert("www.3code.info")</code></li>
+  <li>remove(_:)方法：<code class="highlighter-rouge">let removedGenre = favoriteGenres.remove("Rock")</code></li>
+  <li>contains(_:)方法：是否包含item，<code class="highlighter-rouge">if favoriteGenres.contains("Funk") {</code></li>
+</ul>
+
+<h5 id="35-iterating-over-a-set遍历集合">3.5 Iterating Over a Set:遍历集合</h5>
+<ul>
+  <li>for-in;</li>
+  <li>sorted():返回一个value的集合</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Jazz</span>
+<span class="c1">// Hip hop</span>
+<span class="c1">// Classical</span>
+
+
+<span class="k">for</span> <span class="n">genre</span> <span class="k">in</span> <span class="n">favoriteGenres</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">genre</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Classical</span>
+<span class="c1">// Hip hop</span>
+<span class="c1">// Jazz</span>
+</code></pre>
+</div>
+
+<h5 id="36-performing-set-operations集合运算">3.6 Performing Set Operations：集合运算</h5>
+
+<p><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png" alt="" /></p>
+
+<ul>
+  <li>intersection(_:) 交集</li>
+  <li>symmetricDifference(_:) 对称差</li>
+  <li>union(_:) 并集</li>
+  <li>subtracting(_:) 差集</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">oddDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">evenDigits</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">singleDigitPrimeNumbers</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">union</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">evenDigits</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">subtracting</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1, 9]</span>
+<span class="n">oddDigits</span><span class="o">.</span><span class="nf">symmetricDifference</span><span class="p">(</span><span class="n">singleDigitPrimeNumbers</span><span class="p">)</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()</span>
+<span class="c1">// [1, 2, 9]</span>
+</code></pre>
+</div>
+
+<p>Set Membership and Equality</p>
+
+<p>a是b的一个超集，因为a包含了所有元素b。相反地，b是a子集，因为在所有的元素b也被包含a。bc彼此没有相同的元素。
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png" alt="" />
+运算方法：</p>
+
+<ul>
+  <li>”==”(is equal)方法:判断两个集合是否拥有相同的元素,相同返回true，反之false</li>
+  <li>isSubsetOf(_:)方法：判断目标集合是是否为参数集合的子集，是则返回true，反之false</li>
+  <li>isSupersetOf(_:)方法：判断目标集合是否为参数集合的超集，是则返回true，反之false</li>
+  <li>isStrictSubsetOf(<em>:)和isStrictSupersetOf(</em>:)方法：判断目标是否是子集和超集，但是必须是两个集合不相等，满足以上条件返回true，反之false</li>
+  <li>isDisjointWith(_:)方法：判断两个集合有无相同元素，有相同元素则返回false，反之true。</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">houseAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">farmAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐮"</span><span class="p">,</span> <span class="s">"🐔"</span><span class="p">,</span> <span class="s">"🐑"</span><span class="p">,</span> <span class="s">"🐶"</span><span class="p">,</span> <span class="s">"🐱"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">cityAnimals</span><span class="p">:</span> <span class="kt">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">"🐦"</span><span class="p">,</span> <span class="s">"🐭"</span><span class="p">]</span>
+ 
+<span class="n">houseAnimals</span><span class="o">.</span><span class="nf">isSubset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">farmAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isSuperset</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">houseAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+<span class="n">farmAnimals</span><span class="o">.</span><span class="nf">isDisjoint</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">cityAnimals</span><span class="p">)</span>
+<span class="c1">// true</span>
+</code></pre>
+</div>
+
+<h3 id="4dictionaries字典">4、Dictionaries：字典</h3>
+
+<ul>
+  <li>Swift的Dictionary类桥接自Foundation的NSDictionary类</li>
+  <li>字典Key类型必须符合Hashable协议</li>
+  <li>写法：Dictionary&lt;Key, Value&gt;</li>
+  <li>简写：[Key: Value]</li>
+</ul>
+
+<h5 id="41-创建">4.1 创建</h5>
+
+<p>1、创建[Int: String]类型的空字典：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt">String</span><span class="p">]()</span>
+</code></pre>
+</div>
+
+<p>2、操作</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 插入元素：[16:"sixteen"]</span>
+<span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span> 
+
+<span class="c1">// 置空，类型不变：[Int: String]</span>
+<span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="p">[:]</span>
+</code></pre>
+</div>
+
+<p>3、实例创建字典：[ 键1：值1，关键2：值2，重点3：值3 ]</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>4、简写：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"YYZ"</span><span class="p">:</span> <span class="s">"Toronto Pearson"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="p">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h5 id="42accessing-and-modifying-a-dictionary">4.2、Accessing and Modifying a Dictionary</h5>
+
+<p>使用下标访问修改</p>
+
+<ul>
+  <li>.count属性：<code class="highlighter-rouge">airports.count</code>；</li>
+  <li>.isEmpty属性：<code class="highlighter-rouge">if airports.isEmpty {</code>；</li>
+  <li>添加/更改元素：<code class="highlighter-rouge">airports["LHR"] = "London"</code>；</li>
+  <li>修改元素：updateValue(_:forKey:) 返回可选类型；</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">updateValue</span><span class="p">(</span><span class="s">"Dublin Airport"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The old value for DUB was </span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 可选</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">airportName</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="s">"DUB"</span><span class="p">]</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The name of the airport is </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"That airport is not in the airports dictionary."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "The name of the airport is Dublin Airport."</span>
+</code></pre>
+</div>
+<ul>
+  <li>下标置空：airports[“APL”] = nil；</li>
+  <li>removeValue(forKey:)</li>
+</ul>
+
+<p>返回可选类型：</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="k">let</span> <span class="nv">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="o">.</span><span class="nf">removeValue</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The removed airport's name is </span><span class="se">\(</span><span class="n">removedValue</span><span class="se">)</span><span class="s">."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints "The removed airport's name is Dublin Airport."</span>
+
+</code></pre>
+</div>
+
+<h5 id="43-iterating-over-a-dictionary遍历字典">4.3 Iterating Over a Dictionary：遍历字典</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1、遍历键值对</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// YYZ: Toronto Pearson</span>
+<span class="c1">// LHR: London Heathrow</span>
+
+<span class="c1">// 2、遍历key</span>
+<span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">keys</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport code: </span><span class="se">\(</span><span class="n">airportCode</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Airport code: YYZ</span>
+<span class="c1">// Airport code: LHR</span>
+<span class="c1">// 3、遍历value</span>
+<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">values</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Airport name: </span><span class="se">\(</span><span class="n">airportName</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Airport name: Toronto Pearson</span>
+<span class="c1">// Airport name: London Heathrow</span>
+
+<span class="c1">// 4、获取key value</span>
+<span class="k">let</span> <span class="nv">airportCodes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span>
+<span class="c1">// airportCodes is ["YYZ", "LHR"]</span>
+ 
+<span class="k">let</span> <span class="nv">airportNames</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">](</span><span class="n">airports</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="c1">// airportNames is ["Toronto Pearson", "London Heathrow"]</span>
+
+</code></pre>
+</div>
+
+
+  </section>
+</article>
+
+﻿<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支持一下</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码支持一下</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;color:#fff}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/blog/2016/11/swift_III_Strings-and-Characters.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_III_字符(串)">上一篇：  <span>Swift3.0_III_字符(串)</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/blog/2016/12/swift_V_Control-Flow.html" data-toggle="tooltip" data-placement="top" title="Swift3.0_V_控制流">下一篇：  <span>Swift3.0_V_控制流</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div id="uyan_frame"></div>
+
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="+'2147278'></script>
+
+  
+
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/mythkiven" title="@mythkiven 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+          <!-- Twitter -->
+          <li class="navigation__item_social">
+            <a href="http://twitter.com/Mr3code" title="@Mr3code" target="_blank">
+              <i class='social fa fa-twitter fa-2x'></i>
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:1282412855@qq.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; 三行代码 2017 Theme by <a href="http://jekyllthemes.org/">dearLilian</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=DiffuseMenu_Swift" >
+            </iframe>
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=mythkiven&type=star&count=true&repo=AD_Fastlane" >
+            </iframe> 
+            
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>位小伙伴，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+          
+
+        </div>
+        <div>
+    </footer>
+</section>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    
+    <script type="text/javascript" color="0,102,51" opacity='0.6' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  </body>
+
+</html>
