@@ -22,7 +22,7 @@ icon: heart
 
 ### 联系我
 
-* email:[1282412855@gmail.com](1282412855@gmail.com)
+* email:[1282412855@qq.com](1282412855@qq.com)
 
 
  
